@@ -149,7 +149,7 @@ Quick add lets shoppers add a product from a product card.
 
 Products with a single variant are added straight to the cart. For products with options, a drawer opens with the product image, title, price, variant picker and buy buttons, plus a link to the full product page.
 
-Wholesale buyers see an **Order** action on product cards that opens the product page. When **Theme settings > Wholesale > Order from product cards in a drawer** is on, it opens a drawer with the order matrix or the wholesale quantity box instead.
+Wholesale buyers see a **Choose quantities** action on product cards that opens the product page. When **Theme settings > Wholesale > Order from product cards in a drawer** is on, it opens a drawer with the order matrix or the wholesale quantity box instead.
 
 ## Product compare
 
