@@ -304,7 +304,7 @@ for (const file of liquidFiles) {
   }
 
   // `'key' | t: arg: value | money` applies the filter to the translation, not to the argument
-  for (const m of schemaless.matchAll(/\{\{[^}]*?\|\s*t:[^}|]*\|\s*(money\w*|date|times|plus|minus|divided_by|round|default|weight_with_unit)\b[^}]*\}\}/g)) {
+  for (const m of schemaless.matchAll(/\{\{[^}]*?\|\s*t:[^}|]*\|\s*(money\w*|date|time_tag|times|plus|minus|divided_by|round|default|weight_with_unit)\b[^}]*\}\}/g)) {
     report('error', file, 'Filter after `| t:` arguments applies to the translation; assign the argument first', lineOf(src, m.index));
   }
 
@@ -353,28 +353,82 @@ for (const file of liquidFiles) {
 }
 
 // ---------- JSON files ----------
-const localBlockTypes = (sectionType) => new Set(((sectionSchemas.get(sectionType) || {}).blocks || []).filter((b) => b.name).map((b) => b.type));
-const checkBlockTree = (file, sectionType, blockMap, order, where) => {
-  if (!blockMap) return;
-  const local = localBlockTypes(sectionType);
-  for (const [id, b] of Object.entries(blockMap)) {
-    if (!b.type) report('error', file, `${where}: block "${id}" has no type`);
-    else if (b.type.startsWith('shopify://apps/')) continue;
-    else if (!local.has(b.type) && !blocks.has(b.type)) report('error', file, `${where}: unknown block type "${b.type}"`);
-    if (b.blocks) checkBlockTree(file, sectionType, b.blocks, b.block_order, `${where} > ${id}`);
+// Which children a section or block schema accepts: @theme (public theme blocks), @app,
+// named theme blocks (private "_" blocks included) and section-defined blocks.
+const allowedChildren = (schema) => {
+  const list = (schema && schema.blocks) || [];
+  return {
+    theme: list.some((b) => b.type === '@theme'),
+    app: list.some((b) => b.type === '@app'),
+    named: new Set(list.filter((b) => !b.name && !b.type.startsWith('@')).map((b) => b.type)),
+    local: new Map(list.filter((b) => b.name).map((b) => [b.type, b]))
+  };
+};
+// Setting values in templates and presets must match the schema (ids, select options, ranges).
+const checkValues = (file, defs, values, where) => {
+  if (!values || !defs) return;
+  const byId = new Map(defs.filter((d) => d.id).map((d) => [d.id, d]));
+  for (const [key, value] of Object.entries(values)) {
+    const def = byId.get(key);
+    if (!def) {
+      report('error', file, `${where}: "${key}" is not a setting of this section or block`);
+      continue;
+    }
+    if ((def.type === 'select' || def.type === 'radio') && typeof value === 'string' && !value.includes('{{') && !def.options.some((o) => o.value === value))
+      report('error', file, `${where}: "${key}" value "${value}" is not an option`);
+    if (def.type === 'range' && typeof value === 'number' && (value < def.min || value > def.max)) report('error', file, `${where}: "${key}" ${value} is outside ${def.min}–${def.max}`);
   }
-  for (const id of order || []) if (!blockMap[id]) report('error', file, `${where}: block_order lists missing block "${id}"`);
+};
+const checkBlockTree = (file, parentSchema, blockMap, order, where) => {
+  if (!blockMap) return;
+  const allow = allowedChildren(parentSchema);
+  const entries = Array.isArray(blockMap) ? blockMap.map((b, i) => [String(i), b]) : Object.entries(blockMap);
+  for (const [id, b] of entries) {
+    const at = `${where} > ${b && b.type ? b.type : id}`;
+    if (!b || !b.type) {
+      report('error', file, `${where}: block "${id}" has no type`);
+      continue;
+    }
+    if (b.type.startsWith('shopify://apps/')) {
+      if (!allow.app) report('error', file, `${at}: app blocks are not accepted here`);
+      continue;
+    }
+    if (allow.local.has(b.type)) {
+      checkValues(file, allow.local.get(b.type).settings, b.settings, at);
+      continue;
+    }
+    if (!blocks.has(b.type)) {
+      report('error', file, `${where}: unknown block type "${b.type}"`);
+      continue;
+    }
+    if (!allow.named.has(b.type) && !(allow.theme && !b.type.startsWith('_'))) report('error', file, `${at}: block type not accepted by its parent`);
+    const schema = blockSchemas.get(b.type);
+    checkValues(file, schema && schema.settings, b.settings, at);
+    if (b.blocks) checkBlockTree(file, schema, b.blocks, b.block_order, at);
+  }
+  if (!Array.isArray(blockMap)) for (const id of order || []) if (!blockMap[id]) report('error', file, `${where}: block_order lists missing block "${id}"`);
 };
 const checkSectionsJSON = (file, data) => {
   if (!data || !data.sections) return report('error', file, 'Template/section group needs "sections"');
   for (const [id, s] of Object.entries(data.sections)) {
     if (!s.type) report('error', file, `Section "${id}" has no type`);
     else if (!s.type.startsWith('shopify://apps/') && !sections.has(s.type) && s.type !== '_blocks') report('error', file, `Unknown section type "${s.type}"`);
-    checkBlockTree(file, s.type, s.blocks, s.block_order, `section "${id}"`);
+    const schema = sectionSchemas.get(s.type);
+    if (schema) checkValues(file, schema.settings, s.settings, `section "${id}"`);
+    checkBlockTree(file, schema, s.blocks, s.block_order, `section "${id}"`);
   }
   for (const id of data.order || []) if (!data.sections[id]) report('error', file, `order lists missing section "${id}"`);
   checkTKeys(file, data.name, 'name');
 };
+// Presets: default settings and nested blocks must be valid, or Shopify rejects the upload.
+for (const [name, schema] of [...sectionSchemas, ...blockSchemas]) {
+  const kind = sectionSchemas.get(name) === schema ? 'sections' : 'blocks';
+  const file = join(ROOT, kind, `${name}.liquid`);
+  for (const preset of schema.presets || []) {
+    checkValues(file, schema.settings, preset.settings, `preset "${preset.name}"`);
+    checkBlockTree(file, schema, preset.blocks, preset.block_order, `preset "${preset.name}"`);
+  }
+}
 
 for (const file of [...list(join(ROOT, 'templates'), '.json'), ...list(join(ROOT, 'listings'), '.json')]) {
   const data = parseJSON(file, read(file));

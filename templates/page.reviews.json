@@ -1,0 +1,42 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {}
+    },
+    "quotes": {
+      "type": "testimonials",
+      "settings": {
+        "heading": "What our customers say"
+      },
+      "blocks": {
+        "a": {
+          "type": "_testimonial",
+          "settings": {}
+        },
+        "b": {
+          "type": "_testimonial",
+          "settings": {}
+        },
+        "c": {
+          "type": "_testimonial",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "a",
+        "b",
+        "c"
+      ]
+    },
+    "apps": {
+      "type": "apps",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "quotes",
+    "apps"
+  ]
+}

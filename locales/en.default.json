@@ -15,6 +15,24 @@
     "star_rating": "{{ rating }} out of {{ max }} stars"
   },
   "blogs": {
+    "all_posts": "All posts",
+    "comments": {
+      "leave": "Leave a comment",
+      "message": "Comment",
+      "moderated": "Thank you! Your comment will appear once it’s approved.",
+      "moderation_note": "Comments are approved before they’re published.",
+      "post": "Post comment",
+      "posted": "Your comment was posted. Thank you!",
+      "title": {
+        "one": "{{ count }} comment",
+        "other": "{{ count }} comments"
+      }
+    },
+    "empty": "There are no posts here yet.",
+    "filter_by_tag": "Filter posts by tag",
+    "more_posts": "More posts",
+    "newer": "Newer post",
+    "older": "Older post",
     "placeholder_title": "Blog post title",
     "read_more": "Read more",
     "view_all": "View all posts"
@@ -119,6 +137,81 @@
     "required_note": "Fields marked * are required.",
     "send": "Send",
     "success": "Thanks for contacting us. We’ll get back to you as soon as possible."
+  },
+  "customer": {
+    "account": {
+      "back": "Back to your account",
+      "details": "Account details",
+      "title": "Account"
+    },
+    "activate": {
+      "decline": "Decline invitation",
+      "submit": "Activate account",
+      "title": "Activate your account"
+    },
+    "addresses": {
+      "add": "Add a new address",
+      "address1": "Address",
+      "address2": "Apartment, suite, etc.",
+      "city": "City",
+      "company": "Company",
+      "default": "Default",
+      "delete": "Delete",
+      "edit": "Edit",
+      "save": "Save address",
+      "set_default": "Set as default address",
+      "title": "Addresses",
+      "view": {
+        "one": "View {{ count }} address",
+        "other": "View {{ count }} addresses"
+      }
+    },
+    "first_name": "First name",
+    "last_name": "Last name",
+    "login": {
+      "forgot": "Forgot your password?",
+      "guest_continue": "Continue",
+      "guest_title": "Continue as a guest",
+      "new": "New here?",
+      "submit": "Log in",
+      "title": "Log in"
+    },
+    "order": {
+      "billing": "Billing",
+      "cancelled": "Cancelled on {{ date }}",
+      "fulfilled": "Shipped on {{ date }}",
+      "placed": "Placed on {{ date }}",
+      "shipping": "Shipping",
+      "title": "Order {{ name }}",
+      "track": "Track shipment"
+    },
+    "orders": {
+      "date": "Date",
+      "fulfillment": "Fulfillment status",
+      "none": "You haven’t placed any orders yet.",
+      "order": "Order",
+      "payment": "Payment status",
+      "title": "Order history"
+    },
+    "password": "Password",
+    "password_confirm": "Confirm password",
+    "password_text": "Choose a password for your account.",
+    "recover": {
+      "cancel": "Cancel",
+      "submit": "Send",
+      "success": "We’ve sent you an email with a link to update your password.",
+      "text": "We’ll send you an email to reset your password.",
+      "title": "Reset your password"
+    },
+    "register": {
+      "have_account": "Already have an account?",
+      "submit": "Create",
+      "title": "Create account"
+    },
+    "reset": {
+      "submit": "Reset password",
+      "title": "Choose a new password"
+    }
   },
   "general": {
     "back_to_top": "Back to top",

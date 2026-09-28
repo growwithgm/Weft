@@ -15,6 +15,24 @@
     "star_rating": "{{ rating }} van de {{ max }} sterren"
   },
   "blogs": {
+    "all_posts": "Alle berichten",
+    "comments": {
+      "leave": "Laat een reactie achter",
+      "message": "Reactie",
+      "moderated": "Bedankt! Je reactie verschijnt zodra die is goedgekeurd.",
+      "moderation_note": "Reacties worden goedgekeurd voordat ze verschijnen.",
+      "post": "Reactie plaatsen",
+      "posted": "Je reactie is geplaatst. Bedankt!",
+      "title": {
+        "one": "{{ count }} reactie",
+        "other": "{{ count }} reacties"
+      }
+    },
+    "empty": "Er zijn hier nog geen berichten.",
+    "filter_by_tag": "Berichten filteren op tag",
+    "more_posts": "Meer berichten",
+    "newer": "Nieuwer bericht",
+    "older": "Ouder bericht",
     "placeholder_title": "Titel van het bericht",
     "read_more": "Lees meer",
     "view_all": "Alle berichten bekijken"
@@ -119,6 +137,81 @@
     "required_note": "Velden met * zijn verplicht.",
     "send": "Versturen",
     "success": "Bedankt voor je bericht. We nemen zo snel mogelijk contact met je op."
+  },
+  "customer": {
+    "account": {
+      "back": "Terug naar je account",
+      "details": "Accountgegevens",
+      "title": "Account"
+    },
+    "activate": {
+      "decline": "Uitnodiging weigeren",
+      "submit": "Account activeren",
+      "title": "Activeer je account"
+    },
+    "addresses": {
+      "add": "Nieuw adres toevoegen",
+      "address1": "Adres",
+      "address2": "Appartement, verdieping, enz.",
+      "city": "Plaats",
+      "company": "Bedrijf",
+      "default": "Standaard",
+      "delete": "Verwijderen",
+      "edit": "Bewerken",
+      "save": "Adres opslaan",
+      "set_default": "Als standaardadres instellen",
+      "title": "Adressen",
+      "view": {
+        "one": "{{ count }} adres bekijken",
+        "other": "{{ count }} adressen bekijken"
+      }
+    },
+    "first_name": "Voornaam",
+    "last_name": "Achternaam",
+    "login": {
+      "forgot": "Wachtwoord vergeten?",
+      "guest_continue": "Doorgaan",
+      "guest_title": "Doorgaan als gast",
+      "new": "Nieuw hier?",
+      "submit": "Inloggen",
+      "title": "Inloggen"
+    },
+    "order": {
+      "billing": "Facturering",
+      "cancelled": "Geannuleerd op {{ date }}",
+      "fulfilled": "Verzonden op {{ date }}",
+      "placed": "Geplaatst op {{ date }}",
+      "shipping": "Verzending",
+      "title": "Bestelling {{ name }}",
+      "track": "Zending volgen"
+    },
+    "orders": {
+      "date": "Datum",
+      "fulfillment": "Verzendstatus",
+      "none": "Je hebt nog geen bestellingen geplaatst.",
+      "order": "Bestelling",
+      "payment": "Betaalstatus",
+      "title": "Bestelgeschiedenis"
+    },
+    "password": "Wachtwoord",
+    "password_confirm": "Wachtwoord bevestigen",
+    "password_text": "Kies een wachtwoord voor je account.",
+    "recover": {
+      "cancel": "Annuleren",
+      "submit": "Versturen",
+      "success": "We hebben je een e-mail gestuurd met een link om je wachtwoord te wijzigen.",
+      "text": "We sturen je een e-mail om je wachtwoord opnieuw in te stellen.",
+      "title": "Wachtwoord opnieuw instellen"
+    },
+    "register": {
+      "have_account": "Heb je al een account?",
+      "submit": "Aanmaken",
+      "title": "Account aanmaken"
+    },
+    "reset": {
+      "submit": "Wachtwoord instellen",
+      "title": "Kies een nieuw wachtwoord"
+    }
   },
   "general": {
     "back_to_top": "Terug naar boven",

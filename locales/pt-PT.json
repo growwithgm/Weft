@@ -15,6 +15,24 @@
     "star_rating": "{{ rating }} de {{ max }} estrelas"
   },
   "blogs": {
+    "all_posts": "Todos os artigos",
+    "comments": {
+      "leave": "Deixe um comentário",
+      "message": "Comentário",
+      "moderated": "Obrigado! O seu comentário aparecerá depois de aprovado.",
+      "moderation_note": "Os comentários são aprovados antes de serem publicados.",
+      "post": "Publicar comentário",
+      "posted": "O seu comentário foi publicado. Obrigado!",
+      "title": {
+        "one": "{{ count }} comentário",
+        "other": "{{ count }} comentários"
+      }
+    },
+    "empty": "Ainda não há artigos.",
+    "filter_by_tag": "Filtrar artigos por etiqueta",
+    "more_posts": "Mais artigos",
+    "newer": "Artigo seguinte",
+    "older": "Artigo anterior",
     "placeholder_title": "Título do artigo",
     "read_more": "Ler mais",
     "view_all": "Ver todos os artigos"
@@ -119,6 +137,81 @@
     "required_note": "Os campos marcados com * são obrigatórios.",
     "send": "Enviar",
     "success": "Obrigado pelo seu contacto. Responderemos o mais rapidamente possível."
+  },
+  "customer": {
+    "account": {
+      "back": "Voltar à conta",
+      "details": "Dados da conta",
+      "title": "Conta"
+    },
+    "activate": {
+      "decline": "Recusar convite",
+      "submit": "Ativar conta",
+      "title": "Ative a sua conta"
+    },
+    "addresses": {
+      "add": "Adicionar morada",
+      "address1": "Morada",
+      "address2": "Andar, porta, etc.",
+      "city": "Localidade",
+      "company": "Empresa",
+      "default": "Predefinida",
+      "delete": "Eliminar",
+      "edit": "Editar",
+      "save": "Guardar morada",
+      "set_default": "Definir como morada predefinida",
+      "title": "Moradas",
+      "view": {
+        "one": "Ver {{ count }} morada",
+        "other": "Ver {{ count }} moradas"
+      }
+    },
+    "first_name": "Nome próprio",
+    "last_name": "Apelido",
+    "login": {
+      "forgot": "Esqueceu-se da palavra-passe?",
+      "guest_continue": "Continuar",
+      "guest_title": "Continuar como convidado",
+      "new": "É novo por aqui?",
+      "submit": "Iniciar sessão",
+      "title": "Iniciar sessão"
+    },
+    "order": {
+      "billing": "Faturação",
+      "cancelled": "Cancelada em {{ date }}",
+      "fulfilled": "Enviada em {{ date }}",
+      "placed": "Feita em {{ date }}",
+      "shipping": "Envio",
+      "title": "Encomenda {{ name }}",
+      "track": "Seguir envio"
+    },
+    "orders": {
+      "date": "Data",
+      "fulfillment": "Estado do envio",
+      "none": "Ainda não fez nenhuma encomenda.",
+      "order": "Encomenda",
+      "payment": "Estado do pagamento",
+      "title": "Histórico de encomendas"
+    },
+    "password": "Palavra-passe",
+    "password_confirm": "Confirmar palavra-passe",
+    "password_text": "Escolha uma palavra-passe para a sua conta.",
+    "recover": {
+      "cancel": "Cancelar",
+      "submit": "Enviar",
+      "success": "Enviámos um e-mail com uma ligação para atualizar a palavra-passe.",
+      "text": "Enviaremos um e-mail para repor a sua palavra-passe.",
+      "title": "Repor a palavra-passe"
+    },
+    "register": {
+      "have_account": "Já tem uma conta?",
+      "submit": "Criar",
+      "title": "Criar conta"
+    },
+    "reset": {
+      "submit": "Repor palavra-passe",
+      "title": "Escolha uma nova palavra-passe"
+    }
   },
   "general": {
     "back_to_top": "Voltar ao topo",

@@ -15,6 +15,24 @@
     "star_rating": "{{ max }}つ星中{{ rating }}"
   },
   "blogs": {
+    "all_posts": "すべての記事",
+    "comments": {
+      "leave": "コメントを書く",
+      "message": "コメント",
+      "moderated": "ありがとうございます。承認後にコメントが表示されます。",
+      "moderation_note": "コメントは承認後に公開されます。",
+      "post": "コメントを投稿",
+      "posted": "コメントを投稿しました。ありがとうございます。",
+      "title": {
+        "one": "コメント{{ count }}件",
+        "other": "コメント{{ count }}件"
+      }
+    },
+    "empty": "まだ記事はありません。",
+    "filter_by_tag": "タグで記事を絞り込む",
+    "more_posts": "その他の記事",
+    "newer": "次の記事",
+    "older": "前の記事",
     "placeholder_title": "ブログ記事のタイトル",
     "read_more": "続きを読む",
     "view_all": "すべての記事を見る"
@@ -119,6 +137,81 @@
     "required_note": "* の付いた項目は必須です。",
     "send": "送信する",
     "success": "お問い合わせありがとうございます。できるだけ早くご連絡いたします。"
+  },
+  "customer": {
+    "account": {
+      "back": "アカウントに戻る",
+      "details": "アカウント情報",
+      "title": "アカウント"
+    },
+    "activate": {
+      "decline": "招待を辞退する",
+      "submit": "有効化する",
+      "title": "アカウントを有効化"
+    },
+    "addresses": {
+      "add": "新しい住所を追加",
+      "address1": "住所",
+      "address2": "建物名・部屋番号など",
+      "city": "市区町村",
+      "company": "会社名",
+      "default": "デフォルト",
+      "delete": "削除",
+      "edit": "編集",
+      "save": "住所を保存",
+      "set_default": "デフォルトの住所に設定",
+      "title": "住所",
+      "view": {
+        "one": "住所{{ count }}件を表示",
+        "other": "住所{{ count }}件を表示"
+      }
+    },
+    "first_name": "名",
+    "last_name": "姓",
+    "login": {
+      "forgot": "パスワードをお忘れですか？",
+      "guest_continue": "続行",
+      "guest_title": "ゲストとして続行",
+      "new": "初めてご利用ですか？",
+      "submit": "ログイン",
+      "title": "ログイン"
+    },
+    "order": {
+      "billing": "請求先",
+      "cancelled": "{{ date }}にキャンセル",
+      "fulfilled": "{{ date }}に発送",
+      "placed": "{{ date }}に注文",
+      "shipping": "配送先",
+      "title": "注文 {{ name }}",
+      "track": "配送状況を確認"
+    },
+    "orders": {
+      "date": "日付",
+      "fulfillment": "配送状況",
+      "none": "まだご注文はありません。",
+      "order": "注文",
+      "payment": "支払い状況",
+      "title": "注文履歴"
+    },
+    "password": "パスワード",
+    "password_confirm": "パスワード（確認）",
+    "password_text": "アカウントのパスワードを設定してください。",
+    "recover": {
+      "cancel": "キャンセル",
+      "submit": "送信する",
+      "success": "パスワード変更用のリンクをメールでお送りしました。",
+      "text": "パスワード再設定用のメールをお送りします。",
+      "title": "パスワードの再設定"
+    },
+    "register": {
+      "have_account": "すでにアカウントをお持ちですか？",
+      "submit": "作成する",
+      "title": "アカウントを作成"
+    },
+    "reset": {
+      "submit": "再設定する",
+      "title": "新しいパスワードを設定"
+    }
   },
   "general": {
     "back_to_top": "トップへ戻る",

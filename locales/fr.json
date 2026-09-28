@@ -15,6 +15,24 @@
     "star_rating": "{{ rating }} étoiles sur {{ max }}"
   },
   "blogs": {
+    "all_posts": "Tous les articles",
+    "comments": {
+      "leave": "Laisser un commentaire",
+      "message": "Commentaire",
+      "moderated": "Merci ! Votre commentaire apparaîtra une fois approuvé.",
+      "moderation_note": "Les commentaires sont approuvés avant publication.",
+      "post": "Publier le commentaire",
+      "posted": "Votre commentaire a été publié. Merci !",
+      "title": {
+        "one": "{{ count }} commentaire",
+        "other": "{{ count }} commentaires"
+      }
+    },
+    "empty": "Aucun article pour le moment.",
+    "filter_by_tag": "Filtrer les articles par tag",
+    "more_posts": "Plus d’articles",
+    "newer": "Article suivant",
+    "older": "Article précédent",
     "placeholder_title": "Titre de l’article",
     "read_more": "Lire la suite",
     "view_all": "Voir tous les articles"
@@ -119,6 +137,81 @@
     "required_note": "Les champs marqués d’un * sont obligatoires.",
     "send": "Envoyer",
     "success": "Merci de nous avoir contactés. Nous vous répondrons dès que possible."
+  },
+  "customer": {
+    "account": {
+      "back": "Retour au compte",
+      "details": "Détails du compte",
+      "title": "Compte"
+    },
+    "activate": {
+      "decline": "Refuser l’invitation",
+      "submit": "Activer le compte",
+      "title": "Activer votre compte"
+    },
+    "addresses": {
+      "add": "Ajouter une adresse",
+      "address1": "Adresse",
+      "address2": "Appartement, étage, etc.",
+      "city": "Ville",
+      "company": "Entreprise",
+      "default": "Par défaut",
+      "delete": "Supprimer",
+      "edit": "Modifier",
+      "save": "Enregistrer l’adresse",
+      "set_default": "Définir comme adresse par défaut",
+      "title": "Adresses",
+      "view": {
+        "one": "Voir {{ count }} adresse",
+        "other": "Voir {{ count }} adresses"
+      }
+    },
+    "first_name": "Prénom",
+    "last_name": "Nom",
+    "login": {
+      "forgot": "Mot de passe oublié ?",
+      "guest_continue": "Continuer",
+      "guest_title": "Continuer en tant qu’invité",
+      "new": "Nouveau client ?",
+      "submit": "Se connecter",
+      "title": "Connexion"
+    },
+    "order": {
+      "billing": "Facturation",
+      "cancelled": "Annulée le {{ date }}",
+      "fulfilled": "Expédiée le {{ date }}",
+      "placed": "Passée le {{ date }}",
+      "shipping": "Livraison",
+      "title": "Commande {{ name }}",
+      "track": "Suivre le colis"
+    },
+    "orders": {
+      "date": "Date",
+      "fulfillment": "État de l’expédition",
+      "none": "Vous n’avez pas encore passé de commande.",
+      "order": "Commande",
+      "payment": "État du paiement",
+      "title": "Historique des commandes"
+    },
+    "password": "Mot de passe",
+    "password_confirm": "Confirmer le mot de passe",
+    "password_text": "Choisissez un mot de passe pour votre compte.",
+    "recover": {
+      "cancel": "Annuler",
+      "submit": "Envoyer",
+      "success": "Nous vous avons envoyé un e-mail avec un lien pour modifier votre mot de passe.",
+      "text": "Nous vous enverrons un e-mail pour réinitialiser votre mot de passe.",
+      "title": "Réinitialiser le mot de passe"
+    },
+    "register": {
+      "have_account": "Vous avez déjà un compte ?",
+      "submit": "Créer",
+      "title": "Créer un compte"
+    },
+    "reset": {
+      "submit": "Réinitialiser",
+      "title": "Choisissez un nouveau mot de passe"
+    }
   },
   "general": {
     "back_to_top": "Retour en haut",

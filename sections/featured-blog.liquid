@@ -1,9 +1,10 @@
 {%- comment -%}
-  Blog posts: recent posts from one blog as cards, grid or carousel.
+  Blog posts: recent posts from one blog as cards, grid or carousel. On a blog post page it uses
+  that post's blog when none is chosen and leaves the current post out.
 {%- endcomment -%}
 {%- liquid
   assign s = section.settings
-  assign b = s.blog
+  assign b = s.blog | default: blog
   assign view_all = ''
   if s.show_view_all and b != blank and b.articles_count > s.posts_to_show
     assign view_all = 'blogs.view_all' | t
@@ -17,10 +18,14 @@
     <scroll-row class="scroll-row scroll-row--{{ s.layout }}" data-module="{{ 'carousel.js' | asset_url }}" data-load="visible">
       <ul class="columns-grid{% if s.layout == 'carousel' %} is-carousel{% endif %}" role="list" data-scroll-list style="--cols: {{ s.columns }}; --cols-mobile: 1">
         {%- if b != blank and b.articles_count > 0 -%}
-          {%- for article in b.articles limit: s.posts_to_show -%}
-            <li>{%- render 'article-card', article: article, sizes: card_sizes, show_image: s.show_image, show_tags: s.show_tags, show_excerpt: s.show_excerpt, show_author: s.show_author, show_date: s.show_date, show_button: s.show_button, button_style: s.button_style, image_ratio: s.image_ratio -%}</li>
+          {%- assign shown_posts = 0 -%}
+          {%- for post in b.articles limit: 13 -%}
+            {%- if post.id == article.id or shown_posts >= s.posts_to_show -%}{%- continue -%}{%- endif -%}
+            {%- assign shown_posts = shown_posts | plus: 1 -%}
+            {%- assign article_card = post -%}
+            <li>{%- render 'article-card', article: article_card, sizes: card_sizes, show_image: s.show_image, show_tags: s.show_tags, show_excerpt: s.show_excerpt, show_author: s.show_author, show_date: s.show_date, show_button: s.show_button, button_style: s.button_style, image_ratio: s.image_ratio -%}</li>
           {%- endfor -%}
-        {%- else -%}
+        {%- elsif request.design_mode -%}
           {%- for i in (1..3) -%}
             <li>
               <article class="article-card">

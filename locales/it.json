@@ -15,6 +15,24 @@
     "star_rating": "{{ rating }} stelle su {{ max }}"
   },
   "blogs": {
+    "all_posts": "Tutti gli articoli",
+    "comments": {
+      "leave": "Lascia un commento",
+      "message": "Commento",
+      "moderated": "Grazie! Il tuo commento apparirà dopo l’approvazione.",
+      "moderation_note": "I commenti vengono approvati prima della pubblicazione.",
+      "post": "Pubblica commento",
+      "posted": "Il tuo commento è stato pubblicato. Grazie!",
+      "title": {
+        "one": "{{ count }} commento",
+        "other": "{{ count }} commenti"
+      }
+    },
+    "empty": "Non ci sono ancora articoli.",
+    "filter_by_tag": "Filtra gli articoli per tag",
+    "more_posts": "Altri articoli",
+    "newer": "Articolo successivo",
+    "older": "Articolo precedente",
     "placeholder_title": "Titolo dell’articolo",
     "read_more": "Leggi di più",
     "view_all": "Vedi tutti gli articoli"
@@ -119,6 +137,81 @@
     "required_note": "I campi contrassegnati con * sono obbligatori.",
     "send": "Invia",
     "success": "Grazie per averci contattato. Ti risponderemo il prima possibile."
+  },
+  "customer": {
+    "account": {
+      "back": "Torna all’account",
+      "details": "Dettagli account",
+      "title": "Account"
+    },
+    "activate": {
+      "decline": "Rifiuta l’invito",
+      "submit": "Attiva account",
+      "title": "Attiva il tuo account"
+    },
+    "addresses": {
+      "add": "Aggiungi un indirizzo",
+      "address1": "Indirizzo",
+      "address2": "Appartamento, scala, ecc.",
+      "city": "Città",
+      "company": "Azienda",
+      "default": "Predefinito",
+      "delete": "Elimina",
+      "edit": "Modifica",
+      "save": "Salva indirizzo",
+      "set_default": "Imposta come indirizzo predefinito",
+      "title": "Indirizzi",
+      "view": {
+        "one": "Vedi {{ count }} indirizzo",
+        "other": "Vedi {{ count }} indirizzi"
+      }
+    },
+    "first_name": "Nome",
+    "last_name": "Cognome",
+    "login": {
+      "forgot": "Password dimenticata?",
+      "guest_continue": "Continua",
+      "guest_title": "Continua come ospite",
+      "new": "Nuovo cliente?",
+      "submit": "Accedi",
+      "title": "Accedi"
+    },
+    "order": {
+      "billing": "Fatturazione",
+      "cancelled": "Annullato il {{ date }}",
+      "fulfilled": "Spedito il {{ date }}",
+      "placed": "Effettuato il {{ date }}",
+      "shipping": "Spedizione",
+      "title": "Ordine {{ name }}",
+      "track": "Traccia spedizione"
+    },
+    "orders": {
+      "date": "Data",
+      "fulfillment": "Stato evasione",
+      "none": "Non hai ancora effettuato ordini.",
+      "order": "Ordine",
+      "payment": "Stato pagamento",
+      "title": "Storico ordini"
+    },
+    "password": "Password",
+    "password_confirm": "Conferma password",
+    "password_text": "Scegli una password per il tuo account.",
+    "recover": {
+      "cancel": "Annulla",
+      "submit": "Invia",
+      "success": "Ti abbiamo inviato un’email con un link per aggiornare la password.",
+      "text": "Ti invieremo un’email per reimpostare la password.",
+      "title": "Reimposta la password"
+    },
+    "register": {
+      "have_account": "Hai già un account?",
+      "submit": "Crea",
+      "title": "Crea account"
+    },
+    "reset": {
+      "submit": "Reimposta password",
+      "title": "Scegli una nuova password"
+    }
   },
   "general": {
     "back_to_top": "Torna su",

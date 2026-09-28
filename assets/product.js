@@ -26,8 +26,6 @@ class ProductSection extends HTMLElement {
       if (e.target.matches('[data-product-form]')) this.onSubmit(e);
     });
     this.addEventListener('click', (e) => {
-      const copy = e.target.closest('[data-copy-link]');
-      if (copy) this.copyLink(copy);
       const scrollTo = e.target.closest('[data-scroll-to]');
       if (scrollTo && scrollTo.hash) {
         const target = document.getElementById(scrollTo.hash.slice(1));
@@ -235,18 +233,6 @@ class ProductSection extends HTMLElement {
       if (f.type === 'hidden') return;
       f.disabled = !check.checked;
     });
-  }
-
-  async copyLink(button) {
-    const url = button.dataset.copyLink;
-    try {
-      if (navigator.share && matchMedia('(pointer: coarse)').matches) await navigator.share({ url, title: document.title });
-      else {
-        await navigator.clipboard.writeText(url);
-        button.textContent = button.dataset.copied;
-        announce(button.dataset.copied);
-      }
-    } catch (_) { /* dismissed */ }
   }
 
   rememberViewed() {

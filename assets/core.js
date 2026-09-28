@@ -300,11 +300,16 @@ document.addEventListener('submit', (e) => {
   load(W.modules.quickAdd).then((m) => m && m.addFromCard(form, e.submitter));
 });
 
-/* ---------- copy buttons (discount codes) ---------- */
+/* ---------- copy buttons (discount codes, share links) ---------- */
 document.addEventListener('click', async (e) => {
   const button = e.target.closest('[data-copy-text]');
   if (!button) return;
   try {
+    // Share links use the device share sheet on touch screens when available.
+    if (button.hasAttribute('data-native-share') && navigator.share && matchMedia('(pointer: coarse)').matches) {
+      await navigator.share({ url: button.dataset.copyText, title: document.title });
+      return;
+    }
     await navigator.clipboard.writeText(button.dataset.copyText);
     const label = button.textContent;
     button.textContent = button.dataset.copiedLabel || label;

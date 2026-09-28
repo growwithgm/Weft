@@ -15,6 +15,24 @@
     "star_rating": "{{ rating }} von {{ max }} Sternen"
   },
   "blogs": {
+    "all_posts": "Alle Beiträge",
+    "comments": {
+      "leave": "Kommentar schreiben",
+      "message": "Kommentar",
+      "moderated": "Danke! Dein Kommentar erscheint nach der Freigabe.",
+      "moderation_note": "Kommentare werden vor der Veröffentlichung geprüft.",
+      "post": "Kommentar senden",
+      "posted": "Dein Kommentar wurde veröffentlicht. Danke!",
+      "title": {
+        "one": "{{ count }} Kommentar",
+        "other": "{{ count }} Kommentare"
+      }
+    },
+    "empty": "Hier gibt es noch keine Beiträge.",
+    "filter_by_tag": "Beiträge nach Tag filtern",
+    "more_posts": "Weitere Beiträge",
+    "newer": "Neuerer Beitrag",
+    "older": "Älterer Beitrag",
     "placeholder_title": "Titel des Beitrags",
     "read_more": "Weiterlesen",
     "view_all": "Alle Beiträge ansehen"
@@ -119,6 +137,81 @@
     "required_note": "Mit * markierte Felder sind Pflichtfelder.",
     "send": "Senden",
     "success": "Danke für deine Nachricht. Wir melden uns so bald wie möglich."
+  },
+  "customer": {
+    "account": {
+      "back": "Zurück zum Konto",
+      "details": "Kontodaten",
+      "title": "Konto"
+    },
+    "activate": {
+      "decline": "Einladung ablehnen",
+      "submit": "Konto aktivieren",
+      "title": "Konto aktivieren"
+    },
+    "addresses": {
+      "add": "Neue Adresse hinzufügen",
+      "address1": "Adresse",
+      "address2": "Wohnung, Etage usw.",
+      "city": "Stadt",
+      "company": "Firma",
+      "default": "Standard",
+      "delete": "Löschen",
+      "edit": "Bearbeiten",
+      "save": "Adresse speichern",
+      "set_default": "Als Standardadresse festlegen",
+      "title": "Adressen",
+      "view": {
+        "one": "{{ count }} Adresse ansehen",
+        "other": "{{ count }} Adressen ansehen"
+      }
+    },
+    "first_name": "Vorname",
+    "last_name": "Nachname",
+    "login": {
+      "forgot": "Passwort vergessen?",
+      "guest_continue": "Weiter",
+      "guest_title": "Als Gast fortfahren",
+      "new": "Neu hier?",
+      "submit": "Anmelden",
+      "title": "Anmelden"
+    },
+    "order": {
+      "billing": "Rechnung",
+      "cancelled": "Storniert am {{ date }}",
+      "fulfilled": "Versandt am {{ date }}",
+      "placed": "Aufgegeben am {{ date }}",
+      "shipping": "Versand",
+      "title": "Bestellung {{ name }}",
+      "track": "Sendung verfolgen"
+    },
+    "orders": {
+      "date": "Datum",
+      "fulfillment": "Versandstatus",
+      "none": "Du hast noch keine Bestellungen aufgegeben.",
+      "order": "Bestellung",
+      "payment": "Zahlungsstatus",
+      "title": "Bestellverlauf"
+    },
+    "password": "Passwort",
+    "password_confirm": "Passwort bestätigen",
+    "password_text": "Wähle ein Passwort für dein Konto.",
+    "recover": {
+      "cancel": "Abbrechen",
+      "submit": "Senden",
+      "success": "Wir haben dir eine E-Mail mit einem Link zum Ändern deines Passworts gesendet.",
+      "text": "Wir senden dir eine E-Mail zum Zurücksetzen deines Passworts.",
+      "title": "Passwort zurücksetzen"
+    },
+    "register": {
+      "have_account": "Du hast schon ein Konto?",
+      "submit": "Erstellen",
+      "title": "Konto erstellen"
+    },
+    "reset": {
+      "submit": "Passwort zurücksetzen",
+      "title": "Neues Passwort wählen"
+    }
   },
   "general": {
     "back_to_top": "Nach oben",

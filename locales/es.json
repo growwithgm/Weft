@@ -15,6 +15,24 @@
     "star_rating": "{{ rating }} de {{ max }} estrellas"
   },
   "blogs": {
+    "all_posts": "Todos los artículos",
+    "comments": {
+      "leave": "Deja un comentario",
+      "message": "Comentario",
+      "moderated": "¡Gracias! Tu comentario aparecerá cuando se apruebe.",
+      "moderation_note": "Los comentarios se aprueban antes de publicarse.",
+      "post": "Publicar comentario",
+      "posted": "Tu comentario se ha publicado. ¡Gracias!",
+      "title": {
+        "one": "{{ count }} comentario",
+        "other": "{{ count }} comentarios"
+      }
+    },
+    "empty": "Todavía no hay artículos.",
+    "filter_by_tag": "Filtrar artículos por etiqueta",
+    "more_posts": "Más artículos",
+    "newer": "Artículo siguiente",
+    "older": "Artículo anterior",
     "placeholder_title": "Título del artículo",
     "read_more": "Leer más",
     "view_all": "Ver todos los artículos"
@@ -119,6 +137,81 @@
     "required_note": "Los campos marcados con * son obligatorios.",
     "send": "Enviar",
     "success": "Gracias por contactar con nosotros. Te responderemos lo antes posible."
+  },
+  "customer": {
+    "account": {
+      "back": "Volver a tu cuenta",
+      "details": "Datos de la cuenta",
+      "title": "Cuenta"
+    },
+    "activate": {
+      "decline": "Rechazar invitación",
+      "submit": "Activar cuenta",
+      "title": "Activa tu cuenta"
+    },
+    "addresses": {
+      "add": "Añadir una dirección",
+      "address1": "Dirección",
+      "address2": "Piso, puerta, etc.",
+      "city": "Ciudad",
+      "company": "Empresa",
+      "default": "Predeterminada",
+      "delete": "Eliminar",
+      "edit": "Editar",
+      "save": "Guardar dirección",
+      "set_default": "Usar como dirección predeterminada",
+      "title": "Direcciones",
+      "view": {
+        "one": "Ver {{ count }} dirección",
+        "other": "Ver {{ count }} direcciones"
+      }
+    },
+    "first_name": "Nombre",
+    "last_name": "Apellidos",
+    "login": {
+      "forgot": "¿Has olvidado tu contraseña?",
+      "guest_continue": "Continuar",
+      "guest_title": "Continuar como invitado",
+      "new": "¿Eres nuevo?",
+      "submit": "Iniciar sesión",
+      "title": "Iniciar sesión"
+    },
+    "order": {
+      "billing": "Facturación",
+      "cancelled": "Cancelado el {{ date }}",
+      "fulfilled": "Enviado el {{ date }}",
+      "placed": "Realizado el {{ date }}",
+      "shipping": "Envío",
+      "title": "Pedido {{ name }}",
+      "track": "Seguir envío"
+    },
+    "orders": {
+      "date": "Fecha",
+      "fulfillment": "Estado del envío",
+      "none": "Todavía no has hecho ningún pedido.",
+      "order": "Pedido",
+      "payment": "Estado del pago",
+      "title": "Historial de pedidos"
+    },
+    "password": "Contraseña",
+    "password_confirm": "Confirmar contraseña",
+    "password_text": "Elige una contraseña para tu cuenta.",
+    "recover": {
+      "cancel": "Cancelar",
+      "submit": "Enviar",
+      "success": "Te hemos enviado un correo con un enlace para cambiar tu contraseña.",
+      "text": "Te enviaremos un correo para restablecer tu contraseña.",
+      "title": "Restablecer contraseña"
+    },
+    "register": {
+      "have_account": "¿Ya tienes una cuenta?",
+      "submit": "Crear",
+      "title": "Crear cuenta"
+    },
+    "reset": {
+      "submit": "Restablecer contraseña",
+      "title": "Elige una contraseña nueva"
+    }
   },
   "general": {
     "back_to_top": "Volver arriba",

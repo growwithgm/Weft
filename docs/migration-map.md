@@ -128,7 +128,7 @@ All `social_*_url` kept (=). `social_whatsapp_url` also drives the chat button (
 | `article-comments` | `main-article` (comments part, `comments_per_page`) | ⊕ | |
 | `background-video` | `video` (layout `background`) | ⊕ | overlay text blocks → theme blocks heading/text/button |
 | `cart-drawer` | `cart-drawer` | = | all 31 settings kept (IDs normalised in §4) |
-| `cart-icon-bubble` | `cart-count` | → | Section Rendering target |
+| `cart-icon-bubble` | header `[data-cart-count]` | → | count comes from every Cart API response (core.js), so no separate section is needed |
 | `collection-list` | `collection-list` | = | `collection` blocks → `_collection-tile` |
 | `contact-form` | `contact-form` | = | field blocks → `_form-field` (type setting: name/email/phone/message/custom/dropdown/text/checkbox) |
 | `countdown-timer` | `countdown-timer` | = | countdown block settings kept; merchant date only |
@@ -153,10 +153,10 @@ All `social_*_url` kept (=). `social_whatsapp_url` also drives the chat button (
 | `main-blog` | `main-blog` | = | |
 | `main-cart` | `main-cart` | = | `summary-and-checkout` → static part; `@app` kept |
 | `main-collection-banner` | `collection-banner` | → | |
-| `main-collection-products` | `main-collection` | → | promo blocks → `_collection-promo` (style: wide / media / card / filter) |
+| `main-collection-products` | `main-collection` | → | promo blocks → section blocks `promo_wide` / `promo_media` / `promo_card` / `promo_filter` (owner review 20) |
 | `main-contact` | `main-page` (contact variant) + `contact-form` | ⊕ | |
 | `main-gift-card` | `main-gift-card` | = | |
-| `main-list-collections` | `main-list-collections` | = | promo blocks → `_collection-promo` |
+| `main-list-collections` | `main-list-collections` | = | promo blocks → section blocks `promo_wide` / `promo_media` / `promo_card` |
 | `main-page` | `main-page` | = | |
 | `main-password-header`, `main-password` | `main-password` (header settings included) | ⊕ | |
 | `main-product` | `main-product` | = | see §3 for blocks |
@@ -169,19 +169,19 @@ All `social_*_url` kept (=). `social_whatsapp_url` also drives the chat button (
 | `pickup-availability` | `pickup-availability` | = | |
 | `pop-up` | `popup` (mode `newsletter`/`promo`) | ⊕ | countdown, discount code, social blocks kept |
 | `predictive-search` | `predictive-search` | = | |
-| `product-compare-basket`, `product-compare` | `compare-drawer` | ⊕ | compare field blocks → `_compare-field` |
+| `product-compare-basket`, `product-compare` | `compare-drawer` + `compare-column` | ⊕ | compare fields → fixed rows + metafield rows from Theme settings > Product compare |
 | `product-comparison-grid` | `product-comparison-grid` | = | rows → `_comparison-row` (type setting) |
-| `product-details` | `product-details` | = | tabs → `_tab`; highlight text and payment methods blocks kept |
+| `product-details` | `product-details` | = | tabs → `product-tabs` block; highlight text and payment methods blocks kept |
 | `product-features` | `product-hotspots` | → | `feature` → `_hotspot` |
 | `product-list` | `product-list` | = | |
 | `product-recommendations` | `product-recommendations` | = | |
 | `promo-grid` | `promo-grid` | = | `media` → `_promo-tile` |
-| `promo-strip` | `promo-strip` | = | discount code block kept |
+| `promo-strip` | `promo-strip` | = | discount code → `discount-code` block |
 | `recently-viewed` | `recently-viewed` | = | |
 | `rich-text` | `rich-text` | = | |
 | `scrolling-banner` | `scrolling-banner` | = | text/icon/image/button → `_marquee-item` (type setting) |
 | `shoppable-image` | `shoppable-image` | = | `hotspot` → `_hotspot` |
-| `slideshow` | `slideshow` | = | `slide` → `_slide` (countdown settings kept) |
+| `slideshow` | `slideshow` | = | `slide` → `_slide` (countdown → nested countdown block) |
 | `testimonials` | `testimonials` | = | `testimonial` → `_testimonial` |
 | `video` | `video` | = | |
 

@@ -37,7 +37,7 @@ Status: `planned` (P0) → `built` (with phase) → `verified` (scenario or chec
 | 50 per page, grid/list toggle, sorting | `sections/main-collection` (products_per_page up to 50, layout toggle, sort options) | P4 | done |
 | Filters (off in pilot, on by default in Weft) | `snippets/facets`, `assets/facets.js`, setting `enable_filtering` | P4 | done |
 | Promo tiles in grid (wide, media, card, filter) | section blocks `promo_wide` / `promo_media` / `promo_card` / `promo_filter` in `main-collection`, `snippets/collection-promo` (owner review 20) | P4 | done |
-| Seasonal templates, flash sale with countdown + promo strip + collection list | `templates/collection.banner.json`, `collection.flash-sale.json` | P5 | planned |
+| Seasonal templates, flash sale with countdown + promo strip + collection list | `templates/collection.banner.json`, `collection.flash-sale.json` | P5 | done |
 | Product compare (checkbox, drawer, up to 5) | `sections/compare-drawer`, `assets/compare.js`, Product compare group | P4 | done |
 | Retail quick add + drawer | `sections/quick-add`, `assets/quick-add.js` | P2 | done |
 | Card: hover image, swatches, rating, labels, highlight | `snippets/product-card` (swatches inline; second image or slideshow on hover) | P4 | done |
@@ -104,12 +104,12 @@ Status: `planned` (P0) → `built` (with phase) → `verified` (scenario or chec
 | Wholesale sign-in page | `sections/wholesale-access`, `templates/page.wholesale-access.json` | P3 | done |
 | Request form (Shopify Forms app) | `templates/page.wholesale-request.json` with `apps` section | P3 | done |
 | Onboarding landing (Klaviyo, Judge.me) | pilot: `store-configs/ibban` page template with `custom-liquid` content moved unchanged | P7 | planned |
-| Reviews wall | core: `page.reviews.json` with `product-reviews` in wall layout + app block; pilot: `integration-reviews-wall` | P5/P6 | planned |
-| Contact, FAQ, About, Lookbook, landings, policies, custom payment, coming soon, shipping calculator | page templates in §2 of architecture | P5 | planned |
-| Blog and articles with comments | `main-blog`, `main-article` (comments paginated, success/error) | P5 | planned |
+| Reviews wall | core: `page.reviews.json` (testimonials + app blocks); pilot: `integration-reviews-wall` | P5/P6 | partial |
+| Contact, FAQ, About, Lookbook, landings, policies, custom payment, coming soon, shipping calculator | page templates in §2 of architecture | P5 | done |
+| Blog and articles with comments | `main-blog`, `main-article` (comments paginated, success/error) | P5 | done |
 | Search page (sort, filters, articles, pages) | `main-search`, `templates/search.json` | P4 | done |
 | 404, password, gift card; 404 wholesale sign-in line | `main-404`, `main-password`, `gift_card.liquid` | P1/P3 | done |
-| Classic customer-account templates | `templates/customers/*` minimal, untouched fallback | P5 | planned |
+| Classic customer-account templates | `templates/customers/*` minimal, untouched fallback | P5 | done |
 | Section library | architecture §2 list | P5 | done |
 
 ## 7. BUILD_SPEC §5.6 Theme Store required features
@@ -125,12 +125,12 @@ Status: `planned` (P0) → `built` (with phase) → `verified` (scenario or chec
 | Faceted filtering on collection + search | `snippets/facets` | P4 | done |
 | Cart discounts per item and per order | `cart-line`, `cart-summary` | P4 | done |
 | Pickup availability; related + complementary recommendations | `buy-buttons`, `product-recommendations`, `complementary-products` | P2 | done |
-| Newsletter forms and multi-level menus | `newsletter`, `email-signup`, header 3-level menus | P1/P5 | partial |
+| Newsletter forms and multi-level menus | `newsletter`, `email-signup`, header 3-level menus | P1/P5 | done |
 | Image focal points; `page_image` for social | `snippets/image` (`image.presentation.focal_point`), `snippets/meta-tags` | P1 | done |
 | Country/language selectors per UX guidelines | `snippets/localization-form` | P1 | done |
-| Gift card template, contact page template | `gift_card.liquid`, `page.contact.json` | P1/P5 | partial |
+| Gift card template, contact page template | `gift_card.liquid`, `page.contact.json` | P1/P5 | done |
 | Cart page line + totals requirements | `main-cart` | P4 | done |
-| Blog and article requirements | `main-blog`, `main-article` | P5 | planned |
+| Blog and article requirements | `main-blog`, `main-article` | P5 | done |
 
 ## 8. VERTICALS.md
 

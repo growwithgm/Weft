@@ -1,0 +1,27 @@
+{%- comment -%}
+  Share links (product share block, blog posts): X, Facebook, Pinterest and copy link (device
+  share sheet on touch screens).
+  Params: url (absolute), title, image (URL, for Pinterest), x (bool), facebook (bool),
+          pinterest (bool), copy (bool)
+{%- endcomment -%}
+{%- liquid
+  assign share_title = title | url_param_escape
+  assign share_url = url | url_param_escape
+-%}
+<div class="share" data-share>
+  <span class="share__label">{{ 'general.social.share' | t }}</span>
+  <ul class="share__list" role="list">
+    {%- if x -%}
+      <li><a class="share__link" href="https://twitter.com/intent/tweet?text={{ share_title }}&amp;url={{ share_url }}" target="_blank" rel="noopener">X<span class="visually-hidden"> ({{ 'general.opens_new_window' | t }})</span></a></li>
+    {%- endif -%}
+    {%- if facebook -%}
+      <li><a class="share__link" href="https://www.facebook.com/sharer.php?u={{ share_url }}" target="_blank" rel="noopener">Facebook<span class="visually-hidden"> ({{ 'general.opens_new_window' | t }})</span></a></li>
+    {%- endif -%}
+    {%- if pinterest -%}
+      <li><a class="share__link" href="https://pinterest.com/pin/create/button/?url={{ share_url }}{% if image != blank %}&amp;media=https:{{ image | url_param_escape }}{% endif %}&amp;description={{ share_title }}" target="_blank" rel="noopener">Pinterest<span class="visually-hidden"> ({{ 'general.opens_new_window' | t }})</span></a></li>
+    {%- endif -%}
+    {%- if copy -%}
+      <li><button type="button" class="link share__link js-only" data-copy-text="{{ url }}" data-native-share data-copied-label="{{ 'products.share.copied' | t | escape }}">{{ 'products.share.copy_link' | t }}</button></li>
+    {%- endif -%}
+  </ul>
+</div>
