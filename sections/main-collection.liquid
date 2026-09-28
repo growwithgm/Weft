@@ -39,6 +39,8 @@
   data-load="idle"
 >
   <div class="page-width">
+    {%- comment -%} Theme settings > Breadcrumbs > Collections; the collection banner shows its own trail when it comes first. {%- endcomment -%}
+    {%- if settings.breadcrumbs_collection and section.index == 1 -%}{%- render 'breadcrumbs' -%}{%- endif -%}
     {%- paginate collection.products by s.products_per_page -%}
       <div class="collection__toolbar">
         {%- if filtering -%}

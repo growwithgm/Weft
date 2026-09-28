@@ -16,6 +16,7 @@
     </div>
   {%- endif -%}
   <div class="page-width page-width--narrow main-article__inner">
+    {%- if settings.breadcrumbs_article -%}{%- render 'breadcrumbs' -%}{%- endif -%}
     <header class="main-article__header stack main-article__header--{{ s.heading_align }}">
       {%- if s.show_tags and article.tags.size > 0 -%}
         <p class="main-article__tags muted">{%- for tag in article.tags -%}<a href="{{ blog.url }}/tagged/{{ tag | handleize }}">{{ tag | escape }}</a>{%- unless forloop.last %} · {% endunless -%}{%- endfor -%}</p>

@@ -97,4 +97,8 @@
   .shipping-calc__result:empty { display: none; }
   .shipping-calc__rates { list-style: none; margin: 8px 0 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
   .shipping-calc__rates li { display: flex; justify-content: space-between; gap: 12px; font-size: var(--t-14); }
+  /* Related products under the cart (Theme settings > Cart) */
+  .cart-recommendations { display: block; margin-block-start: var(--section-gap, 48px); }
+  .cart-recommendations__heading { margin-block-end: 16px; }
+  .cart-recommendations__list { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
 }

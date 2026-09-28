@@ -3,6 +3,8 @@
   assign b = block.settings
   assign p = b.product
 -%}
+{%- capture gated -%}{% render 'wholesale-only-check', product: p %}{%- endcapture -%}
+{%- if gated != '1' -%}
 <details class="hotspot" data-hotspot style="--x: {{ b.hotspot_x }}%; --y: {{ b.hotspot_y }}%;" {{ block.shopify_attributes }}>
   <summary class="hotspot__dot" aria-label="{% if p != blank %}{{ p.title | escape }}{% else %}{{ 'products.placeholder_title' | t }}{% endif %}"><span aria-hidden="true"></span></summary>
   <div class="hotspot__card">
@@ -13,6 +15,7 @@
     {%- endif -%}
   </div>
 </details>
+{%- endif -%}
 
 {% schema %}
 {

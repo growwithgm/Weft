@@ -112,8 +112,8 @@
   /* Stock line */
   .stock-line__text { display: flex; align-items: center; gap: 8px; font-size: var(--t-14); font-weight: var(--fw-medium); color: var(--c-ok); }
   .stock-line__dot { width: 8px; height: 8px; border-radius: 50%; background: currentColor; flex: 0 0 auto; }
-  .stock-line--low .stock-line__text, .stock-line--very_low .stock-line__text, .stock-line--backorder .stock-line__text { color: var(--c-low); }
-  .stock-line--sold_out .stock-line__text { color: var(--c-bad); }
+  .stock-line--low .stock-line__text, .stock-line--backorder .stock-line__text { color: var(--c-low); }
+  .stock-line--very_low .stock-line__text, .stock-line--sold_out .stock-line__text { color: var(--c-bad); }
   .stock-line__bar { height: 4px; border-radius: 2px; background: var(--c-line); margin-block-start: 8px; overflow: hidden; }
   .stock-line__bar span { display: block; height: 100%; background: currentColor; color: var(--c-low); }
 

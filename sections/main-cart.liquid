@@ -22,6 +22,7 @@
   endif
 -%}
 {{ 'component-cart.css' | asset_url | stylesheet_tag }}
+{%- if settings.cart_recommendations and cart.item_count > 0 -%}{{ 'component-card.css' | asset_url | stylesheet_tag }}{%- endif -%}
 <div class="section cart-page color-{{ s.color_scheme }}" data-cart-section="{{ section.id }}" data-module="{{ 'cart.js' | asset_url }}" data-load="idle">
   <div class="page-width">
     <div class="cart-page__head cart-page__head--{{ s.heading_align }}">
@@ -77,6 +78,16 @@
           {%- endif -%}
         </div>
       </form>
+      {%- if settings.cart_recommendations and wholesale == false -%}
+        {%- comment -%} Theme settings > Cart > Show related products: Shopify renders sections/cart-recommendations for the first line. {%- endcomment -%}
+        <recommendation-list
+          class="cart-recommendations cart-recommendations--{{ settings.cart_recommendations_layout }}"
+          data-recommendations="cart"
+          data-url="{{ routes.product_recommendations_url }}?section_id=cart-recommendations&product_id={{ cart.items.first.product_id }}&limit={{ settings.cart_recommendations_limit }}&intent=related"
+          data-module="{{ 'recommendations.js' | asset_url }}"
+          data-load="visible"
+        ></recommendation-list>
+      {%- endif -%}
     {%- endif -%}
   </div>
 </div>

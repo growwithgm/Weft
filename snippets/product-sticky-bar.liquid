@@ -20,6 +20,7 @@
     <span class="sticky-bar__stock sticky-bar__stock--{% if v.available == false %}out{% elsif tracked and v.inventory_quantity <= settings.stock_low_threshold and v.inventory_quantity > 0 %}low{% else %}ok{% endif %}">
       {%- if v == nil -%}{{ 'products.unavailable' | t }}
       {%- elsif v.available == false -%}{{ 'products.sold_out' | t }}
+      {%- elsif tracked and v.inventory_quantity <= 0 and settings.stock_hide_backorder_notice -%}{{ 'products.stock.in_stock' | t }}
       {%- elsif tracked and v.inventory_quantity <= 0 -%}{{ 'products.stock.backorder' | t }}
       {%- elsif tracked and v.inventory_quantity <= settings.stock_low_threshold -%}{{ 'products.stock.low' | t }}
       {%- else -%}{{ 'products.stock.in_stock' | t }}{%- endif -%}

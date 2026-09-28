@@ -53,7 +53,7 @@
   /* Search drawer */
   .search-drawer { padding-block: 16px 24px; }
   .search-drawer__field { display: flex; align-items: center; gap: 8px; height: 56px; padding-inline: 16px 4px; border: 1px solid var(--c-line); border-radius: var(--r-input); }
-  .search-drawer__input { flex: 1; min-width: 0; height: 100%; border: 0; background: none; font-size: var(--t-16); }
+  .search-drawer__input { flex: 1; min-width: 0; height: 100%; border: 0; background: none; font-family: var(--f-search, inherit); font-size: var(--t-16); }
   .search-drawer__input:focus { outline: none; }
   .search-drawer__field:focus-within { outline: 2px solid var(--c-fg); outline-offset: 1px; }
   .search-drawer__voice[aria-pressed='true'] { color: var(--voice-color, var(--c-bad)); }

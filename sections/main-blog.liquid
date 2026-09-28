@@ -10,6 +10,7 @@
 {{ 'section-content.css' | asset_url | stylesheet_tag }}
 <div class="section main-blog color-{{ s.color_scheme }}">
   <div class="page-width">
+    {%- if settings.breadcrumbs_blog -%}{%- render 'breadcrumbs' -%}{%- endif -%}
     <div class="main-blog__head stack main-blog__head--{{ s.text_align }}">
       {%- if s.show_title -%}<h1 class="h1">{{ blog.title | escape }}</h1>{%- endif -%}
       {%- if s.description != blank -%}<div class="rte main-blog__description">{{ s.description }}</div>{%- endif -%}

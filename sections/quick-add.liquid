@@ -7,7 +7,7 @@
 {%- if product and section.id == 'quick-add' -%}
   {{ 'section-product.css' | asset_url | stylesheet_tag }}
   <product-section
-    class="quick-add color-{{ settings.drawer_color_scheme }}"
+    class="quick-add color-{{ settings.drawer_color_scheme }}{% if settings.quick_add_sticky_footer %} quick-add--sticky-buttons{% endif %}"
     data-product-section
     data-section-id="quick-add"
     data-product-url="{{ product.url }}"

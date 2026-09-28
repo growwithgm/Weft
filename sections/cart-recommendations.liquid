@@ -1,0 +1,40 @@
+{%- comment -%}
+  Related products under the cart (Theme settings > Cart > Show related products). Never placed
+  in a template: the cart page asks Shopify's recommendations endpoint to render this section for
+  the first cart line (section_id=cart-recommendations) and recommendations.js inserts it.
+{%- endcomment -%}
+{%- liquid
+  assign limit = settings.cart_recommendations_limit | default: 4
+  assign card_prefix = 'CartRecs-'
+-%}
+<div data-recommendations="cart">
+  {%- if recommendations.performed? and recommendations.products_count > 0 -%}
+    <h2 class="h3 cart-recommendations__heading">{% if settings.cart_recommendations_heading != blank %}{{ settings.cart_recommendations_heading | escape }}{% else %}{{ 'products.recommendations.also_like' | t }}{% endif %}</h2>
+    {%- if settings.cart_recommendations_layout == 'list' -%}
+      <ul class="cart-recommendations__list" role="list">
+        {%- for rec in recommendations.products limit: limit -%}
+          <li>{%- render 'product-card-mini', product: rec -%}</li>
+        {%- endfor -%}
+      </ul>
+    {%- else -%}
+      <ul class="product-grid product-grid--carousel" role="list" style="--cols: 4; --cols-mobile: 2">
+        {%- for rec in recommendations.products limit: limit -%}
+          {%- render 'product-card', product: rec, wrapper: 'li', index: forloop.index, sizes: '(min-width: 990px) 22vw, 45vw', id_prefix: card_prefix -%}
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "t:labels.related_products",
+  "class": "section-cart-recommendations",
+  "enabled_on": {
+    "templates": [
+      "cart"
+    ]
+  },
+  "settings": []
+}
+{% endschema %}

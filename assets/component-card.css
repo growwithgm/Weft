@@ -8,7 +8,7 @@
   @media (min-width: 990px) { .product-grid--carousel { grid-auto-columns: calc((100% - 16px * (var(--cols, 4) - 1)) / var(--cols, 4)); } }
   .card { position: relative; display: flex; flex-direction: column; gap: 8px; min-width: 0; container-type: inline-size; }
   .card--boxed { padding: 10px; background: var(--card-bg, #fff); color: var(--card-text, inherit); border: 1px solid var(--card-border, var(--c-line)); border-radius: var(--r-card); }
-  .card--highlight { padding: 10px; border-radius: var(--r-card); background: var(--card-highlight-bg); color: var(--card-highlight-text); }
+  .card--highlight { padding: 10px; border-radius: var(--r-card); background: var(--card-highlight-bg); color: var(--card-highlight-text); border: 1px solid var(--card-highlight-border, transparent); }
   .card__media-wrap { position: relative; }
   .card__media { display: block; aspect-ratio: 3 / 4; }
   .card--ratio-square .card__media { aspect-ratio: 1; }
@@ -73,6 +73,8 @@
   .quick-add { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 16px; padding: 20px; }
   .quick-add__media { aspect-ratio: 3 / 4; }
   .quick-add__details { font-size: var(--t-14); min-height: 44px; display: inline-flex; align-items: center; }
+  /* Theme settings > Product cards > Keep the quick add buttons in view */
+  .quick-add--sticky-buttons .buy-buttons__row { position: sticky; inset-block-end: 0; z-index: 1; padding-block: 12px; background: var(--c-bg); box-shadow: 0 -8px 12px -8px color-mix(in srgb, var(--c-fg) 18%, transparent); }
   @media (max-width: 480px) { .quick-add { grid-template-columns: 1fr; } .quick-add__media { width: 45%; } }
   .product-reviews__grid { display: grid; gap: 32px; }
   @media (min-width: 990px) { .product-reviews__grid { grid-template-columns: 1fr 2fr; } }

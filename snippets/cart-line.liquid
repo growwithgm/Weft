@@ -78,7 +78,7 @@
   endif
 
   assign backorder = false
-  if show_backorder and v.inventory_management != blank and v.inventory_policy == 'continue' and v.inventory_quantity < 0
+  if show_backorder and settings.stock_hide_backorder_notice == false and v.inventory_management != blank and v.inventory_policy == 'continue' and v.inventory_quantity < 0
     assign backorder = true
   endif
 
@@ -104,7 +104,8 @@
   <div class="cart-line__body">
     <div class="cart-line__head">
       <div class="cart-line__info">
-        {%- if show_vendor and item.vendor != blank -%}<p class="cart-line__vendor muted">{{ item.vendor }}</p>{%- endif -%}
+        {%- comment -%} The cart section's own switch, or Theme settings > Cart > Show vendor on lines. {%- endcomment -%}
+        {%- if show_vendor or settings.cart_show_vendor -%}{%- if item.vendor != blank -%}<p class="cart-line__vendor muted">{{ item.vendor }}</p>{%- endif -%}{%- endif -%}
         <a class="cart-line__title" href="{{ item.url }}">{{ item.product.title | escape }}</a>
         {%- if assorted -%}
           {%- assign first_option = item.product.options_with_values | first -%}

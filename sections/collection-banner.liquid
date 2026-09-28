@@ -24,7 +24,7 @@
 <div class="section collection-banner collection-banner--{{ style }} collection-banner--text-{{ s.text_align }} color-{{ s.color_scheme }}">
   <div class="page-width collection-banner__inner">
     <div class="collection-banner__text stack collection-banner__text--{{ s.text_width }}">
-      {%- if s.show_breadcrumbs -%}{%- render 'breadcrumbs' -%}{%- endif -%}
+      {%- if s.show_breadcrumbs and settings.breadcrumbs_collection -%}{%- render 'breadcrumbs' -%}{%- endif -%}
       {%- if s.show_title -%}<h1 class="h1 collection-banner__title">{{ collection.title | escape }}</h1>{%- endif -%}
       {%- if s.show_count -%}<p class="collection-banner__count muted">{{ 'collections.product_count' | t: count: collection.products_count }}</p>{%- endif -%}
       {%- if s.show_description and collection.description != blank -%}

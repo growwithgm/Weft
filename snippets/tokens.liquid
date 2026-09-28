@@ -41,6 +41,7 @@
     --fw-medium: 500;
     --fw-bold: {{ body_bold.weight | default: 600 }};
     --f-nav: {{ nav_family }};
+    --f-search: {% if settings.search_font == 'heading' %}var(--f-heading){% else %}var(--f-body){% endif %};
     --fw-nav: {{ nav_weight }};
     --tt-heading: {% if settings.heading_uppercase %}uppercase{% else %}none{% endif %};
     --tt-subheading: {% if settings.subheading_uppercase %}uppercase{% else %}none{% endif %};
@@ -96,6 +97,7 @@
     --card-border: {{ settings.card_border }};
     --card-highlight-bg: {{ settings.card_highlight_bg }};
     --card-highlight-text: {{ settings.card_highlight_text }};
+    --card-highlight-border: {{ settings.card_highlight_border | default: 'transparent' }};
     --cc-bg: {{ settings.collection_card_bg }};
     --cc-border: {{ settings.collection_card_border }};
     --cc-label: {{ settings.collection_card_label_color }};

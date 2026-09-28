@@ -199,7 +199,7 @@
   .menu--center { justify-content: center; }
   .menu__link { display: flex; align-items: center; gap: 4px; min-height: 44px; font-family: var(--f-nav); font-weight: var(--fw-nav); font-size: var(--t-15); color: var(--c-fg); text-decoration: none; white-space: nowrap; background: none; border: 0; padding: 0; }
   .menu__link:hover, .menu__link[aria-expanded='true'], .menu__link[aria-current='page'] { text-decoration: underline; text-underline-offset: 6px; }
-  .search-field { position: relative; align-items: center; gap: 8px; height: 44px; width: min(240px, 22vw); padding: 0 6px 0 16px; border: 1px solid var(--c-line); border-radius: var(--r-input); color: var(--c-muted); font-size: var(--t-14); text-decoration: none; background: var(--c-bg); }
+  .search-field { position: relative; align-items: center; gap: 8px; height: 44px; width: min(240px, 22vw); padding: 0 6px 0 16px; border: 1px solid var(--c-line); border-radius: var(--r-input); color: var(--c-muted); font-family: var(--f-search, inherit); font-size: var(--t-14); text-decoration: none; background: var(--c-bg); }
   .search-field__text { flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .search-field .icon-button { width: 32px; height: 32px; color: var(--c-fg); }
   .account-chip { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 16px; border: 1px solid var(--c-fg); border-radius: var(--r-button); font-size: var(--t-14); font-weight: var(--fw-medium); color: var(--c-fg); white-space: nowrap; background: var(--c-bg); text-decoration: none; }
@@ -226,6 +226,8 @@
   .text-center { text-align: center; }
   .muted { color: var(--c-muted); }
   .no-js .js-only, .js .no-js-only { display: none !important; }
+  /* Items left empty on purpose (e.g. a wholesale-only product skipped for retail visitors) take no space. */
+  ul[role='list'] > li:empty, .routine__product:empty { display: none; }
   @media (max-width: 989px) { .hide-mobile { display: none !important; } }
   @media (min-width: 990px) { .hide-desktop { display: none !important; } }
   @media (prefers-reduced-motion: reduce) {

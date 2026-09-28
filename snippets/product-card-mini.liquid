@@ -5,7 +5,12 @@
   if customer and customer.b2b?
     assign wholesale = true
   endif
+  # Wholesale-only tag fallback: retail visitors never see these products in small cards either
+  # (complementary products, cart promotions, hotspots, routine steps). Outputs nothing, so the
+  # caller's list item is empty and hidden by CSS.
 -%}
+{%- capture gated -%}{% render 'wholesale-only-check', product: product %}{%- endcapture -%}
+{%- unless gated == '1' -%}
 <div class="mini-card">
   <a class="mini-card__media media" href="{{ product.url }}" tabindex="-1" aria-hidden="true">
     {%- if product.featured_media -%}
@@ -20,3 +25,4 @@
     {%- render 'price', variant: v, wholesale: wholesale, size: 'small', from: product.price_varies -%}
   </div>
 </div>
+{%- endunless -%}

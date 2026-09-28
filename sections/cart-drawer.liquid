@@ -102,6 +102,9 @@
         <div class="drawer__footer cart-drawer__footer">
           {%- render 'cart-summary', wholesale: wholesale, invalid_count: invalid_count, form_id: 'CartDrawerForm', show_note: s.show_order_note, show_tax_note: s.show_tax_note, show_accelerated: s.show_accelerated, show_checkout: s.show_checkout, terms_page: s.terms_page, context: 'drawer' -%}
           {%- if s.show_view_cart -%}<a class="cart-drawer__view link" href="{{ routes.cart_url }}">{{ 'cart.view_cart' | t }}</a>{%- endif -%}
+          {%- if s.show_shipping_calculator and cart.requires_shipping -%}
+            {%- render 'shipping-calculator', default_country: s.shipping_calculator_default_country -%}
+          {%- endif -%}
         </div>
       {%- endif -%}
     </form>

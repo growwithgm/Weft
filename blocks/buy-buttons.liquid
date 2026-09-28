@@ -70,7 +70,7 @@
         {%- render 'gift-card-recipient', form: form, form_id: form_id -%}
       {%- endif -%}
 
-      {%- if block.settings.show_backorder_note and backorder -%}
+      {%- if block.settings.show_backorder_note and backorder and settings.stock_hide_backorder_notice == false -%}
         <p class="notice buy-buttons__backorder">{% if block.settings.backorder_text != blank %}{{ block.settings.backorder_text }}{% else %}{{ 'products.backorder_note' | t }}{% endif %}</p>
       {%- endif -%}
 

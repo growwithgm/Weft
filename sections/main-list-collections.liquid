@@ -10,6 +10,7 @@
 -%}
 <div class="section list-collections color-{{ s.color_scheme }}">
   <div class="page-width">
+    {%- if settings.breadcrumbs_list_collections -%}{%- render 'breadcrumbs' -%}{%- endif -%}
     {%- if s.title != blank or s.description != blank -%}
       <div class="list-collections__head stack list-collections__head--{{ s.text_align }}">
         {%- if s.title != blank -%}<h1 class="h1">{{ s.title | escape }}</h1>{%- endif -%}

@@ -18,6 +18,10 @@
     assign state = 'sold_out'
   elsif tracked and qty <= 0 and v.inventory_policy == 'continue'
     assign state = 'backorder'
+    # Theme settings > Product inventory > Hide the backorder notice
+    if settings.stock_hide_backorder_notice
+      assign state = 'none'
+    endif
   elsif tracked and qty <= settings.stock_very_low_threshold
     assign state = 'very_low'
   elsif tracked and qty <= settings.stock_low_threshold
@@ -49,7 +53,8 @@
           {%- when 'backorder' -%}
             {%- if block.settings.text_backorder != blank -%}{{ block.settings.text_backorder }}{%- else -%}{{ 'products.stock.backorder' | t }}{%- endif -%}
           {%- when 'low', 'very_low' -%}
-            {%- if block.settings.text_low != blank -%}{{ block.settings.text_low | replace: '[count]', qty }}{%- elsif show_count -%}{{ 'products.stock.low_count' | t: count: qty }}{%- else -%}{{ 'products.stock.low' | t }}{%- endif -%}
+            {%- comment -%} Very low stock always names the real count ("Only 2 left"); low stock follows the count setting. {%- endcomment -%}
+            {%- if block.settings.text_low != blank -%}{{ block.settings.text_low | replace: '[count]', qty }}{%- elsif show_count or state == 'very_low' -%}{{ 'products.stock.low_count' | t: count: qty }}{%- else -%}{{ 'products.stock.low' | t }}{%- endif -%}
           {%- else -%}
             {%- if show_count -%}{{ 'products.stock.count' | t: count: qty }}{%- else -%}{{ 'products.stock.in_stock' | t }}{%- endif -%}
             {%- if block.settings.in_stock_extra != blank %} · {{ block.settings.in_stock_extra }}{%- endif -%}
