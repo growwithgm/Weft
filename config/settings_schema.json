@@ -383,7 +383,7 @@
             "label": "t:labels.full_width"
           }
         ],
-        "default": "off",
+        "default": "full",
         "info": "t:text.settings_schema.layout_and_design.settings.page_width_wide.info"
       },
       {
@@ -659,7 +659,7 @@
             "label": "t:labels.landscape_4_3"
           }
         ],
-        "default": "square"
+        "default": "portrait"
       },
       {
         "type": "select",
@@ -768,7 +768,7 @@
             "label": "t:labels.landscape_4_3"
           }
         ],
-        "default": "tall"
+        "default": "portrait"
       },
       {
         "type": "select",

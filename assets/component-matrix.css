@@ -110,17 +110,22 @@
   .matrix__summary--rows .matrix__messages:empty { display: none; }
   .matrix__add--block { width: 100%; border-radius: 0; min-height: 56px; text-transform: uppercase; letter-spacing: 0.06em; }
   @media (max-width: 989px) {
-    .matrix__summary--rows { margin-inline: 0; padding: 0; }
+    .matrix__summary--rows { position: static; margin-inline: 0; padding: 0; box-shadow: none; }
   }
-  @media (min-width: 750px) {
-    .matrix__rows-head { display: grid; grid-template-columns: 56px minmax(80px, 1fr) minmax(80px, auto) 64px 132px minmax(96px, auto) 84px; column-gap: 12px; align-items: center; padding: 12px 14px; background: var(--c-surface); font-size: var(--t-12); font-weight: var(--fw-bold); color: var(--c-muted); text-transform: uppercase; letter-spacing: 0.06em; }
-    .matrix__rows-head--no-size { grid-template-columns: 56px minmax(80px, 1fr) 64px 132px minmax(96px, auto) 84px; }
+  .matrix__summary--rows { position: static; }
+  /* The rows table follows the width of its column, not the screen (the information column can be narrow). */
+  order-matrix.matrix--rows { container-type: inline-size; }
+  @container (min-width: 620px) {
+    .matrix__rows-head { display: grid; grid-template-columns: 48px minmax(64px, 1fr) minmax(56px, auto) 52px 120px minmax(84px, auto) 72px; column-gap: 12px; align-items: center; padding: 12px 14px; background: var(--c-surface); font-size: var(--t-12); font-weight: var(--fw-bold); color: var(--c-muted); text-transform: uppercase; letter-spacing: 0.06em; }
+    .matrix__rows-head--no-size { grid-template-columns: 48px minmax(64px, 1fr) 52px 120px minmax(84px, auto) 72px; }
     .matrix__rows-head-total { text-align: end; }
-    .matrix--rows .matrix__cell { grid-template-columns: 56px minmax(80px, 1fr) minmax(80px, auto) 64px 132px minmax(96px, auto) 84px; grid-template-areas: 'thumb name size stock qty price total' 'thumb err err err err err err' 'thumb note note note note note note'; align-items: center; row-gap: 4px; }
-    .matrix--rows .matrix__row--no-size .matrix__cell { grid-template-columns: 56px minmax(80px, 1fr) 64px 132px minmax(96px, auto) 84px; grid-template-areas: 'thumb name stock qty price total' 'thumb err err err err err' 'thumb note note note note note'; }
+    .matrix--rows .matrix__cell { grid-template-columns: 48px minmax(64px, 1fr) minmax(56px, auto) 52px 120px minmax(84px, auto) 72px; grid-template-areas: 'thumb name size stock qty price total' 'thumb err err err err err err' 'thumb note note note note note note'; align-items: center; row-gap: 4px; }
+    .matrix--rows .matrix__row--no-size .matrix__cell { grid-template-columns: 48px minmax(64px, 1fr) 52px 120px minmax(84px, auto) 72px; grid-template-areas: 'thumb name stock qty price total' 'thumb err err err err err' 'thumb note note note note note'; }
     .matrix--rows .matrix__stock { justify-self: center; }
     .matrix--rows .matrix__price { justify-self: start; }
-    .matrix--rows .matrix__thumb { align-self: center; }
+    .matrix--rows .matrix__thumb { align-self: center; width: 48px; height: 56px; }
+    .matrix--rows .matrix__stepper { max-width: 120px; }
+    .matrix--rows .matrix__stepper .matrix__input { width: 36px; }
   }
 
   /* Quick order list: one row per variant */

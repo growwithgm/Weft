@@ -180,7 +180,7 @@
         "sticky_bar_mobile": true,
         "gallery_layout": "grid_even",
         "gallery_width": "extra_wide",
-        "media_ratio": "natural",
+        "media_ratio": "portrait",
         "video_loop": true,
         "zoom": "lightbox",
         "lightbox_mobile": true,

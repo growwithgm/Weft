@@ -2461,7 +2461,8 @@
         "gallery_width": "extra_wide",
         "gallery_layout": "grid_even",
         "column_gap": 64,
-        "column_divider": true
+        "column_divider": true,
+        "media_ratio": "portrait"
       },
       "main-collection": {
         "filters_open_lg": false,
@@ -2473,7 +2474,7 @@
     },
     "reasons": {
       "schemes": "Yellow primary button approved in brief §5 (#FBD816 / #0F1111, hover #E8C70F) replaces the live black button.",
-      "main-product": "Mobile sticky bar approved in brief §5 (retail) replaces the theme's own sticky panel, which was off. Owner layout spec (28 Sep 2026): full-width product row from 1440 px, media 65% in a two-column grid, 60 px gap, as on the live store.",
+      "main-product": "Mobile sticky bar approved in brief §5 (retail) replaces the theme's own sticky panel, which was off. Owner layout spec (28 Sep 2026): full-width product row from 1440 px, media 65% in a two-column grid, 60 px gap, as on the live store. Owner request (28 Sep 2026): product images default to 4:5, the ratio the store's photos are made in.",
       "scheme-4": "Accessibility floor: white button text on the live orange accent (#ff580d) was 3.16:1; dark text (#0F1111) meets 4.5:1.",
       "main-collection": "Owner layout spec (28 Sep 2026): filters in a drawer so the grid uses the full width; 2 / 3 / 4 / 4 columns (mobile, tablet, desktop, wide).",
       "blocks:main-product": "The live theme sold wholesale through SparkLayer / BSS markup, which is dropped (native B2B only). Weft's wholesale blocks (terms, tier table, one-size stepper, order matrix) replace it so the B2B market shows per-piece prices, rules and the matrix; buy buttons are retail-only so wholesale buyers order through the matrix or stepper. Owner request (28 Sep 2026): for wholesale buyers the order matrix follows the title and price, in the rows layout with the minimum order and pack bar, as on the live store."
@@ -2531,9 +2532,11 @@
       "integration_gtm_id": "GTM-55DG66F6",
       "integration_google_verification": "-0OIKeydZTIfzNFO7PGU_crZ0rjXm-uZnPhon8ydO6Y",
       "integration_meta_verification": "j7y6vq2q62bdo9vs8063nmqniudzap",
-      "page_width_wide": "2000",
+      "page_width_wide": "full",
       "gutter_desktop": 64,
-      "wholesale_editor_preview": false
+      "wholesale_editor_preview": false,
+      "card_ratio": "portrait",
+      "collection_card_ratio": "portrait"
     },
     "sources": {
       "delivery_rules": "Shipping zones from the live delivery widget (rules resynced with Settings > Shipping and delivery on 12 Sep 2026); delivery days are left out because Weft never shows a delivery date (brief §5).",

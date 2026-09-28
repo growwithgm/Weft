@@ -106,7 +106,7 @@ export default [
     name: 'Layout and design',
     settings: [
       range('page_width', 'Maximum page width', 1000, 2000, 20, 1260, 'px'),
-      select('page_width_wide', 'Page width on wide screens', [['off', 'Same as maximum page width'], ['1920', '1920 px'], ['2000', '2000 px'], ['full', 'Full width']], 'off', 'Takes over from 1440 px wide, so large monitors use the extra space. 2000 px starts at 1700 px wide, with 1920 px before that.'),
+      select('page_width_wide', 'Page width on wide screens', [['off', 'Same as maximum page width'], ['1920', '1920 px'], ['2000', '2000 px'], ['full', 'Full width']], 'full', 'Takes over from 1440 px wide, so large monitors use the extra space. 2000 px starts at 1700 px wide, with 1920 px before that.'),
       range('gutter_desktop', 'Side padding on large screens', 32, 80, 8, 32, 'px', 'From 1280 px wide. Smaller screens use 20 or 32 px.'),
       range('section_spacing', 'Space between sections', 24, 120, 4, 80, 'px', 'Mobile uses 60% of this value.'),
       header('Shapes'),
@@ -137,7 +137,7 @@ export default [
   {
     name: 'Collection cards',
     settings: [
-      select('collection_card_ratio', 'Image aspect ratio', ratios, 'square'),
+      select('collection_card_ratio', 'Image aspect ratio', ratios, 'portrait'),
       select('collection_card_fit', 'Image fit', [['cover', 'Fill'], ['contain', 'Fit']], 'cover'),
       select('collection_card_image_position', 'Image position', [['center', 'Center'], ['top', 'Top'], ['bottom', 'Bottom']], 'center'),
       select('collection_card_text_align', 'Text alignment', [['start', 'Start'], ['center', 'Center']], 'center'),
@@ -150,7 +150,7 @@ export default [
   {
     name: 'Product cards',
     settings: [
-      select('card_ratio', 'Image aspect ratio', ratios, 'tall'),
+      select('card_ratio', 'Image aspect ratio', ratios, 'portrait'),
       select('card_fit', 'Image fit', [['cover', 'Fill'], ['contain', 'Fit']], 'cover'),
       select('card_image_position', 'Image position', [['center', 'Center'], ['top', 'Top'], ['bottom', 'Bottom']], 'center'),
       select('card_hover', 'Additional images', [['none', 'None'], ['second_image', 'Second image on hover'], ['slideshow', 'Slideshow on hover']], 'second_image'),

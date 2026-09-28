@@ -170,7 +170,8 @@
         "gallery_width": "extra_wide",
         "gallery_layout": "grid_even",
         "column_gap": 64,
-        "column_divider": true
+        "column_divider": true,
+        "media_ratio": "portrait"
       }
     },
     "video": {

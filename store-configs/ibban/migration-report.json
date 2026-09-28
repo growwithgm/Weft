@@ -3050,6 +3050,22 @@
   {
     "file": "config/settings_data.json",
     "where": "current",
+    "item": "setting card_ratio",
+    "action": "moved",
+    "reason": "Store value from the live theme.",
+    "explained": true
+  },
+  {
+    "file": "config/settings_data.json",
+    "where": "current",
+    "item": "setting collection_card_ratio",
+    "action": "moved",
+    "reason": "Store value from the live theme.",
+    "explained": true
+  },
+  {
+    "file": "config/settings_data.json",
+    "where": "current",
     "item": "setting integration_clarity_id",
     "action": "dropped",
     "reason": "The live layout loaded Microsoft Clarity (project wqwq1r58rv) while the Microsoft Clarity app embed also loads it; the app embed stays on and the layout copy is left out so Clarity loads once.",
@@ -3162,57 +3178,57 @@
   {
     "file": "templates/product.coming-soon.json",
     "where": "section \"main\" (main-product)",
-    "item": "sticky_bar_mobile, section_width, gallery_width, gallery_layout, column_gap, column_divider",
+    "item": "sticky_bar_mobile, section_width, gallery_width, gallery_layout, column_gap, column_divider, media_ratio",
     "action": "changed",
-    "reason": "Mobile sticky bar approved in brief §5 (retail) replaces the theme's own sticky panel, which was off. Owner layout spec (28 Sep 2026): full-width product row from 1440 px, media 65% in a two-column grid, 60 px gap, as on the live store.",
+    "reason": "Mobile sticky bar approved in brief §5 (retail) replaces the theme's own sticky panel, which was off. Owner layout spec (28 Sep 2026): full-width product row from 1440 px, media 65% in a two-column grid, 60 px gap, as on the live store. Owner request (28 Sep 2026): product images default to 4:5, the ratio the store's photos are made in.",
     "explained": true
   },
   {
     "file": "templates/product.countdown.json",
     "where": "section \"main\" (main-product)",
-    "item": "sticky_bar_mobile, section_width, gallery_width, gallery_layout, column_gap, column_divider",
+    "item": "sticky_bar_mobile, section_width, gallery_width, gallery_layout, column_gap, column_divider, media_ratio",
     "action": "changed",
-    "reason": "Mobile sticky bar approved in brief §5 (retail) replaces the theme's own sticky panel, which was off. Owner layout spec (28 Sep 2026): full-width product row from 1440 px, media 65% in a two-column grid, 60 px gap, as on the live store.",
+    "reason": "Mobile sticky bar approved in brief §5 (retail) replaces the theme's own sticky panel, which was off. Owner layout spec (28 Sep 2026): full-width product row from 1440 px, media 65% in a two-column grid, 60 px gap, as on the live store. Owner request (28 Sep 2026): product images default to 4:5, the ratio the store's photos are made in.",
     "explained": true
   },
   {
     "file": "templates/product.dress.json",
     "where": "section \"main\" (main-product)",
-    "item": "sticky_bar_mobile, section_width, gallery_width, gallery_layout, column_gap, column_divider",
+    "item": "sticky_bar_mobile, section_width, gallery_width, gallery_layout, column_gap, column_divider, media_ratio",
     "action": "changed",
-    "reason": "Mobile sticky bar approved in brief §5 (retail) replaces the theme's own sticky panel, which was off. Owner layout spec (28 Sep 2026): full-width product row from 1440 px, media 65% in a two-column grid, 60 px gap, as on the live store.",
+    "reason": "Mobile sticky bar approved in brief §5 (retail) replaces the theme's own sticky panel, which was off. Owner layout spec (28 Sep 2026): full-width product row from 1440 px, media 65% in a two-column grid, 60 px gap, as on the live store. Owner request (28 Sep 2026): product images default to 4:5, the ratio the store's photos are made in.",
     "explained": true
   },
   {
     "file": "templates/product.hand-bag.json",
     "where": "section \"main\" (main-product)",
-    "item": "sticky_bar_mobile, section_width, gallery_width, gallery_layout, column_gap, column_divider",
+    "item": "sticky_bar_mobile, section_width, gallery_width, gallery_layout, column_gap, column_divider, media_ratio",
     "action": "changed",
-    "reason": "Mobile sticky bar approved in brief §5 (retail) replaces the theme's own sticky panel, which was off. Owner layout spec (28 Sep 2026): full-width product row from 1440 px, media 65% in a two-column grid, 60 px gap, as on the live store.",
+    "reason": "Mobile sticky bar approved in brief §5 (retail) replaces the theme's own sticky panel, which was off. Owner layout spec (28 Sep 2026): full-width product row from 1440 px, media 65% in a two-column grid, 60 px gap, as on the live store. Owner request (28 Sep 2026): product images default to 4:5, the ratio the store's photos are made in.",
     "explained": true
   },
   {
     "file": "templates/product.json",
     "where": "section \"main\" (main-product)",
-    "item": "sticky_bar_mobile, section_width, gallery_width, gallery_layout, column_gap, column_divider",
+    "item": "sticky_bar_mobile, section_width, gallery_width, gallery_layout, column_gap, column_divider, media_ratio",
     "action": "changed",
-    "reason": "Mobile sticky bar approved in brief §5 (retail) replaces the theme's own sticky panel, which was off. Owner layout spec (28 Sep 2026): full-width product row from 1440 px, media 65% in a two-column grid, 60 px gap, as on the live store.",
+    "reason": "Mobile sticky bar approved in brief §5 (retail) replaces the theme's own sticky panel, which was off. Owner layout spec (28 Sep 2026): full-width product row from 1440 px, media 65% in a two-column grid, 60 px gap, as on the live store. Owner request (28 Sep 2026): product images default to 4:5, the ratio the store's photos are made in.",
     "explained": true
   },
   {
     "file": "templates/product.perfume.json",
     "where": "section \"main\" (main-product)",
-    "item": "sticky_bar_mobile, section_width, gallery_width, gallery_layout, column_gap, column_divider",
+    "item": "sticky_bar_mobile, section_width, gallery_width, gallery_layout, column_gap, column_divider, media_ratio",
     "action": "changed",
-    "reason": "Mobile sticky bar approved in brief §5 (retail) replaces the theme's own sticky panel, which was off. Owner layout spec (28 Sep 2026): full-width product row from 1440 px, media 65% in a two-column grid, 60 px gap, as on the live store.",
+    "reason": "Mobile sticky bar approved in brief §5 (retail) replaces the theme's own sticky panel, which was off. Owner layout spec (28 Sep 2026): full-width product row from 1440 px, media 65% in a two-column grid, 60 px gap, as on the live store. Owner request (28 Sep 2026): product images default to 4:5, the ratio the store's photos are made in.",
     "explained": true
   },
   {
     "file": "templates/product.preorder.json",
     "where": "section \"main\" (main-product)",
-    "item": "sticky_bar_mobile, section_width, gallery_width, gallery_layout, column_gap, column_divider",
+    "item": "sticky_bar_mobile, section_width, gallery_width, gallery_layout, column_gap, column_divider, media_ratio",
     "action": "changed",
-    "reason": "Mobile sticky bar approved in brief §5 (retail) replaces the theme's own sticky panel, which was off. Owner layout spec (28 Sep 2026): full-width product row from 1440 px, media 65% in a two-column grid, 60 px gap, as on the live store.",
+    "reason": "Mobile sticky bar approved in brief §5 (retail) replaces the theme's own sticky panel, which was off. Owner layout spec (28 Sep 2026): full-width product row from 1440 px, media 65% in a two-column grid, 60 px gap, as on the live store. Owner request (28 Sep 2026): product images default to 4:5, the ratio the store's photos are made in.",
     "explained": true
   },
   {
