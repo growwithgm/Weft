@@ -1,0 +1,1 @@
+{"markets":{"b2b-wholesale":{"parent":"@default"},"rest-of-world":{"parent":"@default"},"es":{"parent":"rest-of-world"},"us":{"parent":"rest-of-world"},"nl":{"parent":"rest-of-world"},"uk":{"parent":"rest-of-world"}}}

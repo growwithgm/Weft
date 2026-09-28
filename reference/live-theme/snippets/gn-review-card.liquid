@@ -1,0 +1,90 @@
+{%- comment -%}
+  GN REVIEW CARD - ibBan
+
+  One review card. Rendered only by sections/gn-product-reviews.liquid,
+  which loops twice (this product first, then everything else) and needs the
+  same markup both times.
+
+  Expected variables (all passed by the caller, none read from globals):
+    r              one review object out of shop.metafields.judgeme.reviews_grid
+    is_own         true when the review belongs to the product being viewed
+    hidden         true to render it collapsed behind the Show more button
+    show_product   render the product pill on other-product reviews
+    this_label     badge text used instead of the pill when is_own
+    verified_label text under the reviewer name for verified buyers
+    photo_label    accessible label on the photo buttons
+
+  data-rating and data-photos drive the filter chips in the parent section.
+  Body and reviewer name are escaped - they are shopper-written. product_title
+  is NOT escaped: Judge.me already stores it HTML-encoded, so escaping again
+  prints raw &#39; on screen.
+{%- endcomment -%}
+
+{%- liquid
+  assign rt = r.rating | plus: 0
+  assign pct = rt | times: 20
+  assign bodytxt = r.body | strip
+  assign ttl = r.title | strip
+
+  assign has_pics = false
+  if r.pictures_urls.size > 0
+    assign has_pics = true
+  endif
+
+  assign prod_href = routes.root_url | append: r.product_url | replace: '//', '/'
+-%}
+
+<article
+  class="gnpr__card{% if hidden %} is-hidden{% endif %}"
+  data-gnpr-card
+  data-rating="{{ rt }}"
+  data-photos="{% if has_pics %}1{% else %}0{% endif %}"
+>
+  <div class="gnpr__cardtop">
+    <span class="gnpr__stars gnpr__stars--sm" style="--gnpr-pct:{{ pct }}%" role="img" aria-label="{{ rt }}/5">
+      <span class="gnpr__sbg">★★★★★</span><span class="gnpr__sfg">★★★★★</span>
+    </span>
+    <time class="gnpr__date" datetime="{{ r.created_at }}">{{ r.created_at | date: '%b %Y' }}</time>
+  </div>
+
+  {%- if ttl != blank and ttl != bodytxt -%}
+    <h3 class="gnpr__ttl">{{ ttl | escape }}</h3>
+  {%- endif -%}
+
+  <p class="gnpr__body">{{ bodytxt | escape | newline_to_br }}</p>
+
+  {%- if has_pics -%}
+    <div class="gnpr__pics">
+      {%- for pic in r.pictures_urls limit: 3 -%}
+        <button type="button" class="gnpr__pic" data-gnpr-full="{{ pic.huge | default: pic.original }}" aria-label="{{ photo_label }}">
+          <img src="{{ pic.compact | default: pic.small }}" alt="" loading="lazy" width="72" height="72">
+        </button>
+      {%- endfor -%}
+    </div>
+  {%- endif -%}
+
+  {%- if is_own -%}
+    {%- if this_label != blank -%}
+      <span class="gnpr__thisone">{{ this_label }}</span>
+    {%- endif -%}
+  {%- elsif show_product and r.is_shop_review != true and r.product_url != blank and r.product_url != '/' -%}
+    <a class="gnpr__prod" href="{{ prod_href }}">
+      {%- if r.product_pictures_url != blank -%}
+        <img src="{{ r.product_pictures_url }}&width=96" alt="" loading="lazy" width="24" height="24">
+      {%- else -%}
+        <span class="gnpr__proddot" aria-hidden="true"></span>
+      {%- endif -%}
+      <span class="gnpr__prodname">{{ r.product_title }}</span>
+    </a>
+  {%- endif -%}
+
+  <div class="gnpr__foot">
+    <span class="gnpr__ava" aria-hidden="true">{{ r.reviewer_initial | default: 'i' }}</span>
+    <span class="gnpr__who">
+      <span class="gnpr__name">{{ r.reviewer_name | default: 'Anonymous' | escape }}</span>
+      {%- if r.verified_buyer and verified_label != blank -%}
+        <span class="gnpr__vf">{{ verified_label }}</span>
+      {%- endif -%}
+    </span>
+  </div>
+</article>

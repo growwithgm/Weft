@@ -1,0 +1,10 @@
+root: .
+ignore:
+  - reference/**
+  - docs/**
+  - scripts/**
+  - tests/**
+  - demo-content/**
+  - store-configs/**
+  - dist/**
+  - node_modules/**

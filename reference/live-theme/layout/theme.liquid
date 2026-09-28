@@ -1,0 +1,573 @@
+{%- liquid
+  assign rtl = false
+  assign rtl_iso_codes = 'ar,arc,dv,fa,ha,he,khw,ks,ku,ps,ur,yi' | split: ','
+  assign current_code_first_part = localization.language.iso_code | split: '-' | first
+
+  if rtl_iso_codes contains current_code_first_part
+    assign rtl = true
+  endif
+
+  assign body_font_bold = settings.body_font | font_modify: 'weight', 'bolder'
+  assign body_font_italic = settings.body_font | font_modify: 'style', 'italic'
+  assign body_font_bold_italic = body_font_bold | font_modify: 'style', 'italic'
+
+  # constants
+  assign breakpoint_sm = 600
+  assign breakpoint_md = 769
+  assign gutter_sm = 20
+  assign gutter_md = 32
+  assign gutter_lg = 64
+
+  # GN: B2B-only product gate (tag-based, matches product-card guard)
+  assign gn_b2b_viewer = false
+  assign gn_ctags = customer.tags | join: ',' | downcase
+  if customer and gn_ctags contains 'b2b'
+    assign gn_b2b_viewer = true
+  endif
+  if customer.b2b?
+    assign gn_b2b_viewer = true
+  endif
+  assign gn_b2b_gate = false
+  if request.page_type == 'product' and product.tags contains 'b2b' and gn_b2b_viewer == false
+    assign gn_b2b_gate = true
+  endif
+-%}
+<!doctype html>
+<html class="no-js" lang="{{ request.locale.iso_code }}" dir="{% if rtl %}rtl{% else %}ltr{% endif %}">
+<head>
+
+<meta name="facebook-domain-verification" content="j7y6vq2q62bdo9vs8063nmqniudzap" />
+
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-55DG66F6');</script>
+<!-- End Google Tag Manager -->
+
+
+
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "wqwq1r58rv");
+</script>
+
+
+
+
+
+
+
+
+
+  {%- render 'doc-head-core' -%}
+  {%- render 'doc-head-social' -%}
+
+  {%- if gn_b2b_gate -%}<meta name="robots" content="noindex">{%- endif -%}
+
+  <link rel="preload" href="{{ 'main.css' | asset_url }}" as="style">
+
+  {%- style %}
+    {{- settings.body_font | font_face: font_display: 'swap' -}}
+    {{- body_font_bold | font_face: font_display: 'swap' -}}
+    {{- body_font_italic | font_face: font_display: 'swap' -}}
+    {{- body_font_bold_italic | font_face: font_display: 'swap' -}}
+    {{- settings.heading_font | font_face: font_display: 'swap' -}}
+    {{- settings.navigation_font | font_face: font_display: 'swap' -}}
+
+    :root {
+      --bg-color: {{ settings.bg_color.rgba }};
+      --bg-color-og: {{ settings.bg_color.rgba }};
+      --heading-color: {{ settings.heading_color.rgb }};
+      --text-color: {{ settings.text_color.rgb }};
+      --text-color-og: {{ settings.text_color.rgb }};
+      --scrollbar-color: {{ settings.text_color.rgb }};
+      --link-color: {{ settings.link_color.rgb }};
+      --link-color-og: {{ settings.link_color.rgb }};
+      --star-color: {{ settings.star_color.rgb }};
+
+      {%- if settings.swatch_option_name != blank -%}
+        {%- liquid
+          assign swatch_border_color_default = settings.text_color | color_mix: settings.bg_color, 20
+          assign swatch_border_color_active = settings.text_color | color_mix: settings.bg_color, 50
+        -%}
+        --swatch-border-color-default: {{ swatch_border_color_default.rgb }};
+        --swatch-border-color-active: {{ swatch_border_color_active.rgb }};
+        --swatch-card-size: {{ settings.card_swatch_size }}px;
+        --swatch-variant-picker-size: {{ settings.variant_picker_swatch_size }}px;
+      {%- endif -%}
+
+      {%- assign color_scheme_1_btn_bg_hover = settings.color_scheme_1_btn_bg | color_mix: settings.color_scheme_1_btn_text, 85 | color_lighten: 3 -%}
+      --color-scheme-1-bg: {{ settings.color_scheme_1_bg.rgba }};
+      --color-scheme-1-grad: {{ settings.color_scheme_1_bg_grad }};
+      --color-scheme-1-heading: {{ settings.color_scheme_1_heading.rgb }};
+      --color-scheme-1-text: {{ settings.color_scheme_1_text.rgb }};
+      --color-scheme-1-btn-bg: {{ settings.color_scheme_1_btn_bg.rgb }};
+      --color-scheme-1-btn-text: {{ settings.color_scheme_1_btn_text.rgb }};
+      --color-scheme-1-btn-bg-hover: {{ color_scheme_1_btn_bg_hover.rgb }};
+
+      {%- assign color_scheme_2_btn_bg_hover = settings.color_scheme_2_btn_bg | color_mix: settings.color_scheme_2_btn_text, 85 | color_lighten: 3 -%}
+      --color-scheme-2-bg: {{ settings.color_scheme_2_bg.rgba }};
+      --color-scheme-2-grad: {{ settings.color_scheme_2_bg_grad }};
+      --color-scheme-2-heading: {{ settings.color_scheme_2_heading.rgb }};
+      --color-scheme-2-text: {{ settings.color_scheme_2_text.rgb }};
+      --color-scheme-2-btn-bg: {{ settings.color_scheme_2_btn_bg.rgb }};
+      --color-scheme-2-btn-text: {{ settings.color_scheme_2_btn_text.rgb }};
+      --color-scheme-2-btn-bg-hover: {{ color_scheme_2_btn_bg_hover.rgb }};
+
+      {%- assign color_scheme_3_btn_bg_hover = settings.color_scheme_3_btn_bg | color_mix: settings.color_scheme_3_btn_text, 85 | color_lighten: 3 -%}
+      --color-scheme-3-bg: {{ settings.color_scheme_3_bg.rgba }};
+      --color-scheme-3-grad: {{ settings.color_scheme_3_bg_grad }};
+      --color-scheme-3-heading: {{ settings.color_scheme_3_heading.rgb }};
+      --color-scheme-3-text: {{ settings.color_scheme_3_text.rgb }};
+      --color-scheme-3-btn-bg: {{ settings.color_scheme_3_btn_bg.rgb }};
+      --color-scheme-3-btn-text: {{ settings.color_scheme_3_btn_text.rgb }};
+      --color-scheme-3-btn-bg-hover: {{ color_scheme_3_btn_bg_hover.rgb }};
+
+      --drawer-bg-color: {{ settings.drawer_bg_color.rgba }};
+      --drawer-text-color: {{ settings.drawer_text_color.rgb }};
+
+      --panel-bg-color: {{ settings.panel_bg_color.rgba }};
+      --panel-heading-color: {{ settings.panel_heading_color.rgb }};
+      --panel-text-color: {{ settings.panel_text_color.rgb }};
+
+      --in-stock-text-color: {{ settings.in_stock_text_color.rgb }};
+      --low-stock-text-color: {{ settings.low_stock_text_color.rgb }};
+      --very-low-stock-text-color: {{ settings.very_low_stock_text_color.rgb }};
+      --no-stock-text-color: {{ settings.no_stock_text_color.rgb }};
+      --no-stock-backordered-text-color: {{ settings.no_stock_backordered_text_color.rgb }};
+
+      --error-bg-color: {{ settings.error_bg_color.rgb }};
+      --error-text-color: {{ settings.error_text_color.rgb }};
+      --success-bg-color: {{ settings.success_bg_color.rgb }};
+      --success-text-color: {{ settings.success_text_color.rgb }};
+      --info-bg-color: {{ settings.info_bg_color.rgb }};
+      --info-text-color: {{ settings.info_text_color.rgb }};
+
+      --heading-font-family: {{ settings.heading_font.family }}, {{ settings.heading_font.fallback_families }};
+      --heading-font-style: {{ settings.heading_font.style }};
+      --heading-font-weight: {{ settings.heading_font.weight }};
+      --heading-scale-start: {{ settings.heading_scale_start }};
+
+      --navigation-font-family: {{ settings.navigation_font.family }}, {{ settings.navigation_font.fallback_families }};
+      --navigation-font-style: {{ settings.navigation_font.style }};
+      --navigation-font-weight: {{ settings.navigation_font.weight }};
+      {%- if settings.heading_uppercase %}
+      --heading-text-transform: uppercase;
+      {%- else -%}
+      --heading-text-transform: none;
+      {%- endif %}
+      {%- if settings.subheading_uppercase %}
+      --subheading-text-transform: uppercase;
+      {%- else -%}
+      --subheading-text-transform: none;
+      {%- endif %}
+      --body-font-family: {{ settings.body_font.family }}, {{ settings.body_font.fallback_families }};
+      --body-font-style: {{ settings.body_font.style }};
+      --body-font-weight: {{ settings.body_font.weight }};
+      --body-font-size: {{ settings.body_font_size }};
+
+      --section-gap: {{ settings.section_gap }};
+      --heading-gap: calc(8 * var(--space-unit));
+      {%- if settings.section_gap == '32' -%}
+        --heading-gap: calc(6 * var(--space-unit));
+      {%- endif -%}
+      --grid-column-gap: 20px;
+
+      {%- assign button_bg_color_hover = settings.button_bg_color | color_mix: settings.button_text_color, 85 | color_lighten: 3 -%}
+      --btn-bg-color: {{ settings.button_bg_color.rgb }};
+      --btn-bg-hover-color: {{ button_bg_color_hover.rgb }};
+      --btn-text-color: {{ settings.button_text_color.rgb }};
+      --btn-bg-color-og: {{ settings.button_bg_color.rgb }};
+      --btn-text-color-og: {{ settings.button_text_color.rgb }};
+      --btn-alt-bg-color: {{ settings.button_alt_bg_color.rgb }};
+      --btn-alt-bg-alpha: {{ settings.button_alt_bg_color.alpha }};
+      --btn-alt-text-color: {{ settings.button_alt_text_color.rgb }};
+      --btn-border-width: {{ settings.input_button_border_width }}px;
+      --btn-padding-y: 12px;
+
+      {% if settings.input_button_border_radius > 1 %}
+      --btn-border-radius: {{ settings.input_button_border_radius | plus: settings.input_button_border_width }}px;
+      {% endif %}
+
+      --btn-lg-border-radius: 50%;
+      --btn-icon-border-radius: 50%;
+      --input-with-btn-inner-radius: var(--btn-border-radius);
+
+      {%- if settings.button_text_uppercase %}
+      --btn-text-transform: uppercase;
+      {%- endif %}
+
+      --input-bg-color: {{ settings.bg_color.rgba }};
+      --input-text-color: {{ settings.text_color.rgb }};
+      --input-border-width: {{ settings.input_button_border_width }}px;
+      --input-border-radius: {{ settings.input_button_border_radius }}px;
+      --textarea-border-radius: {{ settings.input_button_border_radius | plus: 0 | at_most: 12 }}px;
+
+      {%- if settings.input_button_border_radius > 1 %}
+      --input-border-radius: {{ settings.input_button_border_radius | plus: settings.input_button_border_width }}px;
+      {%- endif -%}
+
+      {%- if settings.input_button_border_radius == 26 %}
+      --input-lg-border-radius: {{ settings.input_button_border_radius | plus: settings.input_button_border_width | plus: 6 }}px;
+      {%- endif -%}
+
+      {%- assign input_color_brightness = settings.bg_color | color_brightness -%}
+      {%- if input_color_brightness > 128 %}
+      --input-bg-color-diff-3: {{ settings.bg_color | color_darken: 3 }};
+      --input-bg-color-diff-6: {{ settings.bg_color | color_darken: 6 }};
+      {%- else -%}
+      --input-bg-color-diff-3: {{ settings.bg_color | color_lighten: 3 }};
+      --input-bg-color-diff-6: {{ settings.bg_color | color_lighten: 6 }};
+      {%- endif %}
+
+      --modal-border-radius: {{ settings.drawer_border_radius }}px;
+      --modal-overlay-color: 0 0 0;
+      --modal-overlay-opacity: 0.4;
+      --drawer-border-radius: {{ settings.drawer_border_radius }}px;
+      --overlay-border-radius: {{ settings.overlay_border_radius }}px;
+
+      --custom-label-bg-color: {{ settings.custom_label_bg_color.rgba }};
+      --custom-label-text-color: {{ settings.custom_label_text_color.rgba }};
+
+      {%- if settings.show_sale_label -%}
+      --sale-label-bg-color: {{ settings.sale_label_bg_color.rgba }};
+      --sale-label-text-color: {{ settings.sale_label_text_color.rgba }};
+      {%- endif -%}
+      {%- if settings.show_sold_out_label -%}
+      --sold-out-label-bg-color: {{ settings.sold_out_label_bg_color.rgba }};
+      --sold-out-label-text-color: {{ settings.sold_out_label_text_color.rgba }};
+      {%- endif -%}
+      {%- if settings.show_new_label -%}
+      --new-label-bg-color: {{ settings.new_label_bg_color.rgba }};
+      --new-label-text-color: {{ settings.new_label_text_color.rgba }};
+      {%- endif -%}
+
+      --preorder-label-bg-color: {{ settings.preorder_label_bg_color.rgba }};
+      --preorder-label-text-color: {{ settings.preorder_label_text_color.rgba }};
+
+      --collection-label-color: {{ settings.coll_label_color.rgba }};
+
+      --page-width: {{ settings.max_page_width | default: 1320 }}px;
+      --gutter-sm: {{ gutter_sm }}px;
+      --gutter-md: {{ gutter_md }}px;
+      --gutter-lg: {{ gutter_lg }}px;
+
+      --payment-terms-bg-color: {{ settings.bg_color }};
+
+      --coll-card-bg-color: {{ settings.coll_bg_color }};
+      --coll-card-border-color: {{ settings.coll_border_color }};
+
+      --card-highlight-bg-color: {{ settings.card_highlight_bg_color }};
+      --card-highlight-text-color: {{ settings.card_highlight_text_color.rgb }};
+      --card-highlight-border-color: {{ settings.card_highlight_border_color }};
+
+      {%- if settings.card_contain -%}
+      --card-bg-color: {{ settings.card_bg_color }};
+      --card-text-color: {{ settings.card_text_color.rgb }};
+      --card-border-color: {{ settings.card_border_color }};
+      {%- endif -%}
+
+      {%- if settings.blend_product_images or settings.blend_collection_images -%}
+        --blend-bg-color: {{ settings.blend_bg_color }};
+      {%- endif -%}
+
+      {% if settings.animations_enabled != "disabled" %}
+        {% if settings.animation_speed == "fast" %}
+          --aos-animate-duration: 0.6s;
+        {% elsif settings.animation_speed == "medium" %}
+          --aos-animate-duration: 1s;
+        {% elsif settings.animation_speed == "slow" %}
+          --aos-animate-duration: 1.2s;
+        {% endif %}
+
+        {% if settings.animations_enabled == "desktop" %}
+          --aos-min-width: {{ breakpoint_sm }};
+        {% else %}
+          --aos-min-width: 0;
+        {% endif %}
+      {% endif %}
+
+      --reading-width: 48em;
+    }
+
+    @media (max-width: {{ breakpoint_md }}px) {
+      :root {
+        --reading-width: 36em;
+      }
+    }
+  {% endstyle -%}
+
+  <link rel="stylesheet" href="{{ 'main.css' | asset_url }}">
+  <script src="{{ 'main.js' | asset_url }}" defer="defer"></script>
+
+  {%- unless settings.body_font.system? -%}
+    <link rel="preload" href="{{ settings.body_font | font_url }}" as="font" type="font/woff2" crossorigin fetchpriority="high">
+  {%- endunless -%}
+
+  {%- unless settings.heading_font.system? -%}
+    <link rel="preload" href="{{ settings.heading_font | font_url }}" as="font" type="font/woff2" crossorigin fetchpriority="high">
+  {%- endunless -%}
+
+  {%- if request.page_type contains 'customers' -%}
+    <link rel="stylesheet" href="{{ 'customer.css' | asset_url }}">
+  {%- endif -%}
+
+  {{ content_for_header }}
+
+  {%- if request.design_mode -%}
+    <script src="{{ 'theme-editor.js' | asset_url }}" defer="defer" data-contact="{{ shop.email | escape }}"></script>
+  {%- endif -%}
+
+  {%- if settings.show_blur_messages -%}
+    <script src="{{ 'blur-messages.js' | asset_url }}" defer="defer"></script>
+  {%- endif -%}
+
+  {% if settings.animations_enabled != "disabled" %}
+    <script src="{{ 'animate-on-scroll.js' | asset_url }}" defer="defer"></script>
+    <link rel="stylesheet" href="{{ 'animate-on-scroll.css' | asset_url }}">
+  {% endif %}
+
+  <script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');</script>
+
+  {%- if settings.custom_html_head -%}
+    <!-- CC Custom Head Start -->
+    {{- settings.custom_html_head -}}
+    <!-- CC Custom Head End -->
+  {%- endif -%}
+
+
+<meta name="google-site-verification" content="-0OIKeydZTIfzNFO7PGU_crZ0rjXm-uZnPhon8ydO6Y" />
+
+
+<meta name="google-site-verification" content="-0OIKeydZTIfzNFO7PGU_crZ0rjXm-uZnPhon8ydO6Y" />
+
+
+</head>
+
+<body{% if settings.animations_enabled != "disabled" %} class="cc-animate-enabled"{% endif %}>
+  <a class="skip-link btn btn--primary visually-hidden" href="#main-content" data-ce-role="skip">
+    {{- 'accessibility.skip_to_content' | t -}}
+  </a>
+
+  {%- sections 'header-group' -%}
+
+  <main id="main-content">
+    {%- liquid
+      assign show_breadcrumbs = false
+      if settings.show_breadcrumbs_product and request.page_type == 'product'
+        assign show_breadcrumbs = true
+      elsif settings.show_breadcrumbs_collection and request.page_type == 'collection'
+        assign show_breadcrumbs = true
+      elsif settings.show_breadcrumbs_collection_list and request.page_type == 'list-collections'
+        assign show_breadcrumbs = true
+      elsif settings.show_breadcrumbs_article and request.page_type == 'article'
+        assign show_breadcrumbs = true
+      elsif settings.show_breadcrumbs_blog and request.page_type == 'blog'
+        assign show_breadcrumbs = true
+      endif
+
+      if gn_b2b_gate
+        assign show_breadcrumbs = false
+      endif
+    -%}
+    {%- if show_breadcrumbs -%}
+      <div class="container{% if request.page_type == 'product' %} product-breadcrumbs{% endif %}">
+        {%- liquid
+          assign show_rss_link = false
+          if template.name == 'blog'
+            assign show_rss_link = settings.show_breadcrumbs_blog_rss
+          endif
+        -%}
+        {% render 'breadcrumbs', show_rss_link: show_rss_link %}
+      </div>
+    {%- endif -%}
+
+    {%- if gn_b2b_gate -%}
+      <div class="container" style="padding:90px 20px;text-align:center;max-width:560px;margin:0 auto;">
+        {%- if localization.country.iso_code == 'ES' -%}
+          <h1 class="h4">Producto exclusivo para mayoristas</h1>
+          <p style="margin:14px 0 26px;">Este producto está reservado para clientes B2B. Inicia sesión con tu cuenta mayorista para verlo.</p>
+          <a class="btn btn--primary" href="{{ routes.account_login_url }}">Iniciar sesión</a>
+        {%- else -%}
+          <h1 class="h4">Wholesale-only product</h1>
+          <p style="margin:14px 0 26px;">This product is reserved for B2B customers. Please log in with your wholesale account to view it.</p>
+          <a class="btn btn--primary" href="{{ routes.account_login_url }}">Log in</a>
+        {%- endif -%}
+      </div>
+    {%- else -%}
+      {{ content_for_layout }}
+    {%- endif -%}
+  </main>
+
+  {%- sections 'overlay-group' -%}
+  {%- sections 'footer-group' -%}
+
+  {%- liquid
+    if request.page_type == 'collection' or request.page_type == 'search'
+      if settings.enable_compare
+        echo 'compare-toggle.css' | asset_url | stylesheet_tag
+        render 'product-compare'
+      endif
+    endif
+
+    if settings.enable_quick_add
+      render 'quick-add-drawer'
+    endif
+  -%}
+
+
+
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-55DG66F6"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+
+
+
+  <div class="overlay fixed top-0 right-0 bottom-0 left-0 js-overlay"></div>
+  <script>
+    window.theme = {
+      info: {
+        name: 'Enterprise',
+        version: '2.0.1'
+      },
+      mediaQueries: {
+        sm: '(min-width: 600px)',
+        md: '(min-width: 769px)',
+        lg: '(min-width: 1024px)',
+        xl: '(min-width: 1280px)',
+        xxl: '(min-width: 1536px)',
+        portrait: '(orientation: portrait)'
+      },
+      device: {
+        hasTouch: window.matchMedia('(any-pointer: coarse)').matches,
+        hasHover: window.matchMedia('(hover: hover)').matches
+      },
+      routes: {
+        cart: '{{ routes.cart_url }}',
+        cartAdd: '{{ routes.cart_add_url }}',
+        cartChange: '{{ routes.cart_change_url }}',
+        cartUpdate: '{{ routes.cart_update_url }}',
+        predictiveSearch: '{{ routes.predictive_search_url }}'
+      },
+      settings: {
+        moneyWithCurrencyFormat: {{ shop.money_with_currency_format | json }},
+        pSearchLimit: {{ settings.predictive_search_limit | json }},
+        pSearchLimitScope: 'each',
+        pSearchIncludeSkus: {{ settings.predictive_search_include_skus | json }},
+        pSearchIncludeTags: {{ settings.predictive_search_include_tags | json }},
+        sliderItemsPerNav: '{{ settings.slider_items_per_nav }}',
+        {% if settings.show_blur_messages %}
+          blurMessage1: {{ settings.blur_message_1 | json }},
+          blurMessage2: {{ settings.blur_message_2 | json }},
+          blurMessageDelay: {{ settings.blur_message_delay }},
+        {% endif %}
+        vibrateOnATC: {{ settings.vibrate_on_atc | json }},
+        compareToggle: {{ settings.compare_toggle | json }},
+        compareShowEmptyMetafields: {{ settings.compare_show_empty_metafields | json }},
+        blendProductImages: {{ settings.blend_product_images | json }},
+        externalLinksNewTab: {{ settings.external_links_new_tab | json }},
+        afterAtc: {{ settings.after_add_to_cart | json }},
+        cartType: {{ settings.cart_type | json }}
+      },
+      strings: {
+        addCartNote: '{{ "cart.note.add" | t }}',
+        editCartNote: '{{ "cart.note.edit" | t }}',
+        cartError: '{{ "cart.general.error" | t }}',
+        cartQtyError: '{{ "cart.items.quantity_error" | t: quantity: "[quantity]" }}',
+        cartTermsConfirmation: '{{ "cart.terms.confirmation" | t }}',
+        imageAvailable: '{{ "products.product.media.image_available" | t: index: "[index]" }}',
+        veryLowStock: '{{ 'products.inventory.very_low_stock' | t }}',
+        lowStock: '{{ 'products.inventory.low_stock' | t }}',
+        inStock: '{{ 'products.inventory.in_stock' | t }}',
+        noStock: '{{ "products.variant.no_stock" | t }}',
+        noVariant: '{{ "products.variant.non_existent" | t }}',
+        noSelectedVariant: '{{ "products.variant.not_selected" | t }}',
+        onlyXLeft: '{{ "products.inventory.only_x_left" | t: quantity: "[quantity]" }}',
+        awaitingSale: '{{ "products.product.awaiting_sale" | t }}',
+        shippingCalculator: {
+          singleRate: '{{ "cart.shipping_calculator.single_rate" | t }}',
+          multipleRates: '{{ "cart.shipping_calculator.multiple_rates" | t }}',
+          noRates: '{{ "cart.shipping_calculator.no_rates" | t }}'
+        },
+        viewDetails: '{{ "products.product.view_details" | t }}',
+        compare: {
+          limit: '{{ 'products.compare.drawer.limit_reached' | t: quantity: '[quantity]' }}',
+          more: '{{ 'products.compare.drawer.select_more' | t }}',
+          empty: '{{ 'products.compare.drawer.empty' | t }}',
+          continue: '{{ 'products.compare.drawer.close_continue' | t }}'
+        },
+        discountCopyFail: '{{ 'general.discount_code.copy_fail' | t }}',
+        articleReadTime: '{{ 'blogs.article.reading_time' | t }}',
+        quickNav: {
+          button_standard: '{{ 'general.quick_navigation_panel.button_label' | t }}',
+          show_products_none: '{{ 'general.quick_navigation_panel.show_products_none' | t }}',
+          button_one: '{{ 'general.quick_navigation_panel.show_products_one' | t: quantity: '[quantity]' }}',
+          button_other: '{{ 'general.quick_navigation_panel.show_products_other' | t: quantity: '[quantity]' }}',
+        },
+        regularPrice: '{{ 'products.product.price.regular_price' | t }}',
+        salePrice: '{{ 'products.product.price.sale_price' | t }}'
+      },
+      scripts: {
+        cartItems: '{{ "cart-items.js" | asset_url }}',
+        countryProvinceSelector: '{{ "country-province-selector.js" | asset_url }}',
+        shippingCalculator: '{{ "shipping-calculator.js" | asset_url }}'
+      }
+    };
+
+    // Save product ID to localStorage, for use in the 'Recently viewed products' section.
+    {%- if request.page_type == 'product' %}
+      try {
+        const items = JSON.parse(localStorage.getItem('cc-recently-viewed') || '[]');
+
+        // If product ID is not already in the recently viewed list, add it to the beginning.
+        if (!items.includes({{ product.id | json }})) {
+          items.unshift({{ product.id | json }});
+        }
+
+        // Set recently viewed list and limit to 12 products.
+        localStorage.setItem('cc-recently-viewed', JSON.stringify(items.slice(0, 12)));
+      } catch (e) {}
+    {%- endif %}
+  </script>
+
+  {%- if request.design_mode == false and settings.preload_links -%}
+    <script src="{{ 'instant-page.js' | asset_url }}" type="module" defer="defer"></script>
+  {%- endif -%}
+
+
+
+
+{%- unless request.path contains '/pages/b2b-onboarding' -%}
+{%- capture wa_msg -%}Hello ibBan! I have a question about this page: {{ shop.url }}{{ request.path }}{%- endcapture -%}
+<a href="https://wa.me/34689948641?text={{ wa_msg | url_encode }}"
+   class="ibban-wa" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" width="60" height="60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="ibban-wa-grad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#61FD7D"/>
+        <stop offset="100%" stop-color="#2BB826"/>
+      </linearGradient>
+    </defs>
+    <circle cx="12" cy="12" r="12" fill="url(#ibban-wa-grad)"/>
+    <path fill="#FFFFFF" transform="translate(4.56 4.56) scale(0.62)" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+<style>
+  .ibban-wa{position:fixed;bottom:20px;right:20px;z-index:99999;display:block;line-height:0;transition:transform .2s ease}
+  .ibban-wa img{width:60px;height:60px;display:block;border-radius:50%}
+  .ibban-wa:hover{transform:scale(1.08)}
+  @media (max-width:600px){.ibban-wa{bottom:16px;right:16px}.ibban-wa img{width:54px;height:54px}}
+</style>
+{%- endunless -%}
+
+</body>
+</html>

@@ -1,0 +1,75 @@
+{%- comment -%}
+  GN ATC BUTTON — ibBan
+
+  Restyles the product page "Add to cart" button to the approved
+  yellow primary style, so it outranks the Shop Pay button below it.
+
+  Approved 28 Aug 2026:
+    default   background #FBD816 / text #0F1111
+    hover     background #E8C70F
+    pressed   background #D4B50E
+    disabled  background #E5E5E5 / text #767676
+
+  Targets the standard Shopify add-to-cart submit button
+  (button[name="add"] inside the /cart/add form) rather than a theme
+  class name, so it survives theme updates.
+
+  Loaded from gn-see-more.liquid, which the custom_liquid_gnship block
+  renders on every product page (including B2B and sold-out products).
+{%- endcomment -%}
+
+<style>
+  form[action*="/cart/add"] button[name="add"],
+  form[action*="/cart/add"] [type="submit"][name="add"] {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    min-height: 50px !important;
+    padding: 12px 24px !important;
+    background-color: #FBD816 !important;
+    background-image: none !important;
+    border: 0 !important;
+    border-radius: 9999px !important;
+    color: #0F1111 !important;
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    letter-spacing: normal !important;
+    text-transform: none !important;
+    box-shadow: none !important;
+    transition: background-color 150ms ease !important;
+  }
+
+  form[action*="/cart/add"] button[name="add"] * {
+    color: inherit !important;
+  }
+
+  form[action*="/cart/add"] button[name="add"]:hover:not([disabled]):not(.disabled) {
+    background-color: #E8C70F !important;
+    color: #0F1111 !important;
+  }
+
+  form[action*="/cart/add"] button[name="add"]:active:not([disabled]):not(.disabled) {
+    background-color: #D4B50E !important;
+  }
+
+  form[action*="/cart/add"] button[name="add"]:focus-visible {
+    outline: 2px solid #0F1111 !important;
+    outline-offset: 2px !important;
+  }
+
+  form[action*="/cart/add"] button[name="add"][disabled],
+  form[action*="/cart/add"] button[name="add"][aria-disabled="true"],
+  form[action*="/cart/add"] button[name="add"].disabled {
+    background-color: #E5E5E5 !important;
+    color: #767676 !important;
+    cursor: not-allowed !important;
+  }
+
+  @media (min-width: 768px) {
+    form[action*="/cart/add"] button[name="add"],
+    form[action*="/cart/add"] [type="submit"][name="add"] {
+      min-height: 54px !important;
+    }
+  }
+</style>
