@@ -49,7 +49,13 @@ jobs:
         run: |
           set -o pipefail
           node scripts/package-theme.mjs --store ibban
-          # Integrations load review photos from Judge.me's CDN by design.
-          printf 'root: .\nRemoteAsset:\n  ignore:\n    - sections/integration-*.liquid\n    - snippets/integration-*.liquid\n' > dist/ibban/.theme-check.yml
+          # Integrations load review photos from Judge.me's CDN by design. Store templates hold the
+          # store's app blocks (Judge.me, Shopify Forms), which Theme Check reads as missing theme
+          # blocks in sections that also take theme blocks; those files skip that one check.
+          {
+            printf 'root: .\nRemoteAsset:\n  ignore:\n    - sections/integration-*.liquid\n    - snippets/integration-*.liquid\nJSONMissingBlock:\n  ignore:\n'
+            (cd dist/ibban && grep -rl 'shopify://apps/' templates sections --include='*.json' | sed 's/^/    - /')
+          } > dist/ibban/.theme-check.yml
+          cat dist/ibban/.theme-check.yml
           shopify theme check --path dist/ibban --fail-level suggestion | tee theme-check-store.txt
           if grep -q ' 0 files inspected' theme-check-store.txt; then echo "Theme Check inspected no files in the store build"; exit 1; fi
