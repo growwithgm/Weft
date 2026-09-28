@@ -456,6 +456,7 @@
     "line_2_size": "Größe von Zeile 2",
     "line_3": "Zeile 3",
     "line_3_size": "Größe von Zeile 3",
+    "line_between_media_and_information": "Linie zwischen Medien und Informationen",
     "lines_above_and_below": "Linien oben und unten",
     "link": "Link",
     "link_1": "Link 1",
@@ -1447,7 +1448,7 @@
             "label": "Nur die Medien des ausgewählten Optionswerts anzeigen"
           },
           "section_width": {
-            "info": "Volle Breite nutzt ab 1440 px Breite fast den ganzen Bildschirm."
+            "info": "Volle Breite nutzt ab 990 px Breite fast den ganzen Bildschirm."
           },
           "sticky_bar_mobile": {
             "info": "Zeigt die ausgewählten Optionen und „In den Warenkorb“ an, wenn der Haupt-Button aus dem sichtbaren Bereich scrollt. Für Großhandelskunden ausgeblendet."

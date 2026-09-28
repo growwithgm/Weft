@@ -456,6 +456,7 @@
     "line_2_size": "Grootte van regel 2",
     "line_3": "Regel 3",
     "line_3_size": "Grootte van regel 3",
+    "line_between_media_and_information": "Lijn tussen media en informatie",
     "lines_above_and_below": "Lijnen boven en onder",
     "link": "Link",
     "link_1": "Link 1",
@@ -1447,7 +1448,7 @@
             "label": "Alleen media van de geselecteerde optiewaarde weergeven"
           },
           "section_width": {
-            "info": "Volledige breedte gebruikt vanaf 1440 px breed bijna het hele scherm."
+            "info": "Volledige breedte gebruikt vanaf 990 px breed bijna het hele scherm."
           },
           "sticky_bar_mobile": {
             "info": "Toont de geselecteerde opties en Toevoegen aan winkelwagen als de hoofdknop uit beeld scrolt. Verborgen voor groothandelskopers."

@@ -456,6 +456,7 @@
     "line_2_size": "Line 2 size",
     "line_3": "Line 3",
     "line_3_size": "Line 3 size",
+    "line_between_media_and_information": "Line between media and information",
     "lines_above_and_below": "Lines above and below",
     "link": "Link",
     "link_1": "Link 1",
@@ -1447,7 +1448,7 @@
             "label": "Show only the media for the selected option value"
           },
           "section_width": {
-            "info": "Full width uses almost the whole screen from 1440 px wide."
+            "info": "Full width uses almost the whole screen from 990 px wide."
           },
           "sticky_bar_mobile": {
             "info": "Shows the selected options and Add to cart when the main button scrolls out of view. Hidden for wholesale buyers."

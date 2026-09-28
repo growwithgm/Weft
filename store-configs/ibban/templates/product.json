@@ -189,7 +189,8 @@
         "media_bg": "#f4f4f4",
         "group_media_by_option": true,
         "section_width": "full",
-        "column_gap": 60
+        "column_gap": 64,
+        "column_divider": true
       }
     },
     "details": {

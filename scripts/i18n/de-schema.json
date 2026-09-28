@@ -359,7 +359,6 @@
   "Full list label": "Beschriftung der vollständigen Liste",
   "Full screen": "Vollbild",
   "Full width": "Volle Breite",
-  "Full width uses almost the whole screen from 1440 px wide.": "Volle Breite nutzt ab 1440 px Breite fast den ganzen Bildschirm.",
   "Gallery": "Galerie",
   "Gallery width": "Galeriebreite",
   "Gap": "Abstand",
@@ -1225,5 +1224,7 @@
   "Preview as a wholesale buyer in the editor": "Im Editor als Großhandelskunde ansehen",
   "Rows: one row per variant": "Zeilen: eine Zeile pro Variante",
   "Show minimum order and pack size bar": "Leiste mit Mindestbestellung und Packgröße anzeigen",
-  "The theme editor shows the page a B2B customer sees: wholesale blocks with sample data, retail-only blocks hidden. On the storefront wholesale blocks only show to signed-in B2B customers.": "Der Theme-Editor zeigt die Seite, die ein B2B-Kunde sieht: Großhandelsblöcke mit Beispieldaten, reine Einzelhandelsblöcke ausgeblendet. Im Shop sehen Großhandelsblöcke nur angemeldete B2B-Kunden."
+  "The theme editor shows the page a B2B customer sees: wholesale blocks with sample data, retail-only blocks hidden. On the storefront wholesale blocks only show to signed-in B2B customers.": "Der Theme-Editor zeigt die Seite, die ein B2B-Kunde sieht: Großhandelsblöcke mit Beispieldaten, reine Einzelhandelsblöcke ausgeblendet. Im Shop sehen Großhandelsblöcke nur angemeldete B2B-Kunden.",
+  "Full width uses almost the whole screen from 990 px wide.": "Volle Breite nutzt ab 990 px Breite fast den ganzen Bildschirm.",
+  "Line between media and information": "Linie zwischen Medien und Informationen"
 }

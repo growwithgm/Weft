@@ -456,6 +456,7 @@
     "line_2_size": "Taille de la ligne 2",
     "line_3": "Ligne 3",
     "line_3_size": "Taille de la ligne 3",
+    "line_between_media_and_information": "Ligne entre les médias et les informations",
     "lines_above_and_below": "Lignes au-dessus et en dessous",
     "link": "Lien",
     "link_1": "Lien 1",
@@ -1447,7 +1448,7 @@
             "label": "Afficher uniquement les médias de la valeur d'option sélectionnée"
           },
           "section_width": {
-            "info": "Pleine largeur occupe presque tout l'écran à partir de 1440 px de large."
+            "info": "Pleine largeur occupe presque tout l'écran à partir de 990 px de large."
           },
           "sticky_bar_mobile": {
             "info": "Affiche les options sélectionnées et Ajouter au panier lorsque le bouton principal sort de l'écran. Masqué pour les acheteurs en gros."

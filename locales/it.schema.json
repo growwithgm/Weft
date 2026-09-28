@@ -456,6 +456,7 @@
     "line_2_size": "Dimensione della riga 2",
     "line_3": "Riga 3",
     "line_3_size": "Dimensione della riga 3",
+    "line_between_media_and_information": "Linea tra media e informazioni",
     "lines_above_and_below": "Linee sopra e sotto",
     "link": "Link",
     "link_1": "Link 1",
@@ -1447,7 +1448,7 @@
             "label": "Mostra solo i contenuti multimediali del valore dell'opzione selezionato"
           },
           "section_width": {
-            "info": "Larghezza intera usa quasi tutto lo schermo da 1440 px di larghezza."
+            "info": "Larghezza intera usa quasi tutto lo schermo da 990 px di larghezza."
           },
           "sticky_bar_mobile": {
             "info": "Mostra le opzioni selezionate e Aggiungi al carrello quando il pulsante principale esce dalla visuale. Nascosto per gli acquirenti all'ingrosso."

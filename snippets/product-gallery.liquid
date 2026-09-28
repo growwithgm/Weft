@@ -27,7 +27,7 @@
   endif
 
   # sizes follow the media column: its share of the row, halved in a two-column grid, and the
-  # full-width section option on wide screens (98vw from 1440 px).
+  # full-width section option (about 98vw from 990 px).
   case s.gallery_width
     when 'extra_wide'
       assign media_share = 65
@@ -47,6 +47,9 @@
   endif
   assign wide_vw = row_vw | times: media_share | divided_by: 100 | append: 'vw'
   assign desk_vw = media_share | append: 'vw'
+  if s.section_width == 'full'
+    assign desk_vw = wide_vw
+  endif
   assign sizes = '(min-width: 1440px) ' | append: wide_vw | append: ', (min-width: 990px) ' | append: desk_vw | append: ', 100vw'
 
   assign featured_id = variant.featured_media.id | default: product.featured_media.id

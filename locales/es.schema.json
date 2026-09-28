@@ -456,6 +456,7 @@
     "line_2_size": "Tamaño de la línea 2",
     "line_3": "Línea 3",
     "line_3_size": "Tamaño de la línea 3",
+    "line_between_media_and_information": "Línea entre los medios y la información",
     "lines_above_and_below": "Líneas arriba y abajo",
     "link": "Enlace",
     "link_1": "Enlace 1",
@@ -1447,7 +1448,7 @@
             "label": "Mostrar solo las imágenes del valor seleccionado"
           },
           "section_width": {
-            "info": "Ancho completo usa casi toda la pantalla desde 1440 px de ancho."
+            "info": "Ancho completo usa casi toda la pantalla desde 990 px de ancho."
           },
           "sticky_bar_mobile": {
             "info": "Muestra las opciones elegidas y Añadir al carrito cuando el botón principal sale de la vista. Oculto para mayoristas."

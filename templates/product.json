@@ -154,7 +154,15 @@
         "returns",
         "share"
       ],
-      "settings": {}
+      "settings": {
+        "section_width": "full",
+        "gallery_width": "extra_wide",
+        "gallery_layout": "grid_even",
+        "media_ratio": "natural",
+        "column_gap": 64,
+        "column_divider": true,
+        "sticky_info": true
+      }
     },
     "reviews": {
       "type": "product-reviews",

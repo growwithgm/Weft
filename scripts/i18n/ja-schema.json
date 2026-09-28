@@ -359,7 +359,6 @@
   "Full list label": "全リストのラベル",
   "Full screen": "全画面",
   "Full width": "全幅",
-  "Full width uses almost the whole screen from 1440 px wide.": "全幅にすると、幅1440px以上で画面のほぼ全体を使います。",
   "Gallery": "ギャラリー",
   "Gallery width": "ギャラリーの幅",
   "Gap": "間隔",
@@ -1225,5 +1224,7 @@
   "Preview as a wholesale buyer in the editor": "エディターで卸売バイヤーとしてプレビュー",
   "Rows: one row per variant": "行：バリエーションごとに1行",
   "Show minimum order and pack size bar": "最小注文数とパックサイズのバーを表示",
-  "The theme editor shows the page a B2B customer sees: wholesale blocks with sample data, retail-only blocks hidden. On the storefront wholesale blocks only show to signed-in B2B customers.": "テーマエディターにB2B顧客が見るページを表示します：卸売ブロックはサンプルデータ付きで表示、小売専用ブロックは非表示。ストアでは卸売ブロックはログインしたB2B顧客にのみ表示されます。"
+  "The theme editor shows the page a B2B customer sees: wholesale blocks with sample data, retail-only blocks hidden. On the storefront wholesale blocks only show to signed-in B2B customers.": "テーマエディターにB2B顧客が見るページを表示します：卸売ブロックはサンプルデータ付きで表示、小売専用ブロックは非表示。ストアでは卸売ブロックはログインしたB2B顧客にのみ表示されます。",
+  "Full width uses almost the whole screen from 990 px wide.": "全幅にすると、幅990px以上で画面のほぼ全体を使います。",
+  "Line between media and information": "メディアと情報の間に線を表示"
 }

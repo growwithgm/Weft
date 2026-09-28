@@ -456,6 +456,7 @@
     "line_2_size": "Tamanho da linha 2",
     "line_3": "Linha 3",
     "line_3_size": "Tamanho da linha 3",
+    "line_between_media_and_information": "Linha entre os conteúdos multimédia e a informação",
     "lines_above_and_below": "Linhas acima e abaixo",
     "link": "Ligação",
     "link_1": "Ligação 1",
@@ -1447,7 +1448,7 @@
             "label": "Mostrar apenas o conteúdo multimédia do valor de opção selecionado"
           },
           "section_width": {
-            "info": "Largura total usa quase todo o ecrã a partir de 1440 px de largura."
+            "info": "Largura total usa quase todo o ecrã a partir de 990 px de largura."
           },
           "sticky_bar_mobile": {
             "info": "Mostra as opções selecionadas e Adicionar ao carrinho quando o botão principal sai do ecrã. Oculto para compradores por grosso."

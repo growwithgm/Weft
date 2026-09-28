@@ -302,5 +302,9 @@
   .pao__symbol { position: relative; display: inline-flex; width: 36px; height: 36px; }
   .pao__months { position: absolute; inset: 14px 0 0; text-align: center; font-size: 10px; font-weight: var(--fw-bold); }
   /* Section width: Full width spans almost the whole screen on wide monitors. */
-  @media (min-width: 1440px) { .product--full > .page-width { max-width: 98vw; padding-inline: 0; } }
+  @media (min-width: 990px) {
+    .product--full > .page-width { max-width: none; padding-inline: max(16px, 1vw); }
+    .product__grid--divider { column-gap: calc(var(--product-gap, 48px) / 2); }
+    .product__grid--divider .product__media { padding-inline-end: calc(var(--product-gap, 48px) / 2); border-inline-end: 1px solid var(--c-line); }
+  }
 }
