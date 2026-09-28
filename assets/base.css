@@ -219,7 +219,10 @@
   .location-notice .icon--check { color: var(--c-ok); }
 
   .breadcrumbs { font-size: var(--t-13); color: var(--c-muted); padding-block: 16px; }
-  .breadcrumbs ol { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; }
+  /* One line: earlier links keep their width, the last item ends with "…" when it doesn't fit. */
+  .breadcrumbs ol { display: flex; flex-wrap: nowrap; gap: 8px; list-style: none; padding: 0; margin: 0; min-width: 0; white-space: nowrap; }
+  .breadcrumbs li { flex: 0 0 auto; }
+  .breadcrumbs li:last-child { flex: 0 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
   .breadcrumbs li + li::before { content: '/'; margin-inline-end: 8px; }
   .breadcrumbs a { color: inherit; }
   .breadcrumbs [aria-current] { color: var(--c-fg); }
