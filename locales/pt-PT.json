@@ -213,6 +213,11 @@
       "title": "Escolha uma nova palavra-passe"
     }
   },
+  "finder": {
+    "compare_label": "Deslize para comparar {{ before }} e {{ after }}",
+    "progress": "Pergunta {{ step }} de {{ count }}",
+    "show_results": "Ver os meus produtos"
+  },
   "general": {
     "back_to_top": "Voltar ao topo",
     "breadcrumbs": "Navegação estrutural",

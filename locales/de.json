@@ -213,6 +213,11 @@
       "title": "Neues Passwort wählen"
     }
   },
+  "finder": {
+    "compare_label": "Verschieben, um {{ before }} und {{ after }} zu vergleichen",
+    "progress": "Frage {{ step }} von {{ count }}",
+    "show_results": "Meine Produkte anzeigen"
+  },
   "general": {
     "back_to_top": "Nach oben",
     "breadcrumbs": "Brotkrümelnavigation",

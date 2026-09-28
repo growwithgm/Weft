@@ -213,6 +213,11 @@
       "title": "新しいパスワードを設定"
     }
   },
+  "finder": {
+    "compare_label": "{{ before }}と{{ after }}を比較するには動かしてください",
+    "progress": "質問 {{ step }}/{{ count }}",
+    "show_results": "自分に合う商品を見る"
+  },
   "general": {
     "back_to_top": "トップへ戻る",
     "breadcrumbs": "パンくずリスト",

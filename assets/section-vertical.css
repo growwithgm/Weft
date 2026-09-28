@@ -1,0 +1,59 @@
+/* Vertical sections: guided finder, before/after slider, routine steps, ingredient spotlight. */
+@layer sections {
+  .finder, .before-after, .routine, .spotlight { padding-block: var(--section-gap); }
+
+  /* Guided finder */
+  .finder__box { padding: clamp(20px, 4vw, 40px); border-radius: var(--r-card); background: var(--c-bg); }
+  .finder__question { border: 0; margin: 0; padding: 0; min-width: 0; display: flex; flex-direction: column; gap: 12px; }
+  .finder__question + .finder__question { margin-block-start: 20px; }
+  .is-stepped .finder__question + .finder__question { margin: 0; }
+  .finder__legend { padding: 0; margin-block-end: 4px; }
+  .finder__hint { margin: 0; font-size: var(--t-14); }
+  .finder__answers { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+  .finder__option { display: flex; align-items: center; justify-content: center; min-height: 52px; padding: 10px 14px; border: 1px solid var(--c-line); border-radius: var(--r-button); cursor: pointer; text-align: center; font-weight: var(--fw-medium); }
+  .finder__option:hover { border-color: var(--c-fg); }
+  .finder__input:checked + .finder__option { background: var(--c-fg); color: var(--c-bg); border-color: var(--c-fg); }
+  .finder__input:focus-visible + .finder__option { outline: 2px solid var(--c-fg); outline-offset: 2px; }
+  .finder__nav { display: flex; gap: 12px; flex-wrap: wrap; }
+  .finder__progress { margin: 0; font-size: var(--t-13); }
+
+  /* Before / after */
+  .before-after__inner { display: grid; gap: 28px; align-items: center; }
+  @media (min-width: 990px) {
+    .before-after--text-start, .before-after--text-end { grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); }
+    .before-after--text-end .before-after__content { order: 2; }
+  }
+  .before-after__note { font-size: var(--t-13); margin: 0; }
+  .compare-slider { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; border-radius: var(--r-media); overflow: hidden; }
+  .compare-slider figure { margin: 0; position: relative; }
+  .compare-slider .media { aspect-ratio: auto; height: 100%; }
+  .compare-slider__tag { position: absolute; top: 12px; padding: 4px 10px; border-radius: 12px; background: rgb(0 0 0 / 0.55); color: #fff; font-size: var(--t-12); font-weight: var(--fw-bold); }
+  .compare-slider__tag--before { inset-inline-start: 12px; }
+  .compare-slider__tag--after { inset-inline-end: 12px; }
+  .compare-slider.is-ready { display: block; }
+  .compare-slider.is-ready figure { position: absolute; inset: 0; }
+  .compare-slider.is-ready .compare-slider__after { clip-path: inset(0 0 0 var(--pos, 50%)); }
+  [dir='rtl'] .compare-slider.is-ready .compare-slider__after { clip-path: inset(0 var(--pos, 50%) 0 0); }
+  .compare-slider__handle { position: absolute; top: 0; bottom: 0; left: var(--pos, 50%); width: 2px; background: #fff; transform: translateX(-1px); pointer-events: none; box-shadow: 0 0 0 1px rgb(0 0 0 / 0.15); }
+  [dir='rtl'] .compare-slider__handle { left: auto; right: var(--pos, 50%); }
+  .compare-slider__handle::after { content: ''; position: absolute; top: 50%; left: 50%; width: 40px; height: 40px; border-radius: 50%; background: #fff; transform: translate(-50%, -50%); box-shadow: 0 2px 8px rgb(0 0 0 / 0.25); }
+  .compare-slider__range { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: ew-resize; }
+  .compare-slider:has(.compare-slider__range:focus-visible) .compare-slider__handle::after { outline: 2px solid var(--c-fg); outline-offset: 2px; }
+
+  /* Routine steps */
+  .routine__intro { max-width: 760px; margin-block-end: 20px; }
+  .routine__list { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; }
+  @media (min-width: 990px) { .routine__list--row { grid-template-columns: repeat(var(--cols, 4), minmax(0, 1fr)); } }
+  .routine__step { display: flex; flex-direction: column; gap: 10px; padding: 20px; border: 1px solid var(--c-line); border-radius: var(--r-card); }
+  .routine__label { margin: 0; font-size: var(--t-12); font-weight: var(--fw-bold); text-transform: uppercase; letter-spacing: 0.08em; color: var(--c-muted); }
+  .routine__heading { margin: 0; }
+  .routine__product { margin-block-start: auto; }
+
+  /* Ingredient spotlight */
+  .spotlight__inner { display: grid; gap: 28px; align-items: center; }
+  @media (min-width: 990px) {
+    .spotlight__inner { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+    .spotlight--image-end .spotlight__media { order: 2; }
+  }
+  .spotlight__media { aspect-ratio: 4 / 5; border-radius: var(--r-media); }
+}

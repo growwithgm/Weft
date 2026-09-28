@@ -28,7 +28,10 @@
     "tabs.js": 1536,
     "popup.js": 2048,
     "section-content.css": 3072,
-    "component-popup.css": 2048
+    "component-popup.css": 2048,
+    "finder.js": 1536,
+    "compare-slider.js": 1024,
+    "section-vertical.css": 3072
   },
   "pages": {
     "renderBlockingCss": 14336,

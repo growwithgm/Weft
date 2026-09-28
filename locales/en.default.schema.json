@@ -23,6 +23,8 @@
     "after_a_delay": "After a delay",
     "after_adding_to_cart": "After adding to cart",
     "after_first_interaction": "After first interaction",
+    "after_image": "After image",
+    "after_label": "After label",
     "after_page_load": "After page load",
     "after_scrolling_halfway": "After scrolling halfway",
     "after_the_links": "After the links",
@@ -49,6 +51,7 @@
     "announcement": "Announcement",
     "announcement_bar": "Announcement bar",
     "answer": "Answer",
+    "answers": "Answers",
     "application_page": "Application page",
     "apply_button_label": "Apply button label",
     "apply_the_color_scheme_to_the_text_box_only": "Apply the color scheme to the text box only",
@@ -87,7 +90,10 @@
     "barcode": "Barcode",
     "base_size": "Base size",
     "basket": "Basket",
+    "before_and_after": "Before and after",
     "before_collection_number": "Before collection number",
+    "before_image": "Before image",
+    "before_label": "Before label",
     "before_product_number": "Before product number",
     "before_the_links": "Before the links",
     "behind_the_text": "Behind the text",
@@ -167,6 +173,7 @@
     "collection_image": "Collection image",
     "collection_list": "Collection list",
     "collection_products": "Collection products",
+    "collection_to_filter": "Collection to filter",
     "collections": "Collections",
     "collections_list": "Collections list",
     "collections_per_page": "Collections per page",
@@ -282,6 +289,7 @@
     "field": "Field",
     "fill": "Fill",
     "filled": "Filled",
+    "filter_parameter": "Filter parameter",
     "filter_promotion": "Filter promotion",
     "filters": "Filters",
     "first_part_heading": "First part heading",
@@ -317,6 +325,7 @@
     "grid": "Grid",
     "group": "Group",
     "guide_image": "Guide image",
+    "guided_finder": "Guided finder",
     "h1": "H1",
     "h2": "H2",
     "h3": "H3",
@@ -349,6 +358,7 @@
     "highlight_text": "Highlight text",
     "highlighted_products": "Highlighted products",
     "highlights": "Highlights",
+    "hint": "Hint",
     "horizontal": "Horizontal",
     "horizontal_position": "Horizontal position",
     "hotspot": "Hotspot",
@@ -387,6 +397,7 @@
     "information_background": "Information background",
     "information_text": "Information text",
     "ingredient": "Ingredient",
+    "ingredient_spotlight": "Ingredient spotlight",
     "ingredients": "Ingredients",
     "input_corner_radius": "Input corner radius",
     "input_type": "Input type",
@@ -693,6 +704,7 @@
     "rotate_prompts_on_mobile": "Rotate prompts on mobile",
     "round_converted_amounts_up": "Round converted amounts up",
     "round_images": "Round images",
+    "routine_steps": "Routine steps",
     "row": "Row",
     "row_1_label": "Row 1 label",
     "row_1_value": "Row 1 value",
@@ -903,8 +915,10 @@
     "star_rating": "Star rating",
     "stars_only": "Stars only",
     "start": "Start",
+    "starting_position": "Starting position",
     "stay_on_the_page": "Stay on the page",
     "step": "Step",
+    "step_label": "Step label",
     "sticky_header": "Sticky header",
     "stock": "Stock",
     "store": "Store",
@@ -941,13 +955,16 @@
     "testimonial": "Testimonial",
     "testimonials": "Testimonials",
     "text": "Text",
+    "text_above": "Text above",
     "text_after_in_stock": "Text after \"In stock\"",
     "text_after_the_end": "Text after the end",
     "text_alignment": "Text alignment",
     "text_button": "Text button",
+    "text_first": "Text first",
     "text_for_empty_fields": "Text for empty fields",
     "text_for_empty_values": "Text for empty values",
     "text_image_and_socials": "Text, image and socials",
+    "text_last": "Text last",
     "text_link": "Text link",
     "text_on_images": "Text on images",
     "text_on_the_image": "Text on the image",
@@ -989,6 +1006,7 @@
     "uppercase_subheadings": "Uppercase subheadings",
     "url": "URL",
     "use_count_for_the_number_left": "Use [count] for the number left.",
+    "use_images_of_the_same_size": "Use images of the same size.",
     "used_for_stacked_text_and_buttons": "Used for stacked text and buttons.",
     "useful_for_routines_step_1_step_2": "Useful for routines: Step 1, Step 2…",
     "uses_real_inventory_counts": "Uses real inventory counts.",
@@ -1123,6 +1141,16 @@
           },
           "heading": {
             "info": "Leave empty for \"Description\" in the shopper's language."
+          }
+        }
+      },
+      "finder_question": {
+        "settings": {
+          "answers": {
+            "info": "One per line. Use \"Label = filter value\" when the label differs from the filter value."
+          },
+          "param": {
+            "info": "Copy it from the collection URL after choosing the filter, for example filter.v.option.size or filter.p.tag."
           }
         }
       },
@@ -1262,6 +1290,13 @@
       }
     },
     "sections": {
+      "before_after": {
+        "settings": {
+          "disclaimer": {
+            "info": "For example how the result was achieved. Results are your own claim."
+          }
+        }
+      },
       "cart_drawer": {
         "settings": {
           "shipping_calculator_default_country": {

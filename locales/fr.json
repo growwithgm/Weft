@@ -213,6 +213,11 @@
       "title": "Choisissez un nouveau mot de passe"
     }
   },
+  "finder": {
+    "compare_label": "Déplacez pour comparer {{ before }} et {{ after }}",
+    "progress": "Question {{ step }} sur {{ count }}",
+    "show_results": "Voir mes produits"
+  },
   "general": {
     "back_to_top": "Retour en haut",
     "breadcrumbs": "Fil d'Ariane",

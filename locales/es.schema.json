@@ -23,6 +23,8 @@
     "after_a_delay": "Tras un tiempo",
     "after_adding_to_cart": "Después de añadir al carrito",
     "after_first_interaction": "Tras la primera interacción",
+    "after_image": "Imagen de después",
+    "after_label": "Etiqueta de después",
     "after_page_load": "Tras cargar la página",
     "after_scrolling_halfway": "Al desplazarse hasta la mitad",
     "after_the_links": "Después de los enlaces",
@@ -49,6 +51,7 @@
     "announcement": "Anuncio",
     "announcement_bar": "Barra de anuncios",
     "answer": "Respuesta",
+    "answers": "Respuestas",
     "application_page": "Página de solicitud",
     "apply_button_label": "Texto del botón de solicitud",
     "apply_the_color_scheme_to_the_text_box_only": "Aplicar el esquema de color solo al cuadro de texto",
@@ -87,7 +90,10 @@
     "barcode": "Código de barras",
     "base_size": "Tamaño base",
     "basket": "Cesta",
+    "before_and_after": "Antes y después",
     "before_collection_number": "Antes de la colección número",
+    "before_image": "Imagen de antes",
+    "before_label": "Etiqueta de antes",
     "before_product_number": "Antes del producto número",
     "before_the_links": "Antes de los enlaces",
     "behind_the_text": "Detrás del texto",
@@ -167,6 +173,7 @@
     "collection_image": "Imagen de la colección",
     "collection_list": "Lista de colecciones",
     "collection_products": "Productos de la colección",
+    "collection_to_filter": "Colección que se filtra",
     "collections": "Colecciones",
     "collections_list": "Lista de colecciones",
     "collections_per_page": "Colecciones por página",
@@ -282,6 +289,7 @@
     "field": "Campo",
     "fill": "Rellenar",
     "filled": "Relleno",
+    "filter_parameter": "Parámetro del filtro",
     "filter_promotion": "Promoción en filtros",
     "filters": "Filtros",
     "first_part_heading": "Título de la primera parte",
@@ -317,6 +325,7 @@
     "grid": "Cuadrícula",
     "group": "Grupo",
     "guide_image": "Imagen de la guía",
+    "guided_finder": "Buscador guiado",
     "h1": "H1",
     "h2": "H2",
     "h3": "H3",
@@ -349,6 +358,7 @@
     "highlight_text": "Texto destacado",
     "highlighted_products": "Productos destacados",
     "highlights": "Puntos destacados",
+    "hint": "Ayuda",
     "horizontal": "Horizontal",
     "horizontal_position": "Posición horizontal",
     "hotspot": "Punto interactivo",
@@ -387,6 +397,7 @@
     "information_background": "Fondo informativo",
     "information_text": "Texto informativo",
     "ingredient": "Ingrediente",
+    "ingredient_spotlight": "Ingredientes destacados",
     "ingredients": "Ingredientes",
     "input_corner_radius": "Radio de esquina de los campos",
     "input_type": "Tipo de campo",
@@ -693,6 +704,7 @@
     "rotate_prompts_on_mobile": "Rotar sugerencias en móvil",
     "round_converted_amounts_up": "Redondear hacia arriba los importes convertidos",
     "round_images": "Imágenes redondas",
+    "routine_steps": "Pasos de la rutina",
     "row": "Fila",
     "row_1_label": "Etiqueta de la fila 1",
     "row_1_value": "Valor de la fila 1",
@@ -903,8 +915,10 @@
     "star_rating": "Valoración con estrellas",
     "stars_only": "Solo estrellas",
     "start": "Inicio",
+    "starting_position": "Posición inicial",
     "stay_on_the_page": "Permanecer en la página",
     "step": "Paso",
+    "step_label": "Etiqueta del paso",
     "sticky_header": "Encabezado fijo",
     "stock": "Stock",
     "store": "Tienda",
@@ -941,13 +955,16 @@
     "testimonial": "Testimonio",
     "testimonials": "Testimonios",
     "text": "Texto",
+    "text_above": "Texto encima",
     "text_after_in_stock": "Texto tras \"En stock\"",
     "text_after_the_end": "Texto al terminar",
     "text_alignment": "Alineación del texto",
     "text_button": "Botón de texto",
+    "text_first": "Texto primero",
     "text_for_empty_fields": "Texto para campos vacíos",
     "text_for_empty_values": "Texto para valores vacíos",
     "text_image_and_socials": "Texto, imagen y redes",
+    "text_last": "Texto al final",
     "text_link": "Enlace de texto",
     "text_on_images": "Texto sobre las imágenes",
     "text_on_the_image": "Texto sobre la imagen",
@@ -989,6 +1006,7 @@
     "uppercase_subheadings": "Subtítulos en mayúsculas",
     "url": "URL",
     "use_count_for_the_number_left": "Usa [count] para las unidades restantes.",
+    "use_images_of_the_same_size": "Usa imágenes del mismo tamaño.",
     "used_for_stacked_text_and_buttons": "Se usa para el texto apilado y los botones.",
     "useful_for_routines_step_1_step_2": "Útil para rutinas: Paso 1, Paso 2…",
     "uses_real_inventory_counts": "Usa el inventario real.",
@@ -1123,6 +1141,16 @@
           },
           "heading": {
             "info": "Déjalo vacío para mostrar \"Descripción\" en el idioma del cliente."
+          }
+        }
+      },
+      "finder_question": {
+        "settings": {
+          "answers": {
+            "info": "Una por línea. Usa \"Etiqueta = valor del filtro\" si la etiqueta es distinta del valor del filtro."
+          },
+          "param": {
+            "info": "Cópialo de la URL de la colección tras elegir el filtro, por ejemplo filter.v.option.size o filter.p.tag."
           }
         }
       },
@@ -1262,6 +1290,13 @@
       }
     },
     "sections": {
+      "before_after": {
+        "settings": {
+          "disclaimer": {
+            "info": "Por ejemplo, cómo se consiguió el resultado. Los resultados son afirmaciones propias."
+          }
+        }
+      },
       "cart_drawer": {
         "settings": {
           "shipping_calculator_default_country": {

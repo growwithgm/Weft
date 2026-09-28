@@ -213,6 +213,11 @@
       "title": "Kies een nieuw wachtwoord"
     }
   },
+  "finder": {
+    "compare_label": "Verschuif om {{ before }} en {{ after }} te vergelijken",
+    "progress": "Vraag {{ step }} van {{ count }}",
+    "show_results": "Mijn producten tonen"
+  },
   "general": {
     "back_to_top": "Terug naar boven",
     "breadcrumbs": "Kruimelpad",

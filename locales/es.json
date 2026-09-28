@@ -213,6 +213,11 @@
       "title": "Elige una contraseña nueva"
     }
   },
+  "finder": {
+    "compare_label": "Desliza para comparar {{ before }} y {{ after }}",
+    "progress": "Pregunta {{ step }} de {{ count }}",
+    "show_results": "Ver mis productos"
+  },
   "general": {
     "back_to_top": "Volver arriba",
     "breadcrumbs": "Ruta de navegación",

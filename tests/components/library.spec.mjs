@@ -4,8 +4,8 @@ import { shell } from './fixtures/shell.mjs';
 
 const img = 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22800%22 height=%22400%22/%3E';
 
-const slideshow = ({ transition = 'slide', autoplay = false } = {}) => `
-<slide-show class="slideshow slideshow--${transition}" role="region" aria-roledescription="carousel" aria-label="Brand" data-transition="${transition}" data-autoplay="${autoplay}" data-speed="3" data-pause-hover="true" style="width: 600px">
+const slideshow = ({ transition = 'slide', autoplay = false, speed = 3 } = {}) => `
+<slide-show class="slideshow slideshow--${transition}" role="region" aria-roledescription="carousel" aria-label="Brand" data-transition="${transition}" data-autoplay="${autoplay}" data-speed="${speed}" data-pause-hover="true" style="width: 600px">
   <div class="slideshow__track" data-track aria-live="polite">
     ${[1, 2, 3].map((n) => `<div class="slideshow__slide" data-slide role="group" aria-roledescription="slide" id="s${n}" style="height: 200px"><img src="${img}" alt="" style="width: 100%"><a href="/p${n}" id="link${n}">Slide ${n}</a></div>`).join('')}
   </div>
@@ -77,7 +77,7 @@ export const tests = {
   },
 
   async 'autoplay advances, pauses on hover and stops with the pause button'({ page, base, expect, eventually }) {
-    await open(page, base, slideshow({ autoplay: true }), ['carousel.js']);
+    await open(page, base, slideshow({ autoplay: true, speed: 1 }), ['carousel.js']);
     await page.mouse.move(1000, 700);
     await eventually(() => document.getElementById('dot1').hasAttribute('aria-current'), 'advanced after the interval');
     await page.click('#pause');
@@ -86,7 +86,7 @@ export const tests = {
     expect(await page.$eval('[data-track]', (t) => t.getAttribute('aria-live')), 'announces slides while paused').toBe('polite');
     const current = await page.$eval('.slideshow__dot[aria-current]', (d) => d.id);
     await page.mouse.move(1000, 700);
-    await page.waitForTimeout(3500);
+    await page.waitForTimeout(1500);
     expect(await page.$eval('.slideshow__dot[aria-current]', (d) => d.id), 'stays put while paused').toBe(current);
   },
 

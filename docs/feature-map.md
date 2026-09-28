@@ -146,9 +146,9 @@ Status: `planned` (P0) → `built` (with phase) → `verified` (scenario or chec
 | Unit price | `product-price` | P2 | done |
 | Purchase options | `blocks/purchase-options` | P2 | done |
 | Complete the look / routine / ritual | `blocks/complementary-products` (heading per preset) | P2 | done |
-| Guided finder | `sections/guided-finder` (links to filtered collection URLs only) | P6 | planned |
-| Before/after slider | `sections/before-after` (keyboard + touch) | P6 | planned |
-| Steps / routine | `sections/routine-steps` (optional product per step) | P6 | planned |
+| Guided finder | `sections/guided-finder` (links to filtered collection URLs only) | P6 | done |
+| Before/after slider | `sections/before-after` (keyboard + touch) | P6 | done |
+| Steps / routine | `sections/routine-steps` (optional product per step) | P6 | done |
 | Shop the look (hotspots) | `sections/shoppable-image` | P5 | done |
 | Quick order list | `sections/quick-order-list` (reuses `<order-matrix>` from `assets/matrix.js`), `templates/page.quick-order.json`; quick order drawer from wholesale cards (`sections/quick-add`, setting `wholesale_quick_order_drawer`) | P3 | done |
 | Order matrix (any two options) | `blocks/order-matrix` | P3 | done |
@@ -158,7 +158,7 @@ Status: `planned` (P0) → `built` (with phase) → `verified` (scenario or chec
 | Period after opening icon | `blocks/pao-icon` | P6 | done |
 | Gift message line-item property | `blocks/gift-message` | P6 | planned |
 | Gift sets list components (bundles) | `cart-line` + product block reads `product.metafields` / bundle components via `item.item_components` (*verify P6*) | P6 | planned |
-| Ingredient spotlight | `sections/ingredient-spotlight` | P6 | planned |
+| Ingredient spotlight | `sections/ingredient-spotlight` | P6 | done |
 | "For professionals" banner | `image-banner` preset linking to wholesale sign-in page | P6 | planned |
 | Gift guide | `featured-collection` preset "Gift guide" | P6 | planned |
 | Professional-only products, testers | native catalogs (no code) + tag fallback + scenario 19 | P3/P6 | partial |
