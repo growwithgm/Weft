@@ -27,7 +27,7 @@ export default [
       { type: 'image_picker', id: 'logo', label: 'Logo' },
       range('logo_width', 'Logo width on large screens', 50, 300, 5, 160, 'px'),
       range('logo_width_mobile', 'Logo width on mobile', 40, 200, 4, 100, 'px'),
-      { type: 'image_picker', id: 'favicon', label: 'Favicon', info: 'Shown at 32 × 32 px.' }
+      { type: 'image_picker', id: 'favicon', label: 'Favicon', info: 'Scaled down to 32 x 32px.' }
     ]
   },
   {
@@ -349,7 +349,7 @@ export default [
     name: 'Wholesale',
     settings: [
       para('Wholesale mode is on for customers signed in to a Shopify B2B company location. Prices, quantity rules and volume pricing always come from your B2B catalogs.'),
-      text('wholesale_matrix_tag', 'Order matrix tag', 'row', 'Products with this tag show the color × size order matrix to wholesale buyers.'),
+      text('wholesale_matrix_tag', 'Order matrix tag', 'row', 'Products with this tag show the color and size order matrix to wholesale buyers.'),
       text('wholesale_only_tag', 'Wholesale-only tag', 'b2b', 'Fallback for products that are still visible to retail. Prefer excluding them from your retail catalogs.'),
       check('wholesale_show_sku', 'Show SKUs to wholesale buyers'),
       check('wholesale_installments', 'Show the installments line to wholesale buyers', true, 'Only turn this on when your B2B checkout offers the installments provider.'),

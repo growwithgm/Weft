@@ -179,7 +179,7 @@
     },
     "order": {
       "billing": "Billing",
-      "cancelled": "Cancelled on {{ date }}",
+      "cancelled": "Canceled on {{ date }}",
       "fulfilled": "Shipped on {{ date }}",
       "placed": "Placed on {{ date }}",
       "shipping": "Shipping",
@@ -524,7 +524,7 @@
     "available": "Available",
     "back_to_shop": "Back to the shop",
     "below_min": "Below minimum ({{ count }})",
-    "browse_catalogue": "Browse the catalogue",
+    "browse_catalogue": "Browse the catalog",
     "capped": "{{ line }} set to {{ count }}, the most available",
     "change": "Change",
     "clear": "Clear",

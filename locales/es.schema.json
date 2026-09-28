@@ -258,7 +258,6 @@
     "dropdown_options": "Opciones del desplegable",
     "each_one_names_the_product_it_is_about": "Cada una indica el producto al que se refiere.",
     "email": "Correo electrónico",
-    "email_sign_up": "Suscripción por correo",
     "email_signup": "Suscripción por correo",
     "empty_cart_link": "Enlace del carrito vacío",
     "enable_filtering": "Activar filtros",
@@ -642,7 +641,7 @@
     "product_labels": "Etiquetas de producto",
     "product_list": "Lista de productos",
     "product_page": "Página de producto",
-    "product_sign_up": "Registro de interés",
+    "product_signup": "Suscripción al producto",
     "product_tabs": "Pestañas del producto",
     "product_type": "Tipo de producto",
     "product_type_filter_in_the_search_field": "Filtro por tipo de producto en el buscador",
@@ -738,6 +737,7 @@
     "rule_for_other_countries": "Regla para otros países",
     "ruler": "Regla",
     "sale": "Oferta",
+    "scaled_down_to_32_x_32px": "Se reduce a 32 x 32px.",
     "scent_notes": "Notas olfativas",
     "score": "Puntuación",
     "scroll_per_arrow_click": "Desplazamiento por clic en la flecha",
@@ -898,7 +898,6 @@
     "show_weight": "Mostrar peso",
     "show_weight_on_lines": "Mostrar peso en las líneas",
     "shown_after_the_text": "Se muestra después del texto.",
-    "shown_at_32_32_px": "Se muestra a 32 × 32 px.",
     "shown_on_large_screens": "Se muestra en pantallas grandes.",
     "shows_the_page_content_in_the_pop_up": "Muestra el contenido de la página en la ventana emergente.",
     "shows_under_the_filters_on_large_screens": "Se muestra debajo de los filtros en pantallas grandes.",
@@ -1013,7 +1012,6 @@
     "tile_text_font": "Fuente del texto de los mosaicos",
     "time_per_message": "Tiempo por mensaje",
     "title": "Título",
-    "title_alignment": "Alineación del título",
     "title_of_the_link_that_gets_the_badge": "Título del enlace que recibe la insignia.",
     "toggle_icon": "Icono para desplegar",
     "top": "Arriba",
@@ -1658,7 +1656,7 @@
             "info": "Actívalo solo si tu checkout B2B ofrece ese proveedor de pago a plazos."
           },
           "wholesale_matrix_tag": {
-            "info": "Los productos con esta etiqueta muestran la matriz de pedido color × talla a los compradores mayoristas."
+            "info": "Los productos con esta etiqueta muestran la matriz de pedido por color y talla a los compradores mayoristas."
           },
           "wholesale_mode_is_on_for_customers_signed_in_to_": {
             "content": "El modo mayorista se activa para clientes que inician sesión en una ubicación de empresa B2B de Shopify. Los precios, las reglas de cantidad y los precios por volumen siempre provienen de tus catálogos B2B."

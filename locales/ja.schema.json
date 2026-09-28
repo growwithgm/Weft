@@ -258,7 +258,6 @@
     "dropdown_options": "ドロップダウンのオプション",
     "each_one_names_the_product_it_is_about": "それぞれ対象となる商品名が表示されます。",
     "email": "メール",
-    "email_sign_up": "メール登録",
     "email_signup": "メール登録",
     "empty_cart_link": "空のカートのリンク",
     "enable_filtering": "絞り込みを有効にする",
@@ -642,7 +641,7 @@
     "product_labels": "商品ラベル",
     "product_list": "商品リスト",
     "product_page": "商品ページ",
-    "product_sign_up": "商品のお知らせ登録",
+    "product_signup": "商品の登録フォーム",
     "product_tabs": "商品タブ",
     "product_type": "商品タイプ",
     "product_type_filter_in_the_search_field": "検索欄の商品タイプフィルター",
@@ -738,6 +737,7 @@
     "rule_for_other_countries": "その他の国のルール",
     "ruler": "定規",
     "sale": "セール",
+    "scaled_down_to_32_x_32px": "32 x 32pxに縮小されます。",
     "scent_notes": "香りのノート",
     "score": "スコア",
     "scroll_per_arrow_click": "矢印クリックごとのスクロール量",
@@ -898,7 +898,6 @@
     "show_weight": "重量を表示する",
     "show_weight_on_lines": "カート行に重量を表示する",
     "shown_after_the_text": "テキストの後に表示されます。",
-    "shown_at_32_32_px": "32 × 32 pxで表示されます。",
     "shown_on_large_screens": "大画面で表示されます。",
     "shows_the_page_content_in_the_pop_up": "ページのコンテンツをポップアップに表示します。",
     "shows_under_the_filters_on_large_screens": "大画面ではフィルターの下に表示されます。",
@@ -1013,7 +1012,6 @@
     "tile_text_font": "タイルのテキストのフォント",
     "time_per_message": "メッセージごとの表示時間",
     "title": "タイトル",
-    "title_alignment": "タイトルの配置",
     "title_of_the_link_that_gets_the_badge": "バッジを付けるリンクのタイトルです。",
     "toggle_icon": "開閉アイコン",
     "top": "上",
@@ -1658,7 +1656,7 @@
             "info": "B2Bのチェックアウトでその分割払いプロバイダーが利用できる場合にのみオンにしてください。"
           },
           "wholesale_matrix_tag": {
-            "info": "このタグの付いた商品では、卸売購入者に色 × サイズの注文マトリックスが表示されます。"
+            "info": "このタグが付いた商品では、卸売の購入者にカラーとサイズの注文マトリックスが表示されます。"
           },
           "wholesale_mode_is_on_for_customers_signed_in_to_": {
             "content": "Shopify B2Bの会社ロケーションにログインした顧客には卸売モードが有効になります。価格、数量ルール、ボリューム価格は常にB2Bカタログから取得されます。"

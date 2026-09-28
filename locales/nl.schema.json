@@ -258,7 +258,6 @@
     "dropdown_options": "Opties in vervolgkeuzelijst",
     "each_one_names_the_product_it_is_about": "Bij elk item staat het product waarop het betrekking heeft.",
     "email": "E-mail",
-    "email_sign_up": "Aanmelding voor e-mail",
     "email_signup": "Aanmelding voor e-mail",
     "empty_cart_link": "Link bij lege winkelwagen",
     "enable_filtering": "Filteren inschakelen",
@@ -642,7 +641,7 @@
     "product_labels": "Productlabels",
     "product_list": "Productlijst",
     "product_page": "Productpagina",
-    "product_sign_up": "Aanmelding voor product",
+    "product_signup": "Productaanmelding",
     "product_tabs": "Producttabbladen",
     "product_type": "Producttype",
     "product_type_filter_in_the_search_field": "Filter op producttype in het zoekveld",
@@ -738,6 +737,7 @@
     "rule_for_other_countries": "Regel voor andere landen",
     "ruler": "Liniaal",
     "sale": "Uitverkoop",
+    "scaled_down_to_32_x_32px": "Verkleind tot 32 x 32px.",
     "scent_notes": "Geurnoten",
     "score": "Score",
     "scroll_per_arrow_click": "Scrollen per klik op pijl",
@@ -898,7 +898,6 @@
     "show_weight": "Gewicht weergeven",
     "show_weight_on_lines": "Gewicht op regels weergeven",
     "shown_after_the_text": "Getoond na de tekst.",
-    "shown_at_32_32_px": "Getoond op 32 × 32 px.",
     "shown_on_large_screens": "Getoond op grote schermen.",
     "shows_the_page_content_in_the_pop_up": "Toont de paginacontent in de pop-up.",
     "shows_under_the_filters_on_large_screens": "Wordt onder de filters getoond op grote schermen.",
@@ -1013,7 +1012,6 @@
     "tile_text_font": "Lettertype tegeltekst",
     "time_per_message": "Tijd per bericht",
     "title": "Titel",
-    "title_alignment": "Uitlijning van titel",
     "title_of_the_link_that_gets_the_badge": "Titel van de link die de badge krijgt.",
     "toggle_icon": "Uitklappictogram",
     "top": "Boven",
@@ -1658,7 +1656,7 @@
             "info": "Schakel dit alleen in als je B2B-checkout deze aanbieder voor betalen in termijnen aanbiedt."
           },
           "wholesale_matrix_tag": {
-            "info": "Producten met deze tag tonen de bestelmatrix kleur × maat aan groothandelskopers."
+            "info": "Producten met deze tag tonen groothandelskopers de bestelmatrix per kleur en maat."
           },
           "wholesale_mode_is_on_for_customers_signed_in_to_": {
             "content": "De groothandelsmodus is actief voor klanten die zijn ingelogd bij een bedrijfslocatie in Shopify B2B. Prijzen, hoeveelheidsregels en volumeprijzen komen altijd uit je B2B-catalogi."

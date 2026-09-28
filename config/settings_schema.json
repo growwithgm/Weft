@@ -39,7 +39,7 @@
         "type": "image_picker",
         "id": "favicon",
         "label": "t:labels.favicon",
-        "info": "t:labels.shown_at_32_32_px"
+        "info": "t:labels.scaled_down_to_32_x_32px"
       }
     ]
   },

@@ -258,7 +258,6 @@
     "dropdown_options": "Dropdown-Optionen",
     "each_one_names_the_product_it_is_about": "Jede nennt das Produkt, um das es geht.",
     "email": "E-Mail",
-    "email_sign_up": "E-Mail-Anmeldung",
     "email_signup": "E-Mail-Anmeldung",
     "empty_cart_link": "Link bei leerem Warenkorb",
     "enable_filtering": "Filtern aktivieren",
@@ -642,7 +641,7 @@
     "product_labels": "Produktlabels",
     "product_list": "Produktliste",
     "product_page": "Produktseite",
-    "product_sign_up": "Produkt-Interessenliste",
+    "product_signup": "Produkt-Anmeldung",
     "product_tabs": "Produkt-Tabs",
     "product_type": "Produkttyp",
     "product_type_filter_in_the_search_field": "Produkttyp-Filter im Suchfeld",
@@ -738,6 +737,7 @@
     "rule_for_other_countries": "Regel für andere Länder",
     "ruler": "Lineal",
     "sale": "Sale",
+    "scaled_down_to_32_x_32px": "Wird auf 32 x 32px verkleinert.",
     "scent_notes": "Duftnoten",
     "score": "Punktzahl",
     "scroll_per_arrow_click": "Scrollweite pro Pfeilklick",
@@ -898,7 +898,6 @@
     "show_weight": "Gewicht anzeigen",
     "show_weight_on_lines": "Gewicht in den Positionen anzeigen",
     "shown_after_the_text": "Wird nach dem Text angezeigt.",
-    "shown_at_32_32_px": "Wird mit 32 × 32 px angezeigt.",
     "shown_on_large_screens": "Wird auf großen Bildschirmen angezeigt.",
     "shows_the_page_content_in_the_pop_up": "Zeigt den Seiteninhalt im Pop-up an.",
     "shows_under_the_filters_on_large_screens": "Wird auf großen Bildschirmen unter den Filtern angezeigt.",
@@ -1013,7 +1012,6 @@
     "tile_text_font": "Schriftart für Kacheltext",
     "time_per_message": "Zeit pro Nachricht",
     "title": "Titel",
-    "title_alignment": "Titelausrichtung",
     "title_of_the_link_that_gets_the_badge": "Titel des Links, der das Badge erhält.",
     "toggle_icon": "Symbol zum Aufklappen",
     "top": "Oben",
@@ -1658,7 +1656,7 @@
             "info": "Aktiviere dies nur, wenn dein B2B-Checkout den Ratenzahlungsanbieter anbietet."
           },
           "wholesale_matrix_tag": {
-            "info": "Produkte mit diesem Tag zeigen Großhandelskunden die Bestellmatrix Farbe × Größe."
+            "info": "Produkte mit diesem Tag zeigen Großhandelskunden die Bestellmatrix nach Farbe und Größe."
           },
           "wholesale_mode_is_on_for_customers_signed_in_to_": {
             "content": "Der Großhandelsmodus ist für Kunden aktiv, die bei einem Unternehmensstandort in Shopify B2B angemeldet sind. Preise, Mengenregeln und Staffelpreise stammen immer aus deinen B2B-Katalogen."

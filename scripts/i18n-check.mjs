@@ -64,6 +64,23 @@ for (const d of ['layout', 'sections', 'blocks', 'snippets', 'templates']) {
   for (const f of readdirSync(p, { recursive: true })) if (String(f).endsWith('.liquid')) scan(join(p, String(f)));
 }
 
+// Editor text follows the Theme Store text rules: American English, no ampersands (the Search &
+// Discovery app's name aside), statements rather than questions, Shopify's terms, "64 x 64px" sizes.
+{
+  const schemaText = flatten(JSON.parse(readFileSync(join(dir, 'en.default.schema.json'), 'utf8')));
+  const rules = [
+    [/\b(colours?|centred?|centres|greys?|catalogues?|customis\w*|organis\w*|dialogues?|cancelled)\b/i, 'use American English'],
+    [/&(?! Discovery)/, 'no ampersands'],
+    [/\?\s*$/, 'use a statement, not a question'],
+    [/\b(homepage|slider|sub-heading|sign-up|sign up|side bar|button name|shortcut icon|ajax)\b/i, "use Shopify's terms (home page, slideshow, subheading, signup, sidebar, button label, favicon, cart type)"],
+    [/\d\s*[×x]\s*\d+\s+px|\d+\s*×\s*\d+/, 'write image sizes as "64 x 64px"']
+  ];
+  for (const [key, value] of schemaText) {
+    if (typeof value !== 'string') continue;
+    for (const [re, why] of rules) if (re.test(value)) problems.push(`locales/en.default.schema.json: "${key}" (${value.slice(0, 60)}): ${why}`);
+  }
+}
+
 // Generated files in sync
 try {
   execFileSync(process.execPath, [join(ROOT, 'scripts/build-locales.mjs'), '--check'], { stdio: 'pipe' });

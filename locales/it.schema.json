@@ -258,7 +258,6 @@
     "dropdown_options": "Opzioni del menu a discesa",
     "each_one_names_the_product_it_is_about": "Ognuna indica il prodotto a cui si riferisce.",
     "email": "Email",
-    "email_sign_up": "Iscrizione via email",
     "email_signup": "Iscrizione via email",
     "empty_cart_link": "Link del carrello vuoto",
     "enable_filtering": "Attiva i filtri",
@@ -642,7 +641,7 @@
     "product_labels": "Etichette dei prodotti",
     "product_list": "Elenco dei prodotti",
     "product_page": "Pagina del prodotto",
-    "product_sign_up": "Registrazione di interesse",
+    "product_signup": "Iscrizione al prodotto",
     "product_tabs": "Schede del prodotto",
     "product_type": "Tipo di prodotto",
     "product_type_filter_in_the_search_field": "Filtro per tipo di prodotto nel campo di ricerca",
@@ -738,6 +737,7 @@
     "rule_for_other_countries": "Regola per gli altri paesi",
     "ruler": "Righello",
     "sale": "In offerta",
+    "scaled_down_to_32_x_32px": "Ridimensionato a 32 x 32px.",
     "scent_notes": "Note olfattive",
     "score": "Punteggio",
     "scroll_per_arrow_click": "Scorrimento per clic sulla freccia",
@@ -898,7 +898,6 @@
     "show_weight": "Mostra il peso",
     "show_weight_on_lines": "Mostra il peso nelle righe",
     "shown_after_the_text": "Mostrato dopo il testo.",
-    "shown_at_32_32_px": "Mostrato a 32 × 32 px.",
     "shown_on_large_screens": "Mostrato su schermi grandi.",
     "shows_the_page_content_in_the_pop_up": "Mostra il contenuto della pagina nel pop-up.",
     "shows_under_the_filters_on_large_screens": "Mostrato sotto i filtri su schermi grandi.",
@@ -1013,7 +1012,6 @@
     "tile_text_font": "Font del testo dei riquadri",
     "time_per_message": "Tempo per messaggio",
     "title": "Titolo",
-    "title_alignment": "Allineamento del titolo",
     "title_of_the_link_that_gets_the_badge": "Titolo del link che riceve il badge.",
     "toggle_icon": "Icona di apertura/chiusura",
     "top": "In alto",
@@ -1658,7 +1656,7 @@
             "info": "Attivalo solo se il check-out B2B offre il fornitore del pagamento rateale."
           },
           "wholesale_matrix_tag": {
-            "info": "I prodotti con questo tag mostrano agli acquirenti all'ingrosso la matrice d'ordine colore × taglia."
+            "info": "I prodotti con questo tag mostrano agli acquirenti all'ingrosso la matrice d'ordine per colore e taglia."
           },
           "wholesale_mode_is_on_for_customers_signed_in_to_": {
             "content": "La modalità ingrosso è attiva per i clienti che hanno effettuato l'accesso a una sede aziendale B2B di Shopify. Prezzi, regole di quantità e prezzi per volume provengono sempre dai tuoi cataloghi B2B."

@@ -258,7 +258,6 @@
     "dropdown_options": "Options du menu déroulant",
     "each_one_names_the_product_it_is_about": "Chacun indique le produit concerné.",
     "email": "E-mail",
-    "email_sign_up": "Inscription à la newsletter",
     "email_signup": "Inscription à la newsletter",
     "empty_cart_link": "Lien du panier vide",
     "enable_filtering": "Activer le filtrage",
@@ -642,7 +641,7 @@
     "product_labels": "Étiquettes de produit",
     "product_list": "Liste de produits",
     "product_page": "Page produit",
-    "product_sign_up": "Inscription aux alertes produit",
+    "product_signup": "Inscription produit",
     "product_tabs": "Onglets du produit",
     "product_type": "Type de produit",
     "product_type_filter_in_the_search_field": "Filtre par type de produit dans le champ de recherche",
@@ -738,6 +737,7 @@
     "rule_for_other_countries": "Règle pour les autres pays",
     "ruler": "Règle graduée",
     "sale": "Promotion",
+    "scaled_down_to_32_x_32px": "Réduit à 32 x 32px.",
     "scent_notes": "Notes olfactives",
     "score": "Note",
     "scroll_per_arrow_click": "Défilement par clic sur une flèche",
@@ -898,7 +898,6 @@
     "show_weight": "Afficher le poids",
     "show_weight_on_lines": "Afficher le poids sur les lignes",
     "shown_after_the_text": "Affiché après le texte.",
-    "shown_at_32_32_px": "Affiché en 32 × 32 px.",
     "shown_on_large_screens": "Affiché sur grands écrans.",
     "shows_the_page_content_in_the_pop_up": "Affiche le contenu de la page dans la fenêtre contextuelle.",
     "shows_under_the_filters_on_large_screens": "S'affiche sous les filtres sur grands écrans.",
@@ -1013,7 +1012,6 @@
     "tile_text_font": "Police du texte des vignettes",
     "time_per_message": "Durée par message",
     "title": "Titre",
-    "title_alignment": "Alignement du titre",
     "title_of_the_link_that_gets_the_badge": "Titre du lien qui reçoit le badge.",
     "toggle_icon": "Icône de dépliage",
     "top": "Haut",
@@ -1658,7 +1656,7 @@
             "info": "Activez cette option uniquement si votre paiement B2B propose ce prestataire de paiement en plusieurs fois."
           },
           "wholesale_matrix_tag": {
-            "info": "Les produits portant cette balise affichent la matrice de commande couleur × taille aux acheteurs en gros."
+            "info": "Les produits avec cette balise affichent la matrice de commande par couleur et taille aux acheteurs en gros."
           },
           "wholesale_mode_is_on_for_customers_signed_in_to_": {
             "content": "Le mode vente en gros est actif pour les clients connectés à un emplacement d'entreprise B2B Shopify. Les prix, les règles de quantité et les tarifs par volume proviennent toujours de vos catalogues B2B."

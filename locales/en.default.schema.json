@@ -258,7 +258,6 @@
     "dropdown_options": "Dropdown options",
     "each_one_names_the_product_it_is_about": "Each one names the product it is about.",
     "email": "Email",
-    "email_sign_up": "Email sign-up",
     "email_signup": "Email signup",
     "empty_cart_link": "Empty cart link",
     "enable_filtering": "Enable filtering",
@@ -642,7 +641,7 @@
     "product_labels": "Product labels",
     "product_list": "Product list",
     "product_page": "Product page",
-    "product_sign_up": "Product sign-up",
+    "product_signup": "Product signup",
     "product_tabs": "Product tabs",
     "product_type": "Product type",
     "product_type_filter_in_the_search_field": "Product type filter in the search field",
@@ -738,6 +737,7 @@
     "rule_for_other_countries": "Rule for other countries",
     "ruler": "Ruler",
     "sale": "Sale",
+    "scaled_down_to_32_x_32px": "Scaled down to 32 x 32px.",
     "scent_notes": "Scent notes",
     "score": "Score",
     "scroll_per_arrow_click": "Scroll per arrow click",
@@ -898,7 +898,6 @@
     "show_weight": "Show weight",
     "show_weight_on_lines": "Show weight on lines",
     "shown_after_the_text": "Shown after the text.",
-    "shown_at_32_32_px": "Shown at 32 × 32 px.",
     "shown_on_large_screens": "Shown on large screens.",
     "shows_the_page_content_in_the_pop_up": "Shows the page content in the pop-up.",
     "shows_under_the_filters_on_large_screens": "Shows under the filters on large screens.",
@@ -1013,7 +1012,6 @@
     "tile_text_font": "Tile text font",
     "time_per_message": "Time per message",
     "title": "Title",
-    "title_alignment": "Title alignment",
     "title_of_the_link_that_gets_the_badge": "Title of the link that gets the badge.",
     "toggle_icon": "Toggle icon",
     "top": "Top",
@@ -1658,7 +1656,7 @@
             "info": "Only turn this on when your B2B checkout offers the installments provider."
           },
           "wholesale_matrix_tag": {
-            "info": "Products with this tag show the color × size order matrix to wholesale buyers."
+            "info": "Products with this tag show the color and size order matrix to wholesale buyers."
           },
           "wholesale_mode_is_on_for_customers_signed_in_to_": {
             "content": "Wholesale mode is on for customers signed in to a Shopify B2B company location. Prices, quantity rules and volume pricing always come from your B2B catalogs."
