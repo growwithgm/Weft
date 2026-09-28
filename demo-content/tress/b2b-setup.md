@@ -34,6 +34,9 @@ Assign it to both locations. Include every product below, including the wholesal
 | Scalp detox scrub | 150 ml | €8.60 | 6 | 6 | — | — |
 | Heat protect spray | 150 ml | €7.40 | 6 | 6 | — | 24+ €7.00 |
 | Volume dry shampoo | 200 ml | €6.20 | 6 | 6 | — | — |
+| Purple toning shampoo | 250 ml | €7.60 | 6 | 6 | — | 24+ €7.20 |
+| Purple toning shampoo | 1 l | €20.20 | 6 | 6 | — | — |
+| Leave-in conditioner | 200 ml | €7.80 | 6 | 6 | — | 24+ €7.40 |
 | Wide-tooth comb | Default Title | €3.80 | 12 | 12 | — | — |
 
 Quantity rules and volume pricing are set per variant in the catalog's price list (Catalogs > the catalog > Products > Volume pricing / Quantity rules). They follow Shopify's validation: the minimum and maximum are multiples of the increment, and each volume price starts above the minimum at a multiple of the increment. `npm run test:unit` checks every row above.

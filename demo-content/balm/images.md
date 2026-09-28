@@ -23,6 +23,9 @@ Sizes: product images square or 4:5 at 2048 px on the long side; banners 2880 x 
 | sea-salt-soak-2.jpg | Sea salt soak | 2 | Salt dissolving in water | Sea salt soak, salt dissolving in water |
 | gentle-body-wash-1.jpg | Gentle body wash | 1 | Pump bottle and refill pouch | Gentle body wash, pump bottle and refill pouch |
 | nourishing-lip-balm-1.jpg | Nourishing lip balm | 1 | Open tin on a haze background | Nourishing lip balm, open tin on a haze background |
+| rose-body-lotion-1.jpg | Rose body lotion | 1 | Pump bottle on a haze background | Rose body lotion, pump bottle on a haze background |
+| rose-body-lotion-2.jpg | Rose body lotion | 2 | Lotion texture on the back of a hand | Rose body lotion, lotion texture on the back of a hand |
+| exfoliating-mitt-1.jpg | Exfoliating mitt | 1 | Mitt hanging by its loop beside a towel | Exfoliating mitt, mitt hanging by its loop beside a towel |
 | konjac-sponge-1.jpg | Konjac sponge | 1 | Sponge beside a folded towel | Konjac sponge, sponge beside a folded towel |
 
 ## Home page, collections, pages and journal
@@ -33,7 +36,7 @@ Sizes: product images square or 4:5 at 2048 px on the long side; banners 2880 x 
 | home-gift.jpg | Wrapped gift box with a handwritten card | Home page > Image banner (second), gifting |
 | before.jpg | Dry skin on a forearm, photographed against a warm neutral card | Home page > Before and after (before) |
 | after.jpg | The same forearm after two weeks of scrub and butter, same light and crop | Home page > Before and after (after) |
-| collection-butter.jpg | Whipped butter in an open jar, scooped with a spatula | Collection image: Body butter |
+| collection-butter.jpg | Whipped butter in an open jar, scooped with a spatula | Collection image: Butters and lotions |
 | collection-scrub.jpg | Coffee scrub scattered on a slate | Collection image: Scrubs |
 | collection-oil.jpg | Dropper bottle catching the light | Collection image: Oils |
 | journal-ritual.jpg | Scrub, butter and oil lined up by a bath | Journal article: The three-step body ritual |

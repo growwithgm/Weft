@@ -10,7 +10,7 @@ export default {
   weft: {
     store: 'Weft demo',
     vendor: 'Weft Studio',
-    industry: 'Clothing and fashion',
+    industry: 'Clothing',
     unitNote: null,
     metafields: [
       { key: 'custom.subtitle', type: 'single_line_text_field', name: 'Subtitle', use: 'Product card subtitle (Theme settings > Product cards)' },
@@ -169,7 +169,7 @@ export default {
   tress: {
     store: 'Tress demo',
     vendor: 'Maison Tress',
-    industry: 'Health and beauty (hair care)',
+    industry: 'Beauty (hair care)',
     unitNote: 'Unit prices per 100 ml (per 1 l for back-bar sizes); set them on each variant in the admin (Unit price section).',
     metafields: [
       { key: 'shopify.hair-type', type: 'list.metaobject_reference (category metafield)', name: 'Hair type', use: 'Attribute chips (Hair type) and collection filters; set values in the admin from the Hair care category' },
@@ -283,6 +283,26 @@ export default {
         note: 'Sold out, to show the Remind me state.'
       },
       {
+        handle: 'purple-toning-shampoo', title: 'Purple toning shampoo', type: 'Shampoo', category: 'Health & Beauty > Personal Care > Hair Care > Shampoo & Conditioner > Shampoo', tags: ['Color care', 'sulfate-free'],
+        description: '<p>A violet-pigmented shampoo that cancels brassy yellow tones in blonde, silver and highlighted hair. Leave it on for one to three minutes, depending on how cool you want the result.</p>',
+        options: ['Size'], variants: [['250 ml', 44, 16.5, { measure: '250 ml', base: '100 ml' }], ['1 l', 18, 44, { measure: '1 l', base: '100 ml' }]],
+        grams: 300,
+        metafields: { 'custom.subtitle': 'Blonde and silver hair', 'custom.concern': 'Brassiness', 'custom.inci': 'Aqua, Sodium Cocoyl Isethionate, Cocamidopropyl Betaine, Glycerin, Hydrolyzed Rice Protein, Panthenol, Parfum, Citric Acid, CI 60730, Sodium Benzoate', 'custom.how_to_use': 'Apply to wet hair and lather\nLeave for one to three minutes\nRinse well; use once or twice a week' },
+        hairType: 'Straight, Wavy, Curly',
+        wholesale: { price: 7.6, perVariant: { '1 l': 20.2 }, min: 6, increment: 6, tiers: [[24, 7.2]] },
+        images: ['250 ml bottle on a mist background', 'Violet lather on blonde lengths']
+      },
+      {
+        handle: 'leave-in-conditioner', title: 'Leave-in conditioner', type: 'Conditioner', category: 'Health & Beauty > Personal Care > Hair Care > Shampoo & Conditioner > Conditioner', tags: ['Frizz', 'Damage', 'vegan'],
+        description: '<p>A light milk spray that detangles, softens frizz and protects the ends between washes. Mist it on damp or dry hair; there is nothing to rinse.</p>',
+        options: ['Size'], variants: [['200 ml', 52, 17, { measure: '200 ml', base: '100 ml' }]],
+        grams: 240,
+        metafields: { 'custom.subtitle': 'No-rinse detangler', 'custom.concern': 'Frizz; Tangles', 'custom.inci': 'Aqua, Cetearyl Alcohol, Glycerin, Behentrimonium Chloride, Hydrolyzed Quinoa, Panthenol, Parfum, Phenoxyethanol', 'custom.how_to_use': 'Shake well\nMist over damp or dry lengths\nComb through and style as usual' },
+        hairType: 'Wavy, Curly, Coily',
+        wholesale: { price: 7.8, min: 6, increment: 6, tiers: [[24, 7.4]] },
+        images: ['Spray bottle on a mist background', 'Comb gliding through wavy hair']
+      },
+      {
         handle: 'wide-tooth-comb', title: 'Wide-tooth comb', type: 'Tool', category: 'Health & Beauty > Personal Care > Hair Care > Hair Care Tools > Combs & Brushes', tags: ['tools'],
         description: '<p>A saw-cut comb with rounded teeth for detangling wet hair without pulling.</p>',
         options: ['Title'], variants: [['Default Title', 90, 9]],
@@ -297,7 +317,7 @@ export default {
   balm: {
     store: 'Balm demo',
     vendor: 'Balm Atelier',
-    industry: 'Health and beauty (body care)',
+    industry: 'Beauty (body care)',
     unitNote: 'Unit prices per 100 ml or per 100 g; set them on each variant in the admin (Unit price section).',
     metafields: [
       { key: 'shopify.skin-type', type: 'list.metaobject_reference (category metafield)', name: 'Skin type', use: 'Attribute chips (Skin type) and collection filters; set values in the admin from the Skin care category' },
@@ -310,7 +330,7 @@ export default {
       { key: 'custom.pao_months', type: 'number_integer', name: 'Period after opening (months)', use: 'Period after opening block (dynamic source)' }
     ],
     collections: [
-      { title: 'Body butter', handle: 'body-butter', rule: 'Type is equal to Body butter', description: 'Whipped butters for dry skin.' },
+      { title: 'Butters and lotions', handle: 'butters-and-lotions', rule: 'Type is equal to Body butter, or Type is equal to Body lotion', description: 'Whipped butters and light lotions for dry skin.' },
       { title: 'Scrubs', handle: 'scrubs', rule: 'Type is equal to Scrub', description: 'Polish away dry skin twice a week.' },
       { title: 'Oils', handle: 'oils', rule: 'Type is equal to Oil', description: 'Fast-absorbing dry oils.' },
       { title: 'Hand care', handle: 'hand-care', rule: 'Type is equal to Hand care', description: 'Creams for hands that wash often.' },
@@ -413,6 +433,25 @@ export default {
         metafields: { 'custom.subtitle': 'Candelilla and shea', 'custom.pao_months': '12' },
         wholesale: { price: 2.6, min: 24, increment: 24 },
         images: ['Open tin on a haze background']
+      },
+      {
+        handle: 'rose-body-lotion', title: 'Rose body lotion', type: 'Body lotion', category: 'Health & Beauty > Personal Care > Cosmetics > Skin Care > Lotions & Moisturizers', tags: ['vegan', 'Floral'],
+        description: '<p>A fluid lotion with rose water and oat that sinks in within a minute, for mornings when a butter feels too rich.</p>',
+        options: ['Size'], variants: [['250 ml', 38, 21, { measure: '250 ml', base: '100 ml' }]],
+        grams: 290,
+        metafields: { 'custom.subtitle': 'Light daily lotion', 'custom.scent_top': 'Pink grapefruit', 'custom.scent_heart': 'Rose, Peony', 'custom.scent_base': 'White musk', 'custom.inci': 'Rosa Damascena Flower Water, Aqua, Caprylic/Capric Triglyceride, Glycerin, Avena Sativa Kernel Extract, Cetearyl Alcohol, Parfum, Phenoxyethanol, Citronellol, Geraniol', 'custom.pao_months': '12' },
+        skinType: 'Normal, Dry',
+        wholesale: { price: 9.4, min: 6, increment: 6, tiers: [[24, 8.9]] },
+        images: ['Pump bottle on a haze background', 'Lotion texture on the back of a hand']
+      },
+      {
+        handle: 'exfoliating-mitt', title: 'Exfoliating mitt', type: 'Tool', category: 'Health & Beauty > Personal Care > Cosmetics > Bath & Body > Bath Sponges & Loofahs', tags: ['tools', 'Unscented'],
+        description: '<p>A woven mitt that lifts dry skin in the shower without a scrub. Rinse it after use and hang it to dry by its loop.</p>',
+        options: ['Title'], variants: [['Default Title', 60, 10]],
+        grams: 40,
+        metafields: { 'custom.subtitle': 'Woven, machine washable' },
+        wholesale: { price: 4.2, min: 12, increment: 12 },
+        images: ['Mitt hanging by its loop beside a towel']
       },
       {
         handle: 'konjac-sponge', title: 'Konjac sponge', type: 'Tool', category: 'Health & Beauty > Personal Care > Cosmetics > Bath & Body > Bath Sponges & Loofahs', tags: ['tools', 'Unscented'],

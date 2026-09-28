@@ -10,7 +10,7 @@ BUILD_SPEC §8.3, rehearsed on 28 Sep 2026 against the store build only. Nothing
 | Coverage: every live section, block and content value accounted for | part of the command above (`migration-report.md`, first lines) | sections 173 of 174 carried (the article comments section is part of Weft's article section), blocks 341 of 356 carried (the rest dropped with reasons), content values 372 of 372 found in the output |
 | Store build | `node scripts/package-theme.mjs --store ibban` | `dist/ibban/` and `dist/weft-ibban.zip`; lint 0 errors / 0 warnings on the build, context templates checked merged onto their parent |
 | Unit tests for the migration | `npm run test:unit` | pass, including a full `--check` run and contrast of every colour scheme in the store config |
-| Theme Check on the store build | `shopify theme check --path dist/ibban` | runs in CI once Shopify CLI is available in the session; the Theme Store build already passes it in CI |
+| Theme Check on the store build | CI, `.github/workflows/theme-check.yml` (store build step) | passes in CI since commit 775d91a; for the store build only, JSONMissingBlock is skipped on files that hold app blocks (Theme Check misreads them next to theme blocks) and OrphanedSnippet is off (it flags every snippet in a copied build) |
 
 `store-configs/ibban/migration-report.md` lists every change with its reason. Read it before step 3.
 

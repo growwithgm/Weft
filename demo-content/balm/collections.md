@@ -4,7 +4,7 @@ Create every collection as an automated (smart) collection with the conditions b
 
 | Collection | Handle | Conditions | Description |
 |---|---|---|---|
-| Body butter | `body-butter` | Type is equal to Body butter | Whipped butters for dry skin. |
+| Butters and lotions | `butters-and-lotions` | Type is equal to Body butter, or Type is equal to Body lotion | Whipped butters and light lotions for dry skin. |
 | Scrubs | `scrubs` | Type is equal to Scrub | Polish away dry skin twice a week. |
 | Oils | `oils` | Type is equal to Oil | Fast-absorbing dry oils. |
 | Hand care | `hand-care` | Type is equal to Hand care | Creams for hands that wash often. |
@@ -21,7 +21,7 @@ Online Store > Navigation.
 
 | Label | Link |
 |---|---|
-| Body butter | `/collections/body-butter` |
+| Butters and lotions | `/collections/butters-and-lotions` |
 | Scrubs | `/collections/scrubs` |
 | Oils | `/collections/oils` |
 | Hand care | `/collections/hand-care` |

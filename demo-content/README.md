@@ -4,8 +4,8 @@ One folder per preset, each a complete recipe for its Theme Store demo store (BU
 
 | Preset | Folder | Products | Primary industry |
 |---|---|---|---|
-| Weft | [`weft/`](weft/README.md) | 12 + gift card | Clothing and fashion |
-| Tress | [`tress/`](tress/README.md) | 10 | Health and beauty (hair care) |
-| Balm | [`balm/`](balm/README.md) | 10 | Health and beauty (body care) |
+| Weft | [`weft/`](weft/README.md) | 12 + gift card | Clothing |
+| Tress | [`tress/`](tress/README.md) | 12 | Beauty (hair care) |
+| Balm | [`balm/`](balm/README.md) | 12 | Beauty (body care) |
 
 Content rules: authentic copy, never lorem ipsum, no other brand's names or images, licensed images only (Burst or owned photography, credited in each `images.md`).

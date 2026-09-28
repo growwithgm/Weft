@@ -37,6 +37,8 @@ Assign it to both locations. Include every product below, including the wholesal
 | Gentle body wash | 300 ml | €6.20 | 6 | 6 | — | — |
 | Gentle body wash | 1 l refill | €14.40 | 6 | 6 | — | — |
 | Nourishing lip balm | 15 ml | €2.60 | 24 | 24 | — | — |
+| Rose body lotion | 250 ml | €9.40 | 6 | 6 | — | 24+ €8.90 |
+| Exfoliating mitt | Default Title | €4.20 | 12 | 12 | — | — |
 | Konjac sponge | Default Title | €3.20 | 12 | 12 | — | — |
 
 Quantity rules and volume pricing are set per variant in the catalog's price list (Catalogs > the catalog > Products > Volume pricing / Quantity rules). They follow Shopify's validation: the minimum and maximum are multiples of the increment, and each volume price starts above the minimum at a multiple of the increment. `npm run test:unit` checks every row above.
@@ -50,4 +52,4 @@ Quantity rules and volume pricing are set per variant in the catalog's price lis
 ## Trade specifics
 
 - Body butter tester: one to three per scent per order, at €4.50, for shop counters.
-- Case sizes: lip balm by 24, hand cream and konjac sponge by 12, everything else by 6 (gift set by 3).
+- Case sizes: lip balm by 24; hand cream, konjac sponge and exfoliating mitt by 12; the gift set by 3; everything else by 6.

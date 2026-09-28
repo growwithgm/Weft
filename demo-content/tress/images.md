@@ -26,6 +26,10 @@ Sizes: product images square or 4:5 at 2048 px on the long side; banners 2880 x 
 | heat-protect-spray-1.jpg | Heat protect spray | 1 | Spray bottle on a mist background | Heat protect spray, spray bottle on a mist background |
 | heat-protect-spray-2.jpg | Heat protect spray | 2 | Mist in motion | Heat protect spray, mist in motion |
 | volume-dry-shampoo-1.jpg | Volume dry shampoo | 1 | Can on a mist background | Volume dry shampoo, can on a mist background |
+| purple-toning-shampoo-1.jpg | Purple toning shampoo | 1 | 250 ml bottle on a mist background | Purple toning shampoo, 250 ml bottle on a mist background |
+| purple-toning-shampoo-2.jpg | Purple toning shampoo | 2 | Violet lather on blonde lengths | Purple toning shampoo, violet lather on blonde lengths |
+| leave-in-conditioner-1.jpg | Leave-in conditioner | 1 | Spray bottle on a mist background | Leave-in conditioner, spray bottle on a mist background |
+| leave-in-conditioner-2.jpg | Leave-in conditioner | 2 | Comb gliding through wavy hair | Leave-in conditioner, comb gliding through wavy hair |
 | wide-tooth-comb-1.jpg | Wide-tooth comb | 1 | Comb on a mist background | Wide-tooth comb, comb on a mist background |
 
 ## Home page, collections, pages and journal

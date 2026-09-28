@@ -140,6 +140,7 @@ export default {
       'Home page > Featured collection: collection "Repair routine". Collection list: Shampoo, Conditioner, Masks and treatments, Styling, Color, Tools.',
       'Page "Find your routine" (template page.finder): set the finder questions as listed under "Finder answers" below; the answers match the hair types and the tags in products.csv.',
       'Product page > Ingredients > full list: connect custom.inci. How to use: custom.how_to_use. Attribute chips: Hair type (shopify.hair-type) and Concern (custom.concern).',
+      'Product page: replace the Description block with a Product tabs block (Description on; first custom tab "Delivery and returns" with the delivery text from the FAQ), so the product tabs show on the demo store.',
       'Theme settings > Product labels > Custom label: custom.label ("Professional").',
       'Theme settings > Product cards: show subtitle on (custom.subtitle).'
     ],
@@ -149,7 +150,7 @@ export default {
   balm: {
     menus: {
       'main-menu': [
-        ['Body butter', '/collections/body-butter'],
+        ['Butters and lotions', '/collections/butters-and-lotions'],
         ['Scrubs', '/collections/scrubs'],
         ['Oils', '/collections/oils'],
         ['Hand care', '/collections/hand-care'],
@@ -209,10 +210,12 @@ export default {
       ]
     },
     editor: [
-      'Home page > Featured collection (first): "Body butter"; second: "Gift sets". Collection list: Body butter, Scrubs, Oils, Hand care, Gift sets, Under €25.',
+      'Home page > Featured collection (first): "Butters and lotions"; second: "Gift sets". Collection list: Butters and lotions, Scrubs, Oils, Hand care, Gift sets, Under €25.',
       'Page "Find your routine" (template page.finder): set the finder questions as listed under "Finder answers" below; the answers match the skin types and the tags in products.csv.',
       'Product page > Scent notes: top custom.scent_top, heart custom.scent_heart, base custom.scent_base. Ingredients > full list: custom.inci. Period after opening: custom.pao_months. Warnings row: custom.warnings.',
       'Ritual gift set: product template with the Gift message custom option (Custom option block, Gift message preset).',
+      'Home page > Gift guide tabs: Under €25 → collection "Under €25", €25 to €50 → "€25 to €50", Over €50 → "Over €50".',
+      'Product page: replace the Description block with a Product tabs block (Description on; first custom tab "Delivery and returns" with the delivery text from the FAQ), so the product tabs show on the demo store.',
       'Theme settings > Product cards: show subtitle on (custom.subtitle).'
     ],
     policies

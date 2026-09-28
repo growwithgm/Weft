@@ -95,8 +95,10 @@ Settings > Policies: Refund policy, Privacy policy, Terms of service, Shipping p
 
 After installing the theme with this preset, in Online Store > Themes > Customize:
 
-1. Home page > Featured collection (first): "Body butter"; second: "Gift sets". Collection list: Body butter, Scrubs, Oils, Hand care, Gift sets, Under €25.
+1. Home page > Featured collection (first): "Butters and lotions"; second: "Gift sets". Collection list: Butters and lotions, Scrubs, Oils, Hand care, Gift sets, Under €25.
 2. Page "Find your routine" (template page.finder): set the finder questions as listed under "Finder answers" below; the answers match the skin types and the tags in products.csv.
 3. Product page > Scent notes: top custom.scent_top, heart custom.scent_heart, base custom.scent_base. Ingredients > full list: custom.inci. Period after opening: custom.pao_months. Warnings row: custom.warnings.
 4. Ritual gift set: product template with the Gift message custom option (Custom option block, Gift message preset).
-5. Theme settings > Product cards: show subtitle on (custom.subtitle).
+5. Home page > Gift guide tabs: Under €25 → collection "Under €25", €25 to €50 → "€25 to €50", Over €50 → "Over €50".
+6. Product page: replace the Description block with a Product tabs block (Description on; first custom tab "Delivery and returns" with the delivery text from the FAQ), so the product tabs show on the demo store.
+7. Theme settings > Product cards: show subtitle on (custom.subtitle).

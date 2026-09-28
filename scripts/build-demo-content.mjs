@@ -69,7 +69,7 @@ const SCENES = {
     ['home-gift', 'Wrapped gift box with a handwritten card', 'Home page > Image banner (second), gifting'],
     ['before', 'Dry skin on a forearm, photographed against a warm neutral card', 'Home page > Before and after (before)'],
     ['after', 'The same forearm after two weeks of scrub and butter, same light and crop', 'Home page > Before and after (after)'],
-    ['collection-butter', 'Whipped butter in an open jar, scooped with a spatula', 'Collection image: Body butter'],
+    ['collection-butter', 'Whipped butter in an open jar, scooped with a spatula', 'Collection image: Butters and lotions'],
     ['collection-scrub', 'Coffee scrub scattered on a slate', 'Collection image: Scrubs'],
     ['collection-oil', 'Dropper bottle catching the light', 'Collection image: Oils'],
     ['journal-ritual', 'Scrub, butter and oil lined up by a bath', 'Journal article: The three-step body ritual'],
@@ -271,7 +271,7 @@ function b2bMd(preset, catalog) {
     out.push('## Salon specifics', '', '- Color cream is the order matrix product (tag "row"): shade by size, case of 12.', '- Back-bar shampoo is professional-only (scenario 19).', '- Custom label "Professional" (`custom.label`) marks salon products for retail visitors.', '');
   }
   if (preset === 'balm') {
-    out.push('## Trade specifics', '', '- Body butter tester: one to three per scent per order, at €4.50, for shop counters.', '- Case sizes: lip balm by 24, hand cream and konjac sponge by 12, everything else by 6 (gift set by 3).', '');
+    out.push('## Trade specifics', '', '- Body butter tester: one to three per scent per order, at €4.50, for shop counters.', '- Case sizes: lip balm by 24; hand cream, konjac sponge and exfoliating mitt by 12; the gift set by 3; everything else by 6.', '');
   }
   return out.join('\n');
 }

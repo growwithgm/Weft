@@ -98,5 +98,6 @@ After installing the theme with this preset, in Online Store > Themes > Customiz
 1. Home page > Featured collection: collection "Repair routine". Collection list: Shampoo, Conditioner, Masks and treatments, Styling, Color, Tools.
 2. Page "Find your routine" (template page.finder): set the finder questions as listed under "Finder answers" below; the answers match the hair types and the tags in products.csv.
 3. Product page > Ingredients > full list: connect custom.inci. How to use: custom.how_to_use. Attribute chips: Hair type (shopify.hair-type) and Concern (custom.concern).
-4. Theme settings > Product labels > Custom label: custom.label ("Professional").
-5. Theme settings > Product cards: show subtitle on (custom.subtitle).
+4. Product page: replace the Description block with a Product tabs block (Description on; first custom tab "Delivery and returns" with the delivery text from the FAQ), so the product tabs show on the demo store.
+5. Theme settings > Product labels > Custom label: custom.label ("Professional").
+6. Theme settings > Product cards: show subtitle on (custom.subtitle).

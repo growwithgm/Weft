@@ -100,3 +100,8 @@ test('scenario tests default to products and pages that exist in the demo stores
   assert.ok(p('professional').wholesale.only, 'professional product is wholesale-only');
   assert.ok(p('hair').sellingPlan && variantsOf(p('hair')).every((v) => v.unit), 'hair product has a selling plan and unit prices');
 });
+
+test('Theme Store listing follows the listing rules and docs/theme-store-listing.md is in sync', () => {
+  const out = execFileSync(process.execPath, [new URL('../../scripts/build-listing.mjs', import.meta.url).pathname, '--check'], { encoding: 'utf8' });
+  assert.match(out, /0 problems/);
+});
