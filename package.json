@@ -13,6 +13,7 @@
     "check": "npm run lint && npm run i18n && npm run test:unit",
     "theme-check": "shopify theme check --fail-level suggestion",
     "package:ibban": "node scripts/package-theme.mjs --store ibban",
-    "package:themestore": "node scripts/package-theme.mjs --themestore"
+    "package:themestore": "node scripts/package-theme.mjs --themestore",
+    "demo-content": "node scripts/build-demo-content.mjs"
   }
 }

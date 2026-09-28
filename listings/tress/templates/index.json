@@ -176,7 +176,7 @@
           "settings": {
             "question": "What would you like to fix?",
             "param": "filter.p.tag",
-            "answers": "Damage\nFrizz\nVolume\nColour care"
+            "answers": "Damage\nFrizz\nVolume\nColor care"
           }
         }
       },

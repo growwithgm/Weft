@@ -64,12 +64,51 @@ for (const d of ['layout', 'sections', 'blocks', 'snippets', 'templates']) {
   for (const f of readdirSync(p, { recursive: true })) if (String(f).endsWith('.liquid')) scan(join(p, String(f)));
 }
 
+// Storefront text and default content use American English: storefront strings, template and
+// section group content (base and listings), and the defaults in section and block schemas. The
+// option-name lists that match merchants' own option names (e.g. "Color,Colour,Couleur") are exempt.
+const AMERICAN = /\b(colours?|coloured|centred?|centres|greys?|catalogues?|customis\w*|organis\w*|personalis\w*|moisturis\w*|favourites?|behaviours?|jewellery|dialogues?|cancelled)\b/i;
+{
+  const check = (where, value) => {
+    if (typeof value === 'string' && AMERICAN.test(value) && !/Couleur/.test(value)) problems.push(`${where} (${value.slice(0, 60)}): use American English`);
+  };
+  for (const [key, value] of base) check(`locales/en.default.json: "${key}"`, value);
+  const jsonFiles = [];
+  for (const d of ['templates', 'sections', 'listings']) {
+    const p = join(ROOT, d);
+    if (!existsSync(p)) continue;
+    for (const f of readdirSync(p, { recursive: true })) if (String(f).endsWith('.json')) jsonFiles.push(join(p, String(f)));
+  }
+  for (const file of jsonFiles) {
+    const data = JSON.parse(readFileSync(file, 'utf8').replace(/^\s*\/\*[\s\S]*?\*\//, ''));
+    for (const [key, value] of flatten(data)) check(`${relative(ROOT, file)}: "${key}"`, value);
+  }
+  const defaults = (node, where) => {
+    if (Array.isArray(node)) node.forEach((n) => defaults(n, where));
+    else if (node && typeof node === 'object') {
+      for (const [k, v] of Object.entries(node)) {
+        if (k === 'default' || (k === 'settings' && v && !Array.isArray(v) && typeof v === 'object')) {
+          if (typeof v === 'string') check(where, v);
+          else for (const [, x] of flatten({ v })) check(where, x);
+        } else defaults(v, where);
+      }
+    }
+  };
+  for (const d of ['sections', 'blocks']) {
+    for (const f of readdirSync(join(ROOT, d))) {
+      if (!f.endsWith('.liquid')) continue;
+      const m = readFileSync(join(ROOT, d, f), 'utf8').match(/\{%-?\s*schema\s*-?%\}([\s\S]*?)\{%-?\s*endschema\s*-?%\}/);
+      if (m) defaults(JSON.parse(m[1]), `${d}/${f}: schema default`);
+    }
+  }
+}
+
 // Editor text follows the Theme Store text rules: American English, no ampersands (the Search &
 // Discovery app's name aside), statements rather than questions, Shopify's terms, "64 x 64px" sizes.
 {
   const schemaText = flatten(JSON.parse(readFileSync(join(dir, 'en.default.schema.json'), 'utf8')));
   const rules = [
-    [/\b(colours?|centred?|centres|greys?|catalogues?|customis\w*|organis\w*|dialogues?|cancelled)\b/i, 'use American English'],
+    [AMERICAN, 'use American English'],
     [/&(?! Discovery)/, 'no ampersands'],
     [/\?\s*$/, 'use a statement, not a question'],
     [/\b(homepage|slider|sub-heading|sign-up|sign up|side bar|button name|shortcut icon|ajax)\b/i, "use Shopify's terms (home page, slideshow, subheading, signup, sidebar, button label, favicon, cart type)"],

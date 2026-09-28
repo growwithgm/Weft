@@ -9,10 +9,10 @@ import { join } from 'node:path';
 import { unlock, withTheme, trackErrors } from './helpers.mjs';
 
 const handles = {
-  matrix: process.env.E2E_MATRIX_PRODUCT || 'demo-wrap-dress',
-  oneSize: process.env.E2E_ONESIZE_PRODUCT || 'demo-silk-scarf',
-  tagOnly: process.env.E2E_TAG_ONLY_PRODUCT || 'demo-trade-only',
-  excluded: process.env.E2E_EXCLUDED_PRODUCT || 'demo-catalog-excluded',
+  matrix: process.env.E2E_MATRIX_PRODUCT || 'leila-embroidered-tunic',
+  oneSize: process.env.E2E_ONESIZE_PRODUCT || 'zahra-embroidered-kaftan',
+  tagOnly: process.env.E2E_TAG_ONLY_PRODUCT || 'embroidery-swatch-card',
+  excluded: process.env.E2E_EXCLUDED_PRODUCT || 'tunic-sample-pack',
   quickOrderPage: process.env.E2E_QUICK_ORDER_PAGE || 'quick-order'
 };
 

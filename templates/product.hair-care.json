@@ -146,7 +146,7 @@
           "type": "attribute-chips",
           "settings": {
             "label": "Hair type",
-            "values": "Dry, Damaged, Colour-treated",
+            "values": "Dry, Damaged, Color-treated",
             "metafield": "shopify.hair-type"
           }
         },
@@ -167,7 +167,7 @@
               "type": "_highlight",
               "settings": {
                 "icon": "check",
-                "text": "Safe for colour-treated hair"
+                "text": "Safe for color-treated hair"
               }
             },
             "h3": {
