@@ -6,7 +6,7 @@
   assign b = block.settings
   assign ss = section.settings
   assign products = ss.product_list
-  assign empty = ss.empty_field_text
+  assign empty_text = ss.empty_field_text
   case b.type
     when 'vendor'
       assign row_label = 'compare.vendor' | t
@@ -87,7 +87,7 @@
       endcapture
       assign cell = cell | strip
     -%}
-    <td{% if cell == blank %} class="comparison__empty"{% endif %}>{% if cell == blank %}{{ empty }}{% else %}{{ cell }}{% endif %}</td>
+    <td{% if cell == blank %} class="comparison__empty"{% endif %}>{% if cell == blank %}{{ empty_text }}{% else %}{{ cell }}{% endif %}</td>
   {%- endfor -%}
 </tr>
 

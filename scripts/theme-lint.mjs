@@ -294,6 +294,7 @@ for (const file of liquidFiles) {
     const declared = new Map();
     for (const m of code.matchAll(/(?:\{%-?\s*|^\s*)(assign|capture)\s+([A-Za-z_][\w-]*)/gm)) if (!declared.has(m[2])) declared.set(m[2], m.index);
     for (const [name, index] of declared) {
+      if (['empty', 'blank', 'nil', 'null', 'true', 'false'].includes(name)) report('error', file, `"${name}" is a Liquid literal and can't be used as a variable name`, lineOf(src, index));
       const esc = name.replace(/[-]/g, '\\-');
       const uses = [...code.matchAll(new RegExp(`(?<![\\w.-])${esc}(?![\\w-])`, 'g'))].filter((u) => {
         const before = code.slice(Math.max(0, u.index - 12), u.index);
