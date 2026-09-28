@@ -24,7 +24,7 @@
   .card__image--slide { position: absolute; inset: 0; opacity: 0; transition: opacity 250ms ease; }
   [data-card-slideshow].is-sliding .card__image--secondary { opacity: 0; }
   [data-card-slideshow].is-sliding .card__image.is-shown { opacity: 1; }
-  .card__labels { position: absolute; z-index: 1; margin: 8px; }
+  .card__labels { position: absolute; z-index: 1; margin: 8px; display: flex; flex-wrap: wrap; gap: 6px; }
   .card__labels--top_start { inset-block-start: 0; inset-inline-start: 0; } .card__labels--top_end { inset-block-start: 0; inset-inline-end: 0; }
   .card__labels--bottom_start { inset-block-end: 0; inset-inline-start: 0; } .card__labels--bottom_end { inset-block-end: 0; inset-inline-end: 0; }
   .card__error { margin: 6px 0 0; font-size: var(--t-12); font-weight: var(--fw-medium); color: var(--c-error); }

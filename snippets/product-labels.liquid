@@ -61,12 +61,12 @@
 -%}
 <div class="labels labels--{{ context }}">
   {%- if sold_out and settings.label_sold_out_show -%}
-    <span class="label" style="--badge-bg: {{ settings.label_sold_out_bg }}; --badge-fg: {{ settings.label_sold_out_text }}">
+    <span class="badge label" style="--badge-bg: {{ settings.label_sold_out_bg }}; --badge-fg: {{ settings.label_sold_out_text }}">
       {%- if settings.label_sold_out_icon != 'none' -%}{%- render 'icon', name: settings.label_sold_out_icon, size: 12 -%}{%- endif -%}
       {{ 'products.sold_out' | t }}
     </span>
   {%- elsif v.compare_at_price > v.price and settings.label_sale_show -%}
-    <span class="label" style="--badge-bg: {{ settings.label_sale_bg }}; --badge-fg: {{ settings.label_sale_text }}">
+    <span class="badge label" style="--badge-bg: {{ settings.label_sale_bg }}; --badge-fg: {{ settings.label_sale_text }}">
       {%- if settings.label_sale_icon != 'none' -%}{%- render 'icon', name: settings.label_sale_icon, size: 12 -%}{%- endif -%}
       {%- case settings.label_sale_type -%}
         {%- when 'percent' -%}
@@ -81,19 +81,19 @@
     </span>
   {%- endif -%}
   {%- if preorder -%}
-    <span class="label" style="--badge-bg: {{ settings.label_preorder_bg }}; --badge-fg: {{ settings.label_preorder_text }}">
+    <span class="badge label" style="--badge-bg: {{ settings.label_preorder_bg }}; --badge-fg: {{ settings.label_preorder_text }}">
       {%- if settings.label_preorder_icon != 'none' -%}{%- render 'icon', name: settings.label_preorder_icon, size: 12 -%}{%- endif -%}
       {{ 'products.pre_order' | t }}
     </span>
   {%- endif -%}
   {%- if is_new -%}
-    <span class="label" style="--badge-bg: {{ settings.label_new_bg }}; --badge-fg: {{ settings.label_new_text }}">
+    <span class="badge label" style="--badge-bg: {{ settings.label_new_bg }}; --badge-fg: {{ settings.label_new_text }}">
       {%- if settings.label_new_icon != 'none' -%}{%- render 'icon', name: settings.label_new_icon, size: 12 -%}{%- endif -%}
       {{ 'products.labels.new' | t }}
     </span>
   {%- endif -%}
   {%- if custom_text != blank -%}
-    <span class="label" style="--badge-bg: {{ settings.label_custom_bg }}; --badge-fg: {{ settings.label_custom_text }}">
+    <span class="badge label" style="--badge-bg: {{ settings.label_custom_bg }}; --badge-fg: {{ settings.label_custom_text }}">
       {%- if settings.label_custom_icon != 'none' -%}{%- render 'icon', name: settings.label_custom_icon, size: 12 -%}{%- endif -%}
       {{ custom_text | escape }}
     </span>
