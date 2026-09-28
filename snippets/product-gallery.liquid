@@ -101,20 +101,40 @@
     {%- endif -%}
 
     {%- if s.zoom == 'lightbox' or s.zoom == 'both' -%}
+      <link rel="stylesheet" href="{{ 'component-lightbox.css' | asset_url }}" media="print" onload="this.media='all'">
       <dialog class="lightbox color-{{ settings.drawer_color_scheme }}" data-lightbox aria-label="{{ 'products.gallery.label' | t }}" data-light-dismiss>
         <div class="lightbox__panel" data-dialog-body>
           <button type="button" class="icon-button lightbox__close" data-close-dialog aria-label="{{ 'general.close' | t }}">{%- render 'icon', name: 'close' -%}</button>
           <template data-deferred>
-            <ul class="lightbox__list" role="list">
-              {%- for media in product.media -%}
-                {%- if media.position < start_pos or media.position >= end_pos -%}{%- continue -%}{%- endif -%}
-                {%- if media.media_type == 'image' -%}
-                  <li class="lightbox__item" data-lightbox-item="{{ media.id }}">
-                    {{ media | image_url: width: 2400 | image_tag: widths: '1200,1800,2400', sizes: '100vw', loading: 'lazy', class: 'lightbox__image', data-zoomable: '' }}
-                  </li>
-                {%- endif -%}
-              {%- endfor -%}
-            </ul>
+            {%- comment -%} Large screens: thumbnails on the left. Phones: a 2 px line on the right edge and an "n / total" counter. {%- endcomment -%}
+            <div class="lightbox__layout" data-lightbox-layout>
+              <ul class="lightbox__thumbs" role="list">
+                {%- assign lb_index = 0 -%}
+                {%- for media in product.media -%}
+                  {%- if media.position < start_pos or media.position >= end_pos -%}{%- continue -%}{%- endif -%}
+                  {%- if media.media_type == 'image' -%}
+                    {%- assign lb_index = lb_index | plus: 1 -%}
+                    <li>
+                      <button type="button" class="lightbox__thumb media" data-lightbox-thumb="{{ media.id }}" aria-label="{{ 'products.gallery.open' | t: index: lb_index }}">
+                        {{ media | image_url: width: 200 | image_tag: widths: '100,200', sizes: '96px', alt: '', loading: 'lazy' }}
+                      </button>
+                    </li>
+                  {%- endif -%}
+                {%- endfor -%}
+              </ul>
+              <ul class="lightbox__list" role="list" data-lightbox-list>
+                {%- for media in product.media -%}
+                  {%- if media.position < start_pos or media.position >= end_pos -%}{%- continue -%}{%- endif -%}
+                  {%- if media.media_type == 'image' -%}
+                    <li class="lightbox__item" data-lightbox-item="{{ media.id }}">
+                      {{ media | image_url: width: 2400 | image_tag: widths: '1200,1800,2400', sizes: '100vw', loading: 'lazy', class: 'lightbox__image', data-zoomable: '' }}
+                    </li>
+                  {%- endif -%}
+                {%- endfor -%}
+              </ul>
+              <div class="lightbox__progress" aria-hidden="true"><span></span></div>
+              <span class="lightbox__counter tabular" aria-hidden="true" data-lightbox-counter></span>
+            </div>
           </template>
         </div>
       </dialog>

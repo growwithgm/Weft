@@ -20,7 +20,7 @@ const gallery = (layout = 'stacked') => `
       <li><button type="button" data-thumb-target="3" id="t3">3</button></li>
     </ul>
     <dialog class="lightbox" data-lightbox aria-label="Images" data-light-dismiss>
-      <ul><li data-lightbox-item="1"><img src="${img}" alt="" data-zoomable id="zoom1"></li></ul>
+      <div class="lightbox__layout"><ul class="lightbox__thumbs"><li><button type="button" data-lightbox-thumb="1">1</button></li></ul><ul class="lightbox__list" data-lightbox-list><li class="lightbox__item" data-lightbox-item="1"><img src="${img}" alt="" data-zoomable id="zoom1"></li></ul><span data-lightbox-counter></span></div>
       <button type="button" data-close-dialog>Close</button>
     </dialog>
   </product-gallery>

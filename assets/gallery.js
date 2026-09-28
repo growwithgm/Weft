@@ -114,14 +114,46 @@ class ProductGallery extends HTMLElement {
     const dialog = this.querySelector('[data-lightbox]');
     if (!dialog) return;
     openDialog(dialog, opener);
-    const item = dialog.querySelector(`[data-lightbox-item="${mediaId}"]`);
-    if (item) item.scrollIntoView({ block: 'start' });
+    const list = dialog.querySelector('[data-lightbox-list]');
+    if (!list) return;
+    const items = [...list.querySelectorAll('[data-lightbox-item]')];
+    const thumbs = [...dialog.querySelectorAll('[data-lightbox-thumb]')];
+    const counter = dialog.querySelector('[data-lightbox-counter]');
+    const progress = dialog.querySelector('.lightbox__progress');
+    const sync = () => {
+      const index = Math.min(items.length - 1, Math.round(list.scrollTop / (list.clientHeight || 1)));
+      thumbs.forEach((t, i) => (i === index ? t.setAttribute('aria-current', 'true') : t.removeAttribute('aria-current')));
+      if (thumbs[index]) thumbs[index].scrollIntoView({ block: 'nearest' });
+      if (counter) counter.textContent = items.length > 1 ? `${index + 1} / ${items.length}` : '';
+      if (progress) {
+        progress.style.setProperty('--lb-size', String(1 / (items.length || 1)));
+        progress.style.setProperty('--lb-pos', String(index / (items.length || 1)));
+      }
+    };
+    const item = items.find((i) => i.dataset.lightboxItem === mediaId) || items[0];
+    if (item) list.scrollTop = item.offsetTop;
+    sync();
     if (!dialog.dataset.zoomBound) {
       dialog.dataset.zoomBound = '1';
+      list.addEventListener('scroll', () => requestAnimationFrame(sync), { passive: true });
       dialog.addEventListener('click', (e) => {
+        const thumb = e.target.closest('[data-lightbox-thumb]');
+        if (thumb) {
+          const target = items.find((i) => i.dataset.lightboxItem === thumb.dataset.lightboxThumb);
+          if (target) list.scrollTo({ top: target.offsetTop, behavior: reduced() ? 'auto' : 'smooth' });
+          return;
+        }
         const img = e.target.closest('[data-zoomable]');
         if (!img) return;
         img.classList.toggle('is-zoomed');
+        img.closest('.lightbox__item')?.classList.toggle('is-zoomed', img.classList.contains('is-zoomed'));
+      });
+      dialog.addEventListener('keydown', (e) => {
+        if (e.key !== 'ArrowDown' && e.key !== 'ArrowUp' && e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+        if (e.target.closest('input, select, textarea')) return;
+        e.preventDefault();
+        const dir = e.key === 'ArrowDown' || e.key === 'ArrowRight' ? 1 : -1;
+        list.scrollBy({ top: dir * list.clientHeight, behavior: reduced() ? 'auto' : 'smooth' });
       });
     }
   }
