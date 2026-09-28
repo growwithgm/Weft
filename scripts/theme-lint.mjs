@@ -56,6 +56,7 @@ const flatten = (obj, prefix = '', out = new Map()) => {
 const SETTING_TYPES = new Set(
   'checkbox number radio range select text textarea article article_list blog collection collection_list color color_background color_palette color_scheme color_scheme_group font_picker html image_picker inline_richtext link_list liquid metaobject metaobject_list page product product_list richtext text_alignment url video video_url header paragraph'.split(' ')
 );
+const RESOURCE_TYPES = new Set(['article', 'article_list', 'blog', 'collection', 'collection_list', 'metaobject', 'metaobject_list', 'page', 'product', 'product_list']);
 const BLOCK_TAGS = new Set(['if', 'unless', 'for', 'case', 'capture', 'form', 'paginate', 'tablerow', 'comment', 'raw', 'schema', 'style', 'stylesheet', 'javascript', 'doc']);
 const PLURAL_KEYS = new Set(['zero', 'one', 'two', 'few', 'many', 'other']);
 const BRAND_PATTERNS = [/\bib\s?ban\b/i, /boutique luna/i, /sparklayer/i, /\bbss\b/i, /madrid serrano/i, /valencia ruzafa/i, /wasify/i, /judge\.?me/i, /grow\s?nest/i];
@@ -137,6 +138,8 @@ const checkSettings = (file, settings, where) => {
         report('error', file, `${where}: range "${s.id}" default is not on a step`);
     }
     if (s.visible_if && !/^\{\{.*\}\}$/.test(s.visible_if.trim())) report('error', file, `${where}: "${s.id}" visible_if must be a {{ }} expression`);
+    // Theme Check's schema rejects visible_if on resource pickers (found on the first CI run)
+    if (s.visible_if && RESOURCE_TYPES.has(s.type)) report('error', file, `${where}: visible_if is not allowed on ${s.type} settings`);
   }
   return ids;
 };
@@ -277,6 +280,24 @@ for (const file of liquidFiles) {
         else if (!blocks.has(type)) report('error', file, `Missing block "${type}"`, lineOf(schemaless, m.index));
         if (!/\bid:\s*['"][^'"]+['"]/.test(m.markup)) report('error', file, 'Static block needs a literal id', lineOf(schemaless, m.index));
       }
+    }
+  }
+
+  // Raw preload links: Theme Check (AssetPreload) wants the preload_tag filter
+  for (const m of schemaless.matchAll(/<link\b[^>]*rel=["']preload["'][^>]*>/g)) report('error', file, 'Use the preload_tag filter instead of <link rel="preload">', lineOf(src, m.index));
+
+  // UnusedAssign (Theme Check): a variable assigned or captured and never read in the same file
+  {
+    const code = schemaless.replace(/\{%-?\s*(?:raw)\s*-?%\}[\s\S]*?\{%-?\s*endraw\s*-?%\}/g, '');
+    const declared = new Map();
+    for (const m of code.matchAll(/(?:\{%-?\s*|^\s*)(assign|capture)\s+([A-Za-z_][\w-]*)/gm)) if (!declared.has(m[2])) declared.set(m[2], m.index);
+    for (const [name, index] of declared) {
+      const esc = name.replace(/[-]/g, '\\-');
+      const uses = [...code.matchAll(new RegExp(`(?<![\\w.-])${esc}(?![\\w-])`, 'g'))].filter((u) => {
+        const before = code.slice(Math.max(0, u.index - 12), u.index);
+        return !/(assign|capture)\s+$/.test(before);
+      });
+      if (!uses.length) report('error', file, `Unused assign "${name}"`, lineOf(src, index));
     }
   }
 

@@ -13,8 +13,20 @@
     assign unselected = true
   endif
   assign fallback_colors = settings.swatch_color_list | newline_to_br | split: '<br />'
+  assign hide_for_matrix = false
+  if customer and customer.b2b? and settings.wholesale_matrix_tag != blank
+    assign matrix_tag = settings.wholesale_matrix_tag | strip | downcase
+    for tag in p.tags
+      assign t = tag | downcase
+      if t == matrix_tag
+        assign hide_for_matrix = true
+        break
+      endif
+    endfor
+  endif
 -%}
-{%- if p and p.has_only_default_variant == false -%}
+{%- comment -%} On matrix products the grid replaces the picker for wholesale buyers (brief §4.10, gap 13). {%- endcomment -%}
+{%- if p and p.has_only_default_variant == false and hide_for_matrix == false -%}
   <div
     class="variant-picker js-only"
     data-variant-picker

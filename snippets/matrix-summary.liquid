@@ -1,0 +1,20 @@
+{%- comment -%}
+  Summary bar for <order-matrix>: pieces and lines, tier-aware subtotal preview, messages,
+  Clear and Add. Without JavaScript only the Update button shows; the form then posts
+  updates[variant_id] to /cart/update.
+{%- endcomment -%}
+<div class="matrix__summary" data-matrix-summary>
+  <div class="matrix__summary-line">
+    <span class="tabular" data-summary-line>{{ 'wholesale.pieces.other' | t: count: 0 }}</span>
+    <span class="matrix__subtotal">{{ 'cart.subtotal' | t }} <strong class="tabular" data-summary-subtotal>{{ 0 | money }}</strong></span>
+  </div>
+  <ul class="matrix__messages" role="list" aria-live="polite" data-summary-messages></ul>
+  <div class="matrix__actions">
+    <button type="button" class="button button--secondary matrix__clear js-only" data-matrix-clear>{{ 'wholesale.clear' | t }}</button>
+    <button type="submit" class="button matrix__add js-only" data-matrix-add disabled>{{ 'wholesale.add_pieces.other' | t: count: 0 }}</button>
+    <noscript>
+      <p class="matrix__nojs muted">{{ 'wholesale.nojs_note' | t }}</p>
+      <button type="submit" class="button">{{ 'cart.update' | t }}</button>
+    </noscript>
+  </div>
+</div>

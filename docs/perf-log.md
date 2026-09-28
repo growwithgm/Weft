@@ -5,3 +5,5 @@ Every Lighthouse / budget run: date, commit, preset, page, device, score, LCP, C
 | Date | Commit | Preset | Page | Device | Perf | A11y | BP | SEO | LCP | CLS | TBT | Theme CSS | Theme JS | Notes |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | 2026-09-28 | P0 | — | — | — | — | — | — | — | — | — | — | — | — | P0 has no theme code; no runs |
+| 2026-09-28 | P2 | Weft | product | — | — | — | — | — | — | — | — | section-product.css 5.1 KB | core 5.2 + header 1.7 + product 3.3 + gallery 1.9 + quantity 0.9 + sticky-bar 0.7 KB | Budget check only (gzip, lint); Lighthouse CI needs store secrets |
+| 2026-09-28 | P3 | Weft | product (wholesale) | — | — | — | — | — | — | — | — | + component-matrix.css 2.0 KB (wholesale only) | + matrix 5.8 + rules 3.3 KB → ≈ 22.8 KB on a wholesale product page (budget 70 KB) | Budget check only; retail pages load no wholesale JS or CSS |

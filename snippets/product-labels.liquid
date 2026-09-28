@@ -5,7 +5,6 @@
 {%- endcomment -%}
 {%- liquid
   assign v = variant | default: product.selected_or_first_available_variant
-  assign labels = ''
 
   assign sold_out = false
   if v and v.available == false

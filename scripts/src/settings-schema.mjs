@@ -353,6 +353,7 @@ export default [
       check('wholesale_show_sku', 'Show SKUs to wholesale buyers'),
       check('wholesale_installments', 'Show the installments line to wholesale buyers', true, 'Only turn this on when your B2B checkout offers the installments provider.'),
       range('wholesale_tier_rows', 'Volume price rows before "Show all"', 1, 10, 1, 3),
+      check('wholesale_quick_order_drawer', 'Order from product cards in a drawer', false, 'Wholesale buyers open the order matrix or quantity box from a card without leaving the collection.'),
       select('wholesale_location_placement', 'Location switcher', [['chip', 'Chip in the header'], ['menu', 'Inside the account menu']], 'chip'),
       { type: 'page', id: 'wholesale_access_page', label: 'Wholesale sign-in page' },
       { type: 'page', id: 'wholesale_request_page', label: 'Wholesale application page' },

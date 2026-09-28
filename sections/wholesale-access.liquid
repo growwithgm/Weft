@@ -1,0 +1,111 @@
+{%- comment -%}
+  Wholesale sign-in and apply page (brief §7.16, S8): heading, one-line explanation, Sign in
+  (customer accounts), "Apply for wholesale access" and a chat contact line. Signed-in wholesale
+  buyers see links to the catalogue, quick order and their account instead.
+{%- endcomment -%}
+{%- liquid
+  assign s = section.settings
+  assign wholesale = false
+  if customer and customer.b2b?
+    assign wholesale = true
+  endif
+  assign heading_tag = 'h1'
+  if section.index > 1
+    assign heading_tag = 'h2'
+  endif
+  if s.apply_page != blank
+    assign apply_url = s.apply_page.url
+  elsif settings.wholesale_request_page != blank
+    assign apply_url = settings.wholesale_request_page.url
+  endif
+-%}
+<div class="section wholesale-access color-{{ s.color_scheme }}">
+  <div class="page-width">
+    <div class="wholesale-access__card stack">
+      {%- if wholesale -%}
+        <{{ heading_tag }} class="h1">{{ 'wholesale.ordering_for_location' | t: company: customer.current_company.name, location: customer.current_location.name }}</{{ heading_tag }}>
+        <div class="stack">
+          <a class="button button--full" href="{{ settings.cart_empty_link | default: routes.all_products_collection_url }}">{{ 'wholesale.browse_catalogue' | t }}</a>
+          {%- if settings.wholesale_quick_order_page != blank -%}<a class="button button--secondary button--full" href="{{ settings.wholesale_quick_order_page.url }}">{{ 'wholesale.quick_order' | t }}</a>{%- endif -%}
+          <a class="link wholesale-access__link" href="{{ routes.account_url }}">{{ 'wholesale.account_and_orders' | t }}</a>
+        </div>
+      {%- else -%}
+        <{{ heading_tag }} class="h1">{{ s.heading }}</{{ heading_tag }}>
+        {%- if s.text != blank -%}<div class="rte wholesale-access__text">{{ s.text }}</div>{%- endif -%}
+        <div class="stack">
+          <a class="button button--full" href="{{ routes.account_login_url }}">{% if s.sign_in_label != blank %}{{ s.sign_in_label }}{% else %}{{ 'wholesale.sign_in' | t }}{% endif %}</a>
+          {%- if apply_url -%}<a class="button button--secondary button--full" href="{{ apply_url }}">{% if s.apply_label != blank %}{{ s.apply_label }}{% else %}{{ 'wholesale.apply' | t }}{% endif %}</a>{%- endif -%}
+        </div>
+        {%- if s.show_chat and settings.social_whatsapp_url != blank -%}
+          <p class="wholesale-access__chat">
+            {%- render 'icon', name: 'chat', size: 18 -%}
+            <span>{{ s.chat_text }} <a href="{{ settings.social_whatsapp_url }}" target="_blank" rel="noopener">WhatsApp<span class="visually-hidden"> ({{ 'general.opens_new_window' | t }})</span></a></span>
+          </p>
+        {%- endif -%}
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:labels.wholesale_access",
+  "class": "section-wholesale-access",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:labels.heading",
+      "default": "Welcome to our wholesale portal"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "t:labels.text",
+      "default": "<p>Sign in to view your wholesale account, trade pricing and trade-only products.</p>"
+    },
+    {
+      "type": "text",
+      "id": "sign_in_label",
+      "label": "t:labels.sign_in_button_label",
+      "info": "t:labels.leave_empty_for_the_default"
+    },
+    {
+      "type": "text",
+      "id": "apply_label",
+      "label": "t:labels.apply_button_label",
+      "info": "t:labels.leave_empty_for_the_default"
+    },
+    {
+      "type": "page",
+      "id": "apply_page",
+      "label": "t:labels.application_page",
+      "info": "t:text.sections.wholesale_access.settings.apply_page.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_chat",
+      "label": "t:labels.show_chat_contact_line",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "chat_text",
+      "label": "t:labels.chat_line_text",
+      "default": "Questions about wholesale? Message us on"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:labels.color_scheme",
+      "default": "scheme-1"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:labels.wholesale_access",
+      "category": "t:labels.wholesale"
+    }
+  ]
+}
+{% endschema %}

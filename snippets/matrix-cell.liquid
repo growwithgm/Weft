@@ -1,0 +1,127 @@
+{%- comment -%}
+  One orderable variant inside <order-matrix>: its quantity rule, stock cap, in-cart count and
+  Shopify's price breaks as data attributes, a stepper, a stock hint, a note line and an inline
+  error. Shared by the order matrix block (layout 'grid') and the quick order list ('list').
+  Without JavaScript the input posts updates[variant_id] to /cart/update, starting at the
+  in-cart quantity.
+  Params: variant (required), form_id, cell_label, col_label, layout ('grid' | 'list'),
+          show_sku (bool, list layout)
+{%- endcomment -%}
+{%- liquid
+  assign v = variant
+  assign r_min = v.quantity_rule.min | default: 1
+  assign r_inc = v.quantity_rule.increment | default: 1
+  assign r_max = v.quantity_rule.max
+  assign tracked = false
+  if v.inventory_management != blank and v.inventory_policy == 'deny'
+    assign tracked = true
+  endif
+  assign qty = v.inventory_quantity | default: 0
+  assign in_cart = cart | item_count_for_variant: v.id
+  assign low_threshold = settings.stock_wholesale_low_threshold | default: 10
+  assign state = 'ok'
+  if v.available == false
+    assign state = 'sold_out'
+  elsif tracked and qty < r_min
+    assign state = 'below_min'
+  endif
+  assign cap = 999999
+  if tracked
+    assign cap = qty
+  endif
+  if r_max and r_max < cap
+    assign cap = r_max
+  endif
+  assign room = cap | minus: in_cart
+  assign to_add = r_inc
+  if in_cart < r_min
+    assign to_add = r_min | minus: in_cart
+  endif
+  assign disabled = false
+  if state != 'ok' or room < to_add
+    assign disabled = true
+  endif
+  assign lowest_break = nil
+  capture breaks_json
+    echo '['
+    for b in v.quantity_price_breaks
+      unless forloop.first
+        echo ','
+      endunless
+      echo '{"minimum_quantity":' | append: b.minimum_quantity | append: ',"price":' | append: b.price | append: '}'
+      if lowest_break == nil or b.price < lowest_break.price
+        assign lowest_break = b
+      endif
+    endfor
+    echo ']'
+  endcapture
+  assign input_id = form_id | append: '-' | append: v.id
+-%}
+<div
+  class="matrix__cell matrix__cell--{{ state }}{% if layout == 'list' %} quick-order__cell{% endif %}"
+  data-cell
+  data-variant-id="{{ v.id }}"
+  data-min="{{ r_min }}"
+  data-step="{{ r_inc }}"
+  {% if r_max %}data-max="{{ r_max }}"{% endif %}
+  data-tracked="{{ tracked }}"
+  data-available="{{ qty }}"
+  data-in-cart="{{ in_cart }}"
+  data-price="{{ v.price }}"
+  data-breaks='{{ breaks_json | strip }}'
+  data-label="{{ cell_label | escape }}"
+  {% if v.featured_media %}data-media-id="{{ v.featured_media.id }}"{% endif %}
+>
+  {%- if layout == 'list' -%}
+    <span class="quick-order__variant">
+      <span>{{ col_label | default: cell_label }}</span>
+      {%- if r_min > 1 or r_inc > 1 or r_max -%}
+        <span class="quick-order__rules muted">
+          {%- if r_min > 1 -%}{{ 'wholesale.min' | t: count: r_min }}{%- endif -%}
+          {%- if r_inc > 1 -%}{%- if r_min > 1 %} · {% endif -%}{{ 'wholesale.packs' | t: count: r_inc }}{%- endif -%}
+          {%- if r_max -%} · {{ 'wholesale.max' | t: count: r_max }}{%- endif -%}
+        </span>
+      {%- endif -%}
+    </span>
+    {%- if show_sku -%}<span class="quick-order__sku muted">{{ v.sku }}</span>{%- endif -%}
+    <span class="quick-order__price">
+      {%- render 'price', variant: v, wholesale: true, size: 'small', show_unit: false -%}
+      {%- if lowest_break and lowest_break.price < v.price -%}
+        {%- assign break_money = lowest_break.price | money -%}
+        <span class="quick-order__from muted">{{ 'wholesale.from_tier' | t: price: break_money, count: lowest_break.minimum_quantity }}</span>
+      {%- endif -%}
+    </span>
+  {%- else -%}
+    <span class="matrix__cell-label">{{ col_label }}</span>
+  {%- endif -%}
+  <div class="quantity quantity--small matrix__stepper">
+    <button type="button" class="quantity__button js-only" data-step="-1" tabindex="-1" aria-label="{{ 'accessibility.decrease_quantity' | t: product: cell_label | escape }}" disabled>{%- render 'icon', name: 'minus', size: 16 -%}</button>
+    <input
+      class="quantity__input tabular matrix__input"
+      type="number"
+      inputmode="numeric"
+      id="{{ input_id }}"
+      name="updates[{{ v.id }}]"
+      value="{{ in_cart }}"
+      min="0"
+      step="{{ r_inc }}"
+      {% if tracked or r_max %}max="{{ cap }}"{% endif %}
+      data-cell-input
+      aria-describedby="{{ input_id }}-hint"
+      {% if disabled %}disabled{% endif %}
+    >
+    <button type="button" class="quantity__button js-only" data-step="1" tabindex="-1" aria-label="{{ 'accessibility.increase_quantity' | t: product: cell_label | escape }}" {% if disabled %}disabled{% endif %}>{%- render 'icon', name: 'plus', size: 16 -%}</button>
+  </div>
+  <label class="visually-hidden" for="{{ input_id }}">{{ cell_label }}</label>
+  <span class="matrix__hint matrix__hint--{{ state }}" id="{{ input_id }}-hint">
+    {%- if state == 'sold_out' -%}{{ 'products.sold_out' | t }}
+    {%- elsif state == 'below_min' -%}{{ 'wholesale.stock_below_min' | t: count: qty }}
+    {%- elsif tracked == false -%}{{ 'wholesale.available' | t }}
+    {%- elsif qty <= low_threshold -%}<span class="matrix__hint--low">{{ 'wholesale.low_count' | t: count: qty }}</span>
+    {%- else -%}{{ 'products.stock.count' | t: count: qty }}
+    {%- endif -%}
+  </span>
+  {%- if layout == 'list' -%}<span class="quick-order__line tabular" data-cell-line aria-hidden="true"></span>{%- endif -%}
+  <span class="matrix__note" data-cell-note>{%- if in_cart > 0 -%}{{ 'products.in_cart' | t: count: in_cart }}{%- endif -%}</span>
+  <span class="matrix__error" role="alert" data-cell-error hidden></span>
+</div>

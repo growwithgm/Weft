@@ -96,6 +96,26 @@
         "signup": {
           "type": "product-signup",
           "settings": {}
+        },
+        "terms": {
+          "type": "wholesale-terms",
+          "settings": {}
+        },
+        "installments": {
+          "type": "installments-note",
+          "settings": {}
+        },
+        "tiers": {
+          "type": "volume-pricing",
+          "settings": {}
+        },
+        "wholesale_qty": {
+          "type": "wholesale-quantity",
+          "settings": {}
+        },
+        "matrix": {
+          "type": "order-matrix",
+          "settings": {}
         }
       },
       "block_order": [
@@ -103,11 +123,16 @@
         "title",
         "price",
         "rating",
+        "terms",
+        "installments",
+        "tiers",
         "countdown",
         "picker",
         "guide",
         "options",
         "signup",
+        "wholesale_qty",
+        "matrix",
         "features",
         "description",
         "returns",

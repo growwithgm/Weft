@@ -32,7 +32,6 @@
       {%- if show_ws -%}<span class="badge badge--outline">{{ 'price.wholesale' | t }}</span>{%- endif -%}
     </div>
     {%- if show_ws and last_break -%}
-      {%- assign first_break = breaks | sort: 'minimum_quantity' | first -%}
       {%- assign break_price = last_break.price | money -%}
       <button type="button" class="link product-price__tiers" data-tier-toggle aria-expanded="false">
         {{ 'wholesale.from_tier' | t: price: break_price, count: last_break.minimum_quantity }}

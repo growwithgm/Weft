@@ -18,6 +18,7 @@
     "after_the_links": "Después de los enlaces",
     "align_price_to_the_bottom": "Alinear el precio abajo",
     "alignment": "Alineación",
+    "all_products_when_empty": "Todos los productos si se deja vacío.",
     "all_reviews_label": "Texto de todas las reseñas",
     "all_reviews_link": "Enlace de todas las reseñas",
     "all_screens": "Todas las pantallas",
@@ -30,6 +31,8 @@
     "animations": "Animaciones",
     "announcement": "Anuncio",
     "announcement_bar": "Barra de anuncios",
+    "application_page": "Página de solicitud",
+    "apply_button_label": "Texto del botón de solicitud",
     "apps": "Apps",
     "arrow_button_style": "Estilo de los botones de flecha",
     "arrow_buttons_on_large_screens": "Botones de flecha en pantallas grandes",
@@ -95,6 +98,7 @@
     "character_limit": "Límite de caracteres",
     "chat": "Chat",
     "chat_button": "Botón de chat",
+    "chat_line_text": "Texto de la línea de chat",
     "check": "Marca de verificación",
     "checkbox": "Casilla",
     "chevron": "Flecha",
@@ -108,6 +112,7 @@
     "code_for_the_head": "Código para el head",
     "collapse_on_mobile": "Contraer en móvil",
     "collapsible_row": "Fila desplegable",
+    "collection": "Colección",
     "collection_cards": "Tarjetas de colección",
     "collection_list": "Lista de colecciones",
     "collections": "Colecciones",
@@ -275,6 +280,7 @@
     "layout_on_large_screens": "Diseño en pantallas grandes",
     "leaf": "Hoja",
     "leave_empty_for_recently_viewed": "Déjalo vacío para \"Vistos recientemente\".",
+    "leave_empty_for_the_default": "Déjalo vacío para usar el texto predeterminado.",
     "leave_empty_for_the_default_text": "Déjalo vacío para el texto predeterminado.",
     "leave_empty_for_you_may_also_like": "Déjalo vacío para \"También te puede gustar\".",
     "leave_empty_to_hide_the_row": "Déjalo vacío para ocultar la fila.",
@@ -371,6 +377,8 @@
     "open_the_lightbox_on_mobile": "Abrir la ventana ampliada en móvil",
     "option_names_to_group_by": "Nombres de opción para agrupar",
     "optional_uses_the_main_image_when_empty": "Opcional. Si está vacío se usa la imagen principal.",
+    "order_from_product_cards_in_a_drawer": "Pedir desde las tarjetas de producto en un panel",
+    "order_matrix": "Matriz de pedido",
     "order_matrix_tag": "Etiqueta de la matriz de pedido",
     "outline": "Contorno",
     "overlays": "Superposiciones",
@@ -421,6 +429,7 @@
     "product_types_separated_by_commas": "Tipos de producto separados por comas.",
     "products": "Productos",
     "products_in_these_collections": "Productos de estas colecciones",
+    "products_per_page": "Productos por página",
     "products_per_row_on_large_screens": "Productos por fila en pantallas grandes",
     "products_per_row_on_mobile": "Productos por fila en móvil",
     "products_published_recently": "Productos publicados recientemente",
@@ -449,6 +458,7 @@
     "purchase_options": "Opciones de compra",
     "quick_add": "Añadido rápido",
     "quick_links": "Enlaces rápidos",
+    "quick_order_list": "Lista de pedido rápido",
     "quick_order_page": "Página de pedido rápido",
     "rating": "Valoración",
     "rating_stars": "Estrellas de valoración",
@@ -516,6 +526,7 @@
     "show_cards_as_boxes": "Mostrar las tarjetas como cajas",
     "show_cents_as_superscript": "Mostrar céntimos en superíndice",
     "show_chat_button": "Mostrar botón de chat",
+    "show_chat_contact_line": "Mostrar línea de contacto por chat",
     "show_checkout_button": "Mostrar botón de pago",
     "show_country_and_language_in_the_mobile_menu": "Mostrar país e idioma en el menú móvil",
     "show_country_region_selector": "Mostrar selector de país/región",
@@ -524,6 +535,7 @@
     "show_custom_options_marked_for_quick_add": "Mostrar opciones personalizadas marcadas para añadido rápido",
     "show_email_signup": "Mostrar suscripción por correo",
     "show_exact_count_to_retail_shoppers": "Mostrar cantidad exacta a minoristas",
+    "show_filter_by_name_or_sku": "Mostrar filtro por nombre o SKU",
     "show_follow_on_shop": "Mostrar Seguir en Shop",
     "show_free_shipping_progress": "Mostrar progreso de envío gratis",
     "show_in_quick_add": "Mostrar en el añadido rápido",
@@ -532,6 +544,7 @@
     "show_inventory_bar": "Mostrar barra de inventario",
     "show_language_selector": "Mostrar selector de idioma",
     "show_line": "Mostrar línea",
+    "show_link_to_order_history": "Mostrar enlace al historial de pedidos",
     "show_media_counter_on_mobile": "Mostrar contador de imágenes en móvil",
     "show_media_promotion": "Mostrar promoción con imagen",
     "show_new_label": "Mostrar etiqueta de novedad",
@@ -542,6 +555,7 @@
     "show_pickup_availability": "Mostrar disponibilidad de recogida",
     "show_powered_by_shopify": "Mostrar \"Con la tecnología de Shopify\"",
     "show_price": "Mostrar precio",
+    "show_product_images": "Mostrar imágenes de producto",
     "show_quantity_selector": "Mostrar selector de cantidad",
     "show_rating": "Mostrar valoración",
     "show_recipient_form_for_gift_cards": "Mostrar formulario de destinatario en tarjetas de regalo",
@@ -553,10 +567,12 @@
     "show_shipping_calculator": "Mostrar calculadora de envío",
     "show_shipping_row": "Mostrar fila de envío",
     "show_shop_pay_installments": "Mostrar Shop Pay Installments",
+    "show_sku": "Mostrar SKU",
     "show_skus_to_wholesale_buyers": "Mostrar SKU a compradores mayoristas",
     "show_social_media_links": "Mostrar enlaces a redes sociales",
     "show_sold_out_label": "Mostrar etiqueta de agotado",
     "show_sold_out_options_row": "Mostrar fila de opciones agotadas",
+    "show_sold_out_variants": "Mostrar variantes agotadas",
     "show_stock_notice_on_cards": "Mostrar aviso de stock en tarjetas",
     "show_subtitle": "Mostrar subtítulo",
     "show_swatches": "Mostrar muestras",
@@ -578,6 +594,7 @@
     "shown_on_large_screens": "Se muestra en pantallas grandes.",
     "shows_the_page_content_in_the_pop_up": "Muestra el contenido de la página en la ventana emergente.",
     "sidebar": "Barra lateral",
+    "sign_in_button_label": "Texto del botón de inicio de sesión",
     "signup_heading": "Título de la suscripción",
     "size": "Tamaño",
     "sku": "SKU",
@@ -681,6 +698,7 @@
     "vimeo": "Vimeo",
     "voice_search": "Búsqueda por voz",
     "volume_price_rows_before_show_all": "Filas de precios por volumen antes de \"Ver todo\"",
+    "volume_pricing": "Precios por volumen",
     "wait_for_marketing_consent": "Esperar el consentimiento de marketing",
     "warning": "Advertencia",
     "warnings": "Advertencias",
@@ -693,11 +711,15 @@
     "when_the_exact_combination_is_unavailable": "Cuando la combinación exacta no está disponible",
     "where_this_block_is_placed": "Donde está este bloque",
     "wholesale": "Mayorista",
+    "wholesale_access": "Acceso mayorista",
     "wholesale_application_page": "Página de solicitud mayorista",
     "wholesale_buyers": "Compradores mayoristas",
+    "wholesale_installments": "Pago a plazos mayorista",
     "wholesale_low_stock_threshold": "Umbral de stock bajo mayorista",
     "wholesale_only_tag": "Etiqueta de solo mayorista",
+    "wholesale_quantity": "Cantidad mayorista",
     "wholesale_sign_in_page": "Página de acceso mayorista",
+    "wholesale_terms": "Condiciones mayoristas",
     "wide": "Ancho",
     "wide_7_of_12_columns": "Ancha (7 de 12 columnas)",
     "wide_content": "Contenido ancho",
@@ -773,6 +795,20 @@
           }
         }
       },
+      "installments_note": {
+        "settings": {
+          "shown_to_wholesale_buyers_when_theme_settings_wh": {
+            "content": "Se muestra a mayoristas cuando Configuración del tema > Mayorista lo permite y Configuración del tema > Pago a plazos tiene un proveedor. Usa el pedido mínimo como importe."
+          }
+        }
+      },
+      "order_matrix": {
+        "settings": {
+          "shown_to_wholesale_buyers_on_products_with_the_o": {
+            "content": "Se muestra a mayoristas en productos con la etiqueta de matriz de pedido (Configuración del tema > Mayorista). Las filas usan la primera opción; las columnas, las demás."
+          }
+        }
+      },
       "product_guide": {
         "settings": {
           "image": {
@@ -827,6 +863,27 @@
         "settings": {
           "guide_option": {
             "info": "Nombres de opción separados por comas. Requiere un bloque Guía de producto."
+          }
+        }
+      },
+      "volume_pricing": {
+        "settings": {
+          "shows_the_selected_variant_s_volume_pricing_from": {
+            "content": "Muestra los precios por volumen de la variante seleccionada según tu catálogo B2B. Se oculta si el producto no tiene tramos de precio. Las filas antes de \"Ver todo\" se configuran en Configuración del tema > Mayorista."
+          }
+        }
+      },
+      "wholesale_quantity": {
+        "settings": {
+          "buy_box_for_wholesale_buyers_on_products_without": {
+            "content": "Caja de compra para mayoristas en productos sin matriz de pedido. Sigue la regla de cantidad y los precios por volumen de cada variante."
+          }
+        }
+      },
+      "wholesale_terms": {
+        "settings": {
+          "minimum_pack_size_and_maximum_from_your_b2b_quan": {
+            "content": "Mínimo, tamaño de pack y máximo de tus reglas de cantidad B2B. Solo se muestra a mayoristas; las reglas predeterminadas no muestran nada."
           }
         }
       }
@@ -889,6 +946,20 @@
         "settings": {
           "recommendations_are_based_on_sales_and_product_d": {
             "content": "Las recomendaciones se basan en las ventas y las descripciones. Ajústalas en la app Search & Discovery."
+          }
+        }
+      },
+      "quick_order_list": {
+        "settings": {
+          "wholesale_buyers_order_several_products_from_one": {
+            "content": "Los mayoristas piden varios productos desde una sola lista. Cada variante sigue su propia regla de cantidad, stock y precios por volumen. Los visitantes minoristas ven una invitación a iniciar sesión."
+          }
+        }
+      },
+      "wholesale_access": {
+        "settings": {
+          "apply_page": {
+            "info": "Si se deja vacío, usa la página de Configuración del tema > Mayorista."
           }
         }
       }
@@ -1045,6 +1116,9 @@
           },
           "wholesale_pack_image_metafield": {
             "info": "Metacampo de producto con una imagen que sustituye la imagen de la línea para compradores mayoristas."
+          },
+          "wholesale_quick_order_drawer": {
+            "info": "Los mayoristas abren la matriz de pedido o la caja de cantidad desde una tarjeta sin salir de la colección."
           }
         }
       }

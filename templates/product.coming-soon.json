@@ -84,16 +84,41 @@
             "heading": "Coming soon",
             "text": "<p>Leave your email and we'll tell you when it launches.</p>"
           }
+        },
+        "terms": {
+          "type": "wholesale-terms",
+          "settings": {}
+        },
+        "installments": {
+          "type": "installments-note",
+          "settings": {}
+        },
+        "tiers": {
+          "type": "volume-pricing",
+          "settings": {}
+        },
+        "wholesale_qty": {
+          "type": "wholesale-quantity",
+          "settings": {}
+        },
+        "matrix": {
+          "type": "order-matrix",
+          "settings": {}
         }
       },
       "block_order": [
         "labels",
         "title",
         "price",
+        "terms",
+        "installments",
+        "tiers",
         "picker",
         "guide",
         "options",
         "signup",
+        "wholesale_qty",
+        "matrix",
         "features",
         "description",
         "returns",

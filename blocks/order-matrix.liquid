@@ -1,0 +1,181 @@
+{%- comment -%}
+  Wholesale order matrix (brief §7.10, S2). Rows are the first option's values, columns the
+  remaining option values (option names come from the product, never hard-coded). Each cell is
+  a stepper for one variant with its own quantity rule, stock cap and in-cart count.
+  Desktop: a grid with a row-total column and a sticky summary. Mobile: each row is a
+  collapsible card and the summary is a bar at the bottom of the screen.
+  Without JavaScript the form posts to /cart/update with updates[variant_id] (documented Cart
+  API): inputs then start at the in-cart quantity and replace it.
+{%- endcomment -%}
+{%- liquid
+  assign p = closest.product
+  assign wholesale = false
+  if customer and customer.b2b?
+    assign wholesale = true
+  endif
+  assign is_matrix = false
+  if p and settings.wholesale_matrix_tag != blank and p.has_only_default_variant == false
+    assign matrix_tag = settings.wholesale_matrix_tag | strip | downcase
+    for tag in p.tags
+      assign t = tag | downcase
+      if t == matrix_tag
+        assign is_matrix = true
+        break
+      endif
+    endfor
+  endif
+  assign show = false
+  if is_matrix
+    if wholesale or request.design_mode
+      assign show = true
+    endif
+  endif
+-%}
+{%- if show -%}
+{{ 'component-matrix.css' | asset_url | stylesheet_tag }}
+{%- liquid
+  assign options = p.options_with_values
+  assign row_option = options | first
+  assign col_mode = 'none'
+  if options.size == 2
+    assign col_mode = 'option2'
+    assign col_values = options[1].values
+    assign col_heading = options[1].name
+  elsif options.size > 2
+    assign col_mode = 'combo'
+    assign combo_keys = ''
+    for v in p.variants limit: 250
+      assign key = v.option2 | append: ' / ' | append: v.option3
+      assign probe = '||' | append: combo_keys
+      assign needle = '||' | append: key | append: '||'
+      unless probe contains needle
+        assign combo_keys = combo_keys | append: key | append: '||'
+      endunless
+    endfor
+    assign col_values = combo_keys | split: '||'
+    assign col_heading = options[1].name | append: ' / ' | append: options[2].name
+  endif
+  assign col_count = 1
+  if col_mode != 'none'
+    assign col_count = col_values.size
+  endif
+  assign form_id = 'Matrix-' | append: section.id
+  assign options_label = row_option.name
+  if col_mode != 'none'
+    assign options_label = row_option.name | append: ' × ' | append: col_heading
+  endif
+-%}
+<order-matrix
+  class="matrix"
+  data-swap="{{ block.id }}"
+  data-section-id="{{ section.id }}"
+  data-module="{{ 'matrix.js' | asset_url }}"
+  data-load="visible"
+  style="--matrix-cols: {{ col_count }}"
+  {{ block.shopify_attributes }}
+>
+  {%- render 'matrix-strings' -%}
+  {%- unless wholesale -%}<span class="badge badge--preview">{{ 'wholesale.sample_notice' | t }}</span>{%- endunless -%}
+  <form action="{{ routes.cart_update_url }}" method="post" id="{{ form_id }}" class="matrix__form" data-matrix-form novalidate>
+    <div class="matrix__table" role="group" aria-label="{{ 'wholesale.order_grid' | t: options: options_label | escape }}">
+      {%- if col_mode != 'none' -%}
+        <div class="matrix__head" aria-hidden="true">
+          <span class="matrix__head-row">{{ row_option.name }}</span>
+          {%- for col in col_values -%}<span class="matrix__head-col">{{ col }}</span>{%- endfor -%}
+          <span class="matrix__head-total">{{ 'cart.total' | t }}</span>
+        </div>
+      {%- endif -%}
+      {%- for row in row_option.values -%}
+        {%- liquid
+          assign row_name = row.name
+          assign row_variants = p.variants | where: 'option1', row_name
+          assign row_image = nil
+          for rv in row_variants
+            if rv.featured_image
+              assign row_image = rv.featured_image
+              break
+            endif
+          endfor
+        -%}
+        {%- assign cells_id = form_id | append: '-row-' | append: forloop.index -%}
+        <div class="matrix__row" data-row data-open>
+          <div class="matrix__row-head" data-row-head>
+            <span class="matrix__thumb media">
+              {%- if row_image -%}{{ row_image | image_url: width: 100 | image_tag: widths: '50,100', sizes: '40px', alt: '', loading: 'lazy' }}{%- elsif row.swatch.color -%}<span class="matrix__thumb-color" style="background: {{ row.swatch.color }}"></span>{%- endif -%}
+            </span>
+            <span class="matrix__row-name">
+              <span>{{ row_name }}</span>
+              <span class="matrix__row-flag" data-row-flag hidden>{{ 'wholesale.needs_attention' | t }}</span>
+            </span>
+            <span class="matrix__row-total tabular" data-row-total>0</span>
+            <button type="button" class="icon-button matrix__row-toggle js-only" data-row-toggle aria-expanded="true" aria-controls="{{ cells_id }}" aria-label="{{ row_name | escape }}">
+              {%- render 'icon', name: 'chevron-down', size: 16 -%}
+            </button>
+          </div>
+          <div class="matrix__cells" id="{{ cells_id }}">
+            {%- for c in (1..col_count) -%}
+              {%- liquid
+                assign cell_v = nil
+                assign col_label = ''
+                if col_mode == 'none'
+                  assign cell_v = row_variants | first
+                elsif col_mode == 'option2'
+                  assign col_value = col_values[forloop.index0]
+                  assign col_label = col_value.name
+                  assign cell_v = row_variants | where: 'option2', col_label | first
+                else
+                  assign col_label = col_values[forloop.index0]
+                  for rv in row_variants
+                    assign rv_key = rv.option2 | append: ' / ' | append: rv.option3
+                    if rv_key == col_label
+                      assign cell_v = rv
+                      break
+                    endif
+                  endfor
+                endif
+                assign cell_label = row_name
+                if col_label != ''
+                  assign cell_label = row_name | append: ' ' | append: col_label
+                endif
+              -%}
+              {%- if cell_v == nil -%}
+                <div class="matrix__cell matrix__cell--na" data-cell-na>
+                  <span class="matrix__cell-label">{{ col_label }}</span>
+                  <span class="matrix__na" aria-hidden="true">—</span>
+                  <span class="matrix__hint">{{ 'wholesale.not_offered' | t }}<span class="visually-hidden">: {{ cell_label }}</span></span>
+                </div>
+              {%- else -%}
+                {%- render 'matrix-cell', variant: cell_v, form_id: form_id, cell_label: cell_label, col_label: col_label, layout: 'grid' -%}
+              {%- endif -%}
+            {%- endfor -%}
+            <span class="matrix__cell matrix__cell--total tabular" data-row-total-cell aria-hidden="true">0</span>
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+
+    {%- render 'matrix-summary' -%}
+  </form>
+</order-matrix>
+{%- elsif request.design_mode and p -%}
+  <p class="muted matrix__editor-note" {{ block.shopify_attributes }}>{{ 'wholesale.matrix_editor_note' | t: tag: settings.wholesale_matrix_tag }}</p>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "t:labels.order_matrix",
+  "tag": null,
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "t:text.blocks.order_matrix.settings.shown_to_wholesale_buyers_on_products_with_the_o.content"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:labels.order_matrix",
+      "category": "t:labels.wholesale"
+    }
+  ]
+}
+{% endschema %}

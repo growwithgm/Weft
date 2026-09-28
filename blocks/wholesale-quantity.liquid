@@ -1,0 +1,170 @@
+{%- comment -%}
+  Wholesale buy box for products without the order matrix (brief §7.11, S3): stock hint,
+  stepper that starts at the minimum and steps by the increment, "In cart: N", live line
+  "6 × €34.00 = €204.00" from Shopify's tier prices, inline errors, yellow Add button.
+  A variant change re-renders rules, tiers and the in-cart count from Liquid.
+{%- endcomment -%}
+{%- liquid
+  assign p = closest.product
+  assign v = p.selected_or_first_available_variant
+  assign wholesale = false
+  if customer and customer.b2b?
+    assign wholesale = true
+  endif
+  assign is_matrix = false
+  if settings.wholesale_matrix_tag != blank and p.has_only_default_variant == false
+    assign matrix_tag = settings.wholesale_matrix_tag | strip | downcase
+    for tag in p.tags
+      assign t = tag | downcase
+      if t == matrix_tag
+        assign is_matrix = true
+        break
+      endif
+    endfor
+  endif
+  assign show = false
+  if p and is_matrix == false
+    if wholesale or request.design_mode
+      assign show = true
+    endif
+  endif
+-%}
+{%- if show -%}
+{%- liquid
+  assign form_id = 'WholesaleForm-' | append: section.id
+  assign r_min = v.quantity_rule.min | default: 1
+  assign r_inc = v.quantity_rule.increment | default: 1
+  assign r_max = v.quantity_rule.max
+  assign tracked = false
+  if v.inventory_management != blank and v.inventory_policy == 'deny'
+    assign tracked = true
+  endif
+  assign qty = v.inventory_quantity | default: 0
+  assign in_cart = 0
+  if v
+    assign in_cart = cart | item_count_for_variant: v.id
+  endif
+  assign state = 'ok'
+  if v == nil
+    assign state = 'unavailable'
+  elsif v.available == false
+    assign state = 'sold_out'
+  elsif tracked and qty < r_min
+    assign state = 'below_min'
+  endif
+  assign start = r_min
+  if in_cart >= r_min
+    assign start = r_inc
+  elsif in_cart > 0
+    assign start = r_min | minus: in_cart
+  endif
+  assign cap = nil
+  if tracked
+    assign cap = qty | minus: in_cart
+  endif
+  if r_max
+    assign max_room = r_max | minus: in_cart
+    if cap == nil or max_room < cap
+      assign cap = max_room
+    endif
+  endif
+  assign low_threshold = settings.stock_wholesale_low_threshold | default: 10
+  capture breaks_json
+    echo '['
+    for b in v.quantity_price_breaks
+      unless forloop.first
+        echo ','
+      endunless
+      echo '{"minimum_quantity":' | append: b.minimum_quantity | append: ',"price":' | append: b.price | append: '}'
+    endfor
+    echo ']'
+  endcapture
+  assign unit_money = v.price | money
+  assign line_money = v.price | times: start | money
+-%}
+<wholesale-quantity
+  class="wholesale-qty"
+  data-swap="{{ block.id }}"
+  data-min="{{ r_min }}"
+  data-step="{{ r_inc }}"
+  {% if r_max %}data-max="{{ r_max }}"{% endif %}
+  data-tracked="{{ tracked }}"
+  data-available="{{ qty }}"
+  data-in-cart="{{ in_cart }}"
+  data-price="{{ v.price }}"
+  data-breaks='{{ breaks_json | strip }}'
+  data-module="{{ 'matrix.js' | asset_url }}"
+  data-load="visible"
+  {{ block.shopify_attributes }}
+>
+  <script type="application/json" data-qty-strings>
+    {
+      "line": {{ 'wholesale.line_total' | t: quantity: '__q__', price: '__price__', total: '__total__' | json }},
+      "belowMin": {{ 'wholesale.below_min' | t: count: '__n__' | json }},
+      "notMultiple": {{ 'wholesale.not_multiple' | t: quantity: '__q__', increment: '__m__', lower: '__a__', upper: '__b__' | json }},
+      "notMultipleOne": {{ 'wholesale.not_multiple_one' | t: quantity: '__q__', increment: '__m__', suggestion: '__b__' | json }},
+      "onlyMore": {{ 'wholesale.only_more' | t: count: '__n__' | json }},
+      "addOne": {{ 'wholesale.add_pieces.one' | t: count: '__n__' | json }},
+      "addOther": {{ 'wholesale.add_pieces.other' | t: count: '__n__' | json }}
+    }
+  </script>
+  {%- unless wholesale -%}<span class="badge badge--preview">{{ 'wholesale.sample_notice' | t }}</span>{%- endunless -%}
+  <p class="stock-line__text wholesale-qty__hint wholesale-qty__hint--{{ state }}">
+    <span class="stock-line__dot" aria-hidden="true"></span>
+    {%- case state -%}
+      {%- when 'unavailable' -%}{{ 'products.unavailable' | t }}
+      {%- when 'sold_out' -%}{{ 'products.sold_out' | t }}
+      {%- when 'below_min' -%}{{ 'wholesale.stock_below_min' | t: count: qty }}
+      {%- else -%}
+        {%- if tracked == false -%}{{ 'wholesale.available' | t }}{%- elsif qty <= low_threshold -%}{{ 'wholesale.low_count' | t: count: qty }}{%- else -%}{{ 'products.stock.count' | t: count: qty }}{%- endif -%}
+    {%- endcase -%}
+  </p>
+  {%- form 'product', p, id: form_id, class: 'wholesale-qty__form product-form', novalidate: 'novalidate', data-product-form: '' -%}
+    <input type="hidden" name="id" value="{{ v.id }}" data-variant-input>
+    <div class="wholesale-qty__row">
+      {%- assign qty_input_id = 'WholesaleQty-' | append: section.id -%}
+      {%- render 'quantity-input', id: qty_input_id, value: start, min: start, max: cap, step: r_inc, product_title: p.title, disabled: false -%}
+      {%- if in_cart > 0 -%}<span class="chip chip--outline" data-in-cart-chip>{{ 'wholesale.in_cart_label' | t: count: in_cart }}</span>{%- endif -%}
+    </div>
+    <p class="wholesale-qty__line tabular" data-line-total aria-live="polite">{{ 'wholesale.line_total' | t: quantity: start, price: unit_money, total: line_money }}</p>
+    <div class="form-message form-message--error" role="alert" data-form-error hidden>{%- render 'icon', name: 'alert', size: 18 -%}<span data-form-error-text></span></div>
+    <button
+      type="submit"
+      name="add"
+      class="button button--full"
+      data-add-button
+      data-label-adding="{{ 'products.adding' | t | escape }}"
+      data-label-added="{{ 'products.added' | t | escape }}"
+      {% if state != 'ok' %}disabled{% endif %}
+    >
+      <span data-add-label>
+        {%- case state -%}
+          {%- when 'sold_out' -%}{{ 'products.sold_out' | t }}
+          {%- when 'below_min' -%}{{ 'wholesale.stock_below_min' | t: count: qty }}
+          {%- when 'unavailable' -%}{{ 'products.unavailable' | t }}
+          {%- else -%}{{ 'wholesale.add_pieces' | t: count: start }}
+        {%- endcase -%}
+      </span>
+    </button>
+  {%- endform -%}
+</wholesale-quantity>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "t:labels.wholesale_quantity",
+  "tag": null,
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "t:text.blocks.wholesale_quantity.settings.buy_box_for_wholesale_buyers_on_products_without.content"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:labels.wholesale_quantity",
+      "category": "t:labels.wholesale"
+    }
+  ]
+}
+{% endschema %}

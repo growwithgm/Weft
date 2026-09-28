@@ -1,0 +1,50 @@
+{%- comment -%}
+  Wholesale installments line (brief §7.2, §13): price × minimum ÷ number of payments, behind the
+  "Show the installments line to wholesale buyers" setting and the provider name setting.
+{%- endcomment -%}
+{%- liquid
+  assign p = closest.product
+  assign v = p.selected_or_first_available_variant
+  assign wholesale = false
+  if customer and customer.b2b?
+    assign wholesale = true
+  endif
+  assign show = false
+  if settings.wholesale_installments and settings.installments_provider != blank and v and v.available
+    if wholesale or request.design_mode
+      assign show = true
+    endif
+  endif
+-%}
+{%- if show -%}
+  {%- liquid
+    assign count = settings.installments_count
+    assign r_min = v.quantity_rule.min | default: 1
+    assign order_value = v.price | times: r_min
+    assign installment = order_value | plus: count | minus: 1 | divided_by: count
+    assign installment_money = installment | money
+  -%}
+  <p class="installments-note" data-swap="{{ block.id }}" {{ block.shopify_attributes }}>
+    <strong>{{ settings.installments_provider | escape }}</strong>
+    <span>{{ 'wholesale.installments' | t: count: count, amount: installment_money }}</span>
+  </p>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "t:labels.wholesale_installments",
+  "tag": null,
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "t:text.blocks.installments_note.settings.shown_to_wholesale_buyers_when_theme_settings_wh.content"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:labels.wholesale_installments",
+      "category": "t:labels.wholesale"
+    }
+  ]
+}
+{% endschema %}

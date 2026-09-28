@@ -241,3 +241,27 @@
   .wholesale-gate__actions { width: 100%; max-width: 340px; }
   .wholesale-gate__back { min-height: 44px; display: inline-flex; align-items: center; font-size: var(--t-14); }
 }
+
+/* Wholesale: terms, tiers, installments line, one-size buy box, order matrix */
+@layer sections {
+  order-matrix, wholesale-quantity { display: block; }
+  .wholesale-terms { display: flex; flex-direction: column; gap: 8px; }
+  .tiers { border: 1px solid var(--c-line); border-radius: var(--r-card); padding: 16px; display: flex; flex-direction: column; gap: 4px; transition: box-shadow 200ms ease; }
+  .tiers.is-highlighted { box-shadow: 0 0 0 2px var(--c-fg); }
+  .tiers__heading { font-size: var(--t-14); font-weight: var(--fw-bold); margin-block-end: 4px; }
+  .tiers__rows { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 2px; }
+  .tiers__row { display: flex; align-items: center; gap: 8px; min-height: 36px; padding: 0 10px; border-radius: 10px; font-size: var(--t-15); }
+  .tiers__row.is-active { background: var(--c-surface); font-weight: var(--fw-bold); }
+  .tiers__range { flex: 1; }
+  .tiers__badge { font-size: 11px; font-weight: var(--fw-bold); padding: 2px 8px; border-radius: 10px; background: var(--c-fg); color: var(--c-bg); }
+  .tiers__price { text-align: end; }
+  .tiers__toggle { align-self: flex-start; min-height: 32px; font-size: var(--t-14); }
+  .tiers__caption { font-size: var(--t-12); color: var(--c-muted); margin-block-start: 6px; }
+  .installments-note { display: flex; gap: 10px; align-items: center; padding: 10px 14px; border-radius: min(var(--r-card), 16px); background: var(--c-installments); font-size: var(--t-14); }
+  .wholesale-qty { display: flex; flex-direction: column; gap: 14px; }
+  .wholesale-qty__form { display: flex; flex-direction: column; gap: 14px; }
+  .wholesale-qty__row { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+  .wholesale-qty__line { font-size: var(--t-16); }
+  .wholesale-qty__hint--sold_out, .wholesale-qty__hint--below_min, .wholesale-qty__hint--unavailable { color: var(--c-bad); }
+  .chip--outline { background: transparent; border: 1px solid var(--c-fg); }
+}

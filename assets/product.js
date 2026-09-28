@@ -155,6 +155,19 @@ class ProductSection extends HTMLElement {
     bus.emit('variant:change', { sectionId: this.sectionId, variantId: state.variantId, featuredMediaId: state.featuredMediaId, section: this });
   }
 
+  /** Re-renders the section for the current variant (fresh in-cart counts and stock after adding). */
+  async refresh() {
+    try {
+      const url = new URL(this.productUrl, location.origin);
+      if (this.state.variantId) url.searchParams.set('variant', this.state.variantId);
+      url.searchParams.set('section_id', this.sectionId);
+      const res = await fetch(url);
+      if (!res.ok) return;
+      swapKeys(this, parseHTML(await res.text()));
+      this.enableInputs();
+    } catch (_) { /* keep the current view */ }
+  }
+
   setButton(form, stateName) {
     const button = form.querySelector('[data-add-button]');
     const label = form.querySelector('[data-add-label]');
@@ -203,6 +216,7 @@ class ProductSection extends HTMLElement {
       bus.emit('cart:updated', { cart, count: cart.item_count });
       bus.emit('cart:added', { items: result.items || [result], source: this });
       announce((result.product_title || this.state.title || '') + ' ✓');
+      if (this.state.wholesale) this.refresh();
       const after = W.settings.afterAdd;
       if (after === 'page') location.href = W.routes.cart;
       else if (after === 'drawer' && document.getElementById('CartDrawer')) openDialog('CartDrawer', button);

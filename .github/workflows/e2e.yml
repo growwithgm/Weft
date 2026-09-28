@@ -13,6 +13,7 @@ jobs:
       SHOP_PASSWORD: ${{ secrets.SHOPIFY_STOREFRONT_PASSWORD }}
       SHOP_THEME_ID: ${{ secrets.SHOPIFY_THEME_ID }}
       B2B_EMAIL: ${{ secrets.B2B_TEST_EMAIL }}
+      B2B_STORAGE_STATE: ${{ secrets.B2B_STORAGE_STATE }}
     steps:
       - name: Skip when store secrets are missing
         if: env.SHOP_STORE == '' || env.SHOP_THEME_ID == ''

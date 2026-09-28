@@ -32,6 +32,33 @@ export function announce(message) {
   requestAnimationFrame(() => (region.textContent = message));
 }
 
+/* ---------- money ---------- */
+/**
+ * Formats cents with the store's money format (window.Weft.moneyFormat, from Liquid), so
+ * previews match Shopify's own formatting. Used only to display numbers that come from Liquid.
+ */
+export function formatMoney(cents, format = W.moneyFormat || '{{amount}}') {
+  const value = Math.round(Number(cents) || 0);
+  const fmt = (n, decimals, thousands, decimal) => {
+    const fixed = (n / 100).toFixed(decimals);
+    const [whole, frac] = fixed.split('.');
+    const grouped = whole.replace(/\B(?=(\d{3})+(?!\d))/g, thousands);
+    return frac ? grouped + decimal + frac : grouped;
+  };
+  return format.replace(/\{\{\s*(\w+)\s*\}\}/, (_, key) => {
+    switch (key) {
+      case 'amount_no_decimals': return fmt(value, 0, ',', '.');
+      case 'amount_with_comma_separator': return fmt(value, 2, '.', ',');
+      case 'amount_no_decimals_with_comma_separator': return fmt(value, 0, '.', ',');
+      case 'amount_with_apostrophe_separator': return fmt(value, 2, "'", '.');
+      case 'amount_no_decimals_with_space_separator': return fmt(value, 0, ' ', ',');
+      case 'amount_with_space_separator': return fmt(value, 2, ' ', ',');
+      case 'amount_with_period_and_space_separator': return fmt(value, 2, ' ', '.');
+      default: return fmt(value, 2, ',', '.');
+    }
+  }).replace(/<[^>]*>/g, '');
+}
+
 /* ---------- fetch helpers ---------- */
 export function parseHTML(html) {
   return new DOMParser().parseFromString(html, 'text/html');

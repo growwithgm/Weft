@@ -46,7 +46,13 @@ for (const spec of specs) {
     page.on('pageerror', (e) => errors.push(e.message));
     page.on('console', (m) => m.type() === 'error' && !m.text().startsWith('Failed to load resource') && errors.push(m.text()));
     try {
-      await fn({ page, base, expect });
+      // `eventually` polls the page until a condition holds: <details> toggle events and
+      // fetch-driven renders are asynchronous by spec, so state is asserted once it settles.
+      const eventually = (check, message, arg) =>
+        page.waitForFunction(check, arg, { timeout: 3000 }).catch(() => {
+          throw new Error(`${message}: condition not met within 3s`);
+        });
+      await fn({ page, base, expect, eventually });
       if (errors.length) throw new Error(`Console errors: ${errors.join(' | ')}`);
       passed++;
       console.log(`ok   ${spec} › ${name}`);

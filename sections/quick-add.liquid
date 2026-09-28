@@ -1,7 +1,8 @@
 {%- comment -%}
-  Quick add drawer (S13). The overlay renders an empty drawer; quick-add.js fetches
-  <product url>?section_id=quick-add and inserts the product content, which reuses the product
-  blocks (static) and product.js for variant changes and adding to cart.
+  Quick add drawer (S13) and, for wholesale buyers, the quick order drawer. The overlay renders an
+  empty drawer; quick-add.js fetches <product url>?section_id=quick-add and inserts the product
+  content, which reuses the product blocks (static) and product.js for variant changes and adding
+  to cart. Retail and wholesale blocks each render only for their audience.
 {%- endcomment -%}
 {%- if product and section.id == 'quick-add' -%}
   {{ 'section-product.css' | asset_url | stylesheet_tag }}
@@ -27,6 +28,11 @@
       {%- content_for 'block', type: 'product-price', id: 'price' -%}
       {%- content_for 'block', type: 'variant-picker', id: 'variant_picker' -%}
       {%- content_for 'block', type: 'buy-buttons', id: 'buy_buttons' -%}
+      {%- comment -%}Wholesale buyers (Theme settings > Wholesale > Order from product cards): the same blocks as the product page.{%- endcomment -%}
+      {%- content_for 'block', type: 'wholesale-terms', id: 'wholesale_terms' -%}
+      {%- content_for 'block', type: 'volume-pricing', id: 'volume_pricing' -%}
+      {%- content_for 'block', type: 'wholesale-quantity', id: 'wholesale_quantity' -%}
+      {%- content_for 'block', type: 'order-matrix', id: 'order_matrix' -%}
       <a class="link quick-add__details" href="{{ product.url }}">{{ 'products.quick_add.view_details' | t }}</a>
     </div>
   </product-section>

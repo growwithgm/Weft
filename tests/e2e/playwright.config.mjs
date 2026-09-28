@@ -1,5 +1,6 @@
 // Scenario suite (BUILD_SPEC §7.3). Runs in GitHub Actions against the dev store's preview theme.
-// Env: SHOP_STORE (domain), SHOP_THEME_ID, SHOP_PASSWORD, B2B_EMAIL (company contact for wholesale scenarios).
+// Env: SHOP_STORE (domain), SHOP_THEME_ID, SHOP_PASSWORD, B2B_EMAIL (company contact for wholesale scenarios),
+// B2B_STORAGE_STATE (saved signed-in session of that contact, JSON), E2E_* product handle overrides.
 import { defineConfig, devices } from '@playwright/test';
 
 const store = process.env.SHOP_STORE;

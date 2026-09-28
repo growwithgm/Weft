@@ -18,6 +18,7 @@
     "after_the_links": "After the links",
     "align_price_to_the_bottom": "Align price to the bottom",
     "alignment": "Alignment",
+    "all_products_when_empty": "All products when empty.",
     "all_reviews_label": "All reviews label",
     "all_reviews_link": "All reviews link",
     "all_screens": "All screens",
@@ -30,6 +31,8 @@
     "animations": "Animations",
     "announcement": "Announcement",
     "announcement_bar": "Announcement bar",
+    "application_page": "Application page",
+    "apply_button_label": "Apply button label",
     "apps": "Apps",
     "arrow_button_style": "Arrow button style",
     "arrow_buttons_on_large_screens": "Arrow buttons on large screens",
@@ -95,6 +98,7 @@
     "character_limit": "Character limit",
     "chat": "Chat",
     "chat_button": "Chat button",
+    "chat_line_text": "Chat line text",
     "check": "Check",
     "checkbox": "Checkbox",
     "chevron": "Chevron",
@@ -108,6 +112,7 @@
     "code_for_the_head": "Code for the head",
     "collapse_on_mobile": "Collapse on mobile",
     "collapsible_row": "Collapsible row",
+    "collection": "Collection",
     "collection_cards": "Collection cards",
     "collection_list": "Collection list",
     "collections": "Collections",
@@ -275,6 +280,7 @@
     "layout_on_large_screens": "Layout on large screens",
     "leaf": "Leaf",
     "leave_empty_for_recently_viewed": "Leave empty for \"Recently viewed\".",
+    "leave_empty_for_the_default": "Leave empty for the default.",
     "leave_empty_for_the_default_text": "Leave empty for the default text.",
     "leave_empty_for_you_may_also_like": "Leave empty for \"You may also like\".",
     "leave_empty_to_hide_the_row": "Leave empty to hide the row.",
@@ -371,6 +377,8 @@
     "open_the_lightbox_on_mobile": "Open the lightbox on mobile",
     "option_names_to_group_by": "Option names to group by",
     "optional_uses_the_main_image_when_empty": "Optional. Uses the main image when empty.",
+    "order_from_product_cards_in_a_drawer": "Order from product cards in a drawer",
+    "order_matrix": "Order matrix",
     "order_matrix_tag": "Order matrix tag",
     "outline": "Outline",
     "overlays": "Overlays",
@@ -421,6 +429,7 @@
     "product_types_separated_by_commas": "Product types separated by commas.",
     "products": "Products",
     "products_in_these_collections": "Products in these collections",
+    "products_per_page": "Products per page",
     "products_per_row_on_large_screens": "Products per row on large screens",
     "products_per_row_on_mobile": "Products per row on mobile",
     "products_published_recently": "Products published recently",
@@ -449,6 +458,7 @@
     "purchase_options": "Purchase options",
     "quick_add": "Quick add",
     "quick_links": "Quick links",
+    "quick_order_list": "Quick order list",
     "quick_order_page": "Quick order page",
     "rating": "Rating",
     "rating_stars": "Rating stars",
@@ -516,6 +526,7 @@
     "show_cards_as_boxes": "Show cards as boxes",
     "show_cents_as_superscript": "Show cents as superscript",
     "show_chat_button": "Show chat button",
+    "show_chat_contact_line": "Show chat contact line",
     "show_checkout_button": "Show checkout button",
     "show_country_and_language_in_the_mobile_menu": "Show country and language in the mobile menu",
     "show_country_region_selector": "Show country/region selector",
@@ -524,6 +535,7 @@
     "show_custom_options_marked_for_quick_add": "Show custom options marked for quick add",
     "show_email_signup": "Show email signup",
     "show_exact_count_to_retail_shoppers": "Show exact count to retail shoppers",
+    "show_filter_by_name_or_sku": "Show filter by name or SKU",
     "show_follow_on_shop": "Show Follow on Shop",
     "show_free_shipping_progress": "Show free shipping progress",
     "show_in_quick_add": "Show in quick add",
@@ -532,6 +544,7 @@
     "show_inventory_bar": "Show inventory bar",
     "show_language_selector": "Show language selector",
     "show_line": "Show line",
+    "show_link_to_order_history": "Show link to order history",
     "show_media_counter_on_mobile": "Show media counter on mobile",
     "show_media_promotion": "Show media promotion",
     "show_new_label": "Show new label",
@@ -542,6 +555,7 @@
     "show_pickup_availability": "Show pickup availability",
     "show_powered_by_shopify": "Show \"Powered by Shopify\"",
     "show_price": "Show price",
+    "show_product_images": "Show product images",
     "show_quantity_selector": "Show quantity selector",
     "show_rating": "Show rating",
     "show_recipient_form_for_gift_cards": "Show recipient form for gift cards",
@@ -553,10 +567,12 @@
     "show_shipping_calculator": "Show shipping calculator",
     "show_shipping_row": "Show shipping row",
     "show_shop_pay_installments": "Show Shop Pay Installments",
+    "show_sku": "Show SKU",
     "show_skus_to_wholesale_buyers": "Show SKUs to wholesale buyers",
     "show_social_media_links": "Show social media links",
     "show_sold_out_label": "Show sold out label",
     "show_sold_out_options_row": "Show sold-out options row",
+    "show_sold_out_variants": "Show sold-out variants",
     "show_stock_notice_on_cards": "Show stock notice on cards",
     "show_subtitle": "Show subtitle",
     "show_swatches": "Show swatches",
@@ -578,6 +594,7 @@
     "shown_on_large_screens": "Shown on large screens.",
     "shows_the_page_content_in_the_pop_up": "Shows the page content in the pop-up.",
     "sidebar": "Sidebar",
+    "sign_in_button_label": "Sign-in button label",
     "signup_heading": "Signup heading",
     "size": "Size",
     "sku": "SKU",
@@ -681,6 +698,7 @@
     "vimeo": "Vimeo",
     "voice_search": "Voice search",
     "volume_price_rows_before_show_all": "Volume price rows before \"Show all\"",
+    "volume_pricing": "Volume pricing",
     "wait_for_marketing_consent": "Wait for marketing consent",
     "warning": "Warning",
     "warnings": "Warnings",
@@ -693,11 +711,15 @@
     "when_the_exact_combination_is_unavailable": "When the exact combination is unavailable",
     "where_this_block_is_placed": "Where this block is placed",
     "wholesale": "Wholesale",
+    "wholesale_access": "Wholesale access",
     "wholesale_application_page": "Wholesale application page",
     "wholesale_buyers": "Wholesale buyers",
+    "wholesale_installments": "Wholesale installments",
     "wholesale_low_stock_threshold": "Wholesale low stock threshold",
     "wholesale_only_tag": "Wholesale-only tag",
+    "wholesale_quantity": "Wholesale quantity",
     "wholesale_sign_in_page": "Wholesale sign-in page",
+    "wholesale_terms": "Wholesale terms",
     "wide": "Wide",
     "wide_7_of_12_columns": "Wide (7 of 12 columns)",
     "wide_content": "Wide content",
@@ -773,6 +795,20 @@
           }
         }
       },
+      "installments_note": {
+        "settings": {
+          "shown_to_wholesale_buyers_when_theme_settings_wh": {
+            "content": "Shown to wholesale buyers when Theme settings > Wholesale allows it and Theme settings > Installments has a provider name. Uses the minimum order for the amount."
+          }
+        }
+      },
+      "order_matrix": {
+        "settings": {
+          "shown_to_wholesale_buyers_on_products_with_the_o": {
+            "content": "Shown to wholesale buyers on products with the order matrix tag (Theme settings > Wholesale). Rows use the first option; columns use the other options."
+          }
+        }
+      },
       "product_guide": {
         "settings": {
           "image": {
@@ -827,6 +863,27 @@
         "settings": {
           "guide_option": {
             "info": "Option names separated by commas. Needs a Product guide block."
+          }
+        }
+      },
+      "volume_pricing": {
+        "settings": {
+          "shows_the_selected_variant_s_volume_pricing_from": {
+            "content": "Shows the selected variant's volume pricing from your B2B catalog. Hidden when a product has no price breaks. Rows before \"Show all\" are set in Theme settings > Wholesale."
+          }
+        }
+      },
+      "wholesale_quantity": {
+        "settings": {
+          "buy_box_for_wholesale_buyers_on_products_without": {
+            "content": "Buy box for wholesale buyers on products without the order matrix. Follows each variant's quantity rule and volume pricing."
+          }
+        }
+      },
+      "wholesale_terms": {
+        "settings": {
+          "minimum_pack_size_and_maximum_from_your_b2b_quan": {
+            "content": "Minimum, pack size and maximum from your B2B quantity rules. Shown only to wholesale buyers; default rules show nothing."
           }
         }
       }
@@ -889,6 +946,20 @@
         "settings": {
           "recommendations_are_based_on_sales_and_product_d": {
             "content": "Recommendations are based on sales and product descriptions. Adjust them in the Search & Discovery app."
+          }
+        }
+      },
+      "quick_order_list": {
+        "settings": {
+          "wholesale_buyers_order_several_products_from_one": {
+            "content": "Wholesale buyers order several products from one list. Each variant follows its own quantity rule, stock and volume pricing. Retail visitors see a sign-in prompt."
+          }
+        }
+      },
+      "wholesale_access": {
+        "settings": {
+          "apply_page": {
+            "info": "Uses the page from Theme settings > Wholesale when empty."
           }
         }
       }
@@ -1045,6 +1116,9 @@
           },
           "wholesale_pack_image_metafield": {
             "info": "Product metafield with an image that replaces the line image for wholesale buyers."
+          },
+          "wholesale_quick_order_drawer": {
+            "info": "Wholesale buyers open the order matrix or quantity box from a card without leaving the collection."
           }
         }
       }

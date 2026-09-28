@@ -39,19 +39,20 @@ const header = `
 <main id="MainContent" tabindex="-1"><p>Content</p></main>`;
 
 export const tests = {
-  async 'mega menu hydrates its extras on open and closes other menus'({ page, base, expect }) {
+  async 'mega menu hydrates its extras on open and closes other menus'({ page, base, expect, eventually }) {
     await page.route('**/fixture.html', (r) => r.fulfill({ contentType: 'text/html', body: shell(header, { modules: ['header.js'] }) }));
     await page.goto(`${base}/fixture.html`);
     await page.waitForFunction(() => document.querySelector('#shop').dataset.bound === '1');
     await page.click('#shop > summary');
     expect(await page.$eval('#shop', (d) => d.open), 'shop open').toBe(true);
-    expect(await page.$eval('#shop > summary', (s) => s.getAttribute('aria-expanded')), 'aria-expanded').toBe('true');
+    await eventually(() => document.querySelector('#shop > summary').getAttribute('aria-expanded') === 'true', 'aria-expanded follows open');
     await page.click('#mega > summary');
-    expect(await page.$eval('#shop', (d) => d.open), 'shop closed when mega opens').toBe(false);
-    expect(await page.$$eval('#thumb-img', (n) => n.length), 'thumb hydrated').toBe(1);
+    await eventually(() => !document.querySelector('#shop').open, 'shop closed when mega opens');
+    await eventually(() => document.querySelectorAll('#thumb-img').length === 1, 'thumb hydrated');
     expect(await page.$$eval('#mega [data-mega-promos]', (n) => n.length), 'promos hydrated').toBe(1);
     await page.keyboard.press('Escape');
-    expect(await page.$eval('#mega', (d) => d.open), 'Escape closes').toBe(false);
+    await eventually(() => !document.querySelector('#mega').open, 'Escape closes');
+    await eventually(() => document.querySelector('#mega > summary').getAttribute('aria-expanded') === 'false', 'aria-expanded after close');
   },
 
   async 'mobile drawer opens, clones the menu once, closes on Escape and returns focus'({ page, base, expect }) {

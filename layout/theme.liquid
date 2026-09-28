@@ -46,9 +46,9 @@
     <script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');</script>
 
     {%- render 'tokens' -%}
-    <link rel="preload" as="font" href="{{ settings.body_font | font_url }}" type="font/woff2" crossorigin>
+    {{ settings.body_font | font_url | preload_tag: as: 'font', type: 'font/woff2', crossorigin: 'anonymous' }}
     {%- unless settings.heading_font.family == settings.body_font.family and settings.heading_font.weight == settings.body_font.weight -%}
-      <link rel="preload" as="font" href="{{ settings.heading_font | font_url }}" type="font/woff2" crossorigin>
+      {{ settings.heading_font | font_url | preload_tag: as: 'font', type: 'font/woff2', crossorigin: 'anonymous' }}
     {%- endunless -%}
     {{ 'base.css' | asset_url | stylesheet_tag }}
     <link rel="stylesheet" href="{{ 'component-drawer.css' | asset_url }}" media="print" onload="this.media='all'">
@@ -104,6 +104,8 @@
           cartUpdated: {{ 'cart.updated' | t | json }}
         },
         wholesale: {{ wholesale | json }},
+        moneyFormat: {{ shop.money_format | json }},
+        currency: {{ cart.currency.iso_code | json }},
         designMode: {{ request.design_mode | json }}
       };
     </script>

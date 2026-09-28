@@ -63,7 +63,6 @@
     endfor
   endif
 
-  assign rule = v.quantity_rule
   assign breaks = v.quantity_price_breaks
   assign lowest_break = nil
   if wholesale and product.quantity_price_breaks_configured? and breaks.size > 0
@@ -167,7 +166,9 @@
         </p>
       {%- endif -%}
     {%- endif -%}
-    {%- if wholesale -%}
+    {%- if wholesale and settings.wholesale_quick_order_drawer and product.available -%}
+      <button type="button" class="card__action link" data-quick-add="{{ product.url }}" aria-haspopup="dialog" aria-describedby="{{ title_id }}">{{ 'wholesale.order' | t }}</button>
+    {%- elsif wholesale -%}
       <a class="card__action link" href="{{ url }}">{{ 'wholesale.order' | t }}</a>
     {%- elsif quick_add -%}
       {%- if product.has_only_default_variant and product.requires_selling_plan == false -%}

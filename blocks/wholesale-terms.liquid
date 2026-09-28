@@ -1,0 +1,34 @@
+{%- comment -%} Wholesale terms chips (brief §7.8) for the selected variant. Wholesale only; sample state in the editor. {%- endcomment -%}
+{%- liquid
+  assign p = closest.product
+  assign v = p.selected_or_first_available_variant
+  assign wholesale = false
+  if customer and customer.b2b?
+    assign wholesale = true
+  endif
+-%}
+{%- if p and wholesale or p and request.design_mode -%}
+  <div class="wholesale-terms" data-swap="{{ block.id }}" {{ block.shopify_attributes }}>
+    {%- unless wholesale -%}<span class="badge badge--preview">{{ 'wholesale.sample_notice' | t }}</span>{%- endunless -%}
+    {%- render 'rule-chips', product: p, variant: v -%}
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "t:labels.wholesale_terms",
+  "tag": null,
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "t:text.blocks.wholesale_terms.settings.minimum_pack_size_and_maximum_from_your_b2b_quan.content"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:labels.wholesale_terms",
+      "category": "t:labels.wholesale"
+    }
+  ]
+}
+{% endschema %}

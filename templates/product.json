@@ -108,6 +108,26 @@
         "share": {
           "type": "share",
           "settings": {}
+        },
+        "terms": {
+          "type": "wholesale-terms",
+          "settings": {}
+        },
+        "installments": {
+          "type": "installments-note",
+          "settings": {}
+        },
+        "tiers": {
+          "type": "volume-pricing",
+          "settings": {}
+        },
+        "wholesale_qty": {
+          "type": "wholesale-quantity",
+          "settings": {}
+        },
+        "matrix": {
+          "type": "order-matrix",
+          "settings": {}
         }
       },
       "block_order": [
@@ -115,6 +135,9 @@
         "title",
         "price",
         "rating",
+        "terms",
+        "installments",
+        "tiers",
         "picker",
         "guide",
         "stock",
@@ -122,6 +145,8 @@
         "notify",
         "options",
         "buy",
+        "wholesale_qty",
+        "matrix",
         "features",
         "description",
         "returns",

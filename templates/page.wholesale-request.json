@@ -1,0 +1,13 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {}
+    },
+    "form": {
+      "type": "apps",
+      "settings": {}
+    }
+  },
+  "order": ["main", "form"]
+}

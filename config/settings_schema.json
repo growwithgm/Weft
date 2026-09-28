@@ -2148,6 +2148,13 @@
         "default": 3
       },
       {
+        "type": "checkbox",
+        "id": "wholesale_quick_order_drawer",
+        "label": "t:labels.order_from_product_cards_in_a_drawer",
+        "default": false,
+        "info": "t:text.settings_schema.wholesale.settings.wholesale_quick_order_drawer.info"
+      },
+      {
         "type": "select",
         "id": "wholesale_location_placement",
         "label": "t:labels.location_switcher",

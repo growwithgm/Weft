@@ -1,0 +1,209 @@
+{%- comment -%}
+  Quick order list (BUILD_SPEC §7.3 #20, VERTICALS salons/spas): a wholesale buyer orders
+  several variants across products in one table, with the same validation as the order matrix
+  (same <order-matrix> element, rules.js and cart handling). Every variant is one row; keyboard
+  arrows move between rows. A filter narrows the rows by name or SKU. Products come from a
+  collection, paginated by Shopify.
+  Retail visitors see a sign-in prompt; the theme editor shows the list with a sample badge.
+  Without JavaScript the form posts updates[variant_id] to /cart/update.
+{%- endcomment -%}
+{%- liquid
+  assign s = section.settings
+  assign wholesale = false
+  if customer and customer.b2b?
+    assign wholesale = true
+  endif
+  assign source = s.collection
+  if source == blank
+    assign source = collections.all
+  endif
+  assign form_id = 'QuickOrder-' | append: section.id
+  assign filter_id = 'QuickOrderFilter-' | append: section.id
+  assign group_label = s.heading
+  if group_label == blank
+    assign group_label = 'wholesale.quick_order_title' | t
+  endif
+-%}
+{{ 'component-matrix.css' | asset_url | stylesheet_tag }}
+<div class="section quick-order color-{{ s.color_scheme }}">
+  <div class="page-width">
+    <div class="quick-order__head">
+      <div class="stack">
+        {%- if s.heading != blank -%}<h2 class="h2">{{ s.heading }}</h2>{%- endif -%}
+        {%- if s.text != blank -%}<div class="rte muted">{{ s.text }}</div>{%- endif -%}
+      </div>
+      {%- if wholesale and s.show_history -%}
+        <a class="link quick-order__history" href="{{ routes.account_url }}">{{ 'wholesale.order_history' | t }}</a>
+      {%- endif -%}
+    </div>
+
+    {%- if wholesale or request.design_mode -%}
+      {%- paginate source.products by s.per_page -%}
+        <order-matrix
+          class="matrix quick-order__list"
+          data-static-rows
+          data-module="{{ 'matrix.js' | asset_url }}"
+          data-load="visible"
+        >
+          {%- render 'matrix-strings' -%}
+          {%- unless wholesale -%}<span class="badge badge--preview">{{ 'wholesale.sample_notice' | t }}</span>{%- endunless -%}
+          {%- if s.show_filter -%}
+            <div class="quick-order__filter field js-only">
+              <label class="field__label" for="{{ filter_id }}">{{ 'wholesale.filter_label' | t }}</label>
+              <input class="input" type="search" id="{{ filter_id }}" autocomplete="off" data-quick-filter>
+            </div>
+            <p class="quick-order__empty muted" data-quick-empty hidden role="status"></p>
+          {%- endif -%}
+          <form action="{{ routes.cart_update_url }}" method="post" id="{{ form_id }}" class="matrix__form" data-matrix-form novalidate>
+            <div class="quick-order__table" role="group" aria-label="{{ group_label | escape }}">
+              <div class="quick-order__header{% if s.show_sku %} quick-order__header--sku{% endif %}" aria-hidden="true">
+                <span>{{ 'cart.product' | t }}</span>
+                {%- if s.show_sku -%}<span>{{ 'wholesale.sku' | t }}</span>{%- endif -%}
+                <span>{{ 'cart.price' | t }}</span>
+                <span>{{ 'cart.quantity' | t }}</span>
+                <span>{{ 'wholesale.stock' | t }}</span>
+                <span class="quick-order__header-total">{{ 'cart.total' | t }}</span>
+              </div>
+              {%- for product in source.products -%}
+                {%- liquid
+                  assign rows = 0
+                  for v in product.variants
+                    if v.available or s.show_sold_out
+                      assign rows = rows | plus: 1
+                    endif
+                  endfor
+                -%}
+                {%- if rows > 0 -%}
+                  <div class="quick-order__group" data-group>
+                    <div class="quick-order__product">
+                      <span class="quick-order__thumb media">
+                        {%- if s.show_images and product.featured_media -%}
+                          {{ product.featured_media.preview_image | image_url: width: 120 | image_tag: widths: '60,120', sizes: '48px', alt: '', loading: 'lazy' }}
+                        {%- endif -%}
+                      </span>
+                      <a class="quick-order__title link" href="{{ product.url }}">{{ product.title | escape }}</a>
+                    </div>
+                    {%- for v in product.variants -%}
+                      {%- if v.available or s.show_sold_out -%}
+                        {%- liquid
+                          assign cell_label = product.title
+                          assign variant_label = ''
+                          unless product.has_only_default_variant
+                            assign cell_label = product.title | append: ' – ' | append: v.title
+                            assign variant_label = v.title
+                          endunless
+                          assign search_text = product.title | append: ' ' | append: v.title | append: ' ' | append: v.sku | downcase
+                        -%}
+                        <div class="quick-order__row{% if s.show_sku %} quick-order__row--sku{% endif %}" data-row data-search="{{ search_text | escape }}">
+                          {%- render 'matrix-cell', variant: v, form_id: form_id, cell_label: cell_label, col_label: variant_label, layout: 'list', show_sku: s.show_sku -%}
+                        </div>
+                      {%- endif -%}
+                    {%- endfor -%}
+                  </div>
+                {%- endif -%}
+              {%- else -%}
+                <p class="quick-order__none muted">{{ 'wholesale.quick_order_none' | t }}</p>
+              {%- endfor -%}
+            </div>
+            {%- if paginate.pages > 1 -%}
+              <p class="quick-order__page-note muted">{{ 'wholesale.page_note' | t }}</p>
+            {%- endif -%}
+            {%- render 'matrix-summary' -%}
+          </form>
+        </order-matrix>
+        {%- render 'pagination', paginate: paginate -%}
+      {%- endpaginate -%}
+    {%- else -%}
+      <div class="quick-order__signin stack">
+        <p>{{ 'wholesale.quick_order_sign_in' | t }}</p>
+        <div class="cluster">
+          <a class="button" href="{{ routes.account_login_url }}">{{ 'wholesale.sign_in' | t }}</a>
+          {%- if settings.wholesale_request_page != blank -%}
+            <a class="button button--secondary" href="{{ settings.wholesale_request_page.url }}">{{ 'wholesale.apply' | t }}</a>
+          {%- endif -%}
+        </div>
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:labels.quick_order_list",
+  "class": "section-quick-order",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "t:text.sections.quick_order_list.settings.wholesale_buyers_order_several_products_from_one.content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:labels.heading",
+      "default": "Quick order"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "t:labels.text"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "t:labels.collection",
+      "info": "t:labels.all_products_when_empty"
+    },
+    {
+      "type": "range",
+      "id": "per_page",
+      "label": "t:labels.products_per_page",
+      "min": 10,
+      "max": 50,
+      "step": 5,
+      "default": 25
+    },
+    {
+      "type": "checkbox",
+      "id": "show_filter",
+      "label": "t:labels.show_filter_by_name_or_sku",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_images",
+      "label": "t:labels.show_product_images",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_sku",
+      "label": "t:labels.show_sku",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_sold_out",
+      "label": "t:labels.show_sold_out_variants",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_history",
+      "label": "t:labels.show_link_to_order_history",
+      "default": true
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:labels.color_scheme",
+      "default": "scheme-1"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:labels.quick_order_list",
+      "category": "t:labels.wholesale"
+    }
+  ]
+}
+{% endschema %}

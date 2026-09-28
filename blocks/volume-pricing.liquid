@@ -1,0 +1,77 @@
+{%- comment -%}
+  Volume pricing table (brief §7.9): rows from the variant's quantity price breaks, first row from
+  the rule minimum, active row follows the quantity entered (matrix.js), 3 rows + "Show all".
+  Not rendered without tiers. Prices are Shopify's; nothing is calculated.
+{%- endcomment -%}
+{%- liquid
+  assign p = closest.product
+  assign v = p.selected_or_first_available_variant
+  assign wholesale = false
+  if customer and customer.b2b?
+    assign wholesale = true
+  endif
+  assign breaks = v.quantity_price_breaks | sort: 'minimum_quantity'
+  assign r_min = v.quantity_rule.min | default: 1
+  assign visible_rows = settings.wholesale_tier_rows | default: 3
+-%}
+{%- if p.quantity_price_breaks_configured? and breaks.size > 0 and wholesale -%}
+  {%- liquid
+    assign rows = breaks.size
+    assign first_break = breaks | first
+    if first_break.minimum_quantity > r_min
+      assign rows = rows | plus: 1
+    endif
+  -%}
+  <div class="tiers" id="Tiers-{{ section.id }}" data-tiers data-swap="{{ block.id }}" {{ block.shopify_attributes }}>
+    <p class="tiers__heading">{{ 'wholesale.tiers_heading' | t }}</p>
+    <ol class="tiers__rows" role="list">
+      {%- assign row_index = 0 -%}
+      {%- if first_break.minimum_quantity > r_min -%}
+        {%- assign row_index = 1 -%}
+        <li class="tiers__row" data-from="{{ r_min }}" data-to="{{ first_break.minimum_quantity | minus: 1 }}">
+          <span class="tiers__range tabular">{{ r_min }}–{{ first_break.minimum_quantity | minus: 1 }}</span>
+          <span class="tiers__badge" hidden>{{ 'wholesale.tier_current' | t }}</span>
+          <span class="tiers__price tabular">{{ v.price | money }}</span>
+        </li>
+      {%- endif -%}
+      {%- for b in breaks -%}
+        {%- assign row_index = row_index | plus: 1 -%}
+        {%- assign next_b = breaks[forloop.index] -%}
+        <li class="tiers__row{% if row_index > visible_rows %} tiers__row--extra{% endif %}" data-from="{{ b.minimum_quantity }}" {% if next_b %}data-to="{{ next_b.minimum_quantity | minus: 1 }}"{% endif %} {% if row_index > visible_rows %}hidden{% endif %}>
+          <span class="tiers__range tabular">{%- if next_b -%}{{ b.minimum_quantity }}–{{ next_b.minimum_quantity | minus: 1 }}{%- else -%}{{ b.minimum_quantity }}+{%- endif -%}</span>
+          <span class="tiers__badge" hidden>{{ 'wholesale.tier_current' | t }}</span>
+          <span class="tiers__price tabular">{{ b.price | money }}</span>
+        </li>
+      {%- endfor -%}
+    </ol>
+    {%- if rows > visible_rows -%}
+      <button type="button" class="link tiers__toggle" aria-expanded="false" data-tiers-toggle data-more="{{ 'wholesale.show_all' | t | escape }}" data-less="{{ 'wholesale.show_fewer' | t | escape }}">{{ 'wholesale.show_all' | t }}</button>
+    {%- endif -%}
+    <p class="tiers__caption">{{ 'wholesale.tier_caption' | t }}</p>
+  </div>
+{%- elsif request.design_mode and wholesale == false -%}
+  <div class="tiers tiers--preview" {{ block.shopify_attributes }}>
+    <span class="badge badge--preview">{{ 'wholesale.sample_notice' | t }}</span>
+    <p class="tiers__heading">{{ 'wholesale.tiers_heading' | t }}</p>
+    <p class="tiers__caption">{{ 'wholesale.tier_caption' | t }}</p>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "t:labels.volume_pricing",
+  "tag": null,
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "t:text.blocks.volume_pricing.settings.shows_the_selected_variant_s_volume_pricing_from.content"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:labels.volume_pricing",
+      "category": "t:labels.wholesale"
+    }
+  ]
+}
+{% endschema %}

@@ -221,7 +221,7 @@ All files are ES modules in `assets/`, mapped by an import map in `theme.liquid`
 | `product.js` | visible (product section) | variant picker → Section Rendering fetch with AbortController, swap `[data-swap]` nodes, URL `replaceState`, product form submit (`/cart/add.js` + `sections`), button states | ≤ 5 KB |
 | `gallery.js` | visible | carousel counter, thumbnails, media grouping by option, lightbox, zoom, video/3D on interaction | ≤ 4 KB |
 | `matrix.js` | visible (wholesale) | order matrix: keyboard grid, typed values commit on blur, rounding notes, summary bar, multi-item add, per-line Shopify errors, in-cart counts | ≤ 6 KB |
-| `quick-order.js` | visible | quick order list (reuses `rules.js`, matrix row code) | ≤ 3 KB |
+| (`matrix.js`) | visible | quick order list and quick order drawer reuse `<order-matrix>` from `matrix.js` (one validation path; decided in P3) | — |
 | `sticky-bar.js` | idle (retail product, mobile) | IntersectionObserver on the real button, overlay awareness | ≤ 1 KB |
 | `back-in-stock.js` | interaction | drawer, variant chips, contact-form or integration submit | ≤ 2 KB |
 | `facets.js` | interaction | filters, sort, grid/list toggle via Section Rendering + history | ≤ 4 KB |

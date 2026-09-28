@@ -110,6 +110,26 @@
             "heading": "Stay in the loop",
             "text": "<p>News about new arrivals and restocks.</p>"
           }
+        },
+        "terms": {
+          "type": "wholesale-terms",
+          "settings": {}
+        },
+        "installments": {
+          "type": "installments-note",
+          "settings": {}
+        },
+        "tiers": {
+          "type": "volume-pricing",
+          "settings": {}
+        },
+        "wholesale_qty": {
+          "type": "wholesale-quantity",
+          "settings": {}
+        },
+        "matrix": {
+          "type": "order-matrix",
+          "settings": {}
         }
       },
       "block_order": [
@@ -117,12 +137,17 @@
         "title",
         "price",
         "rating",
+        "terms",
+        "installments",
+        "tiers",
         "picker",
         "guide",
         "stock",
         "delivery",
         "options",
         "buy",
+        "wholesale_qty",
+        "matrix",
         "features",
         "description",
         "returns",
