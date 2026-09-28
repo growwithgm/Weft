@@ -304,7 +304,8 @@
   /* Section width: Full width spans almost the whole screen on wide monitors. */
   @media (min-width: 990px) {
     .product--full > .page-width { max-width: none; padding-inline: max(16px, 1vw); }
-    .product__grid--divider { column-gap: calc(var(--product-gap, 48px) / 2); }
-    .product__grid--divider .product__media { padding-inline-end: calc(var(--product-gap, 48px) / 2); border-inline-end: 1px solid var(--c-line); }
+    /* With the line, the space around it is 3% of the screen width in total (1.5% each side). */
+    .product__grid--divider { column-gap: 1.5vw; }
+    .product__grid--divider .product__media { padding-inline-end: 1.5vw; border-inline-end: 1px solid var(--c-line); }
   }
 }
