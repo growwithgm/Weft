@@ -631,6 +631,7 @@
     "preload_links_on_hover": "Pré-carregar ligações ao passar o rato",
     "preselect_the_first_available_variant": "Pré-selecionar a primeira variante disponível",
     "preview_the_wholesale_price_in_the_editor": "Pré-visualizar o preço por grosso no editor",
+    "preview_wholesale_blocks_in_the_editor": "Pré-visualizar blocos grossistas no editor",
     "price": "Preço",
     "price_tag": "Etiqueta de preço",
     "primary": "Principal",
@@ -1677,6 +1678,9 @@
         "settings": {
           "wholesale_assorted_packs": {
             "info": "Para produtos vendidos em packs sortidos: as linhas de tamanho único mostram todos os valores de cor."
+          },
+          "wholesale_editor_preview": {
+            "info": "Mostra os blocos grossistas com dados de exemplo no editor de temas. Na loja, só os clientes B2B com sessão iniciada os veem."
           },
           "wholesale_installments": {
             "info": "Ative apenas quando a finalização da compra B2B oferecer o fornecedor de pagamento a prestações."

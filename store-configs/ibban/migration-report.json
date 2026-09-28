@@ -3042,6 +3042,14 @@
   {
     "file": "config/settings_data.json",
     "where": "current",
+    "item": "setting wholesale_editor_preview",
+    "action": "moved",
+    "reason": "Owner request (28 Sep 2026): as on the live theme, wholesale content shows only to B2B customers, also in the theme editor preview.",
+    "explained": true
+  },
+  {
+    "file": "config/settings_data.json",
+    "where": "current",
     "item": "setting integration_clarity_id",
     "action": "dropped",
     "reason": "The live layout loaded Microsoft Clarity (project wqwq1r58rv) while the Microsoft Clarity app embed also loads it; the app embed stays on and the layout copy is left out so Clarity loads once.",

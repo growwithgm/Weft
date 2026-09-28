@@ -24,7 +24,7 @@
   endif
   assign show = false
   if p and is_matrix == false
-    if wholesale or request.design_mode
+    if wholesale or request.design_mode and settings.wholesale_editor_preview
       assign show = true
     endif
   endif

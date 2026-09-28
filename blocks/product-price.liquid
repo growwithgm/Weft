@@ -11,7 +11,7 @@
     assign wholesale = true
   endif
   assign preview_wholesale = false
-  if request.design_mode and wholesale == false and block.settings.preview_wholesale
+  if request.design_mode and settings.wholesale_editor_preview and wholesale == false and block.settings.preview_wholesale
     assign preview_wholesale = true
   endif
   assign show_ws = false

@@ -631,6 +631,7 @@
     "preload_links_on_hover": "Precarica i link al passaggio del mouse",
     "preselect_the_first_available_variant": "Preseleziona la prima variante disponibile",
     "preview_the_wholesale_price_in_the_editor": "Visualizza l'anteprima del prezzo all'ingrosso nell'editor",
+    "preview_wholesale_blocks_in_the_editor": "Anteprima dei blocchi ingrosso nell’editor",
     "price": "Prezzo",
     "price_tag": "Cartellino del prezzo",
     "primary": "Primario",
@@ -1677,6 +1678,9 @@
         "settings": {
           "wholesale_assorted_packs": {
             "info": "Per i prodotti venduti in confezioni assortite: le righe a taglia unica mostrano ogni valore di colore."
+          },
+          "wholesale_editor_preview": {
+            "info": "Mostra i blocchi ingrosso con dati di esempio nell’editor del tema. Nel negozio li vedono solo i clienti B2B che hanno effettuato l’accesso."
           },
           "wholesale_installments": {
             "info": "Attivalo solo se il check-out B2B offre il fornitore del pagamento rateale."

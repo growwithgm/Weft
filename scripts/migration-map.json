@@ -2527,7 +2527,8 @@
       "integration_google_verification": "-0OIKeydZTIfzNFO7PGU_crZ0rjXm-uZnPhon8ydO6Y",
       "integration_meta_verification": "j7y6vq2q62bdo9vs8063nmqniudzap",
       "page_width_wide": "2000",
-      "gutter_desktop": 64
+      "gutter_desktop": 64,
+      "wholesale_editor_preview": false
     },
     "sources": {
       "delivery_rules": "Shipping zones from the live delivery widget (rules resynced with Settings > Shipping and delivery on 12 Sep 2026); delivery days are left out because Weft never shows a delivery date (brief §5).",
@@ -2545,7 +2546,8 @@
       "integration_google_verification": "Google site verification tag in the live layout (it appeared twice; kept once).",
       "integration_meta_verification": "Meta domain verification tag in the live layout.",
       "page_width_wide": "Owner layout spec (28 Sep 2026): the live store widens its pages with custom CSS (1920 px from 1440 px, 2000 px from 1700 px); Weft uses its own wide-screen setting.",
-      "gutter_desktop": "Owner layout spec (28 Sep 2026): 64 px side padding from 1280 px, as on the live store."
+      "gutter_desktop": "Owner layout spec (28 Sep 2026): 64 px side padding from 1280 px, as on the live store.",
+      "wholesale_editor_preview": "Owner request (28 Sep 2026): as on the live theme, wholesale content shows only to B2B customers, also in the theme editor preview."
     },
     "notLoaded": {
       "integration_clarity_id": "The live layout loaded Microsoft Clarity (project wqwq1r58rv) while the Microsoft Clarity app embed also loads it; the app embed stays on and the layout copy is left out so Clarity loads once."

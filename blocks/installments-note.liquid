@@ -11,7 +11,7 @@
   endif
   assign show = false
   if settings.wholesale_installments and settings.installments_provider != blank and v and v.available
-    if wholesale or request.design_mode
+    if wholesale or request.design_mode and settings.wholesale_editor_preview
       assign show = true
     endif
   endif

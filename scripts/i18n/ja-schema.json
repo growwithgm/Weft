@@ -1220,5 +1220,7 @@
   "YouTube": "YouTube",
   "Zoom": "ズーム",
   "namespace.key, for example custom.material": "namespace.key (例: custom.material)",
-  "namespace.key, for example shopify.hair-type. Used instead of the values when set.": "namespace.key (例: shopify.hair-type)。設定すると、値の代わりに使用されます。"
+  "namespace.key, for example shopify.hair-type. Used instead of the values when set.": "namespace.key (例: shopify.hair-type)。設定すると、値の代わりに使用されます。",
+  "Preview wholesale blocks in the editor": "エディターで卸売ブロックをプレビュー",
+  "Shows wholesale blocks with sample data in the theme editor. On the storefront they only show to signed-in B2B customers.": "テーマエディターで卸売ブロックをサンプルデータ付きで表示します。ストアではログインしたB2B顧客にのみ表示されます。"
 }

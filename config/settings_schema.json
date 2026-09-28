@@ -2169,6 +2169,13 @@
       },
       {
         "type": "checkbox",
+        "id": "wholesale_editor_preview",
+        "label": "t:labels.preview_wholesale_blocks_in_the_editor",
+        "default": true,
+        "info": "t:text.settings_schema.wholesale.settings.wholesale_editor_preview.info"
+      },
+      {
+        "type": "checkbox",
         "id": "wholesale_show_sku",
         "label": "t:labels.show_skus_to_wholesale_buyers",
         "default": false

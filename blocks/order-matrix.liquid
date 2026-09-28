@@ -26,7 +26,7 @@
   endif
   assign show = false
   if is_matrix
-    if wholesale or request.design_mode
+    if wholesale or request.design_mode and settings.wholesale_editor_preview
       assign show = true
     endif
   endif
@@ -157,7 +157,7 @@
     {%- render 'matrix-summary' -%}
   </form>
 </order-matrix>
-{%- elsif request.design_mode and p -%}
+{%- elsif request.design_mode and settings.wholesale_editor_preview and p -%}
   <p class="muted matrix__editor-note" {{ block.shopify_attributes }}>{{ 'wholesale.matrix_editor_note' | t: tag: settings.wholesale_matrix_tag }}</p>
 {%- endif -%}
 

@@ -37,7 +37,7 @@
       {%- endif -%}
     </div>
 
-    {%- if wholesale or request.design_mode -%}
+    {%- if wholesale or request.design_mode and settings.wholesale_editor_preview -%}
       {%- paginate source.products by s.per_page -%}
         <order-matrix
           class="matrix quick-order__list"

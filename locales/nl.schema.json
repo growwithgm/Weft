@@ -631,6 +631,7 @@
     "preload_links_on_hover": "Links vooraf laden bij aanwijzen",
     "preselect_the_first_available_variant": "Eerste beschikbare variant vooraf selecteren",
     "preview_the_wholesale_price_in_the_editor": "Groothandelsprijs bekijken in de editor",
+    "preview_wholesale_blocks_in_the_editor": "Groothandelsblokken in de editor tonen",
     "price": "Prijs",
     "price_tag": "Prijskaartje",
     "primary": "Primair",
@@ -1677,6 +1678,9 @@
         "settings": {
           "wholesale_assorted_packs": {
             "info": "Voor producten die als gesorteerde pakketten worden verkocht: regels met één maat tonen elke kleurwaarde."
+          },
+          "wholesale_editor_preview": {
+            "info": "Toont groothandelsblokken met voorbeeldgegevens in de thema-editor. In de winkel zien alleen ingelogde B2B-klanten ze."
           },
           "wholesale_installments": {
             "info": "Schakel dit alleen in als je B2B-checkout deze aanbieder voor betalen in termijnen aanbiedt."

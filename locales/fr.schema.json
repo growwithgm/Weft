@@ -631,6 +631,7 @@
     "preload_links_on_hover": "Précharger les liens au survol",
     "preselect_the_first_available_variant": "Présélectionner la première variante disponible",
     "preview_the_wholesale_price_in_the_editor": "Prévisualiser le prix de gros dans l'éditeur",
+    "preview_wholesale_blocks_in_the_editor": "Prévisualiser les blocs de vente en gros dans l’éditeur",
     "price": "Prix",
     "price_tag": "Étiquette de prix",
     "primary": "Principal",
@@ -1677,6 +1678,9 @@
         "settings": {
           "wholesale_assorted_packs": {
             "info": "Pour les produits vendus en lots assortis : les lignes à taille unique affichent toutes les couleurs."
+          },
+          "wholesale_editor_preview": {
+            "info": "Affiche les blocs de vente en gros avec des données d’exemple dans l’éditeur de thème. Sur la boutique, seuls les clients B2B connectés les voient."
           },
           "wholesale_installments": {
             "info": "Activez cette option uniquement si votre paiement B2B propose ce prestataire de paiement en plusieurs fois."

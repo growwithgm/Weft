@@ -49,7 +49,7 @@
     {%- endif -%}
     <p class="tiers__caption">{{ 'wholesale.tier_caption' | t }}</p>
   </div>
-{%- elsif request.design_mode and wholesale == false -%}
+{%- elsif request.design_mode and settings.wholesale_editor_preview and wholesale == false -%}
   <div class="tiers tiers--preview" {{ block.shopify_attributes }}>
     <span class="badge badge--preview">{{ 'wholesale.sample_notice' | t }}</span>
     <p class="tiers__heading">{{ 'wholesale.tiers_heading' | t }}</p>

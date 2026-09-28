@@ -7,7 +7,7 @@
     assign wholesale = true
   endif
 -%}
-{%- if p and wholesale or p and request.design_mode -%}
+{%- if p and wholesale or p and request.design_mode and settings.wholesale_editor_preview -%}
   <div class="wholesale-terms" data-swap="{{ block.id }}" {{ block.shopify_attributes }}>
     {%- unless wholesale -%}<span class="badge badge--preview">{{ 'wholesale.sample_notice' | t }}</span>{%- endunless -%}
     {%- render 'rule-chips', product: p, variant: v -%}
