@@ -8,7 +8,10 @@
   assign form_id = 'ContactForm-' | append: section.id
   assign has_email = false
   for block in section.blocks
-    if block.type == '_form-field' and block.settings.type == 'email'
+    comment
+      Theme blocks can report their type with a prefix, so match loosely (QA: the email field showed twice).
+    endcomment
+    if block.type contains 'form-field' and block.settings['type'] == 'email'
       assign has_email = true
     endif
   endfor
