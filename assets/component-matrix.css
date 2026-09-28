@@ -76,7 +76,8 @@
   .matrix--rows .matrix__row { display: block; border-block-start: 1px solid var(--c-line); }
   .matrix--rows .matrix__rows-head + .matrix__row { border-block-start: 0; }
   .matrix--rows .matrix__cell { display: grid; text-align: start; grid-template-columns: 56px minmax(0, 1fr) auto; grid-template-areas: 'thumb name price' 'thumb size stock' 'thumb qty total' 'err err err' 'note note note'; column-gap: 12px; row-gap: 6px; padding: 12px 14px; border: 0; }
-  .matrix--rows .matrix__thumb { grid-area: thumb; width: 56px; height: 64px; border-radius: 8px; overflow: hidden; align-self: start; }
+  .matrix--rows .matrix__thumb { grid-area: thumb; width: 56px; height: auto; border-radius: 8px; overflow: hidden; align-self: start; background: transparent; }
+  .matrix--rows .matrix__thumb > img { height: auto; object-fit: contain; }
   .matrix--rows .matrix__row-name { grid-area: name; font-weight: var(--fw-bold); }
   .matrix--rows .matrix__size { grid-area: size; }
   .matrix__chip { display: inline-block; padding: 4px 12px; border-radius: 999px; background: var(--c-surface); font-size: var(--t-13); font-weight: var(--fw-medium); }
@@ -117,16 +118,16 @@
   @media (max-width: 989px) { .quick-add .matrix__summary { margin-inline: -20px; padding-inline: 20px; } }
   /* Rows table width follows its column (container query). */
   order-matrix.matrix--rows { container-type: inline-size; }
-  @container (min-width: 620px) {
-    .matrix__rows-head { display: grid; grid-template-columns: 48px minmax(64px, 1fr) minmax(56px, auto) 52px 120px minmax(84px, auto) 72px; column-gap: 12px; align-items: center; padding: 12px 14px; background: var(--c-surface); font-size: var(--t-12); font-weight: var(--fw-bold); color: var(--c-muted); text-transform: uppercase; letter-spacing: 0.06em; }
-    .matrix__rows-head--no-size { grid-template-columns: 48px minmax(64px, 1fr) 52px 120px minmax(84px, auto) 72px; }
+  @container (min-width: 520px) {
+    .matrix__rows-head { display: grid; grid-template-columns: 44px minmax(56px, 1.2fr) minmax(48px, 1fr) minmax(40px, 0.7fr) 108px minmax(76px, 1fr) minmax(60px, 0.8fr); column-gap: 8px; align-items: center; padding: 12px 14px; background: var(--c-surface); font-size: var(--t-12); font-weight: var(--fw-bold); color: var(--c-muted); text-transform: uppercase; letter-spacing: 0.06em; }
+    .matrix__rows-head--no-size { grid-template-columns: 44px minmax(56px, 1.4fr) minmax(40px, 0.7fr) 108px minmax(76px, 1fr) minmax(60px, 0.8fr); }
     .matrix__rows-head-total { text-align: end; }
-    .matrix--rows .matrix__cell { grid-template-columns: 48px minmax(64px, 1fr) minmax(56px, auto) 52px 120px minmax(84px, auto) 72px; grid-template-areas: 'thumb name size stock qty price total' 'thumb err err err err err err' 'thumb note note note note note note'; align-items: center; row-gap: 4px; }
-    .matrix--rows .matrix__row--no-size .matrix__cell { grid-template-columns: 48px minmax(64px, 1fr) 52px 120px minmax(84px, auto) 72px; grid-template-areas: 'thumb name stock qty price total' 'thumb err err err err err' 'thumb note note note note note'; }
+    .matrix--rows .matrix__cell { grid-template-columns: 44px minmax(56px, 1.2fr) minmax(48px, 1fr) minmax(40px, 0.7fr) 108px minmax(76px, 1fr) minmax(60px, 0.8fr); grid-template-areas: 'thumb name size stock qty price total' 'thumb err err err err err err' 'thumb note note note note note note'; align-items: center; column-gap: 8px; row-gap: 4px; }
+    .matrix--rows .matrix__row--no-size .matrix__cell { grid-template-columns: 44px minmax(56px, 1.4fr) minmax(40px, 0.7fr) 108px minmax(76px, 1fr) minmax(60px, 0.8fr); grid-template-areas: 'thumb name stock qty price total' 'thumb err err err err err' 'thumb note note note note note'; }
     .matrix--rows .matrix__stock { justify-self: center; }
     .matrix--rows .matrix__price { justify-self: start; }
-    .matrix--rows .matrix__thumb { align-self: center; width: 48px; height: 56px; }
-    .matrix--rows .matrix__stepper { max-width: 120px; }
+    .matrix--rows .matrix__thumb { align-self: center; width: 44px; }
+    .matrix--rows .matrix__stepper { max-width: 108px; }
     .matrix--rows .matrix__stepper .matrix__input { width: 36px; }
   }
 
