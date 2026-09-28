@@ -68,7 +68,7 @@
     .matrix__input { width: 40px; }
   }
 
-  /* Rows layout: one row per variant, rules bar, figures and a full-width add button */
+  /* Rows layout */
   .matrix--rows .matrix__table--rows { border-radius: var(--r-card); }
   .matrix__rules-bar { display: flex; justify-content: center; align-items: center; gap: 16px; margin: 0; padding: 14px 16px; background: var(--c-fg); color: var(--c-bg); font-size: var(--t-14); font-weight: var(--fw-bold); letter-spacing: 0.04em; text-transform: uppercase; }
   .matrix__rules-sep { width: 1px; height: 16px; background: currentColor; opacity: 0.4; }
@@ -113,7 +113,9 @@
     .matrix__summary--rows { position: static; margin-inline: 0; padding: 0; box-shadow: none; }
   }
   .matrix__summary--rows { position: static; }
-  /* The rows table follows the width of its column, not the screen (the information column can be narrow). */
+  @media (min-width: 750px) and (max-width: 989px) { .product__info .matrix__summary { margin-inline: 0; padding-inline: 0; } }
+  @media (max-width: 989px) { .quick-add .matrix__summary { margin-inline: -20px; padding-inline: 20px; } }
+  /* Rows table width follows its column (container query). */
   order-matrix.matrix--rows { container-type: inline-size; }
   @container (min-width: 620px) {
     .matrix__rows-head { display: grid; grid-template-columns: 48px minmax(64px, 1fr) minmax(56px, auto) 52px 120px minmax(84px, auto) 72px; column-gap: 12px; align-items: center; padding: 12px 14px; background: var(--c-surface); font-size: var(--t-12); font-weight: var(--fw-bold); color: var(--c-muted); text-transform: uppercase; letter-spacing: 0.06em; }

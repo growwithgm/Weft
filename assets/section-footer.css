@@ -7,11 +7,11 @@
   .footer__block.text-center { align-items: center; text-align: center; }
   .footer__heading { font-family: var(--f-body); font-size: var(--t-15); font-weight: var(--fw-bold); color: var(--c-heading); list-style: none; }
   .footer__heading--large { font-family: var(--f-heading); font-weight: var(--fw-heading); font-size: var(--h-26); line-height: 1.1; }
-  .footer__disclosure > summary { cursor: pointer; list-style: none; min-height: 32px; display: flex; align-items: center; }
+  .footer__disclosure > summary { cursor: pointer; list-style: none; min-height: 44px; display: flex; align-items: center; }
   .footer__disclosure > summary::-webkit-details-marker { display: none; }
   .footer__disclosure[open] > summary { margin-block-end: 8px; }
   .footer__links { list-style: none; padding: 0; display: flex; flex-direction: column; }
-  .footer__links a { display: flex; align-items: center; min-height: 32px; color: var(--c-fg); text-decoration: none; }
+  .footer__links a { display: flex; align-items: center; min-height: 44px; color: var(--c-fg); text-decoration: none; }
   .footer__links a:hover { text-decoration: underline; }
   .footer__image { height: auto; }
   .footer__text { color: var(--c-fg); }

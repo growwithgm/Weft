@@ -211,8 +211,10 @@
   .hotspot__dot span { width: 22px; height: 22px; border-radius: 50%; background: var(--hotspot-color, #fff); box-shadow: 0 0 0 6px color-mix(in srgb, var(--hotspot-color, #fff) 35%, transparent), 0 2px 8px rgb(0 0 0 / 0.25); transition: transform 150ms ease; }
   .hotspot[open] .hotspot__dot span, .hotspot__dot:hover span { transform: scale(1.15); }
   .hotspot__dot:focus-visible { outline: 2px solid var(--c-fg); outline-offset: 2px; border-radius: 50%; }
-  .hotspot__card { position: absolute; top: calc(100% + 6px); left: 50%; transform: translateX(-50%); width: 280px; padding: 12px; border-radius: var(--r-card); background: var(--c-bg); color: var(--c-fg); box-shadow: var(--shadow-overlay); }
+  .hotspot__card { position: absolute; top: calc(100% + 6px); left: 50%; transform: translateX(-50%); width: min(280px, calc(100vw - 2 * var(--gutter))); padding: 12px; border-radius: var(--r-card); background: var(--c-bg); color: var(--c-fg); box-shadow: var(--shadow-overlay); }
   .hotspot--flip-x .hotspot__card { left: auto; right: 0; transform: none; }
+  .hotspot--flip-start .hotspot__card { inset-inline-start: 0; inset-inline-end: auto; transform: none; }
+  [dir='rtl'] .hotspot--flip-x .hotspot__card { right: auto; left: 0; }
   .hotspot--flip-y .hotspot__card { top: auto; bottom: calc(100% + 6px); }
   .hotspot__heading { margin: 0; font-weight: var(--fw-bold); }
   .hotspot__image { width: 100%; height: auto; border-radius: 8px; }

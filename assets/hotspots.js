@@ -29,10 +29,15 @@ class HotSpots extends HTMLElement {
     this.spots.forEach((other) => other !== spot && (other.open = false));
     const card = spot.querySelector('.hotspot__card');
     if (!card) return;
-    spot.classList.remove('hotspot--flip-x', 'hotspot--flip-y');
+    spot.classList.remove('hotspot--flip-x', 'hotspot--flip-start', 'hotspot--flip-y');
     const box = this.getBoundingClientRect();
     const r = card.getBoundingClientRect();
-    if (r.right > box.right || r.left < box.left) spot.classList.add('hotspot--flip-x');
+    // Past the start edge the card aligns to the dot's start; past the end edge, to its end.
+    const rtl = getComputedStyle(this).direction === 'rtl';
+    const overStart = rtl ? r.right > box.right : r.left < box.left;
+    const overEnd = rtl ? r.left < box.left : r.right > box.right;
+    if (overStart) spot.classList.add('hotspot--flip-start');
+    else if (overEnd) spot.classList.add('hotspot--flip-x');
     if (r.bottom > box.bottom) spot.classList.add('hotspot--flip-y');
   }
 }

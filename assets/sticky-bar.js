@@ -4,16 +4,25 @@
  */
 import { bus } from '@weft/core';
 
+// Corner pop-ups open without a backdrop (non-modal) and don't count as overlays.
+const modalOpen = () => {
+  try {
+    return !!document.querySelector('dialog:modal');
+  } catch (_) {
+    return !!document.querySelector('dialog[open]');
+  }
+};
+
 class StickyBar extends HTMLElement {
   connectedCallback() {
     if (this.bound) return;
     this.bound = true;
     this.section = this.closest('product-section');
     this.passed = false;
-    this.overlay = !!document.querySelector('dialog[open]');
+    this.overlay = !!modalOpen();
     this.observe();
     this.offOpen = bus.on('dialog:open', () => { this.overlay = true; this.update(); });
-    this.offClose = bus.on('dialog:close', () => { this.overlay = !!document.querySelector('dialog[open]'); this.update(); });
+    this.offClose = bus.on('dialog:close', () => { this.overlay = !!modalOpen(); this.update(); });
     this.offVariant = bus.on('variant:change', () => this.observe());
   }
 
@@ -23,7 +32,7 @@ class StickyBar extends HTMLElement {
     this.offClose && this.offClose();
     this.offVariant && this.offVariant();
     const chat = document.querySelector('[data-chat-button]');
-    if (chat && !document.querySelector('dialog[open]')) chat.removeAttribute('data-chat-hidden');
+    if (chat && !modalOpen()) chat.removeAttribute('data-chat-hidden');
   }
 
   observe() {
@@ -42,7 +51,8 @@ class StickyBar extends HTMLElement {
     this.hidden = !show;
     this.classList.toggle('is-visible', show);
     const chat = document.querySelector('[data-chat-button]');
-    if (chat) chat.toggleAttribute('data-chat-hidden', show || this.overlay);
+    // The bar only exists below 990 px, so the chat button only makes room for it there.
+    if (chat) chat.toggleAttribute('data-chat-hidden', (show && matchMedia('(max-width: 989px)').matches) || this.overlay);
   }
 }
 

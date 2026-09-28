@@ -49,6 +49,7 @@
   .gallery__play--model { width: auto; height: 48px; padding: 0 20px; border-radius: 24px; display: inline-flex; gap: 8px; }
   .gallery__ar { position: absolute; inset-block-end: 12px; inset-inline-start: 12px; }
   .gallery__counter { position: absolute; inset-inline-end: 12px; inset-block-end: 12px; padding: 4px 10px; border-radius: 14px; background: var(--c-bg); font-size: var(--t-12); }
+  .gallery--thumbs-both .gallery__counter { inset-block-end: 108px; }
   .gallery__thumbs { list-style: none; padding: 0; display: none; gap: 8px; margin-block-start: 12px; overflow-x: auto; }
   .gallery--thumbs-both .gallery__thumbs { display: flex; }
   .gallery__thumb { width: 72px; aspect-ratio: 1; flex: 0 0 auto; border: 1px solid transparent; position: relative; background: var(--media-bg, var(--c-surface)); }
