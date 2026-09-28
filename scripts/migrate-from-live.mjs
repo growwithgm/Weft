@@ -349,6 +349,27 @@ export async function run() {
       m.report.push({ file: rel, where: `section "${id}" (${sec.type})`, item: Object.keys(values).join(', '), action: 'changed', reason: approved.reasons[sec.type], explained: true });
     }
   }
+  // Approved blocks: Weft blocks that replace live-theme code or app markup (base templates only).
+  for (const [rel, data] of files) {
+    if (!data.sections || data.parent) continue;
+    for (const [id, sec] of Object.entries(data.sections)) {
+      const rule = (approved.blocks || {})[sec.type];
+      if (!rule || !sec.blocks || !sec.block_order) continue;
+      const reason = approved.reasons[`blocks:${sec.type}`];
+      for (const block of Object.values(sec.blocks)) {
+        const values = (rule.settings || {})[block.type];
+        if (values) block.settings = { ...(block.settings || {}), ...values };
+      }
+      for (const add of rule.insert || []) {
+        if (Object.values(sec.blocks).some((b) => b.type === add.type)) continue;
+        const anchor = [...sec.block_order].reverse().find((k) => sec.blocks[k].type === add.after);
+        const at = anchor ? sec.block_order.indexOf(anchor) + 1 : sec.block_order.length;
+        sec.blocks[add.id] = { type: add.type, settings: add.settings || {} };
+        sec.block_order.splice(at, 0, add.id);
+      }
+      m.report.push({ file: rel, where: `section "${id}" (${sec.type})`, item: 'blocks: ' + (rule.insert || []).map((b) => b.type).join(', '), action: 'changed', reason, explained: true });
+    }
+  }
 
   // Static sections kept in the live settings (the password page header) go to their template.
   for (const [id, sec] of Object.entries((liveData.current || {}).sections || {})) {

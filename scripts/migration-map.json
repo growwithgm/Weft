@@ -2474,7 +2474,39 @@
       "schemes": "Yellow primary button approved in brief §5 (#FBD816 / #0F1111, hover #E8C70F) replaces the live black button.",
       "main-product": "Mobile sticky bar approved in brief §5 (retail) replaces the theme's own sticky panel, which was off. Owner layout spec (28 Sep 2026): full-width product row from 1440 px, media 65% in a two-column grid, 60 px gap, as on the live store.",
       "scheme-4": "Accessibility floor: white button text on the live orange accent (#ff580d) was 3.16:1; dark text (#0F1111) meets 4.5:1.",
-      "main-collection": "Owner layout spec (28 Sep 2026): filters in a drawer so the grid uses the full width; 2 / 3 / 4 / 4 columns (mobile, tablet, desktop, wide)."
+      "main-collection": "Owner layout spec (28 Sep 2026): filters in a drawer so the grid uses the full width; 2 / 3 / 4 / 4 columns (mobile, tablet, desktop, wide).",
+      "blocks:main-product": "The live theme sold wholesale through SparkLayer / BSS markup, which is dropped (native B2B only). Weft's wholesale blocks (terms, tier table, one-size stepper, order matrix) replace it so the B2B market shows per-piece prices, rules and the matrix; buy buttons are retail-only so wholesale buyers order through the matrix or stepper."
+    },
+    "blocks": {
+      "main-product": {
+        "settings": {
+          "buy-buttons": {
+            "audience": "retail"
+          }
+        },
+        "insert": [
+          {
+            "id": "wholesale_terms",
+            "type": "wholesale-terms",
+            "after": "product-price"
+          },
+          {
+            "id": "wholesale_tiers",
+            "type": "volume-pricing",
+            "after": "wholesale-terms"
+          },
+          {
+            "id": "wholesale_quantity",
+            "type": "wholesale-quantity",
+            "after": "buy-buttons"
+          },
+          {
+            "id": "wholesale_matrix",
+            "type": "order-matrix",
+            "after": "wholesale-quantity"
+          }
+        ]
+      }
     }
   },
   "storeSettings": {

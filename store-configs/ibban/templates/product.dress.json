@@ -55,7 +55,8 @@
             "show_quantity": true,
             "show_accelerated": true,
             "show_pickup": true,
-            "show_gift_card_recipient": false
+            "show_gift_card_recipient": false,
+            "audience": "retail"
           }
         },
         "message-2": {
@@ -109,6 +110,22 @@
             "bg_color": "#e4edfa",
             "text_color": "#1a66d2"
           }
+        },
+        "wholesale_terms": {
+          "type": "wholesale-terms",
+          "settings": {}
+        },
+        "wholesale_tiers": {
+          "type": "volume-pricing",
+          "settings": {}
+        },
+        "wholesale_quantity": {
+          "type": "wholesale-quantity",
+          "settings": {}
+        },
+        "wholesale_matrix": {
+          "type": "order-matrix",
+          "settings": {}
         }
       },
       "block_order": [
@@ -116,10 +133,14 @@
         "product-labels",
         "title",
         "price",
+        "wholesale_terms",
+        "wholesale_tiers",
         "divider-0",
         "variant-picker",
         "divider-1",
         "buy-buttons",
+        "wholesale_quantity",
+        "wholesale_matrix",
         "message-2",
         "collapsible-content-1",
         "collapsible_content_wTPX4g",

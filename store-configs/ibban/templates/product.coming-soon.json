@@ -54,6 +54,22 @@
         "share": {
           "type": "share",
           "settings": {}
+        },
+        "wholesale_terms": {
+          "type": "wholesale-terms",
+          "settings": {}
+        },
+        "wholesale_tiers": {
+          "type": "volume-pricing",
+          "settings": {}
+        },
+        "wholesale_quantity": {
+          "type": "wholesale-quantity",
+          "settings": {}
+        },
+        "wholesale_matrix": {
+          "type": "order-matrix",
+          "settings": {}
         }
       },
       "block_order": [
@@ -61,11 +77,15 @@
         "title",
         "rating",
         "price",
+        "wholesale_terms",
+        "wholesale_tiers",
         "message",
         "variant-picker",
         "divider-1",
         "product-signup",
-        "share"
+        "share",
+        "wholesale_quantity",
+        "wholesale_matrix"
       ],
       "settings": {
         "thumbnails": "both",

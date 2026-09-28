@@ -34,7 +34,8 @@
         "buy-buttons": {
           "type": "buy-buttons",
           "settings": {
-            "show_pickup": false
+            "show_pickup": false,
+            "audience": "retail"
           }
         },
         "message-1": {
@@ -52,6 +53,22 @@
             "heading": "Subscribe to our newsletter",
             "text": "<p>Get the latest updates on all our new collections, sales, offers and product arrival dates.</p>"
           }
+        },
+        "wholesale_terms": {
+          "type": "wholesale-terms",
+          "settings": {}
+        },
+        "wholesale_tiers": {
+          "type": "volume-pricing",
+          "settings": {}
+        },
+        "wholesale_quantity": {
+          "type": "wholesale-quantity",
+          "settings": {}
+        },
+        "wholesale_matrix": {
+          "type": "order-matrix",
+          "settings": {}
         }
       },
       "block_order": [
@@ -59,10 +76,14 @@
         "product-labels",
         "title",
         "price",
+        "wholesale_terms",
+        "wholesale_tiers",
         "divider-0",
         "variant-picker",
         "divider-1",
         "buy-buttons",
+        "wholesale_quantity",
+        "wholesale_matrix",
         "message-1",
         "newsletter"
       ],

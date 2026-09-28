@@ -9,8 +9,13 @@
   assign pct = rating | times: 20
   assign name = review.reviewer_name | default: review.reviewer_initial | strip
   assign initial = review.reviewer_initial | default: name | slice: 0 | upcase
+  assign name = name | replace: '&#39;', "'" | replace: '&quot;', '"' | replace: '&amp;', '&'
   assign safe_name = name | escape
-  assign safe_product = review.product_title | escape
+  assign safe_product = review.product_title | replace: '&#39;', "'" | replace: '&quot;', '"' | replace: '&amp;', '&' | escape
+  # Judge.me bodies can hold img tags whose src is a Ruby hash ("=>" ends strip_html early) and
+  # already-encoded entities: neutralise "=>", strip the tags, decode, then escape once on output.
+  assign body = review.body | replace: '=>', ':' | strip_html | replace: '&#39;', "'" | replace: '&quot;', '"' | replace: '&lt;', '<' | replace: '&gt;', '>' | replace: '&amp;', '&' | strip
+  assign title = review.title | strip_html | replace: '&#39;', "'" | replace: '&quot;', '"' | replace: '&amp;', '&' | strip
 -%}
 <li class="review-card"{% if extra %} data-review-extra tabindex="-1"{% endif %}>
   <div class="review-card__head">
@@ -22,12 +27,15 @@
     {%- if review.created_at != blank -%}<span class="review-card__date muted">{{ review.created_at | time_tag: format: 'date' }}</span>{%- endif -%}
   </div>
   <p class="review-card__stars" role="img" aria-label="{{ 'accessibility.star_rating' | t: rating: rating, max: 5 }}"><span class="review-stars" style="--stars: {{ pct }}%"></span></p>
-  {%- if review.title != blank -%}<p class="review-card__title">{{ review.title | strip_html | escape }}</p>{%- endif -%}
-  <p class="review-card__body">{{ review.body | strip_html | escape | newline_to_br }}</p>
+  {%- if title != blank -%}<p class="review-card__title">{{ title | escape }}</p>{%- endif -%}
+  {%- if body != blank -%}<p class="review-card__body">{{ body | escape | newline_to_br }}</p>{%- endif -%}
   {%- if show_photos and review.pictures_urls.size > 0 -%}
     <ul class="review-card__photos" role="list">
-      {%- for url in review.pictures_urls limit: 4 -%}
-        <li><img src="{{ url }}" alt="{{ 'integrations.reviews.photo' | t: number: forloop.index, name: safe_name }}" width="88" height="88" loading="lazy"></li>
+      {%- for picture in review.pictures_urls limit: 4 -%}
+        {%- comment -%} Each picture is a URL or a map of sizes (compact, small, original, huge). {%- endcomment -%}
+        {%- assign url = picture.compact | default: picture.small | default: picture.original | default: picture -%}
+        {%- if url contains '=>' or url contains '{' -%}{%- continue -%}{%- endif -%}
+        <li><img src="{{ url | escape }}" alt="{{ 'integrations.reviews.photo' | t: number: forloop.index, name: safe_name }}" width="88" height="88" loading="lazy"></li>
       {%- endfor -%}
     </ul>
   {%- endif -%}
