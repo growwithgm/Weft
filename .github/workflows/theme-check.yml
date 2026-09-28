@@ -52,8 +52,10 @@ jobs:
           # Integrations load review photos from Judge.me's CDN by design. Store templates hold the
           # store's app blocks (Judge.me, Shopify Forms), which Theme Check reads as missing theme
           # blocks in sections that also take theme blocks; those files skip that one check.
+          # OrphanedSnippet reports every snippet as unused in the store build although the same
+          # snippets pass in the repository and Theme Store checks, so it is off here only.
           {
-            printf 'root: .\nRemoteAsset:\n  ignore:\n    - sections/integration-*.liquid\n    - snippets/integration-*.liquid\nJSONMissingBlock:\n  ignore:\n'
+            printf 'root: .\nOrphanedSnippet:\n  enabled: false\nRemoteAsset:\n  ignore:\n    - sections/integration-*.liquid\n    - snippets/integration-*.liquid\nJSONMissingBlock:\n  ignore:\n'
             (cd dist/ibban && grep -rl 'shopify://apps/' templates sections --include='*.json' | sed 's/^/    - /')
           } > dist/ibban/.theme-check.yml
           cat dist/ibban/.theme-check.yml
