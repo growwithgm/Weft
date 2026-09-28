@@ -285,6 +285,20 @@
     "submenu": "Sous-menu {{ title }}",
     "voice_search": "Recherche vocale"
   },
+  "integrations": {
+    "bis": {
+      "phone_invalid": "Vérifiez le numéro et ajoutez l’indicatif du pays, par exemple +33."
+    },
+    "reviews": {
+      "about_product": "Avis sur {{ product }}",
+      "editor_note": "Activez les avis Judge.me dans Paramètres du thème > Intégrations. Les avis s’affichent une fois les données de Judge.me synchronisées.",
+      "photo": "Photo {{ number }} de {{ name }}",
+      "show_more": "Voir plus d’avis",
+      "store_review": "Avis sur la boutique",
+      "this_product": "Avis sur ce produit",
+      "verified": "Achat vérifié"
+    }
+  },
   "localization": {
     "country": "Pays/région",
     "language": "Langue",

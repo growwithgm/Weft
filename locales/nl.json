@@ -285,6 +285,20 @@
     "submenu": "Submenu {{ title }}",
     "voice_search": "Zoeken met spraak"
   },
+  "integrations": {
+    "bis": {
+      "phone_invalid": "Controleer het nummer en voeg de landcode toe, bijvoorbeeld +31."
+    },
+    "reviews": {
+      "about_product": "Review van {{ product }}",
+      "editor_note": "Zet Judge.me-reviews aan in Thema-instellingen > Integraties. Reviews verschijnen zodra Judge.me zijn gegevens heeft gesynchroniseerd.",
+      "photo": "Foto {{ number }} van {{ name }}",
+      "show_more": "Meer reviews tonen",
+      "store_review": "Winkelreview",
+      "this_product": "Review van dit product",
+      "verified": "Geverifieerde koper"
+    }
+  },
   "localization": {
     "country": "Land/regio",
     "language": "Taal",

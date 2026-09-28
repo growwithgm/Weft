@@ -395,6 +395,25 @@ export default [
       check('custom_code_consent', 'Wait for marketing consent', true)
     ]
   },
+  // Store builds only: scripts/package-theme.mjs --themestore removes this group, every
+  // integration-* file and every marked integration region.
+  {
+    name: 'Integrations',
+    settings: [
+      para('Connections to outside services for this store. They are not part of the Theme Store version of Weft.'),
+      header('Reviews (Judge.me)'),
+      check('integration_reviews_enable', 'Show reviews from Judge.me data', false, 'Used by the "Reviews grid" and "Reviews wall" sections. Reads the reviews Judge.me keeps in shop metafields.'),
+      header('Back in stock'),
+      check('integration_bis_enable', 'Send back-in-stock requests to a service'),
+      text('integration_bis_endpoint', 'Subscribe URL', null, 'The service receives the request as JSON. Without a URL, requests go through the contact form.'),
+      header('Tracking'),
+      text('integration_gtm_id', 'Google Tag Manager container ID', null, 'For example GTM-XXXXXXX.'),
+      text('integration_clarity_id', 'Microsoft Clarity project ID'),
+      text('integration_google_verification', 'Google site verification code'),
+      text('integration_meta_verification', 'Meta domain verification code'),
+      select('integration_tracking_mode', 'Load tracking', [['after_load', 'After page load'], ['after_interaction', 'After first interaction']], 'after_load', 'Tracking also waits for marketing consent when "Wait for marketing consent" is on in Custom code and tracking.')
+    ]
+  },
   {
     name: 'Advanced',
     settings: [

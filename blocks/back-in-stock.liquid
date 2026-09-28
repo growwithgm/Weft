@@ -2,7 +2,8 @@
   Back-in-stock (brief §5, approved): full-width "Remind me" button when the selected variant is
   sold out; the drawer (bottom sheet on mobile, modal on desktop) handles several sold-out
   variants at once. Core version sends the request through Shopify's contact form, so it needs
-  no app. Store builds can switch to an integration endpoint (Theme settings > Integrations).
+  no app. Store builds can send it to a back-in-stock service instead (Theme settings >
+  Integrations; the marked region is removed from the Theme Store package).
 {%- endcomment -%}
 {%- liquid
   assign p = closest.product
@@ -21,6 +22,9 @@
 {%- capture visible -%}{% render 'audience-check', audience: block.settings.audience %}{%- endcapture -%}
 {%- if visible == '1' and p -%}
   <back-in-stock class="back-in-stock" data-swap="{{ block.id }}" data-none-selected="{{ 'products.bis.none_selected' | t | escape }}" data-back-in-stock data-module="{{ 'back-in-stock.js' | asset_url }}" data-load="interaction" {{ block.shopify_attributes }}>
+    {%- comment -%} integration:start {%- endcomment -%}
+    {%- render 'integration-back-in-stock', product: p -%}
+    {%- comment -%} integration:end {%- endcomment -%}
     {%- if selected_sold -%}
       <button type="button" class="button button--secondary button--full" data-open-dialog="BackInStock-{{ section.id }}" data-remind-button>
         {%- render 'icon', name: 'bell', size: 18 -%}{{ 'products.remind_me' | t }}
@@ -51,7 +55,7 @@
                   {%- for variant in p.variants limit: 250 -%}
                     {%- unless variant.available -%}
                       <label class="chip-toggle">
-                        <input type="checkbox" name="contact[Variant {{ forloop.index }}]" value="{{ variant.title | escape }} ({{ variant.id }})" data-variant-id="{{ variant.id }}" {% if variant.id == v.id %}checked{% endif %}>
+                        <input type="checkbox" name="contact[Variant {{ forloop.index }}]" value="{{ variant.title | escape }} ({{ variant.id }})" data-variant-id="{{ variant.id }}" data-variant-title="{{ variant.title | escape }}" {% if variant.id == v.id %}checked{% endif %}>
                         <span>{{ variant.title }}</span>
                       </label>
                     {%- endunless -%}

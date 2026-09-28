@@ -32,7 +32,11 @@
     "component-blocks.css": 1536,
     "finder.js": 1536,
     "compare-slider.js": 1024,
-    "section-vertical.css": 3072
+    "section-vertical.css": 3072,
+    "back-in-stock.js": 2048,
+    "custom-code.js": 1024,
+    "integration-reviews.css": 1536,
+    "integration-reviews.js": 1024
   },
   "pages": {
     "renderBlockingCss": 14336,

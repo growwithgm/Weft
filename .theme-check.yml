@@ -8,3 +8,10 @@ ignore:
   - store-configs/**
   - dist/**
   - node_modules/**
+
+# Store integrations talk to outside services by design (review photos from Judge.me's CDN);
+# they are removed from the Theme Store package.
+RemoteAsset:
+  ignore:
+    - sections/integration-*.liquid
+    - snippets/integration-*.liquid

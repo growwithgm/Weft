@@ -16,7 +16,7 @@ Status: `planned` (P0) → `built` (with phase) → `verified` (scenario or chec
 | Floating WhatsApp bubble, hidden on the onboarding page, number from setting | `snippets/chat-button` in `layout/theme.liquid`; settings `social_whatsapp_url`, `chat_button_enable`, `chat_button_hide_on` (page handles) ; pre-filled with page URL | P1 | done |
 | Wholesale-only gate with noindex and login prompt | Native catalogs first; tag fallback `settings.wholesale_only_tag`; `snippets/wholesale-gate`, `main-product` gate state, `noindex` in `theme.liquid`; 404 line in `main-404` | P3 | done |
 | Breadcrumbs | `snippets/breadcrumbs`, settings per page type | P1/P4 | done |
-| Tag Manager, Clarity, Facebook + Google verification | Core: Custom code & tracking group (`custom_code_head`, `custom_code_body`, loading modes, consent). Pilot: `integration-tracking` snippet + store config values (duplicate Google tag dropped) | P1/P6 | partial |
+| Tag Manager, Clarity, Facebook + Google verification | Core: Custom code & tracking group (`custom_code_head`, `custom_code_body`, loading modes, consent). Pilot: `integration-tracking` snippet + store config values (duplicate Google tag dropped) | P1/P6 | done |
 | 8 languages, RTL, market-specific templates | `locales/*` ×8, schema locales en/es, logical CSS, context templates | P1/P6 | partial |
 | Link preloading, lazy images | setting `preload_links` (hover/touch prefetch that defers to Shopify's own speculation rules — verify P1), `snippets/image` | P1 | done |
 | Footer menus, text + socials, newsletter, payment icons, back to top, Follow on Shop, selectors | `sections/footer` with `_footer-column`, `_footer-text` (Follow on Shop via `login_button`), `_footer-newsletter`; `snippets/payment-icons` (`shop.enabled_payment_types`) | P1 | done |
@@ -58,7 +58,7 @@ Status: `planned` (P0) → `built` (with phase) → `verified` (scenario or chec
 | Size guide modal (metafield image or page) | `blocks/product-guide` + link in picker | P2 | done |
 | "This size is ideal for" | Removed (Fit row covers it) | — | n/a |
 | Delivery list | `blocks/delivery-list` + Delivery information / Installments groups | P2 | done |
-| Back-in-stock drawer | `blocks/back-in-stock` (core: contact form), `integration-back-in-stock` (Wasify) | P2/P6 | partial |
+| Back-in-stock drawer | `blocks/back-in-stock` (core: contact form), `integration-back-in-stock` (Wasify) | P2/P6 | done |
 | Retail stock line | `blocks/stock-line` | P2 | done |
 | Backorder note | `blocks/buy-buttons` (`show_backorder_note`) | P2 | done |
 | Inventory urgency bar (off) | `blocks/stock-line` option `show_bar` (real inventory only) | P2 | done |
@@ -75,7 +75,7 @@ Status: `planned` (P0) → `built` (with phase) → `verified` (scenario or chec
 | Wholesale Klarna line (setting) | `blocks/installments-note` + `settings.wholesale_installments` | P3 | done |
 | Wholesale rules on stepper, updates on variant change, in-cart count | `blocks/wholesale-quantity` + Section Rendering | P3 | done |
 | Volume pricing | `blocks/volume-pricing` | P3 | done |
-| Reviews section | `sections/product-reviews` (core) / `integration-reviews-grid` (pilot) | P2/P6 | partial |
+| Reviews section | `sections/product-reviews` (core) / `integration-reviews-grid` (pilot) | P2/P6 | done |
 | You may also like, Recently viewed | `sections/product-recommendations`, `sections/recently-viewed` | P2 | done |
 | Product details tabs, feature hotspots, comparison grid | `sections/product-details` (+ `product-tabs`, `highlight-text`, `payment-methods` blocks), `product-hotspots`, `product-comparison-grid` | P5 | done |
 | One layout for all templates | `main-product` for every product template | P2 | done |
@@ -104,7 +104,7 @@ Status: `planned` (P0) → `built` (with phase) → `verified` (scenario or chec
 | Wholesale sign-in page | `sections/wholesale-access`, `templates/page.wholesale-access.json` | P3 | done |
 | Request form (Shopify Forms app) | `templates/page.wholesale-request.json` with `apps` section | P3 | done |
 | Onboarding landing (Klaviyo, Judge.me) | pilot: `store-configs/ibban` page template with `custom-liquid` content moved unchanged | P7 | planned |
-| Reviews wall | core: `page.reviews.json` (testimonials + app blocks); pilot: `integration-reviews-wall` | P5/P6 | partial |
+| Reviews wall | core: `page.reviews.json` (testimonials + app blocks); pilot: `integration-reviews-wall` | P5/P6 | done |
 | Contact, FAQ, About, Lookbook, landings, policies, custom payment, coming soon, shipping calculator | page templates in §2 of architecture | P5 | done |
 | Blog and articles with comments | `main-blog`, `main-article` (comments paginated, success/error) | P5 | done |
 | Search page (sort, filters, articles, pages) | `main-search`, `templates/search.json` | P4 | done |
@@ -161,7 +161,7 @@ Status: `planned` (P0) → `built` (with phase) → `verified` (scenario or chec
 | Ingredient spotlight | `sections/ingredient-spotlight` | P6 | done |
 | "For professionals" banner | `image-banner` preset "For professionals"; listings link it to `/account/login` | P6 | done |
 | Gift guide | `featured-collection` preset "Gift guide" with tabs (one collection per price band) | P6 | done |
-| Professional-only products, testers | native catalogs (no code) + tag fallback + scenario 19 | P3/P6 | partial |
+| Professional-only products, testers | native catalogs (no code) + tag fallback + scenario 19 | P3/P6 | done |
 | Case packs (increment 6/12), volume tiers | quantity rules (native) — matrix, stepper, cart | P3 | done |
 | Link to order history in customer account | `quick-order-list` + account links (`routes.account_url`) | P3 | done |
 | Filters showcase (hair type, concern, size, price, availability) | demo store Search & Discovery setup (`demo-content/tress/`) | P8 | planned |

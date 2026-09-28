@@ -4,15 +4,18 @@
 // translation keys, missing files, Liquid tag balance, forbidden tags, remote or
 // parser-blocking scripts, brand strings and asset budgets. Real Theme Check still runs in CI.
 //
-// Usage: node scripts/theme-lint.mjs [--json]
+// Usage: node scripts/theme-lint.mjs [--json] [--root dist/themestore] [--store-build]
 // Exit code 1 when there is any error or warning (the project gate is 0 errors, 0 warnings).
 
 import { readFileSync, readdirSync, existsSync, statSync } from 'node:fs';
-import { join, relative, basename, dirname } from 'node:path';
+import { join, relative, basename, dirname, resolve } from 'node:path';
 import { gzipSync } from 'node:zlib';
 import { fileURLToPath } from 'node:url';
 
-const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
+const REPO = join(dirname(fileURLToPath(import.meta.url)), '..');
+// --root <dir> lints a built package (dist/themestore, dist/<store>) instead of the repository.
+const rootArg = process.argv.indexOf('--root');
+const ROOT = rootArg > 0 ? resolve(process.argv[rootArg + 1]) : REPO;
 const THEME_DIRS = ['assets', 'blocks', 'config', 'layout', 'locales', 'sections', 'snippets', 'templates'];
 const problems = [];
 const report = (level, file, message, line) =>
@@ -296,7 +299,8 @@ for (const file of liquidFiles) {
     for (const [name, index] of declared) {
       if (['empty', 'blank', 'nil', 'null', 'true', 'false'].includes(name)) report('error', file, `"${name}" is a Liquid literal and can't be used as a variable name`, lineOf(src, index));
       const esc = name.replace(/[-]/g, '\\-');
-      const uses = [...code.matchAll(new RegExp(`(?<![\\w.-])${esc}(?![\\w-])`, 'g'))].filter((u) => {
+      // A single dot before the name is property access; a range like (1..name) is a read.
+      const uses = [...code.matchAll(new RegExp(`(?<![\\w-])(?<!(?<!\\.)\\.)${esc}(?![\\w-])`, 'g'))].filter((u) => {
         const before = code.slice(Math.max(0, u.index - 12), u.index);
         return !/(assign|capture)\s+$/.test(before);
       });
@@ -451,7 +455,8 @@ for (const file of list(join(ROOT, 'sections'), '.json')) {
   const presetNames = existsSync(dataPath) ? Object.keys(parseJSON(dataPath, read(dataPath))?.presets || {}) : [];
   const handles = new Map(presetNames.map((n) => [n.toLowerCase().replace(/ /g, '-'), n]));
   const folders = existsSync(listingsDir) ? readdirSync(listingsDir) : [];
-  if (presetNames.length > 1) for (const [handle, name] of handles) if (!folders.includes(handle)) report('error', listingsDir, `Preset "${name}" has no listings/${handle}/ folder`);
+  // Store builds (package-theme.mjs --store) never ship listings/.
+  if (presetNames.length > 1 && !process.argv.includes('--store-build')) for (const [handle, name] of handles) if (!folders.includes(handle)) report('error', listingsDir, `Preset "${name}" has no listings/${handle}/ folder`);
   const same = (a, b) => JSON.stringify(parseJSON(a, read(a))) === JSON.stringify(parseJSON(b, read(b)));
   for (const folder of folders) {
     const dir = join(listingsDir, folder);
@@ -528,7 +533,7 @@ for (const file of list(join(ROOT, 'assets'))) {
 }
 
 // ---------- budgets (compressed bytes) ----------
-const budgetFile = join(ROOT, 'tests', 'lighthouse', 'budgets.json');
+const budgetFile = join(REPO, 'tests', 'lighthouse', 'budgets.json');
 if (existsSync(budgetFile)) {
   const budgets = JSON.parse(read(budgetFile));
   for (const [asset, max] of Object.entries(budgets.assets || {})) {

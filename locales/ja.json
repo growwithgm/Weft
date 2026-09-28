@@ -285,6 +285,20 @@
     "submenu": "{{ title }}のサブメニュー",
     "voice_search": "音声で検索"
   },
+  "integrations": {
+    "bis": {
+      "phone_invalid": "電話番号を確認し、国番号を含めてください（例：+81）。"
+    },
+    "reviews": {
+      "about_product": "{{ product }}のレビュー",
+      "editor_note": "テーマ設定 > 連携 でJudge.meのレビューをオンにしてください。Judge.meのデータ同期後にレビューが表示されます。",
+      "photo": "{{ name }}さんの写真{{ number }}",
+      "show_more": "レビューをもっと見る",
+      "store_review": "ショップのレビュー",
+      "this_product": "この商品のレビュー",
+      "verified": "購入者レビュー"
+    }
+  },
   "localization": {
     "country": "国/地域",
     "language": "言語",

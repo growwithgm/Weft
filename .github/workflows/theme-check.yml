@@ -17,6 +17,10 @@ jobs:
       - run: node scripts/theme-lint.mjs
       - run: node scripts/i18n-check.mjs
       - run: npm run test:unit
+      - name: Packages (Theme Store and store build)
+        run: |
+          node scripts/package-theme.mjs --themestore
+          node scripts/package-theme.mjs --store ibban
       - name: Component tests (Playwright on static fixtures)
         run: |
           npm install --no-save playwright@1.56.1
@@ -33,3 +37,8 @@ jobs:
           node-version: 22
       - run: npm install -g @shopify/cli@latest
       - run: shopify theme check --fail-level suggestion
+      - name: Theme Check on the Theme Store package
+        run: |
+          node scripts/package-theme.mjs --themestore
+          cp .theme-check.yml dist/themestore/
+          shopify theme check --path dist/themestore --fail-level suggestion

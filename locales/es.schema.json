@@ -255,6 +255,7 @@
     "dropdown": "Desplegable",
     "dropdown_choices": "Opciones del desplegable",
     "dropdown_options": "Opciones del desplegable",
+    "each_one_names_the_product_it_is_about": "Cada una indica el producto al que se refiere.",
     "email": "Correo electrónico",
     "email_sign_up": "Suscripción por correo",
     "email_signup": "Suscripción por correo",
@@ -289,6 +290,7 @@
     "featured_product": "Producto destacado",
     "field": "Campo",
     "fill": "Rellenar",
+    "fill_with_reviews_of_other_products": "Completar con reseñas de otros productos",
     "filled": "Relleno",
     "filter_parameter": "Parámetro del filtro",
     "filter_promotion": "Promoción en filtros",
@@ -304,6 +306,7 @@
     "font": "Fuente",
     "footer": "Pie de página",
     "for_certification_logos": "Para logotipos de certificación.",
+    "for_example_gtm_xxxxxxx": "Por ejemplo, GTM-XXXXXXX.",
     "for_policy_and_legal_links": "Para enlaces de políticas y avisos legales.",
     "for_pre_order_product_templates": "Para plantillas de producto en reserva.",
     "for_professionals": "Para profesionales",
@@ -323,6 +326,8 @@
     "gift_guide": "Guía de regalos",
     "gift_message": "Mensaje de regalo",
     "go_to_the_cart_page": "Ir a la página del carrito",
+    "google_site_verification_code": "Código de verificación de Google",
+    "google_tag_manager_container_id": "ID de contenedor de Google Tag Manager",
     "grid": "Cuadrícula",
     "group": "Grupo",
     "guide_image": "Imagen de la guía",
@@ -393,6 +398,7 @@
     "images": "Imágenes",
     "images_next_to_links": "Imágenes junto a los enlaces",
     "immediately": "Inmediatamente",
+    "in_characters": "En caracteres.",
     "in_stock": "En stock",
     "infinite_scroll": "Desplazamiento infinito",
     "information": "Información",
@@ -407,6 +413,7 @@
     "instagram": "Instagram",
     "installments": "Pago a plazos",
     "installments_row_tint": "Tono de la fila de pago a plazos",
+    "integrations": "Integraciones",
     "inventory_for_a_full_bar": "Inventario para la barra completa",
     "item": "Elemento",
     "jar": "Tarro",
@@ -465,6 +472,7 @@
     "load_body_code": "Cargar el código del body",
     "load_head_code": "Cargar el código del head",
     "load_more_button": "Botón Cargar más",
+    "load_tracking": "Cargar el seguimiento",
     "location": "Ubicación",
     "location_switcher": "Selector de ubicación",
     "logo": "Logotipo",
@@ -480,11 +488,13 @@
     "low_stock": "Stock bajo",
     "low_stock_and_backorder": "Stock bajo y pedido pendiente",
     "low_stock_threshold": "Umbral de stock bajo",
+    "lowest_rating_shown": "Valoración mínima mostrada",
     "magnify_on_hover": "Lupa al pasar el cursor",
     "mark_values_as_unavailable": "Marcar valores como no disponibles",
     "mastodon": "Mastodon",
     "maximum_page_width": "Ancho máximo de página",
     "maximum_products": "Máximo de productos",
+    "maximum_reviews": "Máximo de reseñas",
     "maximum_width": "Ancho máximo",
     "media": "Multimedia",
     "media_alignment": "Alineación del contenido multimedia",
@@ -508,7 +518,9 @@
     "message_1": "Mensaje 1",
     "message_2": "Mensaje 2",
     "message_after_declining": "Mensaje tras rechazar",
+    "meta_domain_verification_code": "Código de verificación de dominio de Meta",
     "metafield": "Metacampo",
+    "microsoft_clarity_project_id": "ID de proyecto de Microsoft Clarity",
     "middle_center": "Centro",
     "middle_end": "Centro al final",
     "middle_start": "Centro al inicio",
@@ -700,8 +712,12 @@
     "review_count": "Número de reseñas",
     "reviews": "Reseñas",
     "reviews_app_code": "Código de la aplicación de reseñas",
+    "reviews_before_show_more": "Reseñas antes de «Ver más»",
+    "reviews_grid": "Cuadrícula de reseñas",
+    "reviews_judge_me": "Reseñas (Judge.me)",
     "reviews_section_anchor": "Ancla de la sección de reseñas",
     "reviews_section_on_this_page": "Sección de reseñas de esta página",
+    "reviews_wall": "Muro de reseñas",
     "rich_text": "Texto enriquecido",
     "rotate_prompts_on_mobile": "Rotar sugerencias en móvil",
     "round_converted_amounts_up": "Redondear hacia arriba los importes convertidos",
@@ -748,6 +764,7 @@
     "secure": "Seguro",
     "secure_payment": "Pago seguro",
     "selected": "Seleccionadas",
+    "send_back_in_stock_requests_to_a_service": "Enviar los avisos de reposición a un servicio",
     "separate_notes_with_commas": "Separa las notas con comas.",
     "shade_every_other_row": "Sombrear filas alternas",
     "shake_every": "Agitar cada",
@@ -760,6 +777,7 @@
     "shoppable_image": "Imagen comprable",
     "shorten_the_description": "Acortar la descripción",
     "shorten_to_about": "Acortar a unos",
+    "shortest_review_shown": "Reseña más corta mostrada",
     "show": "Mostrar",
     "show_a_divider_above": "Mostrar un separador encima",
     "show_a_link_when_other_options_are_sold_out": "Mostrar un enlace cuando otras opciones estén agotadas",
@@ -837,7 +855,10 @@
     "show_recipient_form_for_gift_cards": "Mostrar formulario de destinatario en tarjetas de regalo",
     "show_related_products": "Mostrar productos relacionados",
     "show_returns_row": "Mostrar fila de devoluciones",
+    "show_review_photos": "Mostrar fotos de las reseñas",
+    "show_reviews_from_judge_me_data": "Mostrar reseñas con los datos de Judge.me",
     "show_reviews_tab": "Mostrar pestaña de reseñas",
+    "show_reviews_with_photos_first": "Mostrar primero las reseñas con fotos",
     "show_rows_without_a_value": "Mostrar filas sin valor",
     "show_rows_without_data": "Mostrar filas sin datos",
     "show_sale_label": "Mostrar etiqueta de oferta",
@@ -926,6 +947,7 @@
     "sticky_header": "Encabezado fijo",
     "stock": "Stock",
     "store": "Tienda",
+    "store_integrations": "Integraciones de la tienda",
     "store_reviews": "Reseñas de la tienda",
     "stretch": "Estirar",
     "style": "Estilo",
@@ -933,6 +955,7 @@
     "style_on_large_screens": "Estilo en pantallas grandes",
     "style_on_mobile": "Estilo en móvil",
     "subheading": "Subtítulo",
+    "subscribe_url": "URL de suscripción",
     "subtitle_metafield": "Metacampo del subtítulo",
     "success_background": "Fondo de éxito",
     "success_text": "Texto de éxito",
@@ -981,6 +1004,7 @@
     "text_size": "Tamaño del texto",
     "text_width": "Ancho del texto",
     "the_rating_block_links_here": "El bloque de valoración enlaza aquí.",
+    "the_rating_link_on_the_product_jumps_here": "El enlace de valoración del producto salta aquí.",
     "threads": "Threads",
     "thresholds": "Umbrales",
     "thumbnails": "Miniaturas",
@@ -998,6 +1022,7 @@
     "top_start": "Arriba al inicio",
     "towards_the_end": "Hacia el final",
     "towards_the_start": "Hacia el inicio",
+    "tracking": "Seguimiento",
     "transition": "Transición",
     "tumblr": "Tumblr",
     "twitch": "Twitch",
@@ -1361,6 +1386,13 @@
           }
         }
       },
+      "integration_reviews_grid": {
+        "settings": {
+          "store_integration_shows_reviews_from_judge_me_s_": {
+            "content": "Integración de la tienda: muestra reseñas de los datos sincronizados de Judge.me. Actívala en Configuración del tema > Integraciones."
+          }
+        }
+      },
       "location_sheet": {
         "settings": {
           "shown_to_wholesale_buyers_whose_company_has_two_": {
@@ -1526,6 +1558,22 @@
           },
           "the_installments_row_on_product_pages_shopify_pa": {
             "content": "La fila de pago a plazos en las páginas de producto. Los plazos de Shopify Payments se muestran por separado cuando están disponibles."
+          }
+        }
+      },
+      "integrations": {
+        "settings": {
+          "connections_to_outside_services_for_this_store_t": {
+            "content": "Conexiones con servicios externos para esta tienda. No forman parte de la versión de Weft de la Theme Store."
+          },
+          "integration_bis_endpoint": {
+            "info": "El servicio recibe la solicitud en JSON. Sin URL, las solicitudes van por el formulario de contacto."
+          },
+          "integration_reviews_enable": {
+            "info": "Lo usan las secciones «Cuadrícula de reseñas» y «Muro de reseñas». Lee las reseñas que Judge.me guarda en los metacampos de la tienda."
+          },
+          "integration_tracking_mode": {
+            "info": "El seguimiento también espera el consentimiento de marketing cuando «Esperar el consentimiento de marketing» está activado en Código personalizado y seguimiento."
           }
         }
       },

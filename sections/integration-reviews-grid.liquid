@@ -1,0 +1,131 @@
+{%- comment -%}
+  Integration (store builds only): product-page reviews from Judge.me's synced data (see
+  snippets/integration-reviews-list). This product's reviews come first; reviews of other
+  products can fill the grid, each naming its product. The score and count are the store totals
+  Judge.me reports. Needs Theme settings > Integrations > "Show reviews from Judge.me data".
+{%- endcomment -%}
+{%- liquid
+  assign s = section.settings
+  assign data = shop.metafields.judgeme.reviews_grid.value
+  assign average = data.average_rating | default: shop.metafields.judgeme.all_reviews_rating | plus: 0
+  assign total = data.number_of_reviews | default: shop.metafields.judgeme.all_reviews_count | plus: 0
+-%}
+{%- if settings.integration_reviews_enable and data != blank -%}
+  {{ 'integration-reviews.css' | asset_url | stylesheet_tag }}
+  <div class="section reviews-integration color-{{ s.color_scheme }} below-fold" id="{{ s.anchor | default: 'reviews' }}">
+    <div class="page-width reviews-integration__grid">
+      <div class="reviews-integration__aside stack">
+        <h2 class="h2">{{ s.heading | escape }}</h2>
+        {%- render 'integration-reviews-summary', average: average, total: total -%}
+        {%- if s.all_reviews_link != blank -%}<a class="button button--secondary button--small" href="{{ s.all_reviews_link }}">{{ s.all_reviews_label | escape }}</a>{%- endif -%}
+      </div>
+      {%- render 'integration-reviews-list', data: data, product_handle: product.handle, min_rating: s.min_rating, min_length: s.min_length, max_reviews: s.max_reviews, first_batch: s.first_batch, others: s.others, show_photos: s.show_photos, media_first: false -%}
+    </div>
+  </div>
+{%- elsif request.design_mode -%}
+  <div class="section page-width"><p class="muted">{{ 'integrations.reviews.editor_note' | t }}</p></div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "t:labels.reviews_grid",
+  "class": "section-integration-reviews",
+  "enabled_on": {
+    "templates": [
+      "product"
+    ]
+  },
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "t:text.sections.integration_reviews_grid.settings.store_integration_shows_reviews_from_judge_me_s_.content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:labels.heading",
+      "default": "Customer reviews"
+    },
+    {
+      "type": "text",
+      "id": "anchor",
+      "label": "t:labels.anchor",
+      "default": "reviews",
+      "info": "t:labels.the_rating_link_on_the_product_jumps_here"
+    },
+    {
+      "type": "range",
+      "id": "min_rating",
+      "label": "t:labels.lowest_rating_shown",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "min_length",
+      "label": "t:labels.shortest_review_shown",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "default": 0,
+      "info": "t:labels.in_characters"
+    },
+    {
+      "type": "range",
+      "id": "max_reviews",
+      "label": "t:labels.maximum_reviews",
+      "min": 3,
+      "max": 30,
+      "step": 1,
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "first_batch",
+      "label": "t:labels.reviews_before_show_more",
+      "min": 2,
+      "max": 12,
+      "step": 1,
+      "default": 6
+    },
+    {
+      "type": "checkbox",
+      "id": "others",
+      "label": "t:labels.fill_with_reviews_of_other_products",
+      "default": true,
+      "info": "t:labels.each_one_names_the_product_it_is_about"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_photos",
+      "label": "t:labels.show_review_photos",
+      "default": true
+    },
+    {
+      "type": "url",
+      "id": "all_reviews_link",
+      "label": "t:labels.all_reviews_link"
+    },
+    {
+      "type": "text",
+      "id": "all_reviews_label",
+      "label": "t:labels.all_reviews_label",
+      "default": "See all reviews"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:labels.color_scheme",
+      "default": "scheme-1"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:labels.reviews_grid",
+      "category": "t:labels.store_integrations"
+    }
+  ]
+}
+{% endschema %}

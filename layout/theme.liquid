@@ -115,6 +115,9 @@
     {%- if settings.custom_code_head != blank and settings.custom_code_head_mode == 'immediately' -%}
       {{ settings.custom_code_head }}
     {%- endif -%}
+    {%- comment -%} integration:start {%- endcomment -%}
+    {%- render 'integration-tracking', part: 'head' -%}
+    {%- comment -%} integration:end {%- endcomment -%}
 
     {{ content_for_header }}
   </head>
@@ -136,5 +139,8 @@
     <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-announcer></div>
 
     {%- render 'custom-code' -%}
+    {%- comment -%} integration:start {%- endcomment -%}
+    {%- render 'integration-tracking', part: 'body' -%}
+    {%- comment -%} integration:end {%- endcomment -%}
   </body>
 </html>

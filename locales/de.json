@@ -285,6 +285,20 @@
     "submenu": "Untermenü {{ title }}",
     "voice_search": "Sprachsuche"
   },
+  "integrations": {
+    "bis": {
+      "phone_invalid": "Prüfe die Telefonnummer und gib die Ländervorwahl an, zum Beispiel +49."
+    },
+    "reviews": {
+      "about_product": "Bewertung von {{ product }}",
+      "editor_note": "Aktiviere Judge.me-Bewertungen unter Theme-Einstellungen > Integrationen. Bewertungen erscheinen, sobald Judge.me seine Daten synchronisiert hat.",
+      "photo": "Foto {{ number }} von {{ name }}",
+      "show_more": "Weitere Bewertungen anzeigen",
+      "store_review": "Shop-Bewertung",
+      "this_product": "Bewertung dieses Produkts",
+      "verified": "Verifizierter Kauf"
+    }
+  },
   "localization": {
     "country": "Land/Region",
     "language": "Sprache",

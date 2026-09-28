@@ -285,6 +285,20 @@
     "submenu": "{{ title }} submenu",
     "voice_search": "Search by voice"
   },
+  "integrations": {
+    "bis": {
+      "phone_invalid": "Check the phone number and include the country code, for example +34."
+    },
+    "reviews": {
+      "about_product": "Review of {{ product }}",
+      "editor_note": "Turn on Judge.me reviews in Theme settings > Integrations. Reviews show once Judge.me has synced its data.",
+      "photo": "Photo {{ number }} from {{ name }}",
+      "show_more": "Show more reviews",
+      "store_review": "Store review",
+      "this_product": "Review of this product",
+      "verified": "Verified buyer"
+    }
+  },
   "localization": {
     "country": "Country/region",
     "language": "Language",

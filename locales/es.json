@@ -285,6 +285,20 @@
     "submenu": "Submenú de {{ title }}",
     "voice_search": "Buscar por voz"
   },
+  "integrations": {
+    "bis": {
+      "phone_invalid": "Revisa el teléfono e incluye el prefijo del país, por ejemplo +34."
+    },
+    "reviews": {
+      "about_product": "Reseña de {{ product }}",
+      "editor_note": "Activa las reseñas de Judge.me en Configuración del tema > Integraciones. Las reseñas aparecen cuando Judge.me haya sincronizado sus datos.",
+      "photo": "Foto {{ number }} de {{ name }}",
+      "show_more": "Ver más reseñas",
+      "store_review": "Reseña de la tienda",
+      "this_product": "Reseña de este producto",
+      "verified": "Compra verificada"
+    }
+  },
   "localization": {
     "country": "País/región",
     "language": "Idioma",

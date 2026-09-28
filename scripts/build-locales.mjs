@@ -3,8 +3,9 @@
 //
 // 1. Editor strings. `config/settings_schema.json` is generated from scripts/src/settings-schema.mjs,
 //    and every {% schema %} in sections/ and blocks/ is scanned. Plain-English labels are replaced
-//    with t: keys and written to locales/en.default.schema.json. Spanish comes from
-//    scripts/i18n/es-schema.json (English → Spanish); anything missing is listed and fails --check.
+//    with t: keys and written to locales/en.default.schema.json. Translations come from
+//    scripts/i18n/<lang>-schema.json (English → language; es, de, fr, it, nl, pt-PT, ja); anything
+//    missing is listed in scripts/i18n/<lang>-schema-missing.json and fails --check.
 // 2. Storefront strings. scripts/src/strings.mjs holds every key with all eight languages and
 //    writes locales/<lang>.json (en.default, es, de, fr, it, nl, pt-PT, ja).
 //
@@ -155,24 +156,30 @@ for (const name of existsSync(join(ROOT, 'sections')) ? readdirSync(join(ROOT, '
 const sortDeep = (o) => (o && typeof o === 'object' && !Array.isArray(o) ? Object.fromEntries(Object.keys(o).sort().map((k) => [k, sortDeep(o[k])])) : o);
 write(join(ROOT, 'locales/en.default.schema.json'), json(sortDeep(enSchema)));
 
-const esMapFile = join(ROOT, 'scripts/i18n/es-schema.json');
-const esMap = existsSync(esMapFile) ? JSON.parse(readFileSync(esMapFile, 'utf8')) : {};
-const missingEs = [];
-const esSchema = structuredClone(enSchema);
-const translateTree = (o) => {
-  for (const [k, v] of Object.entries(o)) {
-    if (typeof v === 'string') {
-      if (esMap[v] != null) o[k] = esMap[v];
-      else missingEs.push(v);
-    } else translateTree(v);
-  }
-};
-translateTree(esSchema);
-write(join(ROOT, 'locales/es.schema.json'), json(sortDeep(esSchema)));
-const missingFile = join(ROOT, 'scripts/i18n/es-schema-missing.json');
-const missingSorted = [...new Set(missingEs)].sort();
-if (!CHECK) writeFileSync(missingFile, json(Object.fromEntries(missingSorted.map((s) => [s, '']))));
-if (missingSorted.length) problems.push(`${missingSorted.length} editor strings have no Spanish translation (see scripts/i18n/es-schema-missing.json)`);
+// Editor translations: scripts/i18n/<lang>-schema.json maps each English label to the language.
+// Spanish is required; the other languages are built once their map exists.
+const SCHEMA_LANGS = ['es', 'de', 'fr', 'it', 'nl', 'pt-PT', 'ja'];
+for (const lang of SCHEMA_LANGS) {
+  const mapFile = join(ROOT, `scripts/i18n/${lang}-schema.json`);
+  if (!existsSync(mapFile) && lang !== 'es') continue;
+  const map = existsSync(mapFile) ? JSON.parse(readFileSync(mapFile, 'utf8')) : {};
+  const missing = [];
+  const tree = structuredClone(enSchema);
+  const translateTree = (o) => {
+    for (const [k, v] of Object.entries(o)) {
+      if (typeof v === 'string') {
+        if (map[v] != null && map[v] !== '') o[k] = map[v];
+        else missing.push(v);
+      } else translateTree(v);
+    }
+  };
+  translateTree(tree);
+  write(join(ROOT, `locales/${lang}.schema.json`), json(sortDeep(tree)));
+  const missingFile = join(ROOT, `scripts/i18n/${lang}-schema-missing.json`);
+  const missingSorted = [...new Set(missing)].sort();
+  if (!CHECK && (lang === 'es' || missingSorted.length || existsSync(missingFile))) writeFileSync(missingFile, json(Object.fromEntries(missingSorted.map((m) => [m, '']))));
+  if (missingSorted.length) problems.push(`${missingSorted.length} editor strings have no ${lang} translation (see scripts/i18n/${lang}-schema-missing.json)`);
+}
 
 // ---------- storefront strings ----------
 const LANGS = { en: 'en.default', es: 'es', de: 'de', fr: 'fr', it: 'it', nl: 'nl', pt: 'pt-PT', ja: 'ja' };

@@ -255,6 +255,7 @@
     "dropdown": "Dropdown",
     "dropdown_choices": "Dropdown choices",
     "dropdown_options": "Dropdown options",
+    "each_one_names_the_product_it_is_about": "Each one names the product it is about.",
     "email": "Email",
     "email_sign_up": "Email sign-up",
     "email_signup": "Email signup",
@@ -289,6 +290,7 @@
     "featured_product": "Featured product",
     "field": "Field",
     "fill": "Fill",
+    "fill_with_reviews_of_other_products": "Fill with reviews of other products",
     "filled": "Filled",
     "filter_parameter": "Filter parameter",
     "filter_promotion": "Filter promotion",
@@ -304,6 +306,7 @@
     "font": "Font",
     "footer": "Footer",
     "for_certification_logos": "For certification logos.",
+    "for_example_gtm_xxxxxxx": "For example GTM-XXXXXXX.",
     "for_policy_and_legal_links": "For policy and legal links.",
     "for_pre_order_product_templates": "For pre-order product templates.",
     "for_professionals": "For professionals",
@@ -323,6 +326,8 @@
     "gift_guide": "Gift guide",
     "gift_message": "Gift message",
     "go_to_the_cart_page": "Go to the cart page",
+    "google_site_verification_code": "Google site verification code",
+    "google_tag_manager_container_id": "Google Tag Manager container ID",
     "grid": "Grid",
     "group": "Group",
     "guide_image": "Guide image",
@@ -393,6 +398,7 @@
     "images": "Images",
     "images_next_to_links": "Images next to links",
     "immediately": "Immediately",
+    "in_characters": "In characters.",
     "in_stock": "In stock",
     "infinite_scroll": "Infinite scroll",
     "information": "Information",
@@ -407,6 +413,7 @@
     "instagram": "Instagram",
     "installments": "Installments",
     "installments_row_tint": "Installments row tint",
+    "integrations": "Integrations",
     "inventory_for_a_full_bar": "Inventory for a full bar",
     "item": "Item",
     "jar": "Jar",
@@ -465,6 +472,7 @@
     "load_body_code": "Load body code",
     "load_head_code": "Load head code",
     "load_more_button": "Load more button",
+    "load_tracking": "Load tracking",
     "location": "Location",
     "location_switcher": "Location switcher",
     "logo": "Logo",
@@ -480,11 +488,13 @@
     "low_stock": "Low stock",
     "low_stock_and_backorder": "Low stock and backorder",
     "low_stock_threshold": "Low stock threshold",
+    "lowest_rating_shown": "Lowest rating shown",
     "magnify_on_hover": "Magnify on hover",
     "mark_values_as_unavailable": "Mark values as unavailable",
     "mastodon": "Mastodon",
     "maximum_page_width": "Maximum page width",
     "maximum_products": "Maximum products",
+    "maximum_reviews": "Maximum reviews",
     "maximum_width": "Maximum width",
     "media": "Media",
     "media_alignment": "Media alignment",
@@ -508,7 +518,9 @@
     "message_1": "Message 1",
     "message_2": "Message 2",
     "message_after_declining": "Message after declining",
+    "meta_domain_verification_code": "Meta domain verification code",
     "metafield": "Metafield",
+    "microsoft_clarity_project_id": "Microsoft Clarity project ID",
     "middle_center": "Middle center",
     "middle_end": "Middle end",
     "middle_start": "Middle start",
@@ -700,8 +712,12 @@
     "review_count": "Review count",
     "reviews": "Reviews",
     "reviews_app_code": "Reviews app code",
+    "reviews_before_show_more": "Reviews before \"Show more\"",
+    "reviews_grid": "Reviews grid",
+    "reviews_judge_me": "Reviews (Judge.me)",
     "reviews_section_anchor": "Reviews section anchor",
     "reviews_section_on_this_page": "Reviews section on this page",
+    "reviews_wall": "Reviews wall",
     "rich_text": "Rich text",
     "rotate_prompts_on_mobile": "Rotate prompts on mobile",
     "round_converted_amounts_up": "Round converted amounts up",
@@ -748,6 +764,7 @@
     "secure": "Secure",
     "secure_payment": "Secure payment",
     "selected": "Selected",
+    "send_back_in_stock_requests_to_a_service": "Send back-in-stock requests to a service",
     "separate_notes_with_commas": "Separate notes with commas.",
     "shade_every_other_row": "Shade every other row",
     "shake_every": "Shake every",
@@ -760,6 +777,7 @@
     "shoppable_image": "Shoppable image",
     "shorten_the_description": "Shorten the description",
     "shorten_to_about": "Shorten to about",
+    "shortest_review_shown": "Shortest review shown",
     "show": "Show",
     "show_a_divider_above": "Show a divider above",
     "show_a_link_when_other_options_are_sold_out": "Show a link when other options are sold out",
@@ -837,7 +855,10 @@
     "show_recipient_form_for_gift_cards": "Show recipient form for gift cards",
     "show_related_products": "Show related products",
     "show_returns_row": "Show returns row",
+    "show_review_photos": "Show review photos",
+    "show_reviews_from_judge_me_data": "Show reviews from Judge.me data",
     "show_reviews_tab": "Show reviews tab",
+    "show_reviews_with_photos_first": "Show reviews with photos first",
     "show_rows_without_a_value": "Show rows without a value",
     "show_rows_without_data": "Show rows without data",
     "show_sale_label": "Show sale label",
@@ -926,6 +947,7 @@
     "sticky_header": "Sticky header",
     "stock": "Stock",
     "store": "Store",
+    "store_integrations": "Store integrations",
     "store_reviews": "Store reviews",
     "stretch": "Stretch",
     "style": "Style",
@@ -933,6 +955,7 @@
     "style_on_large_screens": "Style on large screens",
     "style_on_mobile": "Style on mobile",
     "subheading": "Subheading",
+    "subscribe_url": "Subscribe URL",
     "subtitle_metafield": "Subtitle metafield",
     "success_background": "Success background",
     "success_text": "Success text",
@@ -981,6 +1004,7 @@
     "text_size": "Text size",
     "text_width": "Text width",
     "the_rating_block_links_here": "The rating block links here.",
+    "the_rating_link_on_the_product_jumps_here": "The rating link on the product jumps here.",
     "threads": "Threads",
     "thresholds": "Thresholds",
     "thumbnails": "Thumbnails",
@@ -998,6 +1022,7 @@
     "top_start": "Top start",
     "towards_the_end": "Towards the end",
     "towards_the_start": "Towards the start",
+    "tracking": "Tracking",
     "transition": "Transition",
     "tumblr": "Tumblr",
     "twitch": "Twitch",
@@ -1361,6 +1386,13 @@
           }
         }
       },
+      "integration_reviews_grid": {
+        "settings": {
+          "store_integration_shows_reviews_from_judge_me_s_": {
+            "content": "Store integration: shows reviews from Judge.me's synced data. Turn it on in Theme settings > Integrations."
+          }
+        }
+      },
       "location_sheet": {
         "settings": {
           "shown_to_wholesale_buyers_whose_company_has_two_": {
@@ -1526,6 +1558,22 @@
           },
           "the_installments_row_on_product_pages_shopify_pa": {
             "content": "The installments row on product pages. Shopify Payments installments show separately when available."
+          }
+        }
+      },
+      "integrations": {
+        "settings": {
+          "connections_to_outside_services_for_this_store_t": {
+            "content": "Connections to outside services for this store. They are not part of the Theme Store version of Weft."
+          },
+          "integration_bis_endpoint": {
+            "info": "The service receives the request as JSON. Without a URL, requests go through the contact form."
+          },
+          "integration_reviews_enable": {
+            "info": "Used by the \"Reviews grid\" and \"Reviews wall\" sections. Reads the reviews Judge.me keeps in shop metafields."
+          },
+          "integration_tracking_mode": {
+            "info": "Tracking also waits for marketing consent when \"Wait for marketing consent\" is on in Custom code and tracking."
           }
         }
       },

@@ -1,0 +1,83 @@
+{%- comment -%}
+  Integration (store builds only): review cards from the JSON Judge.me keeps in
+  shop.metafields.judgeme.reviews_grid (average_rating, number_of_reviews and the first page of
+  all_reviews, product_reviews and store_reviews, each with a media_only subset). Reviews below
+  min_rating or shorter than min_length are left out, and each review shows once. With a
+  product_handle, that product's reviews come first; reviews of other products fill the rest
+  when `others` is on, each naming the product it is about.
+  Params: data, product_handle, min_rating, min_length, max_reviews, first_batch, others (bool),
+          show_photos (bool), media_first (bool)
+{%- endcomment -%}
+{%- liquid
+  assign none = '' | split: ','
+  assign media_all = data.all_reviews.media_only.reviews | default: none
+  assign media_product = data.product_reviews.media_only.reviews | default: none
+  assign plain_all = data.all_reviews.reviews | default: none
+  assign plain_product = data.product_reviews.reviews | default: none
+  assign store = data.store_reviews.reviews | default: none
+  if media_first
+    assign pool = media_all | concat: media_product | concat: plain_product | concat: plain_all | concat: store
+  else
+    assign pool = plain_product | concat: plain_all | concat: media_product | concat: media_all | concat: store
+  endif
+  assign min_r = min_rating | default: 1 | plus: 0
+  assign min_l = min_length | default: 0 | plus: 0
+  assign max = max_reviews | default: 12 | plus: 0
+  assign batch = first_batch | default: max | plus: 0
+  assign passes = 1
+  if product_handle != blank and others
+    assign passes = 2
+  endif
+  assign seen = '|'
+  assign shown = 0
+-%}
+{%- capture cards -%}
+  {%- for pass in (1..passes) -%}
+    {%- for r in pool -%}
+      {%- if shown >= max -%}{%- break -%}{%- endif -%}
+      {%- liquid
+        assign handle = r.product_url | split: '/products/' | last | split: '?' | first
+        assign mine = false
+        if product_handle != blank and handle == product_handle and r.is_shop_review != true
+          assign mine = true
+        endif
+        assign take = false
+        if product_handle == blank
+          assign take = true
+        elsif pass == 1 and mine
+          assign take = true
+        elsif pass == 2 and mine == false
+          assign take = true
+        endif
+        assign rating = r.rating | plus: 0
+        assign body_size = r.body | strip | size
+        if rating < min_r or body_size < min_l
+          assign take = false
+        endif
+        assign key = '|' | append: r.reviewer_name | append: r.created_at | append: '|'
+        if seen contains key
+          assign take = false
+        endif
+      -%}
+      {%- if take -%}
+        {%- liquid
+          assign seen = seen | append: key
+          assign shown = shown | plus: 1
+          assign extra = false
+          if shown > batch
+            assign extra = true
+          endif
+        -%}
+        {%- render 'integration-review-card', review: r, mine: mine, extra: extra, show_photos: show_photos -%}
+      {%- endif -%}
+    {%- endfor -%}
+  {%- endfor -%}
+{%- endcapture -%}
+{%- if shown > 0 -%}
+  <reviews-list class="reviews-list" data-module="{{ 'integration-reviews.js' | asset_url }}" data-load="visible">
+    <ul class="reviews-list__grid" role="list">{{ cards }}</ul>
+    {%- if shown > batch -%}
+      <button type="button" class="button button--secondary reviews-list__more js-only" data-reviews-more>{{ 'integrations.reviews.show_more' | t }}</button>
+    {%- endif -%}
+  </reviews-list>
+{%- endif -%}

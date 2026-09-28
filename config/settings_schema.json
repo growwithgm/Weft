@@ -2348,6 +2348,84 @@
     ]
   },
   {
+    "name": "t:labels.integrations",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "t:text.settings_schema.integrations.settings.connections_to_outside_services_for_this_store_t.content"
+      },
+      {
+        "type": "header",
+        "content": "t:labels.reviews_judge_me"
+      },
+      {
+        "type": "checkbox",
+        "id": "integration_reviews_enable",
+        "label": "t:labels.show_reviews_from_judge_me_data",
+        "default": false,
+        "info": "t:text.settings_schema.integrations.settings.integration_reviews_enable.info"
+      },
+      {
+        "type": "header",
+        "content": "t:labels.back_in_stock"
+      },
+      {
+        "type": "checkbox",
+        "id": "integration_bis_enable",
+        "label": "t:labels.send_back_in_stock_requests_to_a_service",
+        "default": false
+      },
+      {
+        "type": "text",
+        "id": "integration_bis_endpoint",
+        "label": "t:labels.subscribe_url",
+        "info": "t:text.settings_schema.integrations.settings.integration_bis_endpoint.info"
+      },
+      {
+        "type": "header",
+        "content": "t:labels.tracking"
+      },
+      {
+        "type": "text",
+        "id": "integration_gtm_id",
+        "label": "t:labels.google_tag_manager_container_id",
+        "info": "t:labels.for_example_gtm_xxxxxxx"
+      },
+      {
+        "type": "text",
+        "id": "integration_clarity_id",
+        "label": "t:labels.microsoft_clarity_project_id"
+      },
+      {
+        "type": "text",
+        "id": "integration_google_verification",
+        "label": "t:labels.google_site_verification_code"
+      },
+      {
+        "type": "text",
+        "id": "integration_meta_verification",
+        "label": "t:labels.meta_domain_verification_code"
+      },
+      {
+        "type": "select",
+        "id": "integration_tracking_mode",
+        "label": "t:labels.load_tracking",
+        "options": [
+          {
+            "value": "after_load",
+            "label": "t:labels.after_page_load"
+          },
+          {
+            "value": "after_interaction",
+            "label": "t:labels.after_first_interaction"
+          }
+        ],
+        "default": "after_load",
+        "info": "t:text.settings_schema.integrations.settings.integration_tracking_mode.info"
+      }
+    ]
+  },
+  {
     "name": "t:labels.advanced",
     "settings": [
       {

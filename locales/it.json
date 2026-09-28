@@ -285,6 +285,20 @@
     "submenu": "Sottomenu {{ title }}",
     "voice_search": "Cerca con la voce"
   },
+  "integrations": {
+    "bis": {
+      "phone_invalid": "Controlla il numero e aggiungi il prefisso internazionale, ad esempio +39."
+    },
+    "reviews": {
+      "about_product": "Recensione di {{ product }}",
+      "editor_note": "Attiva le recensioni Judge.me in Impostazioni del tema > Integrazioni. Le recensioni compaiono quando Judge.me ha sincronizzato i dati.",
+      "photo": "Foto {{ number }} di {{ name }}",
+      "show_more": "Mostra altre recensioni",
+      "store_review": "Recensione del negozio",
+      "this_product": "Recensione di questo prodotto",
+      "verified": "Acquisto verificato"
+    }
+  },
   "localization": {
     "country": "Paese/regione",
     "language": "Lingua",

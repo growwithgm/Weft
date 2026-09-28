@@ -1,0 +1,44 @@
+{%- comment -%}
+  Integration (store builds only): one review from Judge.me's synced data. Reviews of another
+  product link to it, so a borrowed review is never mistaken for this product's.
+  Params: review, mine (bool: about the product being viewed), extra (bool: after the first
+          batch), show_photos (bool)
+{%- endcomment -%}
+{%- liquid
+  assign rating = review.rating | plus: 0
+  assign pct = rating | times: 20
+  assign name = review.reviewer_name | default: review.reviewer_initial | strip
+  assign initial = review.reviewer_initial | default: name | slice: 0 | upcase
+  assign safe_name = name | escape
+  assign safe_product = review.product_title | escape
+-%}
+<li class="review-card"{% if extra %} data-review-extra tabindex="-1"{% endif %}>
+  <div class="review-card__head">
+    <span class="review-card__avatar" aria-hidden="true">{{ initial | escape }}</span>
+    <div class="review-card__who">
+      <p class="review-card__name">{{ safe_name }}</p>
+      {%- if review.verified_buyer -%}<p class="review-card__verified">{%- render 'icon', name: 'check', size: 14 -%}{{ 'integrations.reviews.verified' | t }}</p>{%- endif -%}
+    </div>
+    {%- if review.created_at != blank -%}<span class="review-card__date muted">{{ review.created_at | time_tag: format: 'date' }}</span>{%- endif -%}
+  </div>
+  <p class="review-card__stars" role="img" aria-label="{{ 'accessibility.star_rating' | t: rating: rating, max: 5 }}"><span class="review-stars" style="--stars: {{ pct }}%"></span></p>
+  {%- if review.title != blank -%}<p class="review-card__title">{{ review.title | strip_html | escape }}</p>{%- endif -%}
+  <p class="review-card__body">{{ review.body | strip_html | escape | newline_to_br }}</p>
+  {%- if show_photos and review.pictures_urls.size > 0 -%}
+    <ul class="review-card__photos" role="list">
+      {%- for url in review.pictures_urls limit: 4 -%}
+        <li><img src="{{ url }}" alt="{{ 'integrations.reviews.photo' | t: number: forloop.index, name: safe_name }}" width="88" height="88" loading="lazy"></li>
+      {%- endfor -%}
+    </ul>
+  {%- endif -%}
+  {%- if review.is_shop_review -%}
+    <p class="review-card__about muted">{{ 'integrations.reviews.store_review' | t }}</p>
+  {%- elsif mine -%}
+    <p class="review-card__about muted">{{ 'integrations.reviews.this_product' | t }}</p>
+  {%- elsif review.product_url != blank -%}
+    <a class="review-card__product" href="{{ review.product_url }}">
+      {%- if review.product_pictures_url != blank -%}<img src="{{ review.product_pictures_url }}" alt="" width="40" height="40" loading="lazy">{%- endif -%}
+      <span>{{ 'integrations.reviews.about_product' | t: product: safe_product }}</span>
+    </a>
+  {%- endif -%}
+</li>
