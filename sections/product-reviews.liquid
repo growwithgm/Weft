@@ -7,7 +7,20 @@
   assign s = section.settings
   assign rating = product.metafields.reviews.rating.value
   assign count = product.metafields.reviews.rating_count.value | default: 0
+  # Nothing to show (no rating, no review app block, no links): the section stays out of the page;
+  # the theme editor shows a hint instead of an empty heading (QA round 2).
+  assign has_content = false
+  if rating and rating.rating > 0
+    assign has_content = true
+  elsif section.blocks.size > 0 or s.all_reviews_link != blank or s.write_link != blank
+    assign has_content = true
+  endif
 -%}
+{%- unless has_content -%}
+  {%- if request.design_mode -%}
+    <div class="section product-reviews color-{{ s.color_scheme }}"><div class="page-width"><p class="muted">{{ 'products.reviews_empty_editor' | t }}</p></div></div>
+  {%- endif -%}
+{%- else -%}
 <div class="section product-reviews color-{{ s.color_scheme }} below-fold" id="{{ s.anchor | default: 'reviews' }}">
   <div class="page-width product-reviews__grid">
     <div class="product-reviews__aside stack">
@@ -30,6 +43,7 @@
     </div>
   </div>
 </div>
+{%- endunless -%}
 
 {% schema %}
 {

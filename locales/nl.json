@@ -451,6 +451,7 @@
     },
     "remind_me": "Laat het me weten",
     "reviews": "Reviews",
+    "reviews_empty_editor": "Reviews: dit product heeft nog geen beoordeling. Voeg een reviewapp-blok of links naar je reviews toe om deze sectie te tonen.",
     "scent": {
       "base": "Basis",
       "heart": "Hart",

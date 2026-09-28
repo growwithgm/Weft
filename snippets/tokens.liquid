@@ -1,8 +1,8 @@
 {%- comment -%}
   Design tokens: global settings → CSS custom properties, in one small inline style.
-  Font files: heading (one weight) + body regular + body bold. Medium weight (500) is requested
-  in CSS but has no @font-face of its own, so browsers fall back to the regular file instead of
-  downloading a fourth font.
+  Font files: heading (one weight) + body regular + body bold, the 3-file budget (BUILD_SPEC §3.6).
+  Medium weight (500) has no @font-face of its own, so browsers use the regular file; italic has
+  none either (the browser slants the regular face) since a fourth file broke the budget in QA.
 {%- endcomment -%}
 {%- liquid
   assign heading_font = settings.heading_font
@@ -11,7 +11,6 @@
   if body_bold == blank
     assign body_bold = body_font | font_modify: 'weight', 'bolder'
   endif
-  assign body_italic = body_font | font_modify: 'style', 'italic'
 
   assign scale = settings.heading_scale | divided_by: 100.0
   assign base = settings.body_size | default: 16
@@ -30,7 +29,6 @@
   {{ heading_font | font_face: font_display: 'swap' }}
   {{ body_font | font_face: font_display: 'swap' }}
   {%- if body_bold != blank -%}{{ body_bold | font_face: font_display: 'swap' }}{%- endif -%}
-  {%- if body_italic != blank -%}{{ body_italic | font_face: font_display: 'swap' }}{%- endif -%}
 
   :root {
     --f-heading: {{ heading_font.family }}, {{ heading_font.fallback_families }};

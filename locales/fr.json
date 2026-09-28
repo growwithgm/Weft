@@ -451,6 +451,7 @@
     },
     "remind_me": "Me prévenir du retour",
     "reviews": "Avis",
+    "reviews_empty_editor": "Avis : ce produit n'a pas encore de note. Ajoutez un bloc d'application d'avis ou des liens vers vos avis pour afficher cette section.",
     "scent": {
       "base": "Fond",
       "heart": "Cœur",

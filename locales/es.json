@@ -451,6 +451,7 @@
     },
     "remind_me": "Avísame cuando vuelva",
     "reviews": "Reseñas",
+    "reviews_empty_editor": "Reseñas: este producto aún no tiene valoración. Añade un bloque de app de reseñas o enlaces a tus reseñas para mostrar esta sección.",
     "scent": {
       "base": "Fondo",
       "heart": "Corazón",

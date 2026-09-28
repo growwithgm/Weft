@@ -451,6 +451,7 @@
     },
     "remind_me": "Remind me when in stock",
     "reviews": "Reviews",
+    "reviews_empty_editor": "Reviews: this product has no rating yet. Add a reviews app block, or links to your reviews, to show this section.",
     "scent": {
       "base": "Base",
       "heart": "Heart",

@@ -3,6 +3,9 @@
 const s = (en, es, de, fr, it, nl, pt, ja) => ({ en, es, de, fr, it, nl, pt, ja });
 
 export default {
+  // ---------- editor-only hints (shown with request.design_mode) ----------
+  'products.reviews_empty_editor': s('Reviews: this product has no rating yet. Add a reviews app block, or links to your reviews, to show this section.', 'Reseñas: este producto aún no tiene valoración. Añade un bloque de app de reseñas o enlaces a tus reseñas para mostrar esta sección.', 'Bewertungen: Dieses Produkt hat noch keine Bewertung. Füge einen Bewertungs-App-Block oder Links zu deinen Bewertungen hinzu, um diesen Abschnitt anzuzeigen.', "Avis : ce produit n'a pas encore de note. Ajoutez un bloc d'application d'avis ou des liens vers vos avis pour afficher cette section.", 'Recensioni: questo prodotto non ha ancora una valutazione. Aggiungi un blocco app di recensioni o link alle tue recensioni per mostrare questa sezione.', 'Reviews: dit product heeft nog geen beoordeling. Voeg een reviewapp-blok of links naar je reviews toe om deze sectie te tonen.', 'Avaliações: este produto ainda não tem classificação. Adicione um bloco de app de avaliações ou ligações para as suas avaliações para mostrar esta secção.', 'レビュー：この商品にはまだ評価がありません。このセクションを表示するには、レビューアプリのブロックまたはレビューへのリンクを追加してください。'),
+
   // ---------- general ----------
   'general.skip_to_content': s('Skip to content', 'Saltar al contenido', 'Direkt zum Inhalt', 'Passer au contenu', 'Vai al contenuto', 'Naar de inhoud', 'Saltar para o conteúdo', 'コンテンツへスキップ'),
   'general.home': s('Home', 'Inicio', 'Startseite', 'Accueil', 'Home', 'Home', 'Início', 'ホーム'),
