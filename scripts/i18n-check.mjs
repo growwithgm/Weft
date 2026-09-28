@@ -34,6 +34,8 @@ for (const f of files) {
 
 // Hard-coded text scan
 const ALLOW = /^(&[a-z]+;|[\s\d.,:;/|·•×–—+\-−()%*#@©®™!?'"’“”…]+|×|x|X|✓)$/;
+// Proper nouns that are never translated.
+const PROPER = new Set(['Facebook', 'Pinterest', 'RSS', 'X', 'WhatsApp', 'Instagram', 'TikTok', 'YouTube', 'Shop Pay', 'Klarna']);
 const scan = (file) => {
   let src = readFileSync(file, 'utf8');
   src = src
@@ -52,7 +54,7 @@ const scan = (file) => {
   const text = src.replace(/<[^>]+>/g, '\n');
   for (const line of text.split('\n')) {
     const t = line.trim();
-    if (!t || ALLOW.test(t)) continue;
+    if (!t || ALLOW.test(t) || PROPER.has(t)) continue;
     if (/[A-Za-zÀ-ÿ]{2,}/.test(t)) problems.push(`${relative(ROOT, file)}: hard-coded text "${t.slice(0, 60)}"`);
   }
 };

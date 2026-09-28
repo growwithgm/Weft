@@ -1,0 +1,107 @@
+{%- comment -%}
+  Product gallery: stacked / two-column / thumbnails / carousel on large screens, swipe
+  carousel with a counter on mobile, lightbox markup deferred in a <template>.
+  Optional grouping shows only the media of the selected option value (each variant's featured
+  media starts a group).
+  Params: product, variant, section.
+{%- endcomment -%}
+{%- liquid
+  assign s = section.settings
+  assign start_pos = 0
+  assign end_pos = 100000
+  if s.group_media_by_option and variant and variant.featured_media
+    assign group_names = s.group_media_option_names | downcase | remove: ' ' | split: ','
+    for option in product.options_with_values
+      assign option_name = option.name | downcase | remove: ' '
+      if group_names contains option_name
+        assign start_pos = variant.featured_media.position
+        for value in option.values
+          assign vm = value.variant.featured_media
+          if vm and vm.position > start_pos and vm.position < end_pos
+            assign end_pos = vm.position
+          endif
+        endfor
+        break
+      endif
+    endfor
+  endif
+
+  if s.gallery_layout == 'grid'
+    assign sizes = '(min-width: 990px) 30vw, 100vw'
+  elsif s.gallery_width == 'narrow'
+    assign sizes = '(min-width: 990px) 40vw, 100vw'
+  elsif s.gallery_width == 'half'
+    assign sizes = '(min-width: 990px) 48vw, 100vw'
+  else
+    assign sizes = '(min-width: 990px) 55vw, 100vw'
+  endif
+
+  assign featured_id = variant.featured_media.id | default: product.featured_media.id
+  assign shown = 0
+-%}
+<product-gallery
+  class="gallery gallery--{{ s.gallery_layout }} gallery--ratio-{{ s.media_ratio }} gallery--fit-{{ s.media_fit }} gallery--thumbs-{{ s.thumbnails }}"
+  style="--media-bg: {{ s.media_bg }};"
+  data-gallery
+  data-zoom="{{ s.zoom }}"
+  data-lightbox-mobile="{{ s.lightbox_mobile }}"
+  data-module="{{ 'gallery.js' | asset_url }}"
+  data-load="visible"
+  role="region"
+  aria-label="{{ 'products.gallery.label' | t }}"
+>
+  {%- if product.media.size == 0 -%}
+    <div class="gallery__placeholder media">{{ 'product-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}</div>
+  {%- else -%}
+    <ul class="gallery__list" role="list" data-gallery-list>
+      {%- for media in product.media -%}
+        {%- if media.position < start_pos or media.position >= end_pos -%}{%- continue -%}{%- endif -%}
+        {%- assign shown = shown | plus: 1 -%}
+        <li class="gallery__item{% if media.id == featured_id %} is-active{% endif %}" data-media-id="{{ media.id }}" data-media-type="{{ media.media_type }}">
+          {%- render 'product-media', media: media, index: shown, eager: forloop.first, sizes: sizes, zoom: s.zoom, loop: s.video_loop -%}
+        </li>
+      {%- endfor -%}
+    </ul>
+
+    {%- if shown > 1 -%}
+      {%- if s.show_counter -%}
+        <span class="gallery__counter tabular" aria-hidden="true" data-gallery-counter data-template="{{ 'products.gallery.counter' | t: index: '__i__', count: shown | escape }}">{{ 'products.gallery.counter' | t: index: 1, count: shown }}</span>
+      {%- endif -%}
+      {%- if s.thumbnails != 'none' or s.gallery_layout == 'thumbnails' or s.gallery_layout == 'carousel' -%}
+        <ul class="gallery__thumbs" role="list" aria-label="{{ 'products.gallery.thumbnails' | t }}" data-gallery-thumbs>
+          {%- assign thumb_index = 0 -%}
+          {%- for media in product.media -%}
+            {%- if media.position < start_pos or media.position >= end_pos -%}{%- continue -%}{%- endif -%}
+            {%- assign thumb_index = thumb_index | plus: 1 -%}
+            <li>
+              <button type="button" class="gallery__thumb media" data-thumb-target="{{ media.id }}" aria-label="{{ 'products.gallery.open' | t: index: thumb_index }}" {% if media.id == featured_id %}aria-current="true"{% endif %}>
+                {{ media.preview_image | image_url: width: 160 | image_tag: widths: '80,160', sizes: '80px', alt: '', loading: 'lazy' }}
+                {%- if media.media_type == 'video' or media.media_type == 'external_video' -%}<span class="gallery__thumb-badge">{%- render 'icon', name: 'play', size: 14 -%}</span>{%- endif -%}
+              </button>
+            </li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+    {%- endif -%}
+
+    {%- if s.zoom == 'lightbox' or s.zoom == 'both' -%}
+      <dialog class="lightbox color-{{ settings.drawer_color_scheme }}" data-lightbox aria-label="{{ 'products.gallery.label' | t }}" data-light-dismiss>
+        <div class="lightbox__panel" data-dialog-body>
+          <button type="button" class="icon-button lightbox__close" data-close-dialog aria-label="{{ 'general.close' | t }}">{%- render 'icon', name: 'close' -%}</button>
+          <template data-deferred>
+            <ul class="lightbox__list" role="list">
+              {%- for media in product.media -%}
+                {%- if media.position < start_pos or media.position >= end_pos -%}{%- continue -%}{%- endif -%}
+                {%- if media.media_type == 'image' -%}
+                  <li class="lightbox__item" data-lightbox-item="{{ media.id }}">
+                    {{ media | image_url: width: 2400 | image_tag: widths: '1200,1800,2400', sizes: '100vw', loading: 'lazy', class: 'lightbox__image', data-zoomable: '' }}
+                  </li>
+                {%- endif -%}
+              {%- endfor -%}
+            </ul>
+          </template>
+        </div>
+      </dialog>
+    {%- endif -%}
+  {%- endif -%}
+</product-gallery>

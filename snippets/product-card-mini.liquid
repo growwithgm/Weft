@@ -1,0 +1,22 @@
+{%- comment -%} Compact horizontal product card for complementary products and cart promotions. Params: product, index, step_label. {%- endcomment -%}
+{%- liquid
+  assign v = product.selected_or_first_available_variant
+  assign wholesale = false
+  if customer and customer.b2b?
+    assign wholesale = true
+  endif
+-%}
+<div class="mini-card">
+  <a class="mini-card__media media" href="{{ product.url }}" tabindex="-1" aria-hidden="true">
+    {%- if product.featured_media -%}
+      {{ product.featured_media | image_url: width: 240 | image_tag: widths: '120,240', sizes: '80px', alt: '', loading: 'lazy' }}
+    {%- else -%}
+      {{ 'product-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+    {%- endif -%}
+  </a>
+  <div class="mini-card__body">
+    {%- if step_label -%}<span class="mini-card__step muted">{{ index }}</span>{%- endif -%}
+    <a class="mini-card__title" href="{{ product.url }}">{{ product.title | escape }}</a>
+    {%- render 'price', variant: v, wholesale: wholesale, size: 'small', from: product.price_varies -%}
+  </div>
+</div>

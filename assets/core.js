@@ -64,18 +64,24 @@ export function cartSectionIds() {
  * Cart API request with the `sections` parameter. Throws an Error carrying Shopify's
  * message (`description` or `message`) and status when the request fails.
  */
-export async function cartRequest(route, body = {}) {
-  const sections = cartSectionIds();
-  const payload = { ...body };
-  if (sections.length) {
-    payload.sections = sections.join(',');
-    payload.sections_url = location.pathname;
+export async function cartRequest(route, body = {}, extraSections = []) {
+  const sections = [...new Set([...cartSectionIds(), ...extraSections])];
+  let init;
+  if (body instanceof FormData) {
+    if (sections.length) {
+      body.append('sections', sections.join(','));
+      body.append('sections_url', location.pathname);
+    }
+    init = { method: 'POST', headers: { Accept: 'application/json', 'X-Requested-With': 'XMLHttpRequest' }, body };
+  } else {
+    const payload = { ...body };
+    if (sections.length) {
+      payload.sections = sections.join(',');
+      payload.sections_url = location.pathname;
+    }
+    init = { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(payload) };
   }
-  const res = await fetch(route, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-    body: JSON.stringify(payload)
-  });
+  const res = await fetch(route, init);
   const data = await res.json().catch(() => ({}));
   if (!res.ok || data.status) {
     const err = new Error(data.description || data.message || W.strings?.error || 'Error');
@@ -252,6 +258,20 @@ if (W.designMode) {
     e.target.querySelectorAll('dialog[open]').forEach((d) => d.close());
   });
 }
+
+/* ---------- quick add and card forms (loaded on first use) ---------- */
+document.addEventListener('click', (e) => {
+  const trigger = e.target.closest('[data-quick-add]');
+  if (!trigger || !W.modules?.quickAdd) return;
+  e.preventDefault();
+  load(W.modules.quickAdd).then((m) => m && m.openQuickAdd(trigger));
+});
+document.addEventListener('submit', (e) => {
+  const form = e.target.closest('[data-card-form]');
+  if (!form || !W.modules?.quickAdd) return;
+  e.preventDefault();
+  load(W.modules.quickAdd).then((m) => m && m.addFromCard(form, e.submitter));
+});
 
 /* ---------- cart count, shake, vibrate ---------- */
 bus.on('cart:updated', ({ count }) => {

@@ -1,11 +1,16 @@
 # Progress
 
 ## Current phase
-P1 — Foundation (BUILD_SPEC §9)
+P2 — Product page, retail (BUILD_SPEC §9). P1 items still open are listed under Next.
 
 ## Next
-- P1 step 4 (remaining): `snippets/breadcrumbs`, `snippets/quantity-input` (rules-aware stepper) + `snippets/price` (retail/wholesale), classic customer templates (`templates/customers/*`), a basic `templates/product.json` so the P1 product-page gate can be measured, then close P1 in progress/perf-log and refresh the PR.
-- Then P2 (product page, retail): `main-product` + product blocks, `assets/product.js`, `assets/gallery.js`, cart drawer (needed for scenario 4), quick add.
+- P2 remaining: `main-cart` page (shares `cart-line`/`cart-summary`, lands in P4 with the shipping calculator), gallery and sticky-bar component tests, quick-add component test, `docs/perf-log.md` P2 entry, then refresh the PR description.
+- Then P3 (wholesale): blocks `wholesale-terms`, `volume-pricing`, `order-matrix`, `wholesale-quantity`, `installments-note`; `assets/matrix.js` (keyboard grid, typed values, summary bar, multi-line add, per-line Shopify errors, in-cart counts); no-JS matrix form; `sections/wholesale-access`; `sections/quick-order-list`; wholesale templates; add the P3 blocks to `templates/product.json` block order (they're held out of the templates until the files exist).
+- P1 leftovers: classic customer templates (`templates/customers/*`, moved to P5 with the other page templates).
+
+## P2 plan (done unless noted)
+- Files: `sections/main-product`, `snippets/product-gallery|product-media|product-sticky-bar|product-labels|price|quantity-input|audience-check|breadcrumbs|wholesale-gate|product-card|product-card-mini|rule-chips|cart-line|cart-summary|free-shipping-bar|gift-card-recipient|product-guide-link|accordion-icon`, product blocks (22), `sections/cart-drawer|quick-add|card-fragment|product-recommendations|recently-viewed|product-reviews|pickup-availability`, JS `product|gallery|quantity|sticky-bar|back-in-stock|pickup|recommendations|countdown|cart|quick-add|recently-viewed`, CSS `section-product|component-card|component-cart`, templates `product`, `product.preorder`, `product.countdown`, `product.coming-soon`.
+- Approach: blocks read `closest.product` (documented Liquid object); variant change fetches `<product url>?option_values=<ids>&section_id=<id>` (documented high-variant pattern) and swaps `[data-swap]` nodes; islands are custom elements, so swapped markup upgrades itself.
 
 ## P1 plan
 - **Files:** `layout/`, `config/`, `locales/`, `snippets/{tokens,meta-tags,social-meta,icon,image,price,localization-form,social-links,payment-icons,chat-button,custom-code,breadcrumbs}`, `sections/{announcement-bar,header,footer,cart-count,cart-drawer (shell),search-drawer (shell),location-sheet,main-404,main-password,main-gift-card,main-page}`, `assets/{base.css,core.js,header.js,drawer.js,rules.js,component-*.css}`, `templates/{index,page,404,password,gift_card.liquid}`, `.github/workflows/*`, `tests/`.
@@ -13,6 +18,7 @@ P1 — Foundation (BUILD_SPEC §9)
 - **Risks:** no Shopify CLI in the session (npm blocked) → `theme-lint.mjs` substitutes locally, real Theme Check in CI; Liquid can't be rendered locally → component tests on fixtures.
 
 ## Done
+- **P2 core (28 Sep 2026):** product section with gallery (stacked / grid / thumbnails / carousel, mobile swipe with counter, lightbox, hover magnify, grouping by option value, video / external video / 3D on interaction), 22 product blocks (title, price with Shop Pay Installments and unit price, labels, rating pill, variant picker with swatches and availability, product guide modal, stock line, delivery list with country shipping rules / free-shipping progress / installments / notify / returns, back-in-stock drawer on the contact form, buy buttons with rules-aware stepper, accelerated checkout, pickup, gift-card recipient, backorder note, purchase options, specifications, collapsible rows, description with See more clamp, product details line, custom options, product sign-up, share, complementary products, flash message, pop-up link, countdown), mobile sticky bar, wholesale-only gate, product card (retail and wholesale), cart drawer (retail and wholesale lines with rule hints and errors), quick add, related products, recently viewed, reviews section, four product templates. Component tests: 8/8. Lint 0/0, i18n 0.
 - **P1 steps 1–3 (28 Sep 2026):**
   - Tooling: `package.json` (scripts only, no dependencies), `scripts/theme-lint.mjs` (local Theme Check stand-in), `scripts/i18n-check.mjs`, `scripts/build-locales.mjs` (schema labels → `t:` keys, en/es schema locales, 8 storefront locales from `scripts/src/strings.mjs`), `scripts/build-presets.mjs` (three presets from `scripts/src/presets.mjs`), `tests/lighthouse/budgets.json` (asset budgets enforced by lint).
   - Logic: `assets/rules.js` (quantity rules, rounding, caps, tiers, stock hints, summaries) with 10 unit tests (`npm run test:unit`).
@@ -38,6 +44,9 @@ Decisions made autonomously, with reasoning. The owner reads these asynchronousl
 6. **Installments naming.** The retail row and wholesale line are generic "installments" features with a provider-name setting (default "Klarna" only in the pilot store config), so the Theme Store package makes no provider claim.
 7. **Core fallbacks for integrations.** Back-in-stock without Wasify submits through Shopify's contact form (tagged with the variant); rating pill without Judge.me reads the product's standard `reviews.rating` metafield; store-score source is a dynamic-source setting the pilot points at the Judge.me shop metafields.
 8. **Variant selection without JavaScript** uses a `<noscript>` variant `<select name="id">`; with JavaScript the option inputs drive Section Rendering. This is the standard progressive pattern and keeps one form.
+12. **Quick add options.** Quick add renders title, price, variant picker and buy buttons from static blocks. Custom options live in each product's own template, which a card can't reach, so they aren't shown in quick add; products that need them open the product page from "View full details".
+13. **Back-in-stock core.** Without an integration the request goes through Shopify's contact form (email required). The Wasify integration in P6 adds phone/WhatsApp delivery for the pilot.
+14. **Installments row maths.** The retail row shows the variant price divided by the number of payments, rounded up to the cent (brief §4.4). It's a display of Shopify's price, not a price calculation, and only appears when a provider name is set.
 10. **Font files.** To keep first load at ≤ 3 font files, Weft loads the heading weight, body regular and body bold. Text set in medium (500) renders with the regular file. The prototype's Jost 500 labels therefore look like 400 until the owner prefers a fourth font file.
 11. **Menus on `<details>`.** Dropdowns and mega menus are `<details>` elements, so navigation works without JavaScript and the mobile drawer reuses the same markup (no duplicate DOM). Mega-menu images and promotions load only when a menu opens.
 9. **Local quality tooling.** Because Theme Check can't be installed here, `scripts/theme-lint.mjs` (P1) checks JSON, schema, translation keys, missing files, tag balance and forbidden tags on every commit; real Theme Check runs in CI. "Theme Check 0/0" is reported from CI until the npm registry is reachable.

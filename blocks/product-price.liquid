@@ -1,0 +1,98 @@
+{%- comment -%}
+  Price component for retail and wholesale (brief §7.2): current price, compare-at, unit price,
+  tax note and Shop Pay Installments for retail; "per piece", "Wholesale price" caption and the
+  "From X at N+" tier link for wholesale. One component, never a separate inline-styled block.
+{%- endcomment -%}
+{%- liquid
+  assign p = closest.product
+  assign variant = p.selected_or_first_available_variant
+  assign wholesale = false
+  if customer and customer.b2b?
+    assign wholesale = true
+  endif
+  assign preview_wholesale = false
+  if request.design_mode and wholesale == false and block.settings.preview_wholesale
+    assign preview_wholesale = true
+  endif
+  assign show_ws = false
+  if wholesale or preview_wholesale
+    assign show_ws = true
+  endif
+  assign breaks = variant.quantity_price_breaks
+  assign last_break = nil
+  if p.quantity_price_breaks_configured? and breaks.size > 0
+    assign last_break = breaks | sort: 'minimum_quantity' | last
+  endif
+-%}
+<div class="product-price" data-swap="{{ block.id }}" {{ block.shopify_attributes }}>
+  {%- if preview_wholesale -%}<span class="badge badge--preview">{{ 'wholesale.sample_notice' | t }}</span>{%- endif -%}
+  {%- if variant -%}
+    <div class="product-price__row">
+      {%- render 'price', variant: variant, wholesale: show_ws, size: 'large' -%}
+      {%- if show_ws -%}<span class="badge badge--outline">{{ 'price.wholesale' | t }}</span>{%- endif -%}
+    </div>
+    {%- if show_ws and last_break -%}
+      {%- assign first_break = breaks | sort: 'minimum_quantity' | first -%}
+      {%- assign break_price = last_break.price | money -%}
+      <button type="button" class="link product-price__tiers" data-tier-toggle aria-expanded="false">
+        {{ 'wholesale.from_tier' | t: price: break_price, count: last_break.minimum_quantity }}
+        {%- render 'icon', name: 'chevron-down', size: 14 -%}
+      </button>
+    {%- endif -%}
+    {%- unless show_ws -%}
+      {%- if block.settings.show_tax_note -%}
+        <p class="product-price__note">
+          {%- if cart.taxes_included -%}{{ 'price.tax_included' | t }}{%- else -%}{{ 'price.tax_excluded' | t }}{%- endif -%}
+          {%- if block.settings.show_shipping_note %} {{ 'price.shipping_at_checkout' | t }}{%- endif -%}
+        </p>
+      {%- endif -%}
+      {%- if block.settings.show_installments -%}
+        {%- assign installments_form_id = 'Installments-' | append: block.id -%}
+        {%- form 'product', p, id: installments_form_id, class: 'product-price__installments' -%}
+          <input type="hidden" name="id" value="{{ variant.id }}" data-variant-input>
+          {{ form | payment_terms }}
+        {%- endform -%}
+      {%- endif -%}
+    {%- endunless -%}
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "t:labels.price",
+  "tag": null,
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_tax_note",
+      "label": "t:labels.show_tax_note",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_shipping_note",
+      "label": "t:labels.mention_shipping_at_checkout",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_installments",
+      "label": "t:labels.show_shop_pay_installments",
+      "default": true,
+      "info": "t:text.blocks.product_price.settings.show_installments.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "preview_wholesale",
+      "label": "t:labels.preview_the_wholesale_price_in_the_editor",
+      "default": false
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:labels.price",
+      "category": "t:labels.product"
+    }
+  ]
+}
+{% endschema %}

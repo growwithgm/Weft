@@ -1,0 +1,316 @@
+{%- comment -%}
+  Main product section: media gallery + a column of product theme blocks.
+  Variant changes re-render this section through the Section Rendering API (product.js) and
+  swap every [data-swap] element, so prices, rules, tiers and stock always come from Liquid in
+  the buyer's context. Wholesale matrix products widen the info column (brief §7.1).
+{%- endcomment -%}
+{%- liquid
+  assign p = product
+  assign variant = p.selected_or_first_available_variant
+  assign unselected = false
+  if section.settings.select_first_variant == false and p.selected_variant == nil and p.has_only_default_variant == false
+    assign unselected = true
+  endif
+
+  assign wholesale = false
+  if customer and customer.b2b?
+    assign wholesale = true
+  endif
+
+  assign gated = false
+  if wholesale == false and settings.wholesale_only_tag != blank
+    assign gate_tag = settings.wholesale_only_tag | strip | downcase
+    for tag in p.tags
+      assign t = tag | downcase
+      if t == gate_tag
+        assign gated = true
+        break
+      endif
+    endfor
+  endif
+
+  assign matrix = false
+  if settings.wholesale_matrix_tag != blank and p.has_only_default_variant == false
+    assign matrix_tag = settings.wholesale_matrix_tag | strip | downcase
+    for tag in p.tags
+      assign t = tag | downcase
+      if t == matrix_tag
+        assign matrix = true
+        break
+      endif
+    endfor
+  endif
+  assign wide_info = false
+  if matrix and wholesale
+    assign wide_info = true
+  endif
+
+  assign media_count = p.media.size
+-%}
+
+{{ 'section-product.css' | asset_url | stylesheet_tag }}
+
+{%- if gated -%}
+  {%- render 'wholesale-gate' -%}
+{%- else -%}
+<product-section
+  class="section product color-{{ section.settings.color_scheme }}"
+  data-product-section
+  data-section-id="{{ section.id }}"
+  data-product-url="{{ p.url }}"
+  data-product-id="{{ p.id }}"
+  data-product-handle="{{ p.handle }}"
+  data-module="{{ 'product.js' | asset_url }}"
+  data-load="idle"
+>
+  <div class="page-width">
+    {%- if settings.breadcrumbs_product -%}{%- render 'breadcrumbs' -%}{%- endif -%}
+
+    <div class="product__grid product__grid--{{ section.settings.gallery_width }}{% if wide_info %} product__grid--wide-info{% endif %}">
+      <div class="product__media" data-swap="media-{{ section.id }}">
+        {%- render 'product-gallery', product: p, variant: variant, section: section -%}
+      </div>
+
+      <div class="product__info{% if section.settings.sticky_info %} product__info--sticky{% endif %}">
+        <script type="application/json" data-product-state data-swap="state-{{ section.id }}">
+          {
+            "variantId": {{ variant.id | default: 'null' }},
+            "available": {{ variant.available | default: false }},
+            "unselected": {{ unselected }},
+            "wholesale": {{ wholesale }},
+            "matrix": {{ matrix }},
+            "featuredMediaId": {{ variant.featured_media.id | default: 'null' }},
+            "title": {{ p.title | json }}
+          }
+        </script>
+        {%- content_for 'blocks' -%}
+      </div>
+    </div>
+  </div>
+
+  {%- if section.settings.sticky_bar_mobile and wholesale == false -%}
+    {%- render 'product-sticky-bar', product: p, variant: variant, section: section, unselected: unselected -%}
+  {%- endif -%}
+
+  <template data-recently-viewed-handle>{{ p.handle }}</template>
+</product-section>
+
+<script type="application/ld+json">
+  {{ p | structured_data }}
+</script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "t:labels.product",
+  "class": "section-main-product",
+  "blocks": [
+    {
+      "type": "@theme"
+    },
+    {
+      "type": "@app"
+    }
+  ],
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:labels.color_scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "checkbox",
+      "id": "select_first_variant",
+      "label": "t:labels.preselect_the_first_available_variant",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "sticky_info",
+      "label": "t:labels.keep_product_information_in_view_while_scrolling",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "sticky_bar_mobile",
+      "label": "t:labels.mobile_sticky_bar",
+      "default": true,
+      "info": "t:text.sections.main_product.settings.sticky_bar_mobile.info"
+    },
+    {
+      "type": "header",
+      "content": "t:labels.gallery"
+    },
+    {
+      "type": "select",
+      "id": "gallery_layout",
+      "label": "t:labels.layout_on_large_screens",
+      "options": [
+        {
+          "value": "stacked",
+          "label": "t:labels.stacked"
+        },
+        {
+          "value": "grid",
+          "label": "t:labels.two_columns"
+        },
+        {
+          "value": "thumbnails",
+          "label": "t:labels.thumbnails"
+        },
+        {
+          "value": "carousel",
+          "label": "t:labels.carousel"
+        }
+      ],
+      "default": "stacked"
+    },
+    {
+      "type": "select",
+      "id": "gallery_width",
+      "label": "t:labels.gallery_width",
+      "options": [
+        {
+          "value": "wide",
+          "label": "t:labels.wide_7_of_12_columns"
+        },
+        {
+          "value": "half",
+          "label": "t:labels.half"
+        },
+        {
+          "value": "narrow",
+          "label": "t:labels.narrow_5_of_12_columns"
+        }
+      ],
+      "default": "wide"
+    },
+    {
+      "type": "select",
+      "id": "media_ratio",
+      "label": "t:labels.media_aspect_ratio",
+      "options": [
+        {
+          "value": "natural",
+          "label": "t:labels.natural"
+        },
+        {
+          "value": "square",
+          "label": "t:labels.square_1_1"
+        },
+        {
+          "value": "portrait",
+          "label": "t:labels.portrait_4_5"
+        },
+        {
+          "value": "tall",
+          "label": "t:labels.tall_3_4"
+        }
+      ],
+      "default": "portrait"
+    },
+    {
+      "type": "select",
+      "id": "media_fit",
+      "label": "t:labels.media_fit",
+      "options": [
+        {
+          "value": "contain",
+          "label": "t:labels.fit"
+        },
+        {
+          "value": "cover",
+          "label": "t:labels.fill"
+        }
+      ],
+      "default": "contain"
+    },
+    {
+      "type": "color",
+      "id": "media_bg",
+      "label": "t:labels.media_background",
+      "default": "#F4F4F4"
+    },
+    {
+      "type": "select",
+      "id": "thumbnails",
+      "label": "t:labels.thumbnails",
+      "options": [
+        {
+          "value": "desktop",
+          "label": "t:labels.large_screens_only"
+        },
+        {
+          "value": "both",
+          "label": "t:labels.all_screens"
+        },
+        {
+          "value": "none",
+          "label": "t:labels.hidden"
+        }
+      ],
+      "default": "desktop"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_counter",
+      "label": "t:labels.show_media_counter_on_mobile",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "zoom",
+      "label": "t:labels.zoom",
+      "options": [
+        {
+          "value": "lightbox",
+          "label": "t:labels.open_in_a_lightbox"
+        },
+        {
+          "value": "hover",
+          "label": "t:labels.magnify_on_hover"
+        },
+        {
+          "value": "both",
+          "label": "t:labels.lightbox_and_hover_magnify"
+        },
+        {
+          "value": "none",
+          "label": "t:labels.off"
+        }
+      ],
+      "default": "lightbox"
+    },
+    {
+      "type": "checkbox",
+      "id": "lightbox_mobile",
+      "label": "t:labels.open_the_lightbox_on_mobile",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "video_loop",
+      "label": "t:labels.loop_videos",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "t:labels.media_grouping"
+    },
+    {
+      "type": "checkbox",
+      "id": "group_media_by_option",
+      "label": "t:text.sections.main_product.settings.group_media_by_option.label",
+      "default": false,
+      "info": "t:text.sections.main_product.settings.group_media_by_option.info"
+    },
+    {
+      "type": "text",
+      "id": "group_media_option_names",
+      "label": "t:labels.option_names_to_group_by",
+      "default": "Color,Colour,Couleur,Farbe,Colore,Kleur,Cor"
+    }
+  ]
+}
+{% endschema %}

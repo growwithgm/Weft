@@ -1,0 +1,204 @@
+{%- comment -%}
+  Retail buy area (brief §7.6, §5): stepper + yellow Add to cart on one row, accelerated
+  checkout below, pickup availability, gift card recipient form, backorder note, inline errors.
+  Button states: Add to cart, Pre-order, Sold out, Select an option, Unavailable, Adding…, Added.
+  Other blocks (variant picker, purchase options, custom options) join this form through the
+  form="ProductForm-<section id>" attribute. Without JavaScript the form posts to /cart/add.
+{%- endcomment -%}
+{%- liquid
+  assign p = closest.product
+  assign v = p.selected_or_first_available_variant
+  assign form_id = 'ProductForm-' | append: section.id
+  assign unselected = false
+  if section.settings.select_first_variant == false and p.selected_variant == nil and p.has_only_default_variant == false
+    assign unselected = true
+  endif
+  assign rule = v.quantity_rule
+  assign rule_min = rule.min | default: 1
+  assign rule_step = rule.increment | default: 1
+  assign rule_max = rule.max
+  assign cap = nil
+  if v.inventory_management != blank and v.inventory_policy == 'deny'
+    assign cap = v.inventory_quantity
+    if rule_max and rule_max < cap
+      assign cap = rule_max
+    endif
+  elsif rule_max
+    assign cap = rule_max
+  endif
+  assign backorder = false
+  if v.available and v.inventory_management != blank and v.inventory_quantity <= 0 and v.inventory_policy == 'continue'
+    assign backorder = true
+  endif
+
+  assign state = 'add'
+  if unselected
+    assign state = 'select'
+  elsif v == nil
+    assign state = 'unavailable'
+  elsif v.available == false
+    assign state = 'sold_out'
+  elsif block.settings.preorder
+    assign state = 'preorder'
+  elsif backorder and block.settings.backorder_as_preorder
+    assign state = 'preorder'
+  endif
+  assign first_option = p.options.first
+  assign qty_id = 'Quantity-' | append: section.id
+-%}
+{%- capture visible -%}{% render 'audience-check', audience: block.settings.audience %}{%- endcapture -%}
+{%- if visible == '1' and p -%}
+  <div class="buy-buttons" data-buy-buttons data-swap="{{ block.id }}" {{ block.shopify_attributes }}>
+    {%- form 'product', p, id: form_id, class: 'product-form', novalidate: 'novalidate', data-product-form: '', data-type: 'add-to-cart-form' -%}
+      {%- if p.has_only_default_variant -%}
+        <input type="hidden" name="id" value="{{ v.id }}" data-variant-input>
+      {%- else -%}
+        <input type="hidden" name="id" value="{{ v.id }}" data-variant-input data-js-enable disabled>
+        <noscript>
+          <label class="field__label" for="{{ form_id }}-select">{{ p.options | join: ' / ' }}</label>
+          <select class="select" name="id" id="{{ form_id }}-select">
+            {%- for variant in p.variants limit: 250 -%}
+              <option value="{{ variant.id }}" {% if variant.id == v.id %}selected{% endif %} {% unless variant.available %}disabled{% endunless %}>
+                {{- variant.title }} · {{ variant.price | money }}{%- unless variant.available %} · {{ 'products.sold_out' | t }}{%- endunless -%}
+              </option>
+            {%- endfor -%}
+          </select>
+        </noscript>
+      {%- endif -%}
+
+      {%- if p.gift_card? and block.settings.show_gift_card_recipient -%}
+        {%- render 'gift-card-recipient', form: form, form_id: form_id -%}
+      {%- endif -%}
+
+      {%- if block.settings.show_backorder_note and backorder -%}
+        <p class="notice buy-buttons__backorder">{% if block.settings.backorder_text != blank %}{{ block.settings.backorder_text }}{% else %}{{ 'products.backorder_note' | t }}{% endif %}</p>
+      {%- endif -%}
+
+      <div class="form-message form-message--error buy-buttons__error" role="alert" data-form-error {% unless form.errors %}hidden{% endunless %}>
+        {%- render 'icon', name: 'alert', size: 18 -%}<span data-form-error-text>{%- if form.errors -%}{{ form.errors | default_errors }}{%- endif -%}</span>
+      </div>
+
+      <div class="buy-buttons__row" data-main-button-row>
+        {%- if block.settings.show_quantity -%}
+          {%- render 'quantity-input', id: qty_id, value: rule_min, min: rule_min, max: cap, step: rule_step, product_title: p.title, disabled: false -%}
+        {%- endif -%}
+        <button
+          type="submit"
+          name="add"
+          class="button button--full buy-buttons__add"
+          data-add-button
+          data-state="{{ state }}"
+          data-label-add="{{ 'products.add_to_cart' | t | escape }}"
+          data-label-preorder="{{ 'products.pre_order' | t | escape }}"
+          data-label-adding="{{ 'products.adding' | t | escape }}"
+          data-label-added="{{ 'products.added' | t | escape }}"
+          {% if state == 'select' or state == 'unavailable' or state == 'sold_out' %}disabled{% endif %}
+        >
+          <span data-add-label>
+            {%- case state -%}
+              {%- when 'select' -%}{{ 'products.select_option' | t: option: first_option }}
+              {%- when 'unavailable' -%}{{ 'products.unavailable' | t }}
+              {%- when 'sold_out' -%}{{ 'products.sold_out' | t }}
+              {%- when 'preorder' -%}{{ 'products.pre_order' | t }}
+              {%- else -%}{{ 'products.add_to_cart' | t }}
+            {%- endcase -%}
+          </span>
+        </button>
+      </div>
+
+      {%- if block.settings.show_accelerated and state != 'sold_out' and state != 'unavailable' -%}
+        <div class="buy-buttons__accelerated" data-accelerated>{{ form | payment_button }}</div>
+      {%- endif -%}
+    {%- endform -%}
+
+    {%- if block.settings.show_pickup and v and p.gift_card? == false -%}
+      <pickup-availability class="buy-buttons__pickup" data-variant-id="{{ v.id }}" data-base-url="{{ routes.root_url }}" data-module="{{ 'pickup.js' | asset_url }}" data-load="visible"></pickup-availability>
+    {%- endif -%}
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "t:labels.buy_buttons",
+  "tag": null,
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_quantity",
+      "label": "t:labels.show_quantity_selector",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_accelerated",
+      "label": "t:labels.show_accelerated_checkout_buttons",
+      "default": true,
+      "info": "t:text.blocks.buy_buttons.settings.show_accelerated.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_pickup",
+      "label": "t:labels.show_pickup_availability",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_gift_card_recipient",
+      "label": "t:labels.show_recipient_form_for_gift_cards",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_backorder_note",
+      "label": "t:labels.show_backorder_note",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "backorder_text",
+      "label": "t:labels.backorder_note",
+      "info": "t:labels.leave_empty_for_the_default_text"
+    },
+    {
+      "type": "checkbox",
+      "id": "backorder_as_preorder",
+      "label": "t:labels.label_backorders_as_pre_order",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "preorder",
+      "label": "t:labels.always_use_the_pre_order_label",
+      "default": false,
+      "info": "t:labels.for_pre_order_product_templates"
+    },
+    {
+      "type": "select",
+      "id": "audience",
+      "label": "t:labels.show_to",
+      "options": [
+        {
+          "value": "all",
+          "label": "t:labels.everyone"
+        },
+        {
+          "value": "retail",
+          "label": "t:labels.retail_shoppers"
+        },
+        {
+          "value": "wholesale",
+          "label": "t:labels.wholesale_buyers"
+        }
+      ],
+      "default": "retail",
+      "info": "t:text.blocks.buy_buttons.settings.audience.info"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:labels.buy_buttons",
+      "category": "t:labels.product"
+    }
+  ]
+}
+{% endschema %}

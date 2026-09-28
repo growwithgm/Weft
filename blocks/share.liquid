@@ -1,0 +1,62 @@
+{%- liquid
+  assign p = closest.product
+  assign share_url = shop.url | append: p.url
+  assign share_title = p.title | url_param_escape
+  assign share_image = p.featured_media | image_url: width: 1200
+-%}
+<div class="share" data-share {{ block.shopify_attributes }}>
+  <span class="share__label">{{ 'general.social.share' | t }}</span>
+  <ul class="share__list" role="list">
+    {%- if block.settings.show_twitter -%}
+      <li><a class="share__link" href="https://twitter.com/intent/tweet?text={{ share_title }}&amp;url={{ share_url | url_param_escape }}" target="_blank" rel="noopener">X<span class="visually-hidden"> ({{ 'general.opens_new_window' | t }})</span></a></li>
+    {%- endif -%}
+    {%- if block.settings.show_facebook -%}
+      <li><a class="share__link" href="https://www.facebook.com/sharer.php?u={{ share_url | url_param_escape }}" target="_blank" rel="noopener">Facebook<span class="visually-hidden"> ({{ 'general.opens_new_window' | t }})</span></a></li>
+    {%- endif -%}
+    {%- if block.settings.show_pinterest -%}
+      <li><a class="share__link" href="https://pinterest.com/pin/create/button/?url={{ share_url | url_param_escape }}&amp;media=https:{{ share_image | url_param_escape }}&amp;description={{ share_title }}" target="_blank" rel="noopener">Pinterest<span class="visually-hidden"> ({{ 'general.opens_new_window' | t }})</span></a></li>
+    {%- endif -%}
+    {%- if block.settings.show_copy -%}
+      <li><button type="button" class="link share__link js-only" data-copy-link="{{ share_url }}" data-copied="{{ 'products.share.copied' | t | escape }}">{{ 'products.share.copy_link' | t }}</button></li>
+    {%- endif -%}
+  </ul>
+</div>
+
+{% schema %}
+{
+  "name": "t:labels.share",
+  "tag": null,
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_twitter",
+      "label": "t:labels.x_formerly_twitter",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_facebook",
+      "label": "t:labels.facebook",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_pinterest",
+      "label": "t:labels.pinterest",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_copy",
+      "label": "t:labels.copy_link",
+      "default": false
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:labels.share",
+      "category": "t:labels.product"
+    }
+  ]
+}
+{% endschema %}

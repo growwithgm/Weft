@@ -12,6 +12,34 @@
     "slide_of": "Dia {{ index }} van {{ count }}",
     "star_rating": "{{ rating }} van de {{ max }} sterren"
   },
+  "cart": {
+    "checkout": "Afrekenen",
+    "discount": "Korting",
+    "empty": "Je winkelwagen is leeg",
+    "item_count": {
+      "one": "{{ count }} artikel",
+      "other": "{{ count }} artikelen"
+    },
+    "note": "Notitie toevoegen",
+    "note_label": "Bestelnotitie",
+    "price": "Prijs",
+    "product": "Product",
+    "quantity": "Aantal",
+    "remove": "{{ product }} verwijderen",
+    "subtotal": "Subtotaal",
+    "taxes_and_shipping_at_checkout": "Btw en verzending berekend bij het afrekenen.",
+    "taxes_included_shipping_at_checkout": "Inclusief btw. Verzending berekend bij het afrekenen.",
+    "terms": "Ik ga akkoord met de voorwaarden",
+    "terms_link": "Voorwaarden lezen",
+    "terms_required": "Ga akkoord met de voorwaarden om af te rekenen.",
+    "title": "Winkelwagen",
+    "title_count": "Winkelwagen ({{ count }})",
+    "total": "Totaal",
+    "update": "Bijwerken",
+    "updated": "Winkelwagen bijgewerkt",
+    "view_cart": "Winkelwagen bekijken",
+    "you_might_like": "Misschien leuk"
+  },
   "general": {
     "back_to_top": "Terug naar boven",
     "breadcrumbs": "Kruimelpad",
@@ -114,17 +142,219 @@
     "unit_price": "Eenheidsprijs",
     "wholesale": "Groothandelsprijs"
   },
+  "products": {
+    "add_short": "Toevoegen",
+    "add_to_cart": "In winkelwagen",
+    "added": "Toegevoegd",
+    "added_to_cart": "{{ product }} is toegevoegd aan je winkelwagen.",
+    "adding": "Toevoegen…",
+    "backorder_note": "Dit artikel is nabesteld en wordt verzonden zodra het weer op voorraad is.",
+    "barcode": "Barcode",
+    "bis": {
+      "consent": "Ik ga akkoord met contact over deze melding.",
+      "contact_needed": "Voeg een e-mailadres of telefoonnummer toe.",
+      "email": "E-mail",
+      "name": "Naam",
+      "none_selected": "Kies ten minste één optie.",
+      "phone": "Telefoon",
+      "pick": "Kies de gewenste opties",
+      "submit": "Laat het me weten",
+      "success": "Klaar. We laten het je weten zodra het terug is.",
+      "title": "Ontvang een melding"
+    },
+    "buy_now": "Nu kopen",
+    "compare": "Vergelijken",
+    "countdown": {
+      "days": "Dagen",
+      "ends_on": "Eindigt op {{ date }}",
+      "hours": "Uur",
+      "minutes": "Minuten",
+      "seconds": "Seconden"
+    },
+    "custom_option": {
+      "required": "Verplicht"
+    },
+    "delivery": {
+      "fit": "Pasvorm",
+      "free": "Gratis",
+      "installments": "{{ count }} × {{ amount }}",
+      "notify": "Melding",
+      "options_sold_out": {
+        "one": "{{ count }} optie uitverkocht · Laat het me weten",
+        "other": "{{ count }} opties uitverkocht · Laat het me weten"
+      },
+      "progress": "Voortgang naar gratis verzending",
+      "rate": "{{ rate }}, gratis vanaf {{ amount }}",
+      "rate_only": "{{ rate }}",
+      "returns": "Retouren",
+      "shipping": "Verzending",
+      "shipping_to": "Verzending naar {{ country }}",
+      "to_go": "Nog {{ amount }}"
+    },
+    "description": "Beschrijving",
+    "error_generic": "Dit artikel kon niet worden toegevoegd. Probeer het opnieuw.",
+    "gallery": {
+      "counter": "{{ index }} / {{ count }}",
+      "label": "Productmedia",
+      "open": "Media {{ index }} openen in de galerij",
+      "play_video": "Video afspelen",
+      "thumbnails": "Miniaturen",
+      "view_3d": "Bekijken in 3D",
+      "view_in_space": "Bekijken in je ruimte"
+    },
+    "gift_card": {
+      "characters_left": "Nog {{ count }} tekens",
+      "message": "Bericht (optioneel)",
+      "recipient_email": "E-mailadres ontvanger",
+      "recipient_name": "Naam ontvanger (optioneel)",
+      "send_as_gift": "Ik wil dit als cadeau versturen",
+      "send_on": "Versturen op (optioneel)"
+    },
+    "guide": "Maattabel",
+    "in_cart": "{{ count }} in winkelwagen",
+    "labels": {
+      "new": "Nieuw",
+      "sale": "Sale",
+      "save_amount": "Bespaar {{ amount }}",
+      "save_percent": "−{{ percent }}%"
+    },
+    "option_value_missing": "{{ value }}, niet in deze combinatie",
+    "option_value_unavailable": "{{ value }}, niet beschikbaar",
+    "pickup": {
+      "available_at": "Afhalen mogelijk bij {{ location }}",
+      "other_locations": "Beschikbaarheid in andere winkels bekijken",
+      "ready_in": "Meestal klaar binnen {{ time }}",
+      "title": "Beschikbaarheid afhalen",
+      "unavailable_at": "Afhalen momenteel niet mogelijk bij {{ location }}"
+    },
+    "pre_order": "Pre-order",
+    "purchase_options": {
+      "label": "Aankoopopties",
+      "one_time": "Eenmalige aankoop"
+    },
+    "quantity_rules": "Min. {{ min }}, per {{ increment }}",
+    "quick_add": {
+      "choose_options": "Opties kiezen",
+      "view_details": "Alle details bekijken"
+    },
+    "rating": {
+      "go_to_reviews": "Naar beoordelingen",
+      "reviews": {
+        "one": "{{ count }} beoordeling",
+        "other": "{{ count }} beoordelingen"
+      },
+      "store_reviews": "winkelbeoordelingen"
+    },
+    "recommendations": {
+      "also_like": "Misschien vind je dit ook leuk",
+      "complementary": "Past goed bij",
+      "recently_viewed": "Recent bekeken"
+    },
+    "remind_me": "Laat het me weten",
+    "select_option": "Kies een {{ option }}",
+    "share": {
+      "copied": "Link gekopieerd",
+      "copy_link": "Link kopiëren",
+      "on": "Delen op {{ network }}"
+    },
+    "signup": {
+      "label": "Laat het me weten als het beschikbaar is",
+      "success": "Bedankt. We mailen je zodra het beschikbaar is."
+    },
+    "sku": "SKU: {{ sku }}",
+    "sold_out": "Uitverkocht",
+    "stock": {
+      "backorder": "Nabesteld",
+      "count": "{{ count }} op voorraad",
+      "in_stock": "Op voorraad",
+      "low": "Nog maar een paar",
+      "low_count": "Nog maar {{ count }}"
+    },
+    "type": "Type",
+    "unavailable": "Niet beschikbaar",
+    "vendor": "Merk",
+    "weight": "Gewicht"
+  },
   "wholesale": {
+    "above_max": "Het maximum voor dit artikel is {{ count }}.",
     "account_and_orders": "Account en bestellingen",
+    "add_pieces": {
+      "one": "{{ count }} stuk toevoegen",
+      "other": "{{ count }} stuks toevoegen"
+    },
+    "added_summary": {
+      "one": "{{ count }} stuk toegevoegd.",
+      "other": "{{ count }} stuks toegevoegd."
+    },
+    "apply": "Groothandelstoegang aanvragen",
+    "assorted": "{{ option }}: {{ values }}",
+    "attention": {
+      "one": "{{ count }} regel vraagt aandacht",
+      "other": "{{ count }} regels vragen aandacht"
+    },
+    "available": "Beschikbaar",
+    "back_to_shop": "Terug naar de winkel",
+    "below_min": "Onder het minimum ({{ count }})",
+    "browse_catalogue": "Catalogus bekijken",
+    "capped": "{{ line }} ingesteld op {{ count }}, het maximum",
     "change": "Wijzigen",
+    "clear": "Wissen",
     "current_location": "Huidige locatie",
+    "each": "{{ price }} per stuk",
+    "empty_cart": "Je groothandelswinkelwagen is leeg",
+    "fix_lines": {
+      "one": "Pas {{ count }} regel aan voordat je afrekent.",
+      "other": "Pas {{ count }} regels aan voordat je afrekent."
+    },
+    "from_tier": "Vanaf {{ price }} bij {{ count }}+ stuks",
+    "gate_text": "Dit product is voorbehouden aan B2B-klanten. Log in met je groothandelsaccount om het te bekijken.",
+    "gate_title": "Alleen voor groothandel",
+    "in_cart_label": "In winkelwagen: {{ count }}",
+    "installments": "Betaal in {{ count }} termijnen van {{ amount }}",
+    "line_total": "{{ quantity }} × {{ price }} = {{ total }}",
+    "lines": {
+      "one": "{{ count }} regel",
+      "other": "{{ count }} regels"
+    },
     "location_updated": "Prijzen en beschikbaarheid bijgewerkt voor {{ location }}.",
+    "low_count": "Weinig: {{ count }}",
+    "max": "Max. {{ count }}",
+    "max_hint": "Max {{ count }}",
+    "min": "Min. {{ count }}",
+    "min_per": "Min. {{ count }} per {{ option }}",
+    "min_per_two": "Min. {{ count }} per {{ first }} en {{ second }}",
+    "needs_attention": "Vraagt aandacht",
     "not_found_line": "Groothandelsklant? Log in om producten voor handelaren te zien.",
+    "not_multiple": "{{ quantity }} is geen veelvoud van {{ increment }}. Kies {{ lower }} of {{ upper }}.",
+    "not_multiple_one": "{{ quantity }} is geen veelvoud van {{ increment }}. Kies {{ suggestion }}.",
+    "not_offered": "Niet leverbaar",
+    "only_more": "Er kunnen er nog maar {{ count }} bij.",
+    "order": "Aantallen kiezen",
+    "order_grid": "Bestellen per {{ options }}",
     "ordering_for": "Bestellen voor",
     "ordering_for_location": "Bestellen voor {{ company }} · {{ location }}",
+    "packs": "Per {{ count }}",
+    "pieces": {
+      "one": "{{ count }} stuk",
+      "other": "{{ count }} stuks"
+    },
+    "quick_order": "Snelbestellijst openen",
+    "rejected_summary": "1 regel is niet toegevoegd: {{ line }}. Zie de melding bij die regel.",
+    "rounded": "{{ line }} afgerond naar {{ count }} (per {{ increment }})",
+    "rules_vary": "Minimums verschillen per {{ option }}",
+    "rules_vary_two": "Minimums verschillen per {{ first }} en {{ second }}",
     "sample_notice": "Groothandelvoorbeeld — voorbeeldgegevens",
+    "show_all": "Alles tonen",
+    "show_fewer": "Minder tonen",
+    "sign_in": "Inloggen",
     "sign_out": "Uitloggen",
+    "stock_below_min": "Maar {{ count }}, onder het minimum",
     "store_credit": "Tegoed",
-    "switch_location": "Overschakelen naar {{ location }}"
+    "switch_location": "Overschakelen naar {{ location }}",
+    "terms_note": "Betalingsvoorwaarden en tegoed worden bij het afrekenen toegepast.",
+    "tier_caption": "Prijs per stuk. De winkelwagen toont de eindprijs per regel.",
+    "tier_current": "Huidig",
+    "tier_label": "{{ count }}+-prijs",
+    "tiers_heading": "Staffelprijzen"
   }
 }

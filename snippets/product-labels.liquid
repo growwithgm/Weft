@@ -1,0 +1,102 @@
+{%- comment -%}
+  Variant-aware labels shared by the product page and cards: sale, sold out, pre-order, new,
+  custom (from a metafield). Colours and rules come from Theme settings > Product labels.
+  Params: product, variant, context ('product' | 'card').
+{%- endcomment -%}
+{%- liquid
+  assign v = variant | default: product.selected_or_first_available_variant
+  assign labels = ''
+
+  assign sold_out = false
+  if v and v.available == false
+    assign sold_out = true
+  elsif v == nil and product.available == false
+    assign sold_out = true
+  endif
+
+  assign preorder = false
+  if v.available and v.inventory_management != blank and v.inventory_quantity <= 0 and v.inventory_policy == 'continue'
+    assign preorder = true
+  endif
+
+  assign is_new = false
+  if settings.label_new_show
+    if settings.label_new_by_tag and settings.label_new_tag != blank
+      assign new_tag = settings.label_new_tag | downcase
+      for tag in product.tags
+        assign t = tag | downcase
+        if t == new_tag
+          assign is_new = true
+          break
+        endif
+      endfor
+    endif
+    if is_new == false and settings.label_new_by_collection
+      for c in settings.label_new_collections
+        for pc in product.collections
+          if pc.id == c.id
+            assign is_new = true
+            break
+          endif
+        endfor
+      endfor
+    endif
+    if is_new == false and settings.label_new_by_age and product.published_at
+      assign age_limit = settings.label_new_days | times: 86400
+      assign now_s = 'now' | date: '%s' | plus: 0
+      assign pub_s = product.published_at | date: '%s' | plus: 0
+      assign age = now_s | minus: pub_s
+      if age <= age_limit
+        assign is_new = true
+      endif
+    endif
+  endif
+
+  assign custom_text = nil
+  if settings.label_custom_show and settings.label_custom_metafield != blank
+    assign mf = settings.label_custom_metafield | split: '.'
+    assign mf_ns = mf | first
+    assign mf_key = mf | last
+    assign custom_text = product.metafields[mf_ns][mf_key].value
+  endif
+-%}
+<div class="labels labels--{{ context }}">
+  {%- if sold_out and settings.label_sold_out_show -%}
+    <span class="label" style="--badge-bg: {{ settings.label_sold_out_bg }}; --badge-fg: {{ settings.label_sold_out_text }}">
+      {%- if settings.label_sold_out_icon != 'none' -%}{%- render 'icon', name: settings.label_sold_out_icon, size: 12 -%}{%- endif -%}
+      {{ 'products.sold_out' | t }}
+    </span>
+  {%- elsif v.compare_at_price > v.price and settings.label_sale_show -%}
+    <span class="label" style="--badge-bg: {{ settings.label_sale_bg }}; --badge-fg: {{ settings.label_sale_text }}">
+      {%- if settings.label_sale_icon != 'none' -%}{%- render 'icon', name: settings.label_sale_icon, size: 12 -%}{%- endif -%}
+      {%- case settings.label_sale_type -%}
+        {%- when 'percent' -%}
+          {%- assign saved = v.compare_at_price | minus: v.price | times: 100.0 | divided_by: v.compare_at_price | floor -%}
+          {{ 'products.labels.save_percent' | t: percent: saved }}
+        {%- when 'amount' -%}
+          {%- assign saved_amount = v.compare_at_price | minus: v.price | money -%}
+          {{ 'products.labels.save_amount' | t: amount: saved_amount }}
+        {%- else -%}
+          {{ 'products.labels.sale' | t }}
+      {%- endcase -%}
+    </span>
+  {%- endif -%}
+  {%- if preorder -%}
+    <span class="label" style="--badge-bg: {{ settings.label_preorder_bg }}; --badge-fg: {{ settings.label_preorder_text }}">
+      {%- if settings.label_preorder_icon != 'none' -%}{%- render 'icon', name: settings.label_preorder_icon, size: 12 -%}{%- endif -%}
+      {{ 'products.pre_order' | t }}
+    </span>
+  {%- endif -%}
+  {%- if is_new -%}
+    <span class="label" style="--badge-bg: {{ settings.label_new_bg }}; --badge-fg: {{ settings.label_new_text }}">
+      {%- if settings.label_new_icon != 'none' -%}{%- render 'icon', name: settings.label_new_icon, size: 12 -%}{%- endif -%}
+      {{ 'products.labels.new' | t }}
+    </span>
+  {%- endif -%}
+  {%- if custom_text != blank -%}
+    <span class="label" style="--badge-bg: {{ settings.label_custom_bg }}; --badge-fg: {{ settings.label_custom_text }}">
+      {%- if settings.label_custom_icon != 'none' -%}{%- render 'icon', name: settings.label_custom_icon, size: 12 -%}{%- endif -%}
+      {{ custom_text | escape }}
+    </span>
+  {%- endif -%}
+</div>

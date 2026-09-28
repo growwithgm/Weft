@@ -1,0 +1,191 @@
+{%- comment -%}
+  Product card (brief §7.12). One file for retail and wholesale.
+  Retail: image (second image on hover), labels, title, price, swatches, rating, quick add.
+  Wholesale: same frame, "per piece" price with "from X" when tiers exist, rule chips, stock hint,
+  "Order" action to the product page.
+  Wholesale-only products (tag fallback) never render for retail visitors: the card outputs
+  nothing, including its wrapper, so grids have no empty cells.
+  Params: product (required), wrapper ('li' | 'div'), index, sizes, eager (bool), highlight (bool),
+          show_quick_add (default true), collection (for URLs within a collection)
+{%- endcomment -%}
+{%- liquid
+  assign wholesale = false
+  if customer and customer.b2b?
+    assign wholesale = true
+  endif
+
+  assign hidden_card = false
+  if wholesale == false and settings.wholesale_only_tag != blank
+    assign gate_tag = settings.wholesale_only_tag | strip | downcase
+    for tag in product.tags
+      assign t = tag | downcase
+      if t == gate_tag
+        assign hidden_card = true
+        break
+      endif
+    endfor
+  endif
+-%}
+{%- unless hidden_card -%}
+{%- liquid
+  assign v = product.selected_or_first_available_variant
+  assign tag = wrapper | default: 'div'
+  assign card_sizes = sizes | default: '(min-width: 990px) 25vw, 50vw'
+  assign url = product.url
+  if settings.card_url_in_collection and collection
+    assign url = product.url | within: collection
+  endif
+  assign ratio_class = 'card--ratio-' | append: settings.card_ratio
+  assign first_media = product.featured_media
+  assign second_media = nil
+  if settings.card_hover != 'none' and product.media.size > 1
+    assign second_media = product.media[1]
+  endif
+  assign highlight_card = false
+  if highlight and settings.card_highlight_tag != blank
+    assign highlight_tag = settings.card_highlight_tag | downcase
+    for tg in product.tags
+      assign tg_d = tg | downcase
+      if tg_d == highlight_tag
+        assign highlight_card = true
+      endif
+    endfor
+  endif
+  assign swatch_names = settings.swatch_option_names | downcase | remove: ' ' | split: ','
+  assign swatch_option = nil
+  if settings.card_show_swatches and settings.swatch_card_style != 'none'
+    for option in product.options_with_values
+      assign option_key = option.name | downcase | remove: ' '
+      if swatch_names contains option_key
+        assign swatch_option = option
+        break
+      endif
+    endfor
+  endif
+
+  assign rule = v.quantity_rule
+  assign breaks = v.quantity_price_breaks
+  assign lowest_break = nil
+  if wholesale and product.quantity_price_breaks_configured? and breaks.size > 0
+    assign lowest_break = breaks | sort: 'price' | first
+  endif
+  assign quick_add = false
+  if settings.quick_add_enable and show_quick_add != false and wholesale == false and product.available
+    assign quick_add = true
+  endif
+  assign title_id = 'CardTitle-' | append: product.id | append: '-' | append: index
+-%}
+<{{ tag }} class="card {{ ratio_class }}{% if settings.card_boxed %} card--boxed{% endif %}{% if highlight_card %} card--highlight{% endif %}{% if settings.card_dividers %} card--divided{% endif %}{% if settings.card_price_bottom %} card--price-bottom{% endif %}" data-product-card data-product-id="{{ product.id }}">
+  <div class="card__media-wrap">
+    <a class="card__media media{% if settings.card_fit == 'contain' %} media--contain{% endif %}{% if settings.image_blend_products %} media--blend{% endif %}" href="{{ url }}" tabindex="-1" aria-hidden="true" style="--card-position: {{ settings.card_image_position }}">
+      {%- if first_media -%}
+        {%- render 'image', image: first_media.preview_image, sizes: card_sizes, eager: eager, widths: '240,360,480,640,800,960', class: 'card__image card__image--primary' -%}
+        {%- if second_media -%}
+          {%- render 'image', image: second_media.preview_image, sizes: card_sizes, widths: '240,360,480,640,800,960', class: 'card__image card__image--secondary' -%}
+        {%- endif -%}
+      {%- else -%}
+        {{ 'product-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+      {%- endif -%}
+    </a>
+    <div class="card__labels card__labels--{{ settings.label_card_position }}">
+      {%- render 'product-labels', product: product, variant: v, context: 'card' -%}
+    </div>
+    {%- if settings.compare_enable -%}
+      <label class="card__compare js-only">
+        <input type="checkbox" data-compare-toggle value="{{ product.handle }}" aria-describedby="{{ title_id }}">
+        <span>{{ 'products.compare' | t }}</span>
+      </label>
+    {%- endif -%}
+  </div>
+  <div class="card__body">
+    {%- if settings.card_show_vendor and product.vendor != blank -%}<p class="card__vendor muted">{{ product.vendor }}</p>{%- endif -%}
+    <h3 class="card__title" id="{{ title_id }}"><a class="card__link" href="{{ url }}">{{ product.title | escape }}</a></h3>
+    {%- if settings.card_show_subtitle and settings.card_subtitle_metafield != blank -%}
+      {%- liquid
+        assign sub_parts = settings.card_subtitle_metafield | split: '.'
+        assign sub_ns = sub_parts | first
+        assign sub_key = sub_parts | last
+        assign subtitle = product.metafields[sub_ns][sub_key].value
+      -%}
+      {%- if subtitle != blank -%}<p class="card__subtitle muted">{{ subtitle | escape }}</p>{%- endif -%}
+    {%- endif -%}
+    {%- if settings.card_show_rating and product.metafields.reviews.rating.value != blank and wholesale == false -%}
+      {%- liquid
+        assign r = product.metafields.reviews.rating.value
+        assign r_pct = r.rating | divided_by: r.scale_max | times: 100
+        assign r_count = product.metafields.reviews.rating_count.value | default: 0
+      -%}
+      <p class="card__rating">
+        <span class="rating-pill__stars" style="--stars: {{ r_pct }}%" aria-hidden="true"></span>
+        <span class="visually-hidden">{{ 'accessibility.star_rating' | t: rating: r.rating, max: r.scale_max }}</span>
+        <span class="muted">({{ r_count }})</span>
+      </p>
+    {%- endif -%}
+    <div class="card__price">
+      {%- render 'price', variant: v, wholesale: wholesale, size: 'small', from: product.price_varies -%}
+      {%- if lowest_break -%}
+        {%- assign break_money = lowest_break.price | money -%}
+        <span class="card__from muted">{{ 'price.from' | t: price: break_money }}</span>
+      {%- endif -%}
+    </div>
+    {%- if settings.card_show_weight and v.weight > 0 -%}<p class="card__meta muted">{{ v.weight | weight_with_unit: v.weight_unit }}</p>{%- endif -%}
+    {%- if swatch_option and swatch_option.values.size > 1 -%}
+      <ul class="card__swatches swatch-shape--{{ settings.swatch_card_shape }}" role="list">
+        {%- for value in swatch_option.values limit: 6 -%}
+          {%- liquid
+            assign sw_image = nil
+            assign sw_color = value.swatch.color
+            if settings.swatch_card_style == 'variant_image'
+              assign sw_image = value.variant.featured_image | default: value.swatch.image
+            elsif sw_color == blank
+              assign sw_image = value.swatch.image
+            endif
+          -%}
+          <li>
+            <span class="card-swatch" title="{{ value | escape }}"{% if sw_color %} style="--swatch-color: {{ sw_color }}"{% endif %}>
+              {%- if sw_image -%}{{ sw_image | image_url: width: 60 | image_tag: width: 30, height: 30, alt: '', loading: 'lazy' }}{%- endif -%}
+              <span class="visually-hidden">{{ value }}</span>
+            </span>
+          </li>
+        {%- endfor -%}
+        {%- if swatch_option.values.size > 6 -%}<li class="card__swatches-more muted">+{{ swatch_option.values.size | minus: 6 }}</li>{%- endif -%}
+      </ul>
+    {%- endif -%}
+    {%- if wholesale -%}
+      {%- render 'rule-chips', product: product, variant: v, size: 'small' -%}
+    {%- endif -%}
+    {%- if settings.card_show_inventory and v.inventory_management != blank and settings.stock_notice != 'never' -%}
+      {%- liquid
+        assign card_low = false
+        if v.inventory_quantity <= settings.stock_low_threshold and v.inventory_quantity > 0
+          assign card_low = true
+        endif
+      -%}
+      {%- if settings.stock_notice == 'always' or card_low -%}
+        <p class="card__stock{% if card_low %} card__stock--low{% endif %}">
+          {%- if wholesale -%}{{ 'products.stock.count' | t: count: v.inventory_quantity }}{%- elsif card_low -%}{{ 'products.stock.low' | t }}{%- else -%}{{ 'products.stock.in_stock' | t }}{%- endif -%}
+        </p>
+      {%- endif -%}
+    {%- endif -%}
+    {%- if wholesale -%}
+      <a class="card__action link" href="{{ url }}">{{ 'wholesale.order' | t }}</a>
+    {%- elsif quick_add -%}
+      {%- if product.has_only_default_variant and product.requires_selling_plan == false -%}
+        {%- assign card_form_id = 'CardForm-' | append: product.id | append: '-' | append: index -%}
+        {%- form 'product', product, id: card_form_id, class: 'card__form', data-card-form: '' -%}
+          <input type="hidden" name="id" value="{{ v.id }}">
+          <button type="submit" class="card__action card__action--{{ settings.quick_add_style_desktop }} card__action-m--{{ settings.quick_add_style_mobile }}" aria-describedby="{{ title_id }}">
+            <span class="card__action-label">{{ 'products.add_to_cart' | t }}</span>
+            {%- render 'icon', name: 'plus', size: 18 -%}
+          </button>
+        {%- endform -%}
+      {%- else -%}
+        <button type="button" class="card__action card__action--{{ settings.quick_add_style_desktop }} card__action-m--{{ settings.quick_add_style_mobile }}" data-quick-add="{{ product.url }}" aria-haspopup="dialog" aria-describedby="{{ title_id }}">
+          <span class="card__action-label">{{ 'products.quick_add.choose_options' | t }}</span>
+          {%- render 'icon', name: 'plus', size: 18 -%}
+        </button>
+      {%- endif -%}
+    {%- endif -%}
+  </div>
+</{{ tag }}>
+{%- endunless -%}

@@ -12,6 +12,34 @@
     "slide_of": "{{ count }}枚中{{ index }}枚目",
     "star_rating": "{{ max }}つ星中{{ rating }}"
   },
+  "cart": {
+    "checkout": "ご購入手続きへ",
+    "discount": "割引",
+    "empty": "カートは空です",
+    "item_count": {
+      "one": "{{ count }}点",
+      "other": "{{ count }}点"
+    },
+    "note": "注文メモを追加",
+    "note_label": "注文メモ",
+    "price": "価格",
+    "product": "商品",
+    "quantity": "数量",
+    "remove": "{{ product }}を削除",
+    "subtotal": "小計",
+    "taxes_and_shipping_at_checkout": "税金と送料はチェックアウト時に計算されます。",
+    "taxes_included_shipping_at_checkout": "税込。送料はチェックアウト時に計算されます。",
+    "terms": "利用規約に同意します",
+    "terms_link": "利用規約を読む",
+    "terms_required": "ご購入手続きには利用規約への同意が必要です。",
+    "title": "カート",
+    "title_count": "カート（{{ count }}）",
+    "total": "合計",
+    "update": "更新",
+    "updated": "カートを更新しました",
+    "view_cart": "カートを見る",
+    "you_might_like": "おすすめ"
+  },
   "general": {
     "back_to_top": "トップへ戻る",
     "breadcrumbs": "パンくずリスト",
@@ -114,17 +142,219 @@
     "unit_price": "単価",
     "wholesale": "卸売価格"
   },
+  "products": {
+    "add_short": "追加",
+    "add_to_cart": "カートに追加",
+    "added": "追加しました",
+    "added_to_cart": "{{ product }}をカートに追加しました。",
+    "adding": "追加中…",
+    "backorder_note": "この商品は取り寄せ中です。入荷次第発送します。",
+    "barcode": "バーコード",
+    "bis": {
+      "consent": "この入荷通知の連絡を受け取ることに同意します。",
+      "contact_needed": "メールアドレスか電話番号を入力してください。",
+      "email": "メールアドレス",
+      "name": "お名前",
+      "none_selected": "オプションを1つ以上選択してください。",
+      "phone": "電話番号",
+      "pick": "希望のオプションを選択",
+      "submit": "通知を受け取る",
+      "success": "登録しました。再入荷次第お知らせします。",
+      "title": "再入荷のお知らせ"
+    },
+    "buy_now": "今すぐ購入",
+    "compare": "比較",
+    "countdown": {
+      "days": "日",
+      "ends_on": "{{ date }}に終了",
+      "hours": "時間",
+      "minutes": "分",
+      "seconds": "秒"
+    },
+    "custom_option": {
+      "required": "必須"
+    },
+    "delivery": {
+      "fit": "フィット",
+      "free": "無料",
+      "installments": "{{ count }}回 × {{ amount }}",
+      "notify": "入荷通知",
+      "options_sold_out": {
+        "one": "{{ count }}件の在庫切れ・通知を受け取る",
+        "other": "{{ count }}件の在庫切れ・通知を受け取る"
+      },
+      "progress": "送料無料までの進捗",
+      "rate": "{{ rate }}、{{ amount }}以上で無料",
+      "rate_only": "{{ rate }}",
+      "returns": "返品",
+      "shipping": "配送",
+      "shipping_to": "{{ country }}への配送",
+      "to_go": "あと{{ amount }}"
+    },
+    "description": "商品説明",
+    "error_generic": "商品を追加できませんでした。もう一度お試しください。",
+    "gallery": {
+      "counter": "{{ index }} / {{ count }}",
+      "label": "商品メディア",
+      "open": "ギャラリーでメディア{{ index }}を開く",
+      "play_video": "動画を再生",
+      "thumbnails": "サムネイル",
+      "view_3d": "3Dで表示",
+      "view_in_space": "お部屋で表示"
+    },
+    "gift_card": {
+      "characters_left": "残り{{ count }}文字",
+      "message": "メッセージ（任意）",
+      "recipient_email": "受取人のメールアドレス",
+      "recipient_name": "受取人のお名前（任意）",
+      "send_as_gift": "ギフトとして送る",
+      "send_on": "送信日（任意）"
+    },
+    "guide": "サイズガイド",
+    "in_cart": "カートに{{ count }}点",
+    "labels": {
+      "new": "新着",
+      "sale": "セール",
+      "save_amount": "{{ amount }}お得",
+      "save_percent": "{{ percent }}%オフ"
+    },
+    "option_value_missing": "{{ value }}（この組み合わせはありません）",
+    "option_value_unavailable": "{{ value }}（在庫なし）",
+    "pickup": {
+      "available_at": "{{ location }}で受け取り可能",
+      "other_locations": "他の店舗の在庫を確認",
+      "ready_in": "通常{{ time }}で準備完了",
+      "title": "受け取り可能状況",
+      "unavailable_at": "{{ location }}では現在受け取りできません"
+    },
+    "pre_order": "予約注文",
+    "purchase_options": {
+      "label": "購入オプション",
+      "one_time": "1回のみの購入"
+    },
+    "quantity_rules": "最小{{ min }}、{{ increment }}個単位",
+    "quick_add": {
+      "choose_options": "オプションを選択",
+      "view_details": "詳細を見る"
+    },
+    "rating": {
+      "go_to_reviews": "レビューへ移動",
+      "reviews": {
+        "one": "{{ count }}件のレビュー",
+        "other": "{{ count }}件のレビュー"
+      },
+      "store_reviews": "件のストアレビュー"
+    },
+    "recommendations": {
+      "also_like": "おすすめ商品",
+      "complementary": "こちらもおすすめ",
+      "recently_viewed": "最近チェックした商品"
+    },
+    "remind_me": "入荷したら知らせる",
+    "select_option": "{{ option }}を選択",
+    "share": {
+      "copied": "コピーしました",
+      "copy_link": "リンクをコピー",
+      "on": "{{ network }}で共有"
+    },
+    "signup": {
+      "label": "販売開始時に知らせる",
+      "success": "ありがとうございます。販売開始時にメールでお知らせします。"
+    },
+    "sku": "SKU：{{ sku }}",
+    "sold_out": "売り切れ",
+    "stock": {
+      "backorder": "取り寄せ中",
+      "count": "在庫{{ count }}点",
+      "in_stock": "在庫あり",
+      "low": "残りわずか",
+      "low_count": "残り{{ count }}点"
+    },
+    "type": "タイプ",
+    "unavailable": "お取り扱いできません",
+    "vendor": "ブランド",
+    "weight": "重量"
+  },
   "wholesale": {
+    "above_max": "この商品の上限は{{ count }}です。",
     "account_and_orders": "アカウントと注文",
+    "add_pieces": {
+      "one": "{{ count }}点をカートに追加",
+      "other": "{{ count }}点をカートに追加"
+    },
+    "added_summary": {
+      "one": "{{ count }}点をカートに追加しました。",
+      "other": "{{ count }}点をカートに追加しました。"
+    },
+    "apply": "卸売アカウントを申請",
+    "assorted": "{{ option }}：{{ values }}",
+    "attention": {
+      "one": "確認が必要な行が{{ count }}件あります",
+      "other": "確認が必要な行が{{ count }}件あります"
+    },
+    "available": "在庫あり",
+    "back_to_shop": "ショップに戻る",
+    "below_min": "最小数量未満（{{ count }}）",
+    "browse_catalogue": "カタログを見る",
+    "capped": "{{ line }}を上限の{{ count }}にしました",
     "change": "変更",
+    "clear": "クリア",
     "current_location": "現在の拠点",
+    "each": "1点{{ price }}",
+    "empty_cart": "卸売カートは空です",
+    "fix_lines": {
+      "one": "ご購入手続きの前に{{ count }}行を修正してください。",
+      "other": "ご購入手続きの前に{{ count }}行を修正してください。"
+    },
+    "from_tier": "{{ count }}点以上で{{ price }}から",
+    "gate_text": "この商品はB2Bのお客様専用です。卸売アカウントでログインしてご覧ください。",
+    "gate_title": "卸売専用商品",
+    "in_cart_label": "カート内：{{ count }}",
+    "installments": "{{ amount }}×{{ count }}回の分割払い",
+    "line_total": "{{ quantity }} × {{ price }} = {{ total }}",
+    "lines": {
+      "one": "{{ count }}行",
+      "other": "{{ count }}行"
+    },
     "location_updated": "{{ location }}の価格と在庫状況を更新しました。",
+    "low_count": "残少：{{ count }}",
+    "max": "最大{{ count }}",
+    "max_hint": "最大{{ count }}",
+    "min": "最小{{ count }}",
+    "min_per": "{{ option }}ごとに最小{{ count }}",
+    "min_per_two": "{{ first }}・{{ second }}ごとに最小{{ count }}",
+    "needs_attention": "要確認",
     "not_found_line": "卸売のお客様はログインすると業者向け商品をご覧いただけます。",
+    "not_multiple": "{{ quantity }}は{{ increment }}の倍数ではありません。{{ lower }}または{{ upper }}にしてください。",
+    "not_multiple_one": "{{ quantity }}は{{ increment }}の倍数ではありません。{{ suggestion }}にしてください。",
+    "not_offered": "取り扱いなし",
+    "only_more": "あと{{ count }}点まで追加できます。",
+    "order": "数量を選ぶ",
+    "order_grid": "{{ options }}別に注文",
     "ordering_for": "注文先",
     "ordering_for_location": "{{ company }}・{{ location }}の注文",
+    "packs": "{{ count }}個単位",
+    "pieces": {
+      "one": "{{ count }}点",
+      "other": "{{ count }}点"
+    },
+    "quick_order": "クイック注文を開く",
+    "rejected_summary": "1行が追加されませんでした：{{ line }}。該当行のメッセージをご確認ください。",
+    "rounded": "{{ line }}を{{ count }}に調整しました（{{ increment }}個単位）",
+    "rules_vary": "最小数量は{{ option }}により異なります",
+    "rules_vary_two": "最小数量は{{ first }}・{{ second }}により異なります",
     "sample_notice": "卸売プレビュー（サンプルデータ）",
+    "show_all": "すべて表示",
+    "show_fewer": "表示を減らす",
+    "sign_in": "ログイン",
     "sign_out": "ログアウト",
+    "stock_below_min": "残り{{ count }}（最小数量未満）",
     "store_credit": "ストアクレジット",
-    "switch_location": "{{ location }}に切り替え"
+    "switch_location": "{{ location }}に切り替え",
+    "terms_note": "支払い条件とストアクレジットはチェックアウト時に適用されます。",
+    "tier_caption": "1点あたりの価格です。最終価格はカートで行ごとに表示されます。",
+    "tier_current": "適用中",
+    "tier_label": "{{ count }}点以上の価格",
+    "tiers_heading": "数量割引価格"
   }
 }

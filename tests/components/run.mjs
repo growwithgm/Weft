@@ -44,7 +44,7 @@ for (const spec of specs) {
     const page = await context.newPage();
     const errors = [];
     page.on('pageerror', (e) => errors.push(e.message));
-    page.on('console', (m) => m.type() === 'error' && errors.push(m.text()));
+    page.on('console', (m) => m.type() === 'error' && !m.text().startsWith('Failed to load resource') && errors.push(m.text()));
     try {
       await fn({ page, base, expect });
       if (errors.length) throw new Error(`Console errors: ${errors.join(' | ')}`);

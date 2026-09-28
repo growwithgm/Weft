@@ -1,0 +1,32 @@
+{%- comment -%}
+  Gift card recipient form (Shopify's line item properties for gift card delivery).
+  Params: form, form_id.
+{%- endcomment -%}
+{%- liquid
+  assign base = form_id | append: '-gift'
+-%}
+<details class="gift-recipient" data-gift-recipient>
+  <summary class="gift-recipient__toggle">
+    <input type="checkbox" class="gift-recipient__check" id="{{ base }}-toggle" name="properties[__shopify_send_gift_card_to_recipient]" value="on" tabindex="-1" aria-hidden="true">
+    <span>{{ 'products.gift_card.send_as_gift' | t }}</span>
+  </summary>
+  <div class="gift-recipient__fields stack">
+    <div class="field">
+      <label class="field__label" for="{{ base }}-email">{{ 'products.gift_card.recipient_email' | t }}</label>
+      <input class="input" id="{{ base }}-email" type="email" name="properties[Recipient email]" autocomplete="email" value="{{ form.email }}">
+    </div>
+    <div class="field">
+      <label class="field__label" for="{{ base }}-name">{{ 'products.gift_card.recipient_name' | t }}</label>
+      <input class="input" id="{{ base }}-name" type="text" name="properties[Recipient name]" autocomplete="name" value="{{ form.name }}">
+    </div>
+    <div class="field">
+      <label class="field__label" for="{{ base }}-message">{{ 'products.gift_card.message' | t }}</label>
+      <textarea class="textarea" id="{{ base }}-message" name="properties[Message]" maxlength="200" rows="3">{{ form.message }}</textarea>
+    </div>
+    <div class="field">
+      <label class="field__label" for="{{ base }}-date">{{ 'products.gift_card.send_on' | t }}</label>
+      <input class="input" id="{{ base }}-date" type="date" name="properties[Send on]" pattern="\d{4}-\d{2}-\d{2}" value="{{ form.send_on }}">
+    </div>
+    <input type="hidden" name="properties[__shopify_offset]" value="" data-gift-offset>
+  </div>
+</details>

@@ -1,0 +1,54 @@
+{%- comment -%}
+  Price display shared by product blocks, cards and cart lines. Never computes a price: every
+  number is a Liquid money value from Shopify.
+  Params:
+    variant (required), wholesale (bool), show_compare (default true), show_unit (default true),
+    from (bool: prefix "From" for products with varying prices), size ('large' | 'small')
+{%- endcomment -%}
+{%- liquid
+  assign price = variant.price
+  assign compare = variant.compare_at_price
+  assign on_sale = false
+  if compare > price and show_compare != false
+    assign on_sale = true
+  endif
+  if settings.currency_code_enable
+    assign money_price = price | money_with_currency
+    assign money_compare = compare | money_with_currency
+  else
+    assign money_price = price | money
+    assign money_compare = compare | money
+  endif
+  if settings.currency_superscript
+    assign plain = money_price | strip_html
+    assign cents = plain | slice: -2
+    assign sep = plain | slice: -3, 1
+    assign has_sep = false
+    if sep == ',' or sep == '.'
+      assign has_sep = true
+    endif
+    assign cents_digits = cents | remove: '0' | remove: '1' | remove: '2' | remove: '3' | remove: '4' | remove: '5' | remove: '6' | remove: '7' | remove: '8' | remove: '9'
+    if has_sep and cents_digits == ''
+      assign whole_length = plain.size | minus: 3
+      assign whole = plain | slice: 0, whole_length
+      assign money_price = whole | append: '<sup>' | append: cents | append: '</sup>'
+    endif
+  endif
+-%}
+<div class="price price--{{ size | default: 'medium' }}{% if on_sale %} price--on-sale{% endif %}">
+  {%- if on_sale -%}<span class="visually-hidden">{{ 'price.sale' | t }}</span>{%- else -%}<span class="visually-hidden">{{ 'price.regular' | t }}</span>{%- endif -%}
+  <span class="price__current{% if on_sale and wholesale != true %} price__current--sale{% endif %}">
+    {%- if from -%}{{ 'price.from' | t: price: money_price }}{%- else -%}{{ money_price }}{%- endif -%}
+  </span>
+  {%- if wholesale -%}<span class="price__per">{{ 'price.per_piece' | t }}</span>{%- endif -%}
+  {%- if on_sale -%}
+    <span class="visually-hidden">{{ 'price.regular' | t }}</span>
+    <s class="price__compare">{{ money_compare }}</s>
+  {%- endif -%}
+  {%- if show_unit != false and variant.unit_price_measurement -%}
+    <span class="price__unit">
+      <span class="visually-hidden">{{ 'price.unit_price' | t }}</span>
+      {{- variant.unit_price | money | unit_price_with_measurement: variant.unit_price_measurement -}}
+    </span>
+  {%- endif -%}
+</div>

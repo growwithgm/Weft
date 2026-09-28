@@ -1,0 +1,127 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "labels": {
+          "type": "product-labels",
+          "settings": {}
+        },
+        "title": {
+          "type": "product-title",
+          "settings": {}
+        },
+        "price": {
+          "type": "product-price",
+          "settings": {
+            "show_tax_note": true,
+            "show_installments": true
+          }
+        },
+        "rating": {
+          "type": "product-rating",
+          "settings": {
+            "count_label": "product",
+            "audience": "retail"
+          }
+        },
+        "picker": {
+          "type": "variant-picker",
+          "settings": {}
+        },
+        "guide": {
+          "type": "product-guide",
+          "settings": {
+            "link_position": "picker"
+          }
+        },
+        "options": {
+          "type": "purchase-options",
+          "settings": {}
+        },
+        "features": {
+          "type": "specifications",
+          "settings": {
+            "heading": "Main features",
+            "accordion": true
+          },
+          "blocks": {
+            "row1": {
+              "type": "_spec-row",
+              "settings": {
+                "label": "Material"
+              }
+            },
+            "row2": {
+              "type": "_spec-row",
+              "settings": {
+                "label": "Care"
+              }
+            }
+          },
+          "block_order": [
+            "row1",
+            "row2"
+          ]
+        },
+        "description": {
+          "type": "description",
+          "settings": {
+            "accordion": true,
+            "open": true,
+            "clamp_chars": 200
+          }
+        },
+        "returns": {
+          "type": "collapsible",
+          "settings": {
+            "heading": "Returns",
+            "icon": "return",
+            "audience": "retail",
+            "text": "<p>Explain your returns policy in a few lines.</p>"
+          }
+        },
+        "share": {
+          "type": "share",
+          "settings": {}
+        },
+        "countdown": {
+          "type": "product-countdown",
+          "settings": {
+            "end_date": "",
+            "end_time": "00:00",
+            "size": "large"
+          }
+        },
+        "signup": {
+          "type": "product-signup",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "labels",
+        "title",
+        "price",
+        "rating",
+        "countdown",
+        "picker",
+        "guide",
+        "options",
+        "signup",
+        "features",
+        "description",
+        "returns",
+        "share"
+      ],
+      "settings": {}
+    },
+    "related": {
+      "type": "product-recommendations",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "related"
+  ]
+}

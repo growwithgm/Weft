@@ -58,7 +58,8 @@
       {
         "imports": {
           "@weft/core": "{{ 'core.js' | asset_url }}",
-          "@weft/rules": "{{ 'rules.js' | asset_url }}"
+          "@weft/rules": "{{ 'rules.js' | asset_url }}",
+          "@weft/quantity": "{{ 'quantity.js' | asset_url }}"
         }
       }
     </script>
@@ -77,7 +78,9 @@
         modules: {
           header: {{ 'header.js' | asset_url | json }},
           localization: {{ 'localization.js' | asset_url | json }},
-          customCode: {{ 'custom-code.js' | asset_url | json }}
+          customCode: {{ 'custom-code.js' | asset_url | json }},
+          quickAdd: {{ 'quick-add.js' | asset_url | json }},
+          product: {{ 'product.js' | asset_url | json }}
         },
         settings: {
           cartType: {{ settings.cart_type | json }},
@@ -97,7 +100,8 @@
         strings: {
           error: {{ 'general.error' | t | json }},
           loading: {{ 'general.loading' | t | json }},
-          locationUpdated: {{ 'wholesale.location_updated' | t: location: '__location__' | json }}
+          locationUpdated: {{ 'wholesale.location_updated' | t: location: '__location__' | json }},
+          cartUpdated: {{ 'cart.updated' | t | json }}
         },
         wholesale: {{ wholesale | json }},
         designMode: {{ request.design_mode | json }}

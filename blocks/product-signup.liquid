@@ -1,0 +1,67 @@
+{%- comment -%} Product sign-up (countdown, coming soon, sold out): emails the store through the customer form, tagged with the product. {%- endcomment -%}
+{%- liquid
+  assign p = closest.product
+  assign show = true
+  if block.settings.unavailable_only and p.available
+    assign show = false
+  endif
+  assign signup_id = 'ProductSignup-' | append: block.id
+-%}
+{%- if show or request.design_mode -%}
+  <div class="product-signup{% if block.settings.divider %} product-signup--divider{% endif %}" {{ block.shopify_attributes }}>
+    {%- if block.settings.heading != blank -%}<h2 class="h3">{{ block.settings.heading }}</h2>{%- endif -%}
+    {%- if block.settings.text != blank -%}<div class="rte">{{ block.settings.text }}</div>{%- endif -%}
+    {%- form 'customer', id: signup_id, class: 'newsletter-form' -%}
+      <input type="hidden" name="contact[tags]" value="product-signup,{{ p.handle }}">
+      {%- if form.posted_successfully? -%}
+        <p class="form-message form-message--success" role="status">{%- render 'icon', name: 'check', size: 18 -%}{{ 'products.signup.success' | t }}</p>
+      {%- else -%}
+        <div class="newsletter-form__row">
+          <label class="visually-hidden" for="{{ signup_id }}-email">{{ 'newsletter.label' | t }}</label>
+          <input class="input newsletter-form__input" id="{{ signup_id }}-email" type="email" name="contact[email]" autocomplete="email" placeholder="{{ 'newsletter.placeholder' | t }}" required>
+          <button type="submit" class="button newsletter-form__button">{{ 'products.bis.submit' | t }}</button>
+        </div>
+        {%- if form.errors -%}<p class="form-message form-message--error">{{ form.errors | default_errors }}</p>{%- endif -%}
+      {%- endif -%}
+    {%- endform -%}
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "t:labels.product_sign_up",
+  "tag": null,
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "unavailable_only",
+      "label": "t:labels.only_show_when_the_product_is_unavailable",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:labels.heading",
+      "default": "Be the first to know"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "t:labels.text",
+      "default": "<p>Leave your email and we'll let you know when it's available.</p>"
+    },
+    {
+      "type": "checkbox",
+      "id": "divider",
+      "label": "t:labels.show_a_divider_above",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:labels.product_sign_up",
+      "category": "t:labels.product"
+    }
+  ]
+}
+{% endschema %}

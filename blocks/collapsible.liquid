@@ -1,0 +1,139 @@
+{%- comment -%} Accordion row: rich text or a page; per-audience visibility (e.g. Returns for retail only). {%- endcomment -%}
+{%- capture visible -%}{% render 'audience-check', audience: block.settings.audience %}{%- endcapture -%}
+{%- if visible == '1' -%}
+  <details class="accordion" {% if block.settings.open %}open{% endif %} {{ block.shopify_attributes }}>
+    <summary class="accordion__summary">
+      <span class="accordion__title">
+        {%- if block.settings.icon != 'none' -%}{%- render 'icon', name: block.settings.icon, size: 20 -%}{%- endif -%}
+        {{ block.settings.heading }}
+      </span>
+      {%- render 'accordion-icon' -%}
+    </summary>
+    <div class="accordion__content rte">
+      {{- block.settings.text -}}
+      {%- if block.settings.page != blank -%}{{ block.settings.page.content }}{%- endif -%}
+    </div>
+  </details>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "t:labels.collapsible_row",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:labels.heading",
+      "default": "Collapsible row"
+    },
+    {
+      "type": "select",
+      "id": "icon",
+      "label": "t:labels.icon",
+      "options": [
+        {
+          "value": "none",
+          "label": "t:labels.none"
+        },
+        {
+          "value": "truck",
+          "label": "t:labels.delivery"
+        },
+        {
+          "value": "return",
+          "label": "t:labels.returns"
+        },
+        {
+          "value": "info",
+          "label": "t:labels.information"
+        },
+        {
+          "value": "leaf",
+          "label": "t:labels.leaf"
+        },
+        {
+          "value": "drop",
+          "label": "t:labels.drop"
+        },
+        {
+          "value": "ruler",
+          "label": "t:labels.ruler"
+        },
+        {
+          "value": "alert",
+          "label": "t:labels.warning"
+        },
+        {
+          "value": "check",
+          "label": "t:labels.check"
+        }
+      ],
+      "default": "none"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "t:labels.text",
+      "default": "<p>Add details such as care instructions, warnings or returns.</p>"
+    },
+    {
+      "type": "page",
+      "id": "page",
+      "label": "t:labels.page_content",
+      "info": "t:labels.shown_after_the_text"
+    },
+    {
+      "type": "checkbox",
+      "id": "open",
+      "label": "t:labels.open_by_default",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "audience",
+      "label": "t:labels.show_to",
+      "options": [
+        {
+          "value": "all",
+          "label": "t:labels.everyone"
+        },
+        {
+          "value": "retail",
+          "label": "t:labels.retail_shoppers"
+        },
+        {
+          "value": "wholesale",
+          "label": "t:labels.wholesale_buyers"
+        }
+      ],
+      "default": "all"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:labels.collapsible_row",
+      "category": "t:labels.product"
+    },
+    {
+      "name": "t:labels.returns",
+      "category": "t:labels.product",
+      "settings": {
+        "heading": "Returns",
+        "icon": "return",
+        "audience": "retail",
+        "text": "<p>Explain your returns policy in a few lines.</p>"
+      }
+    },
+    {
+      "name": "t:labels.warnings",
+      "category": "t:labels.product",
+      "settings": {
+        "heading": "Warnings and precautions",
+        "icon": "alert",
+        "text": "<p>For external use only.</p>"
+      }
+    }
+  ]
+}
+{% endschema %}

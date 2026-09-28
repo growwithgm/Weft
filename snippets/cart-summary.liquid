@@ -1,0 +1,48 @@
+{%- comment -%}
+  Cart totals and checkout for the drawer and the cart page.
+  Params: wholesale, invalid_count, form_id, show_note, show_tax_note, show_accelerated,
+          show_checkout, terms_page, context
+{%- endcomment -%}
+<div class="cart-summary" data-cart-summary>
+  {%- if cart.cart_level_discount_applications.size > 0 -%}
+    <ul class="cart-summary__discounts" role="list">
+      {%- for discount in cart.cart_level_discount_applications -%}
+        <li class="cart-summary__row">{%- render 'icon', name: 'tag', size: 14 -%}<span>{{ discount.title | escape }}</span><span class="tabular">−{{ discount.total_allocated_amount | money }}</span></li>
+      {%- endfor -%}
+    </ul>
+  {%- endif -%}
+  <div class="cart-summary__row cart-summary__subtotal">
+    <span>{{ 'cart.subtotal' | t }}</span>
+    <span class="tabular" data-cart-subtotal>{{ cart.total_price | money_with_currency }}</span>
+  </div>
+  {%- if show_tax_note -%}
+    <p class="cart-summary__note">
+      {%- if cart.taxes_included -%}{{ 'cart.taxes_included_shipping_at_checkout' | t }}{%- else -%}{{ 'cart.taxes_and_shipping_at_checkout' | t }}{%- endif -%}
+    </p>
+  {%- endif -%}
+  {%- if show_note -%}
+    <details class="cart-summary__note-field" {% if cart.note != blank %}open{% endif %}>
+      <summary class="link">{{ 'cart.note' | t }}</summary>
+      <label class="visually-hidden" for="CartNote-{{ context }}">{{ 'cart.note_label' | t }}</label>
+      <textarea class="textarea" id="CartNote-{{ context }}" name="note" form="{{ form_id }}" rows="2" data-cart-note>{{ cart.note }}</textarea>
+    </details>
+  {%- endif -%}
+  {%- if terms_page != blank -%}
+    <label class="cart-summary__terms">
+      <input type="checkbox" name="attributes[terms_accepted]" value="yes" form="{{ form_id }}" required data-cart-terms>
+      <span>{{ 'cart.terms' | t }} (<a href="{{ terms_page }}" target="_blank" rel="noopener">{{ 'cart.terms_link' | t }}</a>)</span>
+    </label>
+  {%- endif -%}
+  {%- if invalid_count > 0 -%}
+    <p class="form-message form-message--error" role="alert" data-cart-block>{{ 'wholesale.fix_lines' | t: count: invalid_count }}</p>
+  {%- else -%}
+    <p class="form-message form-message--error" role="alert" data-cart-block hidden></p>
+  {%- endif -%}
+  {%- if show_checkout != false -%}
+    <button type="submit" name="checkout" form="{{ form_id }}" class="button button--full cart-summary__checkout" data-checkout {% if invalid_count > 0 %}disabled{% endif %}>{{ 'cart.checkout' | t }}</button>
+  {%- endif -%}
+  {%- if show_accelerated and wholesale == false and additional_checkout_buttons -%}
+    <div class="cart-summary__accelerated">{{ content_for_additional_checkout_buttons }}</div>
+  {%- endif -%}
+  {%- if wholesale -%}<p class="cart-summary__note">{{ 'wholesale.terms_note' | t }}</p>{%- endif -%}
+</div>

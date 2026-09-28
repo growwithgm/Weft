@@ -2,6 +2,10 @@
   "type": "aside",
   "name": "t:labels.overlays",
   "sections": {
+    "cart": {
+      "type": "cart-drawer",
+      "settings": {}
+    },
     "search": {
       "type": "search-drawer",
       "settings": {}
@@ -9,9 +13,15 @@
     "location": {
       "type": "location-sheet",
       "settings": {}
+    },
+    "quickadd": {
+      "type": "quick-add",
+      "settings": {}
     }
   },
   "order": [
+    "cart",
+    "quickadd",
     "search",
     "location"
   ]

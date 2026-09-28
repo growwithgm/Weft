@@ -12,6 +12,34 @@
     "slide_of": "Slide {{ index }} of {{ count }}",
     "star_rating": "{{ rating }} out of {{ max }} stars"
   },
+  "cart": {
+    "checkout": "Check out",
+    "discount": "Discount",
+    "empty": "Your cart is empty",
+    "item_count": {
+      "one": "{{ count }} item",
+      "other": "{{ count }} items"
+    },
+    "note": "Add order note",
+    "note_label": "Order note",
+    "price": "Price",
+    "product": "Product",
+    "quantity": "Quantity",
+    "remove": "Remove {{ product }}",
+    "subtotal": "Subtotal",
+    "taxes_and_shipping_at_checkout": "Taxes and shipping calculated at checkout.",
+    "taxes_included_shipping_at_checkout": "Taxes included. Shipping calculated at checkout.",
+    "terms": "I agree with the terms and conditions",
+    "terms_link": "Read the terms",
+    "terms_required": "Accept the terms and conditions to check out.",
+    "title": "Cart",
+    "title_count": "Cart ({{ count }})",
+    "total": "Total",
+    "update": "Update",
+    "updated": "Cart updated",
+    "view_cart": "View cart",
+    "you_might_like": "You might like"
+  },
   "general": {
     "back_to_top": "Back to top",
     "breadcrumbs": "Breadcrumbs",
@@ -114,17 +142,219 @@
     "unit_price": "Unit price",
     "wholesale": "Wholesale price"
   },
+  "products": {
+    "add_short": "Add to cart",
+    "add_to_cart": "Add to cart",
+    "added": "Added",
+    "added_to_cart": "{{ product }} was added to your cart.",
+    "adding": "Adding…",
+    "backorder_note": "This item is on backorder. It ships as soon as it is back in stock.",
+    "barcode": "Barcode",
+    "bis": {
+      "consent": "I agree to be contacted about this stock alert.",
+      "contact_needed": "Add an email or a phone number.",
+      "email": "Email",
+      "name": "Name",
+      "none_selected": "Choose at least one option.",
+      "phone": "Phone",
+      "pick": "Choose the options you want",
+      "submit": "Notify me",
+      "success": "Done. We’ll let you know as soon as it’s back in stock.",
+      "title": "Get notified when it’s back"
+    },
+    "buy_now": "Buy now",
+    "compare": "Compare",
+    "countdown": {
+      "days": "Days",
+      "ends_on": "Ends on {{ date }}",
+      "hours": "Hours",
+      "minutes": "Minutes",
+      "seconds": "Seconds"
+    },
+    "custom_option": {
+      "required": "Required"
+    },
+    "delivery": {
+      "fit": "Fit",
+      "free": "Free",
+      "installments": "{{ count }} × {{ amount }}",
+      "notify": "Notify",
+      "options_sold_out": {
+        "one": "{{ count }} option sold out · Notify me",
+        "other": "{{ count }} options sold out · Notify me"
+      },
+      "progress": "Progress towards free shipping",
+      "rate": "{{ rate }}, free from {{ amount }}",
+      "rate_only": "{{ rate }}",
+      "returns": "Returns",
+      "shipping": "Shipping",
+      "shipping_to": "Shipping to {{ country }}",
+      "to_go": "{{ amount }} to go"
+    },
+    "description": "Description",
+    "error_generic": "This item couldn’t be added. Please try again.",
+    "gallery": {
+      "counter": "{{ index }} / {{ count }}",
+      "label": "Product media",
+      "open": "Open media {{ index }} in the gallery",
+      "play_video": "Play video",
+      "thumbnails": "Media thumbnails",
+      "view_3d": "View in 3D",
+      "view_in_space": "View in your space"
+    },
+    "gift_card": {
+      "characters_left": "{{ count }} characters left",
+      "message": "Message (optional)",
+      "recipient_email": "Recipient email",
+      "recipient_name": "Recipient name (optional)",
+      "send_as_gift": "I want to send this as a gift",
+      "send_on": "Send on (optional)"
+    },
+    "guide": "Size guide",
+    "in_cart": "{{ count }} in cart",
+    "labels": {
+      "new": "New",
+      "sale": "Sale",
+      "save_amount": "Save {{ amount }}",
+      "save_percent": "−{{ percent }}%"
+    },
+    "option_value_missing": "{{ value }}, not offered in this combination",
+    "option_value_unavailable": "{{ value }}, unavailable",
+    "pickup": {
+      "available_at": "Pickup available at {{ location }}",
+      "other_locations": "Check availability at other stores",
+      "ready_in": "Usually ready in {{ time }}",
+      "title": "Pickup availability",
+      "unavailable_at": "Pickup currently unavailable at {{ location }}"
+    },
+    "pre_order": "Pre-order",
+    "purchase_options": {
+      "label": "Purchase options",
+      "one_time": "One-time purchase"
+    },
+    "quantity_rules": "Min. {{ min }}, packs of {{ increment }}",
+    "quick_add": {
+      "choose_options": "Choose options",
+      "view_details": "View full details"
+    },
+    "rating": {
+      "go_to_reviews": "Go to reviews",
+      "reviews": {
+        "one": "{{ count }} review",
+        "other": "{{ count }} reviews"
+      },
+      "store_reviews": "store reviews"
+    },
+    "recommendations": {
+      "also_like": "You may also like",
+      "complementary": "Pairs well with",
+      "recently_viewed": "Recently viewed"
+    },
+    "remind_me": "Remind me when in stock",
+    "select_option": "Select a {{ option }}",
+    "share": {
+      "copied": "Link copied",
+      "copy_link": "Copy link",
+      "on": "Share on {{ network }}"
+    },
+    "signup": {
+      "label": "Notify me when it’s available",
+      "success": "Thanks. We’ll email you when it’s available."
+    },
+    "sku": "SKU: {{ sku }}",
+    "sold_out": "Sold out",
+    "stock": {
+      "backorder": "On backorder",
+      "count": "{{ count }} in stock",
+      "in_stock": "In stock",
+      "low": "Only a few left",
+      "low_count": "Only {{ count }} left"
+    },
+    "type": "Type",
+    "unavailable": "Unavailable",
+    "vendor": "Vendor",
+    "weight": "Weight"
+  },
   "wholesale": {
+    "above_max": "The maximum for this item is {{ count }}.",
     "account_and_orders": "Account and orders",
+    "add_pieces": {
+      "one": "Add {{ count }} piece to cart",
+      "other": "Add {{ count }} pieces to cart"
+    },
+    "added_summary": {
+      "one": "{{ count }} piece added to your cart.",
+      "other": "{{ count }} pieces added to your cart."
+    },
+    "apply": "Apply for wholesale access",
+    "assorted": "{{ option }}: {{ values }}",
+    "attention": {
+      "one": "{{ count }} line needs attention",
+      "other": "{{ count }} lines need attention"
+    },
+    "available": "Available",
+    "back_to_shop": "Back to the shop",
+    "below_min": "Below minimum ({{ count }})",
+    "browse_catalogue": "Browse the catalogue",
+    "capped": "{{ line }} set to {{ count }}, the most available",
     "change": "Change",
+    "clear": "Clear",
     "current_location": "Current location",
+    "each": "{{ price }} each",
+    "empty_cart": "Your wholesale cart is empty",
+    "fix_lines": {
+      "one": "Fix {{ count }} line before checking out.",
+      "other": "Fix {{ count }} lines before checking out."
+    },
+    "from_tier": "From {{ price }} at {{ count }}+ pieces",
+    "gate_text": "This product is reserved for B2B customers. Please log in with your wholesale account to view it.",
+    "gate_title": "Wholesale-only product",
+    "in_cart_label": "In cart: {{ count }}",
+    "installments": "Pay in {{ count }} installments of {{ amount }}",
+    "line_total": "{{ quantity }} × {{ price }} = {{ total }}",
+    "lines": {
+      "one": "{{ count }} line",
+      "other": "{{ count }} lines"
+    },
     "location_updated": "Prices and availability updated for {{ location }}.",
+    "low_count": "Low: {{ count }}",
+    "max": "Max. {{ count }}",
+    "max_hint": "Max {{ count }}",
+    "min": "Min. {{ count }}",
+    "min_per": "Min. {{ count }} per {{ option }}",
+    "min_per_two": "Min. {{ count }} per {{ first }} and {{ second }}",
+    "needs_attention": "Needs attention",
     "not_found_line": "Wholesale customer? Sign in to see trade-only products.",
+    "not_multiple": "{{ quantity }} isn’t a multiple of {{ increment }}. Use {{ lower }} or {{ upper }}.",
+    "not_multiple_one": "{{ quantity }} isn’t a multiple of {{ increment }}. Use {{ suggestion }}.",
+    "not_offered": "Not offered",
+    "only_more": "Only {{ count }} more can be added.",
+    "order": "Choose quantities",
+    "order_grid": "Order by {{ options }}",
     "ordering_for": "Ordering for",
     "ordering_for_location": "Ordering for {{ company }} · {{ location }}",
+    "packs": "Packs of {{ count }}",
+    "pieces": {
+      "one": "{{ count }} piece",
+      "other": "{{ count }} pieces"
+    },
+    "quick_order": "Open the quick order list",
+    "rejected_summary": "1 line wasn’t added: {{ line }}. See the message on that line.",
+    "rounded": "{{ line }} rounded to {{ count }} (packs of {{ increment }})",
+    "rules_vary": "Minimums vary by {{ option }}",
+    "rules_vary_two": "Minimums vary by {{ first }} and {{ second }}",
     "sample_notice": "Wholesale preview — sample data",
+    "show_all": "Show all",
+    "show_fewer": "Show fewer",
+    "sign_in": "Log in",
     "sign_out": "Sign out",
+    "stock_below_min": "Only {{ count }}, below minimum",
     "store_credit": "Store credit",
-    "switch_location": "Switch to {{ location }}"
+    "switch_location": "Switch to {{ location }}",
+    "terms_note": "Payment terms and store credit are applied at checkout.",
+    "tier_caption": "Price per piece. The cart shows the final price for each line.",
+    "tier_current": "Current",
+    "tier_label": "{{ count }}+ price",
+    "tiers_heading": "Volume pricing"
   }
 }

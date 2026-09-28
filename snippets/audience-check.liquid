@@ -1,0 +1,20 @@
+{%- comment -%}
+  Outputs "1" when a block with this audience setting should render for the current visitor.
+  Params: audience ('all' | 'retail' | 'wholesale'). In the theme editor everything renders.
+  Usage: {%- capture visible -%}{% render 'audience-check', audience: block.settings.audience %}{%- endcapture -%}
+{%- endcomment -%}
+{%- liquid
+  assign is_wholesale = false
+  if customer and customer.b2b?
+    assign is_wholesale = true
+  endif
+  if request.design_mode
+    echo '1'
+  elsif audience == 'retail' and is_wholesale == false
+    echo '1'
+  elsif audience == 'wholesale' and is_wholesale
+    echo '1'
+  elsif audience == 'all' or audience == blank
+    echo '1'
+  endif
+-%}

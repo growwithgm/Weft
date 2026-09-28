@@ -1,0 +1,71 @@
+{%- comment -%}
+  Purchase options (selling plans / subscriptions): one-time purchase and each plan with its
+  name and price, shown before adding to cart. Required plans hide the one-time option.
+{%- endcomment -%}
+{%- liquid
+  assign p = closest.product
+  assign v = p.selected_or_first_available_variant
+  assign form_id = 'ProductForm-' | append: section.id
+  assign selected_plan = p.selected_selling_plan
+-%}
+{%- if p.selling_plan_groups.size > 0 -%}
+  <fieldset class="purchase-options" data-swap="{{ block.id }}" data-purchase-options {{ block.shopify_attributes }}>
+    <legend class="purchase-options__legend">{% if block.settings.heading != blank %}{{ block.settings.heading }}{% else %}{{ 'products.purchase_options.label' | t }}{% endif %}</legend>
+    {%- unless p.requires_selling_plan -%}
+      <label class="purchase-options__option">
+        <input type="radio" name="selling_plan" value="" form="{{ form_id }}" {% if selected_plan == nil %}checked{% endif %}>
+        <span class="purchase-options__text">
+          <span class="purchase-options__name">{{ 'products.purchase_options.one_time' | t }}</span>
+          <span class="purchase-options__price tabular">{{ v.price | money }}</span>
+        </span>
+      </label>
+    {%- endunless -%}
+    {%- for group in p.selling_plan_groups -%}
+      {%- for plan in group.selling_plans -%}
+        {%- liquid
+          assign allocation = nil
+          for a in v.selling_plan_allocations
+            if a.selling_plan.id == plan.id
+              assign allocation = a
+              break
+            endif
+          endfor
+        -%}
+        {%- if allocation -%}
+          <label class="purchase-options__option">
+            <input type="radio" name="selling_plan" value="{{ plan.id }}" form="{{ form_id }}" {% if selected_plan.id == plan.id %}checked{% elsif p.requires_selling_plan and forloop.parentloop.first and forloop.first %}checked{% endif %}>
+            <span class="purchase-options__text">
+              <span class="purchase-options__name">{{ plan.name }}</span>
+              <span class="purchase-options__price tabular">
+                {{ allocation.price | money }}
+                {%- if allocation.compare_at_price > allocation.price %} <s class="price__compare">{{ allocation.compare_at_price | money }}</s>{%- endif -%}
+              </span>
+              {%- if plan.description != blank -%}<span class="purchase-options__description muted">{{ plan.description }}</span>{%- endif -%}
+            </span>
+          </label>
+        {%- endif -%}
+      {%- endfor -%}
+    {%- endfor -%}
+  </fieldset>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "t:labels.purchase_options",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:labels.heading",
+      "info": "t:text.blocks.purchase_options.settings.heading.info"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:labels.purchase_options",
+      "category": "t:labels.product"
+    }
+  ]
+}
+{% endschema %}

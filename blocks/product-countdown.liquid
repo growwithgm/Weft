@@ -1,0 +1,108 @@
+{%- comment -%}
+  Countdown to a date the merchant sets (never a fake timer). The server renders the target
+  time; countdown.js ticks. Optionally hides itself at the end or shows an end text.
+{%- endcomment -%}
+{%- liquid
+  assign target = block.settings.end_date | append: ' ' | append: block.settings.end_time
+  assign target_s = target | date: '%s'
+  assign now_s = 'now' | date: '%s' | plus: 0
+  assign target_n = target_s | plus: 0
+  assign ended = false
+  if target_n <= now_s
+    assign ended = true
+  endif
+  assign remaining = target_n | minus: now_s | at_least: 0
+  assign days = remaining | divided_by: 86400
+  assign hours = remaining | modulo: 86400 | divided_by: 3600
+  assign minutes = remaining | modulo: 3600 | divided_by: 60
+  assign seconds = remaining | modulo: 60
+-%}
+{%- if block.settings.end_date != blank -%}
+  {%- unless ended and block.settings.hide_on_end and request.design_mode == false -%}
+    <countdown-timer class="countdown countdown--{{ block.settings.size }}" data-countdown="{{ target_n }}" data-hide-on-end="{{ block.settings.hide_on_end }}" data-module="{{ 'countdown.js' | asset_url }}" data-load="visible" {{ block.shopify_attributes }}>
+      <div class="countdown__timer" {% if ended %}hidden{% endif %} role="timer" aria-label="{{ 'products.countdown.ends_on' | t: date: target | escape }}">
+        {%- for unit in (1..4) -%}
+          {%- liquid
+            case unit
+              when 1
+                assign value = days
+                assign key = 'products.countdown.days'
+                assign part = 'days'
+              when 2
+                assign value = hours
+                assign key = 'products.countdown.hours'
+                assign part = 'hours'
+              when 3
+                assign value = minutes
+                assign key = 'products.countdown.minutes'
+                assign part = 'minutes'
+              else
+                assign value = seconds
+                assign key = 'products.countdown.seconds'
+                assign part = 'seconds'
+            endcase
+          -%}
+          <span class="countdown__unit"><span class="countdown__value tabular" data-part="{{ part }}">{{ value | prepend: '0' | slice: -2, 2 }}</span><span class="countdown__label">{{ key | t }}</span></span>
+        {%- endfor -%}
+      </div>
+      <div class="countdown__end rte" {% unless ended %}hidden{% endunless %}>{{ block.settings.end_text }}</div>
+    </countdown-timer>
+  {%- endunless -%}
+{%- elsif request.design_mode -%}
+  <p class="muted" {{ block.shopify_attributes }}>{{ 'products.countdown.days' | t }} · {{ 'products.countdown.hours' | t }}</p>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "t:labels.countdown_timer",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "end_date",
+      "label": "t:labels.end_date",
+      "info": "t:labels.format_yyyy_mm_dd_uses_your_store_s_time_zone"
+    },
+    {
+      "type": "text",
+      "id": "end_time",
+      "label": "t:labels.end_time",
+      "default": "00:00",
+      "info": "t:labels.format_hh_mm_24_hour"
+    },
+    {
+      "type": "richtext",
+      "id": "end_text",
+      "label": "t:labels.text_after_the_end"
+    },
+    {
+      "type": "checkbox",
+      "id": "hide_on_end",
+      "label": "t:labels.hide_when_the_countdown_ends",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "size",
+      "label": "t:labels.size",
+      "options": [
+        {
+          "value": "small",
+          "label": "t:labels.small"
+        },
+        {
+          "value": "large",
+          "label": "t:labels.large"
+        }
+      ],
+      "default": "small"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:labels.countdown_timer",
+      "category": "t:labels.product"
+    }
+  ]
+}
+{% endschema %}

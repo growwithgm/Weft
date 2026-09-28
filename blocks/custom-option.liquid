@@ -1,0 +1,136 @@
+{%- comment -%} Custom option saved as a line item property: text, long text, checkbox or dropdown. {%- endcomment -%}
+{%- liquid
+  assign form_id = 'ProductForm-' | append: section.id
+  assign field_id = 'Option-' | append: block.id
+  assign prop_name = 'properties[' | append: block.settings.label | append: ']'
+  assign required = block.settings.required
+  assign in_quick_add = true
+  if section.settings.quick_add_marker != nil and block.settings.show_in_quick_add == false
+    assign in_quick_add = false
+  endif
+-%}
+{%- if block.settings.label != blank and in_quick_add -%}
+  <div class="custom-option field" {{ block.shopify_attributes }}>
+    {%- case block.settings.type -%}
+      {%- when 'checkbox' -%}
+        <input type="hidden" name="{{ prop_name }}" value="{{ block.settings.checkbox_unchecked | escape }}" form="{{ form_id }}">
+        <label class="custom-option__check">
+          <input type="checkbox" name="{{ prop_name }}" value="{{ block.settings.checkbox_checked | default: 'Yes' | escape }}" form="{{ form_id }}" {% if required %}required{% endif %}>
+          <span>{{ block.settings.label }}{% if required %} <span class="muted">({{ 'products.custom_option.required' | t }})</span>{% endif %}</span>
+        </label>
+      {%- when 'select' -%}
+        <label class="field__label" for="{{ field_id }}">{{ block.settings.label }}{% if required %} <span class="muted">({{ 'products.custom_option.required' | t }})</span>{% endif %}</label>
+        <select class="select" id="{{ field_id }}" name="{{ prop_name }}" form="{{ form_id }}" {% if required %}required{% endif %}>
+          {%- assign opts = block.settings.dropdown_options | newline_to_br | split: '<br />' -%}
+          {%- for o in opts -%}
+            {%- assign o_clean = o | strip -%}
+            {%- if o_clean != blank -%}<option value="{{ o_clean | escape }}">{{ o_clean }}</option>{%- endif -%}
+          {%- endfor -%}
+        </select>
+      {%- when 'textarea' -%}
+        <label class="field__label" for="{{ field_id }}">{{ block.settings.label }}{% if required %} <span class="muted">({{ 'products.custom_option.required' | t }})</span>{% endif %}</label>
+        <textarea class="textarea" id="{{ field_id }}" name="{{ prop_name }}" form="{{ form_id }}" rows="3" {% if block.settings.max_length > 0 %}maxlength="{{ block.settings.max_length }}"{% endif %} {% if required %}required{% endif %}></textarea>
+      {%- else -%}
+        <label class="field__label" for="{{ field_id }}">{{ block.settings.label }}{% if required %} <span class="muted">({{ 'products.custom_option.required' | t }})</span>{% endif %}</label>
+        <input class="input" type="text" id="{{ field_id }}" name="{{ prop_name }}" form="{{ form_id }}" {% if block.settings.max_length > 0 %}maxlength="{{ block.settings.max_length }}"{% endif %} {% if required %}required{% endif %}>
+    {%- endcase -%}
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "t:labels.custom_option",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "t:labels.label",
+      "default": "Personalisation"
+    },
+    {
+      "type": "select",
+      "id": "type",
+      "label": "t:labels.type",
+      "options": [
+        {
+          "value": "text",
+          "label": "t:labels.text"
+        },
+        {
+          "value": "textarea",
+          "label": "t:labels.long_text"
+        },
+        {
+          "value": "checkbox",
+          "label": "t:labels.checkbox"
+        },
+        {
+          "value": "select",
+          "label": "t:labels.dropdown"
+        }
+      ],
+      "default": "text"
+    },
+    {
+      "type": "checkbox",
+      "id": "required",
+      "label": "t:labels.required",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "max_length",
+      "label": "t:labels.character_limit",
+      "min": 0,
+      "max": 500,
+      "step": 10,
+      "default": 0,
+      "info": "t:labels.0_means_no_limit",
+      "visible_if": "{{ block.settings.type == 'text' or block.settings.type == 'textarea' }}"
+    },
+    {
+      "type": "text",
+      "id": "checkbox_checked",
+      "label": "t:labels.value_when_checked",
+      "default": "Yes",
+      "visible_if": "{{ block.settings.type == 'checkbox' }}"
+    },
+    {
+      "type": "text",
+      "id": "checkbox_unchecked",
+      "label": "t:labels.value_when_not_checked",
+      "default": "No",
+      "visible_if": "{{ block.settings.type == 'checkbox' }}"
+    },
+    {
+      "type": "textarea",
+      "id": "dropdown_options",
+      "label": "t:labels.dropdown_choices",
+      "info": "t:labels.one_per_line",
+      "visible_if": "{{ block.settings.type == 'select' }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_in_quick_add",
+      "label": "t:labels.show_in_quick_add",
+      "default": false
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:labels.custom_option",
+      "category": "t:labels.product"
+    },
+    {
+      "name": "t:labels.gift_message",
+      "category": "t:labels.product",
+      "settings": {
+        "label": "Gift message",
+        "type": "textarea",
+        "max_length": 200
+      }
+    }
+  ]
+}
+{% endschema %}

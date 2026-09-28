@@ -1,0 +1,32 @@
+{%- if block.settings.value != blank -%}
+  <div class="spec-list__row" {{ block.shopify_attributes }}>
+    <dt>{{ block.settings.label }}</dt>
+    <dd>{{ block.settings.value }}</dd>
+  </div>
+{%- elsif request.design_mode -%}
+  <div class="spec-list__row spec-list__row--empty" {{ block.shopify_attributes }}>
+    <dt>{{ block.settings.label }}</dt>
+    <dd class="muted">–</dd>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "t:labels.row",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "t:labels.label",
+      "default": "Material"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "value",
+      "label": "t:labels.value",
+      "info": "t:labels.connect_a_product_metafield_hidden_when_empty"
+    }
+  ]
+}
+{% endschema %}

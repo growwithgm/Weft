@@ -250,10 +250,6 @@ for (const file of liquidFiles) {
   }
 
   // render / section / content_for block references
-  for (const m of schemaless.matchAll(/\{%-?\s*render\s+['"]([^'"]+)['"]/g)) {
-    usedSnippets.add(m[1]);
-    if (!snippets.has(m[1])) report('error', file, `Missing snippet "${m[1]}"`, lineOf(src, m.index));
-  }
   for (const m of tagTokens(schemaless)) {
     if (m.name === 'render') {
       const name = (m.markup.match(/^render\s+['"]([^'"]+)['"]/) || [])[1];
@@ -282,6 +278,11 @@ for (const file of liquidFiles) {
         if (!/\bid:\s*['"][^'"]+['"]/.test(m.markup)) report('error', file, 'Static block needs a literal id', lineOf(schemaless, m.index));
       }
     }
+  }
+
+  // `'key' | t: arg: value | money` applies the filter to the translation, not to the argument
+  for (const m of schemaless.matchAll(/\{\{[^}]*?\|\s*t:[^}|]*\|\s*(money\w*|date|times|plus|minus|divided_by|round|default|weight_with_unit)\b[^}]*\}\}/g)) {
+    report('error', file, 'Filter after `| t:` arguments applies to the translation; assign the argument first', lineOf(src, m.index));
   }
 
   // asset_url references
@@ -323,7 +324,7 @@ for (const file of liquidFiles) {
       report('warning', file, 'Public theme block has no preset, so it will not appear in the block picker');
     if (kind === 'sections' && schema.presets && (schema.enabled_on || schema.disabled_on) && schema.enabled_on && schema.disabled_on)
       report('error', file, 'Use either enabled_on or disabled_on, not both');
-  } else if (schema === null && (kind === 'blocks' || (kind === 'sections' && !/^(predictive-search|cart-count|pickup-availability)$/.test(basename(file, '.liquid'))))) {
+  } else if (schema === null && (kind === 'blocks' || (kind === 'sections' && !/^(predictive-search|cart-count|pickup-availability|card-fragment)$/.test(basename(file, '.liquid'))))) {
     report('warning', file, 'No {% schema %} tag');
   }
 }

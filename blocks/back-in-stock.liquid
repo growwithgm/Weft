@@ -1,0 +1,134 @@
+{%- comment -%}
+  Back-in-stock (brief §5, approved): full-width "Remind me" button when the selected variant is
+  sold out; the drawer (bottom sheet on mobile, modal on desktop) handles several sold-out
+  variants at once. Core version sends the request through Shopify's contact form, so it needs
+  no app. Store builds can switch to an integration endpoint (Theme settings > Integrations).
+{%- endcomment -%}
+{%- liquid
+  assign p = closest.product
+  assign v = p.selected_or_first_available_variant
+  assign sold = 0
+  for variant in p.variants limit: 250
+    if variant.available == false
+      assign sold = sold | plus: 1
+    endif
+  endfor
+  assign selected_sold = false
+  if v and v.available == false
+    assign selected_sold = true
+  endif
+-%}
+{%- capture visible -%}{% render 'audience-check', audience: block.settings.audience %}{%- endcapture -%}
+{%- if visible == '1' and p -%}
+  <back-in-stock class="back-in-stock" data-swap="{{ block.id }}" data-none-selected="{{ 'products.bis.none_selected' | t | escape }}" data-back-in-stock data-module="{{ 'back-in-stock.js' | asset_url }}" data-load="interaction" {{ block.shopify_attributes }}>
+    {%- if selected_sold -%}
+      <button type="button" class="button button--secondary button--full" data-open-dialog="BackInStock-{{ section.id }}" data-remind-button>
+        {%- render 'icon', name: 'bell', size: 18 -%}{{ 'products.remind_me' | t }}
+      </button>
+    {%- elsif block.settings.show_link and sold > 0 -%}
+      <button type="button" class="link back-in-stock__link" data-open-dialog="BackInStock-{{ section.id }}">
+        {%- render 'icon', name: 'bell', size: 16 -%}{{ 'products.delivery.options_sold_out' | t: count: sold }}
+      </button>
+    {%- endif -%}
+
+    {%- if sold > 0 or request.design_mode -%}
+      <dialog id="BackInStock-{{ section.id }}" class="sheet sheet--modal-desktop color-{{ settings.drawer_color_scheme }}" aria-labelledby="BackInStockTitle-{{ section.id }}" data-light-dismiss data-animate>
+        <div class="sheet__panel" data-dialog-body>
+          <span class="sheet__handle" aria-hidden="true"></span>
+          <button type="button" class="icon-button sheet__close" data-close-dialog aria-label="{{ 'general.close' | t }}">{%- render 'icon', name: 'close' -%}</button>
+          <h2 class="h2" id="BackInStockTitle-{{ section.id }}">{{ 'products.bis.title' | t }}</h2>
+          {%- assign bis_form_id = 'BackInStockForm-' | append: section.id -%}
+          {%- form 'contact', id: bis_form_id, class: 'back-in-stock__form stack', data-bis-form: '' -%}
+            {%- if form.posted_successfully? -%}
+              <p class="form-message form-message--success" role="status">{%- render 'icon', name: 'check', size: 18 -%}{{ 'products.bis.success' | t }}</p>
+            {%- else -%}
+              <input type="hidden" name="contact[tags]" value="back-in-stock">
+              <input type="hidden" name="contact[product]" value="{{ p.title | escape }}">
+              <input type="hidden" name="contact[product_url]" value="{{ shop.url }}{{ p.url }}">
+              <fieldset class="back-in-stock__variants">
+                <legend class="muted">{{ 'products.bis.pick' | t }}</legend>
+                <div class="cluster">
+                  {%- for variant in p.variants limit: 250 -%}
+                    {%- unless variant.available -%}
+                      <label class="chip-toggle">
+                        <input type="checkbox" name="contact[Variant {{ forloop.index }}]" value="{{ variant.title | escape }} ({{ variant.id }})" data-variant-id="{{ variant.id }}" {% if variant.id == v.id %}checked{% endif %}>
+                        <span>{{ variant.title }}</span>
+                      </label>
+                    {%- endunless -%}
+                  {%- endfor -%}
+                </div>
+              </fieldset>
+              <div class="field">
+                <label class="field__label" for="{{ bis_form_id }}-name">{{ 'products.bis.name' | t }}</label>
+                <input class="input" id="{{ bis_form_id }}-name" type="text" name="contact[name]" autocomplete="name">
+              </div>
+              <div class="field">
+                <label class="field__label" for="{{ bis_form_id }}-phone">{{ 'products.bis.phone' | t }}</label>
+                <input class="input" id="{{ bis_form_id }}-phone" type="tel" name="contact[phone]" autocomplete="tel">
+              </div>
+              <div class="field">
+                <label class="field__label" for="{{ bis_form_id }}-email">{{ 'products.bis.email' | t }}</label>
+                <input class="input" id="{{ bis_form_id }}-email" type="email" name="contact[email]" autocomplete="email" required>
+              </div>
+              <label class="back-in-stock__consent">
+                <input type="checkbox" name="contact[consent]" value="yes" required>
+                <span>{% if block.settings.consent_text != blank %}{{ block.settings.consent_text }}{% else %}{{ 'products.bis.consent' | t }}{% endif %}</span>
+              </label>
+              <p class="form-message form-message--error" role="alert" data-bis-error hidden></p>
+              <button type="submit" class="button button--full">{{ 'products.bis.submit' | t }}</button>
+              <p class="form-message form-message--success" role="status" data-bis-success hidden>{%- render 'icon', name: 'check', size: 18 -%}{{ 'products.bis.success' | t }}</p>
+            {%- endif -%}
+          {%- endform -%}
+        </div>
+      </dialog>
+    {%- endif -%}
+  </back-in-stock>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "t:labels.back_in_stock",
+  "tag": null,
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_link",
+      "label": "t:labels.show_a_link_when_other_options_are_sold_out",
+      "default": false,
+      "info": "t:text.blocks.back_in_stock.settings.show_link.info"
+    },
+    {
+      "type": "text",
+      "id": "consent_text",
+      "label": "t:labels.consent_text",
+      "info": "t:labels.leave_empty_for_the_default_text"
+    },
+    {
+      "type": "select",
+      "id": "audience",
+      "label": "t:labels.show_to",
+      "options": [
+        {
+          "value": "all",
+          "label": "t:labels.everyone"
+        },
+        {
+          "value": "retail",
+          "label": "t:labels.retail_shoppers"
+        },
+        {
+          "value": "wholesale",
+          "label": "t:labels.wholesale_buyers"
+        }
+      ],
+      "default": "retail"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:labels.back_in_stock",
+      "category": "t:labels.product"
+    }
+  ]
+}
+{% endschema %}

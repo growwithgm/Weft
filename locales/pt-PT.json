@@ -12,6 +12,34 @@
     "slide_of": "Diapositivo {{ index }} de {{ count }}",
     "star_rating": "{{ rating }} de {{ max }} estrelas"
   },
+  "cart": {
+    "checkout": "Finalizar compra",
+    "discount": "Desconto",
+    "empty": "O seu carrinho está vazio",
+    "item_count": {
+      "one": "{{ count }} artigo",
+      "other": "{{ count }} artigos"
+    },
+    "note": "Adicionar nota",
+    "note_label": "Nota da encomenda",
+    "price": "Preço",
+    "product": "Produto",
+    "quantity": "Quantidade",
+    "remove": "Remover {{ product }}",
+    "subtotal": "Subtotal",
+    "taxes_and_shipping_at_checkout": "Impostos e portes calculados no checkout.",
+    "taxes_included_shipping_at_checkout": "Impostos incluídos. Portes calculados no checkout.",
+    "terms": "Aceito os termos e condições",
+    "terms_link": "Ler os termos",
+    "terms_required": "Aceite os termos para finalizar a compra.",
+    "title": "Carrinho",
+    "title_count": "Carrinho ({{ count }})",
+    "total": "Total",
+    "update": "Atualizar",
+    "updated": "Carrinho atualizado",
+    "view_cart": "Ver carrinho",
+    "you_might_like": "Pode gostar"
+  },
   "general": {
     "back_to_top": "Voltar ao topo",
     "breadcrumbs": "Navegação estrutural",
@@ -114,17 +142,219 @@
     "unit_price": "Preço unitário",
     "wholesale": "Preço grossista"
   },
+  "products": {
+    "add_short": "Adicionar",
+    "add_to_cart": "Adicionar ao carrinho",
+    "added": "Adicionado",
+    "added_to_cart": "{{ product }} foi adicionado ao carrinho.",
+    "adding": "A adicionar…",
+    "backorder_note": "Este artigo está em encomenda. Será enviado assim que voltar ao stock.",
+    "barcode": "Código de barras",
+    "bis": {
+      "consent": "Aceito ser contactado sobre este aviso.",
+      "contact_needed": "Adicione um e-mail ou um telefone.",
+      "email": "E-mail",
+      "name": "Nome",
+      "none_selected": "Escolha pelo menos uma opção.",
+      "phone": "Telefone",
+      "pick": "Escolha as opções que pretende",
+      "submit": "Avisar-me",
+      "success": "Feito. Avisamos assim que voltar ao stock.",
+      "title": "Seja avisado quando voltar"
+    },
+    "buy_now": "Comprar já",
+    "compare": "Comparar",
+    "countdown": {
+      "days": "Dias",
+      "ends_on": "Termina a {{ date }}",
+      "hours": "Horas",
+      "minutes": "Minutos",
+      "seconds": "Segundos"
+    },
+    "custom_option": {
+      "required": "Obrigatório"
+    },
+    "delivery": {
+      "fit": "Ajuste",
+      "free": "Grátis",
+      "installments": "{{ count }} × {{ amount }}",
+      "notify": "Aviso",
+      "options_sold_out": {
+        "one": "{{ count }} opção esgotada · Avisar-me",
+        "other": "{{ count }} opções esgotadas · Avisar-me"
+      },
+      "progress": "Progresso para o envio grátis",
+      "rate": "{{ rate }}, grátis a partir de {{ amount }}",
+      "rate_only": "{{ rate }}",
+      "returns": "Devoluções",
+      "shipping": "Envio",
+      "shipping_to": "Envio para {{ country }}",
+      "to_go": "Faltam {{ amount }}"
+    },
+    "description": "Descrição",
+    "error_generic": "Não foi possível adicionar o artigo. Tente novamente.",
+    "gallery": {
+      "counter": "{{ index }} / {{ count }}",
+      "label": "Multimédia do produto",
+      "open": "Abrir o multimédia {{ index }} na galeria",
+      "play_video": "Reproduzir vídeo",
+      "thumbnails": "Miniaturas",
+      "view_3d": "Ver em 3D",
+      "view_in_space": "Ver no seu espaço"
+    },
+    "gift_card": {
+      "characters_left": "Restam {{ count }} caracteres",
+      "message": "Mensagem (opcional)",
+      "recipient_email": "E-mail do destinatário",
+      "recipient_name": "Nome do destinatário (opcional)",
+      "send_as_gift": "Quero enviar como presente",
+      "send_on": "Enviar em (opcional)"
+    },
+    "guide": "Guia de tamanhos",
+    "in_cart": "{{ count }} no carrinho",
+    "labels": {
+      "new": "Novidade",
+      "sale": "Saldo",
+      "save_amount": "Poupe {{ amount }}",
+      "save_percent": "−{{ percent }}%"
+    },
+    "option_value_missing": "{{ value }}, não disponível nesta combinação",
+    "option_value_unavailable": "{{ value }}, indisponível",
+    "pickup": {
+      "available_at": "Levantamento disponível em {{ location }}",
+      "other_locations": "Ver disponibilidade noutras lojas",
+      "ready_in": "Normalmente pronto em {{ time }}",
+      "title": "Disponibilidade de levantamento",
+      "unavailable_at": "Levantamento indisponível em {{ location }}"
+    },
+    "pre_order": "Pré-encomendar",
+    "purchase_options": {
+      "label": "Opções de compra",
+      "one_time": "Compra única"
+    },
+    "quantity_rules": "Mín. {{ min }}, packs de {{ increment }}",
+    "quick_add": {
+      "choose_options": "Escolher opções",
+      "view_details": "Ver todos os detalhes"
+    },
+    "rating": {
+      "go_to_reviews": "Ir para as avaliações",
+      "reviews": {
+        "one": "{{ count }} avaliação",
+        "other": "{{ count }} avaliações"
+      },
+      "store_reviews": "avaliações da loja"
+    },
+    "recommendations": {
+      "also_like": "Também pode gostar",
+      "complementary": "Combina bem com",
+      "recently_viewed": "Vistos recentemente"
+    },
+    "remind_me": "Avisar-me quando voltar",
+    "select_option": "Selecione {{ option }}",
+    "share": {
+      "copied": "Ligação copiada",
+      "copy_link": "Copiar ligação",
+      "on": "Partilhar no {{ network }}"
+    },
+    "signup": {
+      "label": "Avisar-me quando estiver disponível",
+      "success": "Obrigado. Enviamos um e-mail quando estiver disponível."
+    },
+    "sku": "SKU: {{ sku }}",
+    "sold_out": "Esgotado",
+    "stock": {
+      "backorder": "Em encomenda",
+      "count": "{{ count }} em stock",
+      "in_stock": "Em stock",
+      "low": "Restam poucas unidades",
+      "low_count": "Restam apenas {{ count }}"
+    },
+    "type": "Tipo",
+    "unavailable": "Indisponível",
+    "vendor": "Marca",
+    "weight": "Peso"
+  },
   "wholesale": {
+    "above_max": "O máximo para este artigo é {{ count }}.",
     "account_and_orders": "Conta e encomendas",
+    "add_pieces": {
+      "one": "Adicionar {{ count }} unidade ao carrinho",
+      "other": "Adicionar {{ count }} unidades ao carrinho"
+    },
+    "added_summary": {
+      "one": "{{ count }} unidade adicionada ao carrinho.",
+      "other": "{{ count }} unidades adicionadas ao carrinho."
+    },
+    "apply": "Pedir acesso grossista",
+    "assorted": "{{ option }}: {{ values }}",
+    "attention": {
+      "one": "{{ count }} linha precisa de atenção",
+      "other": "{{ count }} linhas precisam de atenção"
+    },
+    "available": "Disponível",
+    "back_to_shop": "Voltar à loja",
+    "below_min": "Abaixo do mínimo ({{ count }})",
+    "browse_catalogue": "Ver o catálogo",
+    "capped": "{{ line }} ajustado para {{ count }}, o máximo disponível",
     "change": "Alterar",
+    "clear": "Limpar",
     "current_location": "Localização atual",
+    "each": "{{ price }} cada",
+    "empty_cart": "O seu carrinho grossista está vazio",
+    "fix_lines": {
+      "one": "Corrija {{ count }} linha antes de finalizar.",
+      "other": "Corrija {{ count }} linhas antes de finalizar."
+    },
+    "from_tier": "Desde {{ price }} a partir de {{ count }} unidades",
+    "gate_text": "Este produto está reservado a clientes B2B. Inicie sessão com a sua conta grossista para o ver.",
+    "gate_title": "Produto exclusivo para grossistas",
+    "in_cart_label": "No carrinho: {{ count }}",
+    "installments": "Pague em {{ count }} prestações de {{ amount }}",
+    "line_total": "{{ quantity }} × {{ price }} = {{ total }}",
+    "lines": {
+      "one": "{{ count }} linha",
+      "other": "{{ count }} linhas"
+    },
     "location_updated": "Preços e disponibilidade atualizados para {{ location }}.",
+    "low_count": "Poucas: {{ count }}",
+    "max": "Máx. {{ count }}",
+    "max_hint": "Máx. {{ count }}",
+    "min": "Mín. {{ count }}",
+    "min_per": "Mín. {{ count }} por {{ option }}",
+    "min_per_two": "Mín. {{ count }} por {{ first }} e {{ second }}",
+    "needs_attention": "Precisa de atenção",
     "not_found_line": "Cliente grossista? Inicie sessão para ver os produtos exclusivos.",
+    "not_multiple": "{{ quantity }} não é múltiplo de {{ increment }}. Use {{ lower }} ou {{ upper }}.",
+    "not_multiple_one": "{{ quantity }} não é múltiplo de {{ increment }}. Use {{ suggestion }}.",
+    "not_offered": "Não disponível",
+    "only_more": "Só é possível adicionar mais {{ count }}.",
+    "order": "Escolher quantidades",
+    "order_grid": "Encomendar por {{ options }}",
     "ordering_for": "Encomenda para",
     "ordering_for_location": "Encomenda para {{ company }} · {{ location }}",
+    "packs": "Packs de {{ count }}",
+    "pieces": {
+      "one": "{{ count }} unidade",
+      "other": "{{ count }} unidades"
+    },
+    "quick_order": "Abrir a encomenda rápida",
+    "rejected_summary": "1 linha não foi adicionada: {{ line }}. Veja a mensagem nessa linha.",
+    "rounded": "{{ line }} arredondado para {{ count }} (packs de {{ increment }})",
+    "rules_vary": "Os mínimos variam por {{ option }}",
+    "rules_vary_two": "Os mínimos variam por {{ first }} e {{ second }}",
     "sample_notice": "Pré-visualização grossista — dados de exemplo",
+    "show_all": "Ver tudo",
+    "show_fewer": "Ver menos",
+    "sign_in": "Iniciar sessão",
     "sign_out": "Terminar sessão",
+    "stock_below_min": "Apenas {{ count }}, abaixo do mínimo",
     "store_credit": "Crédito na loja",
-    "switch_location": "Mudar para {{ location }}"
+    "switch_location": "Mudar para {{ location }}",
+    "terms_note": "As condições de pagamento e o crédito são aplicados no checkout.",
+    "tier_caption": "Preço por unidade. O carrinho mostra o preço final de cada linha.",
+    "tier_current": "Atual",
+    "tier_label": "preço {{ count }}+",
+    "tiers_heading": "Preços por volume"
   }
 }
