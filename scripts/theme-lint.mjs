@@ -506,7 +506,6 @@ for (const file of list(join(ROOT, 'sections'), '.json')) {
   const folders = existsSync(listingsDir) ? readdirSync(listingsDir) : [];
   // Store builds (package-theme.mjs --store) never ship listings/.
   if (presetNames.length > 1 && !process.argv.includes('--store-build')) for (const [handle, name] of handles) if (!folders.includes(handle)) report('error', listingsDir, `Preset "${name}" has no listings/${handle}/ folder`);
-  const same = (a, b) => JSON.stringify(parseJSON(a, read(a))) === JSON.stringify(parseJSON(b, read(b)));
   for (const folder of folders) {
     const dir = join(listingsDir, folder);
     if (!handles.has(folder)) report('error', dir, `listings/${folder} matches no preset in settings_data.json`);
@@ -517,7 +516,8 @@ for (const file of list(join(ROOT, 'sections'), '.json')) {
       const base = join(ROOT, 'templates', basename(file));
       if (!file.endsWith('.json')) report('error', file, 'Listing templates must be JSON');
       else if (!existsSync(base)) report('error', file, `No base template templates/${basename(file)} to override`);
-      else if (handles.get(folder) === presetNames[0] && !same(file, base)) report('error', file, `Default preset listing differs from templates/${basename(file)}; copy the base template`);
+      // The default preset's listing is copied from the base templates when the Theme Store package
+      // is built, so theme-editor saves of a base template (committed back by Shopify) never fail CI.
     }
     for (const file of list(join(dir, 'sections'))) {
       const base = join(ROOT, 'sections', basename(file));
