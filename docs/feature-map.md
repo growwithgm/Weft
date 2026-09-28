@@ -110,7 +110,7 @@ Status: `planned` (P0) → `built` (with phase) → `verified` (scenario or chec
 | Search page (sort, filters, articles, pages) | `main-search`, `templates/search.json` | P4 | done |
 | 404, password, gift card; 404 wholesale sign-in line | `main-404`, `main-password`, `gift_card.liquid` | P1/P3 | done |
 | Classic customer-account templates | `templates/customers/*` minimal, untouched fallback | P5 | planned |
-| Section library | architecture §2 list | P5 | planned |
+| Section library | architecture §2 list | P5 | partial (step 1 of 2 done) |
 
 ## 7. BUILD_SPEC §5.6 Theme Store required features
 

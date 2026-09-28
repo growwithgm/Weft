@@ -1,6 +1,7 @@
 {
   "accessibility": {
     "announcements": "お知らせ",
+    "carousel": "カルーセル",
     "close_menu": "メニューを閉じる",
     "decrease_quantity": "{{ product }}の数量を減らす",
     "external_link": "外部リンク",
@@ -9,6 +10,7 @@
     "menu": "メニュー",
     "open_menu": "メニューを開く",
     "quantity": "数量",
+    "slide": "スライド",
     "slide_of": "{{ count }}枚中{{ index }}枚目",
     "star_rating": "{{ max }}つ星中{{ rating }}"
   },
@@ -63,6 +65,7 @@
     "layout": "表示",
     "layout_grid": "グリッド表示",
     "layout_list": "リスト表示",
+    "placeholder_title": "コレクション名",
     "price_from": "最低",
     "price_range": "{{ min }}～{{ max }}",
     "price_to": "最高",
@@ -78,6 +81,7 @@
     },
     "showing": "{{ total }}件中{{ shown }}件を表示",
     "sort_by": "並べ替え",
+    "view_all": "すべて見る",
     "view_collection": "コレクションを見る"
   },
   "compare": {
@@ -121,6 +125,7 @@
     "pause": "一時停止",
     "payment_methods": "お支払い方法",
     "play": "再生",
+    "play_video": "動画を再生 {{ title }}",
     "previous": "前へ",
     "read_more": "続きを読む",
     "see_less": "閉じる",
@@ -285,6 +290,8 @@
       "title": "受け取り可能状況",
       "unavailable_at": "{{ location }}では現在受け取りできません"
     },
+    "placeholder_text": "商品を選ぶと、ここに詳細が表示されます。",
+    "placeholder_title": "商品名",
     "pre_order": "予約注文",
     "purchase_options": {
       "label": "購入オプション",

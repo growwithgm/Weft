@@ -124,7 +124,7 @@ class ProductSection extends HTMLElement {
         if (fresh) {
           this.replaceWith(fresh);
           scan(fresh);
-          history.replaceState(null, '', nextUrl);
+          if (this.dataset.updateUrl !== 'false') history.replaceState(null, '', nextUrl);
           document.getElementById(focusId)?.focus();
           return;
         }
@@ -144,9 +144,12 @@ class ProductSection extends HTMLElement {
     this.enableInputs();
     this.initGuideLink();
     this.initFlash();
-    const url = new URL(this.productUrl, location.origin);
-    if (state.variantId) url.searchParams.set('variant', state.variantId);
-    history.replaceState(null, '', url.pathname + url.search);
+    // Featured product sections live on other pages: they never change the page URL.
+    if (this.dataset.updateUrl !== 'false') {
+      const url = new URL(this.productUrl, location.origin);
+      if (state.variantId) url.searchParams.set('variant', state.variantId);
+      history.replaceState(null, '', url.pathname + url.search);
+    }
     if (focusId) document.getElementById(focusId)?.focus({ preventScroll: true });
     if (window.Shopify && window.Shopify.PaymentButton) window.Shopify.PaymentButton.init();
     const price = this.querySelector('.product-price .price__current');

@@ -1,0 +1,281 @@
+{%- comment -%}
+  Video (brief §14.6): inline player with poster and play button, or a background video with
+  text on top (merges the live "Background video" section). Nothing loads until needed.
+{%- endcomment -%}
+{%- liquid
+  assign s = section.settings
+  assign background = false
+  if s.layout == 'background'
+    assign background = true
+  endif
+  assign eager = false
+  if section.index == 1
+    assign eager = true
+  endif
+-%}
+{{ 'section-banner.css' | asset_url | stylesheet_tag }}
+{{ 'section-library.css' | asset_url | stylesheet_tag }}
+<div class="section video-section video-section--{{ s.layout }} color-{{ s.color_scheme }}{% if section.index > 2 %} below-fold{% endif %}">
+  {%- if background -%}
+    <div class="banner banner--{{ s.height }} banner--{{ s.overlay_position }} banner--text-{{ s.text_align }}{% if s.mobile_center %} banner--mobile-center{% endif %}{% unless s.full_width %} page-width{% endunless %}" style="--banner-tint: {{ s.tint_color }}; --banner-tint-opacity: {{ s.tint_opacity | divided_by: 100.0 }}; --banner-text: {{ s.text_color }};">
+      <div class="banner__media">
+        {%- render 'deferred-video', video: s.video, video_url: s.video_url, poster: s.poster, description: s.description, background: true, eager: eager -%}
+      </div>
+      {%- if section.blocks.size > 0 -%}
+        <div class="banner__content"><div class="banner__box stack">{%- content_for 'blocks' -%}</div></div>
+      {%- endif -%}
+    </div>
+  {%- else -%}
+    <div class="page-width{% if s.full_width %} page-width--full{% endif %} video-section__inner">
+      {%- if section.blocks.size > 0 -%}
+        <div class="video-section__text stack video-section__text--{{ s.text_align }}">{%- content_for 'blocks' -%}</div>
+      {%- endif -%}
+      <div class="video-section__frame video-section__frame--{{ s.ratio }}">
+        {%- render 'deferred-video', video: s.video, video_url: s.video_url, poster: s.poster, description: s.description, background: false, eager: eager -%}
+      </div>
+    </div>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "t:labels.video",
+  "class": "section-video",
+  "disabled_on": {
+    "groups": [
+      "header",
+      "footer",
+      "aside"
+    ]
+  },
+  "blocks": [
+    {
+      "type": "@theme"
+    },
+    {
+      "type": "@app"
+    }
+  ],
+  "settings": [
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "t:labels.layout",
+      "options": [
+        {
+          "value": "inline",
+          "label": "t:labels.video_with_play_button"
+        },
+        {
+          "value": "background",
+          "label": "t:labels.background_video_with_text"
+        }
+      ],
+      "default": "inline"
+    },
+    {
+      "type": "video",
+      "id": "video",
+      "label": "t:labels.video",
+      "info": "t:text.sections.video.settings.video.info"
+    },
+    {
+      "type": "video_url",
+      "id": "video_url",
+      "label": "t:labels.or_a_youtube_vimeo_url",
+      "accept": [
+        "youtube",
+        "vimeo"
+      ]
+    },
+    {
+      "type": "text",
+      "id": "description",
+      "label": "t:labels.video_description",
+      "info": "t:labels.read_by_screen_readers"
+    },
+    {
+      "type": "image_picker",
+      "id": "poster",
+      "label": "t:labels.cover_image"
+    },
+    {
+      "type": "select",
+      "id": "ratio",
+      "label": "t:labels.video_shape",
+      "options": [
+        {
+          "value": "16-9",
+          "label": "t:labels.wide_16_9"
+        },
+        {
+          "value": "4-3",
+          "label": "t:labels.standard_4_3"
+        },
+        {
+          "value": "1-1",
+          "label": "t:labels.square"
+        },
+        {
+          "value": "9-16",
+          "label": "t:labels.vertical_9_16"
+        }
+      ],
+      "default": "16-9",
+      "visible_if": "{{ section.settings.layout == 'inline' }}"
+    },
+    {
+      "type": "select",
+      "id": "height",
+      "label": "t:labels.height",
+      "options": [
+        {
+          "value": "small",
+          "label": "t:labels.small"
+        },
+        {
+          "value": "medium",
+          "label": "t:labels.medium"
+        },
+        {
+          "value": "large",
+          "label": "t:labels.large"
+        },
+        {
+          "value": "full",
+          "label": "t:labels.full_screen"
+        }
+      ],
+      "default": "large",
+      "visible_if": "{{ section.settings.layout == 'background' }}"
+    },
+    {
+      "type": "select",
+      "id": "overlay_position",
+      "label": "t:labels.content_position",
+      "options": [
+        {
+          "value": "top-start",
+          "label": "t:labels.top_start"
+        },
+        {
+          "value": "top-center",
+          "label": "t:labels.top_center"
+        },
+        {
+          "value": "middle-start",
+          "label": "t:labels.middle_start"
+        },
+        {
+          "value": "middle-center",
+          "label": "t:labels.middle_center"
+        },
+        {
+          "value": "bottom-start",
+          "label": "t:labels.bottom_start"
+        },
+        {
+          "value": "bottom-center",
+          "label": "t:labels.bottom_center"
+        }
+      ],
+      "default": "middle-center",
+      "visible_if": "{{ section.settings.layout == 'background' }}"
+    },
+    {
+      "type": "select",
+      "id": "text_align",
+      "label": "t:labels.text_alignment",
+      "options": [
+        {
+          "value": "start",
+          "label": "t:labels.start"
+        },
+        {
+          "value": "center",
+          "label": "t:labels.center"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "checkbox",
+      "id": "mobile_center",
+      "label": "t:labels.center_text_on_mobile",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "t:labels.full_width",
+      "default": false
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:labels.color_scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "t:labels.text_on_video",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "tint_color",
+      "label": "t:labels.video_tint",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "tint_opacity",
+      "label": "t:labels.video_tint_opacity",
+      "min": 0,
+      "max": 90,
+      "step": 5,
+      "unit": "%",
+      "default": 30
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:labels.video",
+      "category": "t:labels.media",
+      "blocks": [
+        {
+          "type": "heading",
+          "settings": {
+            "heading": "Watch the collection",
+            "size": "h2"
+          }
+        }
+      ]
+    },
+    {
+      "name": "t:labels.background_video",
+      "category": "t:labels.media",
+      "settings": {
+        "layout": "background"
+      },
+      "blocks": [
+        {
+          "type": "heading",
+          "settings": {
+            "heading": "Made to move",
+            "size": "h1"
+          }
+        },
+        {
+          "type": "button",
+          "settings": {
+            "label": "Shop now",
+            "style": "primary"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

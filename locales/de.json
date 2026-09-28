@@ -1,6 +1,7 @@
 {
   "accessibility": {
     "announcements": "Ankündigungen",
+    "carousel": "Karussell",
     "close_menu": "Menü schließen",
     "decrease_quantity": "Menge für {{ product }} verringern",
     "external_link": "Externer Link",
@@ -9,6 +10,7 @@
     "menu": "Menü",
     "open_menu": "Menü öffnen",
     "quantity": "Menge",
+    "slide": "Folie",
     "slide_of": "Folie {{ index }} von {{ count }}",
     "star_rating": "{{ rating }} von {{ max }} Sternen"
   },
@@ -63,6 +65,7 @@
     "layout": "Ansicht",
     "layout_grid": "Rasteransicht",
     "layout_list": "Listenansicht",
+    "placeholder_title": "Kollektionstitel",
     "price_from": "Von",
     "price_range": "{{ min }} – {{ max }}",
     "price_to": "Bis",
@@ -78,6 +81,7 @@
     },
     "showing": "{{ shown }} von {{ total }}",
     "sort_by": "Sortieren nach",
+    "view_all": "Alle ansehen",
     "view_collection": "Kollektion ansehen"
   },
   "compare": {
@@ -121,6 +125,7 @@
     "pause": "Pausieren",
     "payment_methods": "Zahlungsarten",
     "play": "Abspielen",
+    "play_video": "Video abspielen {{ title }}",
     "previous": "Zurück",
     "read_more": "Weiterlesen",
     "see_less": "Weniger anzeigen",
@@ -285,6 +290,8 @@
       "title": "Verfügbarkeit zur Abholung",
       "unavailable_at": "Abholung derzeit nicht möglich in {{ location }}"
     },
+    "placeholder_text": "Wähle ein Produkt, um hier seine Details zu zeigen.",
+    "placeholder_title": "Produkttitel",
     "pre_order": "Vorbestellen",
     "purchase_options": {
       "label": "Kaufoptionen",

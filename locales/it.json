@@ -1,6 +1,7 @@
 {
   "accessibility": {
     "announcements": "Annunci",
+    "carousel": "Carosello",
     "close_menu": "Chiudi il menu",
     "decrease_quantity": "Riduci la quantità di {{ product }}",
     "external_link": "Link esterno",
@@ -9,6 +10,7 @@
     "menu": "Menu",
     "open_menu": "Apri il menu",
     "quantity": "Quantità",
+    "slide": "Diapositiva",
     "slide_of": "Slide {{ index }} di {{ count }}",
     "star_rating": "{{ rating }} stelle su {{ max }}"
   },
@@ -63,6 +65,7 @@
     "layout": "Vista",
     "layout_grid": "Vista a griglia",
     "layout_list": "Vista a elenco",
+    "placeholder_title": "Titolo della collezione",
     "price_from": "Da",
     "price_range": "{{ min }} – {{ max }}",
     "price_to": "A",
@@ -78,6 +81,7 @@
     },
     "showing": "{{ shown }} di {{ total }}",
     "sort_by": "Ordina per",
+    "view_all": "Vedi tutto",
     "view_collection": "Vedi collezione"
   },
   "compare": {
@@ -121,6 +125,7 @@
     "pause": "Pausa",
     "payment_methods": "Metodi di pagamento",
     "play": "Riproduci",
+    "play_video": "Riproduci video {{ title }}",
     "previous": "Precedente",
     "read_more": "Leggi di più",
     "see_less": "Mostra meno",
@@ -285,6 +290,8 @@
       "title": "Disponibilità del ritiro",
       "unavailable_at": "Ritiro al momento non disponibile presso {{ location }}"
     },
+    "placeholder_text": "Scegli un prodotto per mostrarne qui i dettagli.",
+    "placeholder_title": "Titolo del prodotto",
     "pre_order": "Preordina",
     "purchase_options": {
       "label": "Opzioni di acquisto",

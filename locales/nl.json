@@ -1,6 +1,7 @@
 {
   "accessibility": {
     "announcements": "Aankondigingen",
+    "carousel": "Carrousel",
     "close_menu": "Menu sluiten",
     "decrease_quantity": "Aantal van {{ product }} verlagen",
     "external_link": "Externe link",
@@ -9,6 +10,7 @@
     "menu": "Menu",
     "open_menu": "Menu openen",
     "quantity": "Aantal",
+    "slide": "Dia",
     "slide_of": "Dia {{ index }} van {{ count }}",
     "star_rating": "{{ rating }} van de {{ max }} sterren"
   },
@@ -63,6 +65,7 @@
     "layout": "Weergave",
     "layout_grid": "Rasterweergave",
     "layout_list": "Lijstweergave",
+    "placeholder_title": "Collectietitel",
     "price_from": "Van",
     "price_range": "{{ min }} – {{ max }}",
     "price_to": "Tot",
@@ -78,6 +81,7 @@
     },
     "showing": "{{ shown }} van {{ total }}",
     "sort_by": "Sorteren op",
+    "view_all": "Alles bekijken",
     "view_collection": "Collectie bekijken"
   },
   "compare": {
@@ -121,6 +125,7 @@
     "pause": "Pauzeren",
     "payment_methods": "Betaalmethoden",
     "play": "Afspelen",
+    "play_video": "Video afspelen {{ title }}",
     "previous": "Vorige",
     "read_more": "Lees meer",
     "see_less": "Minder zien",
@@ -285,6 +290,8 @@
       "title": "Beschikbaarheid afhalen",
       "unavailable_at": "Afhalen momenteel niet mogelijk bij {{ location }}"
     },
+    "placeholder_text": "Kies een product om de details hier te tonen.",
+    "placeholder_title": "Producttitel",
     "pre_order": "Pre-order",
     "purchase_options": {
       "label": "Aankoopopties",

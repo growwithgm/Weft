@@ -2,10 +2,11 @@
   Collection card (Theme settings > Collection cards): image (collection image, or the first
   product's image when allowed), title, optional product count and "View collection" link. The
   whole card is one link.
-  Params: collection (required), sizes, eager (bool), use_product_image (bool), show_count (bool)
+  Params: collection (required), image (replacement image), sizes, eager (bool), use_product_image (bool),
+          show_count (bool)
 {%- endcomment -%}
 {%- liquid
-  assign card_image = collection.featured_image
+  assign card_image = image | default: collection.featured_image
   if card_image == blank and use_product_image
     assign card_image = collection.products.first.featured_media.preview_image
   endif

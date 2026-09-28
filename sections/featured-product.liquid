@@ -1,0 +1,297 @@
+{%- comment -%}
+  Featured product: gallery and product blocks for one chosen product on any page. Variant
+  changes re-render this section through Section Rendering (product.js) without changing the
+  page URL. In the theme editor, a placeholder shows until a product is chosen.
+{%- endcomment -%}
+{%- liquid
+  assign p = section.settings.product
+  assign variant = p.selected_or_first_available_variant
+  assign wholesale = false
+  if customer and customer.b2b?
+    assign wholesale = true
+  endif
+  assign unselected = false
+  if section.settings.select_first_variant == false and p.has_only_default_variant == false
+    assign unselected = true
+  endif
+-%}
+{{ 'section-product.css' | asset_url | stylesheet_tag }}
+{%- if p != blank -%}
+<product-section
+  class="section product featured-product color-{{ section.settings.color_scheme }}{% if section.index > 2 %} below-fold{% endif %}"
+  data-product-section
+  data-section-id="{{ section.id }}"
+  data-product-url="{{ p.url }}"
+  data-product-id="{{ p.id }}"
+  data-update-url="false"
+  data-module="{{ 'product.js' | asset_url }}"
+  data-load="visible"
+>
+  <div class="page-width">
+    <div class="product__grid product__grid--{{ section.settings.gallery_width }}">
+      <div class="product__media" data-swap="media-{{ section.id }}">
+        {%- render 'product-gallery', product: p, variant: variant, section: section -%}
+      </div>
+      <div class="product__info">
+        <script type="application/json" data-product-state data-swap="state-{{ section.id }}">
+          {
+            "variantId": {{ variant.id | default: 'null' }},
+            "available": {{ variant.available | default: false }},
+            "unselected": {{ unselected }},
+            "wholesale": {{ wholesale }},
+            "matrix": false,
+            "featuredMediaId": {{ variant.featured_media.id | default: 'null' }},
+            "title": {{ p.title | json }}
+          }
+        </script>
+        {%- content_for 'blocks' -%}
+        <a class="link featured-product__more" href="{{ p.url }}">{{ 'products.quick_add.view_details' | t }}</a>
+      </div>
+    </div>
+  </div>
+</product-section>
+{%- else -%}
+  <div class="section product featured-product color-{{ section.settings.color_scheme }}">
+    <div class="page-width">
+      <div class="product__grid product__grid--{{ section.settings.gallery_width }}">
+        <div class="product__media"><div class="media featured-product__placeholder">{{ 'product-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}</div></div>
+        <div class="product__info stack">
+          <h2 class="h2">{{ 'products.placeholder_title' | t }}</h2>
+          <p class="price">{{ 1999 | money }}</p>
+          <p class="muted">{{ 'products.placeholder_text' | t }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "t:labels.featured_product",
+  "class": "section-featured-product",
+  "disabled_on": {
+    "templates": [
+      "cart",
+      "password"
+    ],
+    "groups": [
+      "header",
+      "footer",
+      "aside"
+    ]
+  },
+  "blocks": [
+    {
+      "type": "@theme"
+    },
+    {
+      "type": "@app"
+    }
+  ],
+  "settings": [
+    {
+      "type": "product",
+      "id": "product",
+      "label": "t:labels.product"
+    },
+    {
+      "type": "checkbox",
+      "id": "select_first_variant",
+      "label": "t:labels.preselect_the_first_available_variant",
+      "default": true
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:labels.color_scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "t:labels.media"
+    },
+    {
+      "type": "select",
+      "id": "gallery_layout",
+      "label": "t:labels.layout_on_large_screens",
+      "options": [
+        {
+          "value": "stacked",
+          "label": "t:labels.stacked"
+        },
+        {
+          "value": "grid",
+          "label": "t:labels.two_columns"
+        },
+        {
+          "value": "thumbnails",
+          "label": "t:labels.thumbnails"
+        },
+        {
+          "value": "carousel",
+          "label": "t:labels.carousel"
+        }
+      ],
+      "default": "stacked"
+    },
+    {
+      "type": "select",
+      "id": "gallery_width",
+      "label": "t:labels.gallery_width",
+      "options": [
+        {
+          "value": "wide",
+          "label": "t:labels.wide_7_of_12_columns"
+        },
+        {
+          "value": "half",
+          "label": "t:labels.half"
+        },
+        {
+          "value": "narrow",
+          "label": "t:labels.narrow_5_of_12_columns"
+        }
+      ],
+      "default": "wide"
+    },
+    {
+      "type": "select",
+      "id": "media_ratio",
+      "label": "t:labels.media_aspect_ratio",
+      "options": [
+        {
+          "value": "natural",
+          "label": "t:labels.natural"
+        },
+        {
+          "value": "square",
+          "label": "t:labels.square_1_1"
+        },
+        {
+          "value": "portrait",
+          "label": "t:labels.portrait_4_5"
+        },
+        {
+          "value": "tall",
+          "label": "t:labels.tall_3_4"
+        }
+      ],
+      "default": "portrait"
+    },
+    {
+      "type": "select",
+      "id": "media_fit",
+      "label": "t:labels.media_fit",
+      "options": [
+        {
+          "value": "contain",
+          "label": "t:labels.fit"
+        },
+        {
+          "value": "cover",
+          "label": "t:labels.fill"
+        }
+      ],
+      "default": "contain"
+    },
+    {
+      "type": "color",
+      "id": "media_bg",
+      "label": "t:labels.media_background",
+      "default": "#F4F4F4"
+    },
+    {
+      "type": "select",
+      "id": "thumbnails",
+      "label": "t:labels.thumbnails",
+      "options": [
+        {
+          "value": "desktop",
+          "label": "t:labels.large_screens_only"
+        },
+        {
+          "value": "both",
+          "label": "t:labels.all_screens"
+        },
+        {
+          "value": "none",
+          "label": "t:labels.hidden"
+        }
+      ],
+      "default": "desktop"
+    },
+    {
+      "type": "select",
+      "id": "zoom",
+      "label": "t:labels.zoom",
+      "options": [
+        {
+          "value": "lightbox",
+          "label": "t:labels.open_in_a_lightbox"
+        },
+        {
+          "value": "hover",
+          "label": "t:labels.magnify_on_hover"
+        },
+        {
+          "value": "both",
+          "label": "t:labels.lightbox_and_hover_magnify"
+        },
+        {
+          "value": "none",
+          "label": "t:labels.off"
+        }
+      ],
+      "default": "lightbox"
+    },
+    {
+      "type": "checkbox",
+      "id": "lightbox_mobile",
+      "label": "t:labels.open_the_lightbox_on_mobile",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "video_loop",
+      "label": "t:labels.loop_videos",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "group_media_by_option",
+      "label": "t:text.sections.main_product.settings.group_media_by_option.label",
+      "default": false,
+      "info": "t:text.sections.main_product.settings.group_media_by_option.info"
+    },
+    {
+      "type": "text",
+      "id": "group_media_option_names",
+      "label": "t:labels.option_names_to_group_by",
+      "default": "Color,Colour,Couleur,Farbe,Colore,Kleur,Cor"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:labels.featured_product",
+      "category": "t:labels.products",
+      "blocks": [
+        {
+          "type": "product-title"
+        },
+        {
+          "type": "product-price"
+        },
+        {
+          "type": "variant-picker"
+        },
+        {
+          "type": "buy-buttons"
+        },
+        {
+          "type": "description"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

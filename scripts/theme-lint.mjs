@@ -259,6 +259,8 @@ for (const file of liquidFiles) {
       if (name) {
         usedSnippets.add(name);
         if (!snippets.has(name)) report('error', file, `Missing snippet "${name}"`, lineOf(schemaless, m.index));
+        const args = m.markup.replace(/^render\s+['"][^'"]+['"]/, '').replace(/(['"])(?:(?!\1).)*\1/g, '""');
+        if (args.includes('|')) report('error', file, `Filters are not allowed in {% render %} arguments; assign first`, lineOf(schemaless, m.index));
       }
     }
     if (m.name === 'section') {

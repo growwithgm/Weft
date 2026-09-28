@@ -16,6 +16,7 @@ export default {
   'general.next': s('Next', 'Siguiente', 'Weiter', 'Suivant', 'Successivo', 'Volgende', 'Seguinte', '次へ'),
   'general.pause': s('Pause', 'Pausar', 'Pausieren', 'Pause', 'Pausa', 'Pauzeren', 'Pausar', '一時停止'),
   'general.play': s('Play', 'Reproducir', 'Abspielen', 'Lecture', 'Riproduci', 'Afspelen', 'Reproduzir', '再生'),
+  'general.play_video': s('Play video {{ title }}', 'Reproducir vídeo {{ title }}', 'Video abspielen {{ title }}', 'Lire la vidéo {{ title }}', 'Riproduci video {{ title }}', 'Video afspelen {{ title }}', 'Reproduzir vídeo {{ title }}', '動画を再生 {{ title }}'),
   'general.view_all': s('View all', 'Ver todo', 'Alle ansehen', 'Tout voir', 'Vedi tutto', 'Alles bekijken', 'Ver tudo', 'すべて見る'),
   'general.read_more': s('Read more', 'Leer más', 'Weiterlesen', 'Lire la suite', 'Leggi di più', 'Lees meer', 'Ler mais', '続きを読む'),
   'general.see_more': s('See more', 'Ver más', 'Mehr anzeigen', 'Voir plus', 'Mostra di più', 'Meer zien', 'Ver mais', 'もっと見る'),
@@ -42,6 +43,8 @@ export default {
   'accessibility.decrease_quantity': s('Decrease quantity for {{ product }}', 'Reducir la cantidad de {{ product }}', 'Menge für {{ product }} verringern', 'Diminuer la quantité de {{ product }}', 'Riduci la quantità di {{ product }}', 'Aantal van {{ product }} verlagen', 'Diminuir a quantidade de {{ product }}', '{{ product }}の数量を減らす'),
   'accessibility.increase_quantity': s('Increase quantity for {{ product }}', 'Aumentar la cantidad de {{ product }}', 'Menge für {{ product }} erhöhen', 'Augmenter la quantité de {{ product }}', 'Aumenta la quantità di {{ product }}', 'Aantal van {{ product }} verhogen', 'Aumentar a quantidade de {{ product }}', '{{ product }}の数量を増やす'),
   'accessibility.quantity': s('Quantity', 'Cantidad', 'Menge', 'Quantité', 'Quantità', 'Aantal', 'Quantidade', '数量'),
+  'accessibility.carousel': s('Carousel', 'Carrusel', 'Karussell', 'Carrousel', 'Carosello', 'Carrousel', 'Carrossel', 'カルーセル'),
+  'accessibility.slide': s('Slide', 'Diapositiva', 'Folie', 'Diapositive', 'Diapositiva', 'Dia', 'Diapositivo', 'スライド'),
   'accessibility.slide_of': s('Slide {{ index }} of {{ count }}', 'Diapositiva {{ index }} de {{ count }}', 'Folie {{ index }} von {{ count }}', 'Diapositive {{ index }} sur {{ count }}', 'Slide {{ index }} di {{ count }}', 'Dia {{ index }} van {{ count }}', 'Diapositivo {{ index }} de {{ count }}', '{{ count }}枚中{{ index }}枚目'),
 
   // ---------- header, search, account ----------
@@ -163,6 +166,8 @@ export default {
   'price.shipping_at_checkout': s('Shipping calculated at checkout.', 'Gastos de envío calculados al finalizar la compra.', 'Versand wird an der Kasse berechnet.', 'Frais d’expédition calculés au paiement.', 'Spedizione calcolata al checkout.', 'Verzending wordt berekend bij het afrekenen.', 'Portes calculados no checkout.', '送料はチェックアウト時に計算されます。'),
 
   // ---------- products ----------
+  'products.placeholder_title': s('Product title', 'Título del producto', 'Produkttitel', 'Titre du produit', 'Titolo del prodotto', 'Producttitel', 'Título do produto', '商品名'),
+  'products.placeholder_text': s('Choose a product to show its details here.', 'Elige un producto para mostrar aquí sus detalles.', 'Wähle ein Produkt, um hier seine Details zu zeigen.', 'Choisissez un produit pour afficher ses détails ici.', 'Scegli un prodotto per mostrarne qui i dettagli.', 'Kies een product om de details hier te tonen.', 'Escolha um produto para mostrar aqui os detalhes.', '商品を選ぶと、ここに詳細が表示されます。'),
   'products.add_to_cart': s('Add to cart', 'Añadir al carrito', 'In den Warenkorb', 'Ajouter au panier', 'Aggiungi al carrello', 'In winkelwagen', 'Adicionar ao carrinho', 'カートに追加'),
   'products.add_short': s('Add to cart', 'Añadir', 'Hinzufügen', 'Ajouter', 'Aggiungi', 'Toevoegen', 'Adicionar', '追加'),
   'products.pre_order': s('Pre-order', 'Reservar', 'Vorbestellen', 'Précommander', 'Preordina', 'Pre-order', 'Pré-encomendar', '予約注文'),
@@ -265,6 +270,8 @@ export default {
   'collections.product_count.one': s('{{ count }} product', '{{ count }} producto', '{{ count }} Produkt', '{{ count }} produit', '{{ count }} prodotto', '{{ count }} product', '{{ count }} produto', '{{ count }}件の商品'),
   'collections.product_count.other': s('{{ count }} products', '{{ count }} productos', '{{ count }} Produkte', '{{ count }} produits', '{{ count }} prodotti', '{{ count }} producten', '{{ count }} produtos', '{{ count }}件の商品'),
   'collections.view_collection': s('View collection', 'Ver colección', 'Kollektion ansehen', 'Voir la collection', 'Vedi collezione', 'Collectie bekijken', 'Ver coleção', 'コレクションを見る'),
+  'collections.view_all': s('View all', 'Ver todo', 'Alle ansehen', 'Tout voir', 'Vedi tutto', 'Alles bekijken', 'Ver tudo', 'すべて見る'),
+  'collections.placeholder_title': s('Collection title', 'Título de la colección', 'Kollektionstitel', 'Titre de la collection', 'Titolo della collezione', 'Collectietitel', 'Título da coleção', 'コレクション名'),
   'collections.sort_by': s('Sort by', 'Ordenar por', 'Sortieren nach', 'Trier par', 'Ordina per', 'Sorteren op', 'Ordenar por', '並べ替え'),
   'collections.filter_and_sort': s('Filter and sort', 'Filtrar y ordenar', 'Filtern und sortieren', 'Filtrer et trier', 'Filtra e ordina', 'Filteren en sorteren', 'Filtrar e ordenar', '絞り込みと並べ替え'),
   'collections.filters': s('Filters', 'Filtros', 'Filter', 'Filtres', 'Filtri', 'Filters', 'Filtros', '絞り込み'),

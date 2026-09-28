@@ -1,5 +1,5 @@
 {
-  "_comment": "Theme-owned asset budgets in gzip bytes (BUILD_SPEC §6.2). scripts/theme-lint.mjs fails when an asset is over. Render-blocking CSS = inline tokens + base.css <= 14 KB.",
+  "_comment": "Theme-owned asset budgets in gzip bytes (BUILD_SPEC \u00a76.2). scripts/theme-lint.mjs fails when an asset is over. Render-blocking CSS = inline tokens + base.css <= 14 KB.",
   "assets": {
     "base.css": 11000,
     "core.js": 6144,
@@ -16,7 +16,14 @@
     "announcement.js": 1024,
     "footer.js": 512,
     "localization.js": 512,
-    "custom-code.js": 1536
+    "custom-code.js": 1536,
+    "carousel.js": 3072,
+    "video.js": 2048,
+    "compare.js": 3072,
+    "shipping-calculator.js": 2048,
+    "section-library.css": 5120,
+    "section-collection.css": 4096,
+    "component-card.css": 3072
   },
   "pages": {
     "renderBlockingCss": 14336,

@@ -1,9 +1,9 @@
 // Product section: variant change via Section Rendering, add to cart, inline errors, rules stepper.
 import { shell } from './fixtures/shell.mjs';
 
-const section = ({ variantId, price, label = 'Add to cart', disabled = false, selected = 'S', min = 1, step = 1, max = '' }) => `
+const section = ({ variantId, price, label = 'Add to cart', disabled = false, selected = 'S', min = 1, step = 1, max = '', updateUrl = true }) => `
 <div id="shopify-section-main">
-<product-section class="section product" data-product-section data-section-id="main" data-product-url="/products/tunic">
+<product-section class="section product" data-product-section data-section-id="main" data-product-url="/products/tunic"${updateUrl ? '' : ' data-update-url="false"'}>
   <div class="product__info">
     <script type="application/json" data-product-state data-swap="state-main">{"variantId": ${variantId}, "available": ${!disabled}, "title": "Tunic", "featuredMediaId": null}</script>
     <div class="product-price" data-swap="price1"><div class="price"><span class="price__current">${price}</span></div></div>
@@ -41,6 +41,15 @@ async function setup(pageObj, base, opts = { variantId: 11, price: '€79.95', m
 }
 
 export const tests = {
+  async 'featured product sections change variants without touching the page URL'({ page: p, base, expect, eventually }) {
+    await p.route('**/products/tunic?*', (r) => r.fulfill({ contentType: 'text/html', body: section({ variantId: 12, price: '€84.95', selected: 'M', updateUrl: false }) }));
+    await setup(p, base, { variantId: 11, price: '€79.95', min: 1, step: 1, updateUrl: false });
+    await p.click('label[for="main-picker1-1-1"]');
+    await eventually(() => document.querySelector('[data-variant-input]').value === '12', 'variant swapped');
+    expect(await p.evaluate(() => location.search), 'URL unchanged').toBe('');
+  },
+
+
   async 'selecting a value swaps price, state, hidden id and URL through Section Rendering'({ page: p, base, expect }) {
     let requested = null;
     await p.route('**/products/tunic?*', (r) => {

@@ -1,6 +1,7 @@
 {
   "accessibility": {
     "announcements": "Announcements",
+    "carousel": "Carousel",
     "close_menu": "Close menu",
     "decrease_quantity": "Decrease quantity for {{ product }}",
     "external_link": "External link",
@@ -9,6 +10,7 @@
     "menu": "Menu",
     "open_menu": "Open menu",
     "quantity": "Quantity",
+    "slide": "Slide",
     "slide_of": "Slide {{ index }} of {{ count }}",
     "star_rating": "{{ rating }} out of {{ max }} stars"
   },
@@ -63,6 +65,7 @@
     "layout": "Layout",
     "layout_grid": "Grid view",
     "layout_list": "List view",
+    "placeholder_title": "Collection title",
     "price_from": "From",
     "price_range": "{{ min }} – {{ max }}",
     "price_to": "To",
@@ -78,6 +81,7 @@
     },
     "showing": "Showing {{ shown }} of {{ total }}",
     "sort_by": "Sort by",
+    "view_all": "View all",
     "view_collection": "View collection"
   },
   "compare": {
@@ -121,6 +125,7 @@
     "pause": "Pause",
     "payment_methods": "Payment methods",
     "play": "Play",
+    "play_video": "Play video {{ title }}",
     "previous": "Previous",
     "read_more": "Read more",
     "see_less": "See less",
@@ -285,6 +290,8 @@
       "title": "Pickup availability",
       "unavailable_at": "Pickup currently unavailable at {{ location }}"
     },
+    "placeholder_text": "Choose a product to show its details here.",
+    "placeholder_title": "Product title",
     "pre_order": "Pre-order",
     "purchase_options": {
       "label": "Purchase options",
