@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Balm preset — design direction sketch</title>
+<style>
+:root{--fg:#2E2433;--bg:#FAFAFB;--surface:#ECE8F1;--line:#DCD6E3;--muted:#6B5E73;--primary:#4B2E5A;--on-primary:#FFFFFF;--hover:#3C2449;--sale:#B0243C;--accent:#ECE8F1;
+--r-button:999px;--r-card:20px;--r-media:12px;--r-drawer:24px;--gap:96px;--width:1200px;--f-head:'Instrument Serif', 'Iowan Old Style', Georgia, serif;--w-head:400;--f-body:'Figtree', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.55 var(--f-body);-webkit-font-smoothing:antialiased}
+a{color:inherit}h1,h2,h3{font-family:var(--f-head);font-weight:var(--w-head);letter-spacing:0;line-height:1.1;margin:0}
+.note{background:#1F2A37;color:#E6EBF1;font:12px/1.5 ui-monospace,Menlo,monospace;padding:8px 20px}
+.wrap{max-width:var(--width);margin:0 auto;padding:0 32px}section{margin-top:var(--gap)}
+.ann{background:var(--fg);color:var(--bg);font-size:13px;text-align:center;padding:9px}
+header{border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--bg);z-index:5}
+.hd{display:grid;grid-template-columns:200px 1fr auto;align-items:center;height:72px;gap:24px}
+.logo{font-family:var(--f-head);font-weight:var(--w-head);font-size:28px;text-decoration:none}
+nav{display:flex;gap:24px;justify-content:center;font-weight:500;font-size:15px}nav a{text-decoration:none}
+.tools{display:flex;gap:8px;align-items:center}.search{height:44px;border:1px solid var(--line);border-radius:var(--r-button);padding:0 16px;display:flex;align-items:center;color:var(--muted);font-size:14px;width:220px}
+.icon{width:44px;height:44px;display:grid;place-items:center;border-radius:var(--r-button)}
+.btn{display:inline-flex;align-items:center;justify-content:center;height:52px;padding:0 28px;border-radius:var(--r-button);font-weight:600;text-decoration:none;border:1px solid transparent;font-size:16px}
+.btn-primary{background:var(--primary);color:var(--on-primary)}.btn-primary:hover{background:var(--hover)}.btn-secondary{border-color:var(--fg);background:transparent}
+.ph{background:var(--surface);position:relative;display:flex;align-items:flex-end;padding:12px;color:var(--muted);font-size:12px;border-radius:var(--r-media);overflow:hidden}
+.ph::before{content:"";position:absolute;left:50%;top:48%;width:30%;aspect-ratio:1/1.5;transform:translate(-50%,-50%);background:var(--tint,#c9c1b6);border-radius:14px 14px 6px 6px;opacity:.85}.ph span{position:relative}
+.hero{display:grid;grid-template-columns:1.1fr 1fr;gap:48px;align-items:center;margin-top:32px}.hero .ph{aspect-ratio:4/5}
+.eyebrow{font-size:14px;font-weight:600;color:var(--muted)}.hero h1{font-size:56px;margin:12px 0 16px}.hero p{font-size:18px;max-width:34ch;margin:0 0 28px}.row{display:flex;gap:12px;flex-wrap:wrap}
+.marquee{border-block:1px solid var(--line);padding:14px 0;display:flex;gap:48px;justify-content:center;font-weight:500;flex-wrap:wrap}
+.sec-h{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:24px}.sec-h h2{font-size:40px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:24px 16px}.card{display:flex;flex-direction:column;gap:6px;text-decoration:none}
+.card-media{aspect-ratio:4/5}.card-title{font-weight:500}.price{font-weight:600;font-variant-numeric:tabular-nums}.unit{font-size:13px;color:var(--muted)}
+.cats{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}.cat{border:1px solid var(--line);border-radius:var(--r-card);padding:20px 12px;text-align:center;font-weight:500}
+.finder{background:var(--surface);color:var(--fg);border-radius:var(--r-card);padding:48px;display:grid;gap:20px}
+.finder h2{font-size:40px}.pill{display:inline-flex;align-items:center;height:48px;padding:0 22px;border-radius:var(--r-button);border:1px solid var(--fg);font-weight:500}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.step{border-top:1px solid var(--line);padding-top:16px}.step b{font-family:var(--f-head);font-size:40px;font-weight:var(--w-head);display:block}
+.pro{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center;background:var(--surface);border-radius:var(--r-card);overflow:hidden}.pro .ph{aspect-ratio:16/10;border-radius:0}.pro div.t{padding:40px}
+.tag{display:inline-block;font-size:12px;font-weight:600;padding:3px 10px;border-radius:var(--r-button);background:var(--surface);color:var(--fg)}
+footer{margin-top:var(--gap);background:var(--surface);padding:48px 0 24px;font-size:14px}.fgrid{display:grid;grid-template-columns:repeat(3,1fr) 1.4fr;gap:24px}
+.divider{margin:var(--gap) 0 0;padding:14px 32px;background:var(--fg);color:var(--bg);font:600 13px/1 var(--f-body);text-align:center}
+.pdp{display:grid;grid-template-columns:7fr 5fr;gap:48px;margin-top:24px}.gal{display:grid;grid-template-columns:1fr 1fr;gap:12px}.gal .ph{aspect-ratio:4/5}
+.buy{display:flex;flex-direction:column;gap:18px;position:sticky;top:96px;align-self:start}.buy h1{font-size:40px}
+.chips{display:flex;gap:8px;flex-wrap:wrap}.chip{font-size:13px;font-weight:500;padding:6px 12px;border-radius:var(--r-button);background:var(--surface)}
+.opt{display:flex;gap:8px}.opt span{min-width:88px;height:44px;border:1px solid var(--line);border-radius:var(--r-button);display:grid;place-items:center;font-weight:500}.opt .on{border-color:var(--fg);box-shadow:inset 0 0 0 1px var(--fg)}
+.po{display:grid;gap:8px}.po label{border:1px solid var(--line);border-radius:var(--r-card);padding:14px 16px;display:flex;gap:10px;align-items:flex-start}.po .on{border-color:var(--primary);background:var(--surface)}
+.stepper{display:flex;align-items:center;height:52px;border:1px solid var(--line);border-radius:var(--r-button)}.stepper span{width:44px;text-align:center}
+.hi{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.hi div{background:var(--surface);border-radius:var(--r-card);padding:16px}.hi b{display:block;font-size:14px}.hi small{color:var(--muted)}
+.acc{border-top:1px solid var(--line)}.acc>div{border-bottom:1px solid var(--line);padding:16px 0}.acc h3{font-family:var(--f-body);font-weight:600;font-size:16px;display:flex;justify-content:space-between}
+.ing{display:grid;gap:10px;margin-top:12px}.ing div{display:grid;grid-template-columns:1fr;gap:4px}.ing em{font-style:normal;color:var(--muted);font-size:14px}.ing b{font-weight:600}.num{font-family:var(--f-head);font-weight:var(--w-head)}
+.inci{font-size:13px;color:var(--muted);margin-top:12px}ol{margin:10px 0 0;padding-inline-start:20px}
+.scent{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:4px}.scent div{padding:0 12px;border-inline-start:1px solid var(--line)}.scent div:first-child{border:0;padding-inline-start:0}.scent small{display:block;color:var(--muted);font-size:12px}
+.pao{display:flex;gap:10px;align-items:center;font-size:14px}.pao svg{flex:0 0 auto}
+@media (max-width:760px){.wrap{padding:0 16px}section{margin-top:56px}.hd{grid-template-columns:1fr auto;height:60px}nav,.search{display:none}.logo{font-size:24px;white-space:nowrap}
+.hero,.pdp,.pro{grid-template-columns:1fr}.hero h1{font-size:38px}.grid4{grid-template-columns:1fr 1fr}.cats{grid-template-columns:repeat(3,1fr)}.steps{grid-template-columns:1fr 1fr}.fgrid{grid-template-columns:1fr 1fr}
+.gal{grid-template-columns:1fr;}.gal .ph:not(:first-child){display:none}.buy{position:static}.buy h1{font-size:30px}.finder{padding:28px}.pro div.t{padding:24px}}
+</style></head><body>
+<div class="note">Balm preset — static design-direction sketch (docs only, not theme code). Fonts shown with fallbacks; the preset uses 'Instrument Serif' and 'Figtree' from Shopify's font library. Images are placeholders.</div>
+<div class="ann">Vegan · Gift wrapping</div>
+<header><div class="wrap hd"><a class="logo" href="#">Balm Atelier</a><nav><a href="#">Shop</a><a href="#">New in</a><a href="#">Body butter</a><a href="#">Scrubs</a><a href="#">Oils</a><a href="#">Routines</a></nav><div class="tools"><div class="search">Search</div><span class="icon" aria-label="Account">◯</span><span class="icon" aria-label="Cart">▢</span></div></div></header>
+<main>
+<div class="wrap">
+<div class="hero"><div><span class="eyebrow">Body rituals</span><h1>Soft skin, slowly.</h1><p>Whipped butters, oils and scrubs made in small batches. Scent notes you can read before you buy.</p><div class="row"><a class="btn btn-primary" href="#">Shop the ritual</a><a class="btn btn-secondary" href="#">Find your scent</a></div></div><div class="ph" style="--tint:#b9a79a"><span>Hero: macro of whipped body butter</span></div></div>
+</div>
+<section class="marquee"><span>Vegan</span><span>Small batches</span><span>Refillable jars</span><span>Gift wrapping</span></section>
+<div class="wrap">
+<section><div class="sec-h"><h2>New in</h2><a href="#">View all</a></div><div class="grid4"><a class="card" href="#pdp"><div class="card-media ph" style="--tint:#c9b8a6"><span>Body care product image</span></div><span class="card-title">Whipped shea body butter</span><span class="price">€19.00</span><span class="unit">200 ml · €9.50 / 100 ml</span></a><a class="card" href="#pdp"><div class="card-media ph" style="--tint:#9fb1c7"><span>Body care product image</span></div><span class="card-title">Coffee body scrub</span><span class="price">€16.00</span><span class="unit">250 g · €6.40 / 100 g</span></a><a class="card" href="#pdp"><div class="card-media ph" style="--tint:#b7c4b0"><span>Body care product image</span></div><span class="card-title">Dry body oil</span><span class="price">€24.00</span><span class="unit">100 ml · €24.00 / 100 ml</span></a><a class="card" href="#pdp"><div class="card-media ph" style="--tint:#c7a9b8"><span>Body care product image</span></div><span class="card-title">Ritual gift set</span><span class="price">€49.00</span><span class="unit">3 products</span></a></div></section>
+<section><div class="sec-h"><h2>Shop by category</h2></div><div class="cats"><a class="cat" href="#">Body butter</a><a class="cat" href="#">Scrubs</a><a class="cat" href="#">Oils</a><a class="cat" href="#">Hand care</a><a class="cat" href="#">Gift sets</a><a class="cat" href="#">Travel sizes</a></div></section>
+<section class="finder"><span class="eyebrow" style="color:inherit;opacity:.8">Guided finder</span><h2>How does your skin feel today?</h2><div class="row"><a class="pill" href="#">Dry</a><a class="pill" href="#">Sensitive</a><a class="pill" href="#">Normal</a><a class="pill" href="#">Oily</a></div><small style="opacity:.8">Each answer links to the filtered collection.</small></section>
+<section><div class="sec-h"><h2>The ritual</h2></div><div class="steps"><div class="step"><b>01</b><span style="font-weight:600">Cleanse</span><div class="ph" style="aspect-ratio:1;margin-top:12px;--tint:#c4b5a8"><span>Product</span></div></div><div class="step"><b>02</b><span style="font-weight:600">Exfoliate</span><div class="ph" style="aspect-ratio:1;margin-top:12px;--tint:#c4b5a8"><span>Product</span></div></div><div class="step"><b>03</b><span style="font-weight:600">Moisturise</span><div class="ph" style="aspect-ratio:1;margin-top:12px;--tint:#c4b5a8"><span>Product</span></div></div></div></section>
+<section class="pro"><div class="ph"><span>Spa photography</span></div><div class="t"><span class="tag">Wholesale</span><h2 style="font-size:40px;margin:12px 0">For spas and retailers</h2><p>Testers, case packs and volume pricing. Sign in with your wholesale account.</p><a class="btn btn-secondary" href="#">Wholesale sign-in</a></div></section>
+</div>
+<div class="divider" id="pdp">Product page</div>
+<div class="wrap pdp">
+<div class="gal"><div class="ph" style="--tint:#c9b8a6"><span>Front</span></div><div class="ph" style="--tint:#b9c3cf"><span>Texture</span></div><div class="ph" style="--tint:#c7bfb3"><span>In use</span></div><div class="ph" style="--tint:#b8b0c3"><span>Ingredients</span></div></div>
+<div class="buy">
+<div class="chips"><span class="chip">Vegan</span><span class="chip">Dermatologically tested</span></div>
+<h1>Whipped shea body butter</h1>
+<div><span class="price" style="font-size:20px">€19.00</span><div class="unit">€9.50 / 100 ml · Tax included.</div></div>
+<div><div style="font-size:15px;margin-bottom:8px">Size: <b>200 ml</b></div><div class="opt"><span class="on">200 ml</span><span class="">500 ml</span></div></div>
+<div><div style="font-size:15px;margin-bottom:8px">Skin type</div><div class="chips"><span class="chip">Dry skin</span><span class="chip">Sensitive</span></div></div>
+<div class="po"><label class="on"><input type="radio" checked> <span><b>One-time purchase</b><br><small>€19.00</small></span></label><label><input type="radio"> <span><b>Subscribe and save 10%</b><br><small>Delivered every 6 weeks · cancel any time</small></span></label></div>
+<div class="row" style="flex-wrap:nowrap"><div class="stepper"><span>−</span><span>1</span><span>+</span></div><a class="btn btn-primary" style="flex:1" href="#">Add to cart</a></div>
+<div class="hi"><div><b>Melts in</b><small>Absorbs in under a minute</small></div><div><b>Nourishes</b><small>Shea and cocoa butter</small></div><div><b>Calms</b><small>Fragrance options for sensitive skin</small></div></div>
+<div><div style="font-weight:600;margin-bottom:8px">Scent notes</div><div class="scent"><div><small>Top</small>Bergamot, pink pepper</div><div><small>Heart</small>Vanilla orchid</div><div><small>Base</small>Tonka, sandalwood</div></div></div>
+<div class="pao"><svg width="36" height="36" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M8 14h20v14a3 3 0 01-3 3H11a3 3 0 01-3-3V14z"/><path d="M7 10l14-5 2 5"/><text x="18" y="26" text-anchor="middle" font-size="8" fill="currentColor" stroke="none">12M</text></svg><span>Use within 12 months of opening</span></div>
+<div class="acc">
+<div><h3>Key ingredients <span>−</span></h3><div class="ing"><div><span><b>Shea butter</b><br><em>Rich in fatty acids that soften dry skin</em></span></div><div><span><b>Cocoa butter</b><br><em>Forms a light protective layer</em></span></div><div><span><b>Vitamin E</b><br><em>Antioxidant that protects the formula</em></span></div></div><div class="inci"><b>Full ingredient list (INCI):</b> Butyrospermum Parkii Butter, Theobroma Cacao Seed Butter, Caprylic/Capric Triglyceride, Tocopherol, Parfum, Linalool.</div></div>
+<div><h3>How to use <span>−</span></h3><ol><li>Warm a small amount between your palms.</li><li>Massage into slightly damp skin.</li><li>Focus on elbows, knees and heels.</li></ol></div>
+<div><h3>Warnings <span>+</span></h3></div>
+<div><h3>Description <span>+</span></h3></div>
+</div>
+</div></div>
+<div class="wrap"><section><div class="sec-h"><h2>Complete the ritual</h2></div><div class="grid4"><a class="card" href="#pdp"><div class="card-media ph" style="--tint:#c9b8a6"><span>Body care product image</span></div><span class="card-title">Coffee body scrub</span><span class="price">€16.00</span><span class="unit">250 g · €6.40 / 100 g</span></a><a class="card" href="#pdp"><div class="card-media ph" style="--tint:#9fb1c7"><span>Body care product image</span></div><span class="card-title">Dry body oil</span><span class="price">€24.00</span><span class="unit">100 ml · €24.00 / 100 ml</span></a><a class="card" href="#pdp"><div class="card-media ph" style="--tint:#b7c4b0"><span>Body care product image</span></div><span class="card-title">Ritual gift set</span><span class="price">€49.00</span><span class="unit">3 products</span></a><a class="card" href="#pdp"><div class="card-media ph" style="--tint:#c7a9b8"><span>Body care product image</span></div><span class="card-title">Whipped shea body butter</span><span class="price">€19.00</span><span class="unit">200 ml · €9.50 / 100 ml</span></a></div></section></div>
+</main>
+<footer><div class="wrap fgrid"><div><b>Shop</b><br>Body butter<br>Scrubs<br>Oils<br>Hand care</div><div><b>Help</b><br>Shipping<br>Returns<br>Contact</div><div><b>About</b><br>Our story<br>Ingredients<br>Wholesale</div><div><b style="font-family:var(--f-head);font-weight:var(--w-head);font-size:24px">Join the list</b><div class="row" style="margin-top:12px"><span class="search" style="width:auto;flex:1">Email</span><a class="btn btn-primary" href="#" style="height:44px">Subscribe</a></div></div></div></footer>
+</body></html>
