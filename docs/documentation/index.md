@@ -9,7 +9,7 @@ Weft is an Online Store 2.0 theme. Every page is built from sections and blocks 
 - **Retail shoppers** see retail prices, stock messages, delivery information and the standard buy buttons.
 - **Wholesale buyers** who sign in as a contact of a Shopify B2B company see the prices, quantity rules and volume pricing from your B2B catalogs, plus wholesale ordering tools such as the order matrix and the quick order list.
 
-Weft uses Shopify's native B2B features only, so wholesale selling needs no app. Shopify calculates every price, quantity rule and cart total, and the theme displays them.
+Weft uses Shopify's native B2B features only, so wholesale selling needs no app. Prices, quantity rules, volume pricing and cart totals come from Shopify, and the theme displays them.
 
 ## The three styles
 

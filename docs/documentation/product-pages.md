@@ -20,12 +20,12 @@ To edit the product page:
 |---|---|
 | Preselect the first available variant | When off, shoppers choose every option before they can add to cart. |
 | Keep product information in view while scrolling | The information column stays in view on large screens while the gallery scrolls. |
-| Mobile sticky bar | Shows the selected options and Add to cart at the bottom of the screen once the main button scrolls out of view. Hidden for wholesale buyers. |
+| Mobile sticky bar | Shows the selected options, stock status and Add to cart at the bottom of the screen once the main button scrolls out of view. When the variant is sold out, it offers Remind me instead. Hidden for wholesale buyers. |
 | Layout on large screens | Stacked, two columns, thumbnails or carousel. On mobile the gallery is a swipe carousel. |
 | Gallery width | Wide, half or narrow. |
 | Media aspect ratio, Media fit, Media background | How images sit in the gallery. |
 | Thumbnails | Large screens only, all screens or hidden. |
-| Show media counter on mobile | Shows "1 / 5" style counting on phones. |
+| Show media counter on mobile | Shows the current image number on phones, for example 1 / 5. |
 | Zoom | Open in a lightbox, magnify on hover, both, or off. |
 | Open the lightbox on mobile | Lets phone shoppers open the lightbox. |
 | Loop videos | Repeats product videos. |

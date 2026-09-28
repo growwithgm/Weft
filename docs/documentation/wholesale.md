@@ -6,7 +6,7 @@ This page explains how Weft serves wholesale buyers with Shopify's native B2B fe
 
 Wholesale mode turns on when a customer signs in as a contact of a Shopify B2B company location. The theme checks this with Shopify's `customer.b2b?` property. There are no customer tags to manage and no app to install.
 
-Shopify calculates every price, quantity rule, volume price, stock level and cart total from your B2B catalogs. The theme only displays them, and Shopify's cart response is always final. Everyone else, including signed-in retail customers, sees the retail storefront.
+Prices, quantity rules and volume pricing come from your B2B catalogs, stock comes from your inventory, and Shopify calculates the cart totals. The theme only displays them, and Shopify's cart response is always final. Everyone else, including signed-in retail customers, sees the retail storefront.
 
 ## What wholesale buyers see
 
@@ -23,7 +23,7 @@ Shopify calculates every price, quantity rule, volume price, stock level and car
 
 ## Wholesale product blocks
 
-All product templates include these blocks. They show only to wholesale buyers, and in the theme editor they show a "Wholesale preview — sample data" badge so you can style them.
+All product templates include these blocks. They show only to wholesale buyers. In the theme editor they also show, so you can style them, and most carry a "Wholesale preview — sample data" badge.
 
 | Block | What it does |
 |---|---|
@@ -72,7 +72,7 @@ Use Shopify catalogs first:
 1. Leave the product out of the catalogs your retail markets use.
 2. Include it in your B2B catalog.
 
-Retail visitors who follow a link to the product get the 404 page. It includes the line "Wholesale customer? Sign in to see trade-only products", which links to your wholesale sign-in page. Turn the line off in the **404 page** section.
+Retail visitors who follow a link to the product get the 404 page. It includes the line "Wholesale customer? Sign in to see trade-only products", which links to your wholesale sign-in page, or to the login page when none is set. Turn the line off in the **404 page** section.
 
 If a product must stay in a retail catalog, use the tag fallback:
 

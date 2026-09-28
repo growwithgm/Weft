@@ -35,7 +35,7 @@ The block reads list metafields and category metafields, and shows each value as
 
 ### Shade and scent swatches
 
-Shade and scent options can show as swatches, like colors. Add the option name, for example Shade or Scent, to **Theme settings > Swatches > Color option names**, and set a color or image on each option value in Shopify. See [Variant picker and swatches](product-pages.md#variant-picker-and-swatches).
+Shade and scent options can show as swatches, like colors. Add the option name, for example Shade or Scent, to **Theme settings > Swatches > Color option names**. Then set swatches on the option values in Shopify, or list colors in **Theme settings > Swatches > Fallback colors**. See [Variant picker and swatches](product-pages.md#variant-picker-and-swatches).
 
 ## Sections
 
@@ -55,9 +55,9 @@ For the Before and after section, use two images of the same size and crop. Use 
 The finder sends shoppers to a collection with filters applied. It uses your Search & Discovery filters, so set up the filters first. See [Filters](collections-search-cart.md#filters).
 
 1. Add a **Guided finder** section and choose the **Collection to filter**. When empty, the finder uses all products.
-2. Open the collection on your storefront, apply the filter you want the question to use, and look at the page URL. It contains the filter parameter and the value, for example `filter.p.tag=curly` or `filter.v.option.size=250 ml`.
-3. Add a **Question** block. Enter the question, an optional hint, and paste the parameter part, such as `filter.p.tag` or `filter.p.m.shopify.hair-type`, into **Filter parameter**.
-4. In **Answers**, enter one answer per line. Use the label on its own when it's the same as the filter value, for example `Curly`. When the value in the URL differs from the label, write `Label = filter value`.
+2. Open the collection on your storefront, apply the filter you want the question to use, and look at the page URL. It contains the filter parameter and the value, for example `filter.p.tag=curly`.
+3. Add a **Question** block. Enter the question, an optional hint, and paste the parameter part, such as `filter.p.tag`, `filter.v.option.size` or `filter.p.m.shopify.hair-type`, into **Filter parameter**.
+4. In **Answers**, enter one answer per line. Use the label on its own when it's the same as the filter value, for example `Curly`. When the value in the URL differs from the label, write `Label = filter value`. URLs encode some characters, for example a space shows as `+` or `%20`, so write the value with the plain characters.
 5. Add more questions as needed and set the **Button label**.
 
 Shoppers see one question at a time with Back and Next buttons. Without JavaScript, all questions show at once. The finder only builds a filtered collection link; it doesn't score answers.
