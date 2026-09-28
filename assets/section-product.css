@@ -23,8 +23,12 @@
     .product__grid--extra_wide .product__media, .product__grid--extra_wide .product__info { grid-column: auto; }
     .product__grid--wide .product__media { grid-column: span 7; } .product__grid--wide .product__info { grid-column: span 5; }
     .product__grid--half .product__media, .product__grid--half .product__info { grid-column: span 6; }
-    .product__grid--narrow .product__media, .product__grid--wide-info .product__media { grid-column: span 5; }
-    .product__grid--narrow .product__info, .product__grid--wide-info .product__info { grid-column: span 7; }
+    .product__grid--narrow .product__media { grid-column: span 5; }
+    .product__grid--narrow .product__info { grid-column: span 7; }
+    /* Wholesale buyers on order-matrix products: media and information half and half, whatever the
+       media width setting, so the matrix table has room (spans broke the two-column layouts). */
+    .product__grid--wide-info { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+    .product__grid--wide-info .product__media, .product__grid--wide-info .product__info { grid-column: auto; }
     .product__info--sticky { position: sticky; top: calc(var(--header-height, 76px) + 20px); }
   }
   .product__info { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
