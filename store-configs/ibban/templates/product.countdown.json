@@ -129,16 +129,19 @@
           "type": "wholesale-terms",
           "settings": {}
         },
-        "wholesale_tiers": {
-          "type": "volume-pricing",
-          "settings": {}
+        "wholesale_matrix": {
+          "type": "order-matrix",
+          "settings": {
+            "layout": "rows",
+            "show_rules_bar": true
+          }
         },
         "wholesale_quantity": {
           "type": "wholesale-quantity",
           "settings": {}
         },
-        "wholesale_matrix": {
-          "type": "order-matrix",
+        "wholesale_tiers": {
+          "type": "volume-pricing",
           "settings": {}
         }
       },
@@ -148,6 +151,8 @@
         "rating",
         "price",
         "wholesale_terms",
+        "wholesale_matrix",
+        "wholesale_quantity",
         "wholesale_tiers",
         "divider-0",
         "message-1",
@@ -156,9 +161,7 @@
         "divider-2",
         "product-signup",
         "divider-3",
-        "share",
-        "wholesale_quantity",
-        "wholesale_matrix"
+        "share"
       ],
       "settings": {
         "thumbnails": "both",

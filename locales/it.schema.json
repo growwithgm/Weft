@@ -336,6 +336,7 @@
     "google_site_verification_code": "Codice di verifica del sito Google",
     "google_tag_manager_container_id": "ID contenitore di Google Tag Manager",
     "grid": "Griglia",
+    "grid_first_option_down_other_options_across": "Griglia: prima opzione in righe, altre opzioni in colonne",
     "group": "Gruppo",
     "guide_image": "Immagine della guida",
     "guided_finder": "Ricerca guidata",
@@ -630,8 +631,8 @@
     "pre_order": "Preordine",
     "preload_links_on_hover": "Precarica i link al passaggio del mouse",
     "preselect_the_first_available_variant": "Preseleziona la prima variante disponibile",
+    "preview_as_a_wholesale_buyer_in_the_editor": "Anteprima come acquirente all’ingrosso nell’editor",
     "preview_the_wholesale_price_in_the_editor": "Visualizza l'anteprima del prezzo all'ingrosso nell'editor",
-    "preview_wholesale_blocks_in_the_editor": "Anteprima dei blocchi ingrosso nell’editor",
     "price": "Prezzo",
     "price_tag": "Cartellino del prezzo",
     "primary": "Primario",
@@ -741,6 +742,7 @@
     "row_height_on_mobile": "Altezza della riga su dispositivi mobili",
     "row_label": "Etichetta della riga",
     "rows_from_metafields": "Righe dai metacampi",
+    "rows_one_row_per_variant": "Righe: una riga per variante",
     "rows_to_span": "Righe da occupare",
     "rss_link_in_blog_breadcrumbs": "Link RSS nel breadcrumb del blog",
     "rule_for_other_countries": "Regola per gli altri paesi",
@@ -844,6 +846,7 @@
     "show_media": "Mostra i contenuti multimediali",
     "show_media_counter_on_mobile": "Mostra il contatore dei contenuti multimediali su dispositivi mobili",
     "show_media_promotion": "Mostra la promozione multimediale",
+    "show_minimum_order_and_pack_size_bar": "Mostra la barra con ordine minimo e confezione",
     "show_new_label": "Mostra l'etichetta Novità",
     "show_on": "Mostra su",
     "show_on_mobile": "Mostra su dispositivi mobili",
@@ -1680,7 +1683,7 @@
             "info": "Per i prodotti venduti in confezioni assortite: le righe a taglia unica mostrano ogni valore di colore."
           },
           "wholesale_editor_preview": {
-            "info": "Mostra i blocchi ingrosso con dati di esempio nell’editor del tema. Nel negozio li vedono solo i clienti B2B che hanno effettuato l’accesso."
+            "info": "L’editor del tema mostra la pagina vista da un cliente B2B: blocchi ingrosso con dati di esempio, blocchi solo al dettaglio nascosti. Nel negozio i blocchi ingrosso sono visibili solo ai clienti B2B che hanno effettuato l’accesso."
           },
           "wholesale_installments": {
             "info": "Attivalo solo se il check-out B2B offre il fornitore del pagamento rateale."

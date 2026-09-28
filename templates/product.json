@@ -127,7 +127,9 @@
         },
         "matrix": {
           "type": "order-matrix",
-          "settings": {}
+          "settings": {
+            "layout": "rows"
+          }
         }
       },
       "block_order": [
@@ -136,6 +138,8 @@
         "price",
         "rating",
         "terms",
+        "matrix",
+        "wholesale_qty",
         "installments",
         "tiers",
         "picker",
@@ -145,8 +149,6 @@
         "notify",
         "options",
         "buy",
-        "wholesale_qty",
-        "matrix",
         "features",
         "description",
         "returns",

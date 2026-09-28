@@ -6,8 +6,22 @@
   if customer and customer.b2b?
     assign wholesale = true
   endif
+  # A rows-layout order matrix with its rules bar already shows minimum and pack on matrix products.
+  assign covered = false
+  if settings.wholesale_matrix_tag != blank and p.has_only_default_variant == false
+    assign matrix_tag = settings.wholesale_matrix_tag | strip | downcase
+    assign tags_lower = p.tags | join: '|' | downcase | split: '|'
+    if tags_lower contains matrix_tag
+      for b in section.blocks limit: 50
+        if b.type == 'order-matrix' and b.settings.layout == 'rows' and b.settings.show_rules_bar
+          assign covered = true
+          break
+        endif
+      endfor
+    endif
+  endif
 -%}
-{%- if p and wholesale or p and request.design_mode and settings.wholesale_editor_preview -%}
+{%- if covered == false and p and wholesale or covered == false and p and request.design_mode and settings.wholesale_editor_preview -%}
   <div class="wholesale-terms" data-swap="{{ block.id }}" {{ block.shopify_attributes }}>
     {%- unless wholesale -%}<span class="badge badge--preview">{{ 'wholesale.sample_notice' | t }}</span>{%- endunless -%}
     {%- render 'rule-chips', product: p, variant: v -%}

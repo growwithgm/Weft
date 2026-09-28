@@ -261,7 +261,7 @@ class OrderMatrix extends HTMLElement {
       if (amount > 0 && Number.isFinite(cell.cap) && total + cell.rule.increment > cell.cap && total >= cell.rule.min) notes.push(fill(s.maxHint, { n: cell.cap - cell.inCart }));
       cell.el.querySelector('[data-cell-note]').textContent = notes.join(' · ');
       const lineTotal = cell.el.querySelector('[data-cell-line]');
-      if (lineTotal) lineTotal.textContent = amount > 0 ? formatMoney(unitPriceAt(total, cell.price, cell.breaks) * amount) : '';
+      if (lineTotal) lineTotal.textContent = amount > 0 ? formatMoney(unitPriceAt(total, cell.price, cell.breaks) * amount) : lineTotal.dataset.zero || '';
     }
     this.querySelectorAll('[data-row]').forEach((row) => {
       let rowTotal = 0;

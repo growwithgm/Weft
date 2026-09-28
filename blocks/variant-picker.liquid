@@ -14,7 +14,13 @@
   endif
   assign fallback_colors = settings.swatch_color_list | newline_to_br | split: '<br />'
   assign hide_for_matrix = false
-  if customer and customer.b2b? and settings.wholesale_matrix_tag != blank
+  assign view_wholesale = false
+  if customer and customer.b2b?
+    assign view_wholesale = true
+  elsif request.design_mode and settings.wholesale_editor_preview
+    assign view_wholesale = true
+  endif
+  if view_wholesale and settings.wholesale_matrix_tag != blank
     assign matrix_tag = settings.wholesale_matrix_tag | strip | downcase
     for tag in p.tags
       assign t = tag | downcase

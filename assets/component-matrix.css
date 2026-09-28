@@ -68,6 +68,61 @@
     .matrix__input { width: 40px; }
   }
 
+  /* Rows layout: one row per variant, rules bar, figures and a full-width add button */
+  .matrix--rows .matrix__table--rows { border-radius: var(--r-card); }
+  .matrix__rules-bar { display: flex; justify-content: center; align-items: center; gap: 16px; margin: 0; padding: 14px 16px; background: var(--c-fg); color: var(--c-bg); font-size: var(--t-14); font-weight: var(--fw-bold); letter-spacing: 0.04em; text-transform: uppercase; }
+  .matrix__rules-sep { width: 1px; height: 16px; background: currentColor; opacity: 0.4; }
+  .matrix__rows-head { display: none; }
+  .matrix--rows .matrix__row { display: block; border-block-start: 1px solid var(--c-line); }
+  .matrix--rows .matrix__rows-head + .matrix__row { border-block-start: 0; }
+  .matrix--rows .matrix__cell { display: grid; text-align: start; grid-template-columns: 56px minmax(0, 1fr) auto; grid-template-areas: 'thumb name price' 'thumb size stock' 'thumb qty total' 'err err err' 'note note note'; column-gap: 12px; row-gap: 6px; padding: 12px 14px; border: 0; }
+  .matrix--rows .matrix__thumb { grid-area: thumb; width: 56px; height: 64px; border-radius: 8px; overflow: hidden; align-self: start; }
+  .matrix--rows .matrix__row-name { grid-area: name; font-weight: var(--fw-bold); }
+  .matrix--rows .matrix__size { grid-area: size; }
+  .matrix__chip { display: inline-block; padding: 4px 12px; border-radius: 999px; background: var(--c-surface); font-size: var(--t-13); font-weight: var(--fw-medium); }
+  .matrix--rows .matrix__stock { grid-area: stock; display: flex; flex-direction: column; align-items: center; justify-self: end; gap: 2px; }
+  .matrix__stock-count { min-width: 36px; padding: 2px 8px; border-radius: 999px; background: var(--c-success-bg); color: var(--c-ok); text-align: center; font-size: var(--t-14); font-weight: var(--fw-bold); }
+  .matrix__stock-count--low { background: color-mix(in srgb, var(--c-low) 12%, var(--c-bg)); color: var(--c-low); }
+  .matrix__stock-count--out { background: var(--c-error-bg); color: var(--c-bad); }
+  .matrix__stock-low { font-size: var(--t-12); font-weight: var(--fw-bold); color: var(--c-low); text-transform: uppercase; }
+  .matrix--rows .matrix__stepper { grid-area: qty; justify-self: start; }
+  .matrix--rows .matrix__hint { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .matrix--rows .matrix__note { grid-area: note; }
+  .matrix--rows .matrix__note:empty { display: none; }
+  .matrix--rows .matrix__error { grid-area: err; }
+  .matrix--rows .matrix__error[hidden] { display: none; }
+  .matrix__price { grid-area: price; justify-self: end; font-size: var(--t-14); font-weight: var(--fw-bold); white-space: nowrap; }
+  .matrix__sold-out { --badge-bg: var(--c-error-bg); --badge-fg: var(--c-bad); text-transform: uppercase; font-weight: var(--fw-bold); }
+  .matrix__line { grid-area: total; justify-self: end; font-size: var(--t-15); font-weight: var(--fw-bold); white-space: nowrap; }
+  .matrix--rows .matrix__cell--sold_out > :not(.matrix__price):not(.matrix__error), .matrix--rows .matrix__cell--below_min > :not(.matrix__error) { opacity: 0.5; }
+  .matrix--rows .matrix__cell--sold_out .quantity, .matrix--rows .matrix__cell--below_min .quantity { opacity: 1; }
+  .matrix--rows .matrix__cell.is-filled { background: var(--c-surface); }
+  .matrix__summary--rows { gap: 0; padding: 0; margin-block-start: 0; border: 1px solid var(--c-line); border-block-start: 2px solid var(--c-fg); border-radius: 0 0 var(--r-card) var(--r-card); overflow: hidden; }
+  .matrix--rows .matrix__table--rows { border-radius: var(--r-card) var(--r-card) 0 0; }
+  .matrix__summary-bar { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 16px; flex-wrap: wrap; }
+  .matrix__summary-links { display: flex; align-items: center; gap: 20px; }
+  .matrix__summary--rows .matrix__clear { display: inline-flex; min-height: 44px; align-items: center; color: var(--c-muted); }
+  .matrix__summary-figures { display: flex; gap: 28px; margin: 0; }
+  .matrix__figure { display: flex; flex-direction: column; align-items: flex-end; }
+  .matrix__figure-value { font-size: var(--t-20); font-weight: var(--fw-bold); }
+  .matrix__figure-label { font-size: var(--t-12); font-weight: var(--fw-bold); color: var(--c-muted); text-transform: uppercase; letter-spacing: 0.04em; }
+  .matrix__summary--rows .matrix__messages { padding: 0 16px 12px; }
+  .matrix__summary--rows .matrix__messages:empty { display: none; }
+  .matrix__add--block { width: 100%; border-radius: 0; min-height: 56px; text-transform: uppercase; letter-spacing: 0.06em; }
+  @media (max-width: 989px) {
+    .matrix__summary--rows { margin-inline: 0; padding: 0; }
+  }
+  @media (min-width: 750px) {
+    .matrix__rows-head { display: grid; grid-template-columns: 56px minmax(80px, 1fr) minmax(80px, auto) 64px 132px minmax(96px, auto) 84px; column-gap: 12px; align-items: center; padding: 12px 14px; background: var(--c-surface); font-size: var(--t-12); font-weight: var(--fw-bold); color: var(--c-muted); text-transform: uppercase; letter-spacing: 0.06em; }
+    .matrix__rows-head--no-size { grid-template-columns: 56px minmax(80px, 1fr) 64px 132px minmax(96px, auto) 84px; }
+    .matrix__rows-head-total { text-align: end; }
+    .matrix--rows .matrix__cell { grid-template-columns: 56px minmax(80px, 1fr) minmax(80px, auto) 64px 132px minmax(96px, auto) 84px; grid-template-areas: 'thumb name size stock qty price total' 'thumb err err err err err err' 'thumb note note note note note note'; align-items: center; row-gap: 4px; }
+    .matrix--rows .matrix__row--no-size .matrix__cell { grid-template-columns: 56px minmax(80px, 1fr) 64px 132px minmax(96px, auto) 84px; grid-template-areas: 'thumb name stock qty price total' 'thumb err err err err err' 'thumb note note note note note'; }
+    .matrix--rows .matrix__stock { justify-self: center; }
+    .matrix--rows .matrix__price { justify-self: start; }
+    .matrix--rows .matrix__thumb { align-self: center; }
+  }
+
   /* Quick order list: one row per variant */
   .quick-order__head { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; flex-wrap: wrap; margin-block-end: 20px; }
   .quick-order__history { font-size: var(--t-15); }

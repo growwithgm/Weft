@@ -4,8 +4,8 @@
   error. Shared by the order matrix block (layout 'grid') and the quick order list ('list').
   Without JavaScript the input posts updates[variant_id] to /cart/update, starting at the
   in-cart quantity.
-  Params: variant (required), form_id, cell_label, col_label, layout ('grid' | 'list'),
-          show_sku (bool, list layout)
+  Params: variant (required), form_id, cell_label, col_label, layout ('grid' | 'row' | 'list'),
+          show_sku (bool, list layout), product, row_name, show_size (row layout)
 {%- endcomment -%}
 {%- liquid
   assign v = variant
@@ -91,6 +91,21 @@
         <span class="quick-order__from muted">{{ 'wholesale.from_tier' | t: price: break_money, count: lowest_break.minimum_quantity }}</span>
       {%- endif -%}
     </span>
+  {%- elsif layout == 'row' -%}
+    {%- assign row_image = v.featured_image | default: product.featured_image -%}
+    <span class="matrix__thumb media">
+      {%- if row_image -%}{{ row_image | image_url: width: 120 | image_tag: widths: '60,120', sizes: '56px', alt: '', loading: 'lazy' }}{%- endif -%}
+    </span>
+    <span class="matrix__row-name">{{ row_name }}</span>
+    {%- if show_size -%}<span class="matrix__size"><span class="matrix__chip">{{ col_label }}</span></span>{%- endif -%}
+    <span class="matrix__stock" aria-hidden="true">
+      {%- if tracked -%}
+        <span class="matrix__stock-count{% if qty <= 0 %} matrix__stock-count--out{% elsif qty <= low_threshold %} matrix__stock-count--low{% endif %} tabular">{{ qty | at_least: 0 }}</span>
+        {%- if qty > 0 and qty <= low_threshold -%}<span class="matrix__stock-low">{{ 'wholesale.stock_low' | t }}</span>{%- endif -%}
+      {%- else -%}
+        <span class="matrix__stock-count tabular">✓</span>
+      {%- endif -%}
+    </span>
   {%- else -%}
     <span class="matrix__cell-label">{{ col_label }}</span>
   {%- endif -%}
@@ -122,6 +137,17 @@
     {%- endif -%}
   </span>
   {%- if layout == 'list' -%}<span class="quick-order__line tabular" data-cell-line aria-hidden="true"></span>{%- endif -%}
+  {%- if layout == 'row' -%}
+    <span class="matrix__price">
+      {%- if state == 'sold_out' -%}
+        <span class="badge matrix__sold-out">{{ 'products.sold_out' | t }}</span>
+      {%- else -%}
+        {%- assign each_money = v.price | money -%}
+        <span class="tabular">{{ 'wholesale.price_each' | t: price: each_money }}</span>
+      {%- endif -%}
+    </span>
+    <span class="matrix__line tabular" data-cell-line data-zero="{{ 0 | money | escape }}" aria-hidden="true">{{ 0 | money }}</span>
+  {%- endif -%}
   <span class="matrix__note" data-cell-note>{%- if in_cart > 0 -%}{{ 'products.in_cart' | t: count: in_cart }}{%- endif -%}</span>
   <span class="matrix__error" role="alert" data-cell-error hidden></span>
 </div>

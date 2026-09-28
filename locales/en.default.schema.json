@@ -336,6 +336,7 @@
     "google_site_verification_code": "Google site verification code",
     "google_tag_manager_container_id": "Google Tag Manager container ID",
     "grid": "Grid",
+    "grid_first_option_down_other_options_across": "Grid: first option down, other options across",
     "group": "Group",
     "guide_image": "Guide image",
     "guided_finder": "Guided finder",
@@ -630,8 +631,8 @@
     "pre_order": "Pre-order",
     "preload_links_on_hover": "Preload links on hover",
     "preselect_the_first_available_variant": "Preselect the first available variant",
+    "preview_as_a_wholesale_buyer_in_the_editor": "Preview as a wholesale buyer in the editor",
     "preview_the_wholesale_price_in_the_editor": "Preview the wholesale price in the editor",
-    "preview_wholesale_blocks_in_the_editor": "Preview wholesale blocks in the editor",
     "price": "Price",
     "price_tag": "Price tag",
     "primary": "Primary",
@@ -741,6 +742,7 @@
     "row_height_on_mobile": "Row height on mobile",
     "row_label": "Row label",
     "rows_from_metafields": "Rows from metafields",
+    "rows_one_row_per_variant": "Rows: one row per variant",
     "rows_to_span": "Rows to span",
     "rss_link_in_blog_breadcrumbs": "RSS link in blog breadcrumbs",
     "rule_for_other_countries": "Rule for other countries",
@@ -844,6 +846,7 @@
     "show_media": "Show media",
     "show_media_counter_on_mobile": "Show media counter on mobile",
     "show_media_promotion": "Show media promotion",
+    "show_minimum_order_and_pack_size_bar": "Show minimum order and pack size bar",
     "show_new_label": "Show new label",
     "show_on": "Show on",
     "show_on_mobile": "Show on mobile",
@@ -1680,7 +1683,7 @@
             "info": "For products sold as assorted packs: one-size lines show every color value."
           },
           "wholesale_editor_preview": {
-            "info": "Shows wholesale blocks with sample data in the theme editor. On the storefront they only show to signed-in B2B customers."
+            "info": "The theme editor shows the page a B2B customer sees: wholesale blocks with sample data, retail-only blocks hidden. On the storefront wholesale blocks only show to signed-in B2B customers."
           },
           "wholesale_installments": {
             "info": "Only turn this on when your B2B checkout offers the installments provider."

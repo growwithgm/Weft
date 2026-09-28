@@ -336,6 +336,7 @@
     "google_site_verification_code": "Code de vérification du site Google",
     "google_tag_manager_container_id": "ID du conteneur Google Tag Manager",
     "grid": "Grille",
+    "grid_first_option_down_other_options_across": "Grille : première option en lignes, autres options en colonnes",
     "group": "Groupe",
     "guide_image": "Image du guide",
     "guided_finder": "Outil de recherche guidée",
@@ -630,8 +631,8 @@
     "pre_order": "Précommande",
     "preload_links_on_hover": "Précharger les liens au survol",
     "preselect_the_first_available_variant": "Présélectionner la première variante disponible",
+    "preview_as_a_wholesale_buyer_in_the_editor": "Prévisualiser en tant qu’acheteur en gros dans l’éditeur",
     "preview_the_wholesale_price_in_the_editor": "Prévisualiser le prix de gros dans l'éditeur",
-    "preview_wholesale_blocks_in_the_editor": "Prévisualiser les blocs de vente en gros dans l’éditeur",
     "price": "Prix",
     "price_tag": "Étiquette de prix",
     "primary": "Principal",
@@ -741,6 +742,7 @@
     "row_height_on_mobile": "Hauteur de rangée sur mobile",
     "row_label": "Libellé de la ligne",
     "rows_from_metafields": "Lignes issues de champs méta",
+    "rows_one_row_per_variant": "Lignes : une ligne par variante",
     "rows_to_span": "Rangées occupées",
     "rss_link_in_blog_breadcrumbs": "Lien RSS dans le fil d'Ariane du blog",
     "rule_for_other_countries": "Règle pour les autres pays",
@@ -844,6 +846,7 @@
     "show_media": "Afficher les médias",
     "show_media_counter_on_mobile": "Afficher le compteur de médias sur mobile",
     "show_media_promotion": "Afficher la promotion avec média",
+    "show_minimum_order_and_pack_size_bar": "Afficher la barre commande minimum et taille du lot",
     "show_new_label": "Afficher l'étiquette Nouveauté",
     "show_on": "Afficher sur",
     "show_on_mobile": "Afficher sur mobile",
@@ -1680,7 +1683,7 @@
             "info": "Pour les produits vendus en lots assortis : les lignes à taille unique affichent toutes les couleurs."
           },
           "wholesale_editor_preview": {
-            "info": "Affiche les blocs de vente en gros avec des données d’exemple dans l’éditeur de thème. Sur la boutique, seuls les clients B2B connectés les voient."
+            "info": "L’éditeur de thème affiche la page vue par un client B2B : blocs de vente en gros avec des données d’exemple, blocs réservés au détail masqués. Sur la boutique, les blocs de vente en gros ne s’affichent qu’aux clients B2B connectés."
           },
           "wholesale_installments": {
             "info": "Activez cette option uniquement si votre paiement B2B propose ce prestataire de paiement en plusieurs fois."

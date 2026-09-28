@@ -2170,8 +2170,8 @@
       {
         "type": "checkbox",
         "id": "wholesale_editor_preview",
-        "label": "t:labels.preview_wholesale_blocks_in_the_editor",
-        "default": true,
+        "label": "t:labels.preview_as_a_wholesale_buyer_in_the_editor",
+        "default": false,
         "info": "t:text.settings_schema.wholesale.settings.wholesale_editor_preview.info"
       },
       {

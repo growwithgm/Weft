@@ -141,6 +141,10 @@ export default {
   'wholesale.quick_order_none': s('There are no products to order yet.', 'Todavía no hay productos para pedir.', 'Noch keine Produkte zum Bestellen.', 'Aucun produit à commander pour le moment.', 'Non ci sono ancora prodotti da ordinare.', 'Er zijn nog geen producten om te bestellen.', 'Ainda não há produtos para encomendar.', '注文できる商品はまだありません。'),
   'wholesale.quick_order_title': s('Quick order', 'Pedido rápido', 'Schnellbestellung', 'Commande rapide', 'Ordine rapido', 'Snel bestellen', 'Encomenda rápida', 'クイック注文'),
   'wholesale.sku': s('SKU', 'SKU', 'Artikelnr.', 'Réf.', 'SKU', 'SKU', 'SKU', 'SKU'),
+  'wholesale.min_order': s('Min order {{ count }} pcs', 'Pedido mín. {{ count }} uds.', 'Mindestbestellung {{ count }} Stk.', 'Commande min. {{ count }} pcs', 'Ordine min. {{ count }} pz', 'Min. bestelling {{ count }} st.', 'Encomenda mín. {{ count }} un.', '最小注文{{ count }}点'),
+  'wholesale.pack_size': s('Pack {{ count }} pcs', 'Pack {{ count }} uds.', 'Pack {{ count }} Stk.', 'Lot {{ count }} pcs', 'Confezione {{ count }} pz', 'Pak {{ count }} st.', 'Pack {{ count }} un.', 'パック{{ count }}点'),
+  'wholesale.stock_low': s('Low', 'Pocas', 'Wenig', 'Faible', 'Pochi', 'Weinig', 'Poucas', '残少'),
+  'wholesale.price_each': s('{{ price }}/ea', '{{ price }}/ud.', '{{ price }}/Stk.', '{{ price }}/pc', '{{ price }}/pz', '{{ price }}/st.', '{{ price }}/un.', '{{ price }}/点'),
   'wholesale.stock': s('Stock', 'Stock', 'Bestand', 'Stock', 'Disponibilità', 'Voorraad', 'Stock', '在庫'),
   'wholesale.sample_notice': s('Wholesale preview — sample data', 'Vista previa mayorista: datos de ejemplo', 'Großhandelsvorschau – Beispieldaten', 'Aperçu professionnel — données d’exemple', 'Anteprima ingrosso — dati di esempio', 'Groothandelvoorbeeld — voorbeeldgegevens', 'Pré-visualização grossista — dados de exemplo', '卸売プレビュー（サンプルデータ）'),
 

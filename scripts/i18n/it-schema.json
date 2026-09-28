@@ -1221,6 +1221,9 @@
   "Zoom": "Zoom",
   "namespace.key, for example custom.material": "namespace.key, ad esempio custom.material",
   "namespace.key, for example shopify.hair-type. Used instead of the values when set.": "namespace.key, ad esempio shopify.hair-type. Se impostato, viene usato al posto dei valori.",
-  "Preview wholesale blocks in the editor": "Anteprima dei blocchi ingrosso nell’editor",
-  "Shows wholesale blocks with sample data in the theme editor. On the storefront they only show to signed-in B2B customers.": "Mostra i blocchi ingrosso con dati di esempio nell’editor del tema. Nel negozio li vedono solo i clienti B2B che hanno effettuato l’accesso."
+  "Grid: first option down, other options across": "Griglia: prima opzione in righe, altre opzioni in colonne",
+  "Preview as a wholesale buyer in the editor": "Anteprima come acquirente all’ingrosso nell’editor",
+  "Rows: one row per variant": "Righe: una riga per variante",
+  "Show minimum order and pack size bar": "Mostra la barra con ordine minimo e confezione",
+  "The theme editor shows the page a B2B customer sees: wholesale blocks with sample data, retail-only blocks hidden. On the storefront wholesale blocks only show to signed-in B2B customers.": "L’editor del tema mostra la pagina vista da un cliente B2B: blocchi ingrosso con dati di esempio, blocchi solo al dettaglio nascosti. Nel negozio i blocchi ingrosso sono visibili solo ai clienti B2B che hanno effettuato l’accesso."
 }

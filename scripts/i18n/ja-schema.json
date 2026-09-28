@@ -1221,6 +1221,9 @@
   "Zoom": "ズーム",
   "namespace.key, for example custom.material": "namespace.key (例: custom.material)",
   "namespace.key, for example shopify.hair-type. Used instead of the values when set.": "namespace.key (例: shopify.hair-type)。設定すると、値の代わりに使用されます。",
-  "Preview wholesale blocks in the editor": "エディターで卸売ブロックをプレビュー",
-  "Shows wholesale blocks with sample data in the theme editor. On the storefront they only show to signed-in B2B customers.": "テーマエディターで卸売ブロックをサンプルデータ付きで表示します。ストアではログインしたB2B顧客にのみ表示されます。"
+  "Grid: first option down, other options across": "グリッド：最初のオプションを縦、その他を横に",
+  "Preview as a wholesale buyer in the editor": "エディターで卸売バイヤーとしてプレビュー",
+  "Rows: one row per variant": "行：バリエーションごとに1行",
+  "Show minimum order and pack size bar": "最小注文数とパックサイズのバーを表示",
+  "The theme editor shows the page a B2B customer sees: wholesale blocks with sample data, retail-only blocks hidden. On the storefront wholesale blocks only show to signed-in B2B customers.": "テーマエディターにB2B顧客が見るページを表示します：卸売ブロックはサンプルデータ付きで表示、小売専用ブロックは非表示。ストアでは卸売ブロックはログインしたB2B顧客にのみ表示されます。"
 }

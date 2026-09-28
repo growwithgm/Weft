@@ -136,16 +136,19 @@
           "type": "wholesale-terms",
           "settings": {}
         },
-        "wholesale_tiers": {
-          "type": "volume-pricing",
-          "settings": {}
+        "wholesale_matrix": {
+          "type": "order-matrix",
+          "settings": {
+            "layout": "rows",
+            "show_rules_bar": true
+          }
         },
         "wholesale_quantity": {
           "type": "wholesale-quantity",
           "settings": {}
         },
-        "wholesale_matrix": {
-          "type": "order-matrix",
+        "wholesale_tiers": {
+          "type": "volume-pricing",
           "settings": {}
         }
       },
@@ -155,6 +158,8 @@
         "title",
         "price",
         "wholesale_terms",
+        "wholesale_matrix",
+        "wholesale_quantity",
         "wholesale_tiers",
         "custom_liquid_gnrating",
         "judge_me_reviews_preview_badge_McwKbz",
@@ -162,8 +167,6 @@
         "custom_liquid_wbis",
         "custom_liquid_gnship-delivery",
         "buy-buttons",
-        "wholesale_quantity",
-        "wholesale_matrix",
         "message-2",
         "collapsible_content_j98RbT",
         "collapsible-content-1",

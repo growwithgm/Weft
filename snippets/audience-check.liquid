@@ -1,17 +1,17 @@
 {%- comment -%}
   Outputs "1" when a block with this audience setting should render for the current visitor.
-  Params: audience ('all' | 'retail' | 'wholesale'). In the theme editor everything renders while
-  Theme settings > Wholesale > Preview wholesale blocks in the editor is on.
+  Params: audience ('all' | 'retail' | 'wholesale'). In the theme editor, Theme settings > Wholesale > Preview as a wholesale buyer
+  shows the page a B2B customer sees (wholesale blocks with sample data, retail blocks hidden).
   Usage: {%- capture visible -%}{% render 'audience-check', audience: block.settings.audience %}{%- endcapture -%}
 {%- endcomment -%}
 {%- liquid
   assign is_wholesale = false
   if customer and customer.b2b?
     assign is_wholesale = true
+  elsif request.design_mode and settings.wholesale_editor_preview
+    assign is_wholesale = true
   endif
-  if request.design_mode and settings.wholesale_editor_preview
-    echo '1'
-  elsif audience == 'retail' and is_wholesale == false
+  if audience == 'retail' and is_wholesale == false
     echo '1'
   elsif audience == 'wholesale' and is_wholesale
     echo '1'

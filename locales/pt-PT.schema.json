@@ -336,6 +336,7 @@
     "google_site_verification_code": "Código de verificação do site da Google",
     "google_tag_manager_container_id": "ID do contentor do Google Tag Manager",
     "grid": "Grelha",
+    "grid_first_option_down_other_options_across": "Grelha: primeira opção em linhas, outras opções em colunas",
     "group": "Grupo",
     "guide_image": "Imagem do guia",
     "guided_finder": "Localizador guiado",
@@ -630,8 +631,8 @@
     "pre_order": "Pré-encomenda",
     "preload_links_on_hover": "Pré-carregar ligações ao passar o rato",
     "preselect_the_first_available_variant": "Pré-selecionar a primeira variante disponível",
+    "preview_as_a_wholesale_buyer_in_the_editor": "Pré-visualizar como comprador grossista no editor",
     "preview_the_wholesale_price_in_the_editor": "Pré-visualizar o preço por grosso no editor",
-    "preview_wholesale_blocks_in_the_editor": "Pré-visualizar blocos grossistas no editor",
     "price": "Preço",
     "price_tag": "Etiqueta de preço",
     "primary": "Principal",
@@ -741,6 +742,7 @@
     "row_height_on_mobile": "Altura da linha no telemóvel",
     "row_label": "Etiqueta da linha",
     "rows_from_metafields": "Linhas a partir de metacampos",
+    "rows_one_row_per_variant": "Linhas: uma linha por variante",
     "rows_to_span": "Linhas a ocupar",
     "rss_link_in_blog_breadcrumbs": "Ligação RSS no trilho de navegação do blogue",
     "rule_for_other_countries": "Regra para outros países",
@@ -844,6 +846,7 @@
     "show_media": "Mostrar conteúdo multimédia",
     "show_media_counter_on_mobile": "Mostrar contador de multimédia no telemóvel",
     "show_media_promotion": "Mostrar promoção multimédia",
+    "show_minimum_order_and_pack_size_bar": "Mostrar barra de encomenda mínima e tamanho do pack",
     "show_new_label": "Mostrar etiqueta de novidade",
     "show_on": "Mostrar em",
     "show_on_mobile": "Mostrar no telemóvel",
@@ -1680,7 +1683,7 @@
             "info": "Para produtos vendidos em packs sortidos: as linhas de tamanho único mostram todos os valores de cor."
           },
           "wholesale_editor_preview": {
-            "info": "Mostra os blocos grossistas com dados de exemplo no editor de temas. Na loja, só os clientes B2B com sessão iniciada os veem."
+            "info": "O editor de temas mostra a página que um cliente B2B vê: blocos grossistas com dados de exemplo e blocos só de retalho ocultos. Na loja, os blocos grossistas só aparecem a clientes B2B com sessão iniciada."
           },
           "wholesale_installments": {
             "info": "Ative apenas quando a finalização da compra B2B oferecer o fornecedor de pagamento a prestações."

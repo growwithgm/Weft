@@ -336,6 +336,7 @@
     "google_site_verification_code": "Googleサイト確認コード",
     "google_tag_manager_container_id": "Google Tag ManagerのコンテナID",
     "grid": "グリッド",
+    "grid_first_option_down_other_options_across": "グリッド：最初のオプションを縦、その他を横に",
     "group": "グループ",
     "guide_image": "ガイド画像",
     "guided_finder": "ガイド付きファインダー",
@@ -630,8 +631,8 @@
     "pre_order": "予約注文",
     "preload_links_on_hover": "ホバー時にリンクをプリロードする",
     "preselect_the_first_available_variant": "購入可能な最初のバリエーションを事前に選択する",
+    "preview_as_a_wholesale_buyer_in_the_editor": "エディターで卸売バイヤーとしてプレビュー",
     "preview_the_wholesale_price_in_the_editor": "エディターで卸売価格をプレビューする",
-    "preview_wholesale_blocks_in_the_editor": "エディターで卸売ブロックをプレビュー",
     "price": "価格",
     "price_tag": "値札",
     "primary": "プライマリ",
@@ -741,6 +742,7 @@
     "row_height_on_mobile": "モバイルでの行の高さ",
     "row_label": "行のラベル",
     "rows_from_metafields": "メタフィールドからの行",
+    "rows_one_row_per_variant": "行：バリエーションごとに1行",
     "rows_to_span": "占める行数",
     "rss_link_in_blog_breadcrumbs": "ブログのパンくずリストにRSSリンクを表示する",
     "rule_for_other_countries": "その他の国のルール",
@@ -844,6 +846,7 @@
     "show_media": "メディアを表示する",
     "show_media_counter_on_mobile": "モバイルでメディアカウンターを表示する",
     "show_media_promotion": "メディアプロモーションを表示する",
+    "show_minimum_order_and_pack_size_bar": "最小注文数とパックサイズのバーを表示",
     "show_new_label": "新着ラベルを表示する",
     "show_on": "表示する場所",
     "show_on_mobile": "モバイルで表示する",
@@ -1680,7 +1683,7 @@
             "info": "アソートパックとして販売する商品向け: フリーサイズの行にすべての色の値を表示します。"
           },
           "wholesale_editor_preview": {
-            "info": "テーマエディターで卸売ブロックをサンプルデータ付きで表示します。ストアではログインしたB2B顧客にのみ表示されます。"
+            "info": "テーマエディターにB2B顧客が見るページを表示します：卸売ブロックはサンプルデータ付きで表示、小売専用ブロックは非表示。ストアでは卸売ブロックはログインしたB2B顧客にのみ表示されます。"
           },
           "wholesale_installments": {
             "info": "B2Bのチェックアウトでその分割払いプロバイダーが利用できる場合にのみオンにしてください。"

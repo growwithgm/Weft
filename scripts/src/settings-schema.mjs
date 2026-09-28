@@ -353,7 +353,7 @@ export default [
       para('Wholesale mode is on for customers signed in to a Shopify B2B company location. Prices, quantity rules and volume pricing always come from your B2B catalogs.'),
       text('wholesale_matrix_tag', 'Order matrix tag', 'row', 'Products with this tag show the color and size order matrix to wholesale buyers.'),
       text('wholesale_only_tag', 'Wholesale-only tag', 'b2b', 'Fallback for products that are still visible to retail. Prefer excluding them from your retail catalogs.'),
-      check('wholesale_editor_preview', 'Preview wholesale blocks in the editor', true, 'Shows wholesale blocks with sample data in the theme editor. On the storefront they only show to signed-in B2B customers.'),
+      check('wholesale_editor_preview', 'Preview as a wholesale buyer in the editor', false, 'The theme editor shows the page a B2B customer sees: wholesale blocks with sample data, retail-only blocks hidden. On the storefront wholesale blocks only show to signed-in B2B customers.'),
       check('wholesale_show_sku', 'Show SKUs to wholesale buyers'),
       check('wholesale_installments', 'Show the installments line to wholesale buyers', true, 'Only turn this on when your B2B checkout offers the installments provider.'),
       range('wholesale_tier_rows', 'Volume price rows before "Show all"', 1, 10, 1, 3),

@@ -336,6 +336,7 @@
     "google_site_verification_code": "Código de verificación de Google",
     "google_tag_manager_container_id": "ID de contenedor de Google Tag Manager",
     "grid": "Cuadrícula",
+    "grid_first_option_down_other_options_across": "Cuadrícula: primera opción en filas, las demás en columnas",
     "group": "Grupo",
     "guide_image": "Imagen de la guía",
     "guided_finder": "Buscador guiado",
@@ -630,8 +631,8 @@
     "pre_order": "Reserva",
     "preload_links_on_hover": "Precargar enlaces al pasar el cursor",
     "preselect_the_first_available_variant": "Preseleccionar la primera variante disponible",
+    "preview_as_a_wholesale_buyer_in_the_editor": "Previsualizar como comprador mayorista en el editor",
     "preview_the_wholesale_price_in_the_editor": "Previsualizar el precio mayorista en el editor",
-    "preview_wholesale_blocks_in_the_editor": "Previsualizar bloques mayoristas en el editor",
     "price": "Precio",
     "price_tag": "Etiqueta de precio",
     "primary": "Principal",
@@ -741,6 +742,7 @@
     "row_height_on_mobile": "Altura de fila en móvil",
     "row_label": "Etiqueta de la fila",
     "rows_from_metafields": "Filas desde metacampos",
+    "rows_one_row_per_variant": "Filas: una fila por variante",
     "rows_to_span": "Filas que ocupa",
     "rss_link_in_blog_breadcrumbs": "Enlace RSS en la ruta del blog",
     "rule_for_other_countries": "Regla para otros países",
@@ -844,6 +846,7 @@
     "show_media": "Mostrar contenido multimedia",
     "show_media_counter_on_mobile": "Mostrar contador de imágenes en móvil",
     "show_media_promotion": "Mostrar promoción con imagen",
+    "show_minimum_order_and_pack_size_bar": "Mostrar barra de pedido mínimo y tamaño de pack",
     "show_new_label": "Mostrar etiqueta de novedad",
     "show_on": "Mostrar en",
     "show_on_mobile": "Mostrar en móvil",
@@ -1680,7 +1683,7 @@
             "info": "Para productos vendidos en packs surtidos: las líneas de talla única muestran todos los colores."
           },
           "wholesale_editor_preview": {
-            "info": "Muestra los bloques mayoristas con datos de ejemplo en el editor de temas. En la tienda solo los ven los clientes B2B con sesión iniciada."
+            "info": "El editor de temas muestra la página que ve un cliente B2B: bloques mayoristas con datos de ejemplo y bloques solo minoristas ocultos. En la tienda, los bloques mayoristas solo se muestran a clientes B2B con sesión iniciada."
           },
           "wholesale_installments": {
             "info": "Actívalo solo si tu checkout B2B ofrece ese proveedor de pago a plazos."

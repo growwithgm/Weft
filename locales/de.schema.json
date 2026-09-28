@@ -336,6 +336,7 @@
     "google_site_verification_code": "Google-Code zur Website-Verifizierung",
     "google_tag_manager_container_id": "Google Tag Manager-Container-ID",
     "grid": "Raster",
+    "grid_first_option_down_other_options_across": "Raster: erste Option untereinander, weitere Optionen nebeneinander",
     "group": "Gruppe",
     "guide_image": "Guide-Bild",
     "guided_finder": "Geführter Finder",
@@ -630,8 +631,8 @@
     "pre_order": "Vorbestellung",
     "preload_links_on_hover": "Links bei Hover vorladen",
     "preselect_the_first_available_variant": "Erste verfügbare Variante vorauswählen",
+    "preview_as_a_wholesale_buyer_in_the_editor": "Im Editor als Großhandelskunde ansehen",
     "preview_the_wholesale_price_in_the_editor": "Großhandelspreis im Editor in der Vorschau anzeigen",
-    "preview_wholesale_blocks_in_the_editor": "Großhandelsblöcke im Editor anzeigen",
     "price": "Preis",
     "price_tag": "Preisschild",
     "primary": "Primär",
@@ -741,6 +742,7 @@
     "row_height_on_mobile": "Zeilenhöhe auf Mobilgeräten",
     "row_label": "Zeilenbeschriftung",
     "rows_from_metafields": "Zeilen aus Metafeldern",
+    "rows_one_row_per_variant": "Zeilen: eine Zeile pro Variante",
     "rows_to_span": "Belegte Zeilen",
     "rss_link_in_blog_breadcrumbs": "RSS-Link in den Blog-Breadcrumbs",
     "rule_for_other_countries": "Regel für andere Länder",
@@ -844,6 +846,7 @@
     "show_media": "Medien anzeigen",
     "show_media_counter_on_mobile": "Medienzähler auf Mobilgeräten anzeigen",
     "show_media_promotion": "Medien-Promotion anzeigen",
+    "show_minimum_order_and_pack_size_bar": "Leiste mit Mindestbestellung und Packgröße anzeigen",
     "show_new_label": "Label „Neu“ anzeigen",
     "show_on": "Anzeigen auf",
     "show_on_mobile": "Auf Mobilgeräten anzeigen",
@@ -1680,7 +1683,7 @@
             "info": "Für Produkte, die als gemischte Packs verkauft werden: Zeilen mit Einheitsgröße zeigen jeden Farbwert."
           },
           "wholesale_editor_preview": {
-            "info": "Zeigt Großhandelsblöcke mit Beispieldaten im Theme-Editor. Im Shop sehen sie nur angemeldete B2B-Kunden."
+            "info": "Der Theme-Editor zeigt die Seite, die ein B2B-Kunde sieht: Großhandelsblöcke mit Beispieldaten, reine Einzelhandelsblöcke ausgeblendet. Im Shop sehen Großhandelsblöcke nur angemeldete B2B-Kunden."
           },
           "wholesale_installments": {
             "info": "Aktiviere dies nur, wenn dein B2B-Checkout den Ratenzahlungsanbieter anbietet."

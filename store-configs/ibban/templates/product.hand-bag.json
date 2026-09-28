@@ -116,16 +116,19 @@
           "type": "wholesale-terms",
           "settings": {}
         },
-        "wholesale_tiers": {
-          "type": "volume-pricing",
-          "settings": {}
+        "wholesale_matrix": {
+          "type": "order-matrix",
+          "settings": {
+            "layout": "rows",
+            "show_rules_bar": true
+          }
         },
         "wholesale_quantity": {
           "type": "wholesale-quantity",
           "settings": {}
         },
-        "wholesale_matrix": {
-          "type": "order-matrix",
+        "wholesale_tiers": {
+          "type": "volume-pricing",
           "settings": {}
         }
       },
@@ -135,13 +138,13 @@
         "title",
         "price",
         "wholesale_terms",
+        "wholesale_matrix",
+        "wholesale_quantity",
         "wholesale_tiers",
         "divider-0",
         "variant-picker",
         "divider-1",
         "buy-buttons",
-        "wholesale_quantity",
-        "wholesale_matrix",
         "message-2",
         "collapsible-content-1",
         "collapsible-content-2",

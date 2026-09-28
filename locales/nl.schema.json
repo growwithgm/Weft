@@ -336,6 +336,7 @@
     "google_site_verification_code": "Code voor Google-siteverificatie",
     "google_tag_manager_container_id": "Container-ID van Google Tag Manager",
     "grid": "Raster",
+    "grid_first_option_down_other_options_across": "Raster: eerste optie onder elkaar, andere opties naast elkaar",
     "group": "Groep",
     "guide_image": "Afbeelding van gids",
     "guided_finder": "Keuzehulp",
@@ -630,8 +631,8 @@
     "pre_order": "Pre-order",
     "preload_links_on_hover": "Links vooraf laden bij aanwijzen",
     "preselect_the_first_available_variant": "Eerste beschikbare variant vooraf selecteren",
+    "preview_as_a_wholesale_buyer_in_the_editor": "In de editor bekijken als groothandelsklant",
     "preview_the_wholesale_price_in_the_editor": "Groothandelsprijs bekijken in de editor",
-    "preview_wholesale_blocks_in_the_editor": "Groothandelsblokken in de editor tonen",
     "price": "Prijs",
     "price_tag": "Prijskaartje",
     "primary": "Primair",
@@ -741,6 +742,7 @@
     "row_height_on_mobile": "Rijhoogte op mobiel",
     "row_label": "Rijlabel",
     "rows_from_metafields": "Rijen uit metavelden",
+    "rows_one_row_per_variant": "Rijen: één rij per variant",
     "rows_to_span": "Te overspannen rijen",
     "rss_link_in_blog_breadcrumbs": "RSS-link in kruimelpad van blog",
     "rule_for_other_countries": "Regel voor andere landen",
@@ -844,6 +846,7 @@
     "show_media": "Media weergeven",
     "show_media_counter_on_mobile": "Mediateller weergeven op mobiel",
     "show_media_promotion": "Mediapromotie weergeven",
+    "show_minimum_order_and_pack_size_bar": "Balk met minimale bestelling en pakgrootte tonen",
     "show_new_label": "Label Nieuw weergeven",
     "show_on": "Weergeven op",
     "show_on_mobile": "Weergeven op mobiel",
@@ -1680,7 +1683,7 @@
             "info": "Voor producten die als gesorteerde pakketten worden verkocht: regels met één maat tonen elke kleurwaarde."
           },
           "wholesale_editor_preview": {
-            "info": "Toont groothandelsblokken met voorbeeldgegevens in de thema-editor. In de winkel zien alleen ingelogde B2B-klanten ze."
+            "info": "De thema-editor toont de pagina die een B2B-klant ziet: groothandelsblokken met voorbeeldgegevens, alleen-retailblokken verborgen. In de winkel zien alleen ingelogde B2B-klanten groothandelsblokken."
           },
           "wholesale_installments": {
             "info": "Schakel dit alleen in als je B2B-checkout deze aanbieder voor betalen in termijnen aanbiedt."

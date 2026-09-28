@@ -1,8 +1,29 @@
 {%- comment -%}
   Summary bar for <order-matrix>: pieces and lines, tier-aware subtotal preview, messages,
-  Clear and Add. Without JavaScript only the Update button shows; the form then posts
+  Clear and Add. Layout 'rows' puts View cart and Clear beside the figures and a full-width Add
+  below. Without JavaScript only the Update button shows; the form then posts
   updates[variant_id] to /cart/update.
 {%- endcomment -%}
+{%- if layout == 'rows' -%}
+<div class="matrix__summary matrix__summary--rows" data-matrix-summary>
+  <div class="matrix__summary-bar">
+    <div class="matrix__summary-links">
+      <a class="button button--secondary matrix__view-cart" href="{{ routes.cart_url }}">{{ 'cart.view_cart' | t }}</a>
+      <button type="button" class="link matrix__clear js-only" data-matrix-clear>{{ 'wholesale.clear' | t }}</button>
+    </div>
+    <p class="matrix__summary-figures">
+      <span class="matrix__figure"><span class="tabular matrix__figure-value" data-summary-line>{{ 'wholesale.pieces.other' | t: count: 0 }}</span></span>
+      <span class="matrix__figure"><strong class="tabular matrix__figure-value" data-summary-subtotal>{{ 0 | money }}</strong><span class="matrix__figure-label">{{ 'cart.subtotal' | t }}</span></span>
+    </p>
+  </div>
+  <ul class="matrix__messages" role="list" aria-live="polite" data-summary-messages></ul>
+  <button type="submit" class="button matrix__add matrix__add--block js-only" data-matrix-add disabled>{{ 'wholesale.add_pieces.other' | t: count: 0 }}</button>
+  <noscript>
+    <p class="matrix__nojs muted">{{ 'wholesale.nojs_note' | t }}</p>
+    <button type="submit" class="button">{{ 'cart.update' | t }}</button>
+  </noscript>
+</div>
+{%- else -%}
 <div class="matrix__summary" data-matrix-summary>
   <div class="matrix__summary-line">
     <span class="tabular" data-summary-line>{{ 'wholesale.pieces.other' | t: count: 0 }}</span>
@@ -18,3 +39,4 @@
     </noscript>
   </div>
 </div>
+{%- endif -%}
