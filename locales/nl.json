@@ -40,6 +40,31 @@
     "view_cart": "Winkelwagen bekijken",
     "you_might_like": "Misschien leuk"
   },
+  "collections": {
+    "apply": "Toepassen",
+    "clear_all": "Alles wissen",
+    "empty": "Geen producten komen overeen met deze filters.",
+    "filter_and_sort": "Filteren en sorteren",
+    "filters": "Filters",
+    "layout": "Weergave",
+    "layout_grid": "Rasterweergave",
+    "layout_list": "Lijstweergave",
+    "price_from": "Van",
+    "price_range": "{{ min }} – {{ max }}",
+    "price_to": "Tot",
+    "product_count": {
+      "one": "{{ count }} product",
+      "other": "{{ count }} producten"
+    },
+    "remove_filter": "Filter verwijderen",
+    "show_more_values": "Nog {{ count }} tonen",
+    "show_results": {
+      "one": "{{ count }} resultaat tonen",
+      "other": "{{ count }} resultaten tonen"
+    },
+    "showing": "{{ shown }} van {{ total }}",
+    "sort_by": "Sorteren op"
+  },
   "general": {
     "back_to_top": "Terug naar boven",
     "breadcrumbs": "Kruimelpad",

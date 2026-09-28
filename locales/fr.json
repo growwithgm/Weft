@@ -40,6 +40,31 @@
     "view_cart": "Voir le panier",
     "you_might_like": "Vous pourriez aimer"
   },
+  "collections": {
+    "apply": "Appliquer",
+    "clear_all": "Tout effacer",
+    "empty": "Aucun produit ne correspond à ces filtres.",
+    "filter_and_sort": "Filtrer et trier",
+    "filters": "Filtres",
+    "layout": "Affichage",
+    "layout_grid": "Vue grille",
+    "layout_list": "Vue liste",
+    "price_from": "De",
+    "price_range": "{{ min }} – {{ max }}",
+    "price_to": "À",
+    "product_count": {
+      "one": "{{ count }} produit",
+      "other": "{{ count }} produits"
+    },
+    "remove_filter": "Retirer le filtre",
+    "show_more_values": "Afficher {{ count }} de plus",
+    "show_results": {
+      "one": "Voir {{ count }} résultat",
+      "other": "Voir {{ count }} résultats"
+    },
+    "showing": "{{ shown }} sur {{ total }}",
+    "sort_by": "Trier par"
+  },
   "general": {
     "back_to_top": "Retour en haut",
     "breadcrumbs": "Fil d'Ariane",

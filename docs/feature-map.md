@@ -33,10 +33,10 @@ Status: `planned` (P0) → `built` (with phase) → `verified` (scenario or chec
 
 | Feature | Weft implementation | Phase | Status |
 |---|---|---|---|
-| Banner with title, count, description | `sections/collection-banner` | P4 | planned |
-| 50 per page, grid/list toggle, sorting | `sections/main-collection` (products_per_page up to 50, layout toggle, sort options) | P4 | planned |
-| Filters (off in pilot, on by default in Weft) | `snippets/facets`, `assets/facets.js`, setting `enable_filtering` | P4 | planned |
-| Promo tiles in grid (wide, media, card, filter) | `blocks/_collection-promo` (style: wide / media / card / filter-column) | P4 | planned |
+| Banner with title, count, description | `sections/collection-banner` | P4 | done |
+| 50 per page, grid/list toggle, sorting | `sections/main-collection` (products_per_page up to 50, layout toggle, sort options) | P4 | done |
+| Filters (off in pilot, on by default in Weft) | `snippets/facets`, `assets/facets.js`, setting `enable_filtering` | P4 | done (collection; search in step 2) |
+| Promo tiles in grid (wide, media, card, filter) | section blocks `promo_wide` / `promo_media` / `promo_card` / `promo_filter` in `main-collection`, `snippets/collection-promo` (owner review 20) | P4 | done |
 | Seasonal templates, flash sale with countdown + promo strip + collection list | `templates/collection.banner.json`, `collection.flash-sale.json` | P5 | planned |
 | Product compare (checkbox, drawer, up to 5) | `sections/compare-drawer`, `assets/compare.js`, Product compare group | P4 | planned |
 | Retail quick add + drawer | `sections/quick-add`, `assets/quick-add.js` | P2 | done |

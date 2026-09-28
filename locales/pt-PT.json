@@ -40,6 +40,31 @@
     "view_cart": "Ver carrinho",
     "you_might_like": "Pode gostar"
   },
+  "collections": {
+    "apply": "Aplicar",
+    "clear_all": "Limpar tudo",
+    "empty": "Nenhum produto corresponde a estes filtros.",
+    "filter_and_sort": "Filtrar e ordenar",
+    "filters": "Filtros",
+    "layout": "Vista",
+    "layout_grid": "Vista em grelha",
+    "layout_list": "Vista em lista",
+    "price_from": "De",
+    "price_range": "{{ min }} – {{ max }}",
+    "price_to": "Até",
+    "product_count": {
+      "one": "{{ count }} produto",
+      "other": "{{ count }} produtos"
+    },
+    "remove_filter": "Remover filtro",
+    "show_more_values": "Ver mais {{ count }}",
+    "show_results": {
+      "one": "Ver {{ count }} resultado",
+      "other": "Ver {{ count }} resultados"
+    },
+    "showing": "A mostrar {{ shown }} de {{ total }}",
+    "sort_by": "Ordenar por"
+  },
   "general": {
     "back_to_top": "Voltar ao topo",
     "breadcrumbs": "Navegação estrutural",

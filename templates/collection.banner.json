@@ -1,0 +1,28 @@
+{
+  "sections": {
+    "hero": {
+      "type": "image-banner",
+      "settings": {
+        "height": "small",
+        "overlay_position": "middle-center",
+        "text_align": "center",
+        "tint_opacity": 30
+      },
+      "blocks": {
+        "title": { "type": "heading", "settings": { "heading": "Seasonal edit", "size": "h1" } },
+        "text": { "type": "text", "settings": { "text": "<p>A short line about this collection.</p>" } }
+      },
+      "block_order": ["title", "text"]
+    },
+    "banner": {
+      "type": "collection-banner",
+      "disabled": true,
+      "settings": {}
+    },
+    "main": {
+      "type": "main-collection",
+      "settings": {}
+    }
+  },
+  "order": ["hero", "banner", "main"]
+}

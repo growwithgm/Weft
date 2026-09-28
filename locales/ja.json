@@ -40,6 +40,31 @@
     "view_cart": "カートを見る",
     "you_might_like": "おすすめ"
   },
+  "collections": {
+    "apply": "適用",
+    "clear_all": "すべて解除",
+    "empty": "この条件に一致する商品はありません。",
+    "filter_and_sort": "絞り込みと並べ替え",
+    "filters": "絞り込み",
+    "layout": "表示",
+    "layout_grid": "グリッド表示",
+    "layout_list": "リスト表示",
+    "price_from": "最低",
+    "price_range": "{{ min }}～{{ max }}",
+    "price_to": "最高",
+    "product_count": {
+      "one": "{{ count }}件の商品",
+      "other": "{{ count }}件の商品"
+    },
+    "remove_filter": "絞り込みを解除",
+    "show_more_values": "さらに{{ count }}件表示",
+    "show_results": {
+      "one": "{{ count }}件の結果を表示",
+      "other": "{{ count }}件の結果を表示"
+    },
+    "showing": "{{ total }}件中{{ shown }}件を表示",
+    "sort_by": "並べ替え"
+  },
   "general": {
     "back_to_top": "トップへ戻る",
     "breadcrumbs": "パンくずリスト",
