@@ -77,7 +77,7 @@ Retail visitors who follow a link to the product get the 404 page. It includes t
 If a product must stay in a retail catalog, use the tag fallback:
 
 1. Add the tag `b2b` to the product. To use another tag, change **Theme settings > Wholesale > Wholesale-only tag**.
-2. Retail visitors then don't see the product in product cards, search results or predictive search.
+2. Retail visitors then don't see the product on collection pages, in product grids and carousels, in search results or in predictive search. Small product cards still show it, for example in Complementary products, the cart drawer's promoted products, Shoppable image hotspots and Routine steps, so don't pick the product there.
 3. If they open its link, they see a "Wholesale-only product" page instead of the product, with a button to log in and, when you've set a wholesale application page, a button to apply. The page tells search engines not to index it.
 
 ## The wholesale cart

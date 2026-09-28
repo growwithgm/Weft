@@ -9,7 +9,7 @@ Weft is an Online Store 2.0 theme. Every page is built from sections and blocks 
 - **Retail shoppers** see retail prices, stock messages, delivery information and the standard buy buttons.
 - **Wholesale buyers** who sign in as a contact of a Shopify B2B company see the prices, quantity rules and volume pricing from your B2B catalogs, plus wholesale ordering tools such as the order matrix and the quick order list.
 
-Weft uses Shopify's native B2B features only. Shopify calculates every price, quantity rule and cart total, and the theme displays them. Core features don't need an app.
+Weft uses Shopify's native B2B features only, so wholesale selling needs no app. Shopify calculates every price, quantity rule and cart total, and the theme displays them.
 
 ## The three styles
 
@@ -18,7 +18,7 @@ Weft comes in three styles. Each style uses the same sections and blocks, so eve
 | Style | Made for | Look |
 |---|---|---|
 | **Weft** (default) | Clothing and fashion | Editorial, dark text on white, Cormorant headings with Jost body text, yellow primary buttons |
-| **Tress** | Hair care, including salon wholesale | Strong type, high contrast, Archivo headings with Instrument Sans body text, square corners, blue primary buttons |
+| **Tress** | Hair care, including salon wholesale | Strong type, high contrast, Archivo headings with Instrument Sans body text, nearly square corners, blue primary buttons |
 | **Balm** | Body care | Calm and soft, Instrument Serif headings with Figtree body text, rounded corners, plum primary buttons |
 
 The Tress and Balm home pages include a guided finder, routine steps, a before and after slider and a banner for professional buyers. Their default product pages include hair care or body care blocks such as ingredients, how to use, attribute chips and, for Balm, scent notes and a period after opening icon.

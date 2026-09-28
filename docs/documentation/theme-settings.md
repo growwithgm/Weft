@@ -190,13 +190,13 @@ These settings control what signed-in B2B buyers see. See [Wholesale](wholesale.
 | Setting | What it does |
 |---|---|
 | Order matrix tag | Products with this tag show the order matrix to wholesale buyers. Default: `row`. |
-| Wholesale-only tag | Fallback for products that retail shoppers can still reach. Retail visitors see a sign-in page instead of the product. Default: `b2b`. Prefer leaving these products out of your retail catalogs. |
+| Wholesale-only tag | Fallback for products that retail shoppers can still reach. Retail visitors don't see these products in product grids or search, and their product page asks them to log in. Default: `b2b`. Prefer leaving these products out of your retail catalogs. |
 | Show SKUs to wholesale buyers | Adds the SKU to cart lines for wholesale buyers. |
 | Show the installments line to wholesale buyers | Shows the installments line from **Installments** to wholesale buyers. Only turn this on when your B2B checkout offers that provider. |
 | Volume price rows before "Show all" | How many volume pricing rows show before the table expands. Default 3. |
 | Order from product cards in a drawer | Wholesale buyers open the order matrix or quantity box from a product card without leaving the collection. |
 | Location switcher | Chip in the header, or inside the account menu. |
-| Wholesale sign-in page, Wholesale application page, Quick order page | Pages the theme links to from the 404 page, the wholesale-only sign-in page, the empty cart and the wholesale access section. |
+| Wholesale sign-in page, Wholesale application page, Quick order page | Pages the theme links to from the 404 page, the wholesale-only product page, the empty cart and the wholesale access section. See [Wholesale page templates](wholesale.md#wholesale-page-templates). |
 | Pack image metafield | A product image metafield that replaces the cart line image for wholesale buyers. Default: `custom.pack_image`. |
 | List all colors on one-size lines | For assorted packs: cart lines list every value of the first option. |
 | Exclude product types | Product types, separated by commas, that don't use the assorted pack display. |

@@ -75,7 +75,7 @@ Create menus in **Online Store > Navigation** in your Shopify admin, then connec
 To turn a top-level menu item into a mega menu:
 
 1. In the Header section, add a **Mega menu** block.
-2. In **Menu item**, enter the title of the top-level menu item exactly as it appears in your menu.
+2. In **Menu item**, enter the title of the top-level menu item as it appears in your menu. Capitalization doesn't matter. The menu item needs nested links for the mega menu to open.
 3. Choose a **Style** (Columns, Buttons or Sidebar) and, if you want, images next to links, up to three promotion images and up to three link badges.
 
 The header also has settings for a sticky header, logo position, menu alignment, where the mobile menu opens, country and language selectors in the mobile menu, search, and an optional call to action button.
