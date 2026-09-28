@@ -77,7 +77,26 @@
       "other": "{{ count }} resultaten tonen"
     },
     "showing": "{{ shown }} van {{ total }}",
-    "sort_by": "Sorteren op"
+    "sort_by": "Sorteren op",
+    "view_collection": "Collectie bekijken"
+  },
+  "compare": {
+    "availability": "Beschikbaarheid",
+    "clear": "Wissen",
+    "compare": "Vergelijken",
+    "count": {
+      "one": "{{ count }} product geselecteerd",
+      "other": "{{ count }} producten geselecteerd"
+    },
+    "description": "Beschrijving",
+    "limit": "Je kunt tot {{ count }} producten vergelijken.",
+    "price": "Prijs",
+    "remove": "{{ title }} verwijderen",
+    "sku": "SKU",
+    "title": "Producten vergelijken",
+    "type": "Type",
+    "vendor": "Merk",
+    "weight": "Gewicht"
   },
   "general": {
     "back_to_top": "Terug naar boven",

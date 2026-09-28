@@ -38,7 +38,7 @@ Status: `planned` (P0) → `built` (with phase) → `verified` (scenario or chec
 | Filters (off in pilot, on by default in Weft) | `snippets/facets`, `assets/facets.js`, setting `enable_filtering` | P4 | done |
 | Promo tiles in grid (wide, media, card, filter) | section blocks `promo_wide` / `promo_media` / `promo_card` / `promo_filter` in `main-collection`, `snippets/collection-promo` (owner review 20) | P4 | done |
 | Seasonal templates, flash sale with countdown + promo strip + collection list | `templates/collection.banner.json`, `collection.flash-sale.json` | P5 | planned |
-| Product compare (checkbox, drawer, up to 5) | `sections/compare-drawer`, `assets/compare.js`, Product compare group | P4 | planned |
+| Product compare (checkbox, drawer, up to 5) | `sections/compare-drawer`, `assets/compare.js`, Product compare group | P4 | done |
 | Retail quick add + drawer | `sections/quick-add`, `assets/quick-add.js` | P2 | done |
 | Card: hover image, swatches, rating, labels, highlight | `snippets/product-card`, `snippets/card-swatches` | P4 | planned |
 | Wholesale card note → rule chips + from price | `snippets/product-card` wholesale branch + `snippets/rule-chips` | P3 | done |

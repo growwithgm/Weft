@@ -345,7 +345,7 @@ for (const file of liquidFiles) {
       report('warning', file, 'Public theme block has no preset, so it will not appear in the block picker');
     if (kind === 'sections' && schema.presets && (schema.enabled_on || schema.disabled_on) && schema.enabled_on && schema.disabled_on)
       report('error', file, 'Use either enabled_on or disabled_on, not both');
-  } else if (schema === null && (kind === 'blocks' || (kind === 'sections' && !/^(predictive-search|cart-count|pickup-availability|card-fragment)$/.test(basename(file, '.liquid'))))) {
+  } else if (schema === null && (kind === 'blocks' || (kind === 'sections' && !/^(predictive-search|cart-count|pickup-availability|card-fragment|compare-column)$/.test(basename(file, '.liquid'))))) {
     report('warning', file, 'No {% schema %} tag');
   }
 }

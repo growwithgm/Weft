@@ -21,6 +21,7 @@
     "align_button_to_the_bottom": "Alinear el botón abajo",
     "align_price_to_the_bottom": "Alinear el precio abajo",
     "alignment": "Alineación",
+    "all": "Todas",
     "all_products_when_empty": "Todos los productos si se deja vacío.",
     "all_reviews_label": "Texto de todas las reseñas",
     "all_reviews_link": "Enlace de todas las reseñas",
@@ -61,6 +62,7 @@
     "barcode": "Código de barras",
     "base_size": "Tamaño base",
     "basket": "Cesta",
+    "before_collection_number": "Antes de la colección número",
     "before_product_number": "Antes del producto número",
     "before_the_links": "Antes de los enlaces",
     "behind_the_text": "Detrás del texto",
@@ -126,6 +128,9 @@
     "collection_list": "Lista de colecciones",
     "collection_products": "Productos de la colección",
     "collections": "Colecciones",
+    "collections_list": "Lista de colecciones",
+    "collections_per_page": "Colecciones por página",
+    "collections_to_show": "Colecciones que se muestran",
     "color": "Color",
     "color_filters": "Filtros de color",
     "color_option_names": "Nombres de la opción de color",
@@ -192,6 +197,7 @@
     "exclude_product_types": "Excluir tipos de producto",
     "extra_large": "Muy grande",
     "extra_links_shown_after_the_main_menu": "Enlaces adicionales mostrados tras el menú principal.",
+    "extra_rows_from_metafields": "Filas adicionales desde metacampos",
     "facebook": "Facebook",
     "fade_and_rise": "Aparecer y subir",
     "fade_in": "Aparecer",
@@ -536,6 +542,7 @@
     "secondary_menu": "Menú secundario",
     "secondary_text": "Texto secundario",
     "section_spacing": "Espaciado de la sección",
+    "selected": "Seleccionadas",
     "shake_every": "Agitar cada",
     "shake_the_cart_icon_when_it_has_items": "Agitar el icono del carrito cuando tiene artículos",
     "shape": "Forma",
@@ -954,6 +961,13 @@
           }
         }
       },
+      "compare_drawer": {
+        "settings": {
+          "turn_compare_on_and_choose_its_rows_in_theme_set": {
+            "content": "Activa la comparación y elige sus filas en Configuración del tema > Comparar productos."
+          }
+        }
+      },
       "custom_liquid": {
         "settings": {
           "custom_liquid": {
@@ -1122,6 +1136,13 @@
           },
           "highlighted_products": {
             "info": "Las secciones de colección pueden destacar productos con una etiqueta."
+          }
+        }
+      },
+      "product_compare": {
+        "settings": {
+          "compare_metafields": {
+            "info": "Una por línea: Etiqueta = namespace.key, por ejemplo \"Material = custom.material\"."
           }
         }
       },

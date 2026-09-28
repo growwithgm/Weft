@@ -1031,6 +1031,12 @@
         "id": "compare_empty_text",
         "label": "t:labels.text_for_empty_fields",
         "default": "–"
+      },
+      {
+        "type": "textarea",
+        "id": "compare_metafields",
+        "label": "t:labels.extra_rows_from_metafields",
+        "info": "t:text.settings_schema.product_compare.settings.compare_metafields.info"
       }
     ]
   },

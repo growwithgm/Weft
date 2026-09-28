@@ -77,7 +77,26 @@
       "other": "{{ count }}件の結果を表示"
     },
     "showing": "{{ total }}件中{{ shown }}件を表示",
-    "sort_by": "並べ替え"
+    "sort_by": "並べ替え",
+    "view_collection": "コレクションを見る"
+  },
+  "compare": {
+    "availability": "在庫状況",
+    "clear": "クリア",
+    "compare": "比較する",
+    "count": {
+      "one": "{{ count }}件の商品を選択中",
+      "other": "{{ count }}件の商品を選択中"
+    },
+    "description": "説明",
+    "limit": "比較できる商品は{{ count }}件までです。",
+    "price": "価格",
+    "remove": "{{ title }}を削除",
+    "sku": "SKU",
+    "title": "商品を比較",
+    "type": "タイプ",
+    "vendor": "ブランド",
+    "weight": "重量"
   },
   "general": {
     "back_to_top": "トップへ戻る",

@@ -2,7 +2,8 @@
   Collection products (brief §14.3, S6): toolbar with product count, sorting and grid/list
   toggle; Storefront filtering in a sticky side column on large screens and a drawer on small
   ones (same form, moved by facets.js, so there is one copy in the DOM); active filter chips;
-  product grid with promotion tiles at chosen positions; pagination or "Load more".
+  product grid with promotion tiles at chosen positions; page numbers, "Load more" or infinite
+  scroll (Theme settings > Layout > Pagination).
   Wholesale buyers see wholesale cards; tag-fallback wholesale-only products render nothing for
   retail, so the grid never has empty cells.
   Without JavaScript the filter form submits normally and pagination links work.
@@ -153,12 +154,12 @@
           {%- endif -%}
 
           {%- if paginate.pages > 1 -%}
-            {%- if s.pagination_type == 'load_more' -%}
+            {%- if settings.pagination_style != 'numbers' -%}
               {%- assign shown = paginate.current_offset | plus: collection.products.size -%}
               <div class="collection__load-more" data-load-more-wrap>
                 <p class="muted collection__shown">{{ 'collections.showing' | t: shown: shown, total: collection.products_count }}</p>
                 {%- if paginate.next -%}
-                  <a class="button button--secondary" href="{{ paginate.next.url }}" data-load-more>{{ 'general.pagination.load_more' | t }}</a>
+                  <a class="button button--secondary" href="{{ paginate.next.url }}" data-load-more{% if settings.pagination_style == 'infinite' %} data-infinite{% endif %}>{{ 'general.pagination.load_more' | t }}</a>
                 {%- endif -%}
               </div>
             {%- else -%}
@@ -231,22 +232,6 @@
       "id": "show_layout_toggle",
       "label": "t:labels.show_grid_and_list_toggle",
       "default": false
-    },
-    {
-      "type": "select",
-      "id": "pagination_type",
-      "label": "t:labels.pagination",
-      "options": [
-        {
-          "value": "pagination",
-          "label": "t:labels.page_numbers"
-        },
-        {
-          "value": "load_more",
-          "label": "t:labels.load_more_button"
-        }
-      ],
-      "default": "pagination"
     },
     {
       "type": "header",

@@ -21,6 +21,7 @@
     "align_button_to_the_bottom": "Align button to the bottom",
     "align_price_to_the_bottom": "Align price to the bottom",
     "alignment": "Alignment",
+    "all": "All",
     "all_products_when_empty": "All products when empty.",
     "all_reviews_label": "All reviews label",
     "all_reviews_link": "All reviews link",
@@ -61,6 +62,7 @@
     "barcode": "Barcode",
     "base_size": "Base size",
     "basket": "Basket",
+    "before_collection_number": "Before collection number",
     "before_product_number": "Before product number",
     "before_the_links": "Before the links",
     "behind_the_text": "Behind the text",
@@ -126,6 +128,9 @@
     "collection_list": "Collection list",
     "collection_products": "Collection products",
     "collections": "Collections",
+    "collections_list": "Collections list",
+    "collections_per_page": "Collections per page",
+    "collections_to_show": "Collections to show",
     "color": "Color",
     "color_filters": "Color filters",
     "color_option_names": "Color option names",
@@ -192,6 +197,7 @@
     "exclude_product_types": "Exclude product types",
     "extra_large": "Extra large",
     "extra_links_shown_after_the_main_menu": "Extra links shown after the main menu.",
+    "extra_rows_from_metafields": "Extra rows from metafields",
     "facebook": "Facebook",
     "fade_and_rise": "Fade and rise",
     "fade_in": "Fade in",
@@ -536,6 +542,7 @@
     "secondary_menu": "Secondary menu",
     "secondary_text": "Secondary text",
     "section_spacing": "Section spacing",
+    "selected": "Selected",
     "shake_every": "Shake every",
     "shake_the_cart_icon_when_it_has_items": "Shake the cart icon when it has items",
     "shape": "Shape",
@@ -954,6 +961,13 @@
           }
         }
       },
+      "compare_drawer": {
+        "settings": {
+          "turn_compare_on_and_choose_its_rows_in_theme_set": {
+            "content": "Turn compare on and choose its rows in Theme settings > Product compare."
+          }
+        }
+      },
       "custom_liquid": {
         "settings": {
           "custom_liquid": {
@@ -1122,6 +1136,13 @@
           },
           "highlighted_products": {
             "info": "Collection sections can highlight products with a tag."
+          }
+        }
+      },
+      "product_compare": {
+        "settings": {
+          "compare_metafields": {
+            "info": "One per line: Label = namespace.key, for example \"Material = custom.material\"."
           }
         }
       },

@@ -77,7 +77,26 @@
       "other": "Show {{ count }} results"
     },
     "showing": "Showing {{ shown }} of {{ total }}",
-    "sort_by": "Sort by"
+    "sort_by": "Sort by",
+    "view_collection": "View collection"
+  },
+  "compare": {
+    "availability": "Availability",
+    "clear": "Clear",
+    "compare": "Compare",
+    "count": {
+      "one": "{{ count }} product selected",
+      "other": "{{ count }} products selected"
+    },
+    "description": "Description",
+    "limit": "You can compare up to {{ count }} products.",
+    "price": "Price",
+    "remove": "Remove {{ title }}",
+    "sku": "SKU",
+    "title": "Compare products",
+    "type": "Type",
+    "vendor": "Brand",
+    "weight": "Weight"
   },
   "general": {
     "back_to_top": "Back to top",

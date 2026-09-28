@@ -48,9 +48,25 @@ class CollectionResults extends HTMLElement {
     this.onPop = () => this.render(location.href, false);
     window.addEventListener('popstate', this.onPop);
     if (this.querySelector('[data-layout-option]')) this.applyLayout(storedLayout());
+    this.watchInfinite();
+  }
+
+  /** Infinite scroll (Theme settings > Layout > Pagination): loads the next page near the end of the grid. */
+  watchInfinite() {
+    const link = this.querySelector('a[data-load-more][data-infinite]');
+    if (!link || !('IntersectionObserver' in window)) return;
+    this.observer?.disconnect();
+    this.observer = new IntersectionObserver((entries) => {
+      if (entries.some((e) => e.isIntersecting)) {
+        this.observer.disconnect();
+        this.loadMore(link, false);
+      }
+    }, { rootMargin: '600px 0px' });
+    this.observer.observe(link);
   }
 
   disconnectedCallback() {
+    this.observer?.disconnect();
     window.removeEventListener('popstate', this.onPop);
     this.offOpen?.();
     this.offClose?.();
@@ -161,9 +177,10 @@ class CollectionResults extends HTMLElement {
       }
     }
     if (this.querySelector('[data-layout-option]')) this.applyLayout(storedLayout());
+    this.watchInfinite();
   }
 
-  async loadMore(link) {
+  async loadMore(link, moveFocus = true) {
     link.setAttribute('aria-busy', 'true');
     try {
       const doc = await fetchSection(this.sectionId, link.href);
@@ -174,7 +191,8 @@ class CollectionResults extends HTMLElement {
       const next = doc.querySelector('[data-load-more-wrap]');
       if (wrap) next ? wrap.replaceWith(next) : wrap.remove();
       scan(grid);
-      items[0]?.querySelector('a.card__link, a')?.focus({ preventScroll: true });
+      if (moveFocus) items[0]?.querySelector('a.card__link, a')?.focus({ preventScroll: true });
+      this.watchInfinite();
     } catch (_) {
       location.assign(link.href);
     }

@@ -136,4 +136,9 @@
   .search-card__link:hover { border-color: var(--c-fg); }
   .search-card__type { font-size: var(--t-12); text-transform: uppercase; letter-spacing: 0.06em; }
   .search-card__excerpt { font-size: var(--t-14); }
+
+  /* Collections list */
+  .list-collections { padding-block: 32px var(--section-gap); }
+  .list-collections__head { margin-block-end: 28px; max-width: 760px; }
+  .list-collections__head--center { text-align: center; margin-inline: auto; }
 }

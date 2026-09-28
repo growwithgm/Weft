@@ -90,7 +90,7 @@
       {%- render 'product-labels', product: product, variant: v, context: 'card' -%}
     </div>
     {%- if settings.compare_enable -%}
-      <label class="card__compare js-only">
+      <label class="card__compare card__compare--{{ settings.compare_toggle }} js-only">
         <input type="checkbox" data-compare-toggle value="{{ product.handle }}" aria-describedby="{{ title_id }}">
         <span>{{ 'products.compare' | t }}</span>
       </label>

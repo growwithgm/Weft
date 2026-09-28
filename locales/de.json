@@ -77,7 +77,26 @@
       "other": "{{ count }} Ergebnisse anzeigen"
     },
     "showing": "{{ shown }} von {{ total }}",
-    "sort_by": "Sortieren nach"
+    "sort_by": "Sortieren nach",
+    "view_collection": "Kollektion ansehen"
+  },
+  "compare": {
+    "availability": "Verfügbarkeit",
+    "clear": "Leeren",
+    "compare": "Vergleichen",
+    "count": {
+      "one": "{{ count }} Produkt ausgewählt",
+      "other": "{{ count }} Produkte ausgewählt"
+    },
+    "description": "Beschreibung",
+    "limit": "Du kannst bis zu {{ count }} Produkte vergleichen.",
+    "price": "Preis",
+    "remove": "{{ title }} entfernen",
+    "sku": "Artikelnr.",
+    "title": "Produkte vergleichen",
+    "type": "Typ",
+    "vendor": "Marke",
+    "weight": "Gewicht"
   },
   "general": {
     "back_to_top": "Nach oben",

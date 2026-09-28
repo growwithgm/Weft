@@ -17,12 +17,17 @@
     "quickadd": {
       "type": "quick-add",
       "settings": {}
+    },
+    "compare": {
+      "type": "compare-drawer",
+      "settings": {}
     }
   },
   "order": [
     "cart",
     "quickadd",
     "search",
-    "location"
+    "location",
+    "compare"
   ]
 }

@@ -187,7 +187,8 @@ export default [
       range('compare_max', 'Maximum products', 2, 5, 1, 4),
       select('compare_column_width', 'Column width on large screens', [['narrow', 'Narrow'], ['medium', 'Medium'], ['wide', 'Wide']], 'medium'),
       check('compare_show_empty', 'Show rows without data', true),
-      text('compare_empty_text', 'Text for empty fields', '–')
+      text('compare_empty_text', 'Text for empty fields', '–'),
+      { type: 'textarea', id: 'compare_metafields', label: 'Extra rows from metafields', info: 'One per line: Label = namespace.key, for example "Material = custom.material".' }
     ]
   },
   {
