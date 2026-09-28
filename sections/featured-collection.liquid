@@ -17,6 +17,7 @@
 -%}
 {{ 'component-card.css' | asset_url | stylesheet_tag }}
 {{ 'section-library.css' | asset_url | stylesheet_tag }}
+{{ 'component-carousel.css' | asset_url | stylesheet_tag }}
 <div class="section product-row color-{{ s.color_scheme }}{% if section.index > 2 %} below-fold{% endif %}">
   <div class="page-width">
     {%- if section.blocks.size > 0 -%}

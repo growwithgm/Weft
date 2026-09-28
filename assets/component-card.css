@@ -4,7 +4,7 @@
   @media (min-width: 750px) { .product-grid { grid-template-columns: repeat(var(--cols-tablet, min(3, var(--cols, 4))), minmax(0, 1fr)); } }
   @media (min-width: 990px) { .product-grid { grid-template-columns: repeat(var(--cols, 4), minmax(0, 1fr)); gap: 32px 16px; } }
   @media (min-width: 1440px) { .product-grid { grid-template-columns: repeat(var(--cols-wide, var(--cols, 4)), minmax(0, 1fr)); gap: 32px 20px; } }
-  .product-grid--carousel { display: grid; grid-auto-flow: column; grid-template-columns: none; grid-auto-columns: calc((100% - 12px * (var(--cols-mobile, 2) - 1) - 24px) / var(--cols-mobile, 2)); overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: thin; padding-block-end: 8px; }
+  .product-grid--carousel { display: grid; grid-auto-flow: column; grid-template-columns: none; grid-auto-columns: calc((100% - 12px * var(--cols-mobile, 2) - 40px) / var(--cols-mobile, 2)); overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
   .product-grid--carousel > * { scroll-snap-align: start; }
   @media (min-width: 990px) { .product-grid--carousel { grid-auto-columns: calc((100% - 16px * (var(--cols, 4) - 1)) / var(--cols, 4)); } }
   @media (min-width: 1440px) { .product-grid--carousel { grid-auto-columns: calc((100% - 20px * (var(--cols-wide, var(--cols, 4)) - 1)) / var(--cols-wide, var(--cols, 4))); } }

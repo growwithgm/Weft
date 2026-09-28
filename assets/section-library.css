@@ -72,23 +72,11 @@
   .columns-grid, .icons-grid { list-style: none; margin: 0; padding: 0; display: grid; gap: 32px 20px; grid-template-columns: repeat(var(--cols-mobile, 1), minmax(0, 1fr)); }
   @media (min-width: 750px) { .columns-grid, .icons-grid { grid-template-columns: repeat(min(2, var(--cols, 3)), minmax(0, 1fr)); } }
   @media (min-width: 990px) { .columns-grid, .icons-grid { grid-template-columns: repeat(var(--cols, 3), minmax(0, 1fr)); } }
-  .is-carousel { display: grid; grid-auto-flow: column; grid-template-columns: none; grid-auto-columns: calc((100% - 20px * (var(--cols-mobile, 1) - 1) - 32px) / var(--cols-mobile, 1)); overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: thin; padding-block-end: 8px; }
+  .is-carousel { display: grid; grid-auto-flow: column; grid-template-columns: none; grid-auto-columns: calc((100% - 20px * var(--cols-mobile, 1) - 40px) / var(--cols-mobile, 1)); overflow-x: auto; scroll-snap-type: x mandatory; }
   .is-carousel > * { scroll-snap-align: start; }
   @media (min-width: 990px) { .is-carousel { grid-auto-columns: calc((100% - 20px * (var(--cols, 3) - 1)) / var(--cols, 3)); } }
   .scroll-row { position: relative; display: block; }
-  .scroll-row__buttons { display: none; justify-content: flex-end; gap: 8px; margin-block-start: 12px; }
-  scroll-row[data-scrollable] .scroll-row__buttons { display: flex; }
-  .scroll-row__buttons .icon-button { border: 1px solid var(--c-line); border-radius: 50%; }
-  .scroll-row__buttons .icon-button:disabled { opacity: 0.35; }
-  /* Theme settings > Layout and design > Carousels */
-  [data-carousel-arrow-style="solid"] .scroll-row__buttons .icon-button, [data-carousel-arrow-style="solid"] .slideshow__arrow { background: var(--c-fg); border-color: var(--c-fg); color: var(--c-bg); border-radius: 50%; }
-  @media (min-width: 990px) {
-    [data-carousel-arrows="never"] scroll-row[data-scrollable] .scroll-row__buttons { display: none; }
-  }
-  @media (min-width: 990px) and (hover: hover) {
-    [data-carousel-arrows="hover"] scroll-row[data-scrollable] .scroll-row__buttons { opacity: 0; transition: opacity 150ms ease; }
-    [data-carousel-arrows="hover"] scroll-row[data-scrollable]:hover .scroll-row__buttons, [data-carousel-arrows="hover"] scroll-row[data-scrollable]:focus-within .scroll-row__buttons { opacity: 1; }
-  }
+  [data-carousel-arrow-style="solid"] .slideshow__arrow { background: var(--c-fg); border-color: var(--c-fg); color: var(--c-bg); border-radius: 50%; }
 
   /* Multi-column */
   .column { display: flex; flex-direction: column; gap: 14px; min-width: 0; }

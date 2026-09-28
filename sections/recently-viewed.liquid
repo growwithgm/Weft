@@ -1,12 +1,21 @@
 {%- comment -%} Recently viewed products (handles in localStorage; cards rendered by the store, so wholesale buyers see their prices). {%- endcomment -%}
 {%- assign s = section.settings -%}
 {{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-carousel.css' | asset_url | stylesheet_tag }}
 <div class="section product-rows color-{{ s.color_scheme }} below-fold" data-recently-viewed data-limit="{{ s.limit }}" data-exclude="{{ product.handle }}" data-root="{{ routes.root_url }}" data-module="{{ 'recently-viewed.js' | asset_url }}" data-load="visible" hidden>
   <div class="page-width">
     <div class="section-heading section-heading--{{ s.heading_align }}">
       <h2 class="h2">{% if s.heading != blank %}{{ s.heading }}{% else %}{{ 'products.recommendations.recently_viewed' | t }}{% endif %}</h2>
     </div>
-    <ul class="product-grid product-grid--{{ s.layout }}" role="list" style="--cols: {{ s.columns }}; --cols-mobile: {{ s.columns_mobile }}" data-recently-viewed-list></ul>
+    <scroll-row class="scroll-row scroll-row--{{ s.layout }}" data-module="{{ 'carousel.js' | asset_url }}" data-load="visible">
+      <ul class="product-grid product-grid--{{ s.layout }}" role="list" data-scroll-list style="--cols: {{ s.columns }}; --cols-mobile: {{ s.columns_mobile }}" data-recently-viewed-list></ul>
+      {%- if s.layout == 'carousel' -%}
+        <div class="scroll-row__buttons js-only">
+          <button type="button" class="icon-button" data-scroll-prev aria-label="{{ 'general.previous' | t }}">{%- render 'icon', name: 'chevron-left', size: 20 -%}</button>
+          <button type="button" class="icon-button" data-scroll-next aria-label="{{ 'general.next' | t }}">{%- render 'icon', name: 'chevron-right', size: 20 -%}</button>
+        </div>
+        {%- endif -%}
+    </scroll-row>
   </div>
 </div>
 

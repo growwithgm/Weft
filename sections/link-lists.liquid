@@ -3,6 +3,7 @@
 {%- endcomment -%}
 {%- assign s = section.settings -%}
 {{ 'section-library.css' | asset_url | stylesheet_tag }}
+{{ 'component-carousel.css' | asset_url | stylesheet_tag }}
 <div class="section link-lists color-{{ s.color_scheme }}{% if section.index > 2 %} below-fold{% endif %}" data-reveal>
   <div class="page-width{% if s.full_width %} page-width--full{% endif %}">
     {%- render 'section-heading', title: s.title, align: s.heading_align, button_label: s.button_label, button_link: s.button_link, button_style: s.button_style -%}

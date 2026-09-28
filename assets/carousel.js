@@ -136,6 +136,19 @@ class ScrollRow extends HTMLElement {
     this.prev = this.querySelector('[data-scroll-prev]');
     this.next = this.querySelector('[data-scroll-next]');
     if (!this.list || !this.prev || !this.next) return;
+    this.buttons = this.prev.closest('.scroll-row__buttons');
+    // Arrows sit in the top corner of the section heading (next to "View all") when there is one.
+    const heading = this.previousElementSibling;
+    if (this.buttons && heading && heading.classList.contains('section-heading') && !heading.classList.contains('section-heading--center')) {
+      heading.classList.add('section-heading--with-arrows');
+      heading.append(this.buttons);
+    } else if (this.buttons) this.classList.add('scroll-row--arrows-top');
+    // A thin progress line replaces the browser scrollbar.
+    this.progress = document.createElement('div');
+    this.progress.className = 'scroll-row__progress';
+    this.progress.setAttribute('aria-hidden', 'true');
+    this.progress.append(document.createElement('span'));
+    this.list.after(this.progress);
     // Steps add up from the last target, so quick repeated clicks move several items or pages even
     // when the browser drops a smooth scroll that starts while another is running. Theme settings >
     // Carousels decides whether one click moves one item or one page.
@@ -163,6 +176,8 @@ class ScrollRow extends HTMLElement {
       }, 80);
     }, { passive: true });
     new ResizeObserver(() => this.update()).observe(this.list);
+    // Lists filled later (recently viewed) update when their items arrive.
+    new MutationObserver(() => this.update()).observe(this.list, { childList: true });
     this.update();
   }
 
@@ -177,6 +192,10 @@ class ScrollRow extends HTMLElement {
     this.prev.disabled = pos <= 2;
     this.next.disabled = pos >= max - 2;
     this.toggleAttribute('data-scrollable', max > 2);
+    if (this.buttons) this.buttons.toggleAttribute('data-scrollable', max > 2);
+    const total = this.list.scrollWidth || 1;
+    this.progress.style.setProperty('--progress-size', String(this.list.clientWidth / total));
+    this.progress.style.setProperty('--progress-pos', String(pos / total));
   }
 }
 

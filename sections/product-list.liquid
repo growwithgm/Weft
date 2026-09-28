@@ -14,6 +14,7 @@
 -%}
 {{ 'component-card.css' | asset_url | stylesheet_tag }}
 {{ 'section-library.css' | asset_url | stylesheet_tag }}
+{{ 'component-carousel.css' | asset_url | stylesheet_tag }}
 <div class="section product-row color-{{ s.color_scheme }}{% if section.index > 2 %} below-fold{% endif %}">
   <div class="page-width">
     {%- render 'section-heading', title: s.title, align: s.heading_align, button_label: view_all, button_link: s.view_all_url, button_style: 'link' -%}

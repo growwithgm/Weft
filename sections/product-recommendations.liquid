@@ -4,6 +4,7 @@
   assign heading = s.heading
 -%}
 {{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-carousel.css' | asset_url | stylesheet_tag }}
 <div class="section product-rows color-{{ s.color_scheme }} below-fold">
   <div class="page-width">
     <recommendation-list
@@ -16,12 +17,20 @@
         <div class="section-heading section-heading--{{ s.heading_align }}">
           <h2 class="h2">{% if heading != blank %}{{ heading }}{% else %}{{ 'products.recommendations.also_like' | t }}{% endif %}</h2>
         </div>
-        <ul class="product-grid product-grid--{{ s.layout }}" role="list" style="--cols: {{ s.columns }}; --cols-mobile: {{ s.columns_mobile }}">
+        <scroll-row class="scroll-row scroll-row--{{ s.layout }}" data-module="{{ 'carousel.js' | asset_url }}" data-load="visible">
+        <ul class="product-grid product-grid--{{ s.layout }}" role="list" data-scroll-list style="--cols: {{ s.columns }}; --cols-mobile: {{ s.columns_mobile }}">
           {%- assign card_prefix = section.id | append: '-' -%}
           {%- for rec in recommendations.products limit: s.limit -%}
             {%- render 'product-card', product: rec, wrapper: 'li', index: forloop.index, sizes: '(min-width: 990px) 22vw, 45vw', id_prefix: card_prefix -%}
           {%- endfor -%}
         </ul>
+        {%- if s.layout == 'carousel' -%}
+          <div class="scroll-row__buttons js-only">
+            <button type="button" class="icon-button" data-scroll-prev aria-label="{{ 'general.previous' | t }}">{%- render 'icon', name: 'chevron-left', size: 20 -%}</button>
+            <button type="button" class="icon-button" data-scroll-next aria-label="{{ 'general.next' | t }}">{%- render 'icon', name: 'chevron-right', size: 20 -%}</button>
+          </div>
+        {%- endif -%}
+        </scroll-row>
       {%- endif -%}
     </recommendation-list>
   </div>

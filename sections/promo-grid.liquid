@@ -4,6 +4,7 @@
 {%- assign s = section.settings -%}
 {{ 'section-banner.css' | asset_url | stylesheet_tag }}
 {{ 'section-library.css' | asset_url | stylesheet_tag }}
+{{ 'component-carousel.css' | asset_url | stylesheet_tag }}
 <div class="section mosaic-section color-{{ s.color_scheme }}{% if section.index > 2 %} below-fold{% endif %}" data-reveal>
   <div class="page-width">
     {%- render 'section-heading', title: s.title, align: s.heading_align, button_label: s.button_label, button_link: s.button_link, button_style: 'secondary' -%}
