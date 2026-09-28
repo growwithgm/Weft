@@ -281,6 +281,8 @@
   .pagination__item--gap:hover { background: none; }
   .localization-form { display: flex; gap: 8px; align-items: center; }
   .localization-form__field { min-width: 0; }
+  /* Open select lists use the system menu colours, never a dark scheme's white text on the white list. */
+  select option { background-color: Canvas; color: CanvasText; }
   .localization-form__select { max-width: 100%; }
   .localization-form__select--compact { min-height: 32px; padding-block: 0; padding-inline: 10px 30px; border: 0; background-color: transparent; color: inherit; font-size: var(--t-13); background-position: calc(100% - 14px) 50%, calc(100% - 9px) 50%; }
   .announcement .localization-form__submit { min-height: 32px; padding: 0 12px; font-size: var(--t-12); }
