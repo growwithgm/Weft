@@ -395,6 +395,7 @@
     },
     "option_value_missing": "{{ value }}, non disponibile in questa combinazione",
     "option_value_unavailable": "{{ value }}, non disponibile",
+    "pao": "Usare entro {{ months }} mesi dall’apertura",
     "pickup": {
       "available_at": "Ritiro disponibile presso {{ location }}",
       "other_locations": "Verifica la disponibilità in altri negozi",

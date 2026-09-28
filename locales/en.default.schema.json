@@ -58,6 +58,7 @@
     "arrows": "Arrows",
     "aspect_ratio": "Aspect ratio",
     "attention_messages": "Attention messages",
+    "attribute_chips": "Attribute chips",
     "author": "Author",
     "author_details": "Author details",
     "author_image": "Author image",
@@ -70,6 +71,7 @@
     "background_video_with_text": "Background video with text",
     "backorder": "Backorder",
     "backorder_note": "Backorder note",
+    "badge": "Badge",
     "badge_1_color": "Badge 1 color",
     "badge_1_link_title": "Badge 1 link title",
     "badge_1_text": "Badge 1 text",
@@ -79,6 +81,7 @@
     "badge_3_color": "Badge 3 color",
     "badge_3_link_title": "Badge 3 link title",
     "badge_3_text": "Badge 3 text",
+    "badges": "Badges",
     "bag": "Bag",
     "banners": "Banners",
     "barcode": "Barcode",
@@ -261,6 +264,7 @@
     "error_text": "Error text",
     "everyone": "Everyone",
     "exclude_product_types": "Exclude product types",
+    "explanation": "Explanation",
     "extra_large": "Extra large",
     "extra_links_shown_after_the_main_menu": "Extra links shown after the main menu.",
     "extra_rows_from_metafields": "Extra rows from metafields",
@@ -277,6 +281,7 @@
     "featured_product": "Featured product",
     "field": "Field",
     "fill": "Fill",
+    "filled": "Filled",
     "filter_promotion": "Filter promotion",
     "filters": "Filters",
     "first_part_heading": "First part heading",
@@ -289,6 +294,7 @@
     "flash_message": "Flash message",
     "font": "Font",
     "footer": "Footer",
+    "for_certification_logos": "For certification logos.",
     "for_policy_and_legal_links": "For policy and legal links.",
     "for_pre_order_product_templates": "For pre-order product templates.",
     "for_professionals": "For professionals",
@@ -296,6 +302,8 @@
     "format_yyyy_mm_dd_uses_your_store_s_time_zone": "Format YYYY-MM-DD. Uses your store's time zone.",
     "forms": "Forms",
     "free_shipping_bar": "Free shipping bar",
+    "full_list": "Full list",
+    "full_list_label": "Full list label",
     "full_screen": "Full screen",
     "full_width": "Full width",
     "gallery": "Gallery",
@@ -333,16 +341,19 @@
     "hide_when_the_countdown_ends": "Hide when the countdown ends",
     "hide_while_filters_are_active": "Hide while filters are active",
     "high": "High",
+    "highlight": "Highlight",
     "highlight_background": "Highlight background",
     "highlight_border": "Highlight border",
     "highlight_products_with_the_highlight_tag": "Highlight products with the highlight tag",
     "highlight_tag": "Highlight tag",
     "highlight_text": "Highlight text",
     "highlighted_products": "Highlighted products",
+    "highlights": "Highlights",
     "horizontal": "Horizontal",
     "horizontal_position": "Horizontal position",
     "hotspot": "Hotspot",
     "hotspot_color": "Hotspot color",
+    "how_to_use": "How to use",
     "icon": "Icon",
     "icon_button": "Icon button",
     "icon_position": "Icon position",
@@ -375,6 +386,8 @@
     "information": "Information",
     "information_background": "Information background",
     "information_text": "Information text",
+    "ingredient": "Ingredient",
+    "ingredients": "Ingredients",
     "input_corner_radius": "Input corner radius",
     "input_type": "Input type",
     "inside_the_account_menu": "Inside the account menu",
@@ -493,6 +506,7 @@
     "mobile_only": "Mobile only",
     "mobile_sticky_bar": "Mobile sticky bar",
     "mobile_uses_60_of_this_value": "Mobile uses 60% of this value.",
+    "months": "Months",
     "multi_column": "Multi-column",
     "name": "Name",
     "namespace_key_for_example_custom_material": "namespace.key, for example custom.material",
@@ -522,6 +536,7 @@
     "one_per_line": "One per line.",
     "one_per_line_label_namespace_key": "One per line: Label = namespace.key",
     "one_variant_option": "One variant option",
+    "only_claims_you_can_support": "Only claims you can support.",
     "only_show_to_visitors_who_aren_t_signed_in": "Only show to visitors who aren't signed in",
     "only_show_when_the_product_is_unavailable": "Only show when the product is unavailable",
     "open_all_filters": "Open all filters",
@@ -531,10 +546,12 @@
     "open_in_a_new_tab": "Open in a new tab",
     "open_the_cart_drawer": "Open the cart drawer",
     "open_the_first_row": "Open the first row",
+    "open_the_full_list": "Open the full list",
     "open_the_lightbox_on_mobile": "Open the lightbox on mobile",
     "option_names_to_group_by": "Option names to group by",
     "optional_uses_the_main_image_when_empty": "Optional. Uses the main image when empty.",
     "or_a_youtube_vimeo_url": "Or a YouTube / Vimeo URL",
+    "or_read_a_product_metafield": "Or read a product metafield",
     "order": "Order",
     "order_from_product_cards_in_a_drawer": "Order from product cards in a drawer",
     "order_matrix": "Order matrix",
@@ -559,6 +576,7 @@
     "payment_methods": "Payment methods",
     "percent": "Percent",
     "percentage_saved": "Percentage saved",
+    "period_after_opening": "Period after opening",
     "phone": "Phone",
     "pill": "Pill",
     "pinterest": "Pinterest",
@@ -712,6 +730,7 @@
     "section": "Section",
     "section_height": "Section height",
     "section_spacing": "Section spacing",
+    "secure": "Secure",
     "secure_payment": "Secure payment",
     "selected": "Selected",
     "shade_every_other_row": "Shade every other row",
@@ -885,6 +904,7 @@
     "stars_only": "Stars only",
     "start": "Start",
     "stay_on_the_page": "Stay on the page",
+    "step": "Step",
     "sticky_header": "Sticky header",
     "stock": "Stock",
     "store": "Store",
@@ -977,6 +997,7 @@
     "value": "Value",
     "value_when_checked": "Value when checked",
     "value_when_not_checked": "Value when not checked",
+    "values": "Values",
     "values_before_show_more": "Values before \"Show more\"",
     "variant_image": "Variant image",
     "variant_picker": "Variant picker",
@@ -988,6 +1009,7 @@
     "very_low_stock_threshold": "Very low stock threshold",
     "vibrate_on_add_to_cart": "Vibrate on add to cart",
     "video": "Video",
+    "video_cover_image": "Video cover image",
     "video_description": "Video description",
     "video_shape": "Video shape",
     "video_tint": "Video tint",
@@ -1037,6 +1059,16 @@
   },
   "text": {
     "blocks": {
+      "attribute_chips": {
+        "settings": {
+          "metafield": {
+            "info": "namespace.key, for example shopify.hair-type. Used instead of the values when set."
+          },
+          "values": {
+            "info": "Separate values with commas. Accepts dynamic sources."
+          }
+        }
+      },
       "back_in_stock": {
         "settings": {
           "show_link": {
@@ -1115,6 +1147,13 @@
           }
         }
       },
+      "ingredients": {
+        "settings": {
+          "full_list": {
+            "info": "Accepts dynamic sources, for example a product metafield."
+          }
+        }
+      },
       "installments_note": {
         "settings": {
           "shown_to_wholesale_buyers_when_theme_settings_wh": {
@@ -1126,6 +1165,13 @@
         "settings": {
           "shown_to_wholesale_buyers_on_products_with_the_o": {
             "content": "Shown to wholesale buyers on products with the order matrix tag (Theme settings > Wholesale). Rows use the first option; columns use the other options."
+          }
+        }
+      },
+      "pao_icon": {
+        "settings": {
+          "months": {
+            "info": "Accepts dynamic sources, for example a number metafield."
           }
         }
       },

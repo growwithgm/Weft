@@ -1,0 +1,35 @@
+{%- comment -%} One how-to-use step. {%- endcomment -%}
+{%- assign b = block.settings -%}
+{%- if b.text != blank -%}
+  <li class="how-to__step" {{ block.shopify_attributes }}>
+    {%- if b.image -%}{{ b.image | image_url: width: 240 | image_tag: width: 80, height: 80, alt: '', loading: 'lazy', class: 'how-to__image' }}{%- endif -%}
+    <div class="how-to__body">
+      {%- if b.title != blank -%}<p class="how-to__title">{{ b.title | escape }}</p>{%- endif -%}
+      <div class="how-to__text">{{ b.text }}</div>
+    </div>
+  </li>
+{%- endif -%}
+{% schema %}
+{
+  "name": "t:labels.step",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "t:labels.title"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "text",
+      "label": "t:labels.text",
+      "default": "Apply to damp hair."
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:labels.image"
+    }
+  ]
+}
+{% endschema %}

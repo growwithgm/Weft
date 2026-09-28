@@ -58,6 +58,7 @@
     "arrows": "Flechas",
     "aspect_ratio": "Relación de aspecto",
     "attention_messages": "Mensajes de atención",
+    "attribute_chips": "Etiquetas de atributos",
     "author": "Autor",
     "author_details": "Datos del autor",
     "author_image": "Imagen del autor",
@@ -70,6 +71,7 @@
     "background_video_with_text": "Vídeo de fondo con texto",
     "backorder": "Pedido pendiente",
     "backorder_note": "Nota de pedido pendiente",
+    "badge": "Distintivo",
     "badge_1_color": "Color de la insignia 1",
     "badge_1_link_title": "Título del enlace de la insignia 1",
     "badge_1_text": "Texto de la insignia 1",
@@ -79,6 +81,7 @@
     "badge_3_color": "Color de la insignia 3",
     "badge_3_link_title": "Título del enlace de la insignia 3",
     "badge_3_text": "Texto de la insignia 3",
+    "badges": "Distintivos",
     "bag": "Bolsa",
     "banners": "Banners",
     "barcode": "Código de barras",
@@ -261,6 +264,7 @@
     "error_text": "Texto de error",
     "everyone": "Todos",
     "exclude_product_types": "Excluir tipos de producto",
+    "explanation": "Explicación",
     "extra_large": "Muy grande",
     "extra_links_shown_after_the_main_menu": "Enlaces adicionales mostrados tras el menú principal.",
     "extra_rows_from_metafields": "Filas adicionales desde metacampos",
@@ -277,6 +281,7 @@
     "featured_product": "Producto destacado",
     "field": "Campo",
     "fill": "Rellenar",
+    "filled": "Relleno",
     "filter_promotion": "Promoción en filtros",
     "filters": "Filtros",
     "first_part_heading": "Título de la primera parte",
@@ -289,6 +294,7 @@
     "flash_message": "Mensaje destacado",
     "font": "Fuente",
     "footer": "Pie de página",
+    "for_certification_logos": "Para logotipos de certificación.",
     "for_policy_and_legal_links": "Para enlaces de políticas y avisos legales.",
     "for_pre_order_product_templates": "Para plantillas de producto en reserva.",
     "for_professionals": "Para profesionales",
@@ -296,6 +302,8 @@
     "format_yyyy_mm_dd_uses_your_store_s_time_zone": "Formato AAAA-MM-DD. Usa la zona horaria de la tienda.",
     "forms": "Formularios",
     "free_shipping_bar": "Barra de envío gratis",
+    "full_list": "Lista completa",
+    "full_list_label": "Título de la lista completa",
     "full_screen": "Pantalla completa",
     "full_width": "Ancho completo",
     "gallery": "Galería",
@@ -333,16 +341,19 @@
     "hide_when_the_countdown_ends": "Ocultar al terminar la cuenta atrás",
     "hide_while_filters_are_active": "Ocultar mientras haya filtros activos",
     "high": "Alta",
+    "highlight": "Punto destacado",
     "highlight_background": "Fondo destacado",
     "highlight_border": "Borde destacado",
     "highlight_products_with_the_highlight_tag": "Destacar productos con la etiqueta de destacado",
     "highlight_tag": "Etiqueta para destacar",
     "highlight_text": "Texto destacado",
     "highlighted_products": "Productos destacados",
+    "highlights": "Puntos destacados",
     "horizontal": "Horizontal",
     "horizontal_position": "Posición horizontal",
     "hotspot": "Punto interactivo",
     "hotspot_color": "Color del punto interactivo",
+    "how_to_use": "Modo de empleo",
     "icon": "Icono",
     "icon_button": "Botón con icono",
     "icon_position": "Posición del icono",
@@ -375,6 +386,8 @@
     "information": "Información",
     "information_background": "Fondo informativo",
     "information_text": "Texto informativo",
+    "ingredient": "Ingrediente",
+    "ingredients": "Ingredientes",
     "input_corner_radius": "Radio de esquina de los campos",
     "input_type": "Tipo de campo",
     "inside_the_account_menu": "Dentro del menú de la cuenta",
@@ -493,6 +506,7 @@
     "mobile_only": "Solo móvil",
     "mobile_sticky_bar": "Barra fija en móvil",
     "mobile_uses_60_of_this_value": "En móvil se usa el 60 % de este valor.",
+    "months": "Meses",
     "multi_column": "Varias columnas",
     "name": "Nombre",
     "namespace_key_for_example_custom_material": "namespace.key, por ejemplo custom.material",
@@ -522,6 +536,7 @@
     "one_per_line": "Uno por línea.",
     "one_per_line_label_namespace_key": "Una por línea: Etiqueta = namespace.key",
     "one_variant_option": "Una opción de variante",
+    "only_claims_you_can_support": "Solo afirmaciones que puedas justificar.",
     "only_show_to_visitors_who_aren_t_signed_in": "Mostrar solo a visitantes sin sesión iniciada",
     "only_show_when_the_product_is_unavailable": "Mostrar solo cuando el producto no esté disponible",
     "open_all_filters": "Abrir todos los filtros",
@@ -531,10 +546,12 @@
     "open_in_a_new_tab": "Abrir en una pestaña nueva",
     "open_the_cart_drawer": "Abrir el carrito lateral",
     "open_the_first_row": "Abrir la primera fila",
+    "open_the_full_list": "Abrir la lista completa",
     "open_the_lightbox_on_mobile": "Abrir la ventana ampliada en móvil",
     "option_names_to_group_by": "Nombres de opción para agrupar",
     "optional_uses_the_main_image_when_empty": "Opcional. Si está vacío se usa la imagen principal.",
     "or_a_youtube_vimeo_url": "O una URL de YouTube / Vimeo",
+    "or_read_a_product_metafield": "O leer un metacampo del producto",
     "order": "Pedido",
     "order_from_product_cards_in_a_drawer": "Pedir desde las tarjetas de producto en un panel",
     "order_matrix": "Matriz de pedido",
@@ -559,6 +576,7 @@
     "payment_methods": "Métodos de pago",
     "percent": "Porcentaje",
     "percentage_saved": "Porcentaje ahorrado",
+    "period_after_opening": "Periodo tras la apertura",
     "phone": "Teléfono",
     "pill": "Píldora",
     "pinterest": "Pinterest",
@@ -712,6 +730,7 @@
     "section": "Sección",
     "section_height": "Altura de la sección",
     "section_spacing": "Espaciado de la sección",
+    "secure": "Seguro",
     "secure_payment": "Pago seguro",
     "selected": "Seleccionadas",
     "shade_every_other_row": "Sombrear filas alternas",
@@ -885,6 +904,7 @@
     "stars_only": "Solo estrellas",
     "start": "Inicio",
     "stay_on_the_page": "Permanecer en la página",
+    "step": "Paso",
     "sticky_header": "Encabezado fijo",
     "stock": "Stock",
     "store": "Tienda",
@@ -977,6 +997,7 @@
     "value": "Valor",
     "value_when_checked": "Valor si está marcado",
     "value_when_not_checked": "Valor si no está marcado",
+    "values": "Valores",
     "values_before_show_more": "Valores antes de \"Ver más\"",
     "variant_image": "Imagen de la variante",
     "variant_picker": "Selector de variantes",
@@ -988,6 +1009,7 @@
     "very_low_stock_threshold": "Umbral de stock muy bajo",
     "vibrate_on_add_to_cart": "Vibrar al añadir al carrito",
     "video": "Vídeo",
+    "video_cover_image": "Imagen de portada del vídeo",
     "video_description": "Descripción del vídeo",
     "video_shape": "Formato del vídeo",
     "video_tint": "Tono del vídeo",
@@ -1037,6 +1059,16 @@
   },
   "text": {
     "blocks": {
+      "attribute_chips": {
+        "settings": {
+          "metafield": {
+            "info": "namespace.key, por ejemplo shopify.hair-type. Si se indica, sustituye a los valores."
+          },
+          "values": {
+            "info": "Separa los valores con comas. Admite fuentes dinámicas."
+          }
+        }
+      },
       "back_in_stock": {
         "settings": {
           "show_link": {
@@ -1115,6 +1147,13 @@
           }
         }
       },
+      "ingredients": {
+        "settings": {
+          "full_list": {
+            "info": "Admite fuentes dinámicas, por ejemplo un metacampo del producto."
+          }
+        }
+      },
       "installments_note": {
         "settings": {
           "shown_to_wholesale_buyers_when_theme_settings_wh": {
@@ -1126,6 +1165,13 @@
         "settings": {
           "shown_to_wholesale_buyers_on_products_with_the_o": {
             "content": "Se muestra a mayoristas en productos con la etiqueta de matriz de pedido (Configuración del tema > Mayorista). Las filas usan la primera opción; las columnas, las demás."
+          }
+        }
+      },
+      "pao_icon": {
+        "settings": {
+          "months": {
+            "info": "Admite fuentes dinámicas, por ejemplo un metacampo numérico."
           }
         }
       },

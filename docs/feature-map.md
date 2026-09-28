@@ -137,11 +137,11 @@ Status: `planned` (P0) → `built` (with phase) → `verified` (scenario or chec
 | Feature | Weft implementation | Phase | Status |
 |---|---|---|---|
 | Product guide (image or table) | `blocks/product-guide` (image, page, rich text, metaobject-free table via rich text) | P2 | done |
-| Highlights | `blocks/highlights` | P6 | planned |
-| Attribute chips | `blocks/attribute-chips` | P6 | planned |
-| Ingredients (key + INCI) | `blocks/ingredients` | P6 | planned |
-| How to use | `blocks/how-to-use` | P6 | planned |
-| Badges | `blocks/badges` | P6 | planned |
+| Highlights | `blocks/highlights` (`_highlight`) | P6 | done |
+| Attribute chips | `blocks/attribute-chips` | P6 | done |
+| Ingredients (key + INCI) | `blocks/ingredients` (`_ingredient`) | P6 | done |
+| How to use | `blocks/how-to-use` (`_step`) | P6 | done |
+| Badges | `blocks/badges` (`_badge`) | P6 | done |
 | Tabs / accordions | `blocks/collapsible`, `blocks/product-tabs`, `sections/product-details` | P2/P5 | done |
 | Unit price | `product-price` | P2 | done |
 | Purchase options | `blocks/purchase-options` | P2 | done |
@@ -155,7 +155,7 @@ Status: `planned` (P0) → `built` (with phase) → `verified` (scenario or chec
 | Shade swatches | `variant-picker` swatches (swatch images / standard colour metaobject `shopify.color-pattern` swatch) | P2 | done |
 | Scent notes | `blocks/scent-notes` | P6 | planned |
 | Warnings and precautions | `blocks/collapsible` preset "Warnings" | P6 | planned |
-| Period after opening icon | `blocks/period-after-opening` | P6 | planned |
+| Period after opening icon | `blocks/pao-icon` | P6 | done |
 | Gift message line-item property | `blocks/gift-message` | P6 | planned |
 | Gift sets list components (bundles) | `cart-line` + product block reads `product.metafields` / bundle components via `item.item_components` (*verify P6*) | P6 | planned |
 | Ingredient spotlight | `sections/ingredient-spotlight` | P6 | planned |

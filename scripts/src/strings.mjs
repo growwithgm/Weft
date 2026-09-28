@@ -169,6 +169,7 @@ export default {
   // ---------- products ----------
   'products.placeholder_title': s('Product title', 'Título del producto', 'Produkttitel', 'Titre du produit', 'Titolo del prodotto', 'Producttitel', 'Título do produto', '商品名'),
   'products.placeholder_text': s('Choose a product to show its details here.', 'Elige un producto para mostrar aquí sus detalles.', 'Wähle ein Produkt, um hier seine Details zu zeigen.', 'Choisissez un produit pour afficher ses détails ici.', 'Scegli un prodotto per mostrarne qui i dettagli.', 'Kies een product om de details hier te tonen.', 'Escolha um produto para mostrar aqui os detalhes.', '商品を選ぶと、ここに詳細が表示されます。'),
+  'products.pao': s('Use within {{ months }} months of opening', 'Usar en los {{ months }} meses siguientes a su apertura', 'Nach dem Öffnen innerhalb von {{ months }} Monaten verwenden', 'À utiliser dans les {{ months }} mois après ouverture', 'Usare entro {{ months }} mesi dall’apertura', 'Binnen {{ months }} maanden na opening gebruiken', 'Usar no prazo de {{ months }} meses após abertura', '開封後{{ months }}か月以内に使用'),
   'products.specification': s('Specification', 'Especificaciones', 'Technische Daten', 'Caractéristiques', 'Specifiche', 'Specificaties', 'Especificações', '仕様'),
   'products.reviews': s('Reviews', 'Reseñas', 'Bewertungen', 'Avis', 'Recensioni', 'Reviews', 'Avaliações', 'レビュー'),
   'products.add_to_cart': s('Add to cart', 'Añadir al carrito', 'In den Warenkorb', 'Ajouter au panier', 'Aggiungi al carrello', 'In winkelwagen', 'Adicionar ao carrinho', 'カートに追加'),

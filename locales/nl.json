@@ -395,6 +395,7 @@
     },
     "option_value_missing": "{{ value }}, niet in deze combinatie",
     "option_value_unavailable": "{{ value }}, niet beschikbaar",
+    "pao": "Binnen {{ months }} maanden na opening gebruiken",
     "pickup": {
       "available_at": "Afhalen mogelijk bij {{ location }}",
       "other_locations": "Beschikbaarheid in andere winkels bekijken",

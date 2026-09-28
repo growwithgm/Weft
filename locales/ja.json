@@ -395,6 +395,7 @@
     },
     "option_value_missing": "{{ value }}（この組み合わせはありません）",
     "option_value_unavailable": "{{ value }}（在庫なし）",
+    "pao": "開封後{{ months }}か月以内に使用",
     "pickup": {
       "available_at": "{{ location }}で受け取り可能",
       "other_locations": "他の店舗の在庫を確認",
