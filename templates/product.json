@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -5,82 +14,176 @@
       "blocks": {
         "labels": {
           "type": "product-labels",
-          "settings": {}
+          "settings": {},
+          "blocks": {}
         },
         "title": {
           "type": "product-title",
-          "settings": {}
+          "settings": {
+            "size": "h1",
+            "tag": "auto",
+            "show_weight": false
+          },
+          "blocks": {}
         },
         "price": {
           "type": "product-price",
           "settings": {
             "show_tax_note": true,
-            "show_installments": true
-          }
+            "show_shipping_note": false,
+            "show_installments": true,
+            "preview_wholesale": false
+          },
+          "blocks": {}
         },
         "rating": {
           "type": "product-rating",
           "settings": {
+            "rating_value": "",
+            "rating_count": "",
             "count_label": "product",
+            "style": "pill",
+            "link": "section",
+            "anchor": "reviews",
+            "page": "",
             "audience": "retail"
-          }
+          },
+          "blocks": {}
+        },
+        "terms": {
+          "type": "wholesale-terms",
+          "settings": {},
+          "blocks": {}
+        },
+        "matrix": {
+          "type": "order-matrix",
+          "settings": {
+            "layout": "rows",
+            "show_rules_bar": true
+          },
+          "blocks": {}
+        },
+        "wholesale_qty": {
+          "type": "wholesale-quantity",
+          "settings": {},
+          "blocks": {}
+        },
+        "installments": {
+          "type": "installments-note",
+          "settings": {},
+          "blocks": {}
+        },
+        "tiers": {
+          "type": "volume-pricing",
+          "settings": {},
+          "blocks": {}
         },
         "picker": {
           "type": "variant-picker",
-          "settings": {}
+          "settings": {
+            "style": "buttons",
+            "availability": "top_down",
+            "guide_option": "Size,Taille,Größe,Talla,Taglia,Maat,Tamanho,サイズ,Shade,Volume"
+          },
+          "blocks": {}
         },
         "guide": {
           "type": "product-guide",
           "settings": {
-            "link_position": "picker"
-          }
+            "label": "",
+            "icon": "ruler",
+            "link_position": "picker",
+            "text": "",
+            "page": "",
+            "row1_label": "Fit",
+            "row1_value": "",
+            "row2_label": "Best suited for",
+            "row2_value": ""
+          },
+          "blocks": {}
         },
         "stock": {
           "type": "stock-line",
           "settings": {
+            "in_stock_extra": "",
+            "show_bar": false,
+            "bar_max": 20,
+            "text_low": "",
+            "text_sold_out": "",
+            "text_backorder": "",
             "audience": "retail"
-          }
+          },
+          "blocks": {}
         },
         "delivery": {
           "type": "delivery-list",
           "settings": {
+            "fit_text": "",
+            "show_shipping": true,
+            "show_installments": true,
+            "show_notify": true,
+            "show_returns": true,
+            "returns_text": "",
+            "returns_page": "",
             "audience": "retail"
-          }
+          },
+          "blocks": {}
         },
         "notify": {
           "type": "back-in-stock",
           "settings": {
+            "show_link": false,
+            "consent_text": "",
             "audience": "retail"
-          }
+          },
+          "blocks": {}
         },
         "options": {
           "type": "purchase-options",
-          "settings": {}
+          "settings": {
+            "heading": ""
+          },
+          "blocks": {}
         },
         "buy": {
           "type": "buy-buttons",
           "settings": {
+            "show_quantity": true,
+            "show_accelerated": true,
+            "show_pickup": true,
+            "show_gift_card_recipient": true,
+            "show_backorder_note": true,
+            "backorder_text": "",
+            "backorder_as_preorder": false,
+            "preorder": false,
             "audience": "retail"
-          }
+          },
+          "blocks": {}
         },
         "features": {
           "type": "specifications",
           "settings": {
             "heading": "Main features",
-            "accordion": true
+            "accordion": true,
+            "open": false,
+            "audience": "all"
           },
           "blocks": {
             "row1": {
               "type": "_spec-row",
               "settings": {
-                "label": "Material"
-              }
+                "label": "Material",
+                "value": ""
+              },
+              "blocks": {}
             },
             "row2": {
               "type": "_spec-row",
               "settings": {
-                "label": "Care"
-              }
+                "label": "Care",
+                "value": ""
+              },
+              "blocks": {}
             }
           },
           "block_order": [
@@ -92,44 +195,33 @@
           "type": "description",
           "settings": {
             "accordion": true,
+            "heading": "",
             "open": true,
             "clamp_chars": 200
-          }
+          },
+          "blocks": {}
         },
         "returns": {
           "type": "collapsible",
           "settings": {
             "heading": "Returns",
             "icon": "return",
-            "audience": "retail",
-            "text": "<p>Explain your returns policy in a few lines.</p>"
-          }
+            "text": "<p>Explain your returns policy in a few lines.</p>",
+            "page": "",
+            "open": false,
+            "audience": "retail"
+          },
+          "blocks": {}
         },
         "share": {
           "type": "share",
-          "settings": {}
-        },
-        "terms": {
-          "type": "wholesale-terms",
-          "settings": {}
-        },
-        "installments": {
-          "type": "installments-note",
-          "settings": {}
-        },
-        "tiers": {
-          "type": "volume-pricing",
-          "settings": {}
-        },
-        "wholesale_qty": {
-          "type": "wholesale-quantity",
-          "settings": {}
-        },
-        "matrix": {
-          "type": "order-matrix",
           "settings": {
-            "layout": "rows"
-          }
+            "show_twitter": true,
+            "show_facebook": true,
+            "show_pinterest": true,
+            "show_copy": false
+          },
+          "blocks": {}
         }
       },
       "block_order": [
@@ -155,26 +247,63 @@
         "share"
       ],
       "settings": {
-        "section_width": "full",
-        "gallery_width": "extra_wide",
+        "color_scheme": "",
+        "select_first_variant": true,
+        "sticky_info": true,
+        "sticky_bar_mobile": true,
         "gallery_layout": "grid_even",
-        "media_ratio": "portrait",
+        "gallery_width": "extra_wide",
         "column_gap": 64,
         "column_divider": true,
-        "sticky_info": true
+        "section_width": "full",
+        "media_ratio": "natural",
+        "media_fit": "contain",
+        "media_bg": "#f4f4f4",
+        "thumbnails": "desktop",
+        "show_counter": true,
+        "zoom": "lightbox",
+        "lightbox_mobile": true,
+        "video_loop": true,
+        "group_media_by_option": false,
+        "group_media_option_names": "Color,Colour,Couleur,Farbe,Colore,Kleur,Cor"
       }
     },
     "reviews": {
       "type": "product-reviews",
-      "settings": {}
+      "settings": {
+        "heading": "What customers say",
+        "note": "",
+        "anchor": "reviews",
+        "all_reviews_label": "Read all reviews",
+        "all_reviews_link": "",
+        "write_label": "Write a review",
+        "write_link": "",
+        "color_scheme": ""
+      }
     },
     "related": {
       "type": "product-recommendations",
-      "settings": {}
+      "settings": {
+        "heading": "",
+        "heading_align": "start",
+        "layout": "carousel",
+        "limit": 8,
+        "columns": 4,
+        "columns_mobile": "2",
+        "color_scheme": ""
+      }
     },
     "recent": {
       "type": "recently-viewed",
-      "settings": {}
+      "settings": {
+        "heading": "",
+        "heading_align": "start",
+        "layout": "carousel",
+        "limit": 8,
+        "columns": 4,
+        "columns_mobile": "2",
+        "color_scheme": ""
+      }
     }
   },
   "order": [
