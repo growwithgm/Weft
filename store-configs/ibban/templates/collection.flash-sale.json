@@ -57,7 +57,10 @@
         "stick_on_scroll": true,
         "show_filter_counts": true,
         "max_filter_options": 6,
-        "enable_sorting": true
+        "enable_sorting": true,
+        "columns_mobile": "2",
+        "columns_tablet": "3",
+        "columns_wide": 4
       }
     },
     "promo-strip": {

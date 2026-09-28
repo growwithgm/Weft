@@ -280,7 +280,9 @@
     "integration_bis_endpoint": "https://wasify-super.vercel.app/api/stock/subscribe",
     "integration_gtm_id": "GTM-55DG66F6",
     "integration_google_verification": "-0OIKeydZTIfzNFO7PGU_crZ0rjXm-uZnPhon8ydO6Y",
-    "integration_meta_verification": "j7y6vq2q62bdo9vs8063nmqniudzap"
+    "integration_meta_verification": "j7y6vq2q62bdo9vs8063nmqniudzap",
+    "page_width_wide": "2000",
+    "gutter_desktop": 64
   },
   "presets": {
     "Weft": {

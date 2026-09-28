@@ -53,7 +53,8 @@
   {%- render 'wholesale-gate' -%}
 {%- else -%}
 <product-section
-  class="section product color-{{ section.settings.color_scheme }}"
+  class="section product product--{{ section.settings.section_width | default: 'page' }} color-{{ section.settings.color_scheme }}"
+  style="--product-gap: {{ section.settings.column_gap | default: 48 }}px;"
   data-product-section
   data-section-id="{{ section.id }}"
   data-product-url="{{ p.url }}"
@@ -155,6 +156,10 @@
           "label": "t:labels.two_columns"
         },
         {
+          "value": "grid_even",
+          "label": "t:labels.two_columns_same_size"
+        },
+        {
           "value": "thumbnails",
           "label": "t:labels.thumbnails"
         },
@@ -181,9 +186,40 @@
         {
           "value": "narrow",
           "label": "t:labels.narrow_5_of_12_columns"
+        },
+        {
+          "value": "extra_wide",
+          "label": "t:labels.extra_wide_65_35"
         }
       ],
       "default": "wide"
+    },
+    {
+      "type": "range",
+      "id": "column_gap",
+      "label": "t:labels.space_between_media_and_information",
+      "min": 24,
+      "max": 80,
+      "step": 4,
+      "default": 48,
+      "unit": "px"
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "t:labels.section_width",
+      "info": "t:text.sections.main_product.settings.section_width.info",
+      "options": [
+        {
+          "value": "page",
+          "label": "t:labels.page_width"
+        },
+        {
+          "value": "full",
+          "label": "t:labels.full_width"
+        }
+      ],
+      "default": "page"
     },
     {
       "type": "select",

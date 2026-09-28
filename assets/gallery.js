@@ -62,7 +62,7 @@ class ProductGallery extends HTMLElement {
       this.targetTimer = setTimeout(() => (this.target = null), 1000);
       this.list.scrollTo({ left: item.offsetLeft - this.list.offsetLeft, behavior: reduced() ? 'auto' : 'smooth' });
     }
-    else if (this.dataset.layoutScroll !== 'none' && !this.matches('.gallery--stacked, .gallery--grid')) item.scrollIntoView({ block: 'nearest' });
+    else if (this.dataset.layoutScroll !== 'none' && !this.matches('.gallery--stacked, .gallery--grid, .gallery--grid_even')) item.scrollIntoView({ block: 'nearest' });
     this.setActive(index);
   }
 

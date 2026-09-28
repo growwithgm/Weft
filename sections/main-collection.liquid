@@ -106,10 +106,13 @@
           {%- render 'facets-active', results: collection, clear_url: clear_url -%}
           {%- if collection.products.size > 0 -%}
             {%- liquid
-              assign card_sizes = '(min-width: 990px) calc(100vw / ' | append: s.columns | append: '), (min-width: 750px) 33vw, 50vw'
+              # Image sizes follow the columns at each breakpoint, so wide layouts get sharp images and phones small ones.
+              assign tablet_vw = 100 | divided_by: s.columns_tablet | append: 'vw'
+              assign mobile_vw = '50vw'
               if s.columns_mobile == '1'
-                assign card_sizes = '(min-width: 990px) calc(100vw / ' | append: s.columns | append: '), (min-width: 750px) 33vw, 100vw'
+                assign mobile_vw = '100vw'
               endif
+              assign card_sizes = '(min-width: 1440px) calc(100vw / ' | append: s.columns_wide | append: '), (min-width: 990px) calc(100vw / ' | append: s.columns | append: '), (min-width: 750px) ' | append: tablet_vw | append: ', ' | append: mobile_vw
             -%}
             <ul
               class="product-grid collection__grid"
@@ -117,7 +120,7 @@
               role="list"
               data-product-grid
               data-layout="grid"
-              style="--cols: {{ s.columns }}; --cols-mobile: {{ s.columns_mobile }}"
+              style="--cols: {{ s.columns }}; --cols-mobile: {{ s.columns_mobile }}; --cols-tablet: {{ s.columns_tablet }}; --cols-wide: {{ s.columns_wide }}"
             >
               {%- for product in collection.products -%}
                 {%- assign product_index = forloop.index -%}
@@ -212,6 +215,32 @@
       "max": 5,
       "step": 1,
       "default": 4
+    },
+    {
+      "type": "range",
+      "id": "columns_wide",
+      "label": "t:labels.columns_on_wide_screens",
+      "info": "t:labels.from_1440_px_wide",
+      "min": 3,
+      "max": 6,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "select",
+      "id": "columns_tablet",
+      "label": "t:labels.columns_on_tablets",
+      "options": [
+        {
+          "value": "2",
+          "label": "t:labels.2"
+        },
+        {
+          "value": "3",
+          "label": "t:labels.3"
+        }
+      ],
+      "default": "3"
     },
     {
       "type": "select",

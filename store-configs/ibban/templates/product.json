@@ -156,8 +156,8 @@
         "sticky_info": true,
         "select_first_variant": true,
         "sticky_bar_mobile": true,
-        "gallery_layout": "stacked",
-        "gallery_width": "wide",
+        "gallery_layout": "grid_even",
+        "gallery_width": "extra_wide",
         "media_ratio": "natural",
         "video_loop": true,
         "zoom": "lightbox",
@@ -165,7 +165,9 @@
         "show_counter": true,
         "thumbnails": "both",
         "media_bg": "#f4f4f4",
-        "group_media_by_option": true
+        "group_media_by_option": true,
+        "section_width": "full",
+        "column_gap": 60
       }
     },
     "details": {

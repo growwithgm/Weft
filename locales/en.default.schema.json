@@ -2,8 +2,11 @@
   "labels": {
     "1": "1",
     "2": "2",
+    "3": "3",
     "0_means_no_limit": "0 means no limit.",
+    "1920_px": "1920 px",
     "1_px": "1 px",
+    "2000_px": "2000 px",
     "2_px": "2 px",
     "404_page": "404 page",
     "a_page": "A page",
@@ -191,6 +194,8 @@
     "columns": "Columns",
     "columns_on_large_screens": "Columns on large screens",
     "columns_on_mobile": "Columns on mobile",
+    "columns_on_tablets": "Columns on tablets",
+    "columns_on_wide_screens": "Columns on wide screens",
     "columns_to_span": "Columns to span",
     "comments_per_page": "Comments per page",
     "compact": "Compact",
@@ -277,6 +282,7 @@
     "extra_large": "Extra large",
     "extra_links_shown_after_the_main_menu": "Extra links shown after the main menu.",
     "extra_rows_from_metafields": "Extra rows from metafields",
+    "extra_wide_65_35": "Extra wide (65 / 35)",
     "facebook": "Facebook",
     "fade": "Fade",
     "fade_and_rise": "Fade and rise",
@@ -314,6 +320,7 @@
     "format_yyyy_mm_dd_uses_your_store_s_time_zone": "Format YYYY-MM-DD. Uses your store's time zone.",
     "forms": "Forms",
     "free_shipping_bar": "Free shipping bar",
+    "from_1440_px_wide": "From 1440 px wide.",
     "full_list": "Full list",
     "full_list_label": "Full list label",
     "full_screen": "Full screen",
@@ -591,6 +598,7 @@
     "page_handles_separated_by_commas": "Page handles separated by commas.",
     "page_numbers": "Page numbers",
     "page_width": "Page width",
+    "page_width_on_wide_screens": "Page width on wide screens",
     "page_with_the_guide": "Page with the guide",
     "pagination": "Pagination",
     "panels_and_image_backgrounds": "Panels and image backgrounds",
@@ -737,6 +745,7 @@
     "rule_for_other_countries": "Rule for other countries",
     "ruler": "Ruler",
     "sale": "Sale",
+    "same_as_maximum_page_width": "Same as maximum page width",
     "scaled_down_to_32_x_32px": "Scaled down to 32 x 32px.",
     "scent_notes": "Scent notes",
     "score": "Score",
@@ -762,6 +771,7 @@
     "section": "Section",
     "section_height": "Section height",
     "section_spacing": "Section spacing",
+    "section_width": "Section width",
     "secure": "Secure",
     "secure_payment": "Secure payment",
     "selected": "Selected",
@@ -901,6 +911,7 @@
     "shown_on_large_screens": "Shown on large screens.",
     "shows_the_page_content_in_the_pop_up": "Shows the page content in the pop-up.",
     "shows_under_the_filters_on_large_screens": "Shows under the filters on large screens.",
+    "side_padding_on_large_screens": "Side padding on large screens",
     "sidebar": "Sidebar",
     "sign_in_button_label": "Sign-in button label",
     "signup_heading": "Signup heading",
@@ -923,6 +934,7 @@
     "sorting": "Sorting",
     "space_between_items": "Space between items",
     "space_between_logos": "Space between logos",
+    "space_between_media_and_information": "Space between media and information",
     "space_between_sections": "Space between sections",
     "spacer": "Spacer",
     "spacing": "Spacing",
@@ -1026,6 +1038,7 @@
     "tumblr": "Tumblr",
     "twitch": "Twitch",
     "two_columns": "Two columns",
+    "two_columns_same_size": "Two columns, same size",
     "type": "Type",
     "typography": "Typography",
     "underline_column_headings": "Underline column headings",
@@ -1429,6 +1442,9 @@
             "info": "Each variant's featured image starts its group. Put the images for each value together, in variant order.",
             "label": "Show only the media for the selected option value"
           },
+          "section_width": {
+            "info": "Full width uses almost the whole screen from 1440 px wide."
+          },
           "sticky_bar_mobile": {
             "info": "Shows the selected options and Add to cart when the main button scrolls out of view. Hidden for wholesale buyers."
           }
@@ -1573,6 +1589,16 @@
           },
           "integration_tracking_mode": {
             "info": "Tracking also waits for marketing consent when \"Wait for marketing consent\" is on in Custom code and tracking."
+          }
+        }
+      },
+      "layout_and_design": {
+        "settings": {
+          "gutter_desktop": {
+            "info": "From 1280 px wide. Smaller screens use 20 or 32 px."
+          },
+          "page_width_wide": {
+            "info": "Takes over from 1440 px wide, so large monitors use the extra space. 2000 px starts at 1700 px wide, with 1920 px before that."
           }
         }
       },

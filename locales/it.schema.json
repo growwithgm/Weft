@@ -2,8 +2,11 @@
   "labels": {
     "1": "1",
     "2": "2",
+    "3": "3",
     "0_means_no_limit": "0 significa nessun limite.",
+    "1920_px": "1920 px",
     "1_px": "1 px",
+    "2000_px": "2000 px",
     "2_px": "2 px",
     "404_page": "Pagina 404",
     "a_page": "Una pagina",
@@ -191,6 +194,8 @@
     "columns": "Colonne",
     "columns_on_large_screens": "Colonne su schermi grandi",
     "columns_on_mobile": "Colonne su dispositivi mobili",
+    "columns_on_tablets": "Colonne su tablet",
+    "columns_on_wide_screens": "Colonne su schermi ampi",
     "columns_to_span": "Colonne da occupare",
     "comments_per_page": "Commenti per pagina",
     "compact": "Compatto",
@@ -277,6 +282,7 @@
     "extra_large": "Molto grande",
     "extra_links_shown_after_the_main_menu": "Link aggiuntivi mostrati dopo il menu principale.",
     "extra_rows_from_metafields": "Righe aggiuntive dai metacampi",
+    "extra_wide_65_35": "Extra larga (65 / 35)",
     "facebook": "Facebook",
     "fade": "Dissolvenza",
     "fade_and_rise": "Dissolvenza con risalita",
@@ -314,6 +320,7 @@
     "format_yyyy_mm_dd_uses_your_store_s_time_zone": "Formato AAAA-MM-GG. Usa il fuso orario del negozio.",
     "forms": "Moduli",
     "free_shipping_bar": "Barra della spedizione gratuita",
+    "from_1440_px_wide": "Da 1440 px di larghezza.",
     "full_list": "Elenco completo",
     "full_list_label": "Etichetta dell'elenco completo",
     "full_screen": "Schermo intero",
@@ -591,6 +598,7 @@
     "page_handles_separated_by_commas": "Handle delle pagine separati da virgole.",
     "page_numbers": "Numeri di pagina",
     "page_width": "Larghezza della pagina",
+    "page_width_on_wide_screens": "Larghezza pagina su schermi ampi",
     "page_with_the_guide": "Pagina con la guida",
     "pagination": "Paginazione",
     "panels_and_image_backgrounds": "Pannelli e sfondi delle immagini",
@@ -737,6 +745,7 @@
     "rule_for_other_countries": "Regola per gli altri paesi",
     "ruler": "Righello",
     "sale": "In offerta",
+    "same_as_maximum_page_width": "Uguale alla larghezza massima della pagina",
     "scaled_down_to_32_x_32px": "Ridimensionato a 32 x 32px.",
     "scent_notes": "Note olfattive",
     "score": "Punteggio",
@@ -762,6 +771,7 @@
     "section": "Sezione",
     "section_height": "Altezza della sezione",
     "section_spacing": "Spaziatura della sezione",
+    "section_width": "Larghezza della sezione",
     "secure": "Sicuro",
     "secure_payment": "Pagamento sicuro",
     "selected": "Selezionati",
@@ -901,6 +911,7 @@
     "shown_on_large_screens": "Mostrato su schermi grandi.",
     "shows_the_page_content_in_the_pop_up": "Mostra il contenuto della pagina nel pop-up.",
     "shows_under_the_filters_on_large_screens": "Mostrato sotto i filtri su schermi grandi.",
+    "side_padding_on_large_screens": "Margine laterale su schermi grandi",
     "sidebar": "Barra laterale",
     "sign_in_button_label": "Etichetta del pulsante di accesso",
     "signup_heading": "Titolo dell'iscrizione",
@@ -923,6 +934,7 @@
     "sorting": "Ordinamento",
     "space_between_items": "Spazio tra gli elementi",
     "space_between_logos": "Spazio tra i loghi",
+    "space_between_media_and_information": "Spazio tra contenuti multimediali e informazioni",
     "space_between_sections": "Spazio tra le sezioni",
     "spacer": "Spaziatore",
     "spacing": "Spaziatura",
@@ -1026,6 +1038,7 @@
     "tumblr": "Tumblr",
     "twitch": "Twitch",
     "two_columns": "Due colonne",
+    "two_columns_same_size": "Due colonne della stessa dimensione",
     "type": "Tipo",
     "typography": "Tipografia",
     "underline_column_headings": "Sottolinea i titoli delle colonne",
@@ -1429,6 +1442,9 @@
             "info": "L'immagine in evidenza di ogni variante apre il suo gruppo. Metti insieme le immagini di ciascun valore, nell'ordine delle varianti.",
             "label": "Mostra solo i contenuti multimediali del valore dell'opzione selezionato"
           },
+          "section_width": {
+            "info": "Larghezza intera usa quasi tutto lo schermo da 1440 px di larghezza."
+          },
           "sticky_bar_mobile": {
             "info": "Mostra le opzioni selezionate e Aggiungi al carrello quando il pulsante principale esce dalla visuale. Nascosto per gli acquirenti all'ingrosso."
           }
@@ -1573,6 +1589,16 @@
           },
           "integration_tracking_mode": {
             "info": "Anche il tracciamento attende il consenso al marketing quando \"Attendi il consenso al marketing\" è attivo in Codice personalizzato e tracciamento."
+          }
+        }
+      },
+      "layout_and_design": {
+        "settings": {
+          "gutter_desktop": {
+            "info": "Da 1280 px di larghezza. Gli schermi più piccoli usano 20 o 32 px."
+          },
+          "page_width_wide": {
+            "info": "Si applica da 1440 px di larghezza, così i monitor grandi sfruttano lo spazio. 2000 px inizia da 1700 px di larghezza, con 1920 px prima."
           }
         }
       },

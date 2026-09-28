@@ -356,10 +356,46 @@
         "id": "page_width",
         "label": "t:labels.maximum_page_width",
         "min": 1000,
-        "max": 1600,
+        "max": 2000,
         "step": 20,
         "default": 1260,
         "unit": "px"
+      },
+      {
+        "type": "select",
+        "id": "page_width_wide",
+        "label": "t:labels.page_width_on_wide_screens",
+        "options": [
+          {
+            "value": "off",
+            "label": "t:labels.same_as_maximum_page_width"
+          },
+          {
+            "value": "1920",
+            "label": "t:labels.1920_px"
+          },
+          {
+            "value": "2000",
+            "label": "t:labels.2000_px"
+          },
+          {
+            "value": "full",
+            "label": "t:labels.full_width"
+          }
+        ],
+        "default": "off",
+        "info": "t:text.settings_schema.layout_and_design.settings.page_width_wide.info"
+      },
+      {
+        "type": "range",
+        "id": "gutter_desktop",
+        "label": "t:labels.side_padding_on_large_screens",
+        "min": 32,
+        "max": 80,
+        "step": 8,
+        "default": 32,
+        "unit": "px",
+        "info": "t:text.settings_schema.layout_and_design.settings.gutter_desktop.info"
       },
       {
         "type": "range",

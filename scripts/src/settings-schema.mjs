@@ -105,7 +105,9 @@ export default [
   {
     name: 'Layout and design',
     settings: [
-      range('page_width', 'Maximum page width', 1000, 1600, 20, 1260, 'px'),
+      range('page_width', 'Maximum page width', 1000, 2000, 20, 1260, 'px'),
+      select('page_width_wide', 'Page width on wide screens', [['off', 'Same as maximum page width'], ['1920', '1920 px'], ['2000', '2000 px'], ['full', 'Full width']], 'off', 'Takes over from 1440 px wide, so large monitors use the extra space. 2000 px starts at 1700 px wide, with 1920 px before that.'),
+      range('gutter_desktop', 'Side padding on large screens', 32, 80, 8, 32, 'px', 'From 1280 px wide. Smaller screens use 20 or 32 px.'),
       range('section_spacing', 'Space between sections', 24, 120, 4, 80, 'px', 'Mobile uses 60% of this value.'),
       header('Shapes'),
       select('border_width', 'Button and input border', [['1', '1 px'], ['2', '2 px']], '1'),

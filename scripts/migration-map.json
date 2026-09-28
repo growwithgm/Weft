@@ -1,12 +1,12 @@
 {
   "_comment": "Live theme (Enterprise 2.0.1, ibBan) to Weft. Kept in sync with docs/migration-map.md. Setting rules: \"newId\", {\"to\": id or [ids], \"values\": {live: weft}}, or {\"drop\": reason}. $set adds Weft values the live section had no setting for. Block rules: {\"to\": type, \"settings\": {...}, \"blocks\": {...}} or {\"drop\": reason}; \"variants\" pick a rule by setting content; \"handler\" names a function in scripts/src/migration-handlers.mjs.",
   "colorSchemes": {
-    "none": "scheme-1",
-    "default": "scheme-1",
-    "white": "scheme-1",
     "1": "scheme-4",
     "2": "scheme-5",
-    "3": "scheme-6"
+    "3": "scheme-6",
+    "none": "scheme-1",
+    "default": "scheme-1",
+    "white": "scheme-1"
   },
   "sharedSettings": {
     "heading_align": {
@@ -407,10 +407,10 @@
       "coll_card_image_ratio": {
         "to": "collection_card_ratio",
         "values": {
+          "1": "square",
           "shortest": "natural",
           "tallest": "natural",
           "1.77": "landscape",
-          "1": "square",
           "0.75": "tall",
           "circle": "square"
         }
@@ -433,10 +433,10 @@
       "prod_card_image_ratio": {
         "to": "card_ratio",
         "values": {
+          "1": "square",
           "shortest": "natural",
           "tallest": "natural",
           "1.77": "landscape",
-          "1": "square",
           "0.75": "tall"
         }
       },
@@ -596,8 +596,8 @@
       "image_quality": {
         "to": "image_quality",
         "values": {
-          "0.75": "standard",
           "1": "standard",
+          "0.75": "standard",
           "1.25": "high"
         }
       },
@@ -1004,8 +1004,8 @@
         "image_ratio": {
           "to": "image_ratio",
           "values": {
-            "fill": "portrait",
             "1": "square",
+            "fill": "portrait",
             "1.77": "landscape",
             "0.75": "portrait",
             "shortest": "square",
@@ -2019,9 +2019,9 @@
         "image_ratio": {
           "to": "image_ratio",
           "values": {
+            "1": "square",
             "shortest": "square",
             "tallest": "portrait",
-            "1": "square",
             "0.75": "portrait",
             "1.77": "landscape"
           }
@@ -2456,13 +2456,25 @@
     },
     "sections": {
       "main-product": {
-        "sticky_bar_mobile": true
+        "sticky_bar_mobile": true,
+        "section_width": "full",
+        "gallery_width": "extra_wide",
+        "gallery_layout": "grid_even",
+        "column_gap": 60
+      },
+      "main-collection": {
+        "filters_open_lg": false,
+        "columns_mobile": "2",
+        "columns_tablet": "3",
+        "columns": 4,
+        "columns_wide": 4
       }
     },
     "reasons": {
       "schemes": "Yellow primary button approved in brief §5 (#FBD816 / #0F1111, hover #E8C70F) replaces the live black button.",
-      "main-product": "Mobile sticky bar approved in brief §5 (retail) replaces the theme's own sticky panel, which was off.",
-      "scheme-4": "Accessibility floor: white button text on the live orange accent (#ff580d) was 3.16:1; dark text (#0F1111) meets 4.5:1."
+      "main-product": "Mobile sticky bar approved in brief §5 (retail) replaces the theme's own sticky panel, which was off. Owner layout spec (28 Sep 2026): full-width product row from 1440 px, media 65% in a two-column grid, 60 px gap, as on the live store.",
+      "scheme-4": "Accessibility floor: white button text on the live orange accent (#ff580d) was 3.16:1; dark text (#0F1111) meets 4.5:1.",
+      "main-collection": "Owner layout spec (28 Sep 2026): filters in a drawer so the grid uses the full width; 2 / 3 / 4 / 4 columns (mobile, tablet, desktop, wide)."
     }
   },
   "storeSettings": {
@@ -2481,7 +2493,9 @@
       "integration_bis_endpoint": "https://wasify-super.vercel.app/api/stock/subscribe",
       "integration_gtm_id": "GTM-55DG66F6",
       "integration_google_verification": "-0OIKeydZTIfzNFO7PGU_crZ0rjXm-uZnPhon8ydO6Y",
-      "integration_meta_verification": "j7y6vq2q62bdo9vs8063nmqniudzap"
+      "integration_meta_verification": "j7y6vq2q62bdo9vs8063nmqniudzap",
+      "page_width_wide": "2000",
+      "gutter_desktop": 64
     },
     "sources": {
       "delivery_rules": "Shipping zones from the live delivery widget (rules resynced with Settings > Shipping and delivery on 12 Sep 2026); delivery days are left out because Weft never shows a delivery date (brief §5).",
@@ -2497,7 +2511,9 @@
       "integration_bis_endpoint": "Wasify subscribe URL used by the live back-in-stock widget.",
       "integration_gtm_id": "Google Tag Manager container in the live layout; it now loads after consent, without the no-JavaScript iframe.",
       "integration_google_verification": "Google site verification tag in the live layout (it appeared twice; kept once).",
-      "integration_meta_verification": "Meta domain verification tag in the live layout."
+      "integration_meta_verification": "Meta domain verification tag in the live layout.",
+      "page_width_wide": "Owner layout spec (28 Sep 2026): the live store widens its pages with custom CSS (1920 px from 1440 px, 2000 px from 1700 px); Weft uses its own wide-screen setting.",
+      "gutter_desktop": "Owner layout spec (28 Sep 2026): 64 px side padding from 1280 px, as on the live store."
     },
     "notLoaded": {
       "integration_clarity_id": "The live layout loaded Microsoft Clarity (project wqwq1r58rv) while the Microsoft Clarity app embed also loads it; the app embed stays on and the layout copy is left out so Clarity loads once."

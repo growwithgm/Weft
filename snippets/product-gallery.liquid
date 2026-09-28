@@ -26,15 +26,28 @@
     endfor
   endif
 
-  if s.gallery_layout == 'grid'
-    assign sizes = '(min-width: 990px) 30vw, 100vw'
-  elsif s.gallery_width == 'narrow'
-    assign sizes = '(min-width: 990px) 40vw, 100vw'
-  elsif s.gallery_width == 'half'
-    assign sizes = '(min-width: 990px) 48vw, 100vw'
-  else
-    assign sizes = '(min-width: 990px) 55vw, 100vw'
+  # sizes follow the media column: its share of the row, halved in a two-column grid, and the
+  # full-width section option on wide screens (98vw from 1440 px).
+  case s.gallery_width
+    when 'extra_wide'
+      assign media_share = 65
+    when 'half'
+      assign media_share = 50
+    when 'narrow'
+      assign media_share = 42
+    else
+      assign media_share = 58
+  endcase
+  if s.gallery_layout == 'grid' or s.gallery_layout == 'grid_even'
+    assign media_share = media_share | divided_by: 2
   endif
+  assign row_vw = 100
+  if s.section_width == 'full'
+    assign row_vw = 98
+  endif
+  assign wide_vw = row_vw | times: media_share | divided_by: 100 | append: 'vw'
+  assign desk_vw = media_share | append: 'vw'
+  assign sizes = '(min-width: 1440px) ' | append: wide_vw | append: ', (min-width: 990px) ' | append: desk_vw | append: ', 100vw'
 
   assign featured_id = variant.featured_media.id | default: product.featured_media.id
   assign shown = 0

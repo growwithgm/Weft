@@ -2,8 +2,11 @@
   "labels": {
     "1": "1",
     "2": "2",
+    "3": "3",
     "0_means_no_limit": "0 significa sem limite.",
+    "1920_px": "1920 px",
     "1_px": "1 px",
+    "2000_px": "2000 px",
     "2_px": "2 px",
     "404_page": "Página 404",
     "a_page": "Uma página",
@@ -191,6 +194,8 @@
     "columns": "Colunas",
     "columns_on_large_screens": "Colunas em ecrãs grandes",
     "columns_on_mobile": "Colunas no telemóvel",
+    "columns_on_tablets": "Colunas em tablets",
+    "columns_on_wide_screens": "Colunas em ecrãs largos",
     "columns_to_span": "Colunas a ocupar",
     "comments_per_page": "Comentários por página",
     "compact": "Compacto",
@@ -277,6 +282,7 @@
     "extra_large": "Muito grande",
     "extra_links_shown_after_the_main_menu": "Ligações adicionais mostradas após o menu principal.",
     "extra_rows_from_metafields": "Linhas adicionais a partir de metacampos",
+    "extra_wide_65_35": "Extra larga (65 / 35)",
     "facebook": "Facebook",
     "fade": "Desvanecer",
     "fade_and_rise": "Desvanecer e subir",
@@ -314,6 +320,7 @@
     "format_yyyy_mm_dd_uses_your_store_s_time_zone": "Formato AAAA-MM-DD. Usa o fuso horário da loja.",
     "forms": "Formulários",
     "free_shipping_bar": "Barra de envio gratuito",
+    "from_1440_px_wide": "A partir de 1440 px de largura.",
     "full_list": "Lista completa",
     "full_list_label": "Título da lista completa",
     "full_screen": "Ecrã inteiro",
@@ -591,6 +598,7 @@
     "page_handles_separated_by_commas": "Identificadores de página separados por vírgulas.",
     "page_numbers": "Números de página",
     "page_width": "Largura da página",
+    "page_width_on_wide_screens": "Largura da página em ecrãs largos",
     "page_with_the_guide": "Página com o guia",
     "pagination": "Paginação",
     "panels_and_image_backgrounds": "Painéis e fundos de imagem",
@@ -737,6 +745,7 @@
     "rule_for_other_countries": "Regra para outros países",
     "ruler": "Régua",
     "sale": "Em promoção",
+    "same_as_maximum_page_width": "Igual à largura máxima da página",
     "scaled_down_to_32_x_32px": "Reduzido para 32 x 32px.",
     "scent_notes": "Notas olfativas",
     "score": "Pontuação",
@@ -762,6 +771,7 @@
     "section": "Secção",
     "section_height": "Altura da secção",
     "section_spacing": "Espaçamento da secção",
+    "section_width": "Largura da secção",
     "secure": "Seguro",
     "secure_payment": "Pagamento seguro",
     "selected": "Selecionados",
@@ -901,6 +911,7 @@
     "shown_on_large_screens": "Mostrado em ecrãs grandes.",
     "shows_the_page_content_in_the_pop_up": "Mostra o conteúdo da página no pop-up.",
     "shows_under_the_filters_on_large_screens": "Mostrado sob os filtros em ecrãs grandes.",
+    "side_padding_on_large_screens": "Margem lateral em ecrãs grandes",
     "sidebar": "Barra lateral",
     "sign_in_button_label": "Texto do botão de início de sessão",
     "signup_heading": "Título da subscrição",
@@ -923,6 +934,7 @@
     "sorting": "Ordenação",
     "space_between_items": "Espaço entre itens",
     "space_between_logos": "Espaço entre logótipos",
+    "space_between_media_and_information": "Espaço entre multimédia e informação",
     "space_between_sections": "Espaço entre secções",
     "spacer": "Espaçador",
     "spacing": "Espaçamento",
@@ -1026,6 +1038,7 @@
     "tumblr": "Tumblr",
     "twitch": "Twitch",
     "two_columns": "Duas colunas",
+    "two_columns_same_size": "Duas colunas do mesmo tamanho",
     "type": "Tipo",
     "typography": "Tipografia",
     "underline_column_headings": "Sublinhar títulos das colunas",
@@ -1429,6 +1442,9 @@
             "info": "A imagem em destaque de cada variante inicia o respetivo grupo. Coloque juntas as imagens de cada valor, pela ordem das variantes.",
             "label": "Mostrar apenas o conteúdo multimédia do valor de opção selecionado"
           },
+          "section_width": {
+            "info": "Largura total usa quase todo o ecrã a partir de 1440 px de largura."
+          },
           "sticky_bar_mobile": {
             "info": "Mostra as opções selecionadas e Adicionar ao carrinho quando o botão principal sai do ecrã. Oculto para compradores por grosso."
           }
@@ -1573,6 +1589,16 @@
           },
           "integration_tracking_mode": {
             "info": "O rastreio também aguarda o consentimento de marketing quando \"Aguardar consentimento de marketing\" está ativado em Código personalizado e rastreio."
+          }
+        }
+      },
+      "layout_and_design": {
+        "settings": {
+          "gutter_desktop": {
+            "info": "A partir de 1280 px de largura. Ecrãs mais pequenos usam 20 ou 32 px."
+          },
+          "page_width_wide": {
+            "info": "Aplica-se a partir de 1440 px de largura, para que monitores grandes usem o espaço. 2000 px começa a 1700 px de largura, com 1920 px antes."
           }
         }
       },

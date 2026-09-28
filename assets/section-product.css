@@ -5,7 +5,9 @@
   .product[aria-busy='true'] .product__info { opacity: 0.7; transition: opacity 150ms ease 100ms; }
   .product__grid { display: grid; gap: 24px; align-items: start; }
   @media (min-width: 990px) {
-    .product__grid { grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 48px; }
+    .product__grid { grid-template-columns: repeat(12, minmax(0, 1fr)); gap: var(--product-gap, 48px); }
+    .product__grid--extra_wide { grid-template-columns: minmax(0, 65fr) minmax(0, 35fr); }
+    .product__grid--extra_wide .product__media, .product__grid--extra_wide .product__info { grid-column: auto; }
     .product__grid--wide .product__media { grid-column: span 7; } .product__grid--wide .product__info { grid-column: span 5; }
     .product__grid--half .product__media, .product__grid--half .product__info { grid-column: span 6; }
     .product__grid--narrow .product__media, .product__grid--wide-info .product__media { grid-column: span 5; }
@@ -47,11 +49,13 @@
     .gallery--stacked .gallery__list, .gallery--grid .gallery__list { display: grid; gap: 12px; overflow: visible; }
     .gallery--grid .gallery__list { grid-template-columns: 1fr 1fr; }
     .gallery--grid .gallery__item:first-child { grid-column: 1 / -1; }
+    .gallery--grid_even .gallery__list { display: grid; gap: 12px; overflow: visible; grid-template-columns: 1fr 1fr; }
+    .gallery--grid_even .gallery__item { flex: none; }
     .gallery--stacked .gallery__item, .gallery--grid .gallery__item { flex: none; }
     .gallery--thumbnails .gallery__list, .gallery--carousel .gallery__list { overflow-x: auto; }
     .gallery__counter { display: none; }
     .gallery--thumbs-desktop .gallery__thumbs, .gallery--thumbnails .gallery__thumbs, .gallery--carousel .gallery__thumbs { display: flex; flex-wrap: wrap; }
-    .gallery--stacked .gallery__thumbs, .gallery--grid .gallery__thumbs { display: none; }
+    .gallery--stacked .gallery__thumbs, .gallery--grid .gallery__thumbs, .gallery--grid_even .gallery__thumbs { display: none; }
   }
   .lightbox { position: fixed; inset: 0; width: 100%; height: 100%; margin: 0; }
   .lightbox__panel { position: absolute; inset: 0; background: var(--c-bg); overflow: auto; }
@@ -297,4 +301,6 @@
   .pao { display: flex; align-items: center; gap: 12px; margin: 0; font-size: var(--t-14); }
   .pao__symbol { position: relative; display: inline-flex; width: 36px; height: 36px; }
   .pao__months { position: absolute; inset: 14px 0 0; text-align: center; font-size: 10px; font-weight: var(--fw-bold); }
+  /* Section width: Full width spans almost the whole screen on wide monitors. */
+  @media (min-width: 1440px) { .product--full > .page-width { max-width: 98vw; padding-inline: 0; } }
 }

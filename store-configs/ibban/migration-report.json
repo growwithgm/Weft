@@ -3018,6 +3018,22 @@
   {
     "file": "config/settings_data.json",
     "where": "current",
+    "item": "setting page_width_wide",
+    "action": "moved",
+    "reason": "Owner layout spec (28 Sep 2026): the live store widens its pages with custom CSS (1920 px from 1440 px, 2000 px from 1700 px); Weft uses its own wide-screen setting.",
+    "explained": true
+  },
+  {
+    "file": "config/settings_data.json",
+    "where": "current",
+    "item": "setting gutter_desktop",
+    "action": "moved",
+    "reason": "Owner layout spec (28 Sep 2026): 64 px side padding from 1280 px, as on the live store.",
+    "explained": true
+  },
+  {
+    "file": "config/settings_data.json",
+    "where": "current",
     "item": "setting integration_clarity_id",
     "action": "dropped",
     "reason": "The live layout loaded Microsoft Clarity (project wqwq1r58rv) while the Microsoft Clarity app embed also loads it; the app embed stays on and the layout copy is left out so Clarity loads once.",
@@ -3040,59 +3056,147 @@
     "explained": true
   },
   {
+    "file": "templates/collection.flash-sale.json",
+    "where": "section \"collection-products\" (main-collection)",
+    "item": "filters_open_lg, columns_mobile, columns_tablet, columns, columns_wide",
+    "action": "changed",
+    "reason": "Owner layout spec (28 Sep 2026): filters in a drawer so the grid uses the full width; 2 / 3 / 4 / 4 columns (mobile, tablet, desktop, wide).",
+    "explained": true
+  },
+  {
+    "file": "templates/collection.json",
+    "where": "section \"collection-products\" (main-collection)",
+    "item": "filters_open_lg, columns_mobile, columns_tablet, columns, columns_wide",
+    "action": "changed",
+    "reason": "Owner layout spec (28 Sep 2026): filters in a drawer so the grid uses the full width; 2 / 3 / 4 / 4 columns (mobile, tablet, desktop, wide).",
+    "explained": true
+  },
+  {
+    "file": "templates/collection.party-wear.json",
+    "where": "section \"collection-products\" (main-collection)",
+    "item": "filters_open_lg, columns_mobile, columns_tablet, columns, columns_wide",
+    "action": "changed",
+    "reason": "Owner layout spec (28 Sep 2026): filters in a drawer so the grid uses the full width; 2 / 3 / 4 / 4 columns (mobile, tablet, desktop, wide).",
+    "explained": true
+  },
+  {
+    "file": "templates/collection.summer-dress.json",
+    "where": "section \"collection-products\" (main-collection)",
+    "item": "filters_open_lg, columns_mobile, columns_tablet, columns, columns_wide",
+    "action": "changed",
+    "reason": "Owner layout spec (28 Sep 2026): filters in a drawer so the grid uses the full width; 2 / 3 / 4 / 4 columns (mobile, tablet, desktop, wide).",
+    "explained": true
+  },
+  {
+    "file": "templates/collection.summer-hand-bag.json",
+    "where": "section \"collection-products\" (main-collection)",
+    "item": "filters_open_lg, columns_mobile, columns_tablet, columns, columns_wide",
+    "action": "changed",
+    "reason": "Owner layout spec (28 Sep 2026): filters in a drawer so the grid uses the full width; 2 / 3 / 4 / 4 columns (mobile, tablet, desktop, wide).",
+    "explained": true
+  },
+  {
+    "file": "templates/collection.summer-jacket-vests.json",
+    "where": "section \"collection-products\" (main-collection)",
+    "item": "filters_open_lg, columns_mobile, columns_tablet, columns, columns_wide",
+    "action": "changed",
+    "reason": "Owner layout spec (28 Sep 2026): filters in a drawer so the grid uses the full width; 2 / 3 / 4 / 4 columns (mobile, tablet, desktop, wide).",
+    "explained": true
+  },
+  {
+    "file": "templates/collection.summer-sale.json",
+    "where": "section \"collection-products\" (main-collection)",
+    "item": "filters_open_lg, columns_mobile, columns_tablet, columns, columns_wide",
+    "action": "changed",
+    "reason": "Owner layout spec (28 Sep 2026): filters in a drawer so the grid uses the full width; 2 / 3 / 4 / 4 columns (mobile, tablet, desktop, wide).",
+    "explained": true
+  },
+  {
+    "file": "templates/collection.winter-dresses.json",
+    "where": "section \"collection-products\" (main-collection)",
+    "item": "filters_open_lg, columns_mobile, columns_tablet, columns, columns_wide",
+    "action": "changed",
+    "reason": "Owner layout spec (28 Sep 2026): filters in a drawer so the grid uses the full width; 2 / 3 / 4 / 4 columns (mobile, tablet, desktop, wide).",
+    "explained": true
+  },
+  {
+    "file": "templates/collection.winter-jacket-and-vest.json",
+    "where": "section \"collection-products\" (main-collection)",
+    "item": "filters_open_lg, columns_mobile, columns_tablet, columns, columns_wide",
+    "action": "changed",
+    "reason": "Owner layout spec (28 Sep 2026): filters in a drawer so the grid uses the full width; 2 / 3 / 4 / 4 columns (mobile, tablet, desktop, wide).",
+    "explained": true
+  },
+  {
+    "file": "templates/collection.winter-last-chance.json",
+    "where": "section \"collection-products\" (main-collection)",
+    "item": "filters_open_lg, columns_mobile, columns_tablet, columns, columns_wide",
+    "action": "changed",
+    "reason": "Owner layout spec (28 Sep 2026): filters in a drawer so the grid uses the full width; 2 / 3 / 4 / 4 columns (mobile, tablet, desktop, wide).",
+    "explained": true
+  },
+  {
+    "file": "templates/collection.winter-long-coats.json",
+    "where": "section \"collection-products\" (main-collection)",
+    "item": "filters_open_lg, columns_mobile, columns_tablet, columns, columns_wide",
+    "action": "changed",
+    "reason": "Owner layout spec (28 Sep 2026): filters in a drawer so the grid uses the full width; 2 / 3 / 4 / 4 columns (mobile, tablet, desktop, wide).",
+    "explained": true
+  },
+  {
     "file": "templates/product.coming-soon.json",
     "where": "section \"main\" (main-product)",
-    "item": "sticky_bar_mobile",
+    "item": "sticky_bar_mobile, section_width, gallery_width, gallery_layout, column_gap",
     "action": "changed",
-    "reason": "Mobile sticky bar approved in brief §5 (retail) replaces the theme's own sticky panel, which was off.",
+    "reason": "Mobile sticky bar approved in brief §5 (retail) replaces the theme's own sticky panel, which was off. Owner layout spec (28 Sep 2026): full-width product row from 1440 px, media 65% in a two-column grid, 60 px gap, as on the live store.",
     "explained": true
   },
   {
     "file": "templates/product.countdown.json",
     "where": "section \"main\" (main-product)",
-    "item": "sticky_bar_mobile",
+    "item": "sticky_bar_mobile, section_width, gallery_width, gallery_layout, column_gap",
     "action": "changed",
-    "reason": "Mobile sticky bar approved in brief §5 (retail) replaces the theme's own sticky panel, which was off.",
+    "reason": "Mobile sticky bar approved in brief §5 (retail) replaces the theme's own sticky panel, which was off. Owner layout spec (28 Sep 2026): full-width product row from 1440 px, media 65% in a two-column grid, 60 px gap, as on the live store.",
     "explained": true
   },
   {
     "file": "templates/product.dress.json",
     "where": "section \"main\" (main-product)",
-    "item": "sticky_bar_mobile",
+    "item": "sticky_bar_mobile, section_width, gallery_width, gallery_layout, column_gap",
     "action": "changed",
-    "reason": "Mobile sticky bar approved in brief §5 (retail) replaces the theme's own sticky panel, which was off.",
+    "reason": "Mobile sticky bar approved in brief §5 (retail) replaces the theme's own sticky panel, which was off. Owner layout spec (28 Sep 2026): full-width product row from 1440 px, media 65% in a two-column grid, 60 px gap, as on the live store.",
     "explained": true
   },
   {
     "file": "templates/product.hand-bag.json",
     "where": "section \"main\" (main-product)",
-    "item": "sticky_bar_mobile",
+    "item": "sticky_bar_mobile, section_width, gallery_width, gallery_layout, column_gap",
     "action": "changed",
-    "reason": "Mobile sticky bar approved in brief §5 (retail) replaces the theme's own sticky panel, which was off.",
+    "reason": "Mobile sticky bar approved in brief §5 (retail) replaces the theme's own sticky panel, which was off. Owner layout spec (28 Sep 2026): full-width product row from 1440 px, media 65% in a two-column grid, 60 px gap, as on the live store.",
     "explained": true
   },
   {
     "file": "templates/product.json",
     "where": "section \"main\" (main-product)",
-    "item": "sticky_bar_mobile",
+    "item": "sticky_bar_mobile, section_width, gallery_width, gallery_layout, column_gap",
     "action": "changed",
-    "reason": "Mobile sticky bar approved in brief §5 (retail) replaces the theme's own sticky panel, which was off.",
+    "reason": "Mobile sticky bar approved in brief §5 (retail) replaces the theme's own sticky panel, which was off. Owner layout spec (28 Sep 2026): full-width product row from 1440 px, media 65% in a two-column grid, 60 px gap, as on the live store.",
     "explained": true
   },
   {
     "file": "templates/product.perfume.json",
     "where": "section \"main\" (main-product)",
-    "item": "sticky_bar_mobile",
+    "item": "sticky_bar_mobile, section_width, gallery_width, gallery_layout, column_gap",
     "action": "changed",
-    "reason": "Mobile sticky bar approved in brief §5 (retail) replaces the theme's own sticky panel, which was off.",
+    "reason": "Mobile sticky bar approved in brief §5 (retail) replaces the theme's own sticky panel, which was off. Owner layout spec (28 Sep 2026): full-width product row from 1440 px, media 65% in a two-column grid, 60 px gap, as on the live store.",
     "explained": true
   },
   {
     "file": "templates/product.preorder.json",
     "where": "section \"main\" (main-product)",
-    "item": "sticky_bar_mobile",
+    "item": "sticky_bar_mobile, section_width, gallery_width, gallery_layout, column_gap",
     "action": "changed",
-    "reason": "Mobile sticky bar approved in brief §5 (retail) replaces the theme's own sticky panel, which was off.",
+    "reason": "Mobile sticky bar approved in brief §5 (retail) replaces the theme's own sticky panel, which was off. Owner layout spec (28 Sep 2026): full-width product row from 1440 px, media 65% in a two-column grid, 60 px gap, as on the live store.",
     "explained": true
   },
   {

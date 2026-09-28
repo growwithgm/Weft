@@ -58,7 +58,7 @@
     --h-56: {{ base | times: 3.5 | times: scale }}px;
 
     --page-width: {{ settings.page_width }}px;
-    --gutter: 16px;
+    --gutter: 20px;
     --section-gap: {{ spacing_mobile }}px;
     --section-gap-desktop: {{ spacing }}px;
 
@@ -132,7 +132,19 @@
     }
   {% endfor %}
 
+  @media (min-width: 600px) { :root { --gutter: 32px; } }
   @media (min-width: 990px) {
-    :root { --gutter: 32px; --section-gap: var(--section-gap-desktop); --logo-width: var(--logo-width-desktop); }
+    :root { --section-gap: var(--section-gap-desktop); --logo-width: var(--logo-width-desktop); }
   }
+  {%- comment -%} Theme settings > Layout and design: side padding and page width on wide screens. {%- endcomment -%}
+  @media (min-width: 1280px) { :root { --gutter: {{ settings.gutter_desktop | default: 32 }}px; } }
+  {%- case settings.page_width_wide -%}
+    {%- when 'full' -%}
+      @media (min-width: 1440px) { :root { --page-width: 100vw; } }
+    {%- when '2000' -%}
+      @media (min-width: 1440px) { :root { --page-width: 1920px; } }
+      @media (min-width: 1700px) { :root { --page-width: 2000px; } }
+    {%- when '1920' -%}
+      @media (min-width: 1440px) { :root { --page-width: 1920px; } }
+  {%- endcase -%}
 {% endstyle %}

@@ -82,10 +82,10 @@
       "settings": {
         "products_per_page": 50,
         "columns_mobile": "2",
-        "columns": 5,
+        "columns": 4,
         "show_layout_toggle": true,
         "enable_filtering": false,
-        "filters_open_lg": true,
+        "filters_open_lg": false,
         "stick_on_scroll": true,
         "show_filter_counts": true,
         "expand_filters": true,
@@ -95,7 +95,9 @@
         "sort_show_best": true,
         "sort_show_alpha": true,
         "sort_show_price": true,
-        "sort_show_date": true
+        "sort_show_date": true,
+        "columns_tablet": "3",
+        "columns_wide": 4
       }
     }
   },

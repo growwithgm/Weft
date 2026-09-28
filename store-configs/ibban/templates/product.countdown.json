@@ -142,7 +142,11 @@
       ],
       "settings": {
         "thumbnails": "both",
-        "sticky_bar_mobile": true
+        "sticky_bar_mobile": true,
+        "section_width": "full",
+        "gallery_width": "extra_wide",
+        "gallery_layout": "grid_even",
+        "column_gap": 60
       }
     },
     "video": {

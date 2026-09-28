@@ -39,6 +39,6 @@
      their text in line with the page container instead of the screen edge (QA round 2). */
   .banner--adapt .banner__media { max-height: calc(100svh - var(--header-height, 0px)); }
   @media (min-width: 990px) {
-    .banner-section:not(.page-width) .banner__content { padding-inline: max(calc(var(--gutter) + 24px), calc((100% - var(--page-width)) / 2 + var(--gutter))); }
+    .banner-section:not(.page-width) .banner__content { padding-inline: max(calc(var(--gutter) + 24px), calc((100% - var(--page-width)) / 2)); }
   }
 }
