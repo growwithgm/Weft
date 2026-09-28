@@ -76,11 +76,16 @@
 -%}
 <{{ tag }} class="card {{ ratio_class }}{% if settings.card_boxed %} card--boxed{% endif %}{% if highlight_card %} card--highlight{% endif %}{% if settings.card_dividers %} card--divided{% endif %}{% if settings.card_price_bottom %} card--price-bottom{% endif %}" data-product-card data-product-id="{{ product.id }}">
   <div class="card__media-wrap">
-    <a class="card__media media{% if settings.card_fit == 'contain' %} media--contain{% endif %}{% if settings.image_blend_products %} media--blend{% endif %}" href="{{ url }}" tabindex="-1" aria-hidden="true" style="--card-position: {{ settings.card_image_position }}">
+    <a class="card__media media{% if settings.card_fit == 'contain' %} media--contain{% endif %}{% if settings.image_blend_products %} media--blend{% endif %}" href="{{ url }}" tabindex="-1" aria-hidden="true" style="--card-position: {{ settings.card_image_position }}"{% if settings.card_hover == 'slideshow' and product.media.size > 2 %} data-card-slideshow{% endif %}>
       {%- if first_media -%}
         {%- render 'image', image: first_media.preview_image, sizes: card_sizes, eager: eager, widths: '240,360,480,640,800,960', class: 'card__image card__image--primary' -%}
         {%- if second_media -%}
           {%- render 'image', image: second_media.preview_image, sizes: card_sizes, widths: '240,360,480,640,800,960', class: 'card__image card__image--secondary' -%}
+          {%- if settings.card_hover == 'slideshow' -%}
+            {%- for extra in product.media offset: 2 limit: 3 -%}
+              {%- render 'image', image: extra.preview_image, sizes: card_sizes, widths: '240,360,480,640,800,960', class: 'card__image card__image--slide' -%}
+            {%- endfor -%}
+          {%- endif -%}
         {%- endif -%}
       {%- else -%}
         {{ 'product-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}

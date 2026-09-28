@@ -300,6 +300,27 @@ document.addEventListener('submit', (e) => {
   load(W.modules.quickAdd).then((m) => m && m.addFromCard(form, e.submitter));
 });
 
+/* ---------- card slideshow on hover (Theme settings > Product cards) ---------- */
+document.addEventListener('pointerover', (e) => {
+  const media = e.target.closest?.('[data-card-slideshow]');
+  if (!media || media.dataset.sliding || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const images = [...media.querySelectorAll('.card__image')];
+  let i = 1;
+  media.dataset.sliding = '1';
+  const step = () => {
+    images.forEach((img, n) => img.classList.toggle('is-shown', n === i));
+    media.classList.add('is-sliding');
+    i = (i + 1) % images.length;
+  };
+  step();
+  const timer = setInterval(step, 900);
+  media.addEventListener('pointerleave', () => {
+    clearInterval(timer);
+    media.classList.remove('is-sliding');
+    delete media.dataset.sliding;
+  }, { once: true });
+});
+
 /* ---------- cart count, shake, vibrate ---------- */
 bus.on('cart:updated', ({ count }) => {
   document.querySelectorAll('[data-cart-count]').forEach((el) => {

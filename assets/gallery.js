@@ -34,6 +34,11 @@ class ProductGallery extends HTMLElement {
     if (!this.isCarousel()) return;
     const width = this.list.clientWidth || 1;
     const index = Math.round(Math.abs(this.list.scrollLeft) / width);
+    // While a thumbnail or variant change scrolls smoothly, the slides passed on the way don't count.
+    if (this.target != null) {
+      if (index !== this.target) return;
+      this.target = null;
+    }
     this.setActive(index);
   }
 
@@ -51,7 +56,12 @@ class ProductGallery extends HTMLElement {
     const index = this.items.findIndex((i) => i.dataset.mediaId === mediaId);
     if (index < 0) return;
     const item = this.items[index];
-    if (this.isCarousel()) this.list.scrollTo({ left: item.offsetLeft - this.list.offsetLeft, behavior: reduced() ? 'auto' : 'smooth' });
+    if (this.isCarousel()) {
+      this.target = index;
+      clearTimeout(this.targetTimer);
+      this.targetTimer = setTimeout(() => (this.target = null), 1000);
+      this.list.scrollTo({ left: item.offsetLeft - this.list.offsetLeft, behavior: reduced() ? 'auto' : 'smooth' });
+    }
     else if (this.dataset.layoutScroll !== 'none' && !this.matches('.gallery--stacked, .gallery--grid')) item.scrollIntoView({ block: 'nearest' });
     this.setActive(index);
   }

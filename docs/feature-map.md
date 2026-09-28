@@ -12,10 +12,10 @@ Status: `planned` (P0) → `built` (with phase) → `verified` (scenario or chec
 | Sticky header, logo, centred menu, mega menus (column, button, sidebar), CTA button, quick links | `sections/header` (settings: sticky, logo, menu, menu alignment, quick-links menu, CTA), `blocks/_mega-menu` (style: columns / buttons / sidebar), panels deferred in `<template>`; `assets/header.js` | P1 | done |
 | Predictive search with price and vendor, rotating placeholders, voice search | `sections/search-drawer`, `sections/predictive-search` (rendered via `/search/suggest`), `assets/search.js` (ARIA combobox, SKU / tag fields, type filter); settings group Search | P4 (shell P1) | done |
 | Account icon → wholesale chip with company, location, switcher | `sections/header` + `snippets/location-list` + `sections/location-sheet`; `<shopify-account>` component | P1/P3 | done |
-| Cart drawer, count bubble, cart icon shake on add | `sections/cart-drawer`, `sections/cart-count` (section for Cart API refresh), `assets/cart.js`; setting `cart_shake` | P1/P4 | partial |
+| Cart drawer, count bubble, cart icon shake on add | `sections/cart-drawer`, `sections/cart-count` (section for Cart API refresh), `assets/cart.js`; setting `cart_shake` | P1/P4 | done |
 | Floating WhatsApp bubble, hidden on the onboarding page, number from setting | `snippets/chat-button` in `layout/theme.liquid`; settings `social_whatsapp_url`, `chat_button_enable`, `chat_button_hide_on` (page handles) ; pre-filled with page URL | P1 | done |
 | Wholesale-only gate with noindex and login prompt | Native catalogs first; tag fallback `settings.wholesale_only_tag`; `snippets/wholesale-gate`, `main-product` gate state, `noindex` in `theme.liquid`; 404 line in `main-404` | P3 | done |
-| Breadcrumbs | `snippets/breadcrumbs`, settings per page type | P1/P4 | partial |
+| Breadcrumbs | `snippets/breadcrumbs`, settings per page type | P1/P4 | done |
 | Tag Manager, Clarity, Facebook + Google verification | Core: Custom code & tracking group (`custom_code_head`, `custom_code_body`, loading modes, consent). Pilot: `integration-tracking` snippet + store config values (duplicate Google tag dropped) | P1/P6 | partial |
 | 8 languages, RTL, market-specific templates | `locales/*` ×8, schema locales en/es, logical CSS, context templates | P1/P6 | partial |
 | Link preloading, lazy images | setting `preload_links` (hover/touch prefetch that defers to Shopify's own speculation rules — verify P1), `snippets/image` | P1 | done |
@@ -40,9 +40,9 @@ Status: `planned` (P0) → `built` (with phase) → `verified` (scenario or chec
 | Seasonal templates, flash sale with countdown + promo strip + collection list | `templates/collection.banner.json`, `collection.flash-sale.json` | P5 | planned |
 | Product compare (checkbox, drawer, up to 5) | `sections/compare-drawer`, `assets/compare.js`, Product compare group | P4 | done |
 | Retail quick add + drawer | `sections/quick-add`, `assets/quick-add.js` | P2 | done |
-| Card: hover image, swatches, rating, labels, highlight | `snippets/product-card`, `snippets/card-swatches` | P4 | planned |
+| Card: hover image, swatches, rating, labels, highlight | `snippets/product-card` (swatches inline; second image or slideshow on hover) | P4 | done |
 | Wholesale card note → rule chips + from price | `snippets/product-card` wholesale branch + `snippets/rule-chips` | P3 | done |
-| Hide wholesale-only products from retail | native catalogs; tag fallback skip in Liquid (no JS, no empty cells) | P3/P4 | partial |
+| Hide wholesale-only products from retail | native catalogs; tag fallback skip in Liquid (no JS, no empty cells) | P3/P4 | done |
 
 ## 4. Brief §14.4 Product page
 
@@ -87,14 +87,14 @@ Status: `planned` (P0) → `built` (with phase) → `verified` (scenario or chec
 
 | Feature | Weft implementation | Phase | Status |
 |---|---|---|---|
-| Drawer: summary position, sticky footer, note, View cart, accelerated buttons, Checkout | `sections/cart-drawer`, `snippets/cart-summary` | P4 | planned |
+| Drawer: summary position, sticky footer, note, View cart, accelerated buttons, Checkout | `sections/cart-drawer`, `snippets/cart-summary` | P4 | done |
 | Terms checkbox, shipping calculator, media promotion | cart-drawer + main-cart settings | P4 | done |
-| Promoted products in empty cart | cart-drawer `promoted_products` | P4 | planned |
+| Promoted products in empty cart | cart-drawer `promoted_products` | P4 | done |
 | Cart page | `sections/main-cart` | P4 | done |
-| Line details: discounts, properties, selling plan, backorder, vendor, weight | `snippets/cart-line` | P4 | planned |
-| Wholesale pack image | `snippets/cart-line` (pack image setting accepts a product metafield key; pilot `custom.pack_image`) | P4 | planned |
-| Wholesale assorted-pack colours | `snippets/cart-line` (rule: one-size product that is neither matrix nor excluded type lists all option-1 values; exclusion list setting, pilot excludes bags) | P4 | planned |
-| Rules, hints and errors on lines | `snippets/cart-line` + `assets/cart.js` + `rules.js` | P4 | planned |
+| Line details: discounts, properties, selling plan, backorder, vendor, weight | `snippets/cart-line` | P4 | done |
+| Wholesale pack image | `snippets/cart-line` (pack image setting accepts a product metafield key; pilot `custom.pack_image`) | P4 | done |
+| Wholesale assorted-pack colours | `snippets/cart-line` (rule: one-size product that is neither matrix nor excluded type lists all option-1 values; exclusion list setting, pilot excludes bags) | P4 | done |
+| Rules, hints and errors on lines | `snippets/cart-line` + `assets/cart.js` + `rules.js` | P4 | done |
 | Company and location in cart header | `sections/cart-drawer`, `main-cart` | P4 | done |
 
 ## 6. Brief §14.6 Pages and templates
@@ -118,12 +118,12 @@ Status: `planned` (P0) → `built` (with phase) → `verified` (scenario or chec
 |---|---|---|---|
 | `<shopify-account>` in header, desktop + mobile | `sections/header` | P1 | done |
 | Follow on Shop (`login_button`, unmodified colours) | `_footer-text` block + `main-password` | P1 | done |
-| Unit pricing on collection, product, cart | `snippets/price`, `product-price`, `cart-line` | P2/P4 | partial |
-| Selling plans on product; plan name in cart | `purchase-options`, `cart-line` | P2/P4 | partial |
+| Unit pricing on collection, product, cart | `snippets/price`, `product-price`, `cart-line` | P2/P4 | done |
+| Selling plans on product; plan name in cart | `purchase-options`, `cart-line` | P2/P4 | done |
 | Shop Pay Installments banner | `product-price` (`payment_terms` in product form) | P2 | done |
-| Accelerated checkout on product and cart, on by default | `buy-buttons`, `cart-summary` (`content_for_additional_checkout_buttons`) | P2/P4 | partial |
+| Accelerated checkout on product and cart, on by default | `buy-buttons`, `cart-summary` (`content_for_additional_checkout_buttons`) | P2/P4 | done |
 | Faceted filtering on collection + search | `snippets/facets` | P4 | done |
-| Cart discounts per item and per order | `cart-line`, `cart-summary` | P4 | planned |
+| Cart discounts per item and per order | `cart-line`, `cart-summary` | P4 | done |
 | Pickup availability; related + complementary recommendations | `buy-buttons`, `product-recommendations`, `complementary-products` | P2 | done |
 | Newsletter forms and multi-level menus | `newsletter`, `email-signup`, header 3-level menus | P1/P5 | partial |
 | Image focal points; `page_image` for social | `snippets/image` (`image.presentation.focal_point`), `snippets/meta-tags` | P1 | done |

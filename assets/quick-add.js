@@ -50,8 +50,20 @@ export async function addFromCard(form, submitter) {
     if (W.settings.afterAdd === 'page') location.href = W.routes.cart;
     else if (W.settings.afterAdd === 'drawer' && document.getElementById('CartDrawer')) openDialog('CartDrawer', button);
   } catch (err) {
-    announce(err.message);
-    form.submit();
+    // Network failure: let the form post normally. Shopify refused the line: say why on the card.
+    if (!err.status) {
+      form.submit();
+      return;
+    }
+    let box = form.querySelector('[data-card-error]');
+    if (!box) {
+      box = document.createElement('p');
+      box.className = 'card__error';
+      box.setAttribute('role', 'alert');
+      box.dataset.cardError = '';
+      form.append(box);
+    }
+    box.textContent = err.message;
   } finally {
     if (button) button.removeAttribute('aria-busy');
   }
