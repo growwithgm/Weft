@@ -85,6 +85,10 @@
   .account-chip--block { width: 100%; min-height: 56px; justify-content: space-between; text-align: start; }
   .account-chip__stack { display: flex; flex-direction: column; font-size: var(--t-14); }
   .menu-drawer__footer { margin-block-start: auto; padding: 20px; border-block-start: 1px solid var(--c-line); display: flex; flex-direction: column; gap: 12px; font-size: var(--t-14); }
+  /* Country and language each get a full-width row, so long names never squeeze the language. */
+  .menu-drawer__footer .localization-form { flex-direction: column; align-items: stretch; gap: 12px; }
+  .menu-drawer__footer .localization-form__field { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+  .menu-drawer__footer .localization-form__select { width: 100%; }
   .menu-drawer__account { display: inline-flex; gap: 8px; align-items: center; min-height: 44px; color: var(--c-fg); }
 
   /* No JavaScript: the menu shows as a second header row on small screens */
