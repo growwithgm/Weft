@@ -17,7 +17,7 @@ Status: `planned` (P0) → `built` (with phase) → `verified` (scenario or chec
 | Wholesale-only gate with noindex and login prompt | Native catalogs first; tag fallback `settings.wholesale_only_tag`; `snippets/wholesale-gate`, `main-product` gate state, `noindex` in `theme.liquid`; 404 line in `main-404` | P3 | done |
 | Breadcrumbs | `snippets/breadcrumbs`, settings per page type | P1/P4 | done |
 | Tag Manager, Clarity, Facebook + Google verification | Core: Custom code & tracking group (`custom_code_head`, `custom_code_body`, loading modes, consent). Pilot: `integration-tracking` snippet + store config values (duplicate Google tag dropped) | P1/P6 | done |
-| 8 languages, RTL, market-specific templates | `locales/*` ×8, schema locales en/es, logical CSS, context templates | P1/P6 | partial |
+| 8 languages, RTL, market-specific templates | `locales/*` ×8 storefront + ×8 editor (`scripts/i18n/<lang>-schema.json`), logical CSS, context templates | P1/P6 | done |
 | Link preloading, lazy images | setting `preload_links` (hover/touch prefetch that defers to Shopify's own speculation rules — verify P1), `snippets/image` | P1 | done |
 | Footer menus, text + socials, newsletter, payment icons, back to top, Follow on Shop, selectors | `sections/footer` with `_footer-column`, `_footer-text` (Follow on Shop via `login_button`), `_footer-newsletter`; `snippets/payment-icons` (`shop.enabled_payment_types`) | P1 | done |
 | Email pop-up, age verification pop-up, free-shipping notice (off) | `sections/popup` (mode: newsletter / age verification / promo), cart free-shipping bar setting | P5 | done |

@@ -12,7 +12,7 @@
 // Usage: node scripts/build-locales.mjs          write files
 //        node scripts/build-locales.mjs --check  exit 1 if a file would change or a translation is missing
 
-import { readFileSync, writeFileSync, readdirSync, existsSync, mkdirSync } from 'node:fs';
+import { readFileSync, writeFileSync, readdirSync, existsSync, mkdirSync, rmSync } from 'node:fs';
 import { join, dirname, basename } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
@@ -157,11 +157,10 @@ const sortDeep = (o) => (o && typeof o === 'object' && !Array.isArray(o) ? Objec
 write(join(ROOT, 'locales/en.default.schema.json'), json(sortDeep(enSchema)));
 
 // Editor translations: scripts/i18n/<lang>-schema.json maps each English label to the language.
-// Spanish is required; the other languages are built once their map exists.
+// Every language is required: a missing label fails --check (and so i18n-check).
 const SCHEMA_LANGS = ['es', 'de', 'fr', 'it', 'nl', 'pt-PT', 'ja'];
 for (const lang of SCHEMA_LANGS) {
   const mapFile = join(ROOT, `scripts/i18n/${lang}-schema.json`);
-  if (!existsSync(mapFile) && lang !== 'es') continue;
   const map = existsSync(mapFile) ? JSON.parse(readFileSync(mapFile, 'utf8')) : {};
   const missing = [];
   const tree = structuredClone(enSchema);
@@ -177,7 +176,8 @@ for (const lang of SCHEMA_LANGS) {
   write(join(ROOT, `locales/${lang}.schema.json`), json(sortDeep(tree)));
   const missingFile = join(ROOT, `scripts/i18n/${lang}-schema-missing.json`);
   const missingSorted = [...new Set(missing)].sort();
-  if (!CHECK && (lang === 'es' || missingSorted.length || existsSync(missingFile))) writeFileSync(missingFile, json(Object.fromEntries(missingSorted.map((m) => [m, '']))));
+  if (!CHECK && missingSorted.length) writeFileSync(missingFile, json(Object.fromEntries(missingSorted.map((m) => [m, '']))));
+  else if (!CHECK && existsSync(missingFile)) rmSync(missingFile);
   if (missingSorted.length) problems.push(`${missingSorted.length} editor strings have no ${lang} translation (see scripts/i18n/${lang}-schema-missing.json)`);
 }
 

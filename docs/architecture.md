@@ -330,7 +330,7 @@ The live theme's 41 colour settings map into schemes + global accents (see `migr
 ## 9. Localization
 
 - Storefront: `locales/en.default.json` (source of truth), `es.json`; customer-facing complete in `de`, `fr`, `it`, `nl`, `pt-PT`, `ja`.
-- Editor: `locales/en.default.schema.json`, `es.schema.json`; every schema label is a `t:` key.
+- Editor: `locales/en.default.schema.json` plus `es`, `de`, `fr`, `it`, `nl`, `pt-PT` and `ja` schema locales built from `scripts/i18n/<lang>-schema.json` (English label → translation); every schema label is a `t:` key, and a missing translation fails `i18n-check`.
 - Spanish-for-Spain rule of the pilot: handled by Shopify Markets (Spain market default language `es`), not by theme logic. The pilot store config documents it. *Owner review item: the live theme forced Spanish by country in custom modules; Weft follows the storefront language instead, which is the Theme Store-compliant behaviour.*
 - Money: Shopify formats currency (`money`, `money_with_currency` per the currency-format setting).
 - RTL: logical properties, `dir` from `request.locale` when the locale is RTL.
