@@ -16,6 +16,7 @@
     "checkout": "ご購入手続きへ",
     "discount": "割引",
     "empty": "カートは空です",
+    "have_account": "アカウントをお持ちですか？",
     "item_count": {
       "one": "{{ count }}点",
       "other": "{{ count }}点"
@@ -26,6 +27,19 @@
     "product": "商品",
     "quantity": "数量",
     "remove": "{{ product }}を削除",
+    "shipping": {
+      "calculate": "計算する",
+      "country": "国",
+      "error": "配送料金を計算できませんでした。住所を確認してもう一度お試しください。",
+      "none": "この住所へは配送できません。",
+      "province": "都道府県・州",
+      "rates": {
+        "one": "この住所の配送料金は{{ count }}件です：",
+        "other": "この住所の配送料金は{{ count }}件です："
+      },
+      "title": "送料を計算",
+      "zip": "郵便番号"
+    },
     "subtotal": "小計",
     "taxes_and_shipping_at_checkout": "税金と送料はチェックアウト時に計算されます。",
     "taxes_included_shipping_at_checkout": "税込。送料はチェックアウト時に計算されます。",

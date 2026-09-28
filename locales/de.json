@@ -16,6 +16,7 @@
     "checkout": "Zur Kasse",
     "discount": "Rabatt",
     "empty": "Dein Warenkorb ist leer",
+    "have_account": "Hast du ein Konto?",
     "item_count": {
       "one": "{{ count }} Artikel",
       "other": "{{ count }} Artikel"
@@ -26,6 +27,19 @@
     "product": "Produkt",
     "quantity": "Menge",
     "remove": "{{ product }} entfernen",
+    "shipping": {
+      "calculate": "Berechnen",
+      "country": "Land",
+      "error": "Die Versandtarife konnten nicht berechnet werden. Prüfe die Adresse und versuche es erneut.",
+      "none": "An diese Adresse liefern wir nicht.",
+      "province": "Bundesland",
+      "rates": {
+        "one": "Für diese Adresse gibt es {{ count }} Versandtarif:",
+        "other": "Für diese Adresse gibt es {{ count }} Versandtarife:"
+      },
+      "title": "Versand berechnen",
+      "zip": "Postleitzahl"
+    },
     "subtotal": "Zwischensumme",
     "taxes_and_shipping_at_checkout": "Steuern und Versand werden an der Kasse berechnet.",
     "taxes_included_shipping_at_checkout": "Inkl. MwSt. Versand wird an der Kasse berechnet.",

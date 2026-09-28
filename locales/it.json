@@ -16,6 +16,7 @@
     "checkout": "Vai al checkout",
     "discount": "Sconto",
     "empty": "Il carrello è vuoto",
+    "have_account": "Hai un account?",
     "item_count": {
       "one": "{{ count }} articolo",
       "other": "{{ count }} articoli"
@@ -26,6 +27,19 @@
     "product": "Prodotto",
     "quantity": "Quantità",
     "remove": "Rimuovi {{ product }}",
+    "shipping": {
+      "calculate": "Calcola",
+      "country": "Paese",
+      "error": "Impossibile calcolare le tariffe. Controlla l’indirizzo e riprova.",
+      "none": "Non spediamo a questo indirizzo.",
+      "province": "Provincia",
+      "rates": {
+        "one": "C’è {{ count }} tariffa di spedizione per questo indirizzo:",
+        "other": "Ci sono {{ count }} tariffe di spedizione per questo indirizzo:"
+      },
+      "title": "Calcola la spedizione",
+      "zip": "CAP"
+    },
     "subtotal": "Subtotale",
     "taxes_and_shipping_at_checkout": "Imposte e spedizione calcolate al checkout.",
     "taxes_included_shipping_at_checkout": "Imposte incluse. Spedizione calcolata al checkout.",

@@ -16,6 +16,7 @@
     "checkout": "Check out",
     "discount": "Discount",
     "empty": "Your cart is empty",
+    "have_account": "Have an account?",
     "item_count": {
       "one": "{{ count }} item",
       "other": "{{ count }} items"
@@ -26,6 +27,19 @@
     "product": "Product",
     "quantity": "Quantity",
     "remove": "Remove {{ product }}",
+    "shipping": {
+      "calculate": "Calculate",
+      "country": "Country",
+      "error": "Shipping rates couldn’t be calculated. Check the address and try again.",
+      "none": "We don’t ship to this address.",
+      "province": "Province or state",
+      "rates": {
+        "one": "There is {{ count }} shipping rate for this address:",
+        "other": "There are {{ count }} shipping rates for this address:"
+      },
+      "title": "Estimate shipping",
+      "zip": "Postal code"
+    },
     "subtotal": "Subtotal",
     "taxes_and_shipping_at_checkout": "Taxes and shipping calculated at checkout.",
     "taxes_included_shipping_at_checkout": "Taxes included. Shipping calculated at checkout.",

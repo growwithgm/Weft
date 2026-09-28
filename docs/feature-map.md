@@ -88,14 +88,14 @@ Status: `planned` (P0) → `built` (with phase) → `verified` (scenario or chec
 | Feature | Weft implementation | Phase | Status |
 |---|---|---|---|
 | Drawer: summary position, sticky footer, note, View cart, accelerated buttons, Checkout | `sections/cart-drawer`, `snippets/cart-summary` | P4 | planned |
-| Terms checkbox, shipping calculator, media promotion | cart-drawer + main-cart settings | P4 | planned |
+| Terms checkbox, shipping calculator, media promotion | cart-drawer + main-cart settings | P4 | done |
 | Promoted products in empty cart | cart-drawer `promoted_products` | P4 | planned |
-| Cart page | `sections/main-cart` | P4 | planned |
+| Cart page | `sections/main-cart` | P4 | done |
 | Line details: discounts, properties, selling plan, backorder, vendor, weight | `snippets/cart-line` | P4 | planned |
 | Wholesale pack image | `snippets/cart-line` (pack image setting accepts a product metafield key; pilot `custom.pack_image`) | P4 | planned |
 | Wholesale assorted-pack colours | `snippets/cart-line` (rule: one-size product that is neither matrix nor excluded type lists all option-1 values; exclusion list setting, pilot excludes bags) | P4 | planned |
 | Rules, hints and errors on lines | `snippets/cart-line` + `assets/cart.js` + `rules.js` | P4 | planned |
-| Company and location in cart header | `sections/cart-drawer`, `main-cart` | P4 | planned |
+| Company and location in cart header | `sections/cart-drawer`, `main-cart` | P4 | done |
 
 ## 6. Brief §14.6 Pages and templates
 
@@ -129,7 +129,7 @@ Status: `planned` (P0) → `built` (with phase) → `verified` (scenario or chec
 | Image focal points; `page_image` for social | `snippets/image` (`image.presentation.focal_point`), `snippets/meta-tags` | P1 | done |
 | Country/language selectors per UX guidelines | `snippets/localization-form` | P1 | done |
 | Gift card template, contact page template | `gift_card.liquid`, `page.contact.json` | P1/P5 | partial |
-| Cart page line + totals requirements | `main-cart` | P4 | planned |
+| Cart page line + totals requirements | `main-cart` | P4 | done |
 | Blog and article requirements | `main-blog`, `main-article` | P5 | planned |
 
 ## 8. VERTICALS.md

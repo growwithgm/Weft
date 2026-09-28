@@ -10,20 +10,10 @@
   if customer and customer.b2b?
     assign wholesale = true
   endif
-  assign invalid_count = 0
-  if wholesale
-    for item in cart.items
-      assign r_min = item.variant.quantity_rule.min | default: 1
-      assign r_inc = item.variant.quantity_rule.increment | default: 1
-      assign r_max = item.variant.quantity_rule.max
-      assign rem = item.quantity | modulo: r_inc
-      if rem != 0 or item.quantity < r_min
-        assign invalid_count = invalid_count | plus: 1
-      elsif r_max and item.quantity > r_max
-        assign invalid_count = invalid_count | plus: 1
-      endif
-    endfor
-  endif
+  capture invalid_count
+    render 'cart-invalid-count'
+  endcapture
+  assign invalid_count = invalid_count | strip | plus: 0
   assign show_promoted = false
   if s.promoted_visibility == 'always' and s.promoted_products.count > 0
     assign show_promoted = true

@@ -142,6 +142,7 @@
     "consent_text": "Consent text",
     "content": "Content",
     "content_position": "Content position",
+    "continue_shopping_link": "Continue shopping link",
     "copy_link": "Copy link",
     "count_label": "Count label",
     "countdown_timer": "Countdown timer",
@@ -496,6 +497,7 @@
     "results_per_page": "Results per page",
     "results_per_type": "Results per type",
     "retail_shoppers": "Retail shoppers",
+    "retail_shoppers_only": "Retail shoppers only.",
     "returns": "Returns",
     "returns_page": "Returns page",
     "returns_row": "Returns row",
@@ -683,6 +685,7 @@
     "switch": "Switch",
     "tag": "Tag",
     "tall_3_4": "Tall (3:4)",
+    "terms_and_conditions_link": "Terms and conditions link",
     "terms_and_conditions_page": "Terms and conditions page",
     "text": "Text",
     "text_after_in_stock": "Text after \"In stock\"",
@@ -983,6 +986,16 @@
         "settings": {
           "show_wholesale_line": {
             "info": "Helps wholesale buyers following an old link to a trade-only product."
+          }
+        }
+      },
+      "main_cart": {
+        "settings": {
+          "shipping_default_country": {
+            "info": "Country name as it appears in the list, for example \"Spain\". Uses the shopper's country when empty."
+          },
+          "terms_page": {
+            "info": "When set, shoppers tick a box to accept the terms before checkout."
           }
         }
       },

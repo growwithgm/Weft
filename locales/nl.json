@@ -16,6 +16,7 @@
     "checkout": "Afrekenen",
     "discount": "Korting",
     "empty": "Je winkelwagen is leeg",
+    "have_account": "Heb je een account?",
     "item_count": {
       "one": "{{ count }} artikel",
       "other": "{{ count }} artikelen"
@@ -26,6 +27,19 @@
     "product": "Product",
     "quantity": "Aantal",
     "remove": "{{ product }} verwijderen",
+    "shipping": {
+      "calculate": "Berekenen",
+      "country": "Land",
+      "error": "De verzendtarieven konden niet worden berekend. Controleer het adres en probeer het opnieuw.",
+      "none": "We verzenden niet naar dit adres.",
+      "province": "Provincie",
+      "rates": {
+        "one": "Er is {{ count }} verzendtarief voor dit adres:",
+        "other": "Er zijn {{ count }} verzendtarieven voor dit adres:"
+      },
+      "title": "Verzendkosten berekenen",
+      "zip": "Postcode"
+    },
     "subtotal": "Subtotaal",
     "taxes_and_shipping_at_checkout": "Btw en verzending berekend bij het afrekenen.",
     "taxes_included_shipping_at_checkout": "Inclusief btw. Verzending berekend bij het afrekenen.",

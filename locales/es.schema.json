@@ -142,6 +142,7 @@
     "consent_text": "Texto de consentimiento",
     "content": "Contenido",
     "content_position": "Posición del contenido",
+    "continue_shopping_link": "Enlace de «Seguir comprando»",
     "copy_link": "Copiar enlace",
     "count_label": "Texto del recuento",
     "countdown_timer": "Cuenta atrás",
@@ -496,6 +497,7 @@
     "results_per_page": "Resultados por página",
     "results_per_type": "Resultados por tipo",
     "retail_shoppers": "Clientes minoristas",
+    "retail_shoppers_only": "Solo para compradores minoristas.",
     "returns": "Devoluciones",
     "returns_page": "Página de devoluciones",
     "returns_row": "Fila de devoluciones",
@@ -683,6 +685,7 @@
     "switch": "Interruptor",
     "tag": "Etiqueta",
     "tall_3_4": "Alta (3:4)",
+    "terms_and_conditions_link": "Enlace a los términos y condiciones",
     "terms_and_conditions_page": "Página de términos y condiciones",
     "text": "Texto",
     "text_after_in_stock": "Texto tras \"En stock\"",
@@ -983,6 +986,16 @@
         "settings": {
           "show_wholesale_line": {
             "info": "Ayuda a compradores mayoristas que siguen un enlace antiguo a un producto exclusivo."
+          }
+        }
+      },
+      "main_cart": {
+        "settings": {
+          "shipping_default_country": {
+            "info": "Nombre del país tal como aparece en la lista, por ejemplo \"Spain\". Si se deja vacío, usa el país del comprador."
+          },
+          "terms_page": {
+            "info": "Si se configura, los compradores marcan una casilla para aceptar los términos antes de pagar."
           }
         }
       },

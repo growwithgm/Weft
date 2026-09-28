@@ -16,6 +16,7 @@
     "checkout": "Finalizar compra",
     "discount": "Desconto",
     "empty": "O seu carrinho está vazio",
+    "have_account": "Tem uma conta?",
     "item_count": {
       "one": "{{ count }} artigo",
       "other": "{{ count }} artigos"
@@ -26,6 +27,19 @@
     "product": "Produto",
     "quantity": "Quantidade",
     "remove": "Remover {{ product }}",
+    "shipping": {
+      "calculate": "Calcular",
+      "country": "País",
+      "error": "Não foi possível calcular as tarifas. Verifique a morada e tente novamente.",
+      "none": "Não enviamos para esta morada.",
+      "province": "Distrito ou região",
+      "rates": {
+        "one": "Há {{ count }} tarifa de envio para esta morada:",
+        "other": "Há {{ count }} tarifas de envio para esta morada:"
+      },
+      "title": "Calcular envio",
+      "zip": "Código postal"
+    },
     "subtotal": "Subtotal",
     "taxes_and_shipping_at_checkout": "Impostos e portes calculados no checkout.",
     "taxes_included_shipping_at_checkout": "Impostos incluídos. Portes calculados no checkout.",

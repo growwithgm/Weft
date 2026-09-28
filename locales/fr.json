@@ -16,6 +16,7 @@
     "checkout": "Paiement",
     "discount": "Remise",
     "empty": "Votre panier est vide",
+    "have_account": "Vous avez un compte ?",
     "item_count": {
       "one": "{{ count }} article",
       "other": "{{ count }} articles"
@@ -26,6 +27,19 @@
     "product": "Produit",
     "quantity": "Quantité",
     "remove": "Retirer {{ product }}",
+    "shipping": {
+      "calculate": "Calculer",
+      "country": "Pays",
+      "error": "Impossible de calculer les tarifs. Vérifiez l’adresse et réessayez.",
+      "none": "Nous ne livrons pas à cette adresse.",
+      "province": "Province ou région",
+      "rates": {
+        "one": "Il y a {{ count }} tarif de livraison pour cette adresse :",
+        "other": "Il y a {{ count }} tarifs de livraison pour cette adresse :"
+      },
+      "title": "Estimer la livraison",
+      "zip": "Code postal"
+    },
     "subtotal": "Sous-total",
     "taxes_and_shipping_at_checkout": "Taxes et frais d’expédition calculés au paiement.",
     "taxes_included_shipping_at_checkout": "Taxes incluses. Frais d’expédition calculés au paiement.",
