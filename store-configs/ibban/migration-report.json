@@ -1,0 +1,3122 @@
+[
+  {
+    "file": "config/settings_data.json",
+    "where": "current",
+    "item": "setting no_stock_text_color",
+    "action": "dropped",
+    "reason": "Weft shows sold-out text in the colour scheme's secondary text colour.",
+    "explained": true
+  },
+  {
+    "file": "config/settings_data.json",
+    "where": "current",
+    "item": "setting no_stock_backordered_text_color",
+    "action": "dropped",
+    "reason": "Weft colours backorder notes with the low-stock colour.",
+    "explained": true
+  },
+  {
+    "file": "config/settings_data.json",
+    "where": "current",
+    "item": "setting custom_html_head",
+    "action": "moved",
+    "reason": "Moved unchanged to Theme settings > Custom code and tracking (head, loaded immediately). It styles live-theme class names, so review whether it is still needed.",
+    "explained": true
+  },
+  {
+    "file": "config/settings_data.json",
+    "where": "current",
+    "item": "setting heading_type_scale",
+    "action": "dropped",
+    "reason": "Legacy value with no setting in the live schema; Weft's heading scale comes from heading_scale_start.",
+    "explained": true
+  },
+  {
+    "file": "config/settings_data.json",
+    "where": "app embed \"13768625480086291342\"",
+    "item": "app embed",
+    "action": "kept",
+    "reason": "forms app embed carried over.",
+    "explained": true
+  },
+  {
+    "file": "config/settings_data.json",
+    "where": "app embed \"12439146293631897289\"",
+    "item": "app embed",
+    "action": "kept",
+    "reason": "blockify-fraud-filter app embed carried over.",
+    "explained": true
+  },
+  {
+    "file": "config/settings_data.json",
+    "where": "app embed \"14060646107696862457\"",
+    "item": "app embed",
+    "action": "kept",
+    "reason": "judge-me-reviews app embed carried over.",
+    "explained": true
+  },
+  {
+    "file": "config/settings_data.json",
+    "where": "app embed \"2567389343055140935\"",
+    "item": "app embed",
+    "action": "kept",
+    "reason": "microsoft-clarity app embed carried over.",
+    "explained": true
+  },
+  {
+    "file": "config/settings_data.json",
+    "where": "app embed \"855628211100114053\"",
+    "item": "app embed",
+    "action": "kept",
+    "reason": "klaviyo-email-marketing-sms app embed carried over.",
+    "explained": true
+  },
+  {
+    "file": "config/settings_data.json",
+    "where": "app embed \"7819919163331818802\"",
+    "item": "app embed",
+    "action": "kept",
+    "reason": "wasify-super-gn app embed carried over.",
+    "explained": true
+  },
+  {
+    "file": "templates/article.json",
+    "where": "section \"article-comments\" (article-comments)",
+    "item": "section",
+    "action": "dropped",
+    "reason": "Comments are part of Weft's main-article section (comments per page setting).",
+    "explained": true
+  },
+  {
+    "file": "templates/cart.json",
+    "where": "section \"main\" (main-cart) > block \"summary-and-checkout\" (summary-and-checkout)",
+    "item": "block",
+    "action": "dropped",
+    "reason": "The cart summary and checkout are a fixed part of Weft's cart page.",
+    "explained": true
+  },
+  {
+    "file": "templates/collection.flash-sale.json",
+    "where": "section \"countdown-timer\" (countdown-timer)",
+    "item": "setting fixed_height_mobile",
+    "action": "changed",
+    "reason": "350 adjusted to 360 (range 200–800, step 20)",
+    "explained": true
+  },
+  {
+    "file": "templates/collection.json",
+    "where": "section \"collection-products\" (main-collection-products)",
+    "item": "setting sort_first",
+    "action": "dropped",
+    "reason": "Weft shows the sort control before the filters on every layout.",
+    "explained": true
+  },
+  {
+    "file": "templates/collection.party-wear.json",
+    "where": "section \"image_banner_ThhtM3\" (image-banner) > block \"button_ARUBxF\" (button)",
+    "item": "block",
+    "action": "changed",
+    "reason": "The two buttons of the live block became two Weft button blocks.",
+    "explained": true
+  },
+  {
+    "file": "templates/collection.party-wear.json",
+    "where": "section \"image_banner_ThhtM3\" (image-banner)",
+    "item": "setting prevent_animation",
+    "action": "dropped",
+    "reason": "Weft reveals sections through Theme settings > Animations, for every section at once.",
+    "explained": true
+  },
+  {
+    "file": "templates/collection.party-wear.json",
+    "where": "section \"collection-products\" (main-collection-products)",
+    "item": "setting sort_first",
+    "action": "dropped",
+    "reason": "Weft shows the sort control before the filters on every layout.",
+    "explained": true
+  },
+  {
+    "file": "templates/collection.summer-dress.json",
+    "where": "section \"image_banner_ThhtM3\" (image-banner) > block \"button_ARUBxF\" (button)",
+    "item": "block",
+    "action": "changed",
+    "reason": "The two buttons of the live block became two Weft button blocks.",
+    "explained": true
+  },
+  {
+    "file": "templates/collection.summer-dress.json",
+    "where": "section \"image_banner_ThhtM3\" (image-banner)",
+    "item": "setting prevent_animation",
+    "action": "dropped",
+    "reason": "Weft reveals sections through Theme settings > Animations, for every section at once.",
+    "explained": true
+  },
+  {
+    "file": "templates/collection.summer-dress.json",
+    "where": "section \"collection-products\" (main-collection-products)",
+    "item": "setting sort_first",
+    "action": "dropped",
+    "reason": "Weft shows the sort control before the filters on every layout.",
+    "explained": true
+  },
+  {
+    "file": "templates/collection.summer-hand-bag.json",
+    "where": "section \"image_banner_ThhtM3\" (image-banner) > block \"button_ARUBxF\" (button)",
+    "item": "block",
+    "action": "changed",
+    "reason": "The two buttons of the live block became two Weft button blocks.",
+    "explained": true
+  },
+  {
+    "file": "templates/collection.summer-hand-bag.json",
+    "where": "section \"image_banner_ThhtM3\" (image-banner)",
+    "item": "setting prevent_animation",
+    "action": "dropped",
+    "reason": "Weft reveals sections through Theme settings > Animations, for every section at once.",
+    "explained": true
+  },
+  {
+    "file": "templates/collection.summer-hand-bag.json",
+    "where": "section \"collection-products\" (main-collection-products)",
+    "item": "setting sort_first",
+    "action": "dropped",
+    "reason": "Weft shows the sort control before the filters on every layout.",
+    "explained": true
+  },
+  {
+    "file": "templates/collection.summer-jacket-vests.json",
+    "where": "section \"image_banner_ThhtM3\" (image-banner) > block \"button_ARUBxF\" (button)",
+    "item": "block",
+    "action": "changed",
+    "reason": "The two buttons of the live block became two Weft button blocks.",
+    "explained": true
+  },
+  {
+    "file": "templates/collection.summer-jacket-vests.json",
+    "where": "section \"image_banner_ThhtM3\" (image-banner)",
+    "item": "setting prevent_animation",
+    "action": "dropped",
+    "reason": "Weft reveals sections through Theme settings > Animations, for every section at once.",
+    "explained": true
+  },
+  {
+    "file": "templates/collection.summer-jacket-vests.json",
+    "where": "section \"collection-products\" (main-collection-products)",
+    "item": "setting sort_first",
+    "action": "dropped",
+    "reason": "Weft shows the sort control before the filters on every layout.",
+    "explained": true
+  },
+  {
+    "file": "templates/collection.summer-sale.json",
+    "where": "section \"image_banner_ThhtM3\" (image-banner) > block \"button_ARUBxF\" (button)",
+    "item": "block",
+    "action": "changed",
+    "reason": "The two buttons of the live block became two Weft button blocks.",
+    "explained": true
+  },
+  {
+    "file": "templates/collection.summer-sale.json",
+    "where": "section \"image_banner_ThhtM3\" (image-banner)",
+    "item": "setting prevent_animation",
+    "action": "dropped",
+    "reason": "Weft reveals sections through Theme settings > Animations, for every section at once.",
+    "explained": true
+  },
+  {
+    "file": "templates/collection.summer-sale.json",
+    "where": "section \"collection-products\" (main-collection-products)",
+    "item": "setting sort_first",
+    "action": "dropped",
+    "reason": "Weft shows the sort control before the filters on every layout.",
+    "explained": true
+  },
+  {
+    "file": "templates/collection.winter-dresses.json",
+    "where": "section \"image_banner_ThhtM3\" (image-banner) > block \"button_ARUBxF\" (button)",
+    "item": "block",
+    "action": "changed",
+    "reason": "The two buttons of the live block became two Weft button blocks.",
+    "explained": true
+  },
+  {
+    "file": "templates/collection.winter-dresses.json",
+    "where": "section \"image_banner_ThhtM3\" (image-banner)",
+    "item": "setting prevent_animation",
+    "action": "dropped",
+    "reason": "Weft reveals sections through Theme settings > Animations, for every section at once.",
+    "explained": true
+  },
+  {
+    "file": "templates/collection.winter-dresses.json",
+    "where": "section \"collection-products\" (main-collection-products)",
+    "item": "setting sort_first",
+    "action": "dropped",
+    "reason": "Weft shows the sort control before the filters on every layout.",
+    "explained": true
+  },
+  {
+    "file": "templates/collection.winter-jacket-and-vest.json",
+    "where": "section \"image_banner_mP8x6G\" (image-banner) > block \"button_BYcF4F\" (button)",
+    "item": "block",
+    "action": "changed",
+    "reason": "The two buttons of the live block became two Weft button blocks.",
+    "explained": true
+  },
+  {
+    "file": "templates/collection.winter-jacket-and-vest.json",
+    "where": "section \"image_banner_mP8x6G\" (image-banner)",
+    "item": "setting prevent_animation",
+    "action": "dropped",
+    "reason": "Weft reveals sections through Theme settings > Animations, for every section at once.",
+    "explained": true
+  },
+  {
+    "file": "templates/collection.winter-jacket-and-vest.json",
+    "where": "section \"collection-products\" (main-collection-products)",
+    "item": "setting sort_first",
+    "action": "dropped",
+    "reason": "Weft shows the sort control before the filters on every layout.",
+    "explained": true
+  },
+  {
+    "file": "templates/collection.winter-last-chance.json",
+    "where": "section \"image_banner_ThhtM3\" (image-banner) > block \"button_ARUBxF\" (button)",
+    "item": "block",
+    "action": "changed",
+    "reason": "The two buttons of the live block became two Weft button blocks.",
+    "explained": true
+  },
+  {
+    "file": "templates/collection.winter-last-chance.json",
+    "where": "section \"image_banner_ThhtM3\" (image-banner)",
+    "item": "setting prevent_animation",
+    "action": "dropped",
+    "reason": "Weft reveals sections through Theme settings > Animations, for every section at once.",
+    "explained": true
+  },
+  {
+    "file": "templates/collection.winter-last-chance.json",
+    "where": "section \"collection-products\" (main-collection-products)",
+    "item": "setting sort_first",
+    "action": "dropped",
+    "reason": "Weft shows the sort control before the filters on every layout.",
+    "explained": true
+  },
+  {
+    "file": "templates/collection.winter-long-coats.json",
+    "where": "section \"image_banner_ThhtM3\" (image-banner) > block \"button_ARUBxF\" (button)",
+    "item": "block",
+    "action": "changed",
+    "reason": "The two buttons of the live block became two Weft button blocks.",
+    "explained": true
+  },
+  {
+    "file": "templates/collection.winter-long-coats.json",
+    "where": "section \"image_banner_ThhtM3\" (image-banner)",
+    "item": "setting prevent_animation",
+    "action": "dropped",
+    "reason": "Weft reveals sections through Theme settings > Animations, for every section at once.",
+    "explained": true
+  },
+  {
+    "file": "templates/collection.winter-long-coats.json",
+    "where": "section \"collection-products\" (main-collection-products)",
+    "item": "setting sort_first",
+    "action": "dropped",
+    "reason": "Weft shows the sort control before the filters on every layout.",
+    "explained": true
+  },
+  {
+    "file": "templates/gift_card.liquid",
+    "where": "file",
+    "item": "template",
+    "action": "dropped",
+    "reason": "Weft ships its own gift_card.liquid; the live one is theme code.",
+    "explained": true
+  },
+  {
+    "file": "templates/index.json",
+    "where": "section \"b2b_video\" (background-video)",
+    "item": "section",
+    "action": "changed",
+    "reason": "Background video section merged into Weft's video section (layout: background).",
+    "explained": true
+  },
+  {
+    "file": "templates/index.json",
+    "where": "section \"b2b_video\" (background-video)",
+    "item": "setting lazyload",
+    "action": "dropped",
+    "reason": "Weft always loads videos when they come into view.",
+    "explained": true
+  },
+  {
+    "file": "templates/index.json",
+    "where": "section \"b2b_video\" (background-video)",
+    "item": "setting prevent_animation",
+    "action": "dropped",
+    "reason": "Weft reveals sections through Theme settings > Animations, for every section at once.",
+    "explained": true
+  },
+  {
+    "file": "templates/index.json",
+    "where": "section \"b2b_story\" (video) > block \"b2bs_sub\" (subheading) → text",
+    "item": "setting text",
+    "action": "changed",
+    "reason": "plain text wrapped in a paragraph for a rich text setting",
+    "explained": true
+  },
+  {
+    "file": "templates/index.json",
+    "where": "section \"b2b_story\" (video)",
+    "item": "setting video_size",
+    "action": "dropped",
+    "reason": "Weft inline videos use the page width; the ratio setting sets their shape.",
+    "explained": true
+  },
+  {
+    "file": "templates/index.json",
+    "where": "section \"b2b_slideshow\" (slideshow) > block \"bs1\" (slide)",
+    "item": "slide",
+    "action": "changed",
+    "reason": "Slide text, buttons and countdown became blocks inside the Weft slide; per-slide colours (bg_color, text colour) follow the slideshow section.",
+    "explained": true
+  },
+  {
+    "file": "templates/index.json",
+    "where": "section \"b2b_slideshow\" (slideshow) > block \"bs1\" (slide) → _slide > block \"subheading\" (text) → text",
+    "item": "setting text",
+    "action": "changed",
+    "reason": "plain text wrapped in a paragraph for a rich text setting",
+    "explained": true
+  },
+  {
+    "file": "templates/index.json",
+    "where": "section \"b2b_slideshow\" (slideshow) > block \"bs2\" (slide)",
+    "item": "slide",
+    "action": "changed",
+    "reason": "Slide text, buttons and countdown became blocks inside the Weft slide; per-slide colours (bg_color, text colour) follow the slideshow section.",
+    "explained": true
+  },
+  {
+    "file": "templates/index.json",
+    "where": "section \"b2b_slideshow\" (slideshow) > block \"bs2\" (slide) → _slide > block \"subheading\" (text) → text",
+    "item": "setting text",
+    "action": "changed",
+    "reason": "plain text wrapped in a paragraph for a rich text setting",
+    "explained": true
+  },
+  {
+    "file": "templates/index.json",
+    "where": "section \"b2b_slideshow\" (slideshow) > block \"bs3\" (slide)",
+    "item": "slide",
+    "action": "changed",
+    "reason": "Slide text, buttons and countdown became blocks inside the Weft slide; per-slide colours (bg_color, text colour) follow the slideshow section.",
+    "explained": true
+  },
+  {
+    "file": "templates/index.json",
+    "where": "section \"b2b_slideshow\" (slideshow) > block \"bs3\" (slide) → _slide > block \"subheading\" (text) → text",
+    "item": "setting text",
+    "action": "changed",
+    "reason": "plain text wrapped in a paragraph for a rich text setting",
+    "explained": true
+  },
+  {
+    "file": "templates/index.json",
+    "where": "section \"b2b_slideshow\" (slideshow) > block \"bs4\" (slide)",
+    "item": "slide",
+    "action": "changed",
+    "reason": "Slide text, buttons and countdown became blocks inside the Weft slide; per-slide colours (bg_color, text colour) follow the slideshow section.",
+    "explained": true
+  },
+  {
+    "file": "templates/index.json",
+    "where": "section \"b2b_slideshow\" (slideshow) > block \"bs4\" (slide) → _slide > block \"subheading\" (text) → text",
+    "item": "setting text",
+    "action": "changed",
+    "reason": "plain text wrapped in a paragraph for a rich text setting",
+    "explained": true
+  },
+  {
+    "file": "templates/index.json",
+    "where": "section \"b2b_slideshow\" (slideshow)",
+    "item": "setting fixed_height_mobile",
+    "action": "changed",
+    "reason": "350 adjusted to 360 (range 200–800, step 20)",
+    "explained": true
+  },
+  {
+    "file": "templates/index.json",
+    "where": "section \"b2b_slideshow\" (slideshow)",
+    "item": "setting pagination_color",
+    "action": "dropped",
+    "reason": "Slideshow controls use the section's text colour.",
+    "explained": true
+  },
+  {
+    "file": "templates/index.json",
+    "where": "section \"b2b_slideshow\" (slideshow)",
+    "item": "setting nav_position",
+    "action": "dropped",
+    "reason": "Weft centres the slideshow controls.",
+    "explained": true
+  },
+  {
+    "file": "templates/index.json",
+    "where": "section \"b2b_slideshow\" (slideshow)",
+    "item": "setting prevent_animation",
+    "action": "dropped",
+    "reason": "Weft reveals sections through Theme settings > Animations, for every section at once.",
+    "explained": true
+  },
+  {
+    "file": "templates/index.json",
+    "where": "section \"hero_banner\" (image-banner)",
+    "item": "setting prevent_animation",
+    "action": "dropped",
+    "reason": "Weft reveals sections through Theme settings > Animations, for every section at once.",
+    "explained": true
+  },
+  {
+    "file": "templates/index.json",
+    "where": "section \"brand_marquee\" (scrolling-banner)",
+    "item": "setting speed",
+    "action": "changed",
+    "reason": "30 adjusted to 10 (range 1–10, step 1)",
+    "explained": true
+  },
+  {
+    "file": "templates/index.json",
+    "where": "section \"brand_marquee\" (scrolling-banner)",
+    "item": "setting prevent_animation",
+    "action": "dropped",
+    "reason": "Weft reveals sections through Theme settings > Animations, for every section at once.",
+    "explained": true
+  },
+  {
+    "file": "templates/index.json",
+    "where": "section \"outerwear_banner\" (image-banner)",
+    "item": "setting prevent_animation",
+    "action": "dropped",
+    "reason": "Weft reveals sections through Theme settings > Animations, for every section at once.",
+    "explained": true
+  },
+  {
+    "file": "templates/index.json",
+    "where": "section \"craft_story\" (media-with-text) > block \"cs_sub\" (subheading) → text",
+    "item": "setting text",
+    "action": "changed",
+    "reason": "plain text wrapped in a paragraph for a rich text setting",
+    "explained": true
+  },
+  {
+    "file": "templates/index.json",
+    "where": "section \"craft_story\" (media-with-text) > block \"cs_btn\" (button)",
+    "item": "block",
+    "action": "dropped",
+    "reason": "Button block with no labels.",
+    "explained": true
+  },
+  {
+    "file": "templates/index.json",
+    "where": "section \"craft_story\" (media-with-text)",
+    "item": "setting media_scale",
+    "action": "dropped",
+    "reason": "Weft media fills its column; the live value was 100 %.",
+    "explained": true
+  },
+  {
+    "file": "templates/index.json",
+    "where": "section \"holiday_banner\" (image-banner)",
+    "item": "setting prevent_animation",
+    "action": "dropped",
+    "reason": "Weft reveals sections through Theme settings > Animations, for every section at once.",
+    "explained": true
+  },
+  {
+    "file": "templates/index.json",
+    "where": "section \"brand_story\" (video) > block \"bs_sub\" (subheading) → text",
+    "item": "setting text",
+    "action": "changed",
+    "reason": "plain text wrapped in a paragraph for a rich text setting",
+    "explained": true
+  },
+  {
+    "file": "templates/index.json",
+    "where": "section \"brand_story\" (video)",
+    "item": "setting video_size",
+    "action": "dropped",
+    "reason": "Weft inline videos use the page width; the ratio setting sets their shape.",
+    "explained": true
+  },
+  {
+    "file": "templates/index.json",
+    "where": "section \"trust_strip\" (icons-with-text)",
+    "item": "setting title_type_scale",
+    "action": "dropped",
+    "reason": "Weft sizes text with the theme's type scale (Theme settings > Typography).",
+    "explained": true
+  },
+  {
+    "file": "templates/index.json",
+    "where": "section \"trust_strip\" (icons-with-text)",
+    "item": "setting text_type_scale",
+    "action": "dropped",
+    "reason": "Weft sizes text with the theme's type scale (Theme settings > Typography).",
+    "explained": true
+  },
+  {
+    "file": "templates/index.json",
+    "where": "section \"trust_strip\" (icons-with-text)",
+    "item": "setting prevent_animation",
+    "action": "dropped",
+    "reason": "Weft reveals sections through Theme settings > Animations, for every section at once.",
+    "explained": true
+  },
+  {
+    "file": "templates/page.about-us.json",
+    "where": "section \"custom_liquid_DABea4\" (custom-liquid)",
+    "item": "section",
+    "action": "changed",
+    "reason": "Custom Liquid content moves unchanged (BUILD_SPEC §8.2).",
+    "explained": true
+  },
+  {
+    "file": "templates/page.about-us.json",
+    "where": "section \"custom_liquid_DABea4\" (custom-liquid)",
+    "item": "setting dividers",
+    "action": "dropped",
+    "reason": "Weft separates sections with spacing, not divider lines, in Custom Liquid sections.",
+    "explained": true
+  },
+  {
+    "file": "templates/page.about-us.json",
+    "where": "section \"custom_liquid_DABea4\" (custom-liquid)",
+    "item": "setting prevent_animation",
+    "action": "dropped",
+    "reason": "Weft reveals sections through Theme settings > Animations, for every section at once.",
+    "explained": true
+  },
+  {
+    "file": "templates/page.b2b-en-onbord.json",
+    "where": "section \"custom_liquid_JJY3bL\" (custom-liquid)",
+    "item": "section",
+    "action": "changed",
+    "reason": "Custom Liquid content moves unchanged (BUILD_SPEC §8.2).",
+    "explained": true
+  },
+  {
+    "file": "templates/page.b2b-en-onbord.json",
+    "where": "section \"custom_liquid_JJY3bL\" (custom-liquid)",
+    "item": "setting dividers",
+    "action": "dropped",
+    "reason": "Weft separates sections with spacing, not divider lines, in Custom Liquid sections.",
+    "explained": true
+  },
+  {
+    "file": "templates/page.b2b-en-onbord.json",
+    "where": "section \"custom_liquid_JJY3bL\" (custom-liquid)",
+    "item": "setting prevent_animation",
+    "action": "dropped",
+    "reason": "Weft reveals sections through Theme settings > Animations, for every section at once.",
+    "explained": true
+  },
+  {
+    "file": "templates/page.b2b-en-onbord.json",
+    "where": "section \"custom_liquid_mT8qhq\" (custom-liquid)",
+    "item": "section",
+    "action": "changed",
+    "reason": "Custom Liquid content moves unchanged (BUILD_SPEC §8.2).",
+    "explained": true
+  },
+  {
+    "file": "templates/page.b2b-en-onbord.json",
+    "where": "section \"custom_liquid_mT8qhq\" (custom-liquid)",
+    "item": "setting dividers",
+    "action": "dropped",
+    "reason": "Weft separates sections with spacing, not divider lines, in Custom Liquid sections.",
+    "explained": true
+  },
+  {
+    "file": "templates/page.b2b-en-onbord.json",
+    "where": "section \"custom_liquid_mT8qhq\" (custom-liquid)",
+    "item": "setting prevent_animation",
+    "action": "dropped",
+    "reason": "Weft reveals sections through Theme settings > Animations, for every section at once.",
+    "explained": true
+  },
+  {
+    "file": "templates/page.b2b-en-onbord.json",
+    "where": "section \"custom_liquid_yR33mK\" (custom-liquid)",
+    "item": "section",
+    "action": "changed",
+    "reason": "Custom Liquid content moves unchanged (BUILD_SPEC §8.2).",
+    "explained": true
+  },
+  {
+    "file": "templates/page.b2b-en-onbord.json",
+    "where": "section \"custom_liquid_yR33mK\" (custom-liquid)",
+    "item": "setting dividers",
+    "action": "dropped",
+    "reason": "Weft separates sections with spacing, not divider lines, in Custom Liquid sections.",
+    "explained": true
+  },
+  {
+    "file": "templates/page.b2b-en-onbord.json",
+    "where": "section \"custom_liquid_yR33mK\" (custom-liquid)",
+    "item": "setting prevent_animation",
+    "action": "dropped",
+    "reason": "Weft reveals sections through Theme settings > Animations, for every section at once.",
+    "explained": true
+  },
+  {
+    "file": "templates/page.b2b-login.json",
+    "where": "section \"17746429669d3b4d9b\" (_blocks)",
+    "item": "section",
+    "action": "changed",
+    "reason": "AI-generated B2B login card → wholesale-access section: heading, text and labels kept; sign-in uses Shopify's customer account link instead of the store-specific redirect URL; style settings collapse into the colour scheme.",
+    "explained": true
+  },
+  {
+    "file": "templates/page.b2b-login.json",
+    "where": "section \"17746429669d3b4d9b\" → wholesale-access",
+    "item": "setting text",
+    "action": "changed",
+    "reason": "plain text wrapped in a paragraph for a rich text setting",
+    "explained": true
+  },
+  {
+    "file": "templates/page.comming-soon.json",
+    "where": "section \"image_banner_jrzHxY\" (image-banner) > block \"button_bcVEMr\" (button)",
+    "item": "block",
+    "action": "changed",
+    "reason": "The two buttons of the live block became two Weft button blocks.",
+    "explained": true
+  },
+  {
+    "file": "templates/page.comming-soon.json",
+    "where": "section \"image_banner_jrzHxY\" (image-banner)",
+    "item": "setting prevent_animation",
+    "action": "dropped",
+    "reason": "Weft reveals sections through Theme settings > Animations, for every section at once.",
+    "explained": true
+  },
+  {
+    "file": "templates/page.contact.json",
+    "where": "section \"custom_liquid_crJfBi\" (custom-liquid)",
+    "item": "section",
+    "action": "changed",
+    "reason": "Custom Liquid content moves unchanged (BUILD_SPEC §8.2).",
+    "explained": true
+  },
+  {
+    "file": "templates/page.contact.json",
+    "where": "section \"custom_liquid_crJfBi\" (custom-liquid)",
+    "item": "setting dividers",
+    "action": "dropped",
+    "reason": "Weft separates sections with spacing, not divider lines, in Custom Liquid sections.",
+    "explained": true
+  },
+  {
+    "file": "templates/page.contact.json",
+    "where": "section \"custom_liquid_crJfBi\" (custom-liquid)",
+    "item": "setting prevent_animation",
+    "action": "dropped",
+    "reason": "Weft reveals sections through Theme settings > Animations, for every section at once.",
+    "explained": true
+  },
+  {
+    "file": "templates/page.custom-payment-page.json",
+    "where": "section \"custom_liquid_y6UAAi\" (custom-liquid)",
+    "item": "section",
+    "action": "changed",
+    "reason": "Custom Liquid content moves unchanged (BUILD_SPEC §8.2).",
+    "explained": true
+  },
+  {
+    "file": "templates/page.custom-payment-page.json",
+    "where": "section \"custom_liquid_y6UAAi\" (custom-liquid)",
+    "item": "setting dividers",
+    "action": "dropped",
+    "reason": "Weft separates sections with spacing, not divider lines, in Custom Liquid sections.",
+    "explained": true
+  },
+  {
+    "file": "templates/page.custom-payment-page.json",
+    "where": "section \"custom_liquid_y6UAAi\" (custom-liquid)",
+    "item": "setting prevent_animation",
+    "action": "dropped",
+    "reason": "Weft reveals sections through Theme settings > Animations, for every section at once.",
+    "explained": true
+  },
+  {
+    "file": "templates/page.faqs.json",
+    "where": "section \"image-banner\" (image-banner)",
+    "item": "setting prevent_animation",
+    "action": "dropped",
+    "reason": "Weft reveals sections through Theme settings > Animations, for every section at once.",
+    "explained": true
+  },
+  {
+    "file": "templates/page.lookbook.json",
+    "where": "section \"image-banner-1\" (image-banner) > block \"banner-button-4\" (button)",
+    "item": "block",
+    "action": "dropped",
+    "reason": "Button block with no labels.",
+    "explained": true
+  },
+  {
+    "file": "templates/page.lookbook.json",
+    "where": "section \"promo-grid-1\" (promo-grid) > block \"promo-grid-1-block-1\" (media) → _promo-tile",
+    "item": "setting background_color",
+    "action": "dropped",
+    "reason": "Promo tiles use the section's colour scheme behind the image; the live tiles had images.",
+    "explained": true
+  },
+  {
+    "file": "templates/page.lookbook.json",
+    "where": "section \"promo-grid-1\" (promo-grid) > block \"promo-grid-1-block-2\" (media) → _promo-tile",
+    "item": "setting background_color",
+    "action": "dropped",
+    "reason": "Promo tiles use the section's colour scheme behind the image; the live tiles had images.",
+    "explained": true
+  },
+  {
+    "file": "templates/page.lookbook.json",
+    "where": "section \"promo-grid-1\" (promo-grid) > block \"promo-grid-1-block-3\" (media) → _promo-tile",
+    "item": "setting background_color",
+    "action": "dropped",
+    "reason": "Promo tiles use the section's colour scheme behind the image; the live tiles had images.",
+    "explained": true
+  },
+  {
+    "file": "templates/page.lookbook.json",
+    "where": "section \"promo-grid-1\" (promo-grid) > block \"promo-grid-1-block-4\" (media) → _promo-tile",
+    "item": "setting background_color",
+    "action": "dropped",
+    "reason": "Promo tiles use the section's colour scheme behind the image; the live tiles had images.",
+    "explained": true
+  },
+  {
+    "file": "templates/page.lookbook.json",
+    "where": "section \"promo-grid-1\" (promo-grid) > block \"promo-grid-1-block-5\" (media) → _promo-tile",
+    "item": "setting background_color",
+    "action": "dropped",
+    "reason": "Promo tiles use the section's colour scheme behind the image; the live tiles had images.",
+    "explained": true
+  },
+  {
+    "file": "templates/page.lookbook.json",
+    "where": "section \"promo-grid-1\" (promo-grid) > block \"promo-grid-1-block-6\" (media) → _promo-tile",
+    "item": "setting background_color",
+    "action": "dropped",
+    "reason": "Promo tiles use the section's colour scheme behind the image; the live tiles had images.",
+    "explained": true
+  },
+  {
+    "file": "templates/page.lookbook.json",
+    "where": "section \"promo-grid-1\" (promo-grid) > block \"promo-grid-1-block-7\" (media) → _promo-tile",
+    "item": "setting background_color",
+    "action": "dropped",
+    "reason": "Promo tiles use the section's colour scheme behind the image; the live tiles had images.",
+    "explained": true
+  },
+  {
+    "file": "templates/page.lookbook.json",
+    "where": "section \"promo-grid-1\" (promo-grid) > block \"promo-grid-1-block-8\" (media) → _promo-tile",
+    "item": "setting background_color",
+    "action": "dropped",
+    "reason": "Promo tiles use the section's colour scheme behind the image; the live tiles had images.",
+    "explained": true
+  },
+  {
+    "file": "templates/page.lookbook.json",
+    "where": "section \"promo-grid-1\" (promo-grid)",
+    "item": "setting fixed_height_mobile",
+    "action": "changed",
+    "reason": "370 adjusted to 380 (range 120–600, step 20)",
+    "explained": true
+  },
+  {
+    "file": "templates/page.lookbook.json",
+    "where": "section \"shoppable-image\" (shoppable-image)",
+    "item": "setting show_vendor",
+    "action": "dropped",
+    "reason": "Weft hotspot cards show the product title and price.",
+    "explained": true
+  },
+  {
+    "file": "templates/page.lookbook.json",
+    "where": "section \"shoppable-image\" (shoppable-image)",
+    "item": "setting show_content",
+    "action": "dropped",
+    "reason": "value true: \"true\" is not an option (image-start, image-end, image-only)",
+    "explained": true
+  },
+  {
+    "file": "templates/page.lookbook.json",
+    "where": "section \"shoppable-image\" (shoppable-image)",
+    "item": "setting mob_center_text",
+    "action": "dropped",
+    "reason": "The Weft shoppable image centres text through its text alignment.",
+    "explained": true
+  },
+  {
+    "file": "templates/page.lookbook.json",
+    "where": "section \"media-grid-1\" (media-grid)",
+    "item": "setting fixed_height_desktop",
+    "action": "changed",
+    "reason": "230 adjusted to 240 (range 120–600, step 20)",
+    "explained": true
+  },
+  {
+    "file": "templates/page.lookbook.json",
+    "where": "section \"media-grid-1\" (media-grid)",
+    "item": "setting fixed_height_mobile",
+    "action": "changed",
+    "reason": "270 adjusted to 280 (range 120–600, step 20)",
+    "explained": true
+  },
+  {
+    "file": "templates/page.lookbook.json",
+    "where": "section \"promo-grid-2\" (promo-grid) > block \"promo-grid-2-block-1\" (media) → _promo-tile",
+    "item": "setting background_color",
+    "action": "dropped",
+    "reason": "Promo tiles use the section's colour scheme behind the image; the live tiles had images.",
+    "explained": true
+  },
+  {
+    "file": "templates/page.lookbook.json",
+    "where": "section \"promo-grid-2\" (promo-grid) > block \"promo-grid-2-block-2\" (media) → _promo-tile",
+    "item": "setting background_color",
+    "action": "dropped",
+    "reason": "Promo tiles use the section's colour scheme behind the image; the live tiles had images.",
+    "explained": true
+  },
+  {
+    "file": "templates/page.lookbook.json",
+    "where": "section \"promo-grid-2\" (promo-grid) > block \"promo-grid-2-block-3\" (media) → _promo-tile",
+    "item": "setting background_color",
+    "action": "dropped",
+    "reason": "Promo tiles use the section's colour scheme behind the image; the live tiles had images.",
+    "explained": true
+  },
+  {
+    "file": "templates/page.lookbook.json",
+    "where": "section \"promo-grid-2\" (promo-grid) > block \"promo-grid-2-block-4\" (media) → _promo-tile",
+    "item": "setting background_color",
+    "action": "dropped",
+    "reason": "Promo tiles use the section's colour scheme behind the image; the live tiles had images.",
+    "explained": true
+  },
+  {
+    "file": "templates/page.lookbook.json",
+    "where": "section \"image-banner-2\" (image-banner)",
+    "item": "setting prevent_animation",
+    "action": "dropped",
+    "reason": "Weft reveals sections through Theme settings > Animations, for every section at once.",
+    "explained": true
+  },
+  {
+    "file": "templates/page.perfume.json",
+    "where": "section \"image_banner_LHQij9\" (image-banner) > block \"button_e6QrbU\" (button)",
+    "item": "block",
+    "action": "changed",
+    "reason": "The two buttons of the live block became two Weft button blocks.",
+    "explained": true
+  },
+  {
+    "file": "templates/page.perfume.json",
+    "where": "section \"image_banner_LHQij9\" (image-banner)",
+    "item": "setting prevent_animation",
+    "action": "dropped",
+    "reason": "Weft reveals sections through Theme settings > Animations, for every section at once.",
+    "explained": true
+  },
+  {
+    "file": "templates/page.privacy-policy.json",
+    "where": "section \"custom_liquid_XGCzF4\" (custom-liquid)",
+    "item": "section",
+    "action": "changed",
+    "reason": "Custom Liquid content moves unchanged (BUILD_SPEC §8.2).",
+    "explained": true
+  },
+  {
+    "file": "templates/page.privacy-policy.json",
+    "where": "section \"custom_liquid_XGCzF4\" (custom-liquid)",
+    "item": "setting dividers",
+    "action": "dropped",
+    "reason": "Weft separates sections with spacing, not divider lines, in Custom Liquid sections.",
+    "explained": true
+  },
+  {
+    "file": "templates/page.privacy-policy.json",
+    "where": "section \"custom_liquid_XGCzF4\" (custom-liquid)",
+    "item": "setting prevent_animation",
+    "action": "dropped",
+    "reason": "Weft reveals sections through Theme settings > Animations, for every section at once.",
+    "explained": true
+  },
+  {
+    "file": "templates/page.return-refund-and-exchan.json",
+    "where": "section \"custom_liquid_qrGfYz\" (custom-liquid)",
+    "item": "section",
+    "action": "changed",
+    "reason": "Custom Liquid content moves unchanged (BUILD_SPEC §8.2).",
+    "explained": true
+  },
+  {
+    "file": "templates/page.return-refund-and-exchan.json",
+    "where": "section \"custom_liquid_qrGfYz\" (custom-liquid)",
+    "item": "setting dividers",
+    "action": "dropped",
+    "reason": "Weft separates sections with spacing, not divider lines, in Custom Liquid sections.",
+    "explained": true
+  },
+  {
+    "file": "templates/page.return-refund-and-exchan.json",
+    "where": "section \"custom_liquid_qrGfYz\" (custom-liquid)",
+    "item": "setting prevent_animation",
+    "action": "dropped",
+    "reason": "Weft reveals sections through Theme settings > Animations, for every section at once.",
+    "explained": true
+  },
+  {
+    "file": "templates/page.reviews.json",
+    "where": "section \"reviews_wall\" (gn-reviews-wall)",
+    "item": "section",
+    "action": "changed",
+    "reason": "Judge.me reviews wall → integration reviews wall (store build).",
+    "explained": true
+  },
+  {
+    "file": "templates/page.reviews.json",
+    "where": "section \"reviews_wall\" (gn-reviews-wall)",
+    "item": "setting subheading",
+    "action": "changed",
+    "reason": "plain text wrapped in a paragraph for a rich text setting",
+    "explained": true
+  },
+  {
+    "file": "templates/page.reviews.json",
+    "where": "section \"reviews_wall\" (gn-reviews-wall)",
+    "item": "setting total_label",
+    "action": "dropped",
+    "reason": "Weft labels this in the storefront language (locale strings) instead of a section setting.",
+    "explained": true
+  },
+  {
+    "file": "templates/page.reviews.json",
+    "where": "section \"reviews_wall\" (gn-reviews-wall)",
+    "item": "setting more_label",
+    "action": "dropped",
+    "reason": "Weft labels this in the storefront language (locale strings) instead of a section setting.",
+    "explained": true
+  },
+  {
+    "file": "templates/page.reviews.json",
+    "where": "section \"reviews_wall\" (gn-reviews-wall)",
+    "item": "setting show_product",
+    "action": "dropped",
+    "reason": "Weft always names the product a review is about.",
+    "explained": true
+  },
+  {
+    "file": "templates/page.reviews.json",
+    "where": "section \"reviews_wall\" (gn-reviews-wall)",
+    "item": "setting verified_label",
+    "action": "dropped",
+    "reason": "Weft labels this in the storefront language (locale strings) instead of a section setting.",
+    "explained": true
+  },
+  {
+    "file": "templates/page.reviews.json",
+    "where": "section \"reviews_wall\" (gn-reviews-wall)",
+    "item": "setting photo_label",
+    "action": "dropped",
+    "reason": "Weft labels this in the storefront language (locale strings) instead of a section setting.",
+    "explained": true
+  },
+  {
+    "file": "templates/page.reviews.json",
+    "where": "section \"reviews_wall\" (gn-reviews-wall)",
+    "item": "setting columns",
+    "action": "dropped",
+    "reason": "Weft fits as many review columns as the width allows.",
+    "explained": true
+  },
+  {
+    "file": "templates/page.reviews.json",
+    "where": "section \"reviews_wall\" (gn-reviews-wall)",
+    "item": "setting padding_top",
+    "action": "dropped",
+    "reason": "Weft spaces sections with Theme settings > Layout and design > Section spacing.",
+    "explained": true
+  },
+  {
+    "file": "templates/page.reviews.json",
+    "where": "section \"reviews_wall\" (gn-reviews-wall)",
+    "item": "setting padding_bottom",
+    "action": "dropped",
+    "reason": "Weft spaces sections with Theme settings > Layout and design > Section spacing.",
+    "explained": true
+  },
+  {
+    "file": "templates/page.shipping-policy.json",
+    "where": "section \"custom_liquid_AdPwtP\" (custom-liquid)",
+    "item": "section",
+    "action": "changed",
+    "reason": "Custom Liquid content moves unchanged (BUILD_SPEC §8.2).",
+    "explained": true
+  },
+  {
+    "file": "templates/page.shipping-policy.json",
+    "where": "section \"custom_liquid_AdPwtP\" (custom-liquid)",
+    "item": "setting dividers",
+    "action": "dropped",
+    "reason": "Weft separates sections with spacing, not divider lines, in Custom Liquid sections.",
+    "explained": true
+  },
+  {
+    "file": "templates/page.shipping-policy.json",
+    "where": "section \"custom_liquid_AdPwtP\" (custom-liquid)",
+    "item": "setting prevent_animation",
+    "action": "dropped",
+    "reason": "Weft reveals sections through Theme settings > Animations, for every section at once.",
+    "explained": true
+  },
+  {
+    "file": "templates/page.terms-of-service.json",
+    "where": "section \"custom_liquid_XCcmUp\" (custom-liquid)",
+    "item": "section",
+    "action": "changed",
+    "reason": "Custom Liquid content moves unchanged (BUILD_SPEC §8.2).",
+    "explained": true
+  },
+  {
+    "file": "templates/page.terms-of-service.json",
+    "where": "section \"custom_liquid_XCcmUp\" (custom-liquid)",
+    "item": "setting dividers",
+    "action": "dropped",
+    "reason": "Weft separates sections with spacing, not divider lines, in Custom Liquid sections.",
+    "explained": true
+  },
+  {
+    "file": "templates/page.terms-of-service.json",
+    "where": "section \"custom_liquid_XCcmUp\" (custom-liquid)",
+    "item": "setting prevent_animation",
+    "action": "dropped",
+    "reason": "Weft reveals sections through Theme settings > Animations, for every section at once.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.coming-soon.json",
+    "where": "section \"main\" (main-product) > block \"message\" (message) → flash-message",
+    "item": "setting title",
+    "action": "changed",
+    "reason": "block tags removed for an inline text setting",
+    "explained": true
+  },
+  {
+    "file": "templates/product.coming-soon.json",
+    "where": "section \"main\" (main-product) > block \"variant-picker\" (variant-picker) → variant-picker",
+    "item": "setting show_backorder_text",
+    "action": "dropped",
+    "reason": "The backorder note is buy-buttons > Backorder note in Weft (on by default).",
+    "explained": true
+  },
+  {
+    "file": "templates/product.coming-soon.json",
+    "where": "section \"main\" (main-product)",
+    "item": "setting sticky_atc_panel",
+    "action": "dropped",
+    "reason": "Weft's approved mobile sticky bar replaces the theme's sticky panel (brief §14.4); it is main-product > Mobile sticky bar.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.coming-soon.json",
+    "where": "section \"main\" (main-product)",
+    "item": "setting hover_zoom",
+    "action": "dropped",
+    "reason": "Folded into the zoom setting; hover magnify is zoom: hover or both.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.coming-soon.json",
+    "where": "section \"video\" (video)",
+    "item": "setting video_size",
+    "action": "dropped",
+    "reason": "Weft inline videos use the page width; the ratio setting sets their shape.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.countdown.json",
+    "where": "section \"countdown-timer\" (countdown-timer) > block \"countdown-subheading\" (subheading) → text",
+    "item": "setting text",
+    "action": "changed",
+    "reason": "plain text wrapped in a paragraph for a rich text setting",
+    "explained": true
+  },
+  {
+    "file": "templates/product.countdown.json",
+    "where": "section \"countdown-timer\" (countdown-timer)",
+    "item": "setting fixed_height_mobile",
+    "action": "changed",
+    "reason": "350 adjusted to 360 (range 200–800, step 20)",
+    "explained": true
+  },
+  {
+    "file": "templates/product.countdown.json",
+    "where": "section \"countdown-timer\" (countdown-timer)",
+    "item": "setting countdown_size",
+    "action": "dropped",
+    "reason": "Weft sizes the countdown digits with the heading scale.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.countdown.json",
+    "where": "section \"main\" (main-product) > block \"message-1\" (message) → flash-message",
+    "item": "setting title",
+    "action": "changed",
+    "reason": "block tags removed for an inline text setting",
+    "explained": true
+  },
+  {
+    "file": "templates/product.countdown.json",
+    "where": "section \"main\" (main-product) > block \"variant-picker\" (variant-picker) → variant-picker",
+    "item": "setting enable_dynamic_availability",
+    "action": "dropped",
+    "reason": "Weft always marks unavailable option values.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.countdown.json",
+    "where": "section \"main\" (main-product) > block \"variant-picker\" (variant-picker) → variant-picker",
+    "item": "setting show_backorder_text",
+    "action": "dropped",
+    "reason": "The backorder note is buy-buttons > Backorder note in Weft (on by default).",
+    "explained": true
+  },
+  {
+    "file": "templates/product.countdown.json",
+    "where": "section \"main\" (main-product) > block \"variant-picker\" (variant-picker) → variant-picker",
+    "item": "setting enable_size_chart",
+    "action": "dropped",
+    "reason": "Size chart moved to the product-guide block (see the variantPicker note).",
+    "explained": true
+  },
+  {
+    "file": "templates/product.countdown.json",
+    "where": "section \"main\" (main-product) > block \"variant-picker\" (variant-picker) → variant-picker",
+    "item": "setting size_chart_page",
+    "action": "dropped",
+    "reason": "Size chart moved to the product-guide block (see the variantPicker note).",
+    "explained": true
+  },
+  {
+    "file": "templates/product.countdown.json",
+    "where": "section \"main\" (main-product)",
+    "item": "setting sticky_atc_panel",
+    "action": "dropped",
+    "reason": "Weft's approved mobile sticky bar replaces the theme's sticky panel (brief §14.4); it is main-product > Mobile sticky bar.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.countdown.json",
+    "where": "section \"main\" (main-product)",
+    "item": "setting hover_zoom",
+    "action": "dropped",
+    "reason": "Folded into the zoom setting; hover magnify is zoom: hover or both.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.countdown.json",
+    "where": "section \"video\" (video)",
+    "item": "setting video_size",
+    "action": "dropped",
+    "reason": "Weft inline videos use the page width; the ratio setting sets their shape.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.dress.json",
+    "where": "section \"main\" (main-product) > block \"product-labels\" (product-labels) → product-labels",
+    "item": "setting show_variant_icon",
+    "action": "dropped",
+    "reason": "Label icons are Theme settings > Product labels in Weft.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.dress.json",
+    "where": "section \"main\" (main-product) > block \"variant-picker\" (variant-picker)",
+    "item": "size chart",
+    "action": "changed",
+    "reason": "Size chart was on without a page in the live block; Weft shows the guide link once a product-guide block has content.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.dress.json",
+    "where": "section \"main\" (main-product) > block \"variant-picker\" (variant-picker) → variant-picker",
+    "item": "setting enable_dynamic_availability",
+    "action": "dropped",
+    "reason": "Weft always marks unavailable option values.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.dress.json",
+    "where": "section \"main\" (main-product) > block \"variant-picker\" (variant-picker) → variant-picker",
+    "item": "setting show_backorder_text",
+    "action": "dropped",
+    "reason": "The backorder note is buy-buttons > Backorder note in Weft (on by default).",
+    "explained": true
+  },
+  {
+    "file": "templates/product.dress.json",
+    "where": "section \"main\" (main-product) > block \"variant-picker\" (variant-picker) → variant-picker",
+    "item": "setting enable_size_chart",
+    "action": "dropped",
+    "reason": "Size chart moved to the product-guide block (see the variantPicker note).",
+    "explained": true
+  },
+  {
+    "file": "templates/product.dress.json",
+    "where": "section \"main\" (main-product) > block \"variant-picker\" (variant-picker) → variant-picker",
+    "item": "setting size_chart_page",
+    "action": "dropped",
+    "reason": "Size chart moved to the product-guide block (see the variantPicker note).",
+    "explained": true
+  },
+  {
+    "file": "templates/product.dress.json",
+    "where": "section \"main\" (main-product) > block \"message-2\" (message) → flash-message",
+    "item": "setting title",
+    "action": "changed",
+    "reason": "block tags removed for an inline text setting",
+    "explained": true
+  },
+  {
+    "file": "templates/product.dress.json",
+    "where": "section \"main\" (main-product) > block \"collapsible_content_wTPX4g\" (collapsible-content) → description",
+    "item": "setting icon",
+    "action": "dropped",
+    "reason": "The Weft description row has no icon.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.dress.json",
+    "where": "section \"main\" (main-product) > block \"collapsible_content_wTPX4g\" (collapsible-content) → description",
+    "item": "setting text",
+    "action": "dropped",
+    "reason": "Shows the product description, which is what the Weft description block does.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.dress.json",
+    "where": "section \"main\" (main-product) > block \"collapsible_content_wTPX4g\" (collapsible-content) → description",
+    "item": "setting page",
+    "action": "dropped",
+    "reason": "Unused (empty) in the live block.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.dress.json",
+    "where": "section \"main\" (main-product) > block \"message-3\" (message) → flash-message",
+    "item": "setting title",
+    "action": "changed",
+    "reason": "block tags removed for an inline text setting",
+    "explained": true
+  },
+  {
+    "file": "templates/product.dress.json",
+    "where": "section \"main\" (main-product)",
+    "item": "setting sticky_atc_panel",
+    "action": "dropped",
+    "reason": "Weft's approved mobile sticky bar replaces the theme's sticky panel (brief §14.4); it is main-product > Mobile sticky bar.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.dress.json",
+    "where": "section \"main\" (main-product)",
+    "item": "setting sticky_atc_position",
+    "action": "dropped",
+    "reason": "Weft's mobile sticky bar sits at the bottom of the screen.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.dress.json",
+    "where": "section \"main\" (main-product)",
+    "item": "setting media_crop",
+    "action": "dropped",
+    "reason": "Weft fits product media with the media ratio and fit settings.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.dress.json",
+    "where": "section \"main\" (main-product)",
+    "item": "setting zoom_mode",
+    "action": "dropped",
+    "reason": "Folded into the zoom setting (live: lightbox).",
+    "explained": true
+  },
+  {
+    "file": "templates/product.dress.json",
+    "where": "section \"main\" (main-product)",
+    "item": "setting hover_zoom",
+    "action": "dropped",
+    "reason": "Folded into the zoom setting; hover magnify is zoom: hover or both.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.dress.json",
+    "where": "section \"main\" (main-product)",
+    "item": "setting stacked_scroll",
+    "action": "dropped",
+    "reason": "Weft's stacked gallery always scrolls with the page.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.dress.json",
+    "where": "section \"main\" (main-product)",
+    "item": "setting underline_active",
+    "action": "dropped",
+    "reason": "Weft marks the current thumbnail with a border.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.dress.json",
+    "where": "section \"main\" (main-product)",
+    "item": "setting media_arrows",
+    "action": "dropped",
+    "reason": "Weft shows arrows on the mobile carousel only.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.dress.json",
+    "where": "section \"main\" (main-product)",
+    "item": "setting lightbox_thumbnails",
+    "action": "dropped",
+    "reason": "Weft's lightbox scrolls through every image without thumbnails.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.dress.json",
+    "where": "section \"main\" (main-product)",
+    "item": "setting thumb_ratio",
+    "action": "dropped",
+    "reason": "Weft thumbnails follow the media ratio.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.dress.json",
+    "where": "section \"main\" (main-product)",
+    "item": "setting thumb_crop",
+    "action": "dropped",
+    "reason": "Weft thumbnails follow the media ratio.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.dress.json",
+    "where": "section \"main\" (main-product)",
+    "item": "setting border_color",
+    "action": "dropped",
+    "reason": "Weft media has no border colour; the line colour comes from the colour scheme.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.dress.json",
+    "where": "section \"main\" (main-product)",
+    "item": "setting media_grouping_option",
+    "action": "dropped",
+    "reason": "Weft groups media by the option names in group_media_option_names (default: Color, Colour and translations); the live value was a metafield expression.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.dress.json",
+    "where": "section \"product-features\" (product-features)",
+    "item": "setting show_content",
+    "action": "dropped",
+    "reason": "value true: \"true\" is not an option (image-start, image-end, image-only)",
+    "explained": true
+  },
+  {
+    "file": "templates/product.dress.json",
+    "where": "section \"product-features\" (product-features)",
+    "item": "setting mob_center_text",
+    "action": "dropped",
+    "reason": "The Weft product hotspots section centres text through its text alignment.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.dress.json",
+    "where": "section \"product-features\" (product-features)",
+    "item": "setting heading_size",
+    "action": "dropped",
+    "reason": "Weft sizes section headings with the heading scale.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.dress.json",
+    "where": "section \"product-features\" (product-features)",
+    "item": "setting enlarge_text",
+    "action": "dropped",
+    "reason": "Weft uses one text size for section text.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.dress.json",
+    "where": "section \"product-comparison-grid\" (product-comparison-grid) > block \"comparison-product-1\" (product)",
+    "item": "block",
+    "action": "dropped",
+    "reason": "The product row is always shown in Weft (image, title and button are section settings).",
+    "explained": true
+  },
+  {
+    "file": "templates/product.dress.json",
+    "where": "section \"product-comparison-grid\" (product-comparison-grid)",
+    "item": "setting image_crop",
+    "action": "dropped",
+    "reason": "Weft crops comparison images to the chosen ratio from the centre.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.dress.json",
+    "where": "section \"product-comparison-grid\" (product-comparison-grid)",
+    "item": "setting num_rows",
+    "action": "dropped",
+    "reason": "Weft shows every row the section has.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.dress.json",
+    "where": "section \"image-banner\" (image-banner) > block \"image-banner-button\" (button)",
+    "item": "block",
+    "action": "changed",
+    "reason": "The two buttons of the live block became two Weft button blocks.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.dress.json",
+    "where": "section \"image-banner\" (image-banner)",
+    "item": "setting prevent_animation",
+    "action": "dropped",
+    "reason": "Weft reveals sections through Theme settings > Animations, for every section at once.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.hand-bag.json",
+    "where": "section \"main\" (main-product) > block \"product-labels\" (product-labels) → product-labels",
+    "item": "setting show_variant_icon",
+    "action": "dropped",
+    "reason": "Label icons are Theme settings > Product labels in Weft.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.hand-bag.json",
+    "where": "section \"main\" (main-product) > block \"variant-picker\" (variant-picker)",
+    "item": "size chart",
+    "action": "changed",
+    "reason": "Size chart was on without a page in the live block; Weft shows the guide link once a product-guide block has content.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.hand-bag.json",
+    "where": "section \"main\" (main-product) > block \"variant-picker\" (variant-picker) → variant-picker",
+    "item": "setting enable_dynamic_availability",
+    "action": "dropped",
+    "reason": "Weft always marks unavailable option values.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.hand-bag.json",
+    "where": "section \"main\" (main-product) > block \"variant-picker\" (variant-picker) → variant-picker",
+    "item": "setting show_backorder_text",
+    "action": "dropped",
+    "reason": "The backorder note is buy-buttons > Backorder note in Weft (on by default).",
+    "explained": true
+  },
+  {
+    "file": "templates/product.hand-bag.json",
+    "where": "section \"main\" (main-product) > block \"variant-picker\" (variant-picker) → variant-picker",
+    "item": "setting enable_size_chart",
+    "action": "dropped",
+    "reason": "Size chart moved to the product-guide block (see the variantPicker note).",
+    "explained": true
+  },
+  {
+    "file": "templates/product.hand-bag.json",
+    "where": "section \"main\" (main-product) > block \"variant-picker\" (variant-picker) → variant-picker",
+    "item": "setting size_chart_page",
+    "action": "dropped",
+    "reason": "Size chart moved to the product-guide block (see the variantPicker note).",
+    "explained": true
+  },
+  {
+    "file": "templates/product.hand-bag.json",
+    "where": "section \"main\" (main-product) > block \"message-2\" (message) → flash-message",
+    "item": "setting title",
+    "action": "changed",
+    "reason": "block tags removed for an inline text setting",
+    "explained": true
+  },
+  {
+    "file": "templates/product.hand-bag.json",
+    "where": "section \"main\" (main-product) > block \"collapsible-content-2\" (collapsible-content) → description",
+    "item": "setting icon",
+    "action": "dropped",
+    "reason": "The Weft description row has no icon.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.hand-bag.json",
+    "where": "section \"main\" (main-product) > block \"collapsible-content-2\" (collapsible-content) → description",
+    "item": "setting text",
+    "action": "dropped",
+    "reason": "Shows the product description, which is what the Weft description block does.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.hand-bag.json",
+    "where": "section \"main\" (main-product) > block \"collapsible-content-2\" (collapsible-content) → description",
+    "item": "setting page",
+    "action": "dropped",
+    "reason": "Unused (empty) in the live block.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.hand-bag.json",
+    "where": "section \"main\" (main-product) > block \"message-3\" (message) → flash-message",
+    "item": "setting title",
+    "action": "changed",
+    "reason": "block tags removed for an inline text setting",
+    "explained": true
+  },
+  {
+    "file": "templates/product.hand-bag.json",
+    "where": "section \"main\" (main-product)",
+    "item": "setting sticky_atc_panel",
+    "action": "dropped",
+    "reason": "Weft's approved mobile sticky bar replaces the theme's sticky panel (brief §14.4); it is main-product > Mobile sticky bar.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.hand-bag.json",
+    "where": "section \"main\" (main-product)",
+    "item": "setting sticky_atc_position",
+    "action": "dropped",
+    "reason": "Weft's mobile sticky bar sits at the bottom of the screen.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.hand-bag.json",
+    "where": "section \"main\" (main-product)",
+    "item": "setting media_crop",
+    "action": "dropped",
+    "reason": "Weft fits product media with the media ratio and fit settings.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.hand-bag.json",
+    "where": "section \"main\" (main-product)",
+    "item": "setting zoom_mode",
+    "action": "dropped",
+    "reason": "Folded into the zoom setting (live: lightbox).",
+    "explained": true
+  },
+  {
+    "file": "templates/product.hand-bag.json",
+    "where": "section \"main\" (main-product)",
+    "item": "setting hover_zoom",
+    "action": "dropped",
+    "reason": "Folded into the zoom setting; hover magnify is zoom: hover or both.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.hand-bag.json",
+    "where": "section \"main\" (main-product)",
+    "item": "setting stacked_scroll",
+    "action": "dropped",
+    "reason": "Weft's stacked gallery always scrolls with the page.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.hand-bag.json",
+    "where": "section \"main\" (main-product)",
+    "item": "setting underline_active",
+    "action": "dropped",
+    "reason": "Weft marks the current thumbnail with a border.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.hand-bag.json",
+    "where": "section \"main\" (main-product)",
+    "item": "setting media_arrows",
+    "action": "dropped",
+    "reason": "Weft shows arrows on the mobile carousel only.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.hand-bag.json",
+    "where": "section \"main\" (main-product)",
+    "item": "setting lightbox_thumbnails",
+    "action": "dropped",
+    "reason": "Weft's lightbox scrolls through every image without thumbnails.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.hand-bag.json",
+    "where": "section \"main\" (main-product)",
+    "item": "setting thumb_ratio",
+    "action": "dropped",
+    "reason": "Weft thumbnails follow the media ratio.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.hand-bag.json",
+    "where": "section \"main\" (main-product)",
+    "item": "setting thumb_crop",
+    "action": "dropped",
+    "reason": "Weft thumbnails follow the media ratio.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.hand-bag.json",
+    "where": "section \"main\" (main-product)",
+    "item": "setting border_color",
+    "action": "dropped",
+    "reason": "Weft media has no border colour; the line colour comes from the colour scheme.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.hand-bag.json",
+    "where": "section \"main\" (main-product)",
+    "item": "setting media_grouping_option",
+    "action": "dropped",
+    "reason": "Weft groups media by the option names in group_media_option_names (default: Color, Colour and translations); the live value was a metafield expression.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.hand-bag.json",
+    "where": "section \"product-features\" (product-features)",
+    "item": "setting show_content",
+    "action": "dropped",
+    "reason": "value true: \"true\" is not an option (image-start, image-end, image-only)",
+    "explained": true
+  },
+  {
+    "file": "templates/product.hand-bag.json",
+    "where": "section \"product-features\" (product-features)",
+    "item": "setting mob_center_text",
+    "action": "dropped",
+    "reason": "The Weft product hotspots section centres text through its text alignment.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.hand-bag.json",
+    "where": "section \"product-features\" (product-features)",
+    "item": "setting heading_size",
+    "action": "dropped",
+    "reason": "Weft sizes section headings with the heading scale.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.hand-bag.json",
+    "where": "section \"product-features\" (product-features)",
+    "item": "setting enlarge_text",
+    "action": "dropped",
+    "reason": "Weft uses one text size for section text.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.hand-bag.json",
+    "where": "section \"product-comparison-grid\" (product-comparison-grid) > block \"comparison-product-1\" (product)",
+    "item": "block",
+    "action": "dropped",
+    "reason": "The product row is always shown in Weft (image, title and button are section settings).",
+    "explained": true
+  },
+  {
+    "file": "templates/product.hand-bag.json",
+    "where": "section \"product-comparison-grid\" (product-comparison-grid)",
+    "item": "setting image_crop",
+    "action": "dropped",
+    "reason": "Weft crops comparison images to the chosen ratio from the centre.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.hand-bag.json",
+    "where": "section \"product-comparison-grid\" (product-comparison-grid)",
+    "item": "setting num_rows",
+    "action": "dropped",
+    "reason": "Weft shows every row the section has.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.hand-bag.json",
+    "where": "section \"image-banner\" (image-banner) > block \"image-banner-button\" (button)",
+    "item": "block",
+    "action": "changed",
+    "reason": "The two buttons of the live block became two Weft button blocks.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.hand-bag.json",
+    "where": "section \"image-banner\" (image-banner)",
+    "item": "setting prevent_animation",
+    "action": "dropped",
+    "reason": "Weft reveals sections through Theme settings > Animations, for every section at once.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.json",
+    "where": "section \"main\" (main-product) > block \"product-labels\" (product-labels) → product-labels",
+    "item": "setting show_variant_icon",
+    "action": "dropped",
+    "reason": "Label icons are Theme settings > Product labels in Weft.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.json",
+    "where": "section \"main\" (main-product) > block \"custom_liquid_gnrating\" (custom-liquid)",
+    "item": "custom liquid",
+    "action": "changed",
+    "reason": "gn-rating → product-rating block reading the Judge.me store rating and count (dynamic sources), retail only as before.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.json",
+    "where": "section \"main\" (main-product) > block \"variant-picker\" (variant-picker)",
+    "item": "size chart",
+    "action": "changed",
+    "reason": "Size chart was on without a page in the live block; Weft shows the guide link once a product-guide block has content.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.json",
+    "where": "section \"main\" (main-product) > block \"variant-picker\" (variant-picker) → variant-picker",
+    "item": "setting enable_dynamic_availability",
+    "action": "dropped",
+    "reason": "Weft always marks unavailable option values.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.json",
+    "where": "section \"main\" (main-product) > block \"variant-picker\" (variant-picker) → variant-picker",
+    "item": "setting show_backorder_text",
+    "action": "dropped",
+    "reason": "The backorder note is buy-buttons > Backorder note in Weft (on by default).",
+    "explained": true
+  },
+  {
+    "file": "templates/product.json",
+    "where": "section \"main\" (main-product) > block \"variant-picker\" (variant-picker) → variant-picker",
+    "item": "setting enable_size_chart",
+    "action": "dropped",
+    "reason": "Size chart moved to the product-guide block (see the variantPicker note).",
+    "explained": true
+  },
+  {
+    "file": "templates/product.json",
+    "where": "section \"main\" (main-product) > block \"variant-picker\" (variant-picker) → variant-picker",
+    "item": "setting size_chart_page",
+    "action": "dropped",
+    "reason": "Size chart moved to the product-guide block (see the variantPicker note).",
+    "explained": true
+  },
+  {
+    "file": "templates/product.json",
+    "where": "section \"main\" (main-product) > block \"custom_liquid_wbis\" (custom-liquid)",
+    "item": "custom liquid",
+    "action": "changed",
+    "reason": "Wasify back-in-stock snippet → back-in-stock block; the service URL is Theme settings > Integrations.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.json",
+    "where": "section \"main\" (main-product) > block \"custom_liquid_sizewarn\" (custom-liquid)",
+    "item": "custom liquid",
+    "action": "dropped",
+    "reason": "Size guide warning snippet is removed on purpose (brief §4.9).",
+    "explained": true
+  },
+  {
+    "file": "templates/product.json",
+    "where": "section \"main\" (main-product) > block \"custom_liquid_gnship\" (custom-liquid)",
+    "item": "custom liquid",
+    "action": "changed",
+    "reason": "gn-shipping-bar → delivery-list block (fit row from the custom.fit_guide metafield as before; the live second fit line, custom.best_suited_for, can go in the product guide); country rules are Theme settings > Delivery information (store values).",
+    "explained": true
+  },
+  {
+    "file": "templates/product.json",
+    "where": "section \"main\" (main-product) > block \"custom_liquid_gnship\" (custom-liquid)",
+    "item": "custom liquid",
+    "action": "changed",
+    "reason": "gn-see-more → the description block's \"shorten long text\" option (clamp), set on the migrated description.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.json",
+    "where": "section \"main\" (main-product) > block \"message-2\" (message) → flash-message",
+    "item": "setting title",
+    "action": "changed",
+    "reason": "block tags removed for an inline text setting",
+    "explained": true
+  },
+  {
+    "file": "templates/product.json",
+    "where": "section \"main\" (main-product) > block \"collapsible_content_wTPX4g\" (collapsible-content) → description",
+    "item": "setting icon",
+    "action": "dropped",
+    "reason": "The Weft description row has no icon.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.json",
+    "where": "section \"main\" (main-product) > block \"collapsible_content_wTPX4g\" (collapsible-content) → description",
+    "item": "setting text",
+    "action": "dropped",
+    "reason": "Shows the product description, which is what the Weft description block does.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.json",
+    "where": "section \"main\" (main-product) > block \"collapsible_content_wTPX4g\" (collapsible-content) → description",
+    "item": "setting page",
+    "action": "dropped",
+    "reason": "Unused (empty) in the live block.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.json",
+    "where": "section \"main\" (main-product) > block \"message-3\" (message) → flash-message",
+    "item": "setting title",
+    "action": "changed",
+    "reason": "block tags removed for an inline text setting",
+    "explained": true
+  },
+  {
+    "file": "templates/product.json",
+    "where": "section \"main\" (main-product)",
+    "item": "setting sticky_atc_panel",
+    "action": "dropped",
+    "reason": "Weft's approved mobile sticky bar replaces the theme's sticky panel (brief §14.4); it is main-product > Mobile sticky bar.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.json",
+    "where": "section \"main\" (main-product)",
+    "item": "setting sticky_atc_position",
+    "action": "dropped",
+    "reason": "Weft's mobile sticky bar sits at the bottom of the screen.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.json",
+    "where": "section \"main\" (main-product)",
+    "item": "setting media_crop",
+    "action": "dropped",
+    "reason": "Weft fits product media with the media ratio and fit settings.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.json",
+    "where": "section \"main\" (main-product)",
+    "item": "setting zoom_mode",
+    "action": "dropped",
+    "reason": "Folded into the zoom setting (live: lightbox).",
+    "explained": true
+  },
+  {
+    "file": "templates/product.json",
+    "where": "section \"main\" (main-product)",
+    "item": "setting hover_zoom",
+    "action": "dropped",
+    "reason": "Folded into the zoom setting; hover magnify is zoom: hover or both.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.json",
+    "where": "section \"main\" (main-product)",
+    "item": "setting stacked_scroll",
+    "action": "dropped",
+    "reason": "Weft's stacked gallery always scrolls with the page.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.json",
+    "where": "section \"main\" (main-product)",
+    "item": "setting underline_active",
+    "action": "dropped",
+    "reason": "Weft marks the current thumbnail with a border.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.json",
+    "where": "section \"main\" (main-product)",
+    "item": "setting media_arrows",
+    "action": "dropped",
+    "reason": "Weft shows arrows on the mobile carousel only.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.json",
+    "where": "section \"main\" (main-product)",
+    "item": "setting lightbox_thumbnails",
+    "action": "dropped",
+    "reason": "Weft's lightbox scrolls through every image without thumbnails.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.json",
+    "where": "section \"main\" (main-product)",
+    "item": "setting thumb_ratio",
+    "action": "dropped",
+    "reason": "Weft thumbnails follow the media ratio.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.json",
+    "where": "section \"main\" (main-product)",
+    "item": "setting thumb_crop",
+    "action": "dropped",
+    "reason": "Weft thumbnails follow the media ratio.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.json",
+    "where": "section \"main\" (main-product)",
+    "item": "setting border_color",
+    "action": "dropped",
+    "reason": "Weft media has no border colour; the line colour comes from the colour scheme.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.json",
+    "where": "section \"main\" (main-product)",
+    "item": "setting media_grouping_option",
+    "action": "dropped",
+    "reason": "Weft groups media by the option names in group_media_option_names (default: Color, Colour and translations); the live value was a metafield expression.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.json",
+    "where": "section \"product-features\" (product-features)",
+    "item": "setting show_content",
+    "action": "dropped",
+    "reason": "value true: \"true\" is not an option (image-start, image-end, image-only)",
+    "explained": true
+  },
+  {
+    "file": "templates/product.json",
+    "where": "section \"product-features\" (product-features)",
+    "item": "setting mob_center_text",
+    "action": "dropped",
+    "reason": "The Weft product hotspots section centres text through its text alignment.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.json",
+    "where": "section \"product-features\" (product-features)",
+    "item": "setting heading_size",
+    "action": "dropped",
+    "reason": "Weft sizes section headings with the heading scale.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.json",
+    "where": "section \"product-features\" (product-features)",
+    "item": "setting enlarge_text",
+    "action": "dropped",
+    "reason": "Weft uses one text size for section text.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.json",
+    "where": "section \"product-comparison-grid\" (product-comparison-grid) > block \"comparison-product-1\" (product)",
+    "item": "block",
+    "action": "dropped",
+    "reason": "The product row is always shown in Weft (image, title and button are section settings).",
+    "explained": true
+  },
+  {
+    "file": "templates/product.json",
+    "where": "section \"product-comparison-grid\" (product-comparison-grid)",
+    "item": "setting image_crop",
+    "action": "dropped",
+    "reason": "Weft crops comparison images to the chosen ratio from the centre.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.json",
+    "where": "section \"product-comparison-grid\" (product-comparison-grid)",
+    "item": "setting num_rows",
+    "action": "dropped",
+    "reason": "Weft shows every row the section has.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.json",
+    "where": "section \"image-banner\" (image-banner) > block \"image-banner-button\" (button)",
+    "item": "block",
+    "action": "changed",
+    "reason": "The two buttons of the live block became two Weft button blocks.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.json",
+    "where": "section \"image-banner\" (image-banner)",
+    "item": "setting prevent_animation",
+    "action": "dropped",
+    "reason": "Weft reveals sections through Theme settings > Animations, for every section at once.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.json",
+    "where": "section \"gn_product_reviews\" (gn-product-reviews)",
+    "item": "section",
+    "action": "changed",
+    "reason": "Judge.me reviews section → integration reviews grid (store build). Turn on Theme settings > Integrations > Judge.me.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.json",
+    "where": "section \"gn_product_reviews\" (gn-product-reviews)",
+    "item": "setting total_label",
+    "action": "dropped",
+    "reason": "Weft labels this in the storefront language (locale strings) instead of a section setting.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.json",
+    "where": "section \"gn_product_reviews\" (gn-product-reviews)",
+    "item": "setting note",
+    "action": "dropped",
+    "reason": "Weft's reviews grid shows the heading, score and count without a note line.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.json",
+    "where": "section \"gn_product_reviews\" (gn-product-reviews)",
+    "item": "setting max_reviews",
+    "action": "changed",
+    "reason": "40 adjusted to 30 (range 3–30, step 1)",
+    "explained": true
+  },
+  {
+    "file": "templates/product.json",
+    "where": "section \"gn_product_reviews\" (gn-product-reviews)",
+    "item": "setting this_label",
+    "action": "dropped",
+    "reason": "Weft labels this in the storefront language (locale strings) instead of a section setting.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.json",
+    "where": "section \"gn_product_reviews\" (gn-product-reviews)",
+    "item": "setting verified_label",
+    "action": "dropped",
+    "reason": "Weft labels this in the storefront language (locale strings) instead of a section setting.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.json",
+    "where": "section \"gn_product_reviews\" (gn-product-reviews)",
+    "item": "setting photo_label",
+    "action": "dropped",
+    "reason": "Weft labels this in the storefront language (locale strings) instead of a section setting.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.json",
+    "where": "section \"gn_product_reviews\" (gn-product-reviews)",
+    "item": "setting chip_all",
+    "action": "dropped",
+    "reason": "Weft labels this in the storefront language (locale strings) instead of a section setting.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.json",
+    "where": "section \"gn_product_reviews\" (gn-product-reviews)",
+    "item": "setting chip_5",
+    "action": "dropped",
+    "reason": "Weft labels this in the storefront language (locale strings) instead of a section setting.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.json",
+    "where": "section \"gn_product_reviews\" (gn-product-reviews)",
+    "item": "setting chip_4",
+    "action": "dropped",
+    "reason": "Weft labels this in the storefront language (locale strings) instead of a section setting.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.json",
+    "where": "section \"gn_product_reviews\" (gn-product-reviews)",
+    "item": "setting chip_photos",
+    "action": "dropped",
+    "reason": "Weft labels this in the storefront language (locale strings) instead of a section setting.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.json",
+    "where": "section \"gn_product_reviews\" (gn-product-reviews)",
+    "item": "setting showing_label",
+    "action": "dropped",
+    "reason": "Weft labels this in the storefront language (locale strings) instead of a section setting.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.json",
+    "where": "section \"gn_product_reviews\" (gn-product-reviews)",
+    "item": "setting of_label",
+    "action": "dropped",
+    "reason": "Weft labels this in the storefront language (locale strings) instead of a section setting.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.json",
+    "where": "section \"gn_product_reviews\" (gn-product-reviews)",
+    "item": "setting more_label",
+    "action": "dropped",
+    "reason": "Weft labels this in the storefront language (locale strings) instead of a section setting.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.json",
+    "where": "section \"gn_product_reviews\" (gn-product-reviews)",
+    "item": "setting write_url",
+    "action": "dropped",
+    "reason": "Writing reviews happens in Judge.me's own widget and emails.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.json",
+    "where": "section \"gn_product_reviews\" (gn-product-reviews)",
+    "item": "setting write_label",
+    "action": "dropped",
+    "reason": "Writing reviews happens in Judge.me's own widget and emails.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.json",
+    "where": "section \"gn_product_reviews\" (gn-product-reviews)",
+    "item": "setting columns",
+    "action": "dropped",
+    "reason": "Weft fits as many review columns as the width allows.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.json",
+    "where": "section \"gn_product_reviews\" (gn-product-reviews)",
+    "item": "setting padding_top",
+    "action": "dropped",
+    "reason": "Weft spaces sections with Theme settings > Layout and design > Section spacing.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.json",
+    "where": "section \"gn_product_reviews\" (gn-product-reviews)",
+    "item": "setting padding_bottom",
+    "action": "dropped",
+    "reason": "Weft spaces sections with Theme settings > Layout and design > Section spacing.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.perfume.json",
+    "where": "section \"main\" (main-product) > block \"product-labels\" (product-labels) → product-labels",
+    "item": "setting show_variant_icon",
+    "action": "dropped",
+    "reason": "Label icons are Theme settings > Product labels in Weft.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.perfume.json",
+    "where": "section \"main\" (main-product) > block \"variant-picker\" (variant-picker)",
+    "item": "size chart",
+    "action": "changed",
+    "reason": "Size chart was on without a page in the live block; Weft shows the guide link once a product-guide block has content.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.perfume.json",
+    "where": "section \"main\" (main-product) > block \"variant-picker\" (variant-picker) → variant-picker",
+    "item": "setting enable_dynamic_availability",
+    "action": "dropped",
+    "reason": "Weft always marks unavailable option values.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.perfume.json",
+    "where": "section \"main\" (main-product) > block \"variant-picker\" (variant-picker) → variant-picker",
+    "item": "setting show_backorder_text",
+    "action": "dropped",
+    "reason": "The backorder note is buy-buttons > Backorder note in Weft (on by default).",
+    "explained": true
+  },
+  {
+    "file": "templates/product.perfume.json",
+    "where": "section \"main\" (main-product) > block \"variant-picker\" (variant-picker) → variant-picker",
+    "item": "setting enable_size_chart",
+    "action": "dropped",
+    "reason": "Size chart moved to the product-guide block (see the variantPicker note).",
+    "explained": true
+  },
+  {
+    "file": "templates/product.perfume.json",
+    "where": "section \"main\" (main-product) > block \"variant-picker\" (variant-picker) → variant-picker",
+    "item": "setting size_chart_page",
+    "action": "dropped",
+    "reason": "Size chart moved to the product-guide block (see the variantPicker note).",
+    "explained": true
+  },
+  {
+    "file": "templates/product.perfume.json",
+    "where": "section \"main\" (main-product) > block \"message-2\" (message) → flash-message",
+    "item": "setting title",
+    "action": "changed",
+    "reason": "block tags removed for an inline text setting",
+    "explained": true
+  },
+  {
+    "file": "templates/product.perfume.json",
+    "where": "section \"main\" (main-product) > block \"collapsible-content-2\" (collapsible-content) → description",
+    "item": "setting icon",
+    "action": "dropped",
+    "reason": "The Weft description row has no icon.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.perfume.json",
+    "where": "section \"main\" (main-product) > block \"collapsible-content-2\" (collapsible-content) → description",
+    "item": "setting text",
+    "action": "dropped",
+    "reason": "Shows the product description, which is what the Weft description block does.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.perfume.json",
+    "where": "section \"main\" (main-product) > block \"collapsible-content-2\" (collapsible-content) → description",
+    "item": "setting page",
+    "action": "dropped",
+    "reason": "Unused (empty) in the live block.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.perfume.json",
+    "where": "section \"main\" (main-product) > block \"message-3\" (message) → flash-message",
+    "item": "setting title",
+    "action": "changed",
+    "reason": "block tags removed for an inline text setting",
+    "explained": true
+  },
+  {
+    "file": "templates/product.perfume.json",
+    "where": "section \"main\" (main-product)",
+    "item": "setting sticky_atc_panel",
+    "action": "dropped",
+    "reason": "Weft's approved mobile sticky bar replaces the theme's sticky panel (brief §14.4); it is main-product > Mobile sticky bar.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.perfume.json",
+    "where": "section \"main\" (main-product)",
+    "item": "setting sticky_atc_position",
+    "action": "dropped",
+    "reason": "Weft's mobile sticky bar sits at the bottom of the screen.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.perfume.json",
+    "where": "section \"main\" (main-product)",
+    "item": "setting media_crop",
+    "action": "dropped",
+    "reason": "Weft fits product media with the media ratio and fit settings.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.perfume.json",
+    "where": "section \"main\" (main-product)",
+    "item": "setting zoom_mode",
+    "action": "dropped",
+    "reason": "Folded into the zoom setting (live: lightbox).",
+    "explained": true
+  },
+  {
+    "file": "templates/product.perfume.json",
+    "where": "section \"main\" (main-product)",
+    "item": "setting hover_zoom",
+    "action": "dropped",
+    "reason": "Folded into the zoom setting; hover magnify is zoom: hover or both.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.perfume.json",
+    "where": "section \"main\" (main-product)",
+    "item": "setting stacked_scroll",
+    "action": "dropped",
+    "reason": "Weft's stacked gallery always scrolls with the page.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.perfume.json",
+    "where": "section \"main\" (main-product)",
+    "item": "setting underline_active",
+    "action": "dropped",
+    "reason": "Weft marks the current thumbnail with a border.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.perfume.json",
+    "where": "section \"main\" (main-product)",
+    "item": "setting media_arrows",
+    "action": "dropped",
+    "reason": "Weft shows arrows on the mobile carousel only.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.perfume.json",
+    "where": "section \"main\" (main-product)",
+    "item": "setting lightbox_thumbnails",
+    "action": "dropped",
+    "reason": "Weft's lightbox scrolls through every image without thumbnails.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.perfume.json",
+    "where": "section \"main\" (main-product)",
+    "item": "setting thumb_ratio",
+    "action": "dropped",
+    "reason": "Weft thumbnails follow the media ratio.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.perfume.json",
+    "where": "section \"main\" (main-product)",
+    "item": "setting thumb_crop",
+    "action": "dropped",
+    "reason": "Weft thumbnails follow the media ratio.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.perfume.json",
+    "where": "section \"main\" (main-product)",
+    "item": "setting border_color",
+    "action": "dropped",
+    "reason": "Weft media has no border colour; the line colour comes from the colour scheme.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.perfume.json",
+    "where": "section \"main\" (main-product)",
+    "item": "setting media_grouping_option",
+    "action": "dropped",
+    "reason": "Weft groups media by the option names in group_media_option_names (default: Color, Colour and translations); the live value was a metafield expression.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.perfume.json",
+    "where": "section \"product-features\" (product-features)",
+    "item": "setting show_content",
+    "action": "dropped",
+    "reason": "value true: \"true\" is not an option (image-start, image-end, image-only)",
+    "explained": true
+  },
+  {
+    "file": "templates/product.perfume.json",
+    "where": "section \"product-features\" (product-features)",
+    "item": "setting mob_center_text",
+    "action": "dropped",
+    "reason": "The Weft product hotspots section centres text through its text alignment.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.perfume.json",
+    "where": "section \"product-features\" (product-features)",
+    "item": "setting heading_size",
+    "action": "dropped",
+    "reason": "Weft sizes section headings with the heading scale.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.perfume.json",
+    "where": "section \"product-features\" (product-features)",
+    "item": "setting enlarge_text",
+    "action": "dropped",
+    "reason": "Weft uses one text size for section text.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.perfume.json",
+    "where": "section \"product-comparison-grid\" (product-comparison-grid) > block \"comparison-product-1\" (product)",
+    "item": "block",
+    "action": "dropped",
+    "reason": "The product row is always shown in Weft (image, title and button are section settings).",
+    "explained": true
+  },
+  {
+    "file": "templates/product.perfume.json",
+    "where": "section \"product-comparison-grid\" (product-comparison-grid)",
+    "item": "setting image_crop",
+    "action": "dropped",
+    "reason": "Weft crops comparison images to the chosen ratio from the centre.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.perfume.json",
+    "where": "section \"product-comparison-grid\" (product-comparison-grid)",
+    "item": "setting num_rows",
+    "action": "dropped",
+    "reason": "Weft shows every row the section has.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.perfume.json",
+    "where": "section \"image-banner\" (image-banner) > block \"image-banner-button\" (button)",
+    "item": "block",
+    "action": "changed",
+    "reason": "The two buttons of the live block became two Weft button blocks.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.perfume.json",
+    "where": "section \"image-banner\" (image-banner)",
+    "item": "setting prevent_animation",
+    "action": "dropped",
+    "reason": "Weft reveals sections through Theme settings > Animations, for every section at once.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.preorder.json",
+    "where": "section \"main\" (main-product) > block \"message-1\" (message) → flash-message",
+    "item": "setting title",
+    "action": "changed",
+    "reason": "block tags removed for an inline text setting",
+    "explained": true
+  },
+  {
+    "file": "templates/search.bss.b2b.liquid",
+    "where": "file",
+    "item": "template",
+    "action": "dropped",
+    "reason": "BSS B2B search template removed on purpose (brief §4.9: native B2B only).",
+    "explained": true
+  },
+  {
+    "file": "sections/footer-group.json",
+    "where": "section \"footer\" (footer)",
+    "item": "setting bg_color",
+    "action": "dropped",
+    "reason": "Colours come from colour scheme scheme-3 (Inverse), the dark scheme closest to the live #141414 / #ffffff pair.",
+    "explained": true
+  },
+  {
+    "file": "sections/footer-group.json",
+    "where": "section \"footer\" (footer)",
+    "item": "setting text_color",
+    "action": "dropped",
+    "reason": "Colours come from colour scheme scheme-3 (Inverse).",
+    "explained": true
+  },
+  {
+    "file": "sections/header-group.json",
+    "where": "section \"announcement\" (announcement) > block \"ann_delivery\" (announcement) → announcement",
+    "item": "setting text",
+    "action": "changed",
+    "reason": "block tags removed for an inline text setting",
+    "explained": true
+  },
+  {
+    "file": "sections/header-group.json",
+    "where": "section \"announcement\" (announcement) > block \"ann_dispatch\" (announcement) → announcement",
+    "item": "setting text",
+    "action": "changed",
+    "reason": "block tags removed for an inline text setting",
+    "explained": true
+  },
+  {
+    "file": "sections/header-group.json",
+    "where": "section \"announcement\" (announcement)",
+    "item": "setting bg_color",
+    "action": "dropped",
+    "reason": "Colours come from colour scheme scheme-3 (Inverse), the dark scheme closest to the live #141414 / #ffffff pair.",
+    "explained": true
+  },
+  {
+    "file": "sections/header-group.json",
+    "where": "section \"announcement\" (announcement)",
+    "item": "setting text_color",
+    "action": "dropped",
+    "reason": "Colours come from colour scheme scheme-3 (Inverse).",
+    "explained": true
+  },
+  {
+    "file": "sections/header-group.json",
+    "where": "section \"header\" (header) > block \"a94eb2f1-b98e-4c70-9e55-999dfdaeb047\" (sidebar) → mega_menu",
+    "item": "setting collection_images",
+    "action": "dropped",
+    "reason": "Weft reads link images from the menu's collections and products (link_images).",
+    "explained": true
+  },
+  {
+    "file": "sections/header-group.json",
+    "where": "section \"header\" (header) > block \"a94eb2f1-b98e-4c70-9e55-999dfdaeb047\" (sidebar) → mega_menu",
+    "item": "setting sidebar_link_use_product_image",
+    "action": "dropped",
+    "reason": "Folded into use_product_image.",
+    "explained": true
+  },
+  {
+    "file": "sections/header-group.json",
+    "where": "section \"header\" (header) > block \"a94eb2f1-b98e-4c70-9e55-999dfdaeb047\" (sidebar) → mega_menu",
+    "item": "setting show_product_images",
+    "action": "dropped",
+    "reason": "Folded into link_images.",
+    "explained": true
+  },
+  {
+    "file": "sections/header-group.json",
+    "where": "section \"header\" (header)",
+    "item": "setting logo_text",
+    "action": "dropped",
+    "reason": "Without a logo image Weft shows the shop name.",
+    "explained": true
+  },
+  {
+    "file": "sections/header-group.json",
+    "where": "section \"header\" (header)",
+    "item": "setting logo_type_scale",
+    "action": "dropped",
+    "reason": "Weft sizes the text logo with the heading scale.",
+    "explained": true
+  },
+  {
+    "file": "sections/header-group.json",
+    "where": "section \"header\" (header)",
+    "item": "setting logo",
+    "action": "dropped",
+    "reason": "The live header used the brand logo ({{ shop.brand.logo }}); Weft's header falls back to the brand logo when Theme settings > Logo is empty.",
+    "explained": true
+  },
+  {
+    "file": "sections/header-group.json",
+    "where": "section \"header\" (header)",
+    "item": "setting logo_width",
+    "action": "dropped",
+    "reason": "Logo width is Theme settings > Logo and favicon (160 px, the live value).",
+    "explained": true
+  },
+  {
+    "file": "sections/header-group.json",
+    "where": "section \"header\" (header)",
+    "item": "setting logo_h1",
+    "action": "dropped",
+    "reason": "Weft makes the logo the page heading on the home page automatically.",
+    "explained": true
+  },
+  {
+    "file": "sections/header-group.json",
+    "where": "section \"header\" (header)",
+    "item": "setting minimise_search_mobile",
+    "action": "dropped",
+    "reason": "Weft shows a search button that opens the search drawer on every screen size.",
+    "explained": true
+  },
+  {
+    "file": "sections/header-group.json",
+    "where": "section \"header\" (header)",
+    "item": "setting minimise_search_desktop",
+    "action": "dropped",
+    "reason": "Weft shows a search button that opens the search drawer on every screen size.",
+    "explained": true
+  },
+  {
+    "file": "sections/header-group.json",
+    "where": "section \"header\" (header)",
+    "item": "setting repeat_links",
+    "action": "dropped",
+    "reason": "Weft's mobile menu lists every link once, with parent links included.",
+    "explained": true
+  },
+  {
+    "file": "sections/header-group.json",
+    "where": "section \"header\" (header)",
+    "item": "setting menu_featured_link",
+    "action": "dropped",
+    "reason": "Empty in the live store; Weft highlights links through mega menu badges.",
+    "explained": true
+  },
+  {
+    "file": "sections/header-group.json",
+    "where": "section \"header\" (header)",
+    "item": "setting cta_border_color",
+    "action": "dropped",
+    "reason": "The header button uses the colour scheme's button styles (cta_style).",
+    "explained": true
+  },
+  {
+    "file": "sections/header-group.json",
+    "where": "section \"header\" (header)",
+    "item": "setting cta_bg_color",
+    "action": "dropped",
+    "reason": "The header button uses the colour scheme's button styles (cta_style).",
+    "explained": true
+  },
+  {
+    "file": "sections/header-group.json",
+    "where": "section \"header\" (header)",
+    "item": "setting cta_text_color",
+    "action": "dropped",
+    "reason": "The header button uses the colour scheme's button styles (cta_style).",
+    "explained": true
+  },
+  {
+    "file": "sections/header-group.json",
+    "where": "section \"header\" (header)",
+    "item": "setting bg_color",
+    "action": "dropped",
+    "reason": "The header uses colour scheme scheme-1 (white); the live header was #f8f8f8.",
+    "explained": true
+  },
+  {
+    "file": "sections/header-group.json",
+    "where": "section \"header\" (header)",
+    "item": "setting text_color",
+    "action": "dropped",
+    "reason": "Colours come from the header's colour scheme.",
+    "explained": true
+  },
+  {
+    "file": "sections/header-group.json",
+    "where": "section \"header\" (header)",
+    "item": "setting accent_color",
+    "action": "dropped",
+    "reason": "Weft marks the current link with an underline in the text colour.",
+    "explained": true
+  },
+  {
+    "file": "sections/overlay-group.json",
+    "where": "section \"cart-drawer\" (cart-drawer)",
+    "item": "setting text_type_scale",
+    "action": "dropped",
+    "reason": "Weft sizes text with the theme's type scale (Theme settings > Typography).",
+    "explained": true
+  },
+  {
+    "file": "sections/overlay-group.json",
+    "where": "section \"cart-drawer\" (cart-drawer)",
+    "item": "setting text_width",
+    "action": "dropped",
+    "reason": "The Weft cart promotion uses the drawer width for its text.",
+    "explained": true
+  },
+  {
+    "file": "sections/overlay-group.json",
+    "where": "section \"product-compare\" (product-compare)",
+    "item": "section",
+    "action": "changed",
+    "reason": "Compare section → Weft compare drawer; the fields are fixed rows plus the metafield rows in Theme settings > Product compare.",
+    "explained": true
+  },
+  {
+    "file": "sections/overlay-group.json",
+    "where": "section \"product-compare\" (product-compare) > block \"compare-1\" (image)",
+    "item": "block",
+    "action": "dropped",
+    "reason": "Compare rows are fixed in Weft (image, title, vendor, price, variants, description) plus metafield rows from Theme settings.",
+    "explained": true
+  },
+  {
+    "file": "sections/overlay-group.json",
+    "where": "section \"product-compare\" (product-compare) > block \"compare-2\" (vendor)",
+    "item": "block",
+    "action": "dropped",
+    "reason": "Compare rows are fixed in Weft (image, title, vendor, price, variants, description) plus metafield rows from Theme settings.",
+    "explained": true
+  },
+  {
+    "file": "sections/overlay-group.json",
+    "where": "section \"product-compare\" (product-compare) > block \"compare-3\" (title)",
+    "item": "block",
+    "action": "dropped",
+    "reason": "Compare rows are fixed in Weft (image, title, vendor, price, variants, description) plus metafield rows from Theme settings.",
+    "explained": true
+  },
+  {
+    "file": "sections/overlay-group.json",
+    "where": "section \"product-compare\" (product-compare) > block \"compare-4\" (price)",
+    "item": "block",
+    "action": "dropped",
+    "reason": "Compare rows are fixed in Weft (image, title, vendor, price, variants, description) plus metafield rows from Theme settings.",
+    "explained": true
+  },
+  {
+    "file": "sections/overlay-group.json",
+    "where": "section \"product-compare\" (product-compare) > block \"compare-5\" (description)",
+    "item": "block",
+    "action": "dropped",
+    "reason": "Compare rows are fixed in Weft (image, title, vendor, price, variants, description) plus metafield rows from Theme settings.",
+    "explained": true
+  },
+  {
+    "file": "sections/overlay-group.json",
+    "where": "section \"product-compare\" (product-compare) > block \"compare-6\" (variants)",
+    "item": "block",
+    "action": "dropped",
+    "reason": "Compare rows are fixed in Weft (image, title, vendor, price, variants, description) plus metafield rows from Theme settings.",
+    "explained": true
+  },
+  {
+    "file": "sections/overlay-group.json",
+    "where": "section \"popup\" (pop-up)",
+    "item": "section",
+    "action": "changed",
+    "reason": "Pop-up → Weft popup section (overlay group).",
+    "explained": true
+  },
+  {
+    "file": "sections/overlay-group.json",
+    "where": "section \"popup\" (pop-up) > block \"countdown\" (countdown) → product-countdown",
+    "item": "setting enlarge_end_text",
+    "action": "dropped",
+    "reason": "Weft uses one text size for the end message.",
+    "explained": true
+  },
+  {
+    "file": "sections/overlay-group.json",
+    "where": "section \"popup\" (pop-up) > block \"countdown\" (countdown) → product-countdown",
+    "item": "setting use_custom_colors",
+    "action": "dropped",
+    "reason": "The countdown uses the pop-up's colour scheme.",
+    "explained": true
+  },
+  {
+    "file": "sections/overlay-group.json",
+    "where": "section \"popup\" (pop-up) > block \"countdown\" (countdown) → product-countdown",
+    "item": "setting count_color",
+    "action": "dropped",
+    "reason": "The countdown uses the pop-up's colour scheme.",
+    "explained": true
+  },
+  {
+    "file": "sections/overlay-group.json",
+    "where": "section \"popup\" (pop-up) > block \"countdown\" (countdown) → product-countdown",
+    "item": "setting count_bg_color",
+    "action": "dropped",
+    "reason": "The countdown uses the pop-up's colour scheme.",
+    "explained": true
+  },
+  {
+    "file": "sections/overlay-group.json",
+    "where": "section \"popup\" (pop-up) > block \"countdown\" (countdown) → product-countdown",
+    "item": "setting count_bg_grad",
+    "action": "dropped",
+    "reason": "The countdown uses the pop-up's colour scheme.",
+    "explained": true
+  },
+  {
+    "file": "sections/overlay-group.json",
+    "where": "section \"popup\" (pop-up)",
+    "item": "setting padding",
+    "action": "dropped",
+    "reason": "Weft pop-ups use the theme's spacing.",
+    "explained": true
+  },
+  {
+    "file": "sections/overlay-group.json",
+    "where": "section \"popup\" (pop-up)",
+    "item": "setting heading_color",
+    "action": "dropped",
+    "reason": "Colours come from the pop-up's colour scheme (scheme-5, the live dark gradient).",
+    "explained": true
+  },
+  {
+    "file": "sections/overlay-group.json",
+    "where": "section \"popup\" (pop-up)",
+    "item": "setting text_color",
+    "action": "dropped",
+    "reason": "Colours come from the pop-up's colour scheme.",
+    "explained": true
+  },
+  {
+    "file": "sections/overlay-group.json",
+    "where": "section \"popup\" (pop-up)",
+    "item": "setting bg_color",
+    "action": "dropped",
+    "reason": "Colours come from the pop-up's colour scheme.",
+    "explained": true
+  },
+  {
+    "file": "sections/overlay-group.json",
+    "where": "section \"popup\" (pop-up)",
+    "item": "setting bg_grad",
+    "action": "dropped",
+    "reason": "Colours come from the pop-up's colour scheme (scheme-5 carries the live gradient).",
+    "explained": true
+  },
+  {
+    "file": "templates/product.context.b2b-wholesale.json",
+    "where": "section \"main\" > block \"custom_liquid_sizewarn\"",
+    "item": "override",
+    "action": "dropped",
+    "reason": "its base block does not carry over",
+    "explained": true
+  },
+  {
+    "file": "templates/product.context.rest-of-world.json",
+    "where": "section \"main\" > block \"inventory_status_q4fYb\" (inventory-status) → stock-line",
+    "item": "setting show_urgency_message",
+    "action": "dropped",
+    "reason": "Weft shows the low-stock text whenever stock is low (Theme settings > Product inventory).",
+    "explained": true
+  },
+  {
+    "file": "templates/product.context.rest-of-world.json",
+    "where": "section \"main\" > block \"inventory_status_q4fYb\" (inventory-status) → stock-line",
+    "item": "setting text_very_low",
+    "action": "dropped",
+    "reason": "Weft has one low-stock message (text_low); the very-low threshold changes its colour.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.context.rest-of-world.json",
+    "where": "section \"main\" > block \"inventory_status_q4fYb\" (inventory-status) → stock-line",
+    "item": "setting text_low",
+    "action": "changed",
+    "reason": "paragraph tags removed for a plain text setting",
+    "explained": true
+  },
+  {
+    "file": "templates/product.context.rest-of-world.json",
+    "where": "section \"main\" > block \"inventory_status_q4fYb\" (inventory-status) → stock-line",
+    "item": "setting text_no_stock_backordered",
+    "action": "changed",
+    "reason": "paragraph tags removed for a plain text setting",
+    "explained": true
+  },
+  {
+    "file": "templates/product.context.rest-of-world.json",
+    "where": "section \"main\" > block \"custom_liquid_sizewarn\"",
+    "item": "override",
+    "action": "dropped",
+    "reason": "its base block does not carry over",
+    "explained": true
+  },
+  {
+    "file": "config/settings_data.json",
+    "where": "current",
+    "item": "setting delivery_rules",
+    "action": "moved",
+    "reason": "Shipping zones from the live delivery widget (rules resynced with Settings > Shipping and delivery on 12 Sep 2026); delivery days are left out because Weft never shows a delivery date (brief §5).",
+    "explained": true
+  },
+  {
+    "file": "config/settings_data.json",
+    "where": "current",
+    "item": "setting delivery_default_rule",
+    "action": "moved",
+    "reason": "Rest of world rate from the live delivery widget.",
+    "explained": true
+  },
+  {
+    "file": "config/settings_data.json",
+    "where": "current",
+    "item": "setting installments_provider",
+    "action": "moved",
+    "reason": "Klarna row of the live delivery widget (3 payments, same country list).",
+    "explained": true
+  },
+  {
+    "file": "config/settings_data.json",
+    "where": "current",
+    "item": "setting installments_count",
+    "action": "moved",
+    "reason": "Klarna row of the live delivery widget.",
+    "explained": true
+  },
+  {
+    "file": "config/settings_data.json",
+    "where": "current",
+    "item": "setting installments_countries",
+    "action": "moved",
+    "reason": "Klarna countries of the live delivery widget.",
+    "explained": true
+  },
+  {
+    "file": "config/settings_data.json",
+    "where": "current",
+    "item": "setting chat_button_enable",
+    "action": "moved",
+    "reason": "The live store shows a floating WhatsApp bubble (brief §5: one WhatsApp number from the theme setting).",
+    "explained": true
+  },
+  {
+    "file": "config/settings_data.json",
+    "where": "current",
+    "item": "setting wholesale_show_sku",
+    "action": "moved",
+    "reason": "Pilot wholesale setting (architecture §8, Wholesale group).",
+    "explained": true
+  },
+  {
+    "file": "config/settings_data.json",
+    "where": "current",
+    "item": "setting wholesale_request_page",
+    "action": "moved",
+    "reason": "Page linked as \"Apply for Access\" on the live B2B login page.",
+    "explained": true
+  },
+  {
+    "file": "config/settings_data.json",
+    "where": "current",
+    "item": "setting integration_reviews_enable",
+    "action": "moved",
+    "reason": "The live product and reviews pages read Judge.me's synced data.",
+    "explained": true
+  },
+  {
+    "file": "config/settings_data.json",
+    "where": "current",
+    "item": "setting integration_bis_enable",
+    "action": "moved",
+    "reason": "The live back-in-stock widget posts to Wasify.",
+    "explained": true
+  },
+  {
+    "file": "config/settings_data.json",
+    "where": "current",
+    "item": "setting integration_bis_endpoint",
+    "action": "moved",
+    "reason": "Wasify subscribe URL used by the live back-in-stock widget.",
+    "explained": true
+  },
+  {
+    "file": "config/settings_data.json",
+    "where": "current",
+    "item": "setting integration_gtm_id",
+    "action": "moved",
+    "reason": "Google Tag Manager container in the live layout; it now loads after consent, without the no-JavaScript iframe.",
+    "explained": true
+  },
+  {
+    "file": "config/settings_data.json",
+    "where": "current",
+    "item": "setting integration_clarity_id",
+    "action": "moved",
+    "reason": "Microsoft Clarity project in the live layout.",
+    "explained": true
+  },
+  {
+    "file": "config/settings_data.json",
+    "where": "current",
+    "item": "setting integration_google_verification",
+    "action": "moved",
+    "reason": "Google site verification tag in the live layout (it appeared twice; kept once).",
+    "explained": true
+  },
+  {
+    "file": "config/settings_data.json",
+    "where": "current",
+    "item": "setting integration_meta_verification",
+    "action": "moved",
+    "reason": "Meta domain verification tag in the live layout.",
+    "explained": true
+  },
+  {
+    "file": "config/settings_data.json",
+    "where": "colour scheme scheme-1",
+    "item": "button_bg, button_text, button_hover",
+    "action": "changed",
+    "reason": "Yellow primary button approved in brief §5 (#FBD816 / #0F1111, hover #E8C70F) replaces the live black button.",
+    "explained": true
+  },
+  {
+    "file": "config/settings_data.json",
+    "where": "colour scheme scheme-4",
+    "item": "button_text",
+    "action": "changed",
+    "reason": "Accessibility floor: white button text on the live orange accent (#ff580d) was 3.16:1; dark text (#0F1111) meets 4.5:1.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.coming-soon.json",
+    "where": "section \"main\" (main-product)",
+    "item": "sticky_bar_mobile",
+    "action": "changed",
+    "reason": "Mobile sticky bar approved in brief §5 (retail) replaces the theme's own sticky panel, which was off.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.countdown.json",
+    "where": "section \"main\" (main-product)",
+    "item": "sticky_bar_mobile",
+    "action": "changed",
+    "reason": "Mobile sticky bar approved in brief §5 (retail) replaces the theme's own sticky panel, which was off.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.dress.json",
+    "where": "section \"main\" (main-product)",
+    "item": "sticky_bar_mobile",
+    "action": "changed",
+    "reason": "Mobile sticky bar approved in brief §5 (retail) replaces the theme's own sticky panel, which was off.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.hand-bag.json",
+    "where": "section \"main\" (main-product)",
+    "item": "sticky_bar_mobile",
+    "action": "changed",
+    "reason": "Mobile sticky bar approved in brief §5 (retail) replaces the theme's own sticky panel, which was off.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.json",
+    "where": "section \"main\" (main-product)",
+    "item": "sticky_bar_mobile",
+    "action": "changed",
+    "reason": "Mobile sticky bar approved in brief §5 (retail) replaces the theme's own sticky panel, which was off.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.perfume.json",
+    "where": "section \"main\" (main-product)",
+    "item": "sticky_bar_mobile",
+    "action": "changed",
+    "reason": "Mobile sticky bar approved in brief §5 (retail) replaces the theme's own sticky panel, which was off.",
+    "explained": true
+  },
+  {
+    "file": "templates/product.preorder.json",
+    "where": "section \"main\" (main-product)",
+    "item": "sticky_bar_mobile",
+    "action": "changed",
+    "reason": "Mobile sticky bar approved in brief §5 (retail) replaces the theme's own sticky panel, which was off.",
+    "explained": true
+  },
+  {
+    "file": "config/settings_data.json",
+    "where": "static section \"main-password-header\" → templates/password.json",
+    "item": "setting logo_position",
+    "action": "dropped",
+    "reason": "The Weft password page centres the logo.",
+    "explained": true
+  },
+  {
+    "file": "config/settings_data.json",
+    "where": "static section \"main-password-header\"",
+    "item": "section",
+    "action": "moved",
+    "reason": "Settings moved to the main-password section in templates/password.json.",
+    "explained": true
+  },
+  {
+    "file": "config/settings_data.json",
+    "where": "current",
+    "item": "content_for_index",
+    "action": "dropped",
+    "reason": "Old home page section list; the home page is templates/index.json.",
+    "explained": true
+  }
+]

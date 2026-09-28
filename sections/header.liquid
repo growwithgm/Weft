@@ -16,7 +16,9 @@
     assign multi_location = true
   endif
   assign cart_icon = settings.cart_icon | default: 'bag'
-  assign logo_alt = settings.logo.alt | default: shop.name
+  # The logo from Theme settings, or else the one in Shopify's brand settings.
+  assign logo_image = settings.logo | default: shop.brand.logo
+  assign logo_alt = logo_image.alt | default: shop.name
   assign placeholders = ''
   if settings.search_placeholder_1 != blank
     assign placeholders = placeholders | append: settings.search_placeholder_1 | append: '|'
@@ -66,14 +68,14 @@
 
     {%- capture logo -%}
       <a class="header__logo" href="{{ routes.root_url }}">
-        {%- if settings.logo != blank -%}
+        {%- if logo_image != blank -%}
           {%- liquid
             assign logo_w2 = settings.logo_width | times: 2
             assign logo_m2 = settings.logo_width_mobile | times: 2
             assign logo_sizes = '(min-width: 990px) ' | append: settings.logo_width | append: 'px, ' | append: settings.logo_width_mobile | append: 'px'
             assign logo_widths = settings.logo_width_mobile | append: ',' | append: settings.logo_width | append: ',' | append: logo_m2 | append: ',' | append: logo_w2
           -%}
-          {{ settings.logo | image_url: width: logo_w2 | image_tag: widths: logo_widths, sizes: logo_sizes, alt: logo_alt, loading: 'eager' }}
+          {{ logo_image | image_url: width: logo_w2 | image_tag: widths: logo_widths, sizes: logo_sizes, alt: logo_alt, loading: 'eager' }}
         {%- else -%}
           <span>{{ shop.name }}</span>
         {%- endif -%}

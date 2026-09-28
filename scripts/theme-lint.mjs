@@ -435,12 +435,49 @@ for (const [name, schema] of [...sectionSchemas, ...blockSchemas]) {
   }
 }
 
+// Context templates ({ context, parent, sections }) only hold what differs from their parent:
+// they are checked merged onto the parent, the way Shopify renders them.
+const withParent = (file, data) => {
+  if (!data || !data.parent) return data;
+  const parentFile = join(dirname(file), data.parent);
+  if (!existsSync(parentFile)) {
+    report('error', file, `Parent ${data.parent} does not exist`);
+    return null;
+  }
+  if (!data.context || typeof data.context !== 'object') report('error', file, 'Context template needs a "context" object');
+  const merged = structuredClone(parseJSON(parentFile, read(parentFile)) || {});
+  merged.sections = merged.sections || {};
+  if (data.order) merged.order = data.order;
+  for (const [id, s] of Object.entries(data.sections || {})) {
+    const t = merged.sections[id];
+    if (s.type || !t) {
+      if (!s.type) report('error', file, `Override for section "${id}", which ${data.parent} doesn't have`);
+      merged.sections[id] = s;
+      continue;
+    }
+    if ('disabled' in s) t.disabled = s.disabled;
+    if (s.settings) t.settings = { ...(t.settings || {}), ...s.settings };
+    for (const [bid, b] of Object.entries(s.blocks || {})) {
+      t.blocks = t.blocks || {};
+      const tb = t.blocks[bid];
+      if (b.type || !tb) {
+        if (!b.type) report('error', file, `Override for block "${bid}" in section "${id}", which ${data.parent} doesn't have`);
+        t.blocks[bid] = b;
+        continue;
+      }
+      if ('disabled' in b) tb.disabled = b.disabled;
+      if (b.settings) tb.settings = { ...(tb.settings || {}), ...b.settings };
+    }
+    if (s.block_order) t.block_order = s.block_order;
+  }
+  return merged;
+};
 for (const file of [...list(join(ROOT, 'templates'), '.json'), ...list(join(ROOT, 'listings'), '.json')]) {
-  const data = parseJSON(file, read(file));
+  const data = withParent(file, parseJSON(file, read(file)));
   if (data) checkSectionsJSON(file, data);
 }
 for (const file of list(join(ROOT, 'sections'), '.json')) {
-  const data = parseJSON(file, read(file));
+  const data = withParent(file, parseJSON(file, read(file)));
   if (!data) continue;
   checkSectionsJSON(file, data);
   if (!data.type) report('error', file, 'Section group needs a "type" (header, footer, aside or custom.*)');

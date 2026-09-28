@@ -1,0 +1,13 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-article",
+      "settings": {
+        "show_pagination": true
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

@@ -27,7 +27,7 @@ Status: `planned` (P0) → `built` (with phase) → `verified` (scenario or chec
 | Feature | Weft implementation | Phase | Status |
 |---|---|---|---|
 | Retail home set (hero, marquee, New in, categories, outerwear, craft story, holiday, video, trust strip) | `templates/index.json` built from `image-banner`, `scrolling-banner`, `featured-collection`, `collection-list`, `media-with-text`, `video`, `icons-with-text`; pilot content in `store-configs/ibban/templates/index.json` | P5/P7 | planned |
-| B2B market home set | `store-configs/ibban/templates/index.context.b2b-wholesale.json` (documented example `templates/index.context.b2b-wholesale.json` omitted from the Theme Store package) | P5/P7 | planned |
+| B2B market home set | `store-configs/ibban/templates/index.context.b2b-wholesale.json` (documented example `templates/index.context.b2b-wholesale.json` omitted from the Theme Store package) | P5/P7 | done |
 
 ## 3. Brief §14.3 Collections and cards
 

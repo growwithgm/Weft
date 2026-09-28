@@ -1,6 +1,6 @@
 # Weft — migration map (live theme → Weft)
 
-Source: `reference/live-theme/` (Enterprise 2.0.1) and `reference/brief/live-theme-editor-inventory.md`. First version written in P0; Weft setting IDs are final from P1 onwards and changes are recorded here. `scripts/migration-map.json` (P7) is generated from these tables and must stay in sync.
+Source: `reference/live-theme/` (Enterprise 2.0.1) and `reference/brief/live-theme-editor-inventory.md`. First version written in P0; Weft setting IDs are final from P1 onwards and changes are recorded here. `scripts/migration-map.json` (P7) is the machine version of these tables, and `scripts/migrate-from-live.mjs` applies it: the result is `store-configs/ibban/`, and every item that doesn't carry over is listed with its reason in `store-configs/ibban/migration-report.md`. When a rule changes, change both.
 
 Legend: **=** same ID kept · **→** renamed · **⊕** merged into another setting/section/block · **✕** removed on purpose (brief §4.9 or duplicate) · **store** value moves to `store-configs/ibban/` rather than a theme setting.
 
@@ -123,7 +123,7 @@ All `social_*_url` kept (=). `social_whatsapp_url` also drives the chat button (
 | Live section | Weft | Kind | Notes |
 |---|---|---|---|
 | `age-verification-popup` | `popup` (mode `age_verification`) | ⊕ | all settings kept; blocks heading/subheading/text/image/button map to popup blocks |
-| `announcement` | `announcement-bar` | → | blocks → `_announcement`; links 1–2 kept; selectors kept; `read_time` → `rotate_seconds` |
+| `announcement` | `announcement-bar` | → | blocks → `announcement` (local block); links 1–2 kept; selectors kept; `read_time` → `rotate_seconds`; colours → scheme-3 |
 | `apps` | `apps` | = | |
 | `article-comments` | `main-article` (comments part, `comments_per_page`) | ⊕ | |
 | `background-video` | `video` (layout `background`) | ⊕ | overlay text blocks → theme blocks heading/text/button |
@@ -138,11 +138,11 @@ All `social_*_url` kept (=). `social_whatsapp_url` also drives the chat button (
 | `featured-blog` | `featured-blog` | = | |
 | `featured-collection` | `featured-collection` | = | promo info settings kept |
 | `featured-product` | `featured-product` | = | blocks → product theme blocks (same set as main-product) |
-| `footer` | `footer` (footer-group) | = | `link_list` → `_footer-column`, `text` → `_footer-text`, `newsletter` → `_footer-newsletter`, `@app` kept |
+| `footer` | `footer` (footer-group) | = | `link_list`, `text` (`enable_follow_on_shop` → `follow_on_shop`), `newsletter` stay local blocks, `@app` kept, new Custom Liquid block; colours → scheme-3 |
 | `free-shipping-notice` | cart free-shipping bar (`cart_free_shipping_bar`) | ⊕ | |
 | `gn-product-reviews` | `product-reviews` (core) / `integration-reviews-grid` (pilot) | → | all 25 settings kept in the integration section; core section keeps heading, layout, chips, counts |
 | `gn-reviews-wall` | `integration-reviews-wall` (pilot) / `product-reviews` wall layout (core) | → | |
-| `header` | `header` | = | `columns`/`pills`/`sidebar` mega blocks → `_mega-menu` with `style` setting; logo settings reference global logo with overrides |
+| `header` | `header` | = | `columns`/`pills`/`sidebar` mega blocks → local `mega_menu` with `style` setting; the logo comes from Theme settings > Logo, else the Shopify brand logo (the live header used `{{ shop.brand.logo }}`) |
 | `icons-with-text` | `icons-with-text` | = | `item` → `_icon-item` |
 | `image-banner` | `image-banner` | = | |
 | `link-lists` | `link-lists` | = | `column` → `_link-column` |
@@ -164,7 +164,7 @@ All `social_*_url` kept (=). `social_whatsapp_url` also drives the chat button (
 | `media-grid` | `media-grid` | = | `media` → `_media-tile` |
 | `media-with-text` | `media-with-text` | = | |
 | `multi-column` | `multi-column` | = | `column` → `_column` |
-| `navigation-slideshow` | `navigation-slideshow` | = | `slide` → `_nav-slide` |
+| `navigation-slideshow` | `navigation-slideshow` | = | `slide` → `_slide` |
 | `newsletter` | `newsletter` | = | `form` → `email-signup` block |
 | `pickup-availability` | `pickup-availability` | = | |
 | `pop-up` | `popup` (mode `newsletter`/`promo`) | ⊕ | countdown, discount code, social blocks kept |
@@ -230,7 +230,7 @@ Theme block `ai_gen_block_5d29ae5` (B2B login page) → `wholesale-access` secti
 
 ---
 
-## 4. Section settings renames (selected; full list generated in P7)
+## 4. Section settings renames (selected; the full list is `scripts/migration-map.json`)
 
 | Section | Live → Weft |
 |---|---|
@@ -261,11 +261,18 @@ Theme block `ai_gen_block_5d29ae5` (B2B login page) → `wholesale-access` secti
 | `page.b2b-en-onbord.json` | **store** `page.wholesale-onboarding.json` | Klaviyo + Judge.me embeds stay store-specific |
 | `page.perfume.json`, `page.summer-dress.json` | **store** landing templates on `page.landing.json` | |
 | `product.json` | = | |
-| `product.dress`, `product.hand-bag`, `product.perfume` | ⊕ `product.json` (one layout, brief §11) | pilot products assigned to these templates are re-pointed to the default template in the migration report |
+| `product.dress`, `product.hand-bag`, `product.perfume` | ⊕ `product.json` (one layout, brief §11) | the store config drops them, so products assigned to them fall back to `product.json` (listed in the migration report) |
 | `product.preorder`, `product.countdown`, `product.coming-soon` | = | |
 | `product.context.b2b-wholesale.json`, `product.context.rest-of-world.json` | **store**, same block order as `product.json` | |
 | `gift_card.liquid` | = (Weft's own) | |
 | `search.bss.b2b.liquid` | ✕ | brief §4.9 |
 
 ## 6. Locales
-Live: de, en.default, es, fr, it, ja, nl, pt-PT → Weft: same eight storefront locales (Weft's own strings; no live strings copied), plus `en.default.schema.json` and `es.schema.json`.
+Live: de, en.default, es, fr, it, ja, nl, pt-PT → Weft: same eight storefront locales (Weft's own strings; no live strings copied), plus editor translations for all eight.
+
+## 7. P7 notes (from the migration run)
+- Store templates keep their live names in `store-configs/ibban/templates/` (for example `page.faqs.json`, `page.about-us.json`), so pages already assigned to them keep working; Weft's generic templates (`page.faq.json`, `page.about.json`) ship alongside.
+- Context templates (`*.context.<market>.json`) stay overrides of their parent: `context` and `parent` are kept, overridden blocks follow the ids they became, and new blocks in an override migrate like any other block. The lint checks them merged onto the parent.
+- Approved decisions replace live values: yellow primary button in scheme-1 (brief §5), mobile sticky bar on (brief §5), dark button text on the orange accent (scheme-4) for 4.5:1 contrast.
+- Store values that lived inside live-theme code move into settings: shipping zones and the rest-of-world rate (Delivery information), Klarna (Installments), WhatsApp chat button, Judge.me, Wasify and tracking IDs (Integrations). The live static password header's logo moves to the password template.
+- App embeds in the live settings (`current.blocks`) carry over unchanged.

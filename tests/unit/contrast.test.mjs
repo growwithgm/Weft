@@ -2,22 +2,12 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import presets from '../../scripts/src/presets.mjs';
+import { contrast } from './helpers/contrast.mjs';
 
 // WCAG 2.2 contrast for every text pair each preset can put on screen. Settings a preset leaves out
 // fall back to the schema defaults, as they do in the theme editor.
 const schema = JSON.parse(readFileSync(new URL('../../config/settings_schema.json', import.meta.url), 'utf8'));
 const defaults = Object.fromEntries(schema.flatMap((g) => g.settings || []).filter((s) => s.id && 'default' in s).map((s) => [s.id, s.default]));
-
-const channel = (c) => (c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4);
-const luminance = (hex) => {
-  const n = hex.replace('#', '');
-  const [r, g, b] = [0, 2, 4].map((i) => channel(parseInt(n.slice(i, i + 2), 16) / 255));
-  return 0.2126 * r + 0.7152 * g + 0.0722 * b;
-};
-export const contrast = (a, b) => {
-  const [hi, lo] = [luminance(a), luminance(b)].sort((x, y) => y - x);
-  return (hi + 0.05) / (lo + 0.05);
-};
 
 const TEXT = 4.5;
 

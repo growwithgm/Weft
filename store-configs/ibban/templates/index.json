@@ -1,0 +1,796 @@
+{
+  "sections": {
+    "b2b_video": {
+      "type": "video",
+      "disabled": true,
+      "settings": {
+        "video": "shopify://files/videos/0824(1).mp4",
+        "description": "",
+        "height": "large",
+        "text_align": "center",
+        "overlay_position": "middle-center",
+        "mobile_center": true,
+        "color_scheme": "scheme-1",
+        "text_color": "#ffffff",
+        "tint_color": "#000000",
+        "tint_opacity": 0,
+        "layout": "background"
+      }
+    },
+    "b2b_tiles": {
+      "type": "collection-list",
+      "disabled": true,
+      "blocks": {
+        "bt1": {
+          "type": "_collection-tile",
+          "settings": {
+            "collection": "summer-dresses",
+            "image": "shopify://shop_images/pink_6_8e9d17bf-1871-419d-851d-5b44439317eb.webp"
+          }
+        },
+        "bt2": {
+          "type": "_collection-tile",
+          "settings": {
+            "collection": "summer-dresses",
+            "image": "shopify://shop_images/CREAM_6_94a7aa94-c45f-4cf3-a925-ca22edf10b76.webp"
+          }
+        },
+        "bt3": {
+          "type": "_collection-tile",
+          "settings": {
+            "collection": "summer-dresses",
+            "image": "shopify://shop_images/AQUA_3_535e97d5-ede3-4a07-a998-a1e8227d2c62.webp"
+          }
+        },
+        "bt4": {
+          "type": "_collection-tile",
+          "settings": {
+            "collection": "summer-dresses",
+            "image": "shopify://shop_images/ECRU_1.webp"
+          }
+        },
+        "bt5": {
+          "type": "_collection-tile",
+          "settings": {
+            "collection": "pareo-collection",
+            "image": "shopify://shop_images/Firefly_GeminiFlash_walkingposeonbeachshotofamodelonaIbizabeach_tyingathiscottonPareowit268265.webp"
+          }
+        },
+        "bt6": {
+          "type": "_collection-tile",
+          "settings": {
+            "collection": "pareo-collection",
+            "image": "shopify://shop_images/2_72876281-1ccb-4591-a354-b0bb51ae4353.webp"
+          }
+        },
+        "bt7": {
+          "type": "_collection-tile",
+          "settings": {
+            "collection": "swimming-wear",
+            "image": "shopify://shop_images/CORAIL_1_0df3cfbf-8b9d-4e72-81c9-baa666e8107c.jpg"
+          }
+        },
+        "bt8": {
+          "type": "_collection-tile",
+          "settings": {
+            "collection": "summer-jackets-vests",
+            "image": "shopify://shop_images/2_1_632a4c34-22d0-4b7e-b971-e349446b88c6.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "bt1",
+        "bt2",
+        "bt3",
+        "bt4",
+        "bt5",
+        "bt6",
+        "bt7",
+        "bt8"
+      ],
+      "settings": {
+        "title": "New Arrival",
+        "heading_align": "center",
+        "button_label": "",
+        "button_link": "",
+        "layout": "grid",
+        "columns": 3,
+        "use_product_image": false,
+        "circle_image": false,
+        "show_border": false,
+        "color_scheme": "scheme-1",
+        "full_width": true
+      }
+    },
+    "b2b_story": {
+      "type": "video",
+      "disabled": true,
+      "blocks": {
+        "b2bs_sub": {
+          "type": "text",
+          "settings": {
+            "text": "<p>An Essence Created for the Modern Woman</p>"
+          }
+        },
+        "b2bs_head": {
+          "type": "heading",
+          "settings": {
+            "heading": "The world of ibBan",
+            "size": "h1",
+            "tag": "auto"
+          }
+        },
+        "b2bs_text": {
+          "type": "text",
+          "settings": {
+            "text": "<p><strong>ibBan</strong> is a <strong>boho chic</strong> design brand that blends <strong>natural materials</strong> and <strong>artisan details</strong> to create a style that is <strong>elegant and versatile</strong>. Each piece is made to accompany everyday life with <strong>ease</strong> and a <strong>unique touch</strong>. <strong>ibBan</strong> dresses the woman who lives with <strong>freedom and authenticity</strong>.</p>",
+            "style": "large"
+          }
+        }
+      },
+      "block_order": [
+        "b2bs_sub",
+        "b2bs_head",
+        "b2bs_text"
+      ],
+      "settings": {
+        "video": "shopify://files/videos/V main.mp4",
+        "description": "",
+        "layout": "background",
+        "text_align": "center",
+        "color_scheme": "scheme-4"
+      }
+    },
+    "b2b_jackets": {
+      "type": "featured-collection",
+      "disabled": true,
+      "settings": {
+        "title": "Jackets & Vests",
+        "heading_align": "start",
+        "show_view_all": true,
+        "collection": "summer-jackets-vests",
+        "layout": "carousel",
+        "columns_mobile": "2",
+        "columns": 5,
+        "products_to_show": 8,
+        "show_highlight_products": true,
+        "show_promo_info": false,
+        "image_ratio": "portrait",
+        "promo_title": "",
+        "content": "",
+        "link_url": "",
+        "button_label": "",
+        "color_scheme": "scheme-5",
+        "button_style": "primary"
+      }
+    },
+    "b2b_slideshow": {
+      "type": "slideshow",
+      "disabled": true,
+      "blocks": {
+        "bs1": {
+          "type": "_slide",
+          "settings": {
+            "image_desktop": "shopify://shop_images/4.png",
+            "link": "",
+            "overlay_position": "middle-center",
+            "text_align": "center",
+            "mobile_center": false
+          },
+          "blocks": {
+            "subheading": {
+              "type": "text",
+              "settings": {
+                "text": "<p>Subheading</p>",
+                "style": "subheading"
+              }
+            },
+            "button_2": {
+              "type": "button",
+              "settings": {
+                "label": "Optional button",
+                "link": "",
+                "style": "primary"
+              }
+            }
+          },
+          "block_order": [
+            "subheading",
+            "button_2"
+          ]
+        },
+        "bs2": {
+          "type": "_slide",
+          "settings": {
+            "image_desktop": "shopify://shop_images/2.png",
+            "link": "",
+            "overlay_position": "middle-center",
+            "text_align": "center",
+            "mobile_center": false
+          },
+          "blocks": {
+            "subheading": {
+              "type": "text",
+              "settings": {
+                "text": "<p>Subheading</p>",
+                "style": "subheading"
+              }
+            },
+            "button_2": {
+              "type": "button",
+              "settings": {
+                "label": "Optional button",
+                "link": "",
+                "style": "primary"
+              }
+            }
+          },
+          "block_order": [
+            "subheading",
+            "button_2"
+          ]
+        },
+        "bs3": {
+          "type": "_slide",
+          "settings": {
+            "image_desktop": "shopify://shop_images/white_1_aae06989-704d-4835-98a2-f5296e699752.png",
+            "link": "",
+            "overlay_position": "middle-center",
+            "text_align": "center",
+            "mobile_center": false
+          },
+          "blocks": {
+            "subheading": {
+              "type": "text",
+              "settings": {
+                "text": "<p>Subheading</p>",
+                "style": "subheading"
+              }
+            },
+            "button_2": {
+              "type": "button",
+              "settings": {
+                "label": "Optional button",
+                "link": "",
+                "style": "primary"
+              }
+            }
+          },
+          "block_order": [
+            "subheading",
+            "button_2"
+          ]
+        },
+        "bs4": {
+          "type": "_slide",
+          "settings": {
+            "image_desktop": "shopify://shop_images/3.png",
+            "link": "",
+            "overlay_position": "middle-center",
+            "text_align": "center",
+            "mobile_center": false
+          },
+          "blocks": {
+            "subheading": {
+              "type": "text",
+              "settings": {
+                "text": "<p>Subheading</p>",
+                "style": "subheading"
+              }
+            },
+            "button_2": {
+              "type": "button",
+              "settings": {
+                "label": "Optional button",
+                "link": "",
+                "style": "primary"
+              }
+            }
+          },
+          "block_order": [
+            "subheading",
+            "button_2"
+          ]
+        }
+      },
+      "block_order": [
+        "bs1",
+        "bs2",
+        "bs3",
+        "bs4"
+      ],
+      "settings": {
+        "height": "adapt",
+        "fixed_height_desktop": 600,
+        "fixed_height_mobile": 360,
+        "mobile_stacked": false,
+        "nav_style": "dots",
+        "transition": "slide",
+        "autoplay": true,
+        "slider_pause": false,
+        "autoplay_speed": 3,
+        "color_scheme": "scheme-1",
+        "full_width": true,
+        "tint_color": "#000000",
+        "tint_opacity": 0,
+        "accessibility_info": ""
+      }
+    },
+    "hero_banner": {
+      "type": "image-banner",
+      "settings": {
+        "image_desktop": "shopify://shop_images/A1_dektop_9500b3d2-7a26-43e8-9bb2-17f22b23aea3.png",
+        "image_mobile": "shopify://shop_images/A1_mbl.png",
+        "link": "shopify://collections/gn-new-in",
+        "height": "adapt",
+        "fixed_height_desktop": 600,
+        "fixed_height_mobile": 350,
+        "overlay_position": "middle-center",
+        "text_align": "center",
+        "mobile_center": false,
+        "mobile_stacked": false,
+        "color_scheme": "scheme-1",
+        "full_width": true,
+        "text_color": "#ffffff",
+        "tint_color": "#000000",
+        "tint_opacity": 0
+      }
+    },
+    "brand_marquee": {
+      "type": "scrolling-banner",
+      "blocks": {
+        "m_t1": {
+          "type": "_marquee-item",
+          "settings": {
+            "text": "Hand-embroidered",
+            "link": "",
+            "font": "heading",
+            "size": "medium",
+            "type": "text"
+          }
+        },
+        "m_i1": {
+          "type": "_marquee-item",
+          "settings": {
+            "icon": "sparkle",
+            "icon_size": 24,
+            "type": "icon"
+          }
+        },
+        "m_t2": {
+          "type": "_marquee-item",
+          "settings": {
+            "text": "Since 1982",
+            "link": "",
+            "font": "heading",
+            "size": "medium",
+            "type": "text"
+          }
+        },
+        "m_i2": {
+          "type": "_marquee-item",
+          "settings": {
+            "icon": "sparkle",
+            "icon_size": 24,
+            "type": "icon"
+          }
+        },
+        "m_t3": {
+          "type": "_marquee-item",
+          "settings": {
+            "text": "Made by our artisans",
+            "link": "",
+            "font": "heading",
+            "size": "medium",
+            "type": "text"
+          }
+        },
+        "m_i3": {
+          "type": "_marquee-item",
+          "settings": {
+            "icon": "sparkle",
+            "icon_size": 24,
+            "type": "icon"
+          }
+        },
+        "m_t4": {
+          "type": "_marquee-item",
+          "settings": {
+            "text": "Shipped from Madrid",
+            "link": "",
+            "font": "heading",
+            "size": "medium",
+            "type": "text"
+          }
+        },
+        "m_i4": {
+          "type": "_marquee-item",
+          "settings": {
+            "icon": "sparkle",
+            "icon_size": 24,
+            "type": "icon"
+          }
+        }
+      },
+      "block_order": [
+        "m_t1",
+        "m_i1",
+        "m_t2",
+        "m_i2",
+        "m_t3",
+        "m_i3",
+        "m_t4",
+        "m_i4"
+      ],
+      "settings": {
+        "height": "compact",
+        "spacing": 64,
+        "speed": 10,
+        "direction": "left",
+        "pausable": true,
+        "color_scheme": "scheme-1",
+        "dividers": true
+      }
+    },
+    "new_in_row": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "New in",
+        "heading_align": "start",
+        "show_view_all": true,
+        "collection": "gn-new-in",
+        "layout": "carousel",
+        "columns_mobile": "2",
+        "columns": 4,
+        "products_to_show": 8,
+        "show_highlight_products": false,
+        "show_promo_info": false,
+        "image_ratio": "portrait",
+        "promo_title": "",
+        "content": "",
+        "link_url": "",
+        "button_label": "",
+        "color_scheme": "scheme-1",
+        "button_style": "primary"
+      }
+    },
+    "shop_by_category": {
+      "type": "collection-list",
+      "blocks": {
+        "c01": {
+          "type": "_collection-tile",
+          "settings": {
+            "collection": "gn-long-dresses"
+          }
+        },
+        "c02": {
+          "type": "_collection-tile",
+          "settings": {
+            "collection": "gn-short-dresses"
+          }
+        },
+        "c03": {
+          "type": "_collection-tile",
+          "settings": {
+            "collection": "gn-long-tunics"
+          }
+        },
+        "c04": {
+          "type": "_collection-tile",
+          "settings": {
+            "collection": "gn-short-tunics"
+          }
+        },
+        "c05": {
+          "type": "_collection-tile",
+          "settings": {
+            "collection": "gn-long-coats"
+          }
+        },
+        "c06": {
+          "type": "_collection-tile",
+          "settings": {
+            "collection": "gn-jackets"
+          }
+        },
+        "c07": {
+          "type": "_collection-tile",
+          "settings": {
+            "collection": "gn-gilets"
+          }
+        },
+        "c08": {
+          "type": "_collection-tile",
+          "settings": {
+            "collection": "gn-holiday"
+          }
+        },
+        "c09": {
+          "type": "_collection-tile",
+          "settings": {
+            "collection": "gn-swimwear"
+          }
+        },
+        "c10": {
+          "type": "_collection-tile",
+          "settings": {
+            "collection": "gn-bags"
+          }
+        }
+      },
+      "block_order": [
+        "c01",
+        "c02",
+        "c03",
+        "c04",
+        "c05",
+        "c06",
+        "c07",
+        "c08",
+        "c09",
+        "c10"
+      ],
+      "settings": {
+        "title": "Shop by category",
+        "heading_align": "center",
+        "button_label": "",
+        "button_link": "",
+        "layout": "grid",
+        "columns": 4,
+        "use_product_image": true,
+        "circle_image": false,
+        "show_border": false,
+        "color_scheme": "scheme-1",
+        "full_width": true
+      }
+    },
+    "outerwear_banner": {
+      "type": "image-banner",
+      "settings": {
+        "image_desktop": "shopify://shop_images/B1_Desktop.png",
+        "image_mobile": "shopify://shop_images/B1_Mobile.png",
+        "link": "shopify://collections/gn-outerwear",
+        "height": "adapt",
+        "fixed_height_desktop": 600,
+        "fixed_height_mobile": 350,
+        "overlay_position": "middle-center",
+        "text_align": "center",
+        "mobile_center": false,
+        "mobile_stacked": false,
+        "color_scheme": "scheme-1",
+        "full_width": true,
+        "text_color": "#ffffff",
+        "tint_color": "#000000",
+        "tint_opacity": 0
+      }
+    },
+    "outerwear_row": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Coats & jackets",
+        "heading_align": "start",
+        "show_view_all": true,
+        "collection": "gn-outerwear",
+        "layout": "carousel",
+        "columns_mobile": "2",
+        "columns": 4,
+        "products_to_show": 8,
+        "show_highlight_products": false,
+        "show_promo_info": false,
+        "image_ratio": "portrait",
+        "promo_title": "",
+        "content": "",
+        "link_url": "",
+        "button_label": "",
+        "color_scheme": "scheme-1",
+        "button_style": "primary"
+      }
+    },
+    "craft_story": {
+      "type": "media-with-text",
+      "blocks": {
+        "cs_sub": {
+          "type": "text",
+          "settings": {
+            "text": "<p>The making</p>"
+          }
+        },
+        "cs_head": {
+          "type": "heading",
+          "settings": {
+            "heading": "Every stitch<br>by hand",
+            "size": "h1",
+            "tag": "auto"
+          }
+        },
+        "cs_text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Each ibBan piece begins as plain cloth and a drawing. Our artisans work the embroidery by hand &mdash; mirror work, beadwork, thread &mdash; and a single dress can take days to finish.</p><p>Nothing is machine-stamped. No two pieces are ever quite identical. We have worked this way since 1982.</p>",
+            "style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "cs_sub",
+        "cs_head",
+        "cs_text"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/HAND_embd.png",
+        "video_description": "",
+        "video_autoplay": false,
+        "layout": "media-start",
+        "image_fit": "cover",
+        "media_width": 55,
+        "text_align": "start",
+        "color_scheme": "scheme-5",
+        "only_content_color_scheme": false
+      }
+    },
+    "holiday_banner": {
+      "type": "image-banner",
+      "settings": {
+        "image_desktop": "shopify://shop_images/C1_Desktop.png",
+        "image_mobile": "shopify://shop_images/C1_Mobile.png",
+        "link": "shopify://collections/gn-holiday",
+        "height": "adapt",
+        "fixed_height_desktop": 600,
+        "fixed_height_mobile": 350,
+        "overlay_position": "middle-center",
+        "text_align": "center",
+        "mobile_center": false,
+        "mobile_stacked": false,
+        "color_scheme": "scheme-1",
+        "full_width": true,
+        "text_color": "#ffffff",
+        "tint_color": "#000000",
+        "tint_opacity": 0
+      }
+    },
+    "holiday_row": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Holiday",
+        "heading_align": "start",
+        "show_view_all": true,
+        "collection": "gn-holiday",
+        "layout": "carousel",
+        "columns_mobile": "2",
+        "columns": 4,
+        "products_to_show": 8,
+        "show_highlight_products": false,
+        "show_promo_info": false,
+        "image_ratio": "portrait",
+        "promo_title": "",
+        "content": "",
+        "link_url": "",
+        "button_label": "",
+        "color_scheme": "scheme-1",
+        "button_style": "primary"
+      }
+    },
+    "brand_story": {
+      "type": "video",
+      "blocks": {
+        "bs_sub": {
+          "type": "text",
+          "settings": {
+            "text": "<p>An essence created for the modern woman</p>"
+          }
+        },
+        "bs_head": {
+          "type": "heading",
+          "settings": {
+            "heading": "The world of ibBan",
+            "size": "h1",
+            "tag": "auto"
+          }
+        },
+        "bs_text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>ibBan blends natural materials and artisan detail into clothes that are elegant, versatile and made to be lived in. One size, cut generously, designed to be worn for years rather than a season.</p>",
+            "style": "large"
+          }
+        }
+      },
+      "block_order": [
+        "bs_sub",
+        "bs_head",
+        "bs_text"
+      ],
+      "settings": {
+        "video": "shopify://files/videos/V main.mp4",
+        "description": "",
+        "layout": "background",
+        "text_align": "center",
+        "color_scheme": "scheme-4"
+      }
+    },
+    "trust_strip": {
+      "type": "icons-with-text",
+      "blocks": {
+        "t1": {
+          "type": "_icon-item",
+          "settings": {
+            "icon": "sparkle",
+            "heading": "Hand-embroidered",
+            "text": "<p>Every piece worked by our artisans</p>",
+            "link": ""
+          }
+        },
+        "t2": {
+          "type": "_icon-item",
+          "settings": {
+            "icon": "star",
+            "heading": "Since 1982",
+            "text": "<p>Four decades of the same craft</p>",
+            "link": ""
+          }
+        },
+        "t3": {
+          "type": "_icon-item",
+          "settings": {
+            "icon": "truck",
+            "heading": "Ships from Madrid",
+            "text": "<p>Order by 4pm for same-day dispatch</p>",
+            "link": ""
+          }
+        },
+        "t4": {
+          "type": "_icon-item",
+          "settings": {
+            "icon": "return",
+            "heading": "Simple returns",
+            "text": "<p>Full details on our returns page</p>",
+            "link": "/pages/return-and-refund-policy"
+          }
+        }
+      },
+      "block_order": [
+        "t1",
+        "t2",
+        "t3",
+        "t4"
+      ],
+      "settings": {
+        "title": "",
+        "heading_align": "center",
+        "icon_size": 28,
+        "icon_position": "top",
+        "columns_mobile": "2",
+        "density": "compact",
+        "color_scheme": "scheme-5",
+        "full_width": true,
+        "dividers": false
+      }
+    },
+    "apps_section": {
+      "type": "apps",
+      "settings": {
+        "full_width": false,
+        "show_space": true
+      }
+    }
+  },
+  "order": [
+    "b2b_video",
+    "b2b_tiles",
+    "b2b_story",
+    "b2b_jackets",
+    "b2b_slideshow",
+    "hero_banner",
+    "brand_marquee",
+    "new_in_row",
+    "shop_by_category",
+    "outerwear_banner",
+    "outerwear_row",
+    "craft_story",
+    "holiday_banner",
+    "holiday_row",
+    "brand_story",
+    "trust_strip",
+    "apps_section"
+  ]
+}
