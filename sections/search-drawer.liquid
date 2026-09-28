@@ -1,0 +1,55 @@
+{%- comment -%}
+  Search overlay. The form works without JavaScript (submits to the search page); search.js
+  adds predictive results (Shopify's predictive search API) and voice input.
+{%- endcomment -%}
+<dialog id="SearchDrawer" class="drawer drawer--top color-{{ settings.drawer_color_scheme }}" aria-label="{{ 'header.search' | t }}" data-light-dismiss data-animate>
+  <div class="drawer__panel search-drawer" data-dialog-body>
+    <form action="{{ routes.search_url }}" method="get" role="search" class="search-drawer__form page-width" data-module="{{ 'search.js' | asset_url }}" data-load="interaction">
+      <div class="search-drawer__field">
+        {%- render 'icon', name: 'search', size: 20 -%}
+        <label class="visually-hidden" for="SearchDrawerInput">{{ 'header.search' | t }}</label>
+        <input
+          id="SearchDrawerInput"
+          class="search-drawer__input"
+          type="search"
+          name="q"
+          value="{{ search.terms | escape }}"
+          placeholder="{% if settings.search_placeholder_1 != blank %}{{ settings.search_placeholder_1 | escape }}{% else %}{{ 'header.search_placeholder' | t }}{% endif %}"
+          autocomplete="off"
+          autocorrect="off"
+          spellcheck="false"
+          autofocus
+          {% if settings.predictive_search_enable %}role="combobox" aria-expanded="false" aria-controls="PredictiveResults" aria-autocomplete="list"{% endif %}
+        >
+        <input type="hidden" name="options[prefix]" value="last">
+        {%- if settings.voice_search_enable -%}
+          <button type="button" class="icon-button search-drawer__voice" data-voice hidden aria-label="{{ 'header.voice_search' | t }}" style="--voice-color: {{ settings.voice_search_color }}">
+            {%- render 'icon', name: 'mic', size: 20 -%}
+          </button>
+        {%- endif -%}
+        <button type="button" class="icon-button" data-close-dialog aria-label="{{ 'general.close' | t }}">{%- render 'icon', name: 'close' -%}</button>
+      </div>
+      {%- if settings.predictive_search_enable -%}
+        <div id="PredictiveResults" class="search-drawer__results" data-predictive-results aria-live="polite"></div>
+      {%- endif -%}
+    </form>
+  </div>
+</dialog>
+
+{% schema %}
+{
+  "name": "t:labels.search",
+  "class": "section-search-drawer",
+  "enabled_on": {
+    "groups": [
+      "aside"
+    ]
+  },
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "t:labels.search_settings_are_in_theme_settings_search"
+    }
+  ]
+}
+{% endschema %}

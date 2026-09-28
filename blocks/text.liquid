@@ -1,0 +1,58 @@
+<div class="block-text rte block-text--{{ block.settings.style }}" {{ block.shopify_attributes }}>
+  {{- block.settings.text -}}
+</div>
+
+{% schema %}
+{
+  "name": "t:labels.text",
+  "tag": null,
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "t:labels.text",
+      "default": "<p>Share details about your brand, a product or a promotion.</p>"
+    },
+    {
+      "type": "select",
+      "id": "style",
+      "label": "t:labels.style",
+      "options": [
+        {
+          "value": "body",
+          "label": "t:labels.body"
+        },
+        {
+          "value": "large",
+          "label": "t:labels.large"
+        },
+        {
+          "value": "small",
+          "label": "t:labels.small"
+        },
+        {
+          "value": "subheading",
+          "label": "t:labels.subheading"
+        },
+        {
+          "value": "muted",
+          "label": "t:labels.secondary"
+        }
+      ],
+      "default": "body"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:labels.text"
+    },
+    {
+      "name": "t:labels.subheading",
+      "settings": {
+        "style": "subheading",
+        "text": "<p>Subheading</p>"
+      }
+    }
+  ]
+}
+{% endschema %}

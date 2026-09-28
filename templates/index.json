@@ -1,0 +1,24 @@
+{
+  "sections": {
+    "hero": {
+      "type": "image-banner",
+      "blocks": {
+        "heading": { "type": "heading", "settings": { "heading": "New season, made to last", "size": "h0", "tag": "h2" } },
+        "text": { "type": "text", "settings": { "text": "<p>Discover the latest pieces from our collection.</p>", "style": "large" } },
+        "button": { "type": "button", "settings": { "label": "Shop new in", "link": "shopify://collections/all", "style": "primary" } }
+      },
+      "block_order": ["heading", "text", "button"],
+      "settings": { "height": "large", "overlay_position": "middle-start", "text_align": "start", "tint_opacity": 25 }
+    },
+    "story": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": { "type": "heading", "settings": { "heading": "Our story", "size": "h1" } },
+        "text": { "type": "text", "settings": { "text": "<p>Use this section to introduce your brand, how your products are made and what makes them different.</p>" } }
+      },
+      "block_order": ["heading", "text"],
+      "settings": {}
+    }
+  },
+  "order": ["hero", "story"]
+}

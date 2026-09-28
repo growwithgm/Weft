@@ -1,0 +1,35 @@
+name: Theme checks
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  static:
+    name: Lint, i18n and unit tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node scripts/theme-lint.mjs
+      - run: node scripts/i18n-check.mjs
+      - run: npm run test:unit
+      - name: Component tests (Playwright on static fixtures)
+        run: |
+          npm install --no-save playwright@1.56.1
+          npx playwright install --with-deps chromium
+          node tests/components/run.mjs
+
+  theme-check:
+    name: Theme Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install -g @shopify/cli@latest
+      - run: shopify theme check --fail-level suggestion

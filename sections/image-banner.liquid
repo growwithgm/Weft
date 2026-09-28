@@ -1,0 +1,335 @@
+{%- comment -%}
+  Image banner: one or two images (desktop / mobile), optional link, text overlay or stacked
+  text on mobile, tint. First section on a page loads its image eagerly (LCP).
+{%- endcomment -%}
+{%- liquid
+  assign s = section.settings
+  assign eager = false
+  if section.index == 1
+    assign eager = true
+  endif
+  assign img = s.image_desktop
+  assign img_m = s.image_mobile | default: s.image_desktop
+-%}
+{{ 'section-banner.css' | asset_url | stylesheet_tag }}
+
+<div class="section banner-section{% if s.full_width == false %} page-width{% endif %}{% if section.index > 2 %} below-fold{% endif %}" data-reveal>
+  <div
+    class="banner banner--{{ s.height }} banner--{{ s.overlay_position }} banner--text-{{ s.text_align }}{% if s.mobile_center %} banner--mobile-center{% endif %}{% if s.mobile_stacked %} banner--stack-mobile{% endif %} color-{{ s.color_scheme }}"
+    style="--banner-h: {{ s.fixed_height_desktop }}px; --banner-h-m: {{ s.fixed_height_mobile }}px; --banner-tint: {{ s.tint_color }}; --banner-tint-opacity: {{ s.tint_opacity | divided_by: 100.0 }}; --banner-text: {{ s.text_color }};{% if img %} --banner-ratio: {{ img.aspect_ratio }};{% endif %}{% if img_m %} --banner-ratio-m: {{ img_m.aspect_ratio }};{% endif %}"
+  >
+    <div class="banner__media">
+      {%- if img -%}
+        {%- if s.image_mobile != blank -%}
+          <picture>
+            <source media="(max-width: 749px)" srcset="{{ s.image_mobile | image_url: width: 750 }} 750w, {{ s.image_mobile | image_url: width: 1100 }} 1100w, {{ s.image_mobile | image_url: width: 1500 }} 1500w" sizes="100vw">
+            {%- render 'image', image: img, sizes: '100vw', eager: eager, class: 'banner__image' -%}
+          </picture>
+        {%- else -%}
+          {%- render 'image', image: img, sizes: '100vw', eager: eager, class: 'banner__image' -%}
+        {%- endif -%}
+      {%- else -%}
+        {{ 'hero-apparel-1' | placeholder_svg_tag: 'banner__image placeholder-svg' }}
+      {%- endif -%}
+    </div>
+    {%- if section.blocks.size > 0 -%}
+      <div class="banner__content">
+        <div class="banner__box stack">
+          {%- content_for 'blocks' -%}
+        </div>
+      </div>
+    {%- endif -%}
+    {%- if s.link != blank -%}
+      <a class="banner__link" href="{{ s.link }}" tabindex="-1" aria-hidden="true"></a>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:labels.image_banner",
+  "class": "section-image-banner",
+  "disabled_on": {
+    "groups": [
+      "header",
+      "footer",
+      "aside"
+    ]
+  },
+  "blocks": [
+    {
+      "type": "heading"
+    },
+    {
+      "type": "text"
+    },
+    {
+      "type": "button"
+    },
+    {
+      "type": "group"
+    },
+    {
+      "type": "@app"
+    }
+  ],
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image_desktop",
+      "label": "t:labels.image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "t:labels.mobile_image",
+      "info": "t:labels.optional_uses_the_main_image_when_empty"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "t:labels.link_for_the_whole_banner"
+    },
+    {
+      "type": "header",
+      "content": "t:labels.layout"
+    },
+    {
+      "type": "select",
+      "id": "height",
+      "label": "t:labels.height",
+      "options": [
+        {
+          "value": "adapt",
+          "label": "t:labels.adapt_to_image"
+        },
+        {
+          "value": "small",
+          "label": "t:labels.small"
+        },
+        {
+          "value": "medium",
+          "label": "t:labels.medium"
+        },
+        {
+          "value": "large",
+          "label": "t:labels.large"
+        },
+        {
+          "value": "full",
+          "label": "t:labels.full_screen"
+        },
+        {
+          "value": "fixed",
+          "label": "t:labels.fixed"
+        }
+      ],
+      "default": "medium"
+    },
+    {
+      "type": "range",
+      "id": "fixed_height_desktop",
+      "label": "t:labels.fixed_height_on_large_screens",
+      "min": 200,
+      "max": 900,
+      "step": 10,
+      "default": 560,
+      "unit": "px",
+      "visible_if": "{{ section.settings.height == 'fixed' }}"
+    },
+    {
+      "type": "range",
+      "id": "fixed_height_mobile",
+      "label": "t:labels.fixed_height_on_mobile",
+      "min": 160,
+      "max": 800,
+      "step": 10,
+      "default": 420,
+      "unit": "px",
+      "visible_if": "{{ section.settings.height == 'fixed' }}"
+    },
+    {
+      "type": "select",
+      "id": "overlay_position",
+      "label": "t:labels.content_position",
+      "options": [
+        {
+          "value": "top-start",
+          "label": "t:labels.top_start"
+        },
+        {
+          "value": "top-center",
+          "label": "t:labels.top_center"
+        },
+        {
+          "value": "top-end",
+          "label": "t:labels.top_end"
+        },
+        {
+          "value": "middle-start",
+          "label": "t:labels.middle_start"
+        },
+        {
+          "value": "middle-center",
+          "label": "t:labels.middle_center"
+        },
+        {
+          "value": "middle-end",
+          "label": "t:labels.middle_end"
+        },
+        {
+          "value": "bottom-start",
+          "label": "t:labels.bottom_start"
+        },
+        {
+          "value": "bottom-center",
+          "label": "t:labels.bottom_center"
+        },
+        {
+          "value": "bottom-end",
+          "label": "t:labels.bottom_end"
+        }
+      ],
+      "default": "middle-start"
+    },
+    {
+      "type": "select",
+      "id": "text_align",
+      "label": "t:labels.text_alignment",
+      "options": [
+        {
+          "value": "start",
+          "label": "t:labels.start"
+        },
+        {
+          "value": "center",
+          "label": "t:labels.center"
+        },
+        {
+          "value": "end",
+          "label": "t:labels.end"
+        }
+      ],
+      "default": "start"
+    },
+    {
+      "type": "checkbox",
+      "id": "mobile_center",
+      "label": "t:labels.center_text_on_mobile",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "mobile_stacked",
+      "label": "t:labels.show_text_below_the_image_on_mobile",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "t:labels.full_width",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "t:labels.colors"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:labels.color_scheme",
+      "default": "scheme-1",
+      "info": "t:labels.used_for_stacked_text_and_buttons"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "t:labels.text_over_the_image",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "tint_color",
+      "label": "t:labels.image_overlay",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "tint_opacity",
+      "label": "t:labels.image_overlay_opacity",
+      "min": 0,
+      "max": 90,
+      "step": 5,
+      "default": 20,
+      "unit": "%"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:labels.image_banner",
+      "category": "t:labels.banners",
+      "blocks": [
+        {
+          "type": "heading",
+          "settings": {
+            "heading": "Image banner",
+            "size": "h0"
+          }
+        },
+        {
+          "type": "text",
+          "settings": {
+            "text": "<p>Give customers details about the banner image or the collection it links to.</p>",
+            "style": "large"
+          }
+        },
+        {
+          "type": "button",
+          "settings": {
+            "label": "Shop now",
+            "style": "primary"
+          }
+        }
+      ]
+    },
+    {
+      "name": "t:labels.for_professionals",
+      "category": "t:labels.banners",
+      "settings": {
+        "height": "small",
+        "overlay_position": "middle-start",
+        "tint_opacity": 40
+      },
+      "blocks": [
+        {
+          "type": "text",
+          "settings": {
+            "text": "<p>Professional</p>",
+            "style": "subheading"
+          }
+        },
+        {
+          "type": "heading",
+          "settings": {
+            "heading": "For professionals",
+            "size": "h1"
+          }
+        },
+        {
+          "type": "text",
+          "settings": {
+            "text": "<p>Trade sizes, case packs and volume pricing. Sign in with your wholesale account.</p>"
+          }
+        },
+        {
+          "type": "button",
+          "settings": {
+            "label": "Wholesale sign-in",
+            "style": "secondary"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

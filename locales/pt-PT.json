@@ -1,0 +1,130 @@
+{
+  "accessibility": {
+    "announcements": "Anúncios",
+    "close_menu": "Fechar menu",
+    "decrease_quantity": "Diminuir a quantidade de {{ product }}",
+    "external_link": "Ligação externa",
+    "increase_quantity": "Aumentar a quantidade de {{ product }}",
+    "main_navigation": "Principal",
+    "menu": "Menu",
+    "open_menu": "Abrir menu",
+    "quantity": "Quantidade",
+    "slide_of": "Diapositivo {{ index }} de {{ count }}",
+    "star_rating": "{{ rating }} de {{ max }} estrelas"
+  },
+  "general": {
+    "back_to_top": "Voltar ao topo",
+    "breadcrumbs": "Navegação estrutural",
+    "chat": {
+      "label": "Conversar no WhatsApp"
+    },
+    "close": "Fechar",
+    "continue_shopping": "Continuar a comprar",
+    "copyright": "© {{ year }} {{ shop }}",
+    "dismiss": "Ignorar",
+    "error": "Algo correu mal. Tente novamente.",
+    "home": "Início",
+    "loading": "A carregar…",
+    "next": "Seguinte",
+    "opens_new_window": "Abre numa nova janela",
+    "pagination": {
+      "label": "Paginação",
+      "load_more": "Carregar mais",
+      "page": "Página {{ number }}"
+    },
+    "pause": "Pausar",
+    "payment_methods": "Métodos de pagamento",
+    "play": "Reproduzir",
+    "previous": "Anterior",
+    "read_more": "Ler mais",
+    "see_less": "Ver menos",
+    "see_more": "Ver mais",
+    "skip_to_content": "Saltar para o conteúdo",
+    "social": {
+      "follow_on": "Siga-nos no {{ network }}",
+      "share": "Partilhar"
+    },
+    "view_all": "Ver tudo"
+  },
+  "gift_card": {
+    "apple_wallet": "Adicionar à Apple Wallet",
+    "balance": "Saldo: {{ balance }}",
+    "code": "Código do cartão de oferta",
+    "copied": "Código copiado",
+    "copy": "Copiar código",
+    "disabled": "Este cartão de oferta está desativado.",
+    "expired": "Este cartão de oferta expirou a {{ date }}.",
+    "expires": "Expira a {{ date }}",
+    "print": "Imprimir este cartão de oferta",
+    "qr_code": "Código QR do cartão de oferta",
+    "shop_now": "Comprar agora",
+    "title": "O seu cartão de oferta",
+    "use_at_checkout": "Utilize este código no checkout para usar o cartão de oferta.",
+    "value": "O seu cartão de oferta de {{ value }} para {{ shop }}"
+  },
+  "header": {
+    "account": "Conta",
+    "back": "Voltar",
+    "cart": "Carrinho",
+    "cart_count": {
+      "one": "Carrinho, {{ count }} artigo",
+      "other": "Carrinho, {{ count }} artigos"
+    },
+    "search": "Pesquisar",
+    "search_placeholder": "Pesquisar produtos",
+    "sign_in": "Iniciar sessão",
+    "submenu": "Submenu {{ title }}",
+    "voice_search": "Pesquisar por voz"
+  },
+  "localization": {
+    "country": "País/região",
+    "language": "Idioma",
+    "no_results": "Nenhum país corresponde à pesquisa.",
+    "search_country": "Pesquisar países",
+    "update": "Atualizar"
+  },
+  "newsletter": {
+    "label": "E-mail",
+    "placeholder": "O seu e-mail",
+    "subscribe": "Subscrever",
+    "success": "Obrigado por subscrever."
+  },
+  "not_found": {
+    "text": "A página que procurava foi movida ou já não existe.",
+    "title": "Página não encontrada"
+  },
+  "password": {
+    "enter": "Entrar",
+    "enter_with_password": "Entrar com palavra-passe",
+    "owner": "É o proprietário da loja?",
+    "owner_link": "Inicie sessão aqui",
+    "password": "Palavra-passe",
+    "powered_by": "Esta loja terá tecnologia",
+    "wrong": "Palavra-passe incorreta."
+  },
+  "price": {
+    "from": "Desde {{ price }}",
+    "per": "por",
+    "per_piece": "por unidade",
+    "regular": "Preço normal",
+    "sale": "Preço de saldo",
+    "shipping_at_checkout": "Portes calculados no checkout.",
+    "tax_excluded": "Impostos não incluídos.",
+    "tax_included": "Impostos incluídos.",
+    "unit_price": "Preço unitário",
+    "wholesale": "Preço grossista"
+  },
+  "wholesale": {
+    "account_and_orders": "Conta e encomendas",
+    "change": "Alterar",
+    "current_location": "Localização atual",
+    "location_updated": "Preços e disponibilidade atualizados para {{ location }}.",
+    "not_found_line": "Cliente grossista? Inicie sessão para ver os produtos exclusivos.",
+    "ordering_for": "Encomenda para",
+    "ordering_for_location": "Encomenda para {{ company }} · {{ location }}",
+    "sample_notice": "Pré-visualização grossista — dados de exemplo",
+    "sign_out": "Terminar sessão",
+    "store_credit": "Crédito na loja",
+    "switch_location": "Mudar para {{ location }}"
+  }
+}

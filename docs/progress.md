@@ -4,9 +4,8 @@
 P1 — Foundation (BUILD_SPEC §9)
 
 ## Next
-- P1 step 1: tooling — `package.json` (scripts only, no dependencies), `scripts/theme-lint.mjs`, `scripts/i18n-check.mjs`, `assets/rules.js` + `tests/unit/rules.test.mjs`, GitHub workflows (theme-check, lighthouse, e2e — skip without secrets).
-- P1 step 2: `config/settings_schema.json` (all groups, architecture §8), `settings_data.json` with the Weft preset, `layout/theme.liquid`, `snippets/tokens.liquid`, `assets/base.css`, `assets/core.js`.
-- P1 step 3: section groups (header, footer, overlay shells), announcement bar, header (menus, `<shopify-account>`, location chip), footer, localization form, chat button, base components (button, input, stepper, drawer, modal, sheet, badge, price, icons), 404, password, gift card, locales (en, es + 6 customer-facing).
+- P1 step 4 (remaining): `snippets/breadcrumbs`, `snippets/quantity-input` (rules-aware stepper) + `snippets/price` (retail/wholesale), classic customer templates (`templates/customers/*`), a basic `templates/product.json` so the P1 product-page gate can be measured, then close P1 in progress/perf-log and refresh the PR.
+- Then P2 (product page, retail): `main-product` + product blocks, `assets/product.js`, `assets/gallery.js`, cart drawer (needed for scenario 4), quick add.
 
 ## P1 plan
 - **Files:** `layout/`, `config/`, `locales/`, `snippets/{tokens,meta-tags,social-meta,icon,image,price,localization-form,social-links,payment-icons,chat-button,custom-code,breadcrumbs}`, `sections/{announcement-bar,header,footer,cart-count,cart-drawer (shell),search-drawer (shell),location-sheet,main-404,main-password,main-gift-card,main-page}`, `assets/{base.css,core.js,header.js,drawer.js,rules.js,component-*.css}`, `templates/{index,page,404,password,gift_card.liquid}`, `.github/workflows/*`, `tests/`.
@@ -14,6 +13,13 @@ P1 — Foundation (BUILD_SPEC §9)
 - **Risks:** no Shopify CLI in the session (npm blocked) → `theme-lint.mjs` substitutes locally, real Theme Check in CI; Liquid can't be rendered locally → component tests on fixtures.
 
 ## Done
+- **P1 steps 1–3 (28 Sep 2026):**
+  - Tooling: `package.json` (scripts only, no dependencies), `scripts/theme-lint.mjs` (local Theme Check stand-in), `scripts/i18n-check.mjs`, `scripts/build-locales.mjs` (schema labels → `t:` keys, en/es schema locales, 8 storefront locales from `scripts/src/strings.mjs`), `scripts/build-presets.mjs` (three presets from `scripts/src/presets.mjs`), `tests/lighthouse/budgets.json` (asset budgets enforced by lint).
+  - Logic: `assets/rules.js` (quantity rules, rounding, caps, tiers, stock hints, summaries) with 10 unit tests (`npm run test:unit`).
+  - Tests: component harness `tests/components/run.mjs` (Chromium on static fixtures) with 4 header/dialog tests; store scenario suite scaffold `tests/e2e/` with P1 scenarios (runs in CI when secrets exist).
+  - CI: `.github/workflows/theme-check.yml` (lint, i18n, unit, component tests, real Theme Check), `lighthouse.yml` and `e2e.yml` (skip cleanly without store secrets).
+  - Theme: `config/settings_schema.json` (20 groups; Integrations group comes in P6), `settings_data.json` (Weft, Tress, Balm presets with 7 colour schemes each), `layout/theme.liquid`, `layout/password.liquid`, `snippets/tokens.liquid`, `assets/base.css` (4.6 KB gz), `assets/core.js` (4.5 KB gz: bus, Section Rendering + Cart helpers, dialogs, islands, editor events), header (menus + mega menus on `<details>`, `<shopify-account>`, wholesale chip + location list), announcement bar, footer (menus, text/socials/Follow on Shop, newsletter, payment icons, selectors), search drawer shell, location sheet, localization form, chat button, custom code loader, generic theme blocks (heading, text, button, image, group, spacer, divider, custom Liquid, email signup), image banner, rich text, custom Liquid, apps, page, 404 (wholesale line), password, gift card.
+  - Checks at this commit: theme-lint 0 errors / 0 warnings, i18n-check 0 problems, unit 10/10, components 4/4. Theme Check itself not run (CLI not installable here).
 - **Step 0 (28 Sep 2026):** starter zip and live theme export extracted, zips deleted, all inputs present, committed and pushed. Shopify CLI could not be installed: the environment's network policy returns 403 for `registry.npmjs.org` (see Owner actions). shopify.dev is reachable, so docs were checked directly.
 - **P0 Discovery & plan (28 Sep 2026):** read CLAUDE.md, BUILD_SPEC, VERTICALS, brief, editor inventory, prototype template + logic, and the live theme for behaviour only. Wrote:
   - `docs/architecture.md` — file map, product-page block tree, audience model, JS module list with budgets, CSS layers and tokens, data flows (variant change, add to cart, cart edits, location switch), settings groups, localization, packaging, tooling, risks.
@@ -32,6 +38,8 @@ Decisions made autonomously, with reasoning. The owner reads these asynchronousl
 6. **Installments naming.** The retail row and wholesale line are generic "installments" features with a provider-name setting (default "Klarna" only in the pilot store config), so the Theme Store package makes no provider claim.
 7. **Core fallbacks for integrations.** Back-in-stock without Wasify submits through Shopify's contact form (tagged with the variant); rating pill without Judge.me reads the product's standard `reviews.rating` metafield; store-score source is a dynamic-source setting the pilot points at the Judge.me shop metafields.
 8. **Variant selection without JavaScript** uses a `<noscript>` variant `<select name="id">`; with JavaScript the option inputs drive Section Rendering. This is the standard progressive pattern and keeps one form.
+10. **Font files.** To keep first load at ≤ 3 font files, Weft loads the heading weight, body regular and body bold. Text set in medium (500) renders with the regular file. The prototype's Jost 500 labels therefore look like 400 until the owner prefers a fourth font file.
+11. **Menus on `<details>`.** Dropdowns and mega menus are `<details>` elements, so navigation works without JavaScript and the mobile drawer reuses the same markup (no duplicate DOM). Mega-menu images and promotions load only when a menu opens.
 9. **Local quality tooling.** Because Theme Check can't be installed here, `scripts/theme-lint.mjs` (P1) checks JSON, schema, translation keys, missing files, tag balance and forbidden tags on every commit; real Theme Check runs in CI. "Theme Check 0/0" is reported from CI until the npm registry is reachable.
 
 ## Owner actions

@@ -1,0 +1,130 @@
+{
+  "accessibility": {
+    "announcements": "Ankündigungen",
+    "close_menu": "Menü schließen",
+    "decrease_quantity": "Menge für {{ product }} verringern",
+    "external_link": "Externer Link",
+    "increase_quantity": "Menge für {{ product }} erhöhen",
+    "main_navigation": "Hauptmenü",
+    "menu": "Menü",
+    "open_menu": "Menü öffnen",
+    "quantity": "Menge",
+    "slide_of": "Folie {{ index }} von {{ count }}",
+    "star_rating": "{{ rating }} von {{ max }} Sternen"
+  },
+  "general": {
+    "back_to_top": "Nach oben",
+    "breadcrumbs": "Brotkrümelnavigation",
+    "chat": {
+      "label": "Auf WhatsApp chatten"
+    },
+    "close": "Schließen",
+    "continue_shopping": "Weiter einkaufen",
+    "copyright": "© {{ year }} {{ shop }}",
+    "dismiss": "Ausblenden",
+    "error": "Etwas ist schiefgelaufen. Bitte versuche es erneut.",
+    "home": "Startseite",
+    "loading": "Wird geladen …",
+    "next": "Weiter",
+    "opens_new_window": "Öffnet in einem neuen Fenster",
+    "pagination": {
+      "label": "Seitennummerierung",
+      "load_more": "Mehr laden",
+      "page": "Seite {{ number }}"
+    },
+    "pause": "Pausieren",
+    "payment_methods": "Zahlungsarten",
+    "play": "Abspielen",
+    "previous": "Zurück",
+    "read_more": "Weiterlesen",
+    "see_less": "Weniger anzeigen",
+    "see_more": "Mehr anzeigen",
+    "skip_to_content": "Direkt zum Inhalt",
+    "social": {
+      "follow_on": "Folge uns auf {{ network }}",
+      "share": "Teilen"
+    },
+    "view_all": "Alle ansehen"
+  },
+  "gift_card": {
+    "apple_wallet": "Zu Apple Wallet hinzufügen",
+    "balance": "Guthaben: {{ balance }}",
+    "code": "Geschenkkartencode",
+    "copied": "Code kopiert",
+    "copy": "Code kopieren",
+    "disabled": "Diese Geschenkkarte ist deaktiviert.",
+    "expired": "Diese Geschenkkarte ist am {{ date }} abgelaufen.",
+    "expires": "Gültig bis {{ date }}",
+    "print": "Geschenkkarte drucken",
+    "qr_code": "QR-Code der Geschenkkarte",
+    "shop_now": "Jetzt einkaufen",
+    "title": "Deine Geschenkkarte",
+    "use_at_checkout": "Löse den Code an der Kasse ein.",
+    "value": "Deine Geschenkkarte über {{ value }} für {{ shop }}"
+  },
+  "header": {
+    "account": "Konto",
+    "back": "Zurück",
+    "cart": "Warenkorb",
+    "cart_count": {
+      "one": "Warenkorb, {{ count }} Artikel",
+      "other": "Warenkorb, {{ count }} Artikel"
+    },
+    "search": "Suchen",
+    "search_placeholder": "Produkte suchen",
+    "sign_in": "Anmelden",
+    "submenu": "Untermenü {{ title }}",
+    "voice_search": "Sprachsuche"
+  },
+  "localization": {
+    "country": "Land/Region",
+    "language": "Sprache",
+    "no_results": "Keine Länder gefunden.",
+    "search_country": "Länder suchen",
+    "update": "Aktualisieren"
+  },
+  "newsletter": {
+    "label": "E-Mail",
+    "placeholder": "Deine E-Mail-Adresse",
+    "subscribe": "Abonnieren",
+    "success": "Danke für dein Abonnement."
+  },
+  "not_found": {
+    "text": "Die gesuchte Seite wurde verschoben oder existiert nicht mehr.",
+    "title": "Seite nicht gefunden"
+  },
+  "password": {
+    "enter": "Betreten",
+    "enter_with_password": "Mit Passwort betreten",
+    "owner": "Bist du der Shop-Inhaber?",
+    "owner_link": "Hier anmelden",
+    "password": "Passwort",
+    "powered_by": "Dieser Shop wird betrieben von",
+    "wrong": "Falsches Passwort."
+  },
+  "price": {
+    "from": "Ab {{ price }}",
+    "per": "pro",
+    "per_piece": "pro Stück",
+    "regular": "Normaler Preis",
+    "sale": "Angebotspreis",
+    "shipping_at_checkout": "Versand wird an der Kasse berechnet.",
+    "tax_excluded": "Zzgl. MwSt.",
+    "tax_included": "Inkl. MwSt.",
+    "unit_price": "Grundpreis",
+    "wholesale": "Großhandelspreis"
+  },
+  "wholesale": {
+    "account_and_orders": "Konto und Bestellungen",
+    "change": "Ändern",
+    "current_location": "Aktueller Standort",
+    "location_updated": "Preise und Verfügbarkeit für {{ location }} aktualisiert.",
+    "not_found_line": "Großhandelskunde? Melde dich an, um Händlerprodukte zu sehen.",
+    "ordering_for": "Bestellung für",
+    "ordering_for_location": "Bestellung für {{ company }} · {{ location }}",
+    "sample_notice": "Großhandelsvorschau – Beispieldaten",
+    "sign_out": "Abmelden",
+    "store_credit": "Guthaben",
+    "switch_location": "Zu {{ location }} wechseln"
+  }
+}

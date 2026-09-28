@@ -1,0 +1,119 @@
+{%- comment -%}
+  Design tokens: global settings → CSS custom properties, in one small inline style.
+  Font files: heading (one weight) + body regular + body bold. Medium weight (500) is requested
+  in CSS but has no @font-face of its own, so browsers fall back to the regular file instead of
+  downloading a fourth font.
+{%- endcomment -%}
+{%- liquid
+  assign heading_font = settings.heading_font
+  assign body_font = settings.body_font
+  assign body_bold = body_font | font_modify: 'weight', '600'
+  if body_bold == blank
+    assign body_bold = body_font | font_modify: 'weight', 'bolder'
+  endif
+  assign body_italic = body_font | font_modify: 'style', 'italic'
+
+  assign scale = settings.heading_scale | divided_by: 100.0
+  assign base = settings.body_size | default: 16
+  assign spacing = settings.section_spacing | default: 80
+  assign spacing_mobile = spacing | times: 0.6 | round
+
+  if settings.navigation_font_source == 'heading'
+    assign nav_family = 'var(--f-heading)'
+    assign nav_weight = 'var(--fw-heading)'
+  else
+    assign nav_family = 'var(--f-body)'
+    assign nav_weight = 'var(--fw-medium)'
+  endif
+-%}
+{% style %}
+  {{ heading_font | font_face: font_display: 'swap' }}
+  {{ body_font | font_face: font_display: 'swap' }}
+  {%- if body_bold != blank -%}{{ body_bold | font_face: font_display: 'swap' }}{%- endif -%}
+  {%- if body_italic != blank -%}{{ body_italic | font_face: font_display: 'swap' }}{%- endif -%}
+
+  :root {
+    --f-heading: {{ heading_font.family }}, {{ heading_font.fallback_families }};
+    --fw-heading: {{ heading_font.weight }};
+    --fs-heading: {{ heading_font.style }};
+    --f-body: {{ body_font.family }}, {{ body_font.fallback_families }};
+    --fw-body: {{ body_font.weight }};
+    --fw-medium: 500;
+    --fw-bold: {{ body_bold.weight | default: 600 }};
+    --f-nav: {{ nav_family }};
+    --fw-nav: {{ nav_weight }};
+    --tt-heading: {% if settings.heading_uppercase %}uppercase{% else %}none{% endif %};
+    --tt-subheading: {% if settings.subheading_uppercase %}uppercase{% else %}none{% endif %};
+    --tt-button: {% if settings.button_uppercase %}uppercase{% else %}none{% endif %};
+
+    --t-base: {{ base }}px;
+    --t-12: {{ base | times: 0.75 }}px;
+    --t-13: {{ base | times: 0.8125 }}px;
+    --t-14: {{ base | times: 0.875 }}px;
+    --t-15: {{ base | times: 0.9375 }}px;
+    --t-16: {{ base }}px;
+    --t-20: {{ base | times: 1.25 }}px;
+    --h-26: {{ base | times: 1.625 | times: scale }}px;
+    --h-34: {{ base | times: 2.125 | times: scale }}px;
+    --h-44: {{ base | times: 2.75 | times: scale }}px;
+    --h-56: {{ base | times: 3.5 | times: scale }}px;
+
+    --page-width: {{ settings.page_width }}px;
+    --gutter: 16px;
+    --section-gap: {{ spacing_mobile }}px;
+    --section-gap-desktop: {{ spacing }}px;
+
+    --border-width: {{ settings.border_width }}px;
+    --r-button: {{ settings.radius_button }}px;
+    --r-input: {{ settings.radius_input }}px;
+    --r-card: {{ settings.radius_card }}px;
+    --r-media: {{ settings.radius_media }}px;
+    --r-drawer: {{ settings.radius_drawer }}px;
+    --r-modal: {{ settings.radius_modal }}px;
+
+    --c-sale: {{ settings.color_sale }};
+    --c-star: {{ settings.color_star }};
+    --c-ok: {{ settings.color_stock_ok }};
+    --c-low: {{ settings.color_stock_low }};
+    --c-bad: {{ settings.color_stock_out }};
+    --c-success: {{ settings.color_success }};
+    --c-success-bg: {{ settings.color_success_bg }};
+    --c-error: {{ settings.color_error }};
+    --c-error-bg: {{ settings.color_error_bg }};
+    --c-info: {{ settings.color_info }};
+    --c-info-bg: {{ settings.color_info_bg }};
+    --c-installments: {{ settings.color_installments_tint }};
+    --c-disabled-bg: {{ settings.color_disabled_bg }};
+    --c-disabled-fg: {{ settings.color_disabled_text }};
+    --c-blend: {{ settings.image_blend_color }};
+
+    --logo-width: {{ settings.logo_width_mobile }}px;
+    --logo-width-desktop: {{ settings.logo_width }}px;
+    --swatch-size: {{ settings.swatch_product_size }}px;
+    --swatch-card-size: {{ settings.swatch_card_size }}px;
+    --reveal-duration: {% case settings.reveal_speed %}{% when 'slow' %}900ms{% when 'normal' %}600ms{% else %}350ms{% endcase %};
+    --shadow-overlay: 0 12px 40px rgb(15 17 17 / 0.16);
+  }
+
+  {% for scheme in settings.color_schemes -%}
+    {%- if forloop.first %}:root,{% endif %} .color-{{ scheme.id }} {
+      --c-bg: {{ scheme.settings.background }};
+      --c-bg-image: {{ scheme.settings.background_gradient | default: 'none' }};
+      --c-fg: {{ scheme.settings.text }};
+      --c-heading: {{ scheme.settings.heading }};
+      --c-muted: {{ scheme.settings.muted }};
+      --c-surface: {{ scheme.settings.surface }};
+      --c-line: {{ scheme.settings.line }};
+      --c-link: {{ scheme.settings.link }};
+      --c-primary: {{ scheme.settings.button_bg }};
+      --c-on-primary: {{ scheme.settings.button_text }};
+      --c-primary-hover: {{ scheme.settings.button_hover }};
+      --c-secondary: {{ scheme.settings.button_secondary_bg }};
+      --c-on-secondary: {{ scheme.settings.button_secondary_text }};
+    }
+  {% endfor %}
+
+  @media (min-width: 990px) {
+    :root { --gutter: 32px; --section-gap: var(--section-gap-desktop); --logo-width: var(--logo-width-desktop); }
+  }
+{% endstyle %}

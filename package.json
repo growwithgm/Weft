@@ -1,0 +1,18 @@
+{
+  "name": "weft-theme",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Weft — Shopify Theme Store theme for clothing, hair care and body care, with retail and native B2B wholesale.",
+  "type": "module",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "lint": "node scripts/theme-lint.mjs",
+    "i18n": "node scripts/i18n-check.mjs",
+    "test:unit": "node --test \"tests/unit/*.test.mjs\"",
+    "test:components": "node tests/components/run.mjs",
+    "check": "npm run lint && npm run i18n && npm run test:unit",
+    "theme-check": "shopify theme check --fail-level suggestion",
+    "package:ibban": "node scripts/package-theme.mjs --store ibban",
+    "package:themestore": "node scripts/package-theme.mjs --themestore"
+  }
+}

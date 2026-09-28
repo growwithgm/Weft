@@ -1,0 +1,91 @@
+{%- liquid
+  assign tag = block.settings.tag
+  if tag == 'auto'
+    assign tag = 'h2'
+    if section.index == 1 and request.page_type != 'index'
+      assign tag = 'h1'
+    endif
+  endif
+-%}
+<{{ tag }} class="block-heading {{ block.settings.size }}{% if block.settings.uppercase %} is-uppercase{% endif %}" {{ block.shopify_attributes }}>
+  {{- block.settings.heading -}}
+</{{ tag }}>
+
+{% schema %}
+{
+  "name": "t:labels.heading",
+  "tag": null,
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "t:labels.heading",
+      "default": "Heading"
+    },
+    {
+      "type": "select",
+      "id": "size",
+      "label": "t:labels.size",
+      "options": [
+        {
+          "value": "h0",
+          "label": "t:labels.extra_large"
+        },
+        {
+          "value": "h1",
+          "label": "t:labels.large"
+        },
+        {
+          "value": "h2",
+          "label": "t:labels.medium"
+        },
+        {
+          "value": "h3",
+          "label": "t:labels.small"
+        }
+      ],
+      "default": "h1"
+    },
+    {
+      "type": "select",
+      "id": "tag",
+      "label": "t:labels.heading_level",
+      "options": [
+        {
+          "value": "auto",
+          "label": "t:labels.automatic"
+        },
+        {
+          "value": "h1",
+          "label": "t:labels.h1"
+        },
+        {
+          "value": "h2",
+          "label": "t:labels.h2"
+        },
+        {
+          "value": "h3",
+          "label": "t:labels.h3"
+        },
+        {
+          "value": "p",
+          "label": "t:labels.paragraph"
+        }
+      ],
+      "default": "auto",
+      "info": "t:text.blocks.heading.settings.tag.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "uppercase",
+      "label": "t:labels.uppercase",
+      "default": false
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:labels.heading"
+    }
+  ]
+}
+{% endschema %}

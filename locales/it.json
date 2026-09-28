@@ -1,0 +1,130 @@
+{
+  "accessibility": {
+    "announcements": "Annunci",
+    "close_menu": "Chiudi il menu",
+    "decrease_quantity": "Riduci la quantità di {{ product }}",
+    "external_link": "Link esterno",
+    "increase_quantity": "Aumenta la quantità di {{ product }}",
+    "main_navigation": "Principale",
+    "menu": "Menu",
+    "open_menu": "Apri il menu",
+    "quantity": "Quantità",
+    "slide_of": "Slide {{ index }} di {{ count }}",
+    "star_rating": "{{ rating }} stelle su {{ max }}"
+  },
+  "general": {
+    "back_to_top": "Torna su",
+    "breadcrumbs": "Percorso di navigazione",
+    "chat": {
+      "label": "Chatta su WhatsApp"
+    },
+    "close": "Chiudi",
+    "continue_shopping": "Continua lo shopping",
+    "copyright": "© {{ year }} {{ shop }}",
+    "dismiss": "Ignora",
+    "error": "Si è verificato un problema. Riprova.",
+    "home": "Home",
+    "loading": "Caricamento…",
+    "next": "Successivo",
+    "opens_new_window": "Si apre in una nuova finestra",
+    "pagination": {
+      "label": "Impaginazione",
+      "load_more": "Carica altri",
+      "page": "Pagina {{ number }}"
+    },
+    "pause": "Pausa",
+    "payment_methods": "Metodi di pagamento",
+    "play": "Riproduci",
+    "previous": "Precedente",
+    "read_more": "Leggi di più",
+    "see_less": "Mostra meno",
+    "see_more": "Mostra di più",
+    "skip_to_content": "Vai al contenuto",
+    "social": {
+      "follow_on": "Seguici su {{ network }}",
+      "share": "Condividi"
+    },
+    "view_all": "Vedi tutto"
+  },
+  "gift_card": {
+    "apple_wallet": "Aggiungi a Apple Wallet",
+    "balance": "Saldo: {{ balance }}",
+    "code": "Codice della carta regalo",
+    "copied": "Codice copiato",
+    "copy": "Copia codice",
+    "disabled": "Questa carta regalo è disattivata.",
+    "expired": "Questa carta regalo è scaduta il {{ date }}.",
+    "expires": "Scade il {{ date }}",
+    "print": "Stampa questa carta regalo",
+    "qr_code": "Codice QR della carta regalo",
+    "shop_now": "Acquista ora",
+    "title": "La tua carta regalo",
+    "use_at_checkout": "Usa questo codice al checkout per riscattare la carta regalo.",
+    "value": "La tua carta regalo da {{ value }} per {{ shop }}"
+  },
+  "header": {
+    "account": "Account",
+    "back": "Indietro",
+    "cart": "Carrello",
+    "cart_count": {
+      "one": "Carrello, {{ count }} articolo",
+      "other": "Carrello, {{ count }} articoli"
+    },
+    "search": "Cerca",
+    "search_placeholder": "Cerca prodotti",
+    "sign_in": "Accedi",
+    "submenu": "Sottomenu {{ title }}",
+    "voice_search": "Cerca con la voce"
+  },
+  "localization": {
+    "country": "Paese/regione",
+    "language": "Lingua",
+    "no_results": "Nessun paese corrisponde alla ricerca.",
+    "search_country": "Cerca paesi",
+    "update": "Aggiorna"
+  },
+  "newsletter": {
+    "label": "Email",
+    "placeholder": "La tua email",
+    "subscribe": "Iscriviti",
+    "success": "Grazie per l’iscrizione."
+  },
+  "not_found": {
+    "text": "La pagina che cercavi è stata spostata o non esiste più.",
+    "title": "Pagina non trovata"
+  },
+  "password": {
+    "enter": "Entra",
+    "enter_with_password": "Entra con la password",
+    "owner": "Sei il proprietario del negozio?",
+    "owner_link": "Accedi qui",
+    "password": "Password",
+    "powered_by": "Questo negozio sarà gestito da",
+    "wrong": "Password errata."
+  },
+  "price": {
+    "from": "Da {{ price }}",
+    "per": "per",
+    "per_piece": "al pezzo",
+    "regular": "Prezzo di listino",
+    "sale": "Prezzo scontato",
+    "shipping_at_checkout": "Spedizione calcolata al checkout.",
+    "tax_excluded": "Imposte escluse.",
+    "tax_included": "Imposte incluse.",
+    "unit_price": "Prezzo unitario",
+    "wholesale": "Prezzo all’ingrosso"
+  },
+  "wholesale": {
+    "account_and_orders": "Account e ordini",
+    "change": "Cambia",
+    "current_location": "Sede attuale",
+    "location_updated": "Prezzi e disponibilità aggiornati per {{ location }}.",
+    "not_found_line": "Cliente all’ingrosso? Accedi per vedere i prodotti riservati.",
+    "ordering_for": "Ordine per",
+    "ordering_for_location": "Ordine per {{ company }} · {{ location }}",
+    "sample_notice": "Anteprima ingrosso — dati di esempio",
+    "sign_out": "Esci",
+    "store_credit": "Credito negozio",
+    "switch_location": "Passa a {{ location }}"
+  }
+}

@@ -1,0 +1,130 @@
+{
+  "accessibility": {
+    "announcements": "Announcements",
+    "close_menu": "Close menu",
+    "decrease_quantity": "Decrease quantity for {{ product }}",
+    "external_link": "External link",
+    "increase_quantity": "Increase quantity for {{ product }}",
+    "main_navigation": "Main",
+    "menu": "Menu",
+    "open_menu": "Open menu",
+    "quantity": "Quantity",
+    "slide_of": "Slide {{ index }} of {{ count }}",
+    "star_rating": "{{ rating }} out of {{ max }} stars"
+  },
+  "general": {
+    "back_to_top": "Back to top",
+    "breadcrumbs": "Breadcrumbs",
+    "chat": {
+      "label": "Chat on WhatsApp"
+    },
+    "close": "Close",
+    "continue_shopping": "Continue shopping",
+    "copyright": "© {{ year }} {{ shop }}",
+    "dismiss": "Dismiss",
+    "error": "Something went wrong. Please try again.",
+    "home": "Home",
+    "loading": "Loading…",
+    "next": "Next",
+    "opens_new_window": "Opens in a new window",
+    "pagination": {
+      "label": "Pagination",
+      "load_more": "Load more",
+      "page": "Page {{ number }}"
+    },
+    "pause": "Pause",
+    "payment_methods": "Payment methods",
+    "play": "Play",
+    "previous": "Previous",
+    "read_more": "Read more",
+    "see_less": "See less",
+    "see_more": "See more",
+    "skip_to_content": "Skip to content",
+    "social": {
+      "follow_on": "Follow us on {{ network }}",
+      "share": "Share"
+    },
+    "view_all": "View all"
+  },
+  "gift_card": {
+    "apple_wallet": "Add to Apple Wallet",
+    "balance": "Balance: {{ balance }}",
+    "code": "Gift card code",
+    "copied": "Code copied",
+    "copy": "Copy code",
+    "disabled": "This gift card is disabled.",
+    "expired": "This gift card expired on {{ date }}.",
+    "expires": "Expires on {{ date }}",
+    "print": "Print this gift card",
+    "qr_code": "QR code for the gift card",
+    "shop_now": "Shop now",
+    "title": "Your gift card",
+    "use_at_checkout": "Use this code at checkout to redeem your gift card.",
+    "value": "Your {{ value }} gift card for {{ shop }}"
+  },
+  "header": {
+    "account": "Account",
+    "back": "Back",
+    "cart": "Cart",
+    "cart_count": {
+      "one": "Cart, {{ count }} item",
+      "other": "Cart, {{ count }} items"
+    },
+    "search": "Search",
+    "search_placeholder": "Search products",
+    "sign_in": "Log in",
+    "submenu": "{{ title }} submenu",
+    "voice_search": "Search by voice"
+  },
+  "localization": {
+    "country": "Country/region",
+    "language": "Language",
+    "no_results": "No countries match your search.",
+    "search_country": "Search countries",
+    "update": "Update"
+  },
+  "newsletter": {
+    "label": "Email",
+    "placeholder": "Your email",
+    "subscribe": "Subscribe",
+    "success": "Thanks for subscribing."
+  },
+  "not_found": {
+    "text": "The page you were looking for has moved or no longer exists.",
+    "title": "Page not found"
+  },
+  "password": {
+    "enter": "Enter",
+    "enter_with_password": "Enter using password",
+    "owner": "Are you the store owner?",
+    "owner_link": "Log in here",
+    "password": "Password",
+    "powered_by": "This shop will be powered by",
+    "wrong": "Wrong password."
+  },
+  "price": {
+    "from": "From {{ price }}",
+    "per": "per",
+    "per_piece": "per piece",
+    "regular": "Regular price",
+    "sale": "Sale price",
+    "shipping_at_checkout": "Shipping calculated at checkout.",
+    "tax_excluded": "Tax excluded.",
+    "tax_included": "Tax included.",
+    "unit_price": "Unit price",
+    "wholesale": "Wholesale price"
+  },
+  "wholesale": {
+    "account_and_orders": "Account and orders",
+    "change": "Change",
+    "current_location": "Current location",
+    "location_updated": "Prices and availability updated for {{ location }}.",
+    "not_found_line": "Wholesale customer? Sign in to see trade-only products.",
+    "ordering_for": "Ordering for",
+    "ordering_for_location": "Ordering for {{ company }} · {{ location }}",
+    "sample_notice": "Wholesale preview — sample data",
+    "sign_out": "Sign out",
+    "store_credit": "Store credit",
+    "switch_location": "Switch to {{ location }}"
+  }
+}

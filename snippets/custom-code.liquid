@@ -1,0 +1,24 @@
+{%- comment -%}
+  Merchant code from "Custom code and tracking". Deferred code is kept inert in <template>
+  elements and injected by custom-code.js after load or first interaction, and only after
+  marketing consent when that setting is on.
+{%- endcomment -%}
+{%- liquid
+  assign head_deferred = false
+  if settings.custom_code_head != blank and settings.custom_code_head_mode != 'immediately'
+    assign head_deferred = true
+  endif
+-%}
+{%- if head_deferred -%}
+  <template data-custom-code="{{ settings.custom_code_head_mode }}" data-consent="{{ settings.custom_code_consent }}">{{ settings.custom_code_head }}</template>
+{%- endif -%}
+{%- if settings.custom_code_body != blank -%}
+  {%- if settings.custom_code_body_mode == 'immediately' and settings.custom_code_consent == false -%}
+    {{ settings.custom_code_body }}
+  {%- else -%}
+    <template data-custom-code="{{ settings.custom_code_body_mode }}" data-consent="{{ settings.custom_code_consent }}">{{ settings.custom_code_body }}</template>
+  {%- endif -%}
+{%- endif -%}
+{%- if head_deferred or settings.custom_code_body != blank -%}
+  <script type="module" src="{{ 'custom-code.js' | asset_url }}"></script>
+{%- endif -%}

@@ -1,0 +1,139 @@
+// Source for the three presets in config/settings_data.json (scripts/build-presets.mjs).
+// Presets hold presentational settings only; content comes from templates and listings/.
+
+const scheme = (o) => ({
+  settings: {
+    background: o.bg,
+    background_gradient: '',
+    text: o.text,
+    heading: o.heading || o.text,
+    muted: o.muted,
+    surface: o.surface,
+    line: o.line,
+    link: o.link || o.text,
+    button_bg: o.btn,
+    button_text: o.btnText,
+    button_hover: o.btnHover,
+    button_secondary_bg: o.secBg || o.bg,
+    button_secondary_text: o.secText || o.text
+  }
+});
+
+export const weft = {
+  logo_width: 160,
+  logo_width_mobile: 100,
+  color_schemes: {
+    'scheme-1': scheme({ bg: '#FFFFFF', text: '#2A2B2A', muted: '#6B6B6B', surface: '#F4F4F4', line: '#E7E7E7', btn: '#FBD816', btnText: '#0F1111', btnHover: '#E8C70F' }),
+    'scheme-2': scheme({ bg: '#F4F4F4', text: '#2A2B2A', muted: '#5E5E5E', surface: '#FFFFFF', line: '#E0E0E0', btn: '#FBD816', btnText: '#0F1111', btnHover: '#E8C70F', secBg: '#F4F4F4' }),
+    'scheme-3': scheme({ bg: '#2A2B2A', text: '#FFFFFF', muted: '#C9C9C9', surface: '#3A3B3A', line: '#4F504F', btn: '#FBD816', btnText: '#0F1111', btnHover: '#E8C70F', secBg: '#2A2B2A', secText: '#FFFFFF' }),
+    'scheme-4': scheme({ bg: '#FBD816', text: '#0F1111', muted: '#3B3A2A', surface: '#FFF3A6', line: '#D4B50E', btn: '#2A2B2A', btnText: '#FFFFFF', btnHover: '#0F1111', secBg: '#FBD816', secText: '#0F1111' }),
+    'scheme-5': scheme({ bg: '#AA1155', text: '#FFFFFF', muted: '#F5D6E3', surface: '#8E0E47', line: '#C24A7E', btn: '#FFFFFF', btnText: '#2A2B2A', btnHover: '#F4F4F4', secBg: '#AA1155', secText: '#FFFFFF' }),
+    'scheme-6': scheme({ bg: '#FFFFFF', text: '#2A2B2A', muted: '#6B6B6B', surface: '#F4F4F4', line: '#E7E7E7', btn: '#2A2B2A', btnText: '#FFFFFF', btnHover: '#0F1111' }),
+    'scheme-7': scheme({ bg: '#FFFFFF', text: '#2A2B2A', muted: '#6B6B6B', surface: '#F4F4F4', line: '#E7E7E7', btn: '#FBD816', btnText: '#0F1111', btnHover: '#E8C70F' })
+  },
+  drawer_color_scheme: 'scheme-7',
+  color_sale: '#AA1155',
+  color_star: '#FBD816',
+  color_installments_tint: '#FFF5F8',
+  heading_font: 'cormorant_n6',
+  body_font: 'jost_n4',
+  heading_scale: 100,
+  body_size: 16,
+  navigation_font_source: 'body',
+  page_width: 1260,
+  section_spacing: 80,
+  radius_button: 26,
+  radius_input: 26,
+  radius_card: 16,
+  radius_media: 0,
+  radius_drawer: 16,
+  radius_modal: 16,
+  accordion_icon: 'plus',
+  card_ratio: 'tall',
+  card_fit: 'cover',
+  swatch_product_style: 'variant_image',
+  swatch_product_shape: 'square',
+  swatch_product_size: 48,
+  stock_low_threshold: 8,
+  cart_icon: 'bag'
+};
+
+export const tress = {
+  logo_width: 150,
+  logo_width_mobile: 96,
+  color_schemes: {
+    'scheme-1': scheme({ bg: '#FFFFFF', text: '#121316', muted: '#5A6068', surface: '#EEF1F3', line: '#D9DDE1', btn: '#2B45D6', btnText: '#FFFFFF', btnHover: '#2238B4' }),
+    'scheme-2': scheme({ bg: '#EEF1F3', text: '#121316', muted: '#50565E', surface: '#FFFFFF', line: '#D0D5DA', btn: '#2B45D6', btnText: '#FFFFFF', btnHover: '#2238B4', secBg: '#EEF1F3' }),
+    'scheme-3': scheme({ bg: '#121316', text: '#FFFFFF', muted: '#B8BEC6', surface: '#1E2024', line: '#34373D', btn: '#E4FF3A', btnText: '#121316', btnHover: '#D2EC2C', secBg: '#121316', secText: '#FFFFFF' }),
+    'scheme-4': scheme({ bg: '#2B45D6', text: '#FFFFFF', muted: '#DDE3FF', surface: '#2238B4', line: '#5068E0', btn: '#FFFFFF', btnText: '#121316', btnHover: '#EEF1F3', secBg: '#2B45D6', secText: '#FFFFFF' }),
+    'scheme-5': scheme({ bg: '#E4FF3A', text: '#121316', muted: '#34380F', surface: '#F1FF9A', line: '#B9D11C', btn: '#121316', btnText: '#FFFFFF', btnHover: '#2A2C31', secBg: '#E4FF3A', secText: '#121316' }),
+    'scheme-6': scheme({ bg: '#FFFFFF', text: '#121316', muted: '#5A6068', surface: '#EEF1F3', line: '#D9DDE1', btn: '#121316', btnText: '#FFFFFF', btnHover: '#2A2C31' }),
+    'scheme-7': scheme({ bg: '#FFFFFF', text: '#121316', muted: '#5A6068', surface: '#EEF1F3', line: '#D9DDE1', btn: '#2B45D6', btnText: '#FFFFFF', btnHover: '#2238B4' })
+  },
+  drawer_color_scheme: 'scheme-7',
+  color_sale: '#C4122F',
+  color_star: '#121316',
+  color_installments_tint: '#EEF1F3',
+  heading_font: 'archivo_n7',
+  body_font: 'instrument_sans_n4',
+  heading_scale: 105,
+  body_size: 16,
+  navigation_font_source: 'body',
+  page_width: 1320,
+  section_spacing: 64,
+  radius_button: 4,
+  radius_input: 4,
+  radius_card: 2,
+  radius_media: 0,
+  radius_drawer: 8,
+  radius_modal: 8,
+  accordion_icon: 'plus',
+  card_ratio: 'square',
+  card_fit: 'contain',
+  swatch_product_style: 'color',
+  swatch_product_shape: 'circle',
+  swatch_product_size: 40,
+  stock_low_threshold: 8,
+  cart_icon: 'cart'
+};
+
+export const balm = {
+  logo_width: 150,
+  logo_width_mobile: 96,
+  color_schemes: {
+    'scheme-1': scheme({ bg: '#FAFAFB', text: '#2E2433', muted: '#6B5E73', surface: '#ECE8F1', line: '#DCD6E3', btn: '#4B2E5A', btnText: '#FFFFFF', btnHover: '#3C2449' }),
+    'scheme-2': scheme({ bg: '#ECE8F1', text: '#2E2433', muted: '#5F5267', surface: '#FAFAFB', line: '#D3CBDD', btn: '#4B2E5A', btnText: '#FFFFFF', btnHover: '#3C2449', secBg: '#ECE8F1' }),
+    'scheme-3': scheme({ bg: '#2E2433', text: '#FAFAFB', muted: '#CFC6D6', surface: '#3A2F40', line: '#4E4255', btn: '#ECE8F1', btnText: '#2E2433', btnHover: '#DCD6E3', secBg: '#2E2433', secText: '#FAFAFB' }),
+    'scheme-4': scheme({ bg: '#4B2E5A', text: '#FFFFFF', muted: '#E3D7EA', surface: '#3C2449', line: '#6A4D79', btn: '#FAFAFB', btnText: '#2E2433', btnHover: '#ECE8F1', secBg: '#4B2E5A', secText: '#FFFFFF' }),
+    'scheme-5': scheme({ bg: '#F4F1F7', text: '#2E2433', muted: '#6B5E73', surface: '#FFFFFF', line: '#DCD6E3', btn: '#4B2E5A', btnText: '#FFFFFF', btnHover: '#3C2449', secBg: '#F4F1F7' }),
+    'scheme-6': scheme({ bg: '#FAFAFB', text: '#2E2433', muted: '#6B5E73', surface: '#ECE8F1', line: '#DCD6E3', btn: '#2E2433', btnText: '#FFFFFF', btnHover: '#1E1722' }),
+    'scheme-7': scheme({ bg: '#FFFFFF', text: '#2E2433', muted: '#6B5E73', surface: '#ECE8F1', line: '#DCD6E3', btn: '#4B2E5A', btnText: '#FFFFFF', btnHover: '#3C2449' })
+  },
+  drawer_color_scheme: 'scheme-7',
+  color_sale: '#B0243C',
+  color_star: '#4B2E5A',
+  color_installments_tint: '#F4F1F7',
+  heading_font: 'instrument_serif_n4',
+  body_font: 'figtree_n4',
+  heading_scale: 110,
+  body_size: 16,
+  navigation_font_source: 'body',
+  page_width: 1200,
+  section_spacing: 96,
+  radius_button: 30,
+  radius_input: 30,
+  radius_card: 20,
+  radius_media: 12,
+  radius_drawer: 24,
+  radius_modal: 24,
+  accordion_icon: 'chevron',
+  card_ratio: 'portrait',
+  card_fit: 'cover',
+  swatch_product_style: 'color',
+  swatch_product_shape: 'circle',
+  swatch_product_size: 40,
+  stock_low_threshold: 8,
+  cart_icon: 'basket'
+};
+
+export default { Weft: weft, Tress: tress, Balm: balm };

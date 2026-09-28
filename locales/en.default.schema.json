@@ -1,0 +1,722 @@
+{
+  "labels": {
+    "1_px": "1 px",
+    "2_px": "2 px",
+    "404_page": "404 page",
+    "accents": "Accents",
+    "accordions": "Accordions",
+    "adapt_to_image": "Adapt to image",
+    "add_space_around_the_apps": "Add space around the apps",
+    "additional_images": "Additional images",
+    "advanced": "Advanced",
+    "after_adding_to_cart": "After adding to cart",
+    "after_first_interaction": "After first interaction",
+    "after_page_load": "After page load",
+    "after_the_links": "After the links",
+    "align_price_to_the_bottom": "Align price to the bottom",
+    "alignment": "Alignment",
+    "always": "Always",
+    "always_use_the_first_product_image": "Always use the first product image",
+    "amount_saved": "Amount saved",
+    "animations": "Animations",
+    "announcement": "Announcement",
+    "announcement_bar": "Announcement bar",
+    "apps": "Apps",
+    "arrow_button_style": "Arrow button style",
+    "arrow_buttons_on_large_screens": "Arrow buttons on large screens",
+    "aspect_ratio": "Aspect ratio",
+    "attention_messages": "Attention messages",
+    "automatic": "Automatic",
+    "background": "Background",
+    "background_gradient": "Background gradient",
+    "badge_1_color": "Badge 1 color",
+    "badge_1_link_title": "Badge 1 link title",
+    "badge_1_text": "Badge 1 text",
+    "badge_2_color": "Badge 2 color",
+    "badge_2_link_title": "Badge 2 link title",
+    "badge_2_text": "Badge 2 text",
+    "badge_3_color": "Badge 3 color",
+    "badge_3_link_title": "Badge 3 link title",
+    "badge_3_text": "Badge 3 text",
+    "bag": "Bag",
+    "banners": "Banners",
+    "base_size": "Base size",
+    "basket": "Basket",
+    "before_the_links": "Before the links",
+    "blend_collection_images_with_the_background": "Blend collection images with the background",
+    "blend_color": "Blend color",
+    "blend_product_images_with_the_background": "Blend product images with the background",
+    "blog_posts": "Blog posts",
+    "blogs": "Blogs",
+    "body": "Body",
+    "body_font": "Body font",
+    "borders_and_dividers": "Borders and dividers",
+    "bottom": "Bottom",
+    "bottom_center": "Bottom center",
+    "bottom_end": "Bottom end",
+    "bottom_start": "Bottom start",
+    "box_background": "Box background",
+    "box_border": "Box border",
+    "box_text": "Box text",
+    "breadcrumbs": "Breadcrumbs",
+    "button": "Button",
+    "button_and_input_border": "Button and input border",
+    "button_corner_radius": "Button corner radius",
+    "button_label": "Button label",
+    "button_link": "Button link",
+    "button_on_hover": "Button on hover",
+    "buttons": "Buttons",
+    "call_to_action_button": "Call to action button",
+    "caption": "Caption",
+    "card_and_panel_corner_radius": "Card and panel corner radius",
+    "carousel": "Carousel",
+    "carousels": "Carousels",
+    "cart": "Cart",
+    "cart_icon": "Cart icon",
+    "cart_type": "Cart type",
+    "center": "Center",
+    "center_text_on_mobile": "Center text on mobile",
+    "chat": "Chat",
+    "chat_button": "Chat button",
+    "check": "Check",
+    "checkbox": "Checkbox",
+    "chevron": "Chevron",
+    "chip_in_the_header": "Chip in the header",
+    "circle": "Circle",
+    "circular_images": "Circular images",
+    "clock": "Clock",
+    "code_before_the_closing_body_tag": "Code before the closing body tag",
+    "code_for_the_head": "Code for the head",
+    "collapse_on_mobile": "Collapse on mobile",
+    "collection_cards": "Collection cards",
+    "collection_list": "Collection list",
+    "collections": "Collections",
+    "color": "Color",
+    "color_filters": "Color filters",
+    "color_option_names": "Color option names",
+    "color_scheme": "Color scheme",
+    "colors": "Colors",
+    "column_width_on_large_screens": "Column width on large screens",
+    "columns": "Columns",
+    "compare_control_on_cards": "Compare control on cards",
+    "content": "Content",
+    "content_position": "Content position",
+    "countries": "Countries",
+    "currency_format": "Currency format",
+    "custom": "Custom",
+    "custom_code_and_tracking": "Custom code and tracking",
+    "custom_liquid": "Custom Liquid",
+    "custom_network": "Custom network",
+    "customer_account_menu": "Customer account menu",
+    "delay": "Delay",
+    "delivery": "Delivery",
+    "delivery_information": "Delivery information",
+    "direction": "Direction",
+    "disabled_button": "Disabled button",
+    "disabled_button_text": "Disabled button text",
+    "discord": "Discord",
+    "divider": "Divider",
+    "dividing_lines_between_cards": "Dividing lines between cards",
+    "drawer": "Drawer",
+    "drawer_corner_radius": "Drawer corner radius",
+    "drawers_and_pop_ups": "Drawers and pop-ups",
+    "email_signup": "Email signup",
+    "empty_cart_link": "Empty cart link",
+    "enable_predictive_search": "Enable predictive search",
+    "enable_product_compare": "Enable product compare",
+    "enable_quick_add": "Enable quick add",
+    "enable_voice_search": "Enable voice search",
+    "end": "End",
+    "error_background": "Error background",
+    "error_text": "Error text",
+    "exclude_product_types": "Exclude product types",
+    "extra_large": "Extra large",
+    "extra_links_shown_after_the_main_menu": "Extra links shown after the main menu.",
+    "facebook": "Facebook",
+    "fade_and_rise": "Fade and rise",
+    "fade_in": "Fade in",
+    "fallback_colors": "Fallback colors",
+    "fast": "Fast",
+    "favicon": "Favicon",
+    "fill": "Fill",
+    "filters": "Filters",
+    "fit": "Fit",
+    "fixed": "Fixed",
+    "fixed_height_on_large_screens": "Fixed height on large screens",
+    "fixed_height_on_mobile": "Fixed height on mobile",
+    "font": "Font",
+    "footer": "Footer",
+    "for_policy_and_legal_links": "For policy and legal links.",
+    "for_professionals": "For professionals",
+    "free_shipping_bar": "Free shipping bar",
+    "full_screen": "Full screen",
+    "full_width": "Full width",
+    "gap": "Gap",
+    "gift_card": "Gift card",
+    "gift_card_image": "Gift card image",
+    "go_to_the_cart_page": "Go to the cart page",
+    "group": "Group",
+    "h1": "H1",
+    "h2": "H2",
+    "h3": "H3",
+    "header": "Header",
+    "heading": "Heading",
+    "heading_font": "Heading font",
+    "heading_level": "Heading level",
+    "heading_size": "Heading size",
+    "headings": "Headings",
+    "height": "Height",
+    "height_on_large_screens": "Height on large screens",
+    "height_on_mobile": "Height on mobile",
+    "hidden": "Hidden",
+    "hide_on_pages": "Hide on pages",
+    "hide_the_backorder_notice": "Hide the backorder notice",
+    "high": "High",
+    "highlight_background": "Highlight background",
+    "highlight_border": "Highlight border",
+    "highlight_tag": "Highlight tag",
+    "highlight_text": "Highlight text",
+    "highlighted_products": "Highlighted products",
+    "horizontal": "Horizontal",
+    "icon": "Icon",
+    "icon_button": "Icon button",
+    "image": "Image",
+    "image_aspect_ratio": "Image aspect ratio",
+    "image_background": "Image background",
+    "image_banner": "Image banner",
+    "image_border": "Image border",
+    "image_corner_radius": "Image corner radius",
+    "image_fit": "Image fit",
+    "image_overlay": "Image overlay",
+    "image_overlay_opacity": "Image overlay opacity",
+    "image_position": "Image position",
+    "image_resolution": "Image resolution",
+    "image_width": "Image width",
+    "images": "Images",
+    "images_next_to_links": "Images next to links",
+    "immediately": "Immediately",
+    "in_stock": "In stock",
+    "infinite_scroll": "Infinite scroll",
+    "information_background": "Information background",
+    "information_text": "Information text",
+    "input_corner_radius": "Input corner radius",
+    "inside_the_account_menu": "Inside the account menu",
+    "instagram": "Instagram",
+    "installments": "Installments",
+    "installments_row_tint": "Installments row tint",
+    "keep_the_collection_in_product_links": "Keep the collection in product links",
+    "keep_the_quick_add_buttons_in_view": "Keep the quick add buttons in view",
+    "label": "Label",
+    "label_color": "Label color",
+    "label_metafield": "Label metafield",
+    "landscape_4_3": "Landscape (4:3)",
+    "large": "Large",
+    "layout": "Layout",
+    "layout_and_design": "Layout and design",
+    "leave_empty_to_hide_the_row": "Leave empty to hide the row.",
+    "left": "Left",
+    "link": "Link",
+    "link_1": "Link 1",
+    "link_1_label": "Link 1 label",
+    "link_2": "Link 2",
+    "link_2_label": "Link 2 label",
+    "link_badges": "Link badges",
+    "link_for_the_whole_banner": "Link for the whole banner",
+    "linkedin": "LinkedIn",
+    "links": "Links",
+    "links_and_selectors": "Links and selectors",
+    "liquid_code": "Liquid code",
+    "list": "List",
+    "list_all_colors_on_one_size_lines": "List all colors on one-size lines",
+    "listening_indicator": "Listening indicator",
+    "load_body_code": "Load body code",
+    "load_head_code": "Load head code",
+    "load_more_button": "Load more button",
+    "location": "Location",
+    "location_switcher": "Location switcher",
+    "logo": "Logo",
+    "logo_and_favicon": "Logo and favicon",
+    "logo_position_on_large_screens": "Logo position on large screens",
+    "logo_width": "Logo width",
+    "logo_width_on_large_screens": "Logo width on large screens",
+    "logo_width_on_mobile": "Logo width on mobile",
+    "low_stock_and_backorder": "Low stock and backorder",
+    "low_stock_threshold": "Low stock threshold",
+    "mastodon": "Mastodon",
+    "maximum_page_width": "Maximum page width",
+    "maximum_products": "Maximum products",
+    "maximum_width": "Maximum width",
+    "medium": "Medium",
+    "mega_menu": "Mega menu",
+    "menu": "Menu",
+    "menu_alignment": "Menu alignment",
+    "menu_item": "Menu item",
+    "message": "Message",
+    "message_1": "Message 1",
+    "message_2": "Message 2",
+    "middle_center": "Middle center",
+    "middle_end": "Middle end",
+    "middle_start": "Middle start",
+    "minimum_height": "Minimum height",
+    "mobile": "Mobile",
+    "mobile_image": "Mobile image",
+    "mobile_menu_opens_from": "Mobile menu opens from",
+    "mobile_uses_60_of_this_value": "Mobile uses 60% of this value.",
+    "narrow": "Narrow",
+    "natural": "Natural",
+    "navigation_and_buttons": "Navigation and buttons",
+    "navigation_font": "Navigation font",
+    "needs_shop_pay_to_be_active": "Needs Shop Pay to be active.",
+    "never": "Never",
+    "new": "New",
+    "none": "None",
+    "normal": "Normal",
+    "number_of_page_views_between_shakes": "Number of page views between shakes.",
+    "number_of_payments": "Number of payments",
+    "off": "Off",
+    "on_hover": "On hover",
+    "one_item": "One item",
+    "one_page": "One page",
+    "open_external_links_in_a_new_tab": "Open external links in a new tab",
+    "open_in_a_new_tab": "Open in a new tab",
+    "open_the_cart_drawer": "Open the cart drawer",
+    "optional_uses_the_main_image_when_empty": "Optional. Uses the main image when empty.",
+    "order_matrix_tag": "Order matrix tag",
+    "outline": "Outline",
+    "overlays": "Overlays",
+    "pack_image_metafield": "Pack image metafield",
+    "padding": "Padding",
+    "page": "Page",
+    "page_handles_separated_by_commas": "Page handles separated by commas.",
+    "page_numbers": "Page numbers",
+    "pagination": "Pagination",
+    "panels_and_image_backgrounds": "Panels and image backgrounds",
+    "paragraph": "Paragraph",
+    "password_page": "Password page",
+    "percent": "Percent",
+    "percentage_saved": "Percentage saved",
+    "pinterest": "Pinterest",
+    "plus_and_minus": "Plus and minus",
+    "pop_up_corner_radius": "Pop-up corner radius",
+    "portrait": "Portrait",
+    "portrait_4_5": "Portrait (4:5)",
+    "position": "Position",
+    "position_on_product_cards": "Position on product cards",
+    "pre_order": "Pre-order",
+    "preload_links_on_hover": "Preload links on hover",
+    "primary": "Primary",
+    "primary_button": "Primary button",
+    "primary_button_hover": "Primary button hover",
+    "primary_button_text": "Primary button text",
+    "product_cards": "Product cards",
+    "product_compare": "Product compare",
+    "product_inventory": "Product inventory",
+    "product_labels": "Product labels",
+    "product_page": "Product page",
+    "product_type_filter_in_the_search_field": "Product type filter in the search field",
+    "product_types_separated_by_commas": "Product types separated by commas.",
+    "products": "Products",
+    "products_in_these_collections": "Products in these collections",
+    "products_published_recently": "Products published recently",
+    "products_with_this_tag": "Products with this tag",
+    "promotion_1_image": "Promotion 1 image",
+    "promotion_1_link": "Promotion 1 link",
+    "promotion_1_text": "Promotion 1 text",
+    "promotion_1_text_position": "Promotion 1 text position",
+    "promotion_2_image": "Promotion 2 image",
+    "promotion_2_link": "Promotion 2 link",
+    "promotion_2_text": "Promotion 2 text",
+    "promotion_2_text_position": "Promotion 2 text position",
+    "promotion_3_image": "Promotion 3 image",
+    "promotion_3_link": "Promotion 3 link",
+    "promotion_3_text": "Promotion 3 text",
+    "promotion_3_text_position": "Promotion 3 text position",
+    "promotions": "Promotions",
+    "prompt_1": "Prompt 1",
+    "prompt_2": "Prompt 2",
+    "prompt_3": "Prompt 3",
+    "prompts": "Prompts",
+    "prompts_rotate_inside_the_empty_search_field": "Prompts rotate inside the empty search field.",
+    "provider_name": "Provider name",
+    "published_within": "Published within",
+    "quick_add": "Quick add",
+    "quick_links": "Quick links",
+    "quick_order_page": "Quick order page",
+    "rating_stars": "Rating stars",
+    "recommendations": "Recommendations",
+    "replaces_the_background_color_where_supported": "Replaces the background color where supported.",
+    "results_per_type": "Results per type",
+    "returns_row": "Returns row",
+    "reveal_sections_on_scroll": "Reveal sections on scroll",
+    "rich_text": "Rich text",
+    "rotate_prompts_on_mobile": "Rotate prompts on mobile",
+    "round_converted_amounts_up": "Round converted amounts up",
+    "rss_link_in_blog_breadcrumbs": "RSS link in blog breadcrumbs",
+    "rule_for_other_countries": "Rule for other countries",
+    "sale": "Sale",
+    "scroll_per_arrow_click": "Scroll per arrow click",
+    "search": "Search",
+    "search_and_account": "Search and account",
+    "search_field_font": "Search field font",
+    "search_settings_are_in_theme_settings_search": "Search settings are in Theme settings > Search.",
+    "search_skus": "Search SKUs",
+    "search_tags": "Search tags",
+    "second_image_on_hover": "Second image on hover",
+    "secondary": "Secondary",
+    "secondary_button": "Secondary button",
+    "secondary_button_text_and_border": "Secondary button text and border",
+    "secondary_menu": "Secondary menu",
+    "secondary_text": "Secondary text",
+    "section_spacing": "Section spacing",
+    "shake_every": "Shake every",
+    "shake_the_cart_icon_when_it_has_items": "Shake the cart icon when it has items",
+    "shape": "Shape",
+    "shapes": "Shapes",
+    "shipping_rules": "Shipping rules",
+    "show_attention_messages": "Show attention messages",
+    "show_back_to_top_link": "Show back to top link",
+    "show_button": "Show button",
+    "show_cards_as_boxes": "Show cards as boxes",
+    "show_cents_as_superscript": "Show cents as superscript",
+    "show_chat_button": "Show chat button",
+    "show_country_and_language_in_the_mobile_menu": "Show country and language in the mobile menu",
+    "show_country_region_selector": "Show country/region selector",
+    "show_currency_codes": "Show currency codes",
+    "show_custom_label": "Show custom label",
+    "show_email_signup": "Show email signup",
+    "show_exact_count_to_retail_shoppers": "Show exact count to retail shoppers",
+    "show_follow_on_shop": "Show Follow on Shop",
+    "show_free_shipping_progress": "Show free shipping progress",
+    "show_inventory": "Show inventory",
+    "show_language_selector": "Show language selector",
+    "show_line": "Show line",
+    "show_new_label": "Show new label",
+    "show_page_title": "Show page title",
+    "show_payment_icons": "Show payment icons",
+    "show_powered_by_shopify": "Show \"Powered by Shopify\"",
+    "show_price": "Show price",
+    "show_rating": "Show rating",
+    "show_related_products": "Show related products",
+    "show_rows_without_data": "Show rows without data",
+    "show_sale_label": "Show sale label",
+    "show_search": "Show search",
+    "show_skus_to_wholesale_buyers": "Show SKUs to wholesale buyers",
+    "show_social_media_links": "Show social media links",
+    "show_sold_out_label": "Show sold out label",
+    "show_stock_notice_on_cards": "Show stock notice on cards",
+    "show_subtitle": "Show subtitle",
+    "show_swatches": "Show swatches",
+    "show_text_below_the_image_on_mobile": "Show text below the image on mobile",
+    "show_the_installments_line_to_wholesale_buyers": "Show the installments line to wholesale buyers",
+    "show_the_wholesale_sign_in_line": "Show the wholesale sign-in line",
+    "show_vendor": "Show vendor",
+    "show_vendor_on_lines": "Show vendor on lines",
+    "show_view_collection_link": "Show \"View collection\" link",
+    "show_weight": "Show weight",
+    "show_weight_on_lines": "Show weight on lines",
+    "shown_at_32_32_px": "Shown at 32 × 32 px.",
+    "shown_on_large_screens": "Shown on large screens.",
+    "sidebar": "Sidebar",
+    "signup_heading": "Signup heading",
+    "size": "Size",
+    "slideshow_on_hover": "Slideshow on hover",
+    "slow": "Slow",
+    "small": "Small",
+    "snapchat": "Snapchat",
+    "social_media": "Social media",
+    "sold_out": "Sold out",
+    "sold_out_and_errors": "Sold out and errors",
+    "solid": "Solid",
+    "space_between_sections": "Space between sections",
+    "spacer": "Spacer",
+    "spacing": "Spacing",
+    "sparkle": "Sparkle",
+    "speed": "Speed",
+    "spotify": "Spotify",
+    "square": "Square",
+    "square_1_1": "Square (1:1)",
+    "standard": "Standard",
+    "star": "Star",
+    "start": "Start",
+    "stay_on_the_page": "Stay on the page",
+    "sticky_header": "Sticky header",
+    "store": "Store",
+    "stretch": "Stretch",
+    "style": "Style",
+    "style_on_large_screens": "Style on large screens",
+    "style_on_mobile": "Style on mobile",
+    "subheading": "Subheading",
+    "subtitle_metafield": "Subtitle metafield",
+    "success_background": "Success background",
+    "success_text": "Success text",
+    "swatch_content": "Swatch content",
+    "swatches": "Swatches",
+    "switch": "Switch",
+    "tag": "Tag",
+    "tall_3_4": "Tall (3:4)",
+    "text": "Text",
+    "text_alignment": "Text alignment",
+    "text_button": "Text button",
+    "text_for_empty_fields": "Text for empty fields",
+    "text_image_and_socials": "Text, image and socials",
+    "text_link": "Text link",
+    "text_only": "Text only",
+    "text_over_the_image": "Text over the image",
+    "text_size": "Text size",
+    "threads": "Threads",
+    "thresholds": "Thresholds",
+    "tiktok": "TikTok",
+    "time_per_message": "Time per message",
+    "title_alignment": "Title alignment",
+    "title_of_the_link_that_gets_the_badge": "Title of the link that gets the badge.",
+    "toggle_icon": "Toggle icon",
+    "top": "Top",
+    "top_center": "Top center",
+    "top_end": "Top end",
+    "top_start": "Top start",
+    "tumblr": "Tumblr",
+    "twitch": "Twitch",
+    "typography": "Typography",
+    "underline_column_headings": "Underline column headings",
+    "uppercase": "Uppercase",
+    "uppercase_button_text": "Uppercase button text",
+    "uppercase_headings": "Uppercase headings",
+    "uppercase_subheadings": "Uppercase subheadings",
+    "used_for_stacked_text_and_buttons": "Used for stacked text and buttons.",
+    "uses_the_menu_title_when_empty": "Uses the menu title when empty.",
+    "uses_the_theme_logo_when_empty": "Uses the theme logo when empty.",
+    "variant_image": "Variant image",
+    "verification_tags_must_load_immediately": "Verification tags must load immediately.",
+    "vertical": "Vertical",
+    "very_low_stock_threshold": "Very low stock threshold",
+    "vibrate_on_add_to_cart": "Vibrate on add to cart",
+    "view_more": "View more",
+    "vimeo": "Vimeo",
+    "voice_search": "Voice search",
+    "volume_price_rows_before_show_all": "Volume price rows before \"Show all\"",
+    "wait_for_marketing_consent": "Wait for marketing consent",
+    "wechat": "WeChat",
+    "whatsapp": "WhatsApp",
+    "when_low": "When low",
+    "wholesale": "Wholesale",
+    "wholesale_application_page": "Wholesale application page",
+    "wholesale_low_stock_threshold": "Wholesale low stock threshold",
+    "wholesale_only_tag": "Wholesale-only tag",
+    "wholesale_sign_in_page": "Wholesale sign-in page",
+    "wide": "Wide",
+    "wide_content": "Wide content",
+    "x_formerly_twitter": "X (formerly Twitter)",
+    "youtube": "YouTube"
+  },
+  "text": {
+    "blocks": {
+      "group": {
+        "settings": {
+          "color_scheme": {
+            "info": "Leave as the section scheme or pick one for a panel."
+          }
+        }
+      },
+      "heading": {
+        "settings": {
+          "tag": {
+            "info": "Automatic uses H1 for the first section of a page and H2 elsewhere."
+          }
+        }
+      }
+    },
+    "sections": {
+      "custom_liquid": {
+        "settings": {
+          "custom_liquid": {
+            "info": "Add app snippets or other code. Code here isn't checked by the theme."
+          }
+        }
+      },
+      "header": {
+        "blocks": {
+          "mega_menu": {
+            "settings": {
+              "link_images": {
+                "info": "Collection images, or the first product image when a collection has none."
+              },
+              "menu_item": {
+                "info": "Title of the top-level menu item that opens this mega menu."
+              }
+            }
+          }
+        }
+      },
+      "location_sheet": {
+        "settings": {
+          "shown_to_wholesale_buyers_whose_company_has_two_": {
+            "content": "Shown to wholesale buyers whose company has two or more locations."
+          }
+        }
+      },
+      "main_404": {
+        "settings": {
+          "show_wholesale_line": {
+            "info": "Helps wholesale buyers following an old link to a trade-only product."
+          }
+        }
+      }
+    },
+    "settings_schema": {
+      "advanced": {
+        "settings": {
+          "attention_messages": {
+            "info": "Shown in the browser tab title while visitors look at another tab."
+          }
+        }
+      },
+      "animations": {
+        "settings": {
+          "reveal_on_scroll": {
+            "info": "Always off for visitors who ask for reduced motion."
+          }
+        }
+      },
+      "cart": {
+        "settings": {
+          "cart_free_shipping_rules": {
+            "info": "One line per currency, for example \"EUR: 69\". The bar only shows for currencies you list."
+          }
+        }
+      },
+      "colors": {
+        "settings": {
+          "accents": {
+            "info": "Status colors are always shown together with a text label."
+          }
+        }
+      },
+      "currency_format": {
+        "settings": {
+          "currency_code_enable": {
+            "info": "Useful when you sell in several currencies with the same symbol."
+          }
+        }
+      },
+      "custom_code_and_tracking": {
+        "settings": {
+          "code_runs_on_every_page_marketing_code_waits_for": {
+            "content": "Code runs on every page. Marketing code waits for consent through Shopify's customer privacy settings."
+          }
+        }
+      },
+      "delivery_information": {
+        "settings": {
+          "delivery_default_rule": {
+            "info": "Example: \"54.95\". Leave empty to hide the shipping row for unlisted countries."
+          },
+          "delivery_round_up": {
+            "info": "Keeps converted amounts at or above what checkout charges."
+          },
+          "delivery_rules": {
+            "info": "One line per zone: countries = rate / free from, with an optional currency. Example: \"ES, AD = 4.95 / 69\". Leave \"free from\" empty when there is no free shipping. Amounts use your store currency unless the line starts with a currency code, for example \"GB = GBP 4.95 / 99\"."
+          },
+          "rules_for_the_delivery_list_on_product_pages_no_": {
+            "content": "Rules for the delivery list on product pages. No delivery date is ever shown."
+          }
+        }
+      },
+      "installments": {
+        "settings": {
+          "installments_countries": {
+            "info": "Two-letter country codes separated by commas. Leave empty for all countries."
+          },
+          "the_installments_row_on_product_pages_shopify_pa": {
+            "content": "The installments row on product pages. Shopify Payments installments show separately when available."
+          }
+        }
+      },
+      "product_cards": {
+        "settings": {
+          "card_subtitle_metafield": {
+            "info": "Namespace and key of a single-line text metafield."
+          },
+          "highlighted_products": {
+            "info": "Collection sections can highlight products with a tag."
+          }
+        }
+      },
+      "product_inventory": {
+        "settings": {
+          "stock_low_threshold": {
+            "info": "Retail shoppers see \"Only a few left\" at or below this number. Exact counts are never shown to retail shoppers unless you choose so below."
+          },
+          "stock_wholesale_low_threshold": {
+            "info": "Wholesale buyers see exact counts; at or below this number the count is marked as low."
+          }
+        }
+      },
+      "product_labels": {
+        "settings": {
+          "label_custom_metafield": {
+            "info": "Namespace and key of a single-line text metafield. Its text becomes the label."
+          }
+        }
+      },
+      "search": {
+        "settings": {
+          "voice_search_enable": {
+            "info": "Shows a microphone button in browsers that support speech recognition."
+          }
+        }
+      },
+      "social_media": {
+        "settings": {
+          "chat_button": {
+            "info": "A floating button that opens WhatsApp with the page link filled in."
+          },
+          "links_show_in_the_footer_and_on_the_password_pag": {
+            "content": "Links show in the footer and on the password page."
+          },
+          "social_whatsapp_url": {
+            "info": "A wa.me link, for example https://wa.me/34600000000. Also used by the chat button."
+          }
+        }
+      },
+      "swatches": {
+        "settings": {
+          "swatch_color_list": {
+            "info": "Used when Shopify has no swatch for a value. One per line, for example \"Ecru: #E6DCC6\"."
+          },
+          "swatch_option_names": {
+            "info": "Separate names with commas. Options with these names show swatches."
+          }
+        }
+      },
+      "typography": {
+        "settings": {
+          "navigation_font_source": {
+            "info": "Uses one of the two fonts above, so pages load no extra font file."
+          }
+        }
+      },
+      "wholesale": {
+        "settings": {
+          "wholesale_assorted_packs": {
+            "info": "For products sold as assorted packs: one-size lines show every color value."
+          },
+          "wholesale_installments": {
+            "info": "Only turn this on when your B2B checkout offers the installments provider."
+          },
+          "wholesale_matrix_tag": {
+            "info": "Products with this tag show the color × size order matrix to wholesale buyers."
+          },
+          "wholesale_mode_is_on_for_customers_signed_in_to_": {
+            "content": "Wholesale mode is on for customers signed in to a Shopify B2B company location. Prices, quantity rules and volume pricing always come from your B2B catalogs."
+          },
+          "wholesale_only_tag": {
+            "info": "Fallback for products that are still visible to retail. Prefer excluding them from your retail catalogs."
+          },
+          "wholesale_pack_image_metafield": {
+            "info": "Product metafield with an image that replaces the line image for wholesale buyers."
+          }
+        }
+      }
+    }
+  }
+}

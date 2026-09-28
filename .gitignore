@@ -2,3 +2,5 @@ node_modules/
 dist/
 .env
 .shopify/
+playwright-report/
+test-results/

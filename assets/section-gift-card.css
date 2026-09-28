@@ -1,0 +1,11 @@
+@layer sections {
+  .gift-card { padding-block: 48px; align-items: center; }
+  .gift-card__art { width: min(560px, 100%); aspect-ratio: 16 / 10; border-radius: var(--r-card); }
+  .gift-card__code { width: min(440px, 100%); display: flex; flex-direction: column; gap: 6px; text-align: start; }
+  .gift-card__code-row { flex-wrap: nowrap; }
+  .gift-card__code-row .input { font-size: var(--t-20); letter-spacing: 0.08em; text-align: center; }
+  .gift-card__qr { display: flex; justify-content: center; }
+  .gift-card__qr img, .gift-card__qr canvas { width: 120px; height: 120px; }
+  .gift-card__actions { justify-content: center; }
+  @media print { .gift-card__actions, .gift-card__code-row button { display: none; } }
+}

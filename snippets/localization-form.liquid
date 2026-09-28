@@ -1,0 +1,44 @@
+{%- comment -%}
+  Country/region and language selectors (Shopify's localization form). Works without
+  JavaScript through the Update button; localization.js submits on change and hides it.
+  Params: id (unique), country (bool), language (bool), compact (bool).
+{%- endcomment -%}
+{%- liquid
+  assign show_country = false
+  if country and localization.available_countries.size > 1
+    assign show_country = true
+  endif
+  assign show_language = false
+  if language and localization.available_languages.size > 1
+    assign show_language = true
+  endif
+-%}
+{%- if show_country or show_language -%}
+  {%- form 'localization', id: id, class: 'localization-form', data-module: 'localization.js', data-load: 'interaction' -%}
+    {%- if show_country -%}
+      <div class="localization-form__field">
+        <label class="{% if compact %}visually-hidden{% else %}field__label{% endif %}" for="{{ id }}-country">{{ 'localization.country' | t }}</label>
+        <select class="select localization-form__select{% if compact %} localization-form__select--compact{% endif %}" id="{{ id }}-country" name="country_code" data-localization-select>
+          {%- for c in localization.available_countries -%}
+            <option value="{{ c.iso_code }}" {% if c.iso_code == localization.country.iso_code %}selected{% endif %}>
+              {{- c.name }} ({{ c.currency.iso_code }} {{ c.currency.symbol }})
+            </option>
+          {%- endfor -%}
+        </select>
+      </div>
+    {%- endif -%}
+    {%- if show_language -%}
+      <div class="localization-form__field">
+        <label class="{% if compact %}visually-hidden{% else %}field__label{% endif %}" for="{{ id }}-language">{{ 'localization.language' | t }}</label>
+        <select class="select localization-form__select{% if compact %} localization-form__select--compact{% endif %}" id="{{ id }}-language" name="language_code" data-localization-select>
+          {%- for l in localization.available_languages -%}
+            <option value="{{ l.iso_code }}" lang="{{ l.iso_code }}" {% if l.iso_code == localization.language.iso_code %}selected{% endif %}>
+              {{- l.endonym_name | capitalize -}}
+            </option>
+          {%- endfor -%}
+        </select>
+      </div>
+    {%- endif -%}
+    <button type="submit" class="button button--small button--secondary localization-form__submit" data-localization-submit>{{ 'localization.update' | t }}</button>
+  {%- endform -%}
+{%- endif -%}

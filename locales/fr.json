@@ -1,0 +1,130 @@
+{
+  "accessibility": {
+    "announcements": "Annonces",
+    "close_menu": "Fermer le menu",
+    "decrease_quantity": "Diminuer la quantité de {{ product }}",
+    "external_link": "Lien externe",
+    "increase_quantity": "Augmenter la quantité de {{ product }}",
+    "main_navigation": "Principal",
+    "menu": "Menu",
+    "open_menu": "Ouvrir le menu",
+    "quantity": "Quantité",
+    "slide_of": "Diapositive {{ index }} sur {{ count }}",
+    "star_rating": "{{ rating }} étoiles sur {{ max }}"
+  },
+  "general": {
+    "back_to_top": "Retour en haut",
+    "breadcrumbs": "Fil d'Ariane",
+    "chat": {
+      "label": "Discuter sur WhatsApp"
+    },
+    "close": "Fermer",
+    "continue_shopping": "Continuer vos achats",
+    "copyright": "© {{ year }} {{ shop }}",
+    "dismiss": "Ignorer",
+    "error": "Un problème est survenu. Veuillez réessayer.",
+    "home": "Accueil",
+    "loading": "Chargement…",
+    "next": "Suivant",
+    "opens_new_window": "S'ouvre dans une nouvelle fenêtre",
+    "pagination": {
+      "label": "Pagination",
+      "load_more": "Charger plus",
+      "page": "Page {{ number }}"
+    },
+    "pause": "Pause",
+    "payment_methods": "Moyens de paiement",
+    "play": "Lecture",
+    "previous": "Précédent",
+    "read_more": "Lire la suite",
+    "see_less": "Voir moins",
+    "see_more": "Voir plus",
+    "skip_to_content": "Passer au contenu",
+    "social": {
+      "follow_on": "Suivez-nous sur {{ network }}",
+      "share": "Partager"
+    },
+    "view_all": "Tout voir"
+  },
+  "gift_card": {
+    "apple_wallet": "Ajouter à Apple Wallet",
+    "balance": "Solde : {{ balance }}",
+    "code": "Code de la carte-cadeau",
+    "copied": "Code copié",
+    "copy": "Copier le code",
+    "disabled": "Cette carte-cadeau est désactivée.",
+    "expired": "Cette carte-cadeau a expiré le {{ date }}.",
+    "expires": "Expire le {{ date }}",
+    "print": "Imprimer cette carte-cadeau",
+    "qr_code": "Code QR de la carte-cadeau",
+    "shop_now": "Acheter maintenant",
+    "title": "Votre carte-cadeau",
+    "use_at_checkout": "Utilisez ce code au paiement pour utiliser votre carte-cadeau.",
+    "value": "Votre carte-cadeau de {{ value }} pour {{ shop }}"
+  },
+  "header": {
+    "account": "Compte",
+    "back": "Retour",
+    "cart": "Panier",
+    "cart_count": {
+      "one": "Panier, {{ count }} article",
+      "other": "Panier, {{ count }} articles"
+    },
+    "search": "Rechercher",
+    "search_placeholder": "Rechercher des produits",
+    "sign_in": "Connexion",
+    "submenu": "Sous-menu {{ title }}",
+    "voice_search": "Recherche vocale"
+  },
+  "localization": {
+    "country": "Pays/région",
+    "language": "Langue",
+    "no_results": "Aucun pays ne correspond à votre recherche.",
+    "search_country": "Rechercher un pays",
+    "update": "Mettre à jour"
+  },
+  "newsletter": {
+    "label": "E-mail",
+    "placeholder": "Votre e-mail",
+    "subscribe": "S'abonner",
+    "success": "Merci pour votre inscription."
+  },
+  "not_found": {
+    "text": "La page que vous cherchez a été déplacée ou n'existe plus.",
+    "title": "Page introuvable"
+  },
+  "password": {
+    "enter": "Entrer",
+    "enter_with_password": "Entrer avec le mot de passe",
+    "owner": "Vous êtes le propriétaire de la boutique ?",
+    "owner_link": "Connectez-vous ici",
+    "password": "Mot de passe",
+    "powered_by": "Cette boutique sera propulsée par",
+    "wrong": "Mot de passe incorrect."
+  },
+  "price": {
+    "from": "À partir de {{ price }}",
+    "per": "par",
+    "per_piece": "par pièce",
+    "regular": "Prix habituel",
+    "sale": "Prix soldé",
+    "shipping_at_checkout": "Frais d’expédition calculés au paiement.",
+    "tax_excluded": "Hors taxes.",
+    "tax_included": "Taxes incluses.",
+    "unit_price": "Prix unitaire",
+    "wholesale": "Prix de gros"
+  },
+  "wholesale": {
+    "account_and_orders": "Compte et commandes",
+    "change": "Modifier",
+    "current_location": "Emplacement actuel",
+    "location_updated": "Prix et disponibilité mis à jour pour {{ location }}.",
+    "not_found_line": "Client professionnel ? Connectez-vous pour voir les produits réservés.",
+    "ordering_for": "Commande pour",
+    "ordering_for_location": "Commande pour {{ company }} · {{ location }}",
+    "sample_notice": "Aperçu professionnel — données d’exemple",
+    "sign_out": "Déconnexion",
+    "store_credit": "Crédit boutique",
+    "switch_location": "Passer à {{ location }}"
+  }
+}

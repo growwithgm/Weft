@@ -1,0 +1,18 @@
+{
+  "type": "aside",
+  "name": "t:labels.overlays",
+  "sections": {
+    "search": {
+      "type": "search-drawer",
+      "settings": {}
+    },
+    "location": {
+      "type": "location-sheet",
+      "settings": {}
+    }
+  },
+  "order": [
+    "search",
+    "location"
+  ]
+}

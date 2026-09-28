@@ -1,0 +1,35 @@
+<div class="section apps-section{% if section.settings.full_width == false %} page-width{% endif %}{% unless section.settings.show_space %} section--flush-top section--flush-bottom{% endunless %}">
+  {%- content_for 'blocks' -%}
+</div>
+
+{% schema %}
+{
+  "name": "t:labels.apps",
+  "class": "section-apps",
+  "blocks": [
+    {
+      "type": "@app"
+    }
+  ],
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "t:labels.full_width",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_space",
+      "label": "t:labels.add_space_around_the_apps",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:labels.apps",
+      "category": "t:labels.advanced"
+    }
+  ]
+}
+{% endschema %}
