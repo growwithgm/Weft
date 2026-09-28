@@ -14,7 +14,7 @@
 //
 // Both builds are linted with scripts/theme-lint.mjs --root <build>; the Theme Store build also
 // goes through `shopify theme package` when Shopify CLI is installed. Nothing is uploaded.
-import { readFileSync, writeFileSync, readdirSync, existsSync, statSync, rmSync, mkdirSync, cpSync } from 'node:fs';
+import { readFileSync, writeFileSync, readdirSync, existsSync, statSync, rmSync, mkdirSync, cpSync, renameSync } from 'node:fs';
 import { join, dirname, relative, basename, extname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { execFileSync } from 'node:child_process';
@@ -151,6 +151,8 @@ if (themestore) {
   // Shopify's own packager validates theme_info, settings_schema.json and the presets.
   if (hasCli()) {
     execFileSync('shopify', ['theme', 'package', '--path', out], { stdio: 'inherit', cwd: dist });
+    // The CLI writes <theme_name>-<version>.zip inside the theme folder; keep it next to ours.
+    for (const file of readdirSync(out)) if (file.endsWith('.zip')) renameSync(join(out, file), join(dist, file));
   } else {
     console.log('package-theme: Shopify CLI not found, so `shopify theme package` was skipped (CI runs it)');
   }
