@@ -7,7 +7,7 @@
     endif
   endif
 -%}
-<{{ tag }} class="block-heading {{ block.settings.size }}{% if block.settings.uppercase %} is-uppercase{% endif %}" {{ block.shopify_attributes }}>
+<{{ tag }} class="block-heading {{ block.settings.size }}{% if block.settings.uppercase %} is-uppercase{% endif %}{% if block.settings.visibility == 'mobile' %} hide-desktop{% elsif block.settings.visibility == 'desktop' %} hide-mobile{% endif %}" {{ block.shopify_attributes }}>
   {{- block.settings.heading -}}
 </{{ tag }}>
 
@@ -80,6 +80,26 @@
       "id": "uppercase",
       "label": "t:labels.uppercase",
       "default": false
+    },
+    {
+      "type": "select",
+      "id": "visibility",
+      "label": "t:labels.show_on",
+      "options": [
+        {
+          "value": "all",
+          "label": "t:labels.all_screen_sizes"
+        },
+        {
+          "value": "mobile",
+          "label": "t:labels.mobile_only"
+        },
+        {
+          "value": "desktop",
+          "label": "t:labels.large_screens_only"
+        }
+      ],
+      "default": "all"
     }
   ],
   "presets": [

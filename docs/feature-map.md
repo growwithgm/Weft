@@ -20,7 +20,7 @@ Status: `planned` (P0) → `built` (with phase) → `verified` (scenario or chec
 | 8 languages, RTL, market-specific templates | `locales/*` ×8, schema locales en/es, logical CSS, context templates | P1/P6 | partial |
 | Link preloading, lazy images | setting `preload_links` (hover/touch prefetch that defers to Shopify's own speculation rules — verify P1), `snippets/image` | P1 | done |
 | Footer menus, text + socials, newsletter, payment icons, back to top, Follow on Shop, selectors | `sections/footer` with `_footer-column`, `_footer-text` (Follow on Shop via `login_button`), `_footer-newsletter`; `snippets/payment-icons` (`shop.enabled_payment_types`) | P1 | done |
-| Email pop-up, age verification pop-up, free-shipping notice (off) | `sections/popup` (mode: newsletter / age verification / promo), cart free-shipping bar setting | P5 | planned |
+| Email pop-up, age verification pop-up, free-shipping notice (off) | `sections/popup` (mode: newsletter / age verification / promo), cart free-shipping bar setting | P5 | done |
 
 ## 2. Brief §14.2 Home
 
@@ -77,7 +77,7 @@ Status: `planned` (P0) → `built` (with phase) → `verified` (scenario or chec
 | Volume pricing | `blocks/volume-pricing` | P3 | done |
 | Reviews section | `sections/product-reviews` (core) / `integration-reviews-grid` (pilot) | P2/P6 | partial |
 | You may also like, Recently viewed | `sections/product-recommendations`, `sections/recently-viewed` | P2 | done |
-| Product details tabs, feature hotspots, comparison grid | `sections/product-details`, `product-hotspots`, `product-comparison-grid` | P5 | planned |
+| Product details tabs, feature hotspots, comparison grid | `sections/product-details` (+ `product-tabs`, `highlight-text`, `payment-methods` blocks), `product-hotspots`, `product-comparison-grid` | P5 | done |
 | One layout for all templates | `main-product` for every product template | P2 | done |
 | Pre-order, countdown, coming-soon | `templates/product.preorder|countdown|coming-soon.json` | P2 | done |
 | Market overrides with one block order | context templates share `product.json` block order; P7 migration checks it | P7 | planned |
@@ -110,7 +110,7 @@ Status: `planned` (P0) → `built` (with phase) → `verified` (scenario or chec
 | Search page (sort, filters, articles, pages) | `main-search`, `templates/search.json` | P4 | done |
 | 404, password, gift card; 404 wholesale sign-in line | `main-404`, `main-password`, `gift_card.liquid` | P1/P3 | done |
 | Classic customer-account templates | `templates/customers/*` minimal, untouched fallback | P5 | planned |
-| Section library | architecture §2 list | P5 | partial (step 1 of 2 done) |
+| Section library | architecture §2 list | P5 | done |
 
 ## 7. BUILD_SPEC §5.6 Theme Store required features
 
@@ -142,14 +142,14 @@ Status: `planned` (P0) → `built` (with phase) → `verified` (scenario or chec
 | Ingredients (key + INCI) | `blocks/ingredients` | P6 | planned |
 | How to use | `blocks/how-to-use` | P6 | planned |
 | Badges | `blocks/badges` | P6 | planned |
-| Tabs / accordions | `blocks/collapsible`, `sections/product-details` | P2/P5 | partial |
+| Tabs / accordions | `blocks/collapsible`, `blocks/product-tabs`, `sections/product-details` | P2/P5 | done |
 | Unit price | `product-price` | P2 | done |
 | Purchase options | `blocks/purchase-options` | P2 | done |
 | Complete the look / routine / ritual | `blocks/complementary-products` (heading per preset) | P2 | done |
 | Guided finder | `sections/guided-finder` (links to filtered collection URLs only) | P6 | planned |
 | Before/after slider | `sections/before-after` (keyboard + touch) | P6 | planned |
 | Steps / routine | `sections/routine-steps` (optional product per step) | P6 | planned |
-| Shop the look (hotspots) | `sections/shoppable-image` | P5 | planned |
+| Shop the look (hotspots) | `sections/shoppable-image` | P5 | done |
 | Quick order list | `sections/quick-order-list` (reuses `<order-matrix>` from `assets/matrix.js`), `templates/page.quick-order.json`; quick order drawer from wholesale cards (`sections/quick-add`, setting `wholesale_quick_order_drawer`) | P3 | done |
 | Order matrix (any two options) | `blocks/order-matrix` | P3 | done |
 | Shade swatches | `variant-picker` swatches (swatch images / standard colour metaobject `shopify.color-pattern` swatch) | P2 | done |

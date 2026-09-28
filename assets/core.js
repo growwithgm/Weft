@@ -300,6 +300,19 @@ document.addEventListener('submit', (e) => {
   load(W.modules.quickAdd).then((m) => m && m.addFromCard(form, e.submitter));
 });
 
+/* ---------- copy buttons (discount codes) ---------- */
+document.addEventListener('click', async (e) => {
+  const button = e.target.closest('[data-copy-text]');
+  if (!button) return;
+  try {
+    await navigator.clipboard.writeText(button.dataset.copyText);
+    const label = button.textContent;
+    button.textContent = button.dataset.copiedLabel || label;
+    announce(button.textContent);
+    setTimeout(() => (button.textContent = label), 2000);
+  } catch (_) { /* clipboard blocked: the code stays visible to copy by hand */ }
+});
+
 /* ---------- card slideshow on hover (Theme settings > Product cards) ---------- */
 document.addEventListener('pointerover', (e) => {
   const media = e.target.closest?.('[data-card-slideshow]');

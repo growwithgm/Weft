@@ -1,4 +1,4 @@
-<div class="block-text rte block-text--{{ block.settings.style }}" {{ block.shopify_attributes }}>
+<div class="block-text rte block-text--{{ block.settings.style }}{% if block.settings.visibility == 'mobile' %} hide-desktop{% elsif block.settings.visibility == 'desktop' %} hide-mobile{% endif %}" {{ block.shopify_attributes }}>
   {{- block.settings.text -}}
 </div>
 
@@ -40,6 +40,26 @@
         }
       ],
       "default": "body"
+    },
+    {
+      "type": "select",
+      "id": "visibility",
+      "label": "t:labels.show_on",
+      "options": [
+        {
+          "value": "all",
+          "label": "t:labels.all_screen_sizes"
+        },
+        {
+          "value": "mobile",
+          "label": "t:labels.mobile_only"
+        },
+        {
+          "value": "desktop",
+          "label": "t:labels.large_screens_only"
+        }
+      ],
+      "default": "all"
     }
   ],
   "presets": [

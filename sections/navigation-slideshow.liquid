@@ -1,0 +1,357 @@
+{%- comment -%}
+  Navigation slideshow: a slideshow beside a quick navigation panel built from a menu. Menu
+  links to collections and products show their image (and price for products).
+{%- endcomment -%}
+{%- liquid
+  assign s = section.settings
+  assign count = section.blocks.size
+-%}
+{{ 'section-banner.css' | asset_url | stylesheet_tag }}
+{{ 'section-library.css' | asset_url | stylesheet_tag }}
+<div class="section nav-slideshow color-{{ s.color_scheme }}{% unless s.full_width %} page-width{% endunless %}{% if section.index > 2 %} below-fold{% endif %}">
+  <div class="nav-slideshow__grid">
+    <slide-show
+      class="slideshow slideshow--{{ s.transition }} slideshow-section__slider"
+      role="region"
+      aria-roledescription="{{ 'accessibility.carousel' | t }}"
+      aria-label="{{ s.accessibility_info | escape }}"
+      data-transition="{{ s.transition }}"
+      data-autoplay="{{ s.autoplay }}"
+      data-speed="{{ s.autoplay_speed }}"
+      data-pause-hover="true"
+      data-module="{{ 'carousel.js' | asset_url }}"
+      data-load="visible"
+      style="--banner-h: {{ s.fixed_height_desktop }}px; --banner-h-m: {{ s.fixed_height_mobile }}px; --banner-tint: {{ s.tint_color }}; --banner-tint-opacity: {{ s.tint_opacity | divided_by: 100.0 }}; --banner-text: {{ s.text_color }};"
+    >
+      <div class="slideshow__track" data-track aria-live="polite">{%- content_for 'blocks' -%}</div>
+      {%- render 'slideshow-controls', count: count, nav: s.nav_style, autoplay: s.autoplay -%}
+    </slide-show>
+    {%- if s.quick_nav_menu != blank -%}
+      <nav class="nav-slideshow__nav color-{{ s.quick_nav_color_scheme }}" aria-label="{{ s.quick_nav_title | default: s.quick_nav_menu.title | escape }}">
+        {%- if s.quick_nav_title != blank -%}<p class="h4 nav-slideshow__title">{{ s.quick_nav_title | escape }}</p>{%- endif -%}
+        <ul class="nav-slideshow__list" role="list">
+          {%- for link in s.quick_nav_menu.links limit: 8 -%}
+            {%- liquid
+              assign link_image = nil
+              case link.type
+                when 'collection_link'
+                  assign link_image = link.object.featured_image
+                  if link_image == blank and s.quick_nav_use_product_image
+                    assign link_image = link.object.products.first.featured_media.preview_image
+                  endif
+                when 'product_link'
+                  assign link_image = link.object.featured_media.preview_image
+              endcase
+            -%}
+            <li>
+              <a class="nav-slideshow__link" href="{{ link.url }}"{% if link.current %} aria-current="page"{% endif %}>
+                <span class="nav-slideshow__thumb media media--{{ s.quick_nav_image_ratio }}{% if s.quick_nav_image_fit == 'contain' %} media--contain{% endif %}">
+                  {%- if link_image -%}{{ link_image | image_url: width: 160 | image_tag: widths: '80,160', sizes: '64px', alt: '', loading: 'lazy' }}{%- endif -%}
+                </span>
+                <span class="nav-slideshow__label">
+                  <span>{{ link.title | escape }}</span>
+                  {%- if s.quick_nav_show_price and link.type == 'product_link' -%}
+                    {%- render 'price', variant: link.object.selected_or_first_available_variant, size: 'small', from: link.object.price_varies, show_unit: false -%}
+                  {%- endif -%}
+                </span>
+              </a>
+            </li>
+          {%- endfor -%}
+        </ul>
+      </nav>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:labels.navigation_slideshow",
+  "class": "section-navigation-slideshow",
+  "max_blocks": 5,
+  "disabled_on": {
+    "groups": [
+      "header",
+      "footer",
+      "aside"
+    ]
+  },
+  "blocks": [
+    {
+      "type": "_slide"
+    }
+  ],
+  "settings": [
+    {
+      "type": "select",
+      "id": "height",
+      "label": "t:labels.height",
+      "options": [
+        {
+          "value": "small",
+          "label": "t:labels.small"
+        },
+        {
+          "value": "medium",
+          "label": "t:labels.medium"
+        },
+        {
+          "value": "large",
+          "label": "t:labels.large"
+        },
+        {
+          "value": "fixed",
+          "label": "t:labels.fixed"
+        }
+      ],
+      "default": "medium"
+    },
+    {
+      "type": "range",
+      "id": "fixed_height_desktop",
+      "label": "t:labels.fixed_height_on_large_screens",
+      "min": 300,
+      "max": 900,
+      "step": 20,
+      "unit": "px",
+      "default": 560,
+      "visible_if": "{{ section.settings.height == 'fixed' }}"
+    },
+    {
+      "type": "range",
+      "id": "fixed_height_mobile",
+      "label": "t:labels.fixed_height_on_mobile",
+      "min": 200,
+      "max": 800,
+      "step": 20,
+      "unit": "px",
+      "default": 440,
+      "visible_if": "{{ section.settings.height == 'fixed' }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "mobile_stacked",
+      "label": "t:labels.show_text_below_the_image_on_mobile",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "t:labels.quick_navigation"
+    },
+    {
+      "type": "link_list",
+      "id": "quick_nav_menu",
+      "label": "t:labels.menu"
+    },
+    {
+      "type": "text",
+      "id": "quick_nav_title",
+      "label": "t:labels.heading",
+      "default": "Shop by category"
+    },
+    {
+      "type": "select",
+      "id": "quick_nav_image_ratio",
+      "label": "t:labels.image_aspect_ratio",
+      "options": [
+        {
+          "value": "square",
+          "label": "t:labels.square"
+        },
+        {
+          "value": "portrait",
+          "label": "t:labels.portrait"
+        },
+        {
+          "value": "circle",
+          "label": "t:labels.circle"
+        }
+      ],
+      "default": "square"
+    },
+    {
+      "type": "select",
+      "id": "quick_nav_image_fit",
+      "label": "t:labels.image_fit",
+      "options": [
+        {
+          "value": "cover",
+          "label": "t:labels.fill"
+        },
+        {
+          "value": "contain",
+          "label": "t:labels.fit"
+        }
+      ],
+      "default": "cover"
+    },
+    {
+      "type": "checkbox",
+      "id": "quick_nav_use_product_image",
+      "label": "t:text.sections.navigation_slideshow.settings.quick_nav_use_product_image.label",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "quick_nav_show_price",
+      "label": "t:labels.show_prices_for_product_links",
+      "default": true
+    },
+    {
+      "type": "color_scheme",
+      "id": "quick_nav_color_scheme",
+      "label": "t:labels.quick_navigation_color_scheme",
+      "default": "scheme-2"
+    },
+    {
+      "type": "header",
+      "content": "t:labels.slideshow"
+    },
+    {
+      "type": "select",
+      "id": "nav_style",
+      "label": "t:labels.navigation",
+      "options": [
+        {
+          "value": "dots",
+          "label": "t:labels.dots"
+        },
+        {
+          "value": "arrows",
+          "label": "t:labels.arrows"
+        },
+        {
+          "value": "both",
+          "label": "t:labels.dots_and_arrows"
+        },
+        {
+          "value": "none",
+          "label": "t:labels.none"
+        }
+      ],
+      "default": "dots"
+    },
+    {
+      "type": "select",
+      "id": "transition",
+      "label": "t:labels.transition",
+      "options": [
+        {
+          "value": "slide",
+          "label": "t:labels.slide"
+        },
+        {
+          "value": "fade",
+          "label": "t:labels.fade"
+        }
+      ],
+      "default": "slide"
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "t:labels.change_slides_automatically",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "autoplay_speed",
+      "label": "t:labels.change_slides_every",
+      "min": 3,
+      "max": 10,
+      "step": 1,
+      "unit": "s",
+      "default": 5
+    },
+    {
+      "type": "text",
+      "id": "accessibility_info",
+      "label": "t:labels.slideshow_description",
+      "default": "Featured collections",
+      "info": "t:labels.read_by_screen_readers"
+    },
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "t:labels.full_width",
+      "default": true
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:labels.color_scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "t:labels.text_on_images",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "tint_color",
+      "label": "t:labels.image_tint",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "tint_opacity",
+      "label": "t:labels.image_tint_opacity",
+      "min": 0,
+      "max": 90,
+      "step": 5,
+      "unit": "%",
+      "default": 25
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:labels.navigation_slideshow",
+      "category": "t:labels.banners",
+      "settings": {
+        "quick_nav_menu": "main-menu"
+      },
+      "blocks": [
+        {
+          "type": "_slide",
+          "blocks": [
+            {
+              "type": "heading",
+              "settings": {
+                "heading": "New season",
+                "size": "h1"
+              }
+            },
+            {
+              "type": "button",
+              "settings": {
+                "label": "Shop now",
+                "style": "primary"
+              }
+            }
+          ]
+        },
+        {
+          "type": "_slide",
+          "blocks": [
+            {
+              "type": "heading",
+              "settings": {
+                "heading": "Best sellers",
+                "size": "h1"
+              }
+            },
+            {
+              "type": "button",
+              "settings": {
+                "label": "Shop now",
+                "style": "primary"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

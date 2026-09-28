@@ -1,0 +1,218 @@
+{%- comment -%}
+  Product tabs (live product-details "Tabs"): description, specification from metafields,
+  reviews (custom Liquid for review apps) and up to three custom tabs (text or a page).
+  Tabs style: ARIA tabs with arrow keys (tabs.js); without JavaScript every panel shows with its
+  heading. Accordion style: collapsible rows.
+{%- endcomment -%}
+{%- liquid
+  assign b = block.settings
+  assign p = closest.product
+  assign base_id = 'Tabs-' | append: block.id
+  assign count = 0
+-%}
+{%- capture panels -%}
+  {%- if b.show_description and p.description != blank -%}
+    {%- assign count = count | plus: 1 -%}
+    {%- render 'product-tab', base_id: base_id, n: count, title: 'products.description', translate: true, style: b.style, open: b.open_first, content: p.description -%}
+  {%- endif -%}
+  {%- if b.show_specification and b.spec_metafields != blank and p -%}
+    {%- capture spec -%}
+      <table class="spec-table{% if b.spec_right_align %} spec-table--end{% endif %}"><tbody>
+        {%- assign lines = b.spec_metafields | newline_to_br | split: '<br />' -%}
+        {%- for line in lines -%}
+          {%- assign parts = line | split: '=' -%}
+          {%- if parts.size == 2 -%}
+            {%- liquid
+              assign row_label = parts[0] | strip
+              assign key_parts = parts[1] | strip | split: '.'
+              assign ns = key_parts | first
+              assign key = key_parts | last
+              assign field = p.metafields[ns][key]
+            -%}
+            {%- if field != blank or b.spec_show_empty -%}
+              <tr><th scope="row">{{ row_label | escape }}</th><td>{% if field != blank %}{{ field | metafield_text }}{% else %}{{ b.spec_empty_text }}{% endif %}</td></tr>
+            {%- endif -%}
+          {%- endif -%}
+        {%- endfor -%}
+      </tbody></table>
+    {%- endcapture -%}
+    {%- assign count = count | plus: 1 -%}
+    {%- render 'product-tab', base_id: base_id, n: count, title: 'products.specification', translate: true, style: b.style, open: false, content: spec -%}
+  {%- endif -%}
+  {%- for i in (1..3) -%}
+    {%- liquid
+      assign t_key = 'tab_' | append: i | append: '_title'
+      assign x_key = 'tab_' | append: i | append: '_text'
+      assign g_key = 'tab_' | append: i | append: '_page'
+      assign t_title = b[t_key]
+      assign t_body = b[x_key]
+      if b[g_key] != blank
+        assign t_body = b[g_key].content
+      endif
+    -%}
+    {%- if t_title != blank and t_body != blank -%}
+      {%- assign count = count | plus: 1 -%}
+      {%- render 'product-tab', base_id: base_id, n: count, title: t_title, translate: false, style: b.style, open: false, content: t_body -%}
+    {%- endif -%}
+  {%- endfor -%}
+  {%- if b.show_reviews and b.custom_reviews != blank -%}
+    {%- assign count = count | plus: 1 -%}
+    {%- render 'product-tab', base_id: base_id, n: count, title: 'products.reviews', translate: true, style: b.style, open: false, content: b.custom_reviews -%}
+  {%- endif -%}
+{%- endcapture -%}
+{%- if count > 0 -%}
+  {%- if b.style == 'tabs' -%}
+    <product-tabs class="tabs" data-module="{{ 'tabs.js' | asset_url }}" data-load="visible" {{ block.shopify_attributes }}>
+      <div class="tabs__list js-only" role="tablist" data-tablist></div>
+      {{ panels }}
+    </product-tabs>
+  {%- else -%}
+    <div class="accordion-group" {{ block.shopify_attributes }}>{{ panels }}</div>
+  {%- endif -%}
+{%- elsif request.design_mode -%}
+  <p class="muted" {{ block.shopify_attributes }}>{{ 'products.description' | t }}</p>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "t:labels.product_tabs",
+  "tag": null,
+  "settings": [
+    {
+      "type": "select",
+      "id": "style",
+      "label": "t:labels.style",
+      "options": [
+        {
+          "value": "tabs",
+          "label": "t:labels.tabs"
+        },
+        {
+          "value": "accordion",
+          "label": "t:labels.collapsible_rows"
+        }
+      ],
+      "default": "tabs"
+    },
+    {
+      "type": "checkbox",
+      "id": "open_first",
+      "label": "t:labels.open_the_first_row",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_description",
+      "label": "t:labels.show_description",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "t:labels.specification"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_specification",
+      "label": "t:labels.show_specification",
+      "default": false
+    },
+    {
+      "type": "textarea",
+      "id": "spec_metafields",
+      "label": "t:labels.rows_from_metafields",
+      "info": "t:labels.one_per_line_label_namespace_key"
+    },
+    {
+      "type": "checkbox",
+      "id": "spec_right_align",
+      "label": "t:labels.align_values_to_the_end",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "spec_show_empty",
+      "label": "t:labels.show_rows_without_a_value",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "spec_empty_text",
+      "label": "t:labels.text_for_empty_values",
+      "default": "–"
+    },
+    {
+      "type": "header",
+      "content": "t:labels.custom_tabs"
+    },
+    {
+      "type": "text",
+      "id": "tab_1_title",
+      "label": "t:labels.tab_1_heading"
+    },
+    {
+      "type": "richtext",
+      "id": "tab_1_text",
+      "label": "t:labels.tab_1_text"
+    },
+    {
+      "type": "page",
+      "id": "tab_1_page",
+      "label": "t:labels.tab_1_page",
+      "info": "t:labels.replaces_the_text"
+    },
+    {
+      "type": "text",
+      "id": "tab_2_title",
+      "label": "t:labels.tab_2_heading"
+    },
+    {
+      "type": "richtext",
+      "id": "tab_2_text",
+      "label": "t:labels.tab_2_text"
+    },
+    {
+      "type": "page",
+      "id": "tab_2_page",
+      "label": "t:labels.tab_2_page",
+      "info": "t:labels.replaces_the_text"
+    },
+    {
+      "type": "text",
+      "id": "tab_3_title",
+      "label": "t:labels.tab_3_heading"
+    },
+    {
+      "type": "richtext",
+      "id": "tab_3_text",
+      "label": "t:labels.tab_3_text"
+    },
+    {
+      "type": "page",
+      "id": "tab_3_page",
+      "label": "t:labels.tab_3_page",
+      "info": "t:labels.replaces_the_text"
+    },
+    {
+      "type": "header",
+      "content": "t:labels.reviews"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_reviews",
+      "label": "t:labels.show_reviews_tab",
+      "default": false
+    },
+    {
+      "type": "liquid",
+      "id": "custom_reviews",
+      "label": "t:labels.reviews_app_code"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:labels.product_tabs",
+      "category": "t:labels.product"
+    }
+  ]
+}
+{% endschema %}

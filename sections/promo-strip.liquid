@@ -1,0 +1,103 @@
+{%- comment -%}
+  Promo strip: a slim band with heading, text, button and discount code blocks.
+{%- endcomment -%}
+{%- assign s = section.settings -%}
+{{ 'section-library.css' | asset_url | stylesheet_tag }}
+<div class="section promo-strip promo-strip--{{ s.height }}{% if s.dividers %} promo-strip--dividers{% endif %} color-{{ s.color_scheme }}">
+  <div class="page-width{% if s.full_width %} page-width--full{% endif %} promo-strip__inner">
+    {%- content_for 'blocks' -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:labels.promo_strip",
+  "class": "section-promo-strip",
+  "disabled_on": {
+    "groups": [
+      "aside"
+    ]
+  },
+  "blocks": [
+    {
+      "type": "heading"
+    },
+    {
+      "type": "text"
+    },
+    {
+      "type": "button"
+    },
+    {
+      "type": "discount-code"
+    },
+    {
+      "type": "product-countdown"
+    }
+  ],
+  "settings": [
+    {
+      "type": "select",
+      "id": "height",
+      "label": "t:labels.height",
+      "options": [
+        {
+          "value": "compact",
+          "label": "t:labels.compact"
+        },
+        {
+          "value": "normal",
+          "label": "t:labels.normal"
+        },
+        {
+          "value": "large",
+          "label": "t:labels.large"
+        }
+      ],
+      "default": "normal"
+    },
+    {
+      "type": "checkbox",
+      "id": "dividers",
+      "label": "t:labels.lines_above_and_below",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "t:labels.full_width",
+      "default": true
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:labels.color_scheme",
+      "default": "scheme-3"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:labels.promo_strip",
+      "category": "t:labels.promotions",
+      "blocks": [
+        {
+          "type": "heading",
+          "settings": {
+            "heading": "Mid-season sale",
+            "size": "h4"
+          }
+        },
+        {
+          "type": "text",
+          "settings": {
+            "text": "<p>Up to 30% off selected pieces.</p>"
+          }
+        },
+        {
+          "type": "discount-code"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

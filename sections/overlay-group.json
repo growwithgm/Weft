@@ -21,6 +21,11 @@
     "compare": {
       "type": "compare-drawer",
       "settings": {}
+    },
+    "popup": {
+      "type": "popup",
+      "disabled": true,
+      "settings": {}
     }
   },
   "order": [
@@ -28,6 +33,7 @@
     "quickadd",
     "search",
     "location",
-    "compare"
+    "compare",
+    "popup"
   ]
 }

@@ -14,6 +14,11 @@
     "slide_of": "Folie {{ index }} von {{ count }}",
     "star_rating": "{{ rating }} von {{ max }} Sternen"
   },
+  "blogs": {
+    "placeholder_title": "Titel des Beitrags",
+    "read_more": "Weiterlesen",
+    "view_all": "Alle Beiträge ansehen"
+  },
   "cart": {
     "checkout": "Zur Kasse",
     "discount": "Rabatt",
@@ -32,6 +37,7 @@
     "shipping": {
       "calculate": "Berechnen",
       "country": "Land",
+      "empty_cart": "Lege Artikel in den Warenkorb, um den Versand zu berechnen.",
       "error": "Die Versandtarife konnten nicht berechnet werden. Prüfe die Adresse und versuche es erneut.",
       "none": "An diese Adresse liefern wir nicht.",
       "province": "Bundesland",
@@ -86,6 +92,7 @@
   },
   "compare": {
     "availability": "Verfügbarkeit",
+    "choose_products": "Wähle Produkte zum Vergleichen.",
     "clear": "Leeren",
     "compare": "Vergleichen",
     "count": {
@@ -94,13 +101,24 @@
     },
     "description": "Beschreibung",
     "limit": "Du kannst bis zu {{ count }} Produkte vergleichen.",
+    "options": "Optionen",
     "price": "Preis",
+    "rating": "Bewertung",
     "remove": "{{ title }} entfernen",
     "sku": "Artikelnr.",
     "title": "Produkte vergleichen",
     "type": "Typ",
     "vendor": "Marke",
     "weight": "Gewicht"
+  },
+  "contact": {
+    "email": "E-Mail",
+    "message": "Nachricht",
+    "name": "Name",
+    "phone": "Telefonnummer",
+    "required_note": "Mit * markierte Felder sind Pflichtfelder.",
+    "send": "Senden",
+    "success": "Danke für deine Nachricht. Wir melden uns so bald wie möglich."
   },
   "general": {
     "back_to_top": "Nach oben",
@@ -110,6 +128,7 @@
     },
     "close": "Schließen",
     "continue_shopping": "Weiter einkaufen",
+    "copy_code": "Code kopieren",
     "copyright": "© {{ year }} {{ shop }}",
     "dismiss": "Ausblenden",
     "error": "Etwas ist schiefgelaufen. Bitte versuche es erneut.",
@@ -316,6 +335,7 @@
       "recently_viewed": "Zuletzt angesehen"
     },
     "remind_me": "Erinnere mich bei Verfügbarkeit",
+    "reviews": "Bewertungen",
     "select_option": "{{ option }} auswählen",
     "share": {
       "copied": "Link kopiert",
@@ -328,6 +348,7 @@
     },
     "sku": "Artikelnr.: {{ sku }}",
     "sold_out": "Ausverkauft",
+    "specification": "Technische Daten",
     "stock": {
       "backorder": "Nachbestellt",
       "count": "{{ count }} auf Lager",

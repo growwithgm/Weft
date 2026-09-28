@@ -23,7 +23,12 @@
     "shipping-calculator.js": 2048,
     "section-library.css": 5120,
     "section-collection.css": 4096,
-    "component-card.css": 3072
+    "component-card.css": 3072,
+    "hotspots.js": 1536,
+    "tabs.js": 1536,
+    "popup.js": 2048,
+    "section-content.css": 3072,
+    "component-popup.css": 2048
   },
   "pages": {
     "renderBlockingCss": 14336,

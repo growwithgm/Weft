@@ -14,6 +14,11 @@
     "slide_of": "Diapositiva {{ index }} de {{ count }}",
     "star_rating": "{{ rating }} de {{ max }} estrellas"
   },
+  "blogs": {
+    "placeholder_title": "Título del artículo",
+    "read_more": "Leer más",
+    "view_all": "Ver todos los artículos"
+  },
   "cart": {
     "checkout": "Tramitar pedido",
     "discount": "Descuento",
@@ -32,6 +37,7 @@
     "shipping": {
       "calculate": "Calcular",
       "country": "País",
+      "empty_cart": "Añade artículos al carrito para calcular el envío.",
       "error": "No se han podido calcular las tarifas. Revisa la dirección e inténtalo de nuevo.",
       "none": "No realizamos envíos a esta dirección.",
       "province": "Provincia",
@@ -86,6 +92,7 @@
   },
   "compare": {
     "availability": "Disponibilidad",
+    "choose_products": "Elige productos para comparar.",
     "clear": "Borrar",
     "compare": "Comparar",
     "count": {
@@ -94,13 +101,24 @@
     },
     "description": "Descripción",
     "limit": "Puedes comparar hasta {{ count }} productos.",
+    "options": "Opciones",
     "price": "Precio",
+    "rating": "Valoración",
     "remove": "Quitar {{ title }}",
     "sku": "SKU",
     "title": "Comparar productos",
     "type": "Tipo",
     "vendor": "Marca",
     "weight": "Peso"
+  },
+  "contact": {
+    "email": "Correo electrónico",
+    "message": "Mensaje",
+    "name": "Nombre",
+    "phone": "Teléfono",
+    "required_note": "Los campos marcados con * son obligatorios.",
+    "send": "Enviar",
+    "success": "Gracias por contactar con nosotros. Te responderemos lo antes posible."
   },
   "general": {
     "back_to_top": "Volver arriba",
@@ -110,6 +128,7 @@
     },
     "close": "Cerrar",
     "continue_shopping": "Seguir comprando",
+    "copy_code": "Copiar código",
     "copyright": "© {{ year }} {{ shop }}",
     "dismiss": "Descartar",
     "error": "Algo salió mal. Inténtalo de nuevo.",
@@ -316,6 +335,7 @@
       "recently_viewed": "Vistos recientemente"
     },
     "remind_me": "Avísame cuando vuelva",
+    "reviews": "Reseñas",
     "select_option": "Selecciona {{ option }}",
     "share": {
       "copied": "Enlace copiado",
@@ -328,6 +348,7 @@
     },
     "sku": "SKU: {{ sku }}",
     "sold_out": "Agotado",
+    "specification": "Especificaciones",
     "stock": {
       "backorder": "En pedido pendiente",
       "count": "{{ count }} en stock",

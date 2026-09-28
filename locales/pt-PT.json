@@ -14,6 +14,11 @@
     "slide_of": "Diapositivo {{ index }} de {{ count }}",
     "star_rating": "{{ rating }} de {{ max }} estrelas"
   },
+  "blogs": {
+    "placeholder_title": "Título do artigo",
+    "read_more": "Ler mais",
+    "view_all": "Ver todos os artigos"
+  },
   "cart": {
     "checkout": "Finalizar compra",
     "discount": "Desconto",
@@ -32,6 +37,7 @@
     "shipping": {
       "calculate": "Calcular",
       "country": "País",
+      "empty_cart": "Adicione artigos ao carrinho para calcular o envio.",
       "error": "Não foi possível calcular as tarifas. Verifique a morada e tente novamente.",
       "none": "Não enviamos para esta morada.",
       "province": "Distrito ou região",
@@ -86,6 +92,7 @@
   },
   "compare": {
     "availability": "Disponibilidade",
+    "choose_products": "Escolha produtos para comparar.",
     "clear": "Limpar",
     "compare": "Comparar",
     "count": {
@@ -94,13 +101,24 @@
     },
     "description": "Descrição",
     "limit": "Pode comparar até {{ count }} produtos.",
+    "options": "Opções",
     "price": "Preço",
+    "rating": "Avaliação",
     "remove": "Remover {{ title }}",
     "sku": "SKU",
     "title": "Comparar produtos",
     "type": "Tipo",
     "vendor": "Marca",
     "weight": "Peso"
+  },
+  "contact": {
+    "email": "E-mail",
+    "message": "Mensagem",
+    "name": "Nome",
+    "phone": "Telefone",
+    "required_note": "Os campos marcados com * são obrigatórios.",
+    "send": "Enviar",
+    "success": "Obrigado pelo seu contacto. Responderemos o mais rapidamente possível."
   },
   "general": {
     "back_to_top": "Voltar ao topo",
@@ -110,6 +128,7 @@
     },
     "close": "Fechar",
     "continue_shopping": "Continuar a comprar",
+    "copy_code": "Copiar código",
     "copyright": "© {{ year }} {{ shop }}",
     "dismiss": "Ignorar",
     "error": "Algo correu mal. Tente novamente.",
@@ -316,6 +335,7 @@
       "recently_viewed": "Vistos recentemente"
     },
     "remind_me": "Avisar-me quando voltar",
+    "reviews": "Avaliações",
     "select_option": "Selecione {{ option }}",
     "share": {
       "copied": "Ligação copiada",
@@ -328,6 +348,7 @@
     },
     "sku": "SKU: {{ sku }}",
     "sold_out": "Esgotado",
+    "specification": "Especificações",
     "stock": {
       "backorder": "Em encomenda",
       "count": "{{ count }} em stock",

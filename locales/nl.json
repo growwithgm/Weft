@@ -14,6 +14,11 @@
     "slide_of": "Dia {{ index }} van {{ count }}",
     "star_rating": "{{ rating }} van de {{ max }} sterren"
   },
+  "blogs": {
+    "placeholder_title": "Titel van het bericht",
+    "read_more": "Lees meer",
+    "view_all": "Alle berichten bekijken"
+  },
   "cart": {
     "checkout": "Afrekenen",
     "discount": "Korting",
@@ -32,6 +37,7 @@
     "shipping": {
       "calculate": "Berekenen",
       "country": "Land",
+      "empty_cart": "Voeg artikelen toe aan je winkelwagen om de verzendkosten te berekenen.",
       "error": "De verzendtarieven konden niet worden berekend. Controleer het adres en probeer het opnieuw.",
       "none": "We verzenden niet naar dit adres.",
       "province": "Provincie",
@@ -86,6 +92,7 @@
   },
   "compare": {
     "availability": "Beschikbaarheid",
+    "choose_products": "Kies producten om te vergelijken.",
     "clear": "Wissen",
     "compare": "Vergelijken",
     "count": {
@@ -94,13 +101,24 @@
     },
     "description": "Beschrijving",
     "limit": "Je kunt tot {{ count }} producten vergelijken.",
+    "options": "Opties",
     "price": "Prijs",
+    "rating": "Beoordeling",
     "remove": "{{ title }} verwijderen",
     "sku": "SKU",
     "title": "Producten vergelijken",
     "type": "Type",
     "vendor": "Merk",
     "weight": "Gewicht"
+  },
+  "contact": {
+    "email": "E-mail",
+    "message": "Bericht",
+    "name": "Naam",
+    "phone": "Telefoonnummer",
+    "required_note": "Velden met * zijn verplicht.",
+    "send": "Versturen",
+    "success": "Bedankt voor je bericht. We nemen zo snel mogelijk contact met je op."
   },
   "general": {
     "back_to_top": "Terug naar boven",
@@ -110,6 +128,7 @@
     },
     "close": "Sluiten",
     "continue_shopping": "Verder winkelen",
+    "copy_code": "Code kopiëren",
     "copyright": "© {{ year }} {{ shop }}",
     "dismiss": "Sluiten",
     "error": "Er ging iets mis. Probeer het opnieuw.",
@@ -316,6 +335,7 @@
       "recently_viewed": "Recent bekeken"
     },
     "remind_me": "Laat het me weten",
+    "reviews": "Reviews",
     "select_option": "Kies een {{ option }}",
     "share": {
       "copied": "Link gekopieerd",
@@ -328,6 +348,7 @@
     },
     "sku": "SKU: {{ sku }}",
     "sold_out": "Uitverkocht",
+    "specification": "Specificaties",
     "stock": {
       "backorder": "Nabesteld",
       "count": "{{ count }} op voorraad",

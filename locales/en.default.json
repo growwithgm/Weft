@@ -14,6 +14,11 @@
     "slide_of": "Slide {{ index }} of {{ count }}",
     "star_rating": "{{ rating }} out of {{ max }} stars"
   },
+  "blogs": {
+    "placeholder_title": "Blog post title",
+    "read_more": "Read more",
+    "view_all": "View all posts"
+  },
   "cart": {
     "checkout": "Check out",
     "discount": "Discount",
@@ -32,6 +37,7 @@
     "shipping": {
       "calculate": "Calculate",
       "country": "Country",
+      "empty_cart": "Add items to your cart to estimate shipping.",
       "error": "Shipping rates couldn’t be calculated. Check the address and try again.",
       "none": "We don’t ship to this address.",
       "province": "Province or state",
@@ -86,6 +92,7 @@
   },
   "compare": {
     "availability": "Availability",
+    "choose_products": "Choose products to compare.",
     "clear": "Clear",
     "compare": "Compare",
     "count": {
@@ -94,13 +101,24 @@
     },
     "description": "Description",
     "limit": "You can compare up to {{ count }} products.",
+    "options": "Options",
     "price": "Price",
+    "rating": "Rating",
     "remove": "Remove {{ title }}",
     "sku": "SKU",
     "title": "Compare products",
     "type": "Type",
     "vendor": "Brand",
     "weight": "Weight"
+  },
+  "contact": {
+    "email": "Email",
+    "message": "Message",
+    "name": "Name",
+    "phone": "Phone number",
+    "required_note": "Fields marked * are required.",
+    "send": "Send",
+    "success": "Thanks for contacting us. We’ll get back to you as soon as possible."
   },
   "general": {
     "back_to_top": "Back to top",
@@ -110,6 +128,7 @@
     },
     "close": "Close",
     "continue_shopping": "Continue shopping",
+    "copy_code": "Copy code",
     "copyright": "© {{ year }} {{ shop }}",
     "dismiss": "Dismiss",
     "error": "Something went wrong. Please try again.",
@@ -316,6 +335,7 @@
       "recently_viewed": "Recently viewed"
     },
     "remind_me": "Remind me when in stock",
+    "reviews": "Reviews",
     "select_option": "Select a {{ option }}",
     "share": {
       "copied": "Link copied",
@@ -328,6 +348,7 @@
     },
     "sku": "SKU: {{ sku }}",
     "sold_out": "Sold out",
+    "specification": "Specification",
     "stock": {
       "backorder": "On backorder",
       "count": "{{ count }} in stock",
