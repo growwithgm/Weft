@@ -8,7 +8,7 @@ P8 — Demo content & submission package. P7 is done: the migration reproduces t
 - P8, step 3 (package): `node scripts/package-theme.mjs --themestore` → `shopify theme package` (in CI), final §7.4 pass, every §8.4 step done or listed under Owner actions; refresh the PR description.
 
 ## Theme Store readiness (BUILD_SPEC §7.4)
-Checked at the P6 exit (28 Sep 2026). ✓ = verified in this repository; ⏳ = needs a store, secrets or the owner (see Owner actions).
+Checked at the P6 exit and again in P8 (28 Sep 2026). ✓ = verified in this repository; ⏳ = needs a store, secrets or the owner (see Owner actions).
 - ✓ **Blocks.** Product information is all blocks; `@app` in main product and featured product; the Custom Liquid block sits next to every `@app` slot (apps, image banner, cart page, footer fixed in P6).
 - ⏳ **Minimum scores.** Lighthouse CI runs against the dev store once the store secrets exist; asset budgets pass in the lint on every commit.
 - **Accessibility.**
@@ -21,15 +21,15 @@ Checked at the P6 exit (28 Sep 2026). ✓ = verified in this repository; ⏳ = n
   - ⏳ touch targets of at least 24 × 24 px: axe runs in the scenario suite (`p1-foundation`, `p5-pages`) once the store secrets exist
   - ✓ visually distinct headings (heading scale and weights per preset)
 - ✓ **Social.** Social icon settings with empty defaults, Open Graph and Twitter card tags (`snippets/meta-tags`), `page_image`.
-- ✓ **Settings.** Favicon, logo at any aspect ratio (width settings, no fixed height), header menu default `main-menu`, footer menus default `footer`, `theme_info`, editor changes render through `request.design_mode` states.
+- ✓ **Settings.** Favicon, logo at any aspect ratio (width settings, no fixed height), header menu default `main-menu`, footer menus default `footer`, `theme_info`, editor changes render through `request.design_mode` states. ⏳ `theme_info` documentation and support URLs point to grownest.pro; point them at the published documentation and the support contact form before packaging (Owner).
 - ✓ **Markup and URLs.** `<html lang="{{ request.locale.iso_code }}">`, URLs from `routes` (only the password page's `/admin` owner link is literal, with `rel="nofollow"`), payment icons from `shop.enabled_payment_types`, `content_for_header` untouched.
 - ✓ **Scripts and links.** Every script is a theme asset (the lint rejects remote scripts); the Shopify link is `powered_by_link`.
 - ✓ **Apps and honesty.** Integrations are removed from the Theme Store package (`package-theme.mjs --themestore` fails on leftovers); countdowns use merchant dates; stock messages use inventory.
-- **Package contents.** ✓ no `config/markets.json` in the package; ⏳ browser and webview pass (§7.5) on the demo stores in P8.
-- ⏳ **Review checklist** with Shopify's testing assets (25-section home page, long menus, logo ratios) on a store in P8.
+- **Package contents.** ✓ no `config/markets.json` in the package; ⏳ browser and webview pass (§7.5) on the demo stores (Owner).
+- ⏳ **Review checklist** with Shopify's testing assets (25-section home page, long menus, logo ratios) on a demo store (Owner; the demo store setup is in `demo-content/`).
 - ✓ **Required features (§5.6).** All rows done in `docs/feature-map.md` §7.
 - ✓ **Metaobject settings.** None are used.
-- ⏳ **Names.** Weft is final; Tress and Balm need the owner's confirmation before the first upload (VERTICALS §1).
+- ⏳ **Names.** Weft is final; Tress and Balm need the owner's confirmation before the first upload (VERTICALS §1), and all three need a check that they are free in the Theme Store (Owner).
 - ✓ **Package.** `node scripts/package-theme.mjs --themestore` builds `dist/weft-themestore.zip` and runs `shopify theme package` where the CLI exists (CI); CI runs Theme Check on the package.
 
 ## P5 plan (done)

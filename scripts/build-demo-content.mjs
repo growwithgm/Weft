@@ -308,7 +308,7 @@ function pagesMd(preset, page) {
 function imagesMd(preset, catalog) {
   const out = [`# ${PRESET_NAME[preset]} demo store: images`, ''];
   out.push('Licensed images only: Shopify Burst (free under its license) or photography the owner commissioned. No other brand\'s products, logos or packaging in frame, and no people who haven\'t signed a model release. Record every image in the credits table before the store goes to review.', '');
-  out.push('Sizes: product images square or 4:5 at 2048 px on the long side; banners 2880 x 1280px or larger; collection images square at 1200 px.', '');
+  out.push('Sizes: product images square or 4:5, 2048px on the long side; banners 2880 x 1280px or larger; collection images 1200 x 1200px.', '');
   out.push('## Product images', '');
   const rows = [];
   for (const p of catalog.products) {
