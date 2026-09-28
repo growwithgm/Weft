@@ -65,7 +65,7 @@ The home page finder in the Tress preset already asks these; set the same on the
 | What is your hair type? | `filter.p.m.shopify.hair-type` | Straight, Wavy, Curly, Coily |
 | What would you like to fix? | `filter.p.tag` | Damage, Frizz, Volume, Color care |
 
-The tag answers match product tags in `products.csv`, and the type answers match the category metafield values in `products.md`, so every answer leads to a filled collection page. The filters need the matching collection filters in the Shopify Search & Discovery app (see README).
+The tag answers match product tags in `products.csv`, so they filter as they are. Hair and skin type filters use metaobject values, not the labels: after adding the filter in the Shopify Search & Discovery app, open the collection, choose each type in the filter, copy the value after `filter.p.m.shopify.hair-type=` (or `skin-type=`) from the address bar, and enter the answer as `Curly = <value>`. Every answer then leads to a filled collection page.
 
 ## Blog "Journal"
 

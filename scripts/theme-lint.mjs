@@ -577,6 +577,56 @@ for (const file of list(join(ROOT, 'assets'))) {
   }
 }
 
+// ---------- settings that nothing reads ----------
+// A setting the code never reads does nothing in the editor, which the Theme Store review flags.
+// Global settings must appear as settings.<id> in theme code; section and block settings in their
+// own file, the snippets it renders, the blocks (which read section.settings) or the assets.
+{
+  const readText = (d) => list(join(ROOT, d)).filter((f) => /\.(liquid|js|css)$/.test(f)).map((f) => read(f));
+  const stripSchema = (src) => src.replace(/\{%-?\s*schema\s*-?%\}[\s\S]*?\{%-?\s*endschema\s*-?%\}/, '');
+  const snippets = new Map(list(join(ROOT, 'snippets')).map((f) => [basename(f, '.liquid'), stripSchema(read(f))]));
+  const blocksCode = list(join(ROOT, 'blocks')).map((f) => stripSchema(read(f))).join('\n');
+  const assetsCode = readText('assets').join('\n');
+  const rendered = (src, seen = new Set()) => {
+    let out = '';
+    for (const m of src.matchAll(/render\s+'([a-z0-9_-]+)'/g)) {
+      if (seen.has(m[1]) || !snippets.has(m[1])) continue;
+      seen.add(m[1]);
+      out += snippets.get(m[1]) + rendered(snippets.get(m[1]), seen);
+    }
+    return out;
+  };
+  const allCode = ['layout', 'sections', 'snippets', 'blocks', 'assets'].flatMap(readText).join('\n');
+  const settingsFile = join(ROOT, 'config', 'settings_schema.json');
+  if (existsSync(settingsFile)) {
+    for (const group of JSON.parse(read(settingsFile))) {
+      for (const s of group.settings || []) {
+        if (!s.id || ['header', 'paragraph'].includes(s.type)) continue;
+        // Social links are read by building the id (settings['social_' | append: name | append: '_url']).
+        if (/^social_\w+_url$/.test(s.id) && allCode.includes("'social_'")) continue;
+        if (!new RegExp(`settings\\.${s.id}\\b`).test(allCode)) report('error', settingsFile, `Theme setting "${s.id}" is never read by the theme`);
+      }
+    }
+  }
+  for (const d of ['sections', 'blocks']) {
+    for (const file of list(join(ROOT, d)).filter((f) => f.endsWith('.liquid'))) {
+      const src = read(file);
+      const schema = extractSchema(file, src);
+      if (!schema) continue;
+      const own = stripSchema(src);
+      const code = own + rendered(own) + (d === 'sections' ? blocksCode : '') + assetsCode;
+      const settings = [...(schema.settings || []), ...(schema.blocks || []).flatMap((b) => b.settings || [])];
+      for (const s of settings) {
+        if (!s.id || ['header', 'paragraph'].includes(s.type)) continue;
+        // Numbered families (tab_1_title, promo2_link) may be read by building the id.
+        const suffix = s.id.match(/_\d+_(\w+)$/)?.[1] || s.id.match(/^[a-z]+\d+_(\w+)$/)?.[1];
+        const found = new RegExp(`\\b${s.id}\\b`).test(code) || (suffix && new RegExp(`['"]_?${suffix}['"]`).test(code));
+        if (!found) report('error', file, `Setting "${s.id}" is never read`);
+      }
+    }
+  }
+}
+
 // ---------- budgets (compressed bytes) ----------
 const budgetFile = join(REPO, 'tests', 'lighthouse', 'budgets.json');
 if (existsSync(budgetFile)) {

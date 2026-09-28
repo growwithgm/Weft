@@ -292,7 +292,7 @@ function pagesMd(preset, page) {
   if (page.finder) {
     out.push('## Finder answers', '', `The home page finder in the ${PRESET_NAME[preset]} preset already asks these; set the same on the "Find your routine" page (template \`page.finder\`):`, '');
     out.push(table(['Question', 'Filter parameter', 'Answers'], page.finder.questions.map(([q, f, a]) => [q, `\`${f}\``, a.join(', ')])), '');
-    out.push('The tag answers match product tags in `products.csv`, and the type answers match the category metafield values in `products.md`, so every answer leads to a filled collection page. The filters need the matching collection filters in the Shopify Search & Discovery app (see README).', '');
+    out.push('The tag answers match product tags in `products.csv`, so they filter as they are. Hair and skin type filters use metaobject values, not the labels: after adding the filter in the Shopify Search & Discovery app, open the collection, choose each type in the filter, copy the value after `filter.p.m.shopify.hair-type=` (or `skin-type=`) from the address bar, and enter the answer as `Curly = <value>`. Every answer then leads to a filled collection page.', '');
   }
   out.push(`## Blog "${page.blog.title}"`, '', `Handle \`${page.blog.handle}\`.`, '');
   for (const a of page.blog.articles) {

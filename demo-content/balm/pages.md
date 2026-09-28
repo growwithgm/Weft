@@ -65,7 +65,7 @@ The home page finder in the Balm preset already asks these; set the same on the 
 | How does your skin feel today? | `filter.p.m.shopify.skin-type` | Dry, Sensitive, Normal, Oily |
 | Which scent do you like? | `filter.p.tag` | Warm, Fresh, Floral, Unscented |
 
-The tag answers match product tags in `products.csv`, and the type answers match the category metafield values in `products.md`, so every answer leads to a filled collection page. The filters need the matching collection filters in the Shopify Search & Discovery app (see README).
+The tag answers match product tags in `products.csv`, so they filter as they are. Hair and skin type filters use metaobject values, not the labels: after adding the filter in the Shopify Search & Discovery app, open the collection, choose each type in the filter, copy the value after `filter.p.m.shopify.hair-type=` (or `skin-type=`) from the address bar, and enter the answer as `Curly = <value>`. Every answer then leads to a filled collection page.
 
 ## Blog "Journal"
 
