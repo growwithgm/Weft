@@ -22,7 +22,6 @@
   .card__image--slide { position: absolute; inset: 0; opacity: 0; transition: opacity 250ms ease; }
   [data-card-slideshow].is-sliding .card__image--secondary { opacity: 0; }
   [data-card-slideshow].is-sliding .card__image.is-shown { opacity: 1; }
-  .media--blend img { mix-blend-mode: multiply; }
   .card__labels { position: absolute; z-index: 1; margin: 8px; }
   .card__labels--top_start { inset-block-start: 0; inset-inline-start: 0; } .card__labels--top_end { inset-block-start: 0; inset-inline-end: 0; }
   .card__labels--bottom_start { inset-block-end: 0; inset-inline-start: 0; } .card__labels--bottom_end { inset-block-end: 0; inset-inline-end: 0; }

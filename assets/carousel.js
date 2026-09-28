@@ -136,12 +136,18 @@ class ScrollRow extends HTMLElement {
     this.prev = this.querySelector('[data-scroll-prev]');
     this.next = this.querySelector('[data-scroll-next]');
     if (!this.list || !this.prev || !this.next) return;
-    // Steps add up from the last target, so quick repeated clicks move several pages even when
-    // the browser drops a smooth scroll that starts while another is running.
+    // Steps add up from the last target, so quick repeated clicks move several items or pages even
+    // when the browser drops a smooth scroll that starts while another is running. Theme settings >
+    // Carousels decides whether one click moves one item or one page.
+    const amount = () => {
+      const item = this.list.firstElementChild;
+      if (document.documentElement.dataset.carouselStep !== 'slide' || !item) return this.list.clientWidth * 0.9;
+      return item.getBoundingClientRect().width + (parseFloat(getComputedStyle(this.list).columnGap) || 0);
+    };
     const step = (dir) => {
       const max = this.list.scrollWidth - this.list.clientWidth;
       const from = this.targetLeft ?? Math.abs(this.list.scrollLeft);
-      this.targetLeft = Math.min(max, Math.max(0, from + dir * this.list.clientWidth * 0.9));
+      this.targetLeft = Math.min(max, Math.max(0, from + dir * amount()));
       this.retries = 0;
       this.scrollToTarget();
     };

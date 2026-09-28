@@ -13,7 +13,7 @@
   assign card_sizes = sizes | default: '(min-width: 990px) 25vw, 50vw'
 -%}
 <div class="collection-card collection-card--ratio-{{ settings.collection_card_ratio }}" style="--cc-align: {{ settings.collection_card_text_align }}; --cc-position: {{ settings.collection_card_image_position }};{% if card_image %} --cc-natural: {{ card_image.aspect_ratio }};{% endif %}">
-  <div class="collection-card__media media{% if settings.collection_card_fit == 'contain' %} media--contain{% endif %}">
+  <div class="collection-card__media media{% if settings.collection_card_fit == 'contain' %} media--contain{% endif %}{% if settings.image_blend_collections %} media--blend{% endif %}">
     {%- if card_image -%}
       {%- render 'image', image: card_image, sizes: card_sizes, eager: eager, widths: '240,360,480,640,800,960' -%}
     {%- else -%}

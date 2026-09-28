@@ -150,6 +150,7 @@
   .media { position: relative; overflow: hidden; background: var(--c-surface); border-radius: var(--r-media); }
   .media > img, .media > video, .media > svg, .media > iframe { width: 100%; height: 100%; object-fit: cover; }
   .media--contain > img { object-fit: contain; }
+  .media--blend { background: var(--c-blend, var(--c-surface)); } .media--blend img { mix-blend-mode: multiply; }
   .media svg.placeholder-svg { background: var(--c-surface); fill: color-mix(in srgb, var(--c-fg) 25%, transparent); }
 
   /* Skip link, chat button */
