@@ -179,12 +179,18 @@
   .header__end { justify-content: flex-end; }
   .header__logo { justify-self: center; display: block; font-family: var(--f-heading); font-weight: var(--fw-heading); font-size: var(--h-26); line-height: 1; color: var(--c-heading); text-decoration: none; }
   .header__logo img { width: var(--logo-width); height: auto; }
+  .header__logo-wrap { justify-self: center; margin: 0; font: inherit; line-height: 1; }
   .header__nav, .header__search-field { display: none; }
   @media (min-width: 990px) {
-    .header { grid-template-columns: auto minmax(max-content, 1fr) auto; min-height: 76px; gap: 24px; }
-    .header--logo-center { grid-template-columns: 1fr auto 1fr; }
-    .header__logo { justify-self: start; font-size: var(--h-34); }
-    .header--logo-center .header__logo { justify-self: center; }
+    /* One row: the mobile toggles' column is dropped and named areas keep logo, menu and icons in line. */
+    .header { grid-template-columns: auto minmax(0, 1fr) auto; grid-template-areas: 'logo nav end'; min-height: 76px; gap: 24px; }
+    .header__start { display: none; }
+    .header__logo-wrap { grid-area: logo; justify-self: start; }
+    .header__nav { grid-area: nav; min-width: 0; }
+    .header__end { grid-area: end; }
+    .header--logo-center { grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); grid-template-areas: 'nav logo end'; }
+    .header--logo-center .header__logo-wrap { justify-self: center; }
+    .header__logo { font-size: var(--h-34); }
     .header__menu-toggle, .header__search-toggle--mobile { display: none; }
     .header__nav { display: block; }
     .header__search-field { display: flex; }

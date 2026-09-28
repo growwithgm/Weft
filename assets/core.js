@@ -173,11 +173,18 @@ function hydrate(dialog) {
 
 export function openDialog(idOrEl, opener) {
   const dialog = typeof idOrEl === 'string' ? document.getElementById(idOrEl) : idOrEl;
-  if (!dialog || dialog.open) return dialog;
+  if (!dialog) return dialog;
+  // A dialog left open without being modal (or mid-close) would swallow the click: reset it first.
+  if (dialog.open && (dialog.matches(':modal') && dialog.dataset.state !== 'closing')) return dialog;
+  if (dialog.open) dialog.close();
   lastOpener = opener || document.activeElement;
   hydrate(dialog);
   document.querySelectorAll('dialog[open]').forEach((d) => d !== dialog && closeDialog(d, false));
-  dialog.showModal();
+  try {
+    dialog.showModal();
+  } catch {
+    return null;
+  }
   dialog.dataset.state = 'open';
   const focusTarget = dialog.querySelector('[autofocus]') || dialog.querySelector('[data-dialog-focus]');
   if (focusTarget) focusTarget.focus();
@@ -191,6 +198,7 @@ export function closeDialog(idOrEl, restoreFocus = true) {
   if (!dialog || !dialog.open) return;
   dialog.dataset.state = 'closing';
   const done = () => {
+    if (dialog.dataset.state !== 'closing') return; // reopened while the close animation ran
     dialog.close();
     dialog.dataset.state = 'closed';
     if (!document.querySelector('dialog[open]')) setChatHidden(false);
@@ -212,7 +220,8 @@ document.addEventListener('click', (e) => {
     const dialog = document.getElementById(opener.dataset.openDialog);
     if (dialog) {
       e.preventDefault();
-      openDialog(dialog, opener);
+      // If the dialog can't open, follow the link (e.g. the cart icon goes to /cart).
+      if (!openDialog(dialog, opener)?.open && opener.href) location.assign(opener.href);
     }
     return;
   }

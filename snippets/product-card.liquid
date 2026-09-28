@@ -144,12 +144,20 @@
             elsif sw_color == blank
               assign sw_image = value.swatch.image
             endif
+            # A value with no swatch color or image falls back to its variant image, then to its name (never a blank circle).
+            if sw_color == blank and sw_image == blank
+              assign sw_image = value.variant.featured_image
+            endif
           -%}
           <li>
-            <span class="card-swatch" title="{{ value | escape }}"{% if sw_color %} style="--swatch-color: {{ sw_color }}"{% endif %}>
-              {%- if sw_image -%}{{ sw_image | image_url: width: 60 | image_tag: width: 30, height: 30, alt: '', loading: 'lazy' }}{%- endif -%}
-              <span class="visually-hidden">{{ value }}</span>
-            </span>
+            {%- if sw_color == blank and sw_image == blank -%}
+              <span class="card-swatch card-swatch--text">{{ value | escape }}</span>
+            {%- else -%}
+              <span class="card-swatch" title="{{ value | escape }}"{% if sw_color %} style="--swatch-color: {{ sw_color }}"{% endif %}>
+                {%- if sw_image -%}{{ sw_image | image_url: width: 60 | image_tag: width: 30, height: 30, alt: '', loading: 'lazy' }}{%- endif -%}
+                <span class="visually-hidden">{{ value }}</span>
+              </span>
+            {%- endif -%}
           </li>
         {%- endfor -%}
         {%- if swatch_option.values.size > 6 -%}<li class="card__swatches-more muted">+{{ swatch_option.values.size | minus: 6 }}</li>{%- endif -%}

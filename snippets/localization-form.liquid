@@ -39,6 +39,7 @@
         </select>
       </div>
     {%- endif -%}
-    <button type="submit" class="button button--small button--secondary localization-form__submit" data-localization-submit>{{ 'localization.update' | t }}</button>
+    {%- comment -%} Hidden as soon as JavaScript runs (localization.js submits on change), shown without it. {%- endcomment -%}
+    <button type="submit" class="button button--small button--secondary localization-form__submit no-js-only" data-localization-submit>{{ 'localization.update' | t }}</button>
   {%- endform -%}
 {%- endif -%}

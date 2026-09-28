@@ -66,6 +66,8 @@ document.querySelectorAll('.search-drawer__form').forEach((form) => {
     clearTimeout(timer);
     timer = setTimeout(() => render(input.value), 250);
   });
+  // Text typed while this module was still loading gets its results too.
+  if (input.value.trim()) render(input.value);
 
   input.addEventListener('keydown', (e) => {
     const list = options();
