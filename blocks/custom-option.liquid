@@ -4,13 +4,12 @@
   assign field_id = 'Option-' | append: block.id
   assign prop_name = 'properties[' | append: block.settings.label | append: ']'
   assign required = block.settings.required
-  assign in_quick_add = true
-  if section.settings.quick_add_marker != nil and block.settings.show_in_quick_add == false
-    assign in_quick_add = false
-  endif
+  # Quick add can't render a product template's blocks, so quick-add.js copies these fields from the
+  # product page: the ones marked "Show in quick add" (when the quick add section allows it) and
+  # every required one, so a required option can't be skipped from a card.
 -%}
-{%- if block.settings.label != blank and in_quick_add -%}
-  <div class="custom-option field" {{ block.shopify_attributes }}>
+{%- if block.settings.label != blank -%}
+  <div class="custom-option field" data-custom-option data-required="{{ required }}" data-in-quick-add="{{ block.settings.show_in_quick_add }}" {{ block.shopify_attributes }}>
     {%- case block.settings.type -%}
       {%- when 'checkbox' -%}
         <input type="hidden" name="{{ prop_name }}" value="{{ block.settings.checkbox_unchecked | escape }}" form="{{ form_id }}">

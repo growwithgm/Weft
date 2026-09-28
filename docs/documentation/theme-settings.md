@@ -21,6 +21,7 @@ To open Theme settings, click **Customize** on your theme in **Online Store > Th
 | Drawers and pop-ups | The color scheme for the cart drawer, menus, quick add, search, product guide and other overlays. |
 | Accents | Colors for sale prices, rating stars, stock status (in stock, low stock and backorder, sold out), success, error and information messages, the installments row tint, and disabled buttons. Status colors always show with a text label. |
 | Blend product images with the background | Blends product card images into a background color, which suits product photos shot on white. |
+| Blend collection images with the background, Blend color | Does the same for collection card images; the blend color sits behind the blended images. |
 | Blend color | The color that product images blend into. |
 
 ## Typography
@@ -44,7 +45,9 @@ To open Theme settings, click **Customize** on your theme in **Online Store > Th
 | Button and input border | 1 px or 2 px borders on buttons and form fields. |
 | Button, Input, Card and panel, Image, Drawer, Pop-up corner radius | Roundness of each element's corners. |
 | Accordions: Toggle icon | Plus and minus, or a chevron, on collapsible rows. |
-| Breadcrumbs: Products | Shows breadcrumbs above product information. Collection pages have their own **Show breadcrumbs** setting in the Collection banner section. |
+| Breadcrumbs: Products | Shows breadcrumbs above product information. |
+| Breadcrumbs: Collections, Collection list, Blog posts, Blogs, RSS link | Breadcrumbs on those pages. On a collection, the trail shows in the Collection banner (when its **Show breadcrumbs** is on) or above the products when the banner isn't used. The RSS link adds a feed link to blog breadcrumbs. |
+| Carousels: Arrow buttons on large screens, Arrow button style, Scroll per arrow click | Whether product, collection and column carousels show arrow buttons on large screens (always, on hover or never), whether the arrows are outlined or solid, and whether one click moves one item or one page. |
 | Pagination: Style | How collection pages move to the next page: page numbers, a Load more button, or infinite scroll. |
 
 ## Collection cards
@@ -78,6 +81,8 @@ These settings style collection cards in the Collection list section and on the 
 | Style on mobile, Style on large screens | How the quick add action looks: icon button, text link, button, button on hover or hidden. |
 | Dividing lines between cards, Show cards as boxes | Card layout. Box background, Box text and Box border set the box colors. |
 | Highlight tag, Highlight background, Highlight text | Collection sections can highlight products that have this tag. Default tag: `highlight`. |
+| Highlight border | A border color for highlighted cards. |
+| Keep the quick add buttons in view | In the quick add drawer, the add to cart buttons stay visible while the options scroll. |
 
 ## Product compare
 
@@ -98,6 +103,8 @@ The table also shows price, availability, vendor, product type, options, weight,
 | Setting | What it does |
 |---|---|
 | Low stock threshold | At or below this number, retail shoppers see "Only a few left". |
+| Very low stock threshold | At or below this number, the stock line names the exact count ("Only 2 left") in the error color. |
+| Hide the backorder notice | Products that sell while out of stock no longer say "On backorder" on the product page, the sticky bar or cart lines. |
 | Wholesale low stock threshold | Wholesale buyers see exact counts; at or below this number the count is marked as low. |
 | Show stock notice on cards | Always, when low, or never. Needs **Show inventory** in Product cards. |
 | Show exact count to retail shoppers | Always, when low, or never. |
@@ -146,6 +153,7 @@ Swatches use the colors and images you set on option values in Shopify first.
 | Enable predictive search | Shows results as shoppers type. |
 | Results per type | How many products, collections, pages and suggestions show. |
 | Show price, Show vendor | Details shown for product results. |
+| Search field font | The body or heading font for the header search field and the search drawer. |
 | Search SKUs, Search tags | Includes SKUs and product tags in predictive search. |
 | Product type filter in the search field | Lets shoppers limit the search to one product type. |
 | Prompt 1, 2, 3 | Prompts that rotate inside the empty search field. |
@@ -166,6 +174,8 @@ Swatches use the colors and images you set on option values in Shopify first.
 |---|---|
 | Cart icon | Bag, cart or basket icon in the header. |
 | Cart type | Drawer or page. |
+| Show vendor on lines | Shows each line's vendor in the cart page and drawer. |
+| Show related products, Heading, Maximum products, Layout | Products related to the first cart line, under the cart page, as a carousel of cards or a compact list. Wholesale buyers don't see them. |
 | After adding to cart | Open the cart drawer, go to the cart page, or stay on the page. |
 | Empty cart link | Where the "Continue shopping" button in an empty cart leads. |
 | Show weight on lines | Shows each line's weight. |

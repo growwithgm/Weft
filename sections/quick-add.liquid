@@ -12,6 +12,7 @@
     data-section-id="quick-add"
     data-product-url="{{ product.url }}"
     data-quick-add-content
+    data-custom-options="{{ section.settings.quick_add_marker }}"
   >
     {%- assign qa_variant = product.selected_or_first_available_variant -%}
     <div class="quick-add__media media">

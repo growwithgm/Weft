@@ -89,12 +89,8 @@ In the theme editor (Online Store > Themes > Customize on the preview theme, **w
 - Run Lighthouse (DevTools > Lighthouse, mobile and desktop, in an incognito window) on the home page, a collection page and a product page. Record Performance, Accessibility, Best Practices and SEO. Report any Accessibility score below 100 with the failing audits.
 - Turn on "prefers-reduced-motion: reduce" (DevTools > Rendering) and check that slideshows don't autoplay and animations stop.
 
-## Known issues (already being fixed; don't report again)
+## Known issues (don't report again)
 
-- Some theme settings have no effect yet: breadcrumbs on collection, blog and article pages, "Keep the quick add buttons in view", the card highlight border, "Hide the backorder notice", the very low stock threshold, the search field font, and the cart's "Show vendor on lines" and related products.
-- The cart drawer's shipping calculator settings have no effect.
-- Quick add doesn't show custom options, so a required custom option can be skipped through quick add.
-- Products hidden from retail by the wholesale-only tag can still appear in complementary products, the cart drawer's promoted products, shoppable image hotspots and routine steps.
 - Guided finder answers for hair type or skin type need the metaobject value from the filtered collection URL; plain labels don't filter.
 
 ## Report format

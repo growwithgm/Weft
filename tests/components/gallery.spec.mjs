@@ -123,6 +123,29 @@ export const tests = {
     expect(await page.$eval('[data-cart-count]', (c) => c.textContent), 'count updated').toBe('1');
   },
 
+  async 'quick add copies required and marked custom options; a card add with a required option opens quick add'({ page, base, expect, eventually }) {
+    const productPage = `<product-section data-product-section data-section-id="main">
+      <div class="custom-option field" data-custom-option data-required="true" data-in-quick-add="false"><label for="Option-a">Engraving</label><input id="Option-a" name="properties[Engraving]" form="ProductForm-main" required></div>
+      <div class="custom-option field" data-custom-option data-required="false" data-in-quick-add="true"><label for="Option-b">Gift note</label><input id="Option-b" name="properties[Gift note]" form="ProductForm-main"></div>
+      <div class="custom-option field" data-custom-option data-required="false" data-in-quick-add="false"><label for="Option-c">Hidden</label><input id="Option-c" name="properties[Hidden]" form="ProductForm-main"></div>
+    </product-section>`;
+    await page.route('**/products/tee', (r) => r.fulfill({ contentType: 'text/html', body: productPage }));
+    await page.route('**/products/tee?*', (r) => r.fulfill({ contentType: 'text/html', body: '<product-section data-quick-add-content data-section-id="quick-add" data-custom-options="true"><div data-buy-buttons><form id="ProductForm-quick-add" data-product-form><button type="submit">Add</button></form></div></product-section>' }));
+    let added = false;
+    await page.route('**/cart/add.js', (r) => { added = true; r.fulfill({ contentType: 'application/json', body: '{}' }); });
+    const head = "<script>Object.assign(window.Weft, { modules: { quickAdd: '/assets/quick-add.js', product: '/assets/product.js' } }); Object.assign(window.Weft.routes, { cartAdd: '/cart/add' });</script>";
+    const card = quickAdd.replace('data-card-form id="card-form"', 'data-card-form data-product-url="/products/tee" id="card-form"');
+    await page.route('**/fixture.html', (r) => r.fulfill({ contentType: 'text/html', body: shell(card, { head }) }));
+    await page.goto(`${base}/fixture.html`);
+    await page.click('#card-add');
+    await eventually(() => document.getElementById('QuickAdd').open && !!document.querySelector('[data-quick-add-body] #QA-Option-a'), 'required option shown in quick add instead of adding');
+    expect(added, 'nothing added while a required option is empty').toBe(false);
+    expect(await page.$eval('#QA-Option-a', (i) => i.getAttribute('form')), 'field posts with the quick add form').toBe('ProductForm-quick-add');
+    expect(await page.$eval('label[for="QA-Option-a"]', (l) => l.textContent), 'label follows the new id').toBe('Engraving');
+    expect(await page.$$eval('#QA-Option-b', (e) => e.length), 'marked option copied').toBe(1);
+    expect(await page.$$eval('#QA-Option-c', (e) => e.length), 'unmarked optional field left out').toBe(0);
+  },
+
   async 'card slideshow cycles images on hover and resets on leave'({ page, base, expect, eventually }) {
     const card = `<div class="card" style="width: 300px"><a class="card__media media" href="/products/tee" data-card-slideshow style="display: block; position: relative; aspect-ratio: 4 / 5">
       ${[1, 2, 3, 4].map((n) => `<img class="card__image ${n === 1 ? 'card__image--primary' : n === 2 ? 'card__image--secondary' : 'card__image--slide'}" src="${img}" alt="" id="img${n}">`).join('')}

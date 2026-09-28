@@ -186,7 +186,7 @@
     {%- elsif quick_add -%}
       {%- if product.has_only_default_variant and product.requires_selling_plan == false -%}
         {%- assign card_form_id = 'CardForm-' | append: product.id | append: '-' | append: index -%}
-        {%- form 'product', product, id: card_form_id, class: 'card__form', data-card-form: '' -%}
+        {%- form 'product', product, id: card_form_id, class: 'card__form', data-card-form: '', data-product-url: product.url -%}
           <input type="hidden" name="id" value="{{ v.id }}">
           <button type="submit" class="card__action card__action--{{ settings.quick_add_style_desktop }} card__action-m--{{ settings.quick_add_style_mobile }}" aria-describedby="{{ title_id }}">
             <span class="card__action-label">{{ 'products.add_to_cart' | t }}</span>

@@ -155,6 +155,8 @@ The Custom option block adds a field whose value is saved with the cart line and
 
 The **Gift message** preset is a ready-made long text option with a 200 character limit.
 
+In quick add, required options always appear, so they can't be skipped; optional ones appear when **Show in quick add** is on (and the Quick add section's **Show custom options marked for quick add** is on). A product card's direct add button opens quick add instead when the product has a required option.
+
 ## Recommendations and reviews
 
 - **Complementary products** block: products you pick as complementary in the Shopify Search & Discovery app.
