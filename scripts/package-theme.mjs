@@ -12,7 +12,8 @@
 //     store-configs/<name>/ (templates, section groups, config, locales) laid over them; no
 //     listings/. Push with `shopify theme push --path dist/<name> --unpublished`.
 //
-// Both builds are linted with scripts/theme-lint.mjs --root <build>. Nothing is uploaded.
+// Both builds are linted with scripts/theme-lint.mjs --root <build>; the Theme Store build also
+// goes through `shopify theme package` when Shopify CLI is installed. Nothing is uploaded.
 import { readFileSync, writeFileSync, readdirSync, existsSync, statSync, rmSync, mkdirSync, cpSync } from 'node:fs';
 import { join, dirname, relative, basename, extname } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -116,6 +117,15 @@ const zip = (out, file) => {
   console.log(`package-theme: ${relative(ROOT, file)} (${(statSync(file).size / 1024).toFixed(0)} KB)`);
 };
 
+const hasCli = () => {
+  try {
+    execFileSync('shopify', ['version'], { stdio: 'ignore' });
+    return true;
+  } catch (_) {
+    return false;
+  }
+};
+
 const dist = join(ROOT, 'dist');
 mkdirSync(dist, { recursive: true });
 
@@ -138,6 +148,12 @@ if (themestore) {
   }
   lint(out);
   zip(out, join(dist, 'weft-themestore.zip'));
+  // Shopify's own packager validates theme_info, settings_schema.json and the presets.
+  if (hasCli()) {
+    execFileSync('shopify', ['theme', 'package', '--path', out], { stdio: 'inherit', cwd: dist });
+  } else {
+    console.log('package-theme: Shopify CLI not found, so `shopify theme package` was skipped (CI runs it)');
+  }
   console.log(`package-theme: Theme Store build without ${removed.length} integration files; presets: ${presets.join(', ')}`);
 }
 

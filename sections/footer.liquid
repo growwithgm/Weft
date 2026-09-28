@@ -13,6 +13,8 @@
           {%- case block.type -%}
             {%- when '@app' -%}
               <div class="footer__block footer__block--app">{% render block %}</div>
+            {%- when 'custom_liquid' -%}
+              <div class="footer__block" {{ block.shopify_attributes }}>{{ block.settings.custom_liquid }}</div>
             {%- when 'link_list' -%}
               <div class="footer__block" {{ block.shopify_attributes }}>
                 <details class="footer__disclosure" open data-mobile-collapse>
@@ -137,6 +139,18 @@
   "blocks": [
     {
       "type": "@app"
+    },
+    {
+      "type": "custom_liquid",
+      "name": "t:labels.custom_liquid",
+      "settings": [
+        {
+          "type": "liquid",
+          "id": "custom_liquid",
+          "label": "t:labels.custom_liquid",
+          "info": "t:labels.add_app_snippets_or_other_liquid_code"
+        }
+      ]
     },
     {
       "type": "link_list",

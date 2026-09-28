@@ -39,6 +39,9 @@ jobs:
       - run: shopify theme check --fail-level suggestion
       - name: Theme Check on the Theme Store package
         run: |
+          set -o pipefail
           node scripts/package-theme.mjs --themestore
-          cp .theme-check.yml dist/themestore/
-          shopify theme check --path dist/themestore --fail-level suggestion
+          # The repository config ignores dist/**, so the package gets a plain one.
+          printf 'root: .\n' > dist/themestore/.theme-check.yml
+          shopify theme check --path dist/themestore --fail-level suggestion | tee theme-check-package.txt
+          if grep -q ' 0 files inspected' theme-check-package.txt; then echo "Theme Check inspected no files in the package"; exit 1; fi

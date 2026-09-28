@@ -20,6 +20,7 @@
   "Adapt to first image": "Adaptar a la primera imagen",
   "Adapt to image": "Adaptar a la imagen",
   "Add app snippets or other code. Code here isn't checked by the theme.": "Añade fragmentos de apps u otro código. El tema no revisa este código.",
+  "Add app snippets or other Liquid code.": "Añade fragmentos de apps u otro código Liquid.",
   "Add FAQ structured data for search engines": "Añadir datos estructurados de preguntas frecuentes para buscadores",
   "Add space around the apps": "Añadir espacio alrededor de las apps",
   "Add tabs to show a different collection in each tab. The collection below is used when there are no tabs.": "Añade pestañas para mostrar una colección distinta en cada una. La colección de abajo se usa cuando no hay pestañas.",

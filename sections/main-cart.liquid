@@ -65,9 +65,7 @@
             {%- endfor -%}
           </ul>
           <noscript><button type="submit" name="update" class="button button--secondary cart-page__update">{{ 'cart.update' | t }}</button></noscript>
-          {%- for block in section.blocks -%}
-            {%- if block.type == '@app' -%}<div class="cart-page__app">{% render block %}</div>{%- endif -%}
-          {%- endfor -%}
+          {%- if section.blocks.size > 0 -%}<div class="cart-page__app">{%- content_for 'blocks' -%}</div>{%- endif -%}
         </div>
         <div class="cart-page__aside">
           <div class="cart-page__summary">
@@ -178,6 +176,9 @@
   "blocks": [
     {
       "type": "@app"
+    },
+    {
+      "type": "custom-liquid"
     }
   ]
 }
