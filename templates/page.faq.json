@@ -1,156 +1,156 @@
 {
-  "sections": {
-    "hero": {
-      "type": "image-banner",
-      "settings": {
-        "height": "small",
-        "overlay_position": "middle-center",
-        "text_align": "center",
-        "tint_opacity": 30
-      },
-      "blocks": {
-        "title": {
-          "type": "heading",
-          "settings": {
-            "heading": "Frequently asked questions",
-            "size": "h1"
-          }
-        },
-        "text": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Answers to the questions we hear most.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "title",
-        "text"
-      ]
-    },
-    "faq": {
-      "type": "faq",
-      "settings": {
-        "heading": ""
-      },
-      "blocks": {
-        "c1": {
-          "type": "_faq-category",
-          "settings": {
-            "text": "Orders and delivery"
-          }
-        },
-        "q1": {
-          "type": "_faq-item",
-          "settings": {
-            "icon": "truck",
-            "heading": "How long does delivery take?"
-          }
-        },
-        "q2": {
-          "type": "_faq-item",
-          "settings": {
-            "icon": "return",
-            "heading": "How do returns work?"
-          }
-        },
-        "c2": {
-          "type": "_faq-category",
-          "settings": {
-            "text": "Payment and sizing"
-          }
-        },
-        "q3": {
-          "type": "_faq-item",
-          "settings": {
-            "icon": "lock",
-            "heading": "Which payment methods do you accept?"
-          }
-        },
-        "q4": {
-          "type": "_faq-item",
-          "settings": {
-            "icon": "ruler",
-            "heading": "How do I find my size?"
-          }
-        }
-      },
-      "block_order": [
-        "c1",
-        "q1",
-        "q2",
-        "c2",
-        "q3",
-        "q4"
-      ]
-    },
-    "form": {
-      "type": "contact-form",
-      "settings": {
-        "heading": "Get in touch"
-      },
-      "blocks": {
-        "n": {
-          "type": "_form-field",
-          "settings": {
-            "type": "name",
-            "half_width": true
-          }
-        },
-        "e": {
-          "type": "_form-field",
-          "settings": {
-            "type": "email",
-            "half_width": true
-          }
-        },
-        "p": {
-          "type": "_form-field",
-          "settings": {
-            "type": "phone"
-          }
-        },
-        "m": {
-          "type": "_form-field",
-          "settings": {
-            "type": "message",
-            "required": true
-          }
-        }
-      },
-      "block_order": [
-        "n",
-        "e",
-        "p",
-        "m"
-      ]
-    },
-    "signup": {
-      "type": "newsletter",
-      "settings": {},
-      "blocks": {
-        "heading": {
-          "type": "heading",
-          "settings": {
-            "heading": "Subscribe to our emails",
-            "size": "h2"
-          }
-        },
-        "form": {
-          "type": "email-signup",
-          "settings": {}
-        }
-      },
-      "block_order": [
-        "heading",
-        "form"
-      ]
-    }
-  },
-  "order": [
-    "hero",
-    "faq",
-    "form",
-    "signup"
-  ]
+	"sections": {
+		"hero": {
+			"type": "image-banner",
+			"settings": {
+				"height": "small",
+				"overlay_position": "middle-center",
+				"text_align": "center",
+				"tint_opacity": 30
+			},
+			"blocks": {
+				"title": {
+					"type": "heading",
+					"settings": {
+						"heading": "Frequently asked questions",
+						"size": "h1"
+					}
+				},
+				"text": {
+					"type": "text",
+					"settings": {
+						"text": "<p>Answers to the questions we hear most.</p>"
+					}
+				}
+			},
+			"block_order": [
+				"title",
+				"text"
+			]
+		},
+		"faq": {
+			"type": "faq",
+			"settings": {
+				"heading": ""
+			},
+			"blocks": {
+				"c1": {
+					"type": "_faq-category",
+					"settings": {
+						"text": "Orders and delivery"
+					}
+				},
+				"q1": {
+					"type": "_faq-item",
+					"settings": {
+						"icon": "truck",
+						"heading": "How long does delivery take?"
+					}
+				},
+				"q2": {
+					"type": "_faq-item",
+					"settings": {
+						"icon": "return",
+						"heading": "How do returns work?"
+					}
+				},
+				"c2": {
+					"type": "_faq-category",
+					"settings": {
+						"text": "Payment and sizing"
+					}
+				},
+				"q3": {
+					"type": "_faq-item",
+					"settings": {
+						"icon": "lock",
+						"heading": "Which payment methods do you accept?"
+					}
+				},
+				"q4": {
+					"type": "_faq-item",
+					"settings": {
+						"icon": "ruler",
+						"heading": "How do I find my size?"
+					}
+				}
+			},
+			"block_order": [
+				"c1",
+				"q1",
+				"q2",
+				"c2",
+				"q3",
+				"q4"
+			]
+		},
+		"form": {
+			"type": "contact-form",
+			"settings": {
+				"heading": "Get in touch"
+			},
+			"blocks": {
+				"n": {
+					"type": "_form-field",
+					"settings": {
+						"type": "name",
+						"half_width": true
+					}
+				},
+				"e": {
+					"type": "_form-field",
+					"settings": {
+						"type": "email",
+						"half_width": true
+					}
+				},
+				"p": {
+					"type": "_form-field",
+					"settings": {
+						"type": "phone"
+					}
+				},
+				"m": {
+					"type": "_form-field",
+					"settings": {
+						"type": "message",
+						"required": true
+					}
+				}
+			},
+			"block_order": [
+				"n",
+				"e",
+				"p",
+				"m"
+			]
+		},
+		"signup": {
+			"type": "newsletter",
+			"settings": {},
+			"blocks": {
+				"heading": {
+					"type": "heading",
+					"settings": {
+						"heading": "Subscribe to our emails",
+						"size": "h2"
+					}
+				},
+				"form": {
+					"type": "email-signup",
+					"settings": {}
+				}
+			},
+			"block_order": [
+				"heading",
+				"form"
+			]
+		}
+	},
+	"order": [
+		"hero",
+		"faq",
+		"form",
+		"signup"
+	]
 }

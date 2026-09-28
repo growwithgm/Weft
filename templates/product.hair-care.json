@@ -1,324 +1,324 @@
 {
-  "sections": {
-    "main": {
-      "type": "main-product",
-      "blocks": {
-        "labels": {
-          "type": "product-labels",
-          "settings": {}
-        },
-        "title": {
-          "type": "product-title",
-          "settings": {}
-        },
-        "price": {
-          "type": "product-price",
-          "settings": {
-            "show_tax_note": true,
-            "show_installments": true
-          }
-        },
-        "rating": {
-          "type": "product-rating",
-          "settings": {
-            "count_label": "product",
-            "audience": "retail"
-          }
-        },
-        "picker": {
-          "type": "variant-picker",
-          "settings": {}
-        },
-        "guide": {
-          "type": "product-guide",
-          "settings": {
-            "label": "Hair type guide",
-            "icon": "info",
-            "link_position": "picker",
-            "row1_label": "Hair type",
-            "row2_label": "Best suited for"
-          }
-        },
-        "stock": {
-          "type": "stock-line",
-          "settings": {
-            "audience": "retail"
-          }
-        },
-        "delivery": {
-          "type": "delivery-list",
-          "settings": {
-            "audience": "retail"
-          }
-        },
-        "notify": {
-          "type": "back-in-stock",
-          "settings": {
-            "audience": "retail"
-          }
-        },
-        "options": {
-          "type": "purchase-options",
-          "settings": {}
-        },
-        "buy": {
-          "type": "buy-buttons",
-          "settings": {
-            "audience": "retail"
-          }
-        },
-        "description": {
-          "type": "description",
-          "settings": {
-            "accordion": true,
-            "open": true,
-            "clamp_chars": 200
-          }
-        },
-        "returns": {
-          "type": "collapsible",
-          "settings": {
-            "heading": "Returns",
-            "icon": "return",
-            "audience": "retail",
-            "text": "<p>Explain your returns policy in a few lines.</p>"
-          }
-        },
-        "share": {
-          "type": "share",
-          "settings": {}
-        },
-        "terms": {
-          "type": "wholesale-terms",
-          "settings": {}
-        },
-        "installments": {
-          "type": "installments-note",
-          "settings": {}
-        },
-        "tiers": {
-          "type": "volume-pricing",
-          "settings": {}
-        },
-        "wholesale_qty": {
-          "type": "wholesale-quantity",
-          "settings": {}
-        },
-        "matrix": {
-          "type": "order-matrix",
-          "settings": {}
-        },
-        "badges": {
-          "type": "badges",
-          "settings": {
-            "style": "outline"
-          },
-          "blocks": {
-            "b1": {
-              "type": "_badge",
-              "settings": {
-                "text": "Sulfate-free",
-                "icon": "drop"
-              }
-            },
-            "b2": {
-              "type": "_badge",
-              "settings": {
-                "text": "Vegan",
-                "icon": "leaf"
-              }
-            },
-            "b3": {
-              "type": "_badge",
-              "settings": {
-                "text": "Professional size available",
-                "icon": "none"
-              }
-            }
-          },
-          "block_order": [
-            "b1",
-            "b2",
-            "b3"
-          ]
-        },
-        "chips": {
-          "type": "attribute-chips",
-          "settings": {
-            "label": "Hair type",
-            "values": "Dry, Damaged, Color-treated",
-            "metafield": "shopify.hair-type"
-          }
-        },
-        "highlights": {
-          "type": "highlights",
-          "settings": {
-            "layout": "grid"
-          },
-          "blocks": {
-            "h1": {
-              "type": "_highlight",
-              "settings": {
-                "icon": "drop",
-                "text": "Deep moisture without residue"
-              }
-            },
-            "h2": {
-              "type": "_highlight",
-              "settings": {
-                "icon": "check",
-                "text": "Safe for color-treated hair"
-              }
-            },
-            "h3": {
-              "type": "_highlight",
-              "settings": {
-                "icon": "leaf",
-                "text": "Vegan formula"
-              }
-            },
-            "h4": {
-              "type": "_highlight",
-              "settings": {
-                "icon": "sparkle",
-                "text": "Softness and shine from the first wash"
-              }
-            }
-          },
-          "block_order": [
-            "h1",
-            "h2",
-            "h3",
-            "h4"
-          ]
-        },
-        "ingredients": {
-          "type": "ingredients",
-          "settings": {
-            "heading": "Key ingredients",
-            "full_list": "<p>Aqua, Sodium Cocoyl Isethionate, Cocamidopropyl Betaine, Glycerin, Argania Spinosa Kernel Oil, Hydrolyzed Wheat Protein, Panthenol, Parfum, Citric Acid, Sodium Benzoate.</p>"
-          },
-          "blocks": {
-            "i1": {
-              "type": "_ingredient",
-              "settings": {
-                "name": "Argan oil",
-                "text": "Softens and adds shine."
-              }
-            },
-            "i2": {
-              "type": "_ingredient",
-              "settings": {
-                "name": "Plant keratin",
-                "text": "Smooths the surface of the hair."
-              }
-            },
-            "i3": {
-              "type": "_ingredient",
-              "settings": {
-                "name": "Panthenol",
-                "text": "Holds moisture in."
-              }
-            }
-          },
-          "block_order": [
-            "i1",
-            "i2",
-            "i3"
-          ]
-        },
-        "how_to": {
-          "type": "how-to-use",
-          "settings": {
-            "heading": "How to use"
-          },
-          "blocks": {
-            "s1": {
-              "type": "_step",
-              "settings": {
-                "title": "Wet",
-                "text": "Apply to wet hair and massage into the scalp."
-              }
-            },
-            "s2": {
-              "type": "_step",
-              "settings": {
-                "title": "Lather",
-                "text": "Work through the lengths for one minute."
-              }
-            },
-            "s3": {
-              "type": "_step",
-              "settings": {
-                "title": "Rinse",
-                "text": "Rinse well and follow with conditioner."
-              }
-            }
-          },
-          "block_order": [
-            "s1",
-            "s2",
-            "s3"
-          ]
-        },
-        "complete": {
-          "type": "complementary-products",
-          "settings": {
-            "heading": "Complete the routine",
-            "layout": "list",
-            "limit": 3,
-            "step_labels": true
-          }
-        }
-      },
-      "block_order": [
-        "labels",
-        "title",
-        "price",
-        "rating",
-        "terms",
-        "installments",
-        "tiers",
-        "badges",
-        "picker",
-        "guide",
-        "chips",
-        "stock",
-        "delivery",
-        "notify",
-        "options",
-        "buy",
-        "wholesale_qty",
-        "matrix",
-        "complete",
-        "highlights",
-        "ingredients",
-        "how_to",
-        "description",
-        "returns",
-        "share"
-      ],
-      "settings": {}
-    },
-    "reviews": {
-      "type": "product-reviews",
-      "settings": {}
-    },
-    "related": {
-      "type": "product-recommendations",
-      "settings": {
-        "heading": "You may also like"
-      }
-    },
-    "recent": {
-      "type": "recently-viewed",
-      "settings": {}
-    }
-  },
-  "order": [
-    "main",
-    "reviews",
-    "related",
-    "recent"
-  ]
+	"sections": {
+		"main": {
+			"type": "main-product",
+			"blocks": {
+				"labels": {
+					"type": "product-labels",
+					"settings": {}
+				},
+				"title": {
+					"type": "product-title",
+					"settings": {}
+				},
+				"price": {
+					"type": "product-price",
+					"settings": {
+						"show_tax_note": true,
+						"show_installments": true
+					}
+				},
+				"rating": {
+					"type": "product-rating",
+					"settings": {
+						"count_label": "product",
+						"audience": "retail"
+					}
+				},
+				"picker": {
+					"type": "variant-picker",
+					"settings": {}
+				},
+				"guide": {
+					"type": "product-guide",
+					"settings": {
+						"label": "Hair type guide",
+						"icon": "info",
+						"link_position": "picker",
+						"row1_label": "Hair type",
+						"row2_label": "Best suited for"
+					}
+				},
+				"stock": {
+					"type": "stock-line",
+					"settings": {
+						"audience": "retail"
+					}
+				},
+				"delivery": {
+					"type": "delivery-list",
+					"settings": {
+						"audience": "retail"
+					}
+				},
+				"notify": {
+					"type": "back-in-stock",
+					"settings": {
+						"audience": "retail"
+					}
+				},
+				"options": {
+					"type": "purchase-options",
+					"settings": {}
+				},
+				"buy": {
+					"type": "buy-buttons",
+					"settings": {
+						"audience": "retail"
+					}
+				},
+				"description": {
+					"type": "description",
+					"settings": {
+						"accordion": true,
+						"open": true,
+						"clamp_chars": 200
+					}
+				},
+				"returns": {
+					"type": "collapsible",
+					"settings": {
+						"heading": "Returns",
+						"icon": "return",
+						"audience": "retail",
+						"text": "<p>Explain your returns policy in a few lines.</p>"
+					}
+				},
+				"share": {
+					"type": "share",
+					"settings": {}
+				},
+				"terms": {
+					"type": "wholesale-terms",
+					"settings": {}
+				},
+				"installments": {
+					"type": "installments-note",
+					"settings": {}
+				},
+				"tiers": {
+					"type": "volume-pricing",
+					"settings": {}
+				},
+				"wholesale_qty": {
+					"type": "wholesale-quantity",
+					"settings": {}
+				},
+				"matrix": {
+					"type": "order-matrix",
+					"settings": {}
+				},
+				"badges": {
+					"type": "badges",
+					"settings": {
+						"style": "outline"
+					},
+					"blocks": {
+						"b1": {
+							"type": "_badge",
+							"settings": {
+								"text": "Sulfate-free",
+								"icon": "drop"
+							}
+						},
+						"b2": {
+							"type": "_badge",
+							"settings": {
+								"text": "Vegan",
+								"icon": "leaf"
+							}
+						},
+						"b3": {
+							"type": "_badge",
+							"settings": {
+								"text": "Professional size available",
+								"icon": "none"
+							}
+						}
+					},
+					"block_order": [
+						"b1",
+						"b2",
+						"b3"
+					]
+				},
+				"chips": {
+					"type": "attribute-chips",
+					"settings": {
+						"label": "Hair type",
+						"values": "Dry, Damaged, Color-treated",
+						"metafield": "shopify.hair-type"
+					}
+				},
+				"highlights": {
+					"type": "highlights",
+					"settings": {
+						"layout": "grid"
+					},
+					"blocks": {
+						"h1": {
+							"type": "_highlight",
+							"settings": {
+								"icon": "drop",
+								"text": "Deep moisture without residue"
+							}
+						},
+						"h2": {
+							"type": "_highlight",
+							"settings": {
+								"icon": "check",
+								"text": "Safe for color-treated hair"
+							}
+						},
+						"h3": {
+							"type": "_highlight",
+							"settings": {
+								"icon": "leaf",
+								"text": "Vegan formula"
+							}
+						},
+						"h4": {
+							"type": "_highlight",
+							"settings": {
+								"icon": "sparkle",
+								"text": "Softness and shine from the first wash"
+							}
+						}
+					},
+					"block_order": [
+						"h1",
+						"h2",
+						"h3",
+						"h4"
+					]
+				},
+				"ingredients": {
+					"type": "ingredients",
+					"settings": {
+						"heading": "Key ingredients",
+						"full_list": "<p>Aqua, Sodium Cocoyl Isethionate, Cocamidopropyl Betaine, Glycerin, Argania Spinosa Kernel Oil, Hydrolyzed Wheat Protein, Panthenol, Parfum, Citric Acid, Sodium Benzoate.</p>"
+					},
+					"blocks": {
+						"i1": {
+							"type": "_ingredient",
+							"settings": {
+								"name": "Argan oil",
+								"text": "Softens and adds shine."
+							}
+						},
+						"i2": {
+							"type": "_ingredient",
+							"settings": {
+								"name": "Plant keratin",
+								"text": "Smooths the surface of the hair."
+							}
+						},
+						"i3": {
+							"type": "_ingredient",
+							"settings": {
+								"name": "Panthenol",
+								"text": "Holds moisture in."
+							}
+						}
+					},
+					"block_order": [
+						"i1",
+						"i2",
+						"i3"
+					]
+				},
+				"how_to": {
+					"type": "how-to-use",
+					"settings": {
+						"heading": "How to use"
+					},
+					"blocks": {
+						"s1": {
+							"type": "_step",
+							"settings": {
+								"title": "Wet",
+								"text": "Apply to wet hair and massage into the scalp."
+							}
+						},
+						"s2": {
+							"type": "_step",
+							"settings": {
+								"title": "Lather",
+								"text": "Work through the lengths for one minute."
+							}
+						},
+						"s3": {
+							"type": "_step",
+							"settings": {
+								"title": "Rinse",
+								"text": "Rinse well and follow with conditioner."
+							}
+						}
+					},
+					"block_order": [
+						"s1",
+						"s2",
+						"s3"
+					]
+				},
+				"complete": {
+					"type": "complementary-products",
+					"settings": {
+						"heading": "Complete the routine",
+						"layout": "list",
+						"limit": 3,
+						"step_labels": true
+					}
+				}
+			},
+			"block_order": [
+				"labels",
+				"title",
+				"price",
+				"rating",
+				"terms",
+				"installments",
+				"tiers",
+				"badges",
+				"picker",
+				"guide",
+				"chips",
+				"stock",
+				"delivery",
+				"notify",
+				"options",
+				"buy",
+				"wholesale_qty",
+				"matrix",
+				"complete",
+				"highlights",
+				"ingredients",
+				"how_to",
+				"description",
+				"returns",
+				"share"
+			],
+			"settings": {}
+		},
+		"reviews": {
+			"type": "product-reviews",
+			"settings": {}
+		},
+		"related": {
+			"type": "product-recommendations",
+			"settings": {
+				"heading": "You may also like"
+			}
+		},
+		"recent": {
+			"type": "recently-viewed",
+			"settings": {}
+		}
+	},
+	"order": [
+		"main",
+		"reviews",
+		"related",
+		"recent"
+	]
 }

@@ -1,343 +1,343 @@
 {
-  "sections": {
-    "main": {
-      "type": "main-product",
-      "blocks": {
-        "labels": {
-          "type": "product-labels",
-          "settings": {}
-        },
-        "title": {
-          "type": "product-title",
-          "settings": {}
-        },
-        "price": {
-          "type": "product-price",
-          "settings": {
-            "show_tax_note": true,
-            "show_installments": true
-          }
-        },
-        "rating": {
-          "type": "product-rating",
-          "settings": {
-            "count_label": "product",
-            "audience": "retail"
-          }
-        },
-        "picker": {
-          "type": "variant-picker",
-          "settings": {}
-        },
-        "guide": {
-          "type": "product-guide",
-          "settings": {
-            "label": "Usage chart",
-            "icon": "drop",
-            "link_position": "picker",
-            "row1_label": "Skin type",
-            "row2_label": "Best suited for"
-          }
-        },
-        "stock": {
-          "type": "stock-line",
-          "settings": {
-            "audience": "retail"
-          }
-        },
-        "delivery": {
-          "type": "delivery-list",
-          "settings": {
-            "audience": "retail"
-          }
-        },
-        "notify": {
-          "type": "back-in-stock",
-          "settings": {
-            "audience": "retail"
-          }
-        },
-        "options": {
-          "type": "purchase-options",
-          "settings": {}
-        },
-        "buy": {
-          "type": "buy-buttons",
-          "settings": {
-            "audience": "retail"
-          }
-        },
-        "description": {
-          "type": "description",
-          "settings": {
-            "accordion": true,
-            "open": true,
-            "clamp_chars": 200
-          }
-        },
-        "returns": {
-          "type": "collapsible",
-          "settings": {
-            "heading": "Returns",
-            "icon": "return",
-            "audience": "retail",
-            "text": "<p>Explain your returns policy in a few lines.</p>"
-          }
-        },
-        "share": {
-          "type": "share",
-          "settings": {}
-        },
-        "terms": {
-          "type": "wholesale-terms",
-          "settings": {}
-        },
-        "installments": {
-          "type": "installments-note",
-          "settings": {}
-        },
-        "tiers": {
-          "type": "volume-pricing",
-          "settings": {}
-        },
-        "wholesale_qty": {
-          "type": "wholesale-quantity",
-          "settings": {}
-        },
-        "matrix": {
-          "type": "order-matrix",
-          "settings": {}
-        },
-        "badges": {
-          "type": "badges",
-          "settings": {
-            "style": "outline"
-          },
-          "blocks": {
-            "b1": {
-              "type": "_badge",
-              "settings": {
-                "text": "Vegan",
-                "icon": "leaf"
-              }
-            },
-            "b2": {
-              "type": "_badge",
-              "settings": {
-                "text": "Dermatologically tested",
-                "icon": "check"
-              }
-            }
-          },
-          "block_order": [
-            "b1",
-            "b2"
-          ]
-        },
-        "chips": {
-          "type": "attribute-chips",
-          "settings": {
-            "label": "Skin type",
-            "values": "Dry skin, Sensitive",
-            "metafield": "shopify.skin-type"
-          }
-        },
-        "highlights": {
-          "type": "highlights",
-          "settings": {
-            "layout": "grid"
-          },
-          "blocks": {
-            "h1": {
-              "type": "_highlight",
-              "settings": {
-                "icon": "drop",
-                "text": "Melts in without a greasy feel"
-              }
-            },
-            "h2": {
-              "type": "_highlight",
-              "settings": {
-                "icon": "leaf",
-                "text": "Plant butters and oils"
-              }
-            },
-            "h3": {
-              "type": "_highlight",
-              "settings": {
-                "icon": "jar",
-                "text": "Refillable glass jar"
-              }
-            }
-          },
-          "block_order": [
-            "h1",
-            "h2",
-            "h3"
-          ]
-        },
-        "ingredients": {
-          "type": "ingredients",
-          "settings": {
-            "heading": "Key ingredients",
-            "full_list": "<p>Butyrospermum Parkii Butter, Theobroma Cacao Seed Butter, Prunus Amygdalus Dulcis Oil, Caprylic/Capric Triglyceride, Tocopherol, Parfum, Linalool, Limonene.</p>"
-          },
-          "blocks": {
-            "i1": {
-              "type": "_ingredient",
-              "settings": {
-                "name": "Shea butter",
-                "text": "Rich, slow-absorbing moisture."
-              }
-            },
-            "i2": {
-              "type": "_ingredient",
-              "settings": {
-                "name": "Cocoa butter",
-                "text": "Softens rough patches."
-              }
-            },
-            "i3": {
-              "type": "_ingredient",
-              "settings": {
-                "name": "Sweet almond oil",
-                "text": "Leaves skin supple."
-              }
-            }
-          },
-          "block_order": [
-            "i1",
-            "i2",
-            "i3"
-          ]
-        },
-        "how_to": {
-          "type": "how-to-use",
-          "settings": {
-            "heading": "How to use"
-          },
-          "blocks": {
-            "s1": {
-              "type": "_step",
-              "settings": {
-                "title": "Warm",
-                "text": "Take a little butter and warm it between your palms."
-              }
-            },
-            "s2": {
-              "type": "_step",
-              "settings": {
-                "title": "Press",
-                "text": "Press into damp skin after the shower."
-              }
-            },
-            "s3": {
-              "type": "_step",
-              "settings": {
-                "title": "Repeat",
-                "text": "Use daily, more often on dry areas."
-              }
-            }
-          },
-          "block_order": [
-            "s1",
-            "s2",
-            "s3"
-          ]
-        },
-        "complete": {
-          "type": "complementary-products",
-          "settings": {
-            "heading": "Complete the ritual",
-            "layout": "list",
-            "limit": 3,
-            "step_labels": true
-          }
-        },
-        "scent": {
-          "type": "scent-notes",
-          "settings": {
-            "heading": "Scent notes",
-            "top": "Bergamot, Pink pepper",
-            "heart": "Orange blossom, Jasmine",
-            "base": "Vanilla, Sandalwood"
-          }
-        },
-        "pao": {
-          "type": "pao-icon",
-          "settings": {
-            "months": "12"
-          }
-        },
-        "warnings": {
-          "type": "collapsible",
-          "settings": {
-            "heading": "Warnings and precautions",
-            "icon": "info",
-            "text": "<p>For external use only. Avoid contact with eyes. Stop use if irritation occurs.</p>"
-          }
-        },
-        "gift": {
-          "type": "custom-option",
-          "settings": {
-            "label": "Gift message",
-            "type": "textarea",
-            "max_length": 200
-          }
-        }
-      },
-      "block_order": [
-        "labels",
-        "title",
-        "price",
-        "rating",
-        "terms",
-        "installments",
-        "tiers",
-        "badges",
-        "picker",
-        "guide",
-        "chips",
-        "stock",
-        "delivery",
-        "notify",
-        "options",
-        "gift",
-        "buy",
-        "wholesale_qty",
-        "matrix",
-        "complete",
-        "scent",
-        "highlights",
-        "ingredients",
-        "how_to",
-        "pao",
-        "description",
-        "warnings",
-        "returns",
-        "share"
-      ],
-      "settings": {}
-    },
-    "reviews": {
-      "type": "product-reviews",
-      "settings": {}
-    },
-    "related": {
-      "type": "product-recommendations",
-      "settings": {
-        "heading": "You may also like"
-      }
-    },
-    "recent": {
-      "type": "recently-viewed",
-      "settings": {}
-    }
-  },
-  "order": [
-    "main",
-    "reviews",
-    "related",
-    "recent"
-  ]
+	"sections": {
+		"main": {
+			"type": "main-product",
+			"blocks": {
+				"labels": {
+					"type": "product-labels",
+					"settings": {}
+				},
+				"title": {
+					"type": "product-title",
+					"settings": {}
+				},
+				"price": {
+					"type": "product-price",
+					"settings": {
+						"show_tax_note": true,
+						"show_installments": true
+					}
+				},
+				"rating": {
+					"type": "product-rating",
+					"settings": {
+						"count_label": "product",
+						"audience": "retail"
+					}
+				},
+				"picker": {
+					"type": "variant-picker",
+					"settings": {}
+				},
+				"guide": {
+					"type": "product-guide",
+					"settings": {
+						"label": "Usage chart",
+						"icon": "drop",
+						"link_position": "picker",
+						"row1_label": "Skin type",
+						"row2_label": "Best suited for"
+					}
+				},
+				"stock": {
+					"type": "stock-line",
+					"settings": {
+						"audience": "retail"
+					}
+				},
+				"delivery": {
+					"type": "delivery-list",
+					"settings": {
+						"audience": "retail"
+					}
+				},
+				"notify": {
+					"type": "back-in-stock",
+					"settings": {
+						"audience": "retail"
+					}
+				},
+				"options": {
+					"type": "purchase-options",
+					"settings": {}
+				},
+				"buy": {
+					"type": "buy-buttons",
+					"settings": {
+						"audience": "retail"
+					}
+				},
+				"description": {
+					"type": "description",
+					"settings": {
+						"accordion": true,
+						"open": true,
+						"clamp_chars": 200
+					}
+				},
+				"returns": {
+					"type": "collapsible",
+					"settings": {
+						"heading": "Returns",
+						"icon": "return",
+						"audience": "retail",
+						"text": "<p>Explain your returns policy in a few lines.</p>"
+					}
+				},
+				"share": {
+					"type": "share",
+					"settings": {}
+				},
+				"terms": {
+					"type": "wholesale-terms",
+					"settings": {}
+				},
+				"installments": {
+					"type": "installments-note",
+					"settings": {}
+				},
+				"tiers": {
+					"type": "volume-pricing",
+					"settings": {}
+				},
+				"wholesale_qty": {
+					"type": "wholesale-quantity",
+					"settings": {}
+				},
+				"matrix": {
+					"type": "order-matrix",
+					"settings": {}
+				},
+				"badges": {
+					"type": "badges",
+					"settings": {
+						"style": "outline"
+					},
+					"blocks": {
+						"b1": {
+							"type": "_badge",
+							"settings": {
+								"text": "Vegan",
+								"icon": "leaf"
+							}
+						},
+						"b2": {
+							"type": "_badge",
+							"settings": {
+								"text": "Dermatologically tested",
+								"icon": "check"
+							}
+						}
+					},
+					"block_order": [
+						"b1",
+						"b2"
+					]
+				},
+				"chips": {
+					"type": "attribute-chips",
+					"settings": {
+						"label": "Skin type",
+						"values": "Dry skin, Sensitive",
+						"metafield": "shopify.skin-type"
+					}
+				},
+				"highlights": {
+					"type": "highlights",
+					"settings": {
+						"layout": "grid"
+					},
+					"blocks": {
+						"h1": {
+							"type": "_highlight",
+							"settings": {
+								"icon": "drop",
+								"text": "Melts in without a greasy feel"
+							}
+						},
+						"h2": {
+							"type": "_highlight",
+							"settings": {
+								"icon": "leaf",
+								"text": "Plant butters and oils"
+							}
+						},
+						"h3": {
+							"type": "_highlight",
+							"settings": {
+								"icon": "jar",
+								"text": "Refillable glass jar"
+							}
+						}
+					},
+					"block_order": [
+						"h1",
+						"h2",
+						"h3"
+					]
+				},
+				"ingredients": {
+					"type": "ingredients",
+					"settings": {
+						"heading": "Key ingredients",
+						"full_list": "<p>Butyrospermum Parkii Butter, Theobroma Cacao Seed Butter, Prunus Amygdalus Dulcis Oil, Caprylic/Capric Triglyceride, Tocopherol, Parfum, Linalool, Limonene.</p>"
+					},
+					"blocks": {
+						"i1": {
+							"type": "_ingredient",
+							"settings": {
+								"name": "Shea butter",
+								"text": "Rich, slow-absorbing moisture."
+							}
+						},
+						"i2": {
+							"type": "_ingredient",
+							"settings": {
+								"name": "Cocoa butter",
+								"text": "Softens rough patches."
+							}
+						},
+						"i3": {
+							"type": "_ingredient",
+							"settings": {
+								"name": "Sweet almond oil",
+								"text": "Leaves skin supple."
+							}
+						}
+					},
+					"block_order": [
+						"i1",
+						"i2",
+						"i3"
+					]
+				},
+				"how_to": {
+					"type": "how-to-use",
+					"settings": {
+						"heading": "How to use"
+					},
+					"blocks": {
+						"s1": {
+							"type": "_step",
+							"settings": {
+								"title": "Warm",
+								"text": "Take a little butter and warm it between your palms."
+							}
+						},
+						"s2": {
+							"type": "_step",
+							"settings": {
+								"title": "Press",
+								"text": "Press into damp skin after the shower."
+							}
+						},
+						"s3": {
+							"type": "_step",
+							"settings": {
+								"title": "Repeat",
+								"text": "Use daily, more often on dry areas."
+							}
+						}
+					},
+					"block_order": [
+						"s1",
+						"s2",
+						"s3"
+					]
+				},
+				"complete": {
+					"type": "complementary-products",
+					"settings": {
+						"heading": "Complete the ritual",
+						"layout": "list",
+						"limit": 3,
+						"step_labels": true
+					}
+				},
+				"scent": {
+					"type": "scent-notes",
+					"settings": {
+						"heading": "Scent notes",
+						"top": "Bergamot, Pink pepper",
+						"heart": "Orange blossom, Jasmine",
+						"base": "Vanilla, Sandalwood"
+					}
+				},
+				"pao": {
+					"type": "pao-icon",
+					"settings": {
+						"months": "12"
+					}
+				},
+				"warnings": {
+					"type": "collapsible",
+					"settings": {
+						"heading": "Warnings and precautions",
+						"icon": "info",
+						"text": "<p>For external use only. Avoid contact with eyes. Stop use if irritation occurs.</p>"
+					}
+				},
+				"gift": {
+					"type": "custom-option",
+					"settings": {
+						"label": "Gift message",
+						"type": "textarea",
+						"max_length": 200
+					}
+				}
+			},
+			"block_order": [
+				"labels",
+				"title",
+				"price",
+				"rating",
+				"terms",
+				"installments",
+				"tiers",
+				"badges",
+				"picker",
+				"guide",
+				"chips",
+				"stock",
+				"delivery",
+				"notify",
+				"options",
+				"gift",
+				"buy",
+				"wholesale_qty",
+				"matrix",
+				"complete",
+				"scent",
+				"highlights",
+				"ingredients",
+				"how_to",
+				"pao",
+				"description",
+				"warnings",
+				"returns",
+				"share"
+			],
+			"settings": {}
+		},
+		"reviews": {
+			"type": "product-reviews",
+			"settings": {}
+		},
+		"related": {
+			"type": "product-recommendations",
+			"settings": {
+				"heading": "You may also like"
+			}
+		},
+		"recent": {
+			"type": "recently-viewed",
+			"settings": {}
+		}
+	},
+	"order": [
+		"main",
+		"reviews",
+		"related",
+		"recent"
+	]
 }

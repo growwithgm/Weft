@@ -1,57 +1,57 @@
 {
-  "sections": {
-    "hero": {
-      "type": "image-banner",
-      "settings": {
-        "height": "full",
-        "overlay_position": "middle-center",
-        "text_align": "center",
-        "tint_opacity": 30
-      },
-      "blocks": {
-        "title": {
-          "type": "heading",
-          "settings": {
-            "heading": "Coming soon",
-            "size": "h1"
-          }
-        },
-        "text": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Something new is on its way. Sign up to hear first.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "title",
-        "text"
-      ]
-    },
-    "signup": {
-      "type": "newsletter",
-      "settings": {},
-      "blocks": {
-        "heading": {
-          "type": "heading",
-          "settings": {
-            "heading": "Subscribe to our emails",
-            "size": "h2"
-          }
-        },
-        "form": {
-          "type": "email-signup",
-          "settings": {}
-        }
-      },
-      "block_order": [
-        "heading",
-        "form"
-      ]
-    }
-  },
-  "order": [
-    "hero",
-    "signup"
-  ]
+	"sections": {
+		"hero": {
+			"type": "image-banner",
+			"settings": {
+				"height": "full",
+				"overlay_position": "middle-center",
+				"text_align": "center",
+				"tint_opacity": 30
+			},
+			"blocks": {
+				"title": {
+					"type": "heading",
+					"settings": {
+						"heading": "Coming soon",
+						"size": "h1"
+					}
+				},
+				"text": {
+					"type": "text",
+					"settings": {
+						"text": "<p>Something new is on its way. Sign up to hear first.</p>"
+					}
+				}
+			},
+			"block_order": [
+				"title",
+				"text"
+			]
+		},
+		"signup": {
+			"type": "newsletter",
+			"settings": {},
+			"blocks": {
+				"heading": {
+					"type": "heading",
+					"settings": {
+						"heading": "Subscribe to our emails",
+						"size": "h2"
+					}
+				},
+				"form": {
+					"type": "email-signup",
+					"settings": {}
+				}
+			},
+			"block_order": [
+				"heading",
+				"form"
+			]
+		}
+	},
+	"order": [
+		"hero",
+		"signup"
+	]
 }

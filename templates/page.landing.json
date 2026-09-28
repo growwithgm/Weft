@@ -1,87 +1,87 @@
 {
-  "sections": {
-    "hero": {
-      "type": "image-banner",
-      "settings": {
-        "height": "large",
-        "overlay_position": "middle-center",
-        "text_align": "center",
-        "tint_opacity": 30
-      },
-      "blocks": {
-        "title": {
-          "type": "heading",
-          "settings": {
-            "heading": "Landing page",
-            "size": "h1"
-          }
-        },
-        "text": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Introduce a campaign or a collection.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "title",
-        "text"
-      ]
-    },
-    "strip": {
-      "type": "promo-strip",
-      "settings": {},
-      "blocks": {
-        "h": {
-          "type": "heading",
-          "settings": {
-            "heading": "Limited time",
-            "size": "h3"
-          }
-        },
-        "d": {
-          "type": "discount-code",
-          "settings": {}
-        }
-      },
-      "block_order": [
-        "h",
-        "d"
-      ]
-    },
-    "products": {
-      "type": "featured-collection",
-      "settings": {
-        "title": "Featured",
-        "collection": "all"
-      }
-    },
-    "signup": {
-      "type": "newsletter",
-      "settings": {},
-      "blocks": {
-        "heading": {
-          "type": "heading",
-          "settings": {
-            "heading": "Subscribe to our emails",
-            "size": "h2"
-          }
-        },
-        "form": {
-          "type": "email-signup",
-          "settings": {}
-        }
-      },
-      "block_order": [
-        "heading",
-        "form"
-      ]
-    }
-  },
-  "order": [
-    "hero",
-    "strip",
-    "products",
-    "signup"
-  ]
+	"sections": {
+		"hero": {
+			"type": "image-banner",
+			"settings": {
+				"height": "large",
+				"overlay_position": "middle-center",
+				"text_align": "center",
+				"tint_opacity": 30
+			},
+			"blocks": {
+				"title": {
+					"type": "heading",
+					"settings": {
+						"heading": "Landing page",
+						"size": "h1"
+					}
+				},
+				"text": {
+					"type": "text",
+					"settings": {
+						"text": "<p>Introduce a campaign or a collection.</p>"
+					}
+				}
+			},
+			"block_order": [
+				"title",
+				"text"
+			]
+		},
+		"strip": {
+			"type": "promo-strip",
+			"settings": {},
+			"blocks": {
+				"h": {
+					"type": "heading",
+					"settings": {
+						"heading": "Limited time",
+						"size": "h3"
+					}
+				},
+				"d": {
+					"type": "discount-code",
+					"settings": {}
+				}
+			},
+			"block_order": [
+				"h",
+				"d"
+			]
+		},
+		"products": {
+			"type": "featured-collection",
+			"settings": {
+				"title": "Featured",
+				"collection": "all"
+			}
+		},
+		"signup": {
+			"type": "newsletter",
+			"settings": {},
+			"blocks": {
+				"heading": {
+					"type": "heading",
+					"settings": {
+						"heading": "Subscribe to our emails",
+						"size": "h2"
+					}
+				},
+				"form": {
+					"type": "email-signup",
+					"settings": {}
+				}
+			},
+			"block_order": [
+				"heading",
+				"form"
+			]
+		}
+	},
+	"order": [
+		"hero",
+		"strip",
+		"products",
+		"signup"
+	]
 }
