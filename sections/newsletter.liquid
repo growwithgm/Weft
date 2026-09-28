@@ -12,16 +12,21 @@
 {{ 'section-banner.css' | asset_url | stylesheet_tag }}
 {{ 'section-library.css' | asset_url | stylesheet_tag }}
 <div class="section newsletter-section color-{{ s.color_scheme }}{% unless s.full_width %} page-width{% endunless %}{% if section.index > 2 %} below-fold{% endif %}" data-reveal>
-  {%- if has_image -%}
-    <div class="banner banner--small banner--{{ s.overlay_position }} banner--text-{{ s.text_align }} banner--mobile-center" style="--banner-tint: {{ s.tint_color }}; --banner-tint-opacity: {{ s.tint_opacity | divided_by: 100.0 }}; --banner-text: {{ s.text_color }};">
+  {%- comment -%} Shopify allows one content_for 'blocks' per file, so both looks share one box. {%- endcomment -%}
+  <div
+    {% if has_image %}
+      class="banner banner--small banner--{{ s.overlay_position }} banner--text-{{ s.text_align }} banner--mobile-center" style="--banner-tint: {{ s.tint_color }}; --banner-tint-opacity: {{ s.tint_opacity | divided_by: 100.0 }}; --banner-text: {{ s.text_color }};"
+    {% else %}
+      class="page-width newsletter-section__plain newsletter-section__plain--{{ s.text_align }}"
+    {% endif %}
+  >
+    {%- if has_image -%}
       <div class="banner__media">{%- render 'image', image: s.image, sizes: '100vw', class: 'banner__image' -%}</div>
-      <div class="banner__content"><div class="banner__box stack newsletter-section__box">{%- content_for 'blocks' -%}</div></div>
+    {%- endif -%}
+    <div class="{% if has_image %}banner__content{% else %}newsletter-section__inner{% endif %}">
+      <div class="stack{% if has_image %} banner__box newsletter-section__box{% endif %}">{%- content_for 'blocks' -%}</div>
     </div>
-  {%- else -%}
-    <div class="page-width newsletter-section__plain stack newsletter-section__plain--{{ s.text_align }}">
-      {%- content_for 'blocks' -%}
-    </div>
-  {%- endif -%}
+  </div>
 </div>
 
 {% schema %}

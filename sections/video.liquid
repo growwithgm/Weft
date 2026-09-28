@@ -16,25 +16,30 @@
 {{ 'section-banner.css' | asset_url | stylesheet_tag }}
 {{ 'section-library.css' | asset_url | stylesheet_tag }}
 <div class="section video-section video-section--{{ s.layout }} color-{{ s.color_scheme }}{% if section.index > 2 %} below-fold{% endif %}">
-  {%- if background -%}
-    <div class="banner banner--{{ s.height }} banner--{{ s.overlay_position }} banner--text-{{ s.text_align }}{% if s.mobile_center %} banner--mobile-center{% endif %}{% unless s.full_width %} page-width{% endunless %}" style="--banner-tint: {{ s.tint_color }}; --banner-tint-opacity: {{ s.tint_opacity | divided_by: 100.0 }}; --banner-text: {{ s.text_color }};">
+  {%- comment -%} Shopify allows one content_for 'blocks' per file, so both layouts share one text box. {%- endcomment -%}
+  <div
+    {% if background %}
+      class="banner banner--{{ s.height }} banner--{{ s.overlay_position }} banner--text-{{ s.text_align }}{% if s.mobile_center %} banner--mobile-center{% endif %}{% unless s.full_width %} page-width{% endunless %}" style="--banner-tint: {{ s.tint_color }}; --banner-tint-opacity: {{ s.tint_opacity | divided_by: 100.0 }}; --banner-text: {{ s.text_color }};"
+    {% else %}
+      class="page-width{% if s.full_width %} page-width--full{% endif %} video-section__inner"
+    {% endif %}
+  >
+    {%- if background -%}
       <div class="banner__media">
         {%- render 'deferred-video', video: s.video, video_url: s.video_url, poster: s.poster, description: s.description, background: true, eager: eager -%}
       </div>
-      {%- if section.blocks.size > 0 -%}
-        <div class="banner__content"><div class="banner__box stack">{%- content_for 'blocks' -%}</div></div>
-      {%- endif -%}
-    </div>
-  {%- else -%}
-    <div class="page-width{% if s.full_width %} page-width--full{% endif %} video-section__inner">
-      {%- if section.blocks.size > 0 -%}
-        <div class="video-section__text stack video-section__text--{{ s.text_align }}">{%- content_for 'blocks' -%}</div>
-      {%- endif -%}
+    {%- endif -%}
+    {%- if section.blocks.size > 0 -%}
+      <div class="{% if background %}banner__content{% else %}video-section__text video-section__text--{{ s.text_align }}{% endif %}">
+        <div class="{% if background %}banner__box {% endif %}stack">{%- content_for 'blocks' -%}</div>
+      </div>
+    {%- endif -%}
+    {%- unless background -%}
       <div class="video-section__frame video-section__frame--{{ s.ratio }}">
         {%- render 'deferred-video', video: s.video, video_url: s.video_url, poster: s.poster, description: s.description, background: false, eager: eager -%}
       </div>
-    </div>
-  {%- endif -%}
+    {%- endunless -%}
+  </div>
 </div>
 
 {% schema %}

@@ -63,7 +63,8 @@
   .newsletter-section { padding-block: var(--section-gap); }
   .newsletter-section.page-width { padding-block: calc(var(--section-gap) / 2); }
   .newsletter-section__plain { max-width: 640px; }
-  .newsletter-section__plain--center { margin-inline: auto; text-align: center; align-items: center; }
+  .newsletter-section__plain--center { margin-inline: auto; text-align: center; }
+  .newsletter-section__plain--center .stack, .video-section__text--center .stack { align-items: center; }
   .newsletter-section__box { width: min(100%, 520px); }
 
   /* Grids and carousels */

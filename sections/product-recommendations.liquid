@@ -98,13 +98,20 @@
       "default": 4
     },
     {
-      "type": "range",
+      "type": "select",
       "id": "columns_mobile",
       "label": "t:labels.products_per_row_on_mobile",
-      "min": 1,
-      "max": 2,
-      "step": 1,
-      "default": 2
+      "options": [
+        {
+          "value": "1",
+          "label": "t:labels.1"
+        },
+        {
+          "value": "2",
+          "label": "t:labels.2"
+        }
+      ],
+      "default": "2"
     },
     {
       "type": "color_scheme",

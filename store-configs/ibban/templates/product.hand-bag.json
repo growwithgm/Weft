@@ -417,7 +417,7 @@
         "heading": "You may also like",
         "heading_align": "start",
         "layout": "carousel",
-        "columns_mobile": 2,
+        "columns_mobile": "2",
         "columns": 5,
         "limit": 8
       }
@@ -428,7 +428,7 @@
         "heading": "Recently viewed",
         "heading_align": "start",
         "layout": "carousel",
-        "columns_mobile": 2,
+        "columns_mobile": "2",
         "columns": 5,
         "limit": 8
       }

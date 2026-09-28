@@ -137,9 +137,13 @@ const checkSettings = (file, settings, where) => {
       for (const k of ['min', 'max', 'step', 'default']) if (typeof s[k] !== 'number') report('error', file, `${where}: range "${s.id}" needs numeric ${k}`);
       if (typeof s.default === 'number' && (s.default < s.min || s.default > s.max)) report('error', file, `${where}: range "${s.id}" default out of bounds`);
       if (typeof s.step === 'number' && (s.max - s.min) / s.step > 101) report('error', file, `${where}: range "${s.id}" has more than 101 steps`);
+      // Shopify rejects the whole file on upload (Theme Check doesn't catch it): "Range settings must have at least 3 steps".
+      if (typeof s.step === 'number' && (s.max - s.min) / s.step < 2) report('error', file, `${where}: range "${s.id}" has fewer than 3 steps (use a select)`);
       if (typeof s.default === 'number' && typeof s.step === 'number' && Math.abs(((s.default - s.min) / s.step) % 1) > 1e-9)
         report('error', file, `${where}: range "${s.id}" default is not on a step`);
     }
+    // Shopify upload error: "setting with id=... default can't be blank".
+    if (s.default === '') report('error', file, `${where}: "${s.id}" default can't be blank (leave it out)`);
     if (s.visible_if && !/^\{\{.*\}\}$/.test(s.visible_if.trim())) report('error', file, `${where}: "${s.id}" visible_if must be a {{ }} expression`);
     // Theme Check's schema rejects visible_if on resource pickers (found on the first CI run)
     if (s.visible_if && RESOURCE_TYPES.has(s.type)) report('error', file, `${where}: visible_if is not allowed on ${s.type} settings`);
@@ -242,6 +246,10 @@ for (const file of liquidFiles) {
     const hit = schemaless.search(re);
     if (hit >= 0) report('error', file, msg, lineOf(src, hit));
   }
+
+  // Shopify upload error: "Duplicate entries for 'content_for "blocks"'" (one per file).
+  const blockSlots = [...schemaless.matchAll(/content_for\s+['"]blocks['"]/g)];
+  if (blockSlots.length > 1) report('error', file, `content_for 'blocks' appears ${blockSlots.length} times; Shopify allows it once per file`, lineOf(src, blockSlots[1].index));
 
   // Remote and parser-blocking scripts
   for (const m of schemaless.matchAll(/<script\b([^>]*)>/g)) {
