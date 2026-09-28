@@ -300,6 +300,29 @@
     "vendor": "ブランド",
     "weight": "重量"
   },
+  "search": {
+    "all_types": "すべて",
+    "article": "ブログ記事",
+    "collections": "コレクション",
+    "no_results": "「{{ terms }}」に一致する結果はありません",
+    "no_results_hint": "つづりを確認するか、別の言葉でお試しください。",
+    "page": "ページ",
+    "pages": "ページ",
+    "product_type": "商品タイプ",
+    "products": "商品",
+    "results_count": {
+      "one": "{{ count }}件",
+      "other": "{{ count }}件"
+    },
+    "results_for": "「{{ terms }}」の検索結果",
+    "search_for": "「{{ terms }}」を検索",
+    "suggestions": "候補",
+    "suggestions_count": {
+      "one": "候補{{ count }}件",
+      "other": "候補{{ count }}件"
+    },
+    "title": "検索"
+  },
   "wholesale": {
     "above_max": "この商品の上限は{{ count }}です。",
     "account_and_orders": "アカウントと注文",

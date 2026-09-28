@@ -10,7 +10,7 @@ Status: `planned` (P0) → `built` (with phase) → `verified` (scenario or chec
 |---|---|---|---|
 | Announcement bar, rotating messages, country + language selectors | `sections/announcement-bar` (`_announcement` blocks via theme blocks `text`), `snippets/localization-form` | P1 | done |
 | Sticky header, logo, centred menu, mega menus (column, button, sidebar), CTA button, quick links | `sections/header` (settings: sticky, logo, menu, menu alignment, quick-links menu, CTA), `blocks/_mega-menu` (style: columns / buttons / sidebar), panels deferred in `<template>`; `assets/header.js` | P1 | done |
-| Predictive search with price and vendor, rotating placeholders, voice search | `sections/search-drawer`, `sections/predictive-search` (rendered via `/search/suggest`), `assets/search.js`; settings group Search | P4 (shell P1) | partial |
+| Predictive search with price and vendor, rotating placeholders, voice search | `sections/search-drawer`, `sections/predictive-search` (rendered via `/search/suggest`), `assets/search.js` (ARIA combobox, SKU / tag fields, type filter); settings group Search | P4 (shell P1) | done |
 | Account icon → wholesale chip with company, location, switcher | `sections/header` + `snippets/location-list` + `sections/location-sheet`; `<shopify-account>` component | P1/P3 | done |
 | Cart drawer, count bubble, cart icon shake on add | `sections/cart-drawer`, `sections/cart-count` (section for Cart API refresh), `assets/cart.js`; setting `cart_shake` | P1/P4 | partial |
 | Floating WhatsApp bubble, hidden on the onboarding page, number from setting | `snippets/chat-button` in `layout/theme.liquid`; settings `social_whatsapp_url`, `chat_button_enable`, `chat_button_hide_on` (page handles) ; pre-filled with page URL | P1 | done |
@@ -35,7 +35,7 @@ Status: `planned` (P0) → `built` (with phase) → `verified` (scenario or chec
 |---|---|---|---|
 | Banner with title, count, description | `sections/collection-banner` | P4 | done |
 | 50 per page, grid/list toggle, sorting | `sections/main-collection` (products_per_page up to 50, layout toggle, sort options) | P4 | done |
-| Filters (off in pilot, on by default in Weft) | `snippets/facets`, `assets/facets.js`, setting `enable_filtering` | P4 | done (collection; search in step 2) |
+| Filters (off in pilot, on by default in Weft) | `snippets/facets`, `assets/facets.js`, setting `enable_filtering` | P4 | done |
 | Promo tiles in grid (wide, media, card, filter) | section blocks `promo_wide` / `promo_media` / `promo_card` / `promo_filter` in `main-collection`, `snippets/collection-promo` (owner review 20) | P4 | done |
 | Seasonal templates, flash sale with countdown + promo strip + collection list | `templates/collection.banner.json`, `collection.flash-sale.json` | P5 | planned |
 | Product compare (checkbox, drawer, up to 5) | `sections/compare-drawer`, `assets/compare.js`, Product compare group | P4 | planned |
@@ -107,7 +107,7 @@ Status: `planned` (P0) → `built` (with phase) → `verified` (scenario or chec
 | Reviews wall | core: `page.reviews.json` with `product-reviews` in wall layout + app block; pilot: `integration-reviews-wall` | P5/P6 | planned |
 | Contact, FAQ, About, Lookbook, landings, policies, custom payment, coming soon, shipping calculator | page templates in §2 of architecture | P5 | planned |
 | Blog and articles with comments | `main-blog`, `main-article` (comments paginated, success/error) | P5 | planned |
-| Search page (sort, filters, articles, pages) | `main-search` | P4 | planned |
+| Search page (sort, filters, articles, pages) | `main-search`, `templates/search.json` | P4 | done |
 | 404, password, gift card; 404 wholesale sign-in line | `main-404`, `main-password`, `gift_card.liquid` | P1/P3 | done |
 | Classic customer-account templates | `templates/customers/*` minimal, untouched fallback | P5 | planned |
 | Section library | architecture §2 list | P5 | planned |
@@ -122,7 +122,7 @@ Status: `planned` (P0) → `built` (with phase) → `verified` (scenario or chec
 | Selling plans on product; plan name in cart | `purchase-options`, `cart-line` | P2/P4 | partial |
 | Shop Pay Installments banner | `product-price` (`payment_terms` in product form) | P2 | done |
 | Accelerated checkout on product and cart, on by default | `buy-buttons`, `cart-summary` (`content_for_additional_checkout_buttons`) | P2/P4 | partial |
-| Faceted filtering on collection + search | `snippets/facets` | P4 | planned |
+| Faceted filtering on collection + search | `snippets/facets` | P4 | done |
 | Cart discounts per item and per order | `cart-line`, `cart-summary` | P4 | planned |
 | Pickup availability; related + complementary recommendations | `buy-buttons`, `product-recommendations`, `complementary-products` | P2 | done |
 | Newsletter forms and multi-level menus | `newsletter`, `email-signup`, header 3-level menus | P1/P5 | partial |

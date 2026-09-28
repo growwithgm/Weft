@@ -300,6 +300,29 @@
     "vendor": "Merk",
     "weight": "Gewicht"
   },
+  "search": {
+    "all_types": "Alles",
+    "article": "Blogartikel",
+    "collections": "Collecties",
+    "no_results": "Geen resultaten voor ‘{{ terms }}’",
+    "no_results_hint": "Controleer de spelling of probeer een ander woord.",
+    "page": "Pagina",
+    "pages": "Pagina’s",
+    "product_type": "Producttype",
+    "products": "Producten",
+    "results_count": {
+      "one": "{{ count }} resultaat",
+      "other": "{{ count }} resultaten"
+    },
+    "results_for": "Resultaten voor ‘{{ terms }}’",
+    "search_for": "Zoeken naar ‘{{ terms }}’",
+    "suggestions": "Suggesties",
+    "suggestions_count": {
+      "one": "{{ count }} suggestie",
+      "other": "{{ count }} suggesties"
+    },
+    "title": "Zoeken"
+  },
   "wholesale": {
     "above_max": "Het maximum voor dit artikel is {{ count }}.",
     "account_and_orders": "Account en bestellingen",

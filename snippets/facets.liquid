@@ -5,6 +5,7 @@
   counts and URLs all come from Shopify's filter objects.
   Params:
     results (collection or search), form_id, clear_url, terms (search terms, optional),
+    result_type (search only: 'product' to keep product-only search),
     show_counts (bool), expand (bool: open every filter), max_options (values before "Show more")
 {%- endcomment -%}
 {%- liquid
@@ -15,6 +16,7 @@
   {%- if terms != blank -%}
     <input type="hidden" name="q" value="{{ terms | escape }}">
     <input type="hidden" name="options[prefix]" value="last">
+    {%- if result_type != blank -%}<input type="hidden" name="type" value="{{ result_type }}">{%- endif -%}
   {%- endif -%}
   {%- for filter in results.filters -%}
     {%- liquid

@@ -300,6 +300,29 @@
     "vendor": "Marca",
     "weight": "Peso"
   },
+  "search": {
+    "all_types": "Tutto",
+    "article": "Articolo",
+    "collections": "Collezioni",
+    "no_results": "Nessun risultato per “{{ terms }}”",
+    "no_results_hint": "Controlla l’ortografia o prova un’altra parola.",
+    "page": "Pagina",
+    "pages": "Pagine",
+    "product_type": "Tipo di prodotto",
+    "products": "Prodotti",
+    "results_count": {
+      "one": "{{ count }} risultato",
+      "other": "{{ count }} risultati"
+    },
+    "results_for": "Risultati per “{{ terms }}”",
+    "search_for": "Cerca “{{ terms }}”",
+    "suggestions": "Suggerimenti",
+    "suggestions_count": {
+      "one": "{{ count }} suggerimento",
+      "other": "{{ count }} suggerimenti"
+    },
+    "title": "Cerca"
+  },
   "wholesale": {
     "above_max": "Il massimo per questo articolo è {{ count }}.",
     "account_and_orders": "Account e ordini",

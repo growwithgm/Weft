@@ -126,4 +126,14 @@
   .promo__body { flex: 1; padding: 20px; }
   .promo__button--bottom { margin-block-start: auto; }
   .collection__facets .promo { margin-block-start: 24px; }
+
+  /* Search results */
+  .search-results__head { margin-block-end: 24px; }
+  .search-results__form { display: flex; gap: 8px; max-width: 640px; }
+  .search-results__input { flex: 1; min-width: 0; }
+  .search-card { display: flex; }
+  .search-card__link { display: flex; flex-direction: column; gap: 6px; width: 100%; padding: 20px; border: 1px solid var(--c-line); border-radius: var(--r-card); text-decoration: none; }
+  .search-card__link:hover { border-color: var(--c-fg); }
+  .search-card__type { font-size: var(--t-12); text-transform: uppercase; letter-spacing: 0.06em; }
+  .search-card__excerpt { font-size: var(--t-14); }
 }

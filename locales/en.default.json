@@ -300,6 +300,29 @@
     "vendor": "Vendor",
     "weight": "Weight"
   },
+  "search": {
+    "all_types": "All",
+    "article": "Blog post",
+    "collections": "Collections",
+    "no_results": "No results for “{{ terms }}”",
+    "no_results_hint": "Check the spelling or try a different word.",
+    "page": "Page",
+    "pages": "Pages",
+    "product_type": "Product type",
+    "products": "Products",
+    "results_count": {
+      "one": "{{ count }} result",
+      "other": "{{ count }} results"
+    },
+    "results_for": "Results for “{{ terms }}”",
+    "search_for": "Search for “{{ terms }}”",
+    "suggestions": "Suggestions",
+    "suggestions_count": {
+      "one": "{{ count }} suggestion",
+      "other": "{{ count }} suggestions"
+    },
+    "title": "Search"
+  },
   "wholesale": {
     "above_max": "The maximum for this item is {{ count }}.",
     "account_and_orders": "Account and orders",

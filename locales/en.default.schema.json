@@ -493,6 +493,7 @@
     "related_products": "Related products",
     "replaces_the_background_color_where_supported": "Replaces the background color where supported.",
     "required": "Required",
+    "results_per_page": "Results per page",
     "results_per_type": "Results per type",
     "retail_shoppers": "Retail shoppers",
     "returns": "Returns",
@@ -521,6 +522,8 @@
     "search": "Search",
     "search_and_account": "Search and account",
     "search_field_font": "Search field font",
+    "search_products_only": "Search products only",
+    "search_results": "Search results",
     "search_settings_are_in_theme_settings_search": "Search settings are in Theme settings > Search.",
     "search_skus": "Search SKUs",
     "search_tags": "Search tags",
@@ -998,6 +1001,13 @@
           },
           "sticky_bar_mobile": {
             "info": "Shows the selected options and Add to cart when the main button scrolls out of view. Hidden for wholesale buyers."
+          }
+        }
+      },
+      "main_search": {
+        "settings": {
+          "products_only": {
+            "info": "When off, pages and blog posts appear after products."
           }
         }
       },

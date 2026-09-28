@@ -300,6 +300,29 @@
     "vendor": "Hersteller",
     "weight": "Gewicht"
   },
+  "search": {
+    "all_types": "Alle",
+    "article": "Blogbeitrag",
+    "collections": "Kollektionen",
+    "no_results": "Keine Ergebnisse für „{{ terms }}“",
+    "no_results_hint": "Prüfe die Schreibweise oder versuche ein anderes Wort.",
+    "page": "Seite",
+    "pages": "Seiten",
+    "product_type": "Produkttyp",
+    "products": "Produkte",
+    "results_count": {
+      "one": "{{ count }} Ergebnis",
+      "other": "{{ count }} Ergebnisse"
+    },
+    "results_for": "Ergebnisse für „{{ terms }}“",
+    "search_for": "Nach „{{ terms }}“ suchen",
+    "suggestions": "Vorschläge",
+    "suggestions_count": {
+      "one": "{{ count }} Vorschlag",
+      "other": "{{ count }} Vorschläge"
+    },
+    "title": "Suche"
+  },
   "wholesale": {
     "above_max": "Die Höchstmenge für diesen Artikel ist {{ count }}.",
     "account_and_orders": "Konto und Bestellungen",

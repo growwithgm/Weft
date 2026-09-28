@@ -493,6 +493,7 @@
     "related_products": "Productos relacionados",
     "replaces_the_background_color_where_supported": "Sustituye el color de fondo donde se admite.",
     "required": "Obligatorio",
+    "results_per_page": "Resultados por página",
     "results_per_type": "Resultados por tipo",
     "retail_shoppers": "Clientes minoristas",
     "returns": "Devoluciones",
@@ -521,6 +522,8 @@
     "search": "Búsqueda",
     "search_and_account": "Búsqueda y cuenta",
     "search_field_font": "Fuente del buscador",
+    "search_products_only": "Buscar solo productos",
+    "search_results": "Resultados de búsqueda",
     "search_settings_are_in_theme_settings_search": "Los ajustes de búsqueda están en Configuración del tema > Búsqueda.",
     "search_skus": "Buscar SKU",
     "search_tags": "Buscar etiquetas",
@@ -998,6 +1001,13 @@
           },
           "sticky_bar_mobile": {
             "info": "Muestra las opciones elegidas y Añadir al carrito cuando el botón principal sale de la vista. Oculto para mayoristas."
+          }
+        }
+      },
+      "main_search": {
+        "settings": {
+          "products_only": {
+            "info": "Si está desactivado, las páginas y los artículos del blog aparecen después de los productos."
           }
         }
       },
