@@ -3002,14 +3002,6 @@
   {
     "file": "config/settings_data.json",
     "where": "current",
-    "item": "setting integration_clarity_id",
-    "action": "moved",
-    "reason": "Microsoft Clarity project in the live layout.",
-    "explained": true
-  },
-  {
-    "file": "config/settings_data.json",
-    "where": "current",
     "item": "setting integration_google_verification",
     "action": "moved",
     "reason": "Google site verification tag in the live layout (it appeared twice; kept once).",
@@ -3021,6 +3013,14 @@
     "item": "setting integration_meta_verification",
     "action": "moved",
     "reason": "Meta domain verification tag in the live layout.",
+    "explained": true
+  },
+  {
+    "file": "config/settings_data.json",
+    "where": "current",
+    "item": "setting integration_clarity_id",
+    "action": "dropped",
+    "reason": "The live layout loaded Microsoft Clarity (project wqwq1r58rv) while the Microsoft Clarity app embed also loads it; the app embed stays on and the layout copy is left out so Clarity loads once.",
     "explained": true
   },
   {

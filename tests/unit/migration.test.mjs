@@ -105,9 +105,11 @@ test('coerce keeps values valid for their setting type', () => {
   assert.equal(coerce({ type: 'range', min: 0, max: 30, step: 5 }, 33).value, 30);
 });
 
-test('the ibBan migration has no unexplained items', { skip: !existsSync(join(ROOT, 'reference/live-theme/config/settings_data.json')) && 'live theme reference not present' }, () => {
+test('the ibBan migration has no unexplained items and keeps every content value', { skip: !existsSync(join(ROOT, 'reference/live-theme/config/settings_data.json')) && 'live theme reference not present' }, () => {
   const out = execFileSync(process.execPath, [join(ROOT, 'scripts/migrate-from-live.mjs'), '--check'], { encoding: 'utf8' });
   assert.match(out, / 0 unexplained/);
+  const [, found, total] = out.match(/content values (\d+)\/(\d+)/);
+  assert.equal(found, total, 'every live content value is in the store config');
 });
 
 test('the ibBan store config keeps text readable in every colour scheme', { skip: !existsSync(join(ROOT, 'store-configs/ibban/config/settings_data.json')) && 'no store config yet' }, () => {

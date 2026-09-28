@@ -2480,7 +2480,6 @@
       "integration_bis_enable": true,
       "integration_bis_endpoint": "https://wasify-super.vercel.app/api/stock/subscribe",
       "integration_gtm_id": "GTM-55DG66F6",
-      "integration_clarity_id": "wqwq1r58rv",
       "integration_google_verification": "-0OIKeydZTIfzNFO7PGU_crZ0rjXm-uZnPhon8ydO6Y",
       "integration_meta_verification": "j7y6vq2q62bdo9vs8063nmqniudzap"
     },
@@ -2497,9 +2496,11 @@
       "integration_bis_enable": "The live back-in-stock widget posts to Wasify.",
       "integration_bis_endpoint": "Wasify subscribe URL used by the live back-in-stock widget.",
       "integration_gtm_id": "Google Tag Manager container in the live layout; it now loads after consent, without the no-JavaScript iframe.",
-      "integration_clarity_id": "Microsoft Clarity project in the live layout.",
       "integration_google_verification": "Google site verification tag in the live layout (it appeared twice; kept once).",
       "integration_meta_verification": "Meta domain verification tag in the live layout."
+    },
+    "notLoaded": {
+      "integration_clarity_id": "The live layout loaded Microsoft Clarity (project wqwq1r58rv) while the Microsoft Clarity app embed also loads it; the app embed stays on and the layout copy is left out so Clarity loads once."
     }
   }
 }

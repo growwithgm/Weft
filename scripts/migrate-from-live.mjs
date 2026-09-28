@@ -272,7 +272,7 @@ export function createMigrator({ root = ROOT, map, schemas = loadThemeSchemas(ro
     return { current, schemes };
   }
 
-  return { report, settings, blocks, section, sectionsFile, overlay, globals };
+  return { report, settings, blocks, section, sectionsFile, overlay, globals, idMapOf: (sec) => idMaps.get(sec) || {} };
 }
 
 export async function run() {
@@ -332,6 +332,7 @@ export async function run() {
   const storeValues = m.settings(store.settings, loadThemeSchemas(ROOT).global, {}, 'store settings', settingsFile);
   Object.assign(files.get(settingsFile).current, storeValues);
   for (const key of Object.keys(storeValues)) m.report.push({ file: settingsFile, where: 'current', item: `setting ${key}`, action: 'moved', reason: (store.sources || {})[key] || 'Store value from the live theme.', explained: true });
+  for (const [key, reason] of Object.entries(store.notLoaded || {})) m.report.push({ file: settingsFile, where: 'current', item: `setting ${key}`, action: 'dropped', reason, explained: true });
 
   // Approved decisions (brief §5) replace the live values they supersede.
   const approved = map.approved || {};
@@ -368,6 +369,8 @@ export async function run() {
   }
   if ((liveData.current || {}).content_for_index) m.report.push({ file: settingsFile, where: 'current', item: 'content_for_index', action: 'dropped', reason: 'Old home page section list; the home page is templates/index.json.', explained: true });
 
+  const cov = coverage(m, liveBases, migratedBases);
+
   const unexplained = m.report.filter((r) => !r.explained);
   if (!CHECK) {
     for (const d of ['templates', 'sections', 'config']) rmSync(join(OUT, d), { recursive: true, force: true });
@@ -376,14 +379,88 @@ export async function run() {
       writeFileSync(join(OUT, rel), JSON.stringify(data, null, 2) + '\n');
     }
     writeFileSync(join(OUT, 'migration-report.json'), JSON.stringify(m.report, null, 2) + '\n');
-    writeFileSync(join(OUT, 'migration-report.md'), renderReport(m.report, files.size));
+    writeFileSync(join(OUT, 'migration-report.md'), renderReport(m.report, files.size, cov));
   }
   const explained = m.report.length - unexplained.length;
-  console.log(`migrate-from-live: ${files.size} files → store-configs/${STORE}/, ${explained} explained items, ${unexplained.length} unexplained`);
+  console.log(`migrate-from-live: ${files.size} files → store-configs/${STORE}/, ${explained} explained items, ${unexplained.length} unexplained; ${cov.summary}`);
   if (CHECK && unexplained.length) process.exit(1);
 }
 
-function renderReport(report, fileCount) {
+/**
+ * Proves the store config reproduces the live content: every live section and block either
+ * carried over (same id, or the ids it became) or has a report entry, and every content value
+ * (image, video, link, text) of what carried over is found in the output. Gaps are unexplained.
+ */
+function coverage(m, liveBases, migratedBases) {
+  // Only free-form content counts: the live schema says which settings hold text, media or links.
+  const live = loadThemeSchemas(LIVE);
+  const CONTENT = new Set(['text', 'textarea', 'richtext', 'inline_richtext', 'html', 'liquid', 'url', 'image_picker', 'video', 'video_url', 'collection', 'product', 'page', 'blog', 'article', 'link_list', 'product_list', 'collection_list']);
+  const typeOf = (sectionType, blockType, key) => {
+    const sec = live.sections[sectionType];
+    if (!blockType) return sec && sec.settings[key] ? sec.settings[key].type : null;
+    const defs = (sec && sec.localBlocks[blockType]) || (live.blocks[blockType] || {}).settings;
+    return defs && defs[key] ? defs[key].type : null;
+  };
+  const norm = (v) => String(v).replace(/<[^>]+>/g, ' ').replace(/&[a-z]+;/g, ' ').replace(/\s+/g, ' ').trim();
+  const strings = (o, out = []) => {
+    if (typeof o === 'string') out.push(norm(o));
+    else if (o && typeof o === 'object') for (const v of Object.values(o)) strings(v, out);
+    return out;
+  };
+  const isContent = (v) => typeof v === 'string' && (/^shopify:\/\//.test(v) || /^https?:\/\//.test(v) || /[A-Za-zÀ-ÿ]{3,}/.test(norm(v))) && !/^(#|rgba?\(|linear-gradient)/.test(v.trim());
+  const reported = (file, where) => m.report.some((r) => r.file === file && r.where.startsWith(where));
+  const droppedSetting = (file, where, key) => m.report.some((r) => r.file === file && r.where.startsWith(where) && r.item === `setting ${key}` && r.action !== 'changed');
+  // A handler that rebuilt a block or section (snippet Custom Liquid → Weft block, AI card → section) explains its content.
+  const rebuilt = (file, where) => m.report.some((r) => r.file === file && r.explained && (r.where === where || r.where.startsWith(`${where} →`) || r.where.startsWith(`${where} (`)) && ['custom liquid', 'section'].includes(r.item) && r.action === 'changed');
+  const totals = { sections: 0, sectionsKept: 0, blocks: 0, blocksKept: 0, values: 0, valuesFound: 0 };
+  const gap = (file, where, reason) => m.report.push({ file, where, item: 'coverage', action: 'missing', reason, explained: false });
+  const checkValues = (file, where, liveSettings, outObj, sectionType, blockType) => {
+    const haystack = strings(outObj).join('\n');
+    for (const [key, v] of Object.entries(liveSettings || {})) {
+      const type = typeOf(sectionType, blockType, key);
+      if ((type && !CONTENT.has(type)) || !isContent(v) || droppedSetting(file, where, key) || rebuilt(file, where)) continue;
+      totals.values++;
+      const n = norm(v);
+      if (!n || haystack.includes(n)) totals.valuesFound++;
+      else gap(file, where, `content of setting ${key} (${JSON.stringify(n.slice(0, 60))}) not found in the output`);
+    }
+  };
+  for (const [file, live] of liveBases) {
+    const out = migratedBases.get(file);
+    for (const [id, sec] of Object.entries(live.sections || {})) {
+      totals.sections++;
+      const where = `section "${id}"`;
+      const migrated = out.sections[id];
+      if (!migrated) {
+        if (reported(file, where)) continue;
+        gap(file, where, 'section missing from the output without a report entry');
+        continue;
+      }
+      totals.sectionsKept++;
+      checkValues(file, `${where} (${sec.type})`, sec.settings, migrated.settings, sec.type);
+      const ids = m.idMapOf(migrated);
+      for (const [bid, b] of Object.entries(sec.blocks || {})) {
+        totals.blocks++;
+        const bwhere = `${where} (${sec.type}) > block "${bid}"`;
+        const targets = (ids[bid] || []).map((x) => (migrated.blocks || {})[x]).filter(Boolean);
+        if (!targets.length) {
+          if (reported(file, bwhere) || rebuilt(file, `${where} (${sec.type})`)) continue;
+          gap(file, bwhere, 'block missing from the output without a report entry');
+          continue;
+        }
+        totals.blocksKept++;
+        checkValues(file, bwhere, b.settings, targets, sec.type, b.type);
+      }
+    }
+  }
+  const pct = (a, b) => (b ? Math.round((a / b) * 100) : 100);
+  return {
+    ...totals,
+    summary: `sections ${totals.sectionsKept}/${totals.sections} carried, blocks ${totals.blocksKept}/${totals.blocks}, content values ${totals.valuesFound}/${totals.values} (${pct(totals.valuesFound, totals.values)}%)`
+  };
+}
+
+function renderReport(report, fileCount, cov) {
   const unexplained = report.filter((r) => !r.explained);
   const lines = [
     `# Migration report — store-configs/${STORE}`,
@@ -391,6 +468,8 @@ function renderReport(report, fileCount) {
     `Generated by \`scripts/migrate-from-live.mjs\` from \`reference/live-theme/\`. ${fileCount} files written. ${report.length - unexplained.length} explained items, ${unexplained.length} unexplained.`,
     '',
     'Explained items carry the reason from `scripts/migration-map.json` (see `docs/migration-map.md`). Unexplained items mean the map needs a rule.',
+    '',
+    `Coverage: ${cov.summary}. Sections and blocks that didn't carry over are all listed below with their reason; every content value (image, video, link, text) of what carried over was found in the output unless listed as missing.`,
     ''
   ];
   const group = (items) => {
