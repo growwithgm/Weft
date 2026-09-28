@@ -92,7 +92,10 @@ export const tests = {
     await open(page, base, popup({ mode: 'age_verification' }), ['popup.js'], '<script>if (!sessionStorage.getItem("seeded")) { localStorage.removeItem("weft:popup:popup1"); sessionStorage.setItem("seeded", "1"); }</script>');
     await eventually(() => document.querySelector('site-popup dialog').open, 'shown at once');
     await page.keyboard.press('Escape');
-    expect(await page.$eval('site-popup dialog', (d) => d.open), 'Escape does not dismiss').toBe(true);
+    // Escape can close the dialog for a moment (browsers ignore a prevented cancel without user
+    // activation); popup.js reopens it from the close event, which runs as a separate task.
+    await page.waitForTimeout(50);
+    await eventually(() => document.querySelector('site-popup dialog').open, 'Escape does not dismiss');
     await page.click('#no');
     expect(await page.$eval('#declined', (d) => d.hidden), 'declined message').toBe(false);
     expect(await page.$eval('[data-age-actions]', (d) => d.hidden), 'buttons hidden').toBe(true);
