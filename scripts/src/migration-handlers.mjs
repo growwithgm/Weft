@@ -97,8 +97,8 @@ export default {
     for (const snippet of renders) {
       switch (snippet) {
         case 'gn-rating':
-          produced.push({ id, block: { type: 'product-rating', disabled: block.disabled, settings: { rating_value: '{{ shop.metafields.judgeme.all_reviews_rating.value }}', rating_count: '{{ shop.metafields.judgeme.all_reviews_count.value }}', count_label: 'store', audience } } });
-          note({ item: 'custom liquid', action: 'changed', reason: 'gn-rating → product-rating block reading the Judge.me store rating and count (dynamic sources), retail only as before.', explained: true });
+          produced.push({ id, block: { type: 'product-rating', disabled: block.disabled, settings: { count_label: 'store', audience } } });
+          note({ item: 'custom liquid', action: 'changed', reason: 'gn-rating → product-rating block showing the store rating and count (Judge.me shop metafields, read by the reviews integration; shop metafields cannot be dynamic sources), retail only as before.', explained: true });
           break;
         case 'back-in-stock':
           produced.push({ id, block: { type: 'back-in-stock', disabled: block.disabled, settings: { audience } } });

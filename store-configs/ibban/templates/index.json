@@ -598,7 +598,7 @@
         "cs_head": {
           "type": "heading",
           "settings": {
-            "heading": "Every stitch<br>by hand",
+            "heading": "Every stitch by hand",
             "size": "h1",
             "tag": "auto"
           }

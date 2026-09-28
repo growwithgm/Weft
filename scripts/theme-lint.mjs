@@ -390,6 +390,10 @@ const checkValues = (file, defs, values, where) => {
     if ((def.type === 'select' || def.type === 'radio') && typeof value === 'string' && !value.includes('{{') && !def.options.some((o) => o.value === value))
       report('error', file, `${where}: "${key}" value "${value}" is not an option`);
     if (def.type === 'range' && typeof value === 'number' && (value < def.min || value > def.max)) report('error', file, `${where}: "${key}" ${value} is outside ${def.min}–${def.max}`);
+    // Shopify upload errors Theme Check doesn't catch: "'metafields' is not a supported resource"
+    // (shop metafields as a dynamic source) and "Tag '<br>' is not permitted" in inline rich text.
+    if (typeof value === 'string' && /\{\{\s*shop\.metafields/.test(value)) report('error', file, `${where}: "${key}" uses shop metafields as a dynamic source, which Shopify rejects`);
+    if (def.type === 'inline_richtext' && typeof value === 'string' && /<br\s*\/?>|<\/?(p|div|h[1-6])\b/i.test(value)) report('error', file, `${where}: "${key}" has a block tag or <br>, which inline rich text doesn't allow`);
   }
 };
 const checkBlockTree = (file, parentSchema, blockMap, order, where) => {

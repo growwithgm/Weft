@@ -41,7 +41,7 @@
           "type": "flash-message",
           "settings": {
             "icon": "none",
-            "text": "<strong>Pre-order now to make sure you don't miss out!</strong><br/><br/>As soon as it's in stock, we will ship it to you.",
+            "text": "<strong>Pre-order now to make sure you don't miss out!</strong> As soon as it's in stock, we will ship it to you.",
             "close": "button",
             "over_media": false
           }

@@ -9,6 +9,19 @@
   assign rating = block.settings.rating_value
   assign count = block.settings.rating_count
   assign max = 5
+-%}
+{%- comment -%} integration:start {%- endcomment -%}
+{%- if rating == blank and block.settings.count_label == 'store' -%}
+  {%- comment -%} Store-wide score from a reviews integration (shop metafields can't be dynamic sources). {%- endcomment -%}
+  {%- capture store_rating -%}{%- render 'integration-store-rating' -%}{%- endcapture -%}
+  {%- assign store_parts = store_rating | split: '|' -%}
+  {%- if store_parts[0] != blank -%}
+    {%- assign rating = store_parts[0] -%}
+    {%- assign count = store_parts[1] -%}
+  {%- endif -%}
+{%- endif -%}
+{%- comment -%} integration:end {%- endcomment -%}
+{%- liquid
   if rating == blank and p.metafields.reviews.rating.value != blank
     assign rating = p.metafields.reviews.rating.value.rating
     assign max = p.metafields.reviews.rating.value.scale_max | default: 5

@@ -30,8 +30,6 @@
         "custom_liquid_gnrating": {
           "type": "product-rating",
           "settings": {
-            "rating_value": "{{ shop.metafields.judgeme.all_reviews_rating.value }}",
-            "rating_count": "{{ shop.metafields.judgeme.all_reviews_count.value }}",
             "count_label": "store",
             "audience": "retail"
           }
@@ -76,7 +74,7 @@
           "disabled": true,
           "settings": {
             "icon": "tag",
-            "text": "<strong>Selling fast!<br/></strong>Grab yours while you can",
+            "text": "<strong>Selling fast! </strong>Grab yours while you can",
             "close": "button",
             "over_media": true,
             "duration": 5,

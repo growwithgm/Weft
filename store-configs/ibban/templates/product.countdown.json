@@ -78,7 +78,7 @@
           "type": "flash-message",
           "settings": {
             "icon": "info",
-            "text": "Coming Soon!<br>We're so excited about our upcoming releases that we just couldn't keep them under wraps anymore! Drop us your email in the box below, and we'll let you know when it's good to go :)",
+            "text": "Coming Soon! We're so excited about our upcoming releases that we just couldn't keep them under wraps anymore! Drop us your email in the box below, and we'll let you know when it's good to go :)",
             "close": "none",
             "over_media": false,
             "duration": 7,

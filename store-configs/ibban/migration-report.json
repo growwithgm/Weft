@@ -513,6 +513,14 @@
   },
   {
     "file": "templates/index.json",
+    "where": "section \"craft_story\" (media-with-text) > block \"cs_head\" (heading) → heading",
+    "item": "setting heading",
+    "action": "changed",
+    "reason": "block tags removed for an inline text setting",
+    "explained": true
+  },
+  {
+    "file": "templates/index.json",
     "where": "section \"craft_story\" (media-with-text) > block \"cs_btn\" (button)",
     "item": "block",
     "action": "dropped",
@@ -1780,7 +1788,7 @@
     "where": "section \"main\" (main-product) > block \"custom_liquid_gnrating\" (custom-liquid)",
     "item": "custom liquid",
     "action": "changed",
-    "reason": "gn-rating → product-rating block reading the Judge.me store rating and count (dynamic sources), retail only as before.",
+    "reason": "gn-rating → product-rating block showing the store rating and count (Judge.me shop metafields, read by the reviews integration; shop metafields cannot be dynamic sources), retail only as before.",
     "explained": true
   },
   {

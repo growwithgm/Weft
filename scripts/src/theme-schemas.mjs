@@ -86,8 +86,9 @@ export function coerce(setting, value) {
       return { ok: true, value: `<p>${v}</p>`, note: 'plain text wrapped in a paragraph for a rich text setting' };
     }
     case 'inline_richtext': {
-      // No block tags in inline text: paragraphs and headings become line breaks.
-      const v = String(value).replace(/<\/(p|h[1-6]|div)>\s*<(p|h[1-6]|div)[^>]*>/g, '<br>').replace(/<\/?(p|h[1-6]|div)[^>]*>/g, '').trim();
+      // No block tags and no <br> in inline text (Shopify rejects the template): paragraphs,
+      // headings and line breaks become spaces.
+      const v = String(value).replace(/<\/(p|h[1-6]|div)>\s*<(p|h[1-6]|div)[^>]*>/g, ' ').replace(/<br\s*\/?>/gi, ' ').replace(/<\/?(p|h[1-6]|div)[^>]*>/g, '').replace(/\s{2,}/g, ' ').trim();
       return { ok: true, value: v, note: v !== String(value) ? 'block tags removed for an inline text setting' : undefined };
     }
     case 'text': {
