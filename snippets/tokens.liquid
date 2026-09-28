@@ -118,6 +118,17 @@
       --c-primary-hover: {{ scheme.settings.button_hover }};
       --c-secondary: {{ scheme.settings.button_secondary_bg }};
       --c-on-secondary: {{ scheme.settings.button_secondary_text }};
+      {%- comment -%} Sale and stock colours that would miss 4.5:1 on this background use the scheme's text colour. {%- endcomment -%}
+      {%- liquid
+        assign sale_ratio = settings.color_sale | color_contrast: scheme.settings.background
+        assign ok_ratio = settings.color_stock_ok | color_contrast: scheme.settings.background
+        assign low_ratio = settings.color_stock_low | color_contrast: scheme.settings.background
+        assign bad_ratio = settings.color_stock_out | color_contrast: scheme.settings.background
+      -%}
+      {%- if sale_ratio < 4.5 %} --c-sale: {{ scheme.settings.text }};{% endif -%}
+      {%- if ok_ratio < 4.5 %} --c-ok: {{ scheme.settings.text }};{% endif -%}
+      {%- if low_ratio < 4.5 %} --c-low: {{ scheme.settings.text }};{% endif -%}
+      {%- if bad_ratio < 4.5 %} --c-bad: {{ scheme.settings.text }};{% endif %}
     }
   {% endfor %}
 

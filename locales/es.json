@@ -38,6 +38,7 @@
     "view_all": "Ver todos los artículos"
   },
   "cart": {
+    "bundle_includes": "Incluye:",
     "checkout": "Tramitar pedido",
     "discount": "Descuento",
     "empty": "Tu carrito está vacío",
@@ -352,6 +353,7 @@
       "seconds": "Segundos"
     },
     "custom_option": {
+      "characters": "{{ used }} / {{ max }} caracteres",
       "required": "Obligatorio"
     },
     "delivery": {
@@ -435,6 +437,11 @@
     },
     "remind_me": "Avísame cuando vuelva",
     "reviews": "Reseñas",
+    "scent": {
+      "base": "Fondo",
+      "heart": "Corazón",
+      "top": "Salida"
+    },
     "select_option": "Selecciona {{ option }}",
     "share": {
       "copied": "Enlace copiado",

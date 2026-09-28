@@ -20,6 +20,7 @@
   .cart-line__title { font-family: var(--f-heading); font-weight: var(--fw-heading); font-size: var(--t-16); line-height: 1.2; color: var(--c-heading); text-decoration: none; }
   .cart-line__title:hover { text-decoration: underline; }
   .cart-line__vendor, .cart-line__options, .cart-line__unit { font-size: var(--t-13); color: var(--c-muted); }
+  .cart-line__components { list-style: none; margin: 0; padding: 0; font-size: var(--t-13); color: var(--c-muted); }
   .cart-line__price { font-size: var(--t-13); }
   .cart-line__discount { display: flex; gap: 6px; align-items: center; font-size: var(--t-13); color: var(--c-sale); }
   .cart-line__remove { width: 32px; height: 32px; color: var(--c-muted); flex: 0 0 auto; }

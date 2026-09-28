@@ -28,7 +28,7 @@ const popup = ({ mode = 'newsletter', delay = 0, customer = 'false', guests = 't
 </site-popup>`;
 
 const open = async (page, base, body, modules, head = '') => {
-  await page.route('**/fixture.html', (r) => r.fulfill({ contentType: 'text/html', body: shell(body, { head: `<link rel="stylesheet" href="/assets/section-content.css"><link rel="stylesheet" href="/assets/section-library.css"><link rel="stylesheet" href="/assets/component-popup.css">${head}`, modules }) }));
+  await page.route('**/fixture.html', (r) => r.fulfill({ contentType: 'text/html', body: shell(body, { head: `<link rel="stylesheet" href="/assets/component-blocks.css"><link rel="stylesheet" href="/assets/section-content.css"><link rel="stylesheet" href="/assets/section-library.css"><link rel="stylesheet" href="/assets/component-popup.css">${head}`, modules }) }));
   await page.goto(`${base}/fixture.html`);
 };
 

@@ -189,6 +189,7 @@
   .product-meta { display: flex; flex-wrap: wrap; gap: 4px 16px; font-size: var(--t-13); color: var(--c-muted); }
   .product-meta a { color: inherit; }
   .custom-option__check { display: flex; gap: 10px; align-items: flex-start; font-size: var(--t-15); }
+  .custom-option__count { display: block; margin-top: 4px; font-size: var(--t-13); text-align: end; }
   .product-signup { display: flex; flex-direction: column; gap: 12px; }
   .product-signup--divider { border-block-start: 1px solid var(--c-line); padding-block-start: 16px; }
   .share { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; min-height: 52px; font-size: var(--t-13); color: var(--c-muted); border-block-start: 1px solid var(--c-line); }
@@ -288,6 +289,11 @@
   .badges { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
   .badge-item { display: inline-flex; align-items: center; gap: 6px; min-height: 32px; padding: 4px 12px; border-radius: 16px; font-size: var(--t-13); font-weight: var(--fw-medium); border: 1px solid var(--c-fg); }
   .badges--filled .badge-item { background: var(--c-surface); border-color: transparent; }
+  .scent-notes__list { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); margin: 8px 0 0; }
+  .scent-notes__group { padding-inline: 16px; border-inline-start: var(--border-width) solid var(--c-line); }
+  .scent-notes__group:first-child { padding-inline-start: 0; border-inline-start: 0; }
+  .scent-notes__label { margin-bottom: 6px; font-size: var(--t-13); color: var(--c-muted); text-transform: var(--tt-subheading); }
+  .scent-notes__note { margin: 0; font-size: var(--t-15); }
   .pao { display: flex; align-items: center; gap: 12px; margin: 0; font-size: var(--t-14); }
   .pao__symbol { position: relative; display: inline-flex; width: 36px; height: 36px; }
   .pao__months { position: absolute; inset: 14px 0 0; text-align: center; font-size: 10px; font-weight: var(--fw-bold); }

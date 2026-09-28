@@ -38,6 +38,7 @@
     "view_all": "Alle berichten bekijken"
   },
   "cart": {
+    "bundle_includes": "Bevat:",
     "checkout": "Afrekenen",
     "discount": "Korting",
     "empty": "Je winkelwagen is leeg",
@@ -352,6 +353,7 @@
       "seconds": "Seconden"
     },
     "custom_option": {
+      "characters": "{{ used }} / {{ max }} tekens",
       "required": "Verplicht"
     },
     "delivery": {
@@ -435,6 +437,11 @@
     },
     "remind_me": "Laat het me weten",
     "reviews": "Reviews",
+    "scent": {
+      "base": "Basis",
+      "heart": "Hart",
+      "top": "Top"
+    },
     "select_option": "Kies een {{ option }}",
     "share": {
       "copied": "Link gekopieerd",

@@ -38,6 +38,7 @@
     "view_all": "すべての記事を見る"
   },
   "cart": {
+    "bundle_includes": "内容:",
     "checkout": "ご購入手続きへ",
     "discount": "割引",
     "empty": "カートは空です",
@@ -352,6 +353,7 @@
       "seconds": "秒"
     },
     "custom_option": {
+      "characters": "{{ used }} / {{ max }} 文字",
       "required": "必須"
     },
     "delivery": {
@@ -435,6 +437,11 @@
     },
     "remind_me": "入荷したら知らせる",
     "reviews": "レビュー",
+    "scent": {
+      "base": "ラスト",
+      "heart": "ミドル",
+      "top": "トップ"
+    },
     "select_option": "{{ option }}を選択",
     "share": {
       "copied": "コピーしました",

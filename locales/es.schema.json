@@ -88,6 +88,7 @@
     "bag": "Bolsa",
     "banners": "Banners",
     "barcode": "Código de barras",
+    "base_notes": "Notas de fondo",
     "base_size": "Tamaño base",
     "basket": "Cesta",
     "before_and_after": "Antes y después",
@@ -340,6 +341,7 @@
     "heading_size": "Tamaño de los títulos",
     "heading_text": "Texto del título",
     "headings": "Títulos",
+    "heart_notes": "Notas de corazón",
     "height": "Altura",
     "height_on_large_screens": "Altura en pantallas grandes",
     "height_on_mobile": "Altura en móvil",
@@ -719,6 +721,7 @@
     "rule_for_other_countries": "Regla para otros países",
     "ruler": "Regla",
     "sale": "Oferta",
+    "scent_notes": "Notas olfativas",
     "score": "Puntuación",
     "scroll_per_arrow_click": "Desplazamiento por clic en la flecha",
     "scrolling_banner": "Banner con desplazamiento",
@@ -745,6 +748,7 @@
     "secure": "Seguro",
     "secure_payment": "Pago seguro",
     "selected": "Seleccionadas",
+    "separate_notes_with_commas": "Separa las notas con comas.",
     "shade_every_other_row": "Sombrear filas alternas",
     "shake_every": "Agitar cada",
     "shake_the_cart_icon_when_it_has_items": "Agitar el icono del carrito cuando tiene artículos",
@@ -937,6 +941,7 @@
     "swatches": "Muestras",
     "swipe_tiles_on_mobile": "Deslizar mosaicos en móvil",
     "switch": "Interruptor",
+    "tab": "Pestaña",
     "tab_1_heading": "Título de la pestaña 1",
     "tab_1_page": "Página de la pestaña 1",
     "tab_1_text": "Texto de la pestaña 1",
@@ -989,6 +994,7 @@
     "top": "Arriba",
     "top_center": "Arriba al centro",
     "top_end": "Arriba al final",
+    "top_notes": "Notas de salida",
     "top_start": "Arriba al inicio",
     "towards_the_end": "Hacia el final",
     "towards_the_start": "Hacia el inicio",
@@ -1322,6 +1328,22 @@
         "settings": {
           "custom_liquid": {
             "info": "Añade fragmentos de apps u otro código. El tema no revisa este código."
+          }
+        }
+      },
+      "featured_collection": {
+        "blocks": {
+          "tab": {
+            "settings": {
+              "collection": {
+                "info": "Para franjas de precio, usa colecciones automatizadas con una condición de precio."
+              }
+            }
+          }
+        },
+        "settings": {
+          "add_tabs_to_show_a_different_collection_in_each_": {
+            "content": "Añade pestañas para mostrar una colección distinta en cada una. La colección de abajo se usa cuando no hay pestañas."
           }
         }
       },

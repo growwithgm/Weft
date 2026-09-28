@@ -442,6 +442,37 @@ for (const file of list(join(ROOT, 'sections'), '.json')) {
   if (!data.type) report('error', file, 'Section group needs a "type" (header, footer, aside or custom.*)');
 }
 
+// Preset listings (Theme Store): listings/<preset-handle>/templates/*.json and optional
+// sections/*.json, each overriding a base file of the same name. One folder per preset; the
+// default preset's templates mirror the base templates.
+{
+  const listingsDir = join(ROOT, 'listings');
+  const dataPath = join(ROOT, 'config', 'settings_data.json');
+  const presetNames = existsSync(dataPath) ? Object.keys(parseJSON(dataPath, read(dataPath))?.presets || {}) : [];
+  const handles = new Map(presetNames.map((n) => [n.toLowerCase().replace(/ /g, '-'), n]));
+  const folders = existsSync(listingsDir) ? readdirSync(listingsDir) : [];
+  if (presetNames.length > 1) for (const [handle, name] of handles) if (!folders.includes(handle)) report('error', listingsDir, `Preset "${name}" has no listings/${handle}/ folder`);
+  const same = (a, b) => JSON.stringify(parseJSON(a, read(a))) === JSON.stringify(parseJSON(b, read(b)));
+  for (const folder of folders) {
+    const dir = join(listingsDir, folder);
+    if (!handles.has(folder)) report('error', dir, `listings/${folder} matches no preset in settings_data.json`);
+    for (const sub of readdirSync(dir)) {
+      if (sub !== 'templates' && sub !== 'sections') report('error', join(dir, sub), 'Listings folders hold only templates/ and sections/');
+    }
+    for (const file of list(join(dir, 'templates'))) {
+      const base = join(ROOT, 'templates', basename(file));
+      if (!file.endsWith('.json')) report('error', file, 'Listing templates must be JSON');
+      else if (!existsSync(base)) report('error', file, `No base template templates/${basename(file)} to override`);
+      else if (handles.get(folder) === presetNames[0] && !same(file, base)) report('error', file, `Default preset listing differs from templates/${basename(file)}; copy the base template`);
+    }
+    for (const file of list(join(dir, 'sections'))) {
+      const base = join(ROOT, 'sections', basename(file));
+      if (!existsSync(base)) report('error', file, `No base section group sections/${basename(file)} to override`);
+      else if (parseJSON(file, read(file))?.type !== parseJSON(base, read(base))?.type) report('error', file, 'Section group type differs from the base group');
+    }
+  }
+}
+
 // ---------- config ----------
 const schemaFile = join(ROOT, 'config', 'settings_schema.json');
 const globalIds = new Set();

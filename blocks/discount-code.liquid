@@ -4,6 +4,7 @@
 {%- endcomment -%}
 {%- assign code = block.settings.discount_code | strip -%}
 {%- if code != blank -%}
+  {{ 'component-blocks.css' | asset_url | stylesheet_tag }}
   <div class="discount-code" {{ block.shopify_attributes }}>
     {%- if block.settings.label != blank -%}<span class="discount-code__label">{{ block.settings.label | escape }}</span>{%- endif -%}
     <code class="discount-code__value">{{ code | escape }}</code>

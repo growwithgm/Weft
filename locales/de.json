@@ -38,6 +38,7 @@
     "view_all": "Alle Beiträge ansehen"
   },
   "cart": {
+    "bundle_includes": "Enthält:",
     "checkout": "Zur Kasse",
     "discount": "Rabatt",
     "empty": "Dein Warenkorb ist leer",
@@ -352,6 +353,7 @@
       "seconds": "Sekunden"
     },
     "custom_option": {
+      "characters": "{{ used }} / {{ max }} Zeichen",
       "required": "Pflichtfeld"
     },
     "delivery": {
@@ -435,6 +437,11 @@
     },
     "remind_me": "Erinnere mich bei Verfügbarkeit",
     "reviews": "Bewertungen",
+    "scent": {
+      "base": "Basis",
+      "heart": "Herz",
+      "top": "Kopf"
+    },
     "select_option": "{{ option }} auswählen",
     "share": {
       "copied": "Link kopiert",

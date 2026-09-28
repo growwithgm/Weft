@@ -38,6 +38,7 @@
     "view_all": "View all posts"
   },
   "cart": {
+    "bundle_includes": "Includes:",
     "checkout": "Check out",
     "discount": "Discount",
     "empty": "Your cart is empty",
@@ -352,6 +353,7 @@
       "seconds": "Seconds"
     },
     "custom_option": {
+      "characters": "{{ used }} / {{ max }} characters",
       "required": "Required"
     },
     "delivery": {
@@ -435,6 +437,11 @@
     },
     "remind_me": "Remind me when in stock",
     "reviews": "Reviews",
+    "scent": {
+      "base": "Base",
+      "heart": "Heart",
+      "top": "Top"
+    },
     "select_option": "Select a {{ option }}",
     "share": {
       "copied": "Link copied",

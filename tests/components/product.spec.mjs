@@ -108,5 +108,13 @@ export const tests = {
     await p.fill('#Quantity-main', '7');
     await p.click('body');
     expect(await p.$eval('#Quantity-main', (i) => i.value), 'typed value rounded to pack').toBe('8');
+  },
+
+  async 'gift message counts characters as the buyer types'({ page: p, base, expect }) {
+    await setup(p, base);
+    await p.evaluate(() => document.querySelector('.product__info').insertAdjacentHTML('beforeend', '<div class="custom-option field"><label for="Option-gift">Gift message</label><textarea id="Option-gift" name="properties[Gift message]" form="ProductForm-main" maxlength="200" aria-describedby="Option-gift-count" data-char-count="Option-gift-count"></textarea><span id="Option-gift-count" data-template="[count] / 200 characters">0 / 200 characters</span></div>'));
+    await p.fill('#Option-gift', 'Happy birthday');
+    expect(await p.$eval('#Option-gift-count', (c) => c.textContent), 'count follows typing').toBe('14 / 200 characters');
+    expect(await p.$eval('#Option-gift', (t) => t.form.getAttribute('id')), 'saved with the product form').toBe('ProductForm-main');
   }
 };

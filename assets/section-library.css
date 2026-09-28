@@ -154,6 +154,7 @@
   /* Product rows */
   .product-row__promo { display: flex; flex-direction: column; border-radius: var(--r-card); overflow: hidden; background: var(--c-bg); }
   .product-row__promo-body { padding: 20px; }
+  .product-row__more { margin: 20px 0 0; text-align: center; }
   .card--placeholder .card__media { background: var(--c-surface); }
   .featured-product { padding-block: var(--section-gap); }
   .featured-product__more { margin-block-start: 8px; align-self: flex-start; }
@@ -165,8 +166,6 @@
   .promo-strip--large .promo-strip__inner { padding-block: 28px; }
   .promo-strip--dividers { border-block: 1px solid var(--c-line); }
   .promo-strip__inner > * { margin: 0; }
-  .discount-code { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; }
-  .discount-code__value { padding: 6px 12px; border: 1px dashed currentColor; border-radius: 6px; font-family: inherit; font-weight: var(--fw-bold); letter-spacing: 0.06em; }
 
   /* Countdown section */
   .countdown-section { padding-block: 0; }

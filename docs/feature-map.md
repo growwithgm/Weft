@@ -153,14 +153,14 @@ Status: `planned` (P0) → `built` (with phase) → `verified` (scenario or chec
 | Quick order list | `sections/quick-order-list` (reuses `<order-matrix>` from `assets/matrix.js`), `templates/page.quick-order.json`; quick order drawer from wholesale cards (`sections/quick-add`, setting `wholesale_quick_order_drawer`) | P3 | done |
 | Order matrix (any two options) | `blocks/order-matrix` | P3 | done |
 | Shade swatches | `variant-picker` swatches (swatch images / standard colour metaobject `shopify.color-pattern` swatch) | P2 | done |
-| Scent notes | `blocks/scent-notes` | P6 | planned |
-| Warnings and precautions | `blocks/collapsible` preset "Warnings" | P6 | planned |
+| Scent notes | `blocks/scent-notes` | P6 | done |
+| Warnings and precautions | `blocks/collapsible` preset "Warnings" | P6 | done |
 | Period after opening icon | `blocks/pao-icon` | P6 | done |
-| Gift message line-item property | `blocks/gift-message` | P6 | planned |
-| Gift sets list components (bundles) | `cart-line` + product block reads `product.metafields` / bundle components via `item.item_components` (*verify P6*) | P6 | planned |
+| Gift message line-item property | `blocks/custom-option` preset "Gift message" (character counter) | P6 | done |
+| Gift sets list components (bundles) | `snippets/cart-line` lists `item.item_components` (verified on shopify.dev) | P6 | done |
 | Ingredient spotlight | `sections/ingredient-spotlight` | P6 | done |
-| "For professionals" banner | `image-banner` preset linking to wholesale sign-in page | P6 | planned |
-| Gift guide | `featured-collection` preset "Gift guide" | P6 | planned |
+| "For professionals" banner | `image-banner` preset "For professionals"; listings link it to `/account/login` | P6 | done |
+| Gift guide | `featured-collection` preset "Gift guide" with tabs (one collection per price band) | P6 | done |
 | Professional-only products, testers | native catalogs (no code) + tag fallback + scenario 19 | P3/P6 | partial |
 | Case packs (increment 6/12), volume tiers | quantity rules (native) — matrix, stepper, cart | P3 | done |
 | Link to order history in customer account | `quick-order-list` + account links (`routes.account_url`) | P3 | done |

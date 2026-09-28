@@ -1,5 +1,6 @@
 {%- comment -%} Payment information: accepted payment icons and two short text parts (e.g. installments). {%- endcomment -%}
 {%- assign b = block.settings -%}
+{{ 'component-blocks.css' | asset_url | stylesheet_tag }}
 <div class="payment-methods stack" {{ block.shopify_attributes }}>
   {%- if b.title != blank -%}<p class="h5 payment-methods__title">{{ b.title | escape }}</p>{%- endif -%}
   <div class="payment-methods__part">

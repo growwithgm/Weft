@@ -1,8 +1,11 @@
 {%- comment -%}
   Product details (product templates): a full-width area under the product for tabs, highlight
-  notes, payment information, rich text, custom Liquid and app blocks.
+  notes, payment information, rich text, custom Liquid and app blocks. Product blocks (ingredients,
+  how to use, scent notes and the rest) are styled by section-product.css, which the product
+  section above has already loaded.
 {%- endcomment -%}
 {%- assign s = section.settings -%}
+{{ 'section-product.css' | asset_url | stylesheet_tag }}
 {{ 'section-content.css' | asset_url | stylesheet_tag }}
 <div class="section product-details color-{{ s.color_scheme }}">
   <div class="page-width{% if s.width == 'narrow' %} page-width--narrow{% endif %} product-details__inner stack">

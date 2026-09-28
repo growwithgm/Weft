@@ -1,4 +1,4 @@
-/* Content sections: FAQ, contact form, product details (tabs, highlight, payment), comparison grid. */
+/* Content sections: FAQ, contact form, product details, comparison grid. */
 @layer sections {
   .faq, .contact-form, .comparison, .product-details, .shipping-section { padding-block: var(--section-gap); }
 
@@ -29,26 +29,8 @@
   .form-fields__note { font-size: var(--t-13); margin: 0; }
   .contact-form__form .button { align-self: flex-start; }
 
-  /* Product details, tabs */
+  /* Product details */
   .product-details__inner { gap: 24px; }
-  .tabs { display: block; }
-  .tabs__list { display: flex; gap: 4px; overflow-x: auto; border-block-end: 1px solid var(--c-line); margin-block-end: 20px; scrollbar-width: none; }
-  .tabs__tab { min-height: 48px; padding: 0 16px; white-space: nowrap; font-weight: var(--fw-medium); color: var(--c-muted); border-block-end: 2px solid transparent; margin-block-end: -1px; }
-  .tabs__tab[aria-selected='true'] { color: var(--c-fg); border-color: var(--c-fg); }
-  .tabs__tab:focus-visible { outline: 2px solid var(--c-fg); outline-offset: -2px; }
-  .tabs__panel + .tabs__panel { margin-block-start: 24px; }
-  .tabs.is-ready .tabs__panel + .tabs__panel { margin: 0; }
-  .tabs.is-ready .tabs__heading { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-  .tabs__panel:focus-visible { outline: 2px solid var(--c-fg); outline-offset: 4px; }
-  .spec-table { width: 100%; border-collapse: collapse; font-size: var(--t-15); }
-  .spec-table th, .spec-table td { padding: 10px 0; border-block-end: 1px solid var(--c-line); text-align: start; vertical-align: top; }
-  .spec-table th { width: 40%; font-weight: var(--fw-medium); padding-inline-end: 16px; }
-  .spec-table--end td { text-align: end; }
-  .highlight-text { padding: 20px; border-radius: var(--r-card); display: flex; flex-direction: column; gap: 6px; }
-  .highlight-text__title { margin: 0; font-weight: var(--fw-bold); }
-  .payment-methods__part { display: flex; flex-direction: column; gap: 8px; }
-  .payment-methods__subtitle { margin: 0; font-weight: var(--fw-medium); font-size: var(--t-14); }
-  .payment-methods__image { height: 28px; width: auto; }
 
   /* Comparison grid */
   .comparison__intro { margin-block-end: 20px; max-width: 760px; }

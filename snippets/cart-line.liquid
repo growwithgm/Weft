@@ -121,6 +121,14 @@
           {%- endif -%}
         {%- endfor -%}
         {%- if item.selling_plan_allocation -%}<p class="cart-line__options">{{ item.selling_plan_allocation.selling_plan.name }}</p>{%- endif -%}
+        {%- if item.item_components.size > 0 -%}
+          <p class="cart-line__options">{{ 'cart.bundle_includes' | t }}</p>
+          <ul class="cart-line__components" role="list">
+            {%- for component in item.item_components -%}
+              <li>{{ component.quantity }} × {{ component.product.title | escape }}{%- unless component.product.has_only_default_variant %} ({{ component.variant.title | escape }}){%- endunless -%}</li>
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
         <p class="cart-line__price tabular">
           {%- if wholesale -%}
             {{ item.final_price | money }} {{ 'price.per_piece' | t }}{%- if tier_min %}, {{ 'wholesale.tier_label' | t: count: tier_min }}{%- endif -%}

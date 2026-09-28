@@ -38,6 +38,7 @@
     "view_all": "Ver todos os artigos"
   },
   "cart": {
+    "bundle_includes": "Inclui:",
     "checkout": "Finalizar compra",
     "discount": "Desconto",
     "empty": "O seu carrinho está vazio",
@@ -352,6 +353,7 @@
       "seconds": "Segundos"
     },
     "custom_option": {
+      "characters": "{{ used }} / {{ max }} caracteres",
       "required": "Obrigatório"
     },
     "delivery": {
@@ -435,6 +437,11 @@
     },
     "remind_me": "Avisar-me quando voltar",
     "reviews": "Avaliações",
+    "scent": {
+      "base": "Fundo",
+      "heart": "Coração",
+      "top": "Topo"
+    },
     "select_option": "Selecione {{ option }}",
     "share": {
       "copied": "Ligação copiada",

@@ -25,6 +25,10 @@ class ProductSection extends HTMLElement {
     this.addEventListener('submit', (e) => {
       if (e.target.matches('[data-product-form]')) this.onSubmit(e);
     });
+    this.addEventListener('input', (e) => {
+      const count = e.target.dataset.charCount && document.getElementById(e.target.dataset.charCount);
+      if (count) count.textContent = count.dataset.template.replace('[count]', e.target.value.length);
+    });
     this.addEventListener('click', (e) => {
       const scrollTo = e.target.closest('[data-scroll-to]');
       if (scrollTo && scrollTo.hash) {

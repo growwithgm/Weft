@@ -6,7 +6,7 @@
   Wholesale-only products (tag fallback) never render for retail visitors: the card outputs
   nothing, including its wrapper, so grids have no empty cells.
   Params: product (required), wrapper ('li' | 'div'), index, sizes, eager (bool), highlight (bool),
-          show_quick_add (default true), collection (for URLs within a collection)
+          show_quick_add (default true), collection (for URLs within a collection), id_prefix (unique ids)
 {%- endcomment -%}
 {%- liquid
   assign wholesale = false
@@ -72,7 +72,7 @@
   if settings.quick_add_enable and show_quick_add != false and wholesale == false and product.available
     assign quick_add = true
   endif
-  assign title_id = 'CardTitle-' | append: product.id | append: '-' | append: index
+  assign title_id = 'CardTitle-' | append: id_prefix | append: product.id | append: '-' | append: index
 -%}
 <{{ tag }} class="card {{ ratio_class }}{% if settings.card_boxed %} card--boxed{% endif %}{% if highlight_card %} card--highlight{% endif %}{% if settings.card_dividers %} card--divided{% endif %}{% if settings.card_price_bottom %} card--price-bottom{% endif %}" data-product-card data-product-id="{{ product.id }}">
   <div class="card__media-wrap">

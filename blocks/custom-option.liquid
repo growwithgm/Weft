@@ -29,11 +29,14 @@
         </select>
       {%- when 'textarea' -%}
         <label class="field__label" for="{{ field_id }}">{{ block.settings.label }}{% if required %} <span class="muted">({{ 'products.custom_option.required' | t }})</span>{% endif %}</label>
-        <textarea class="textarea" id="{{ field_id }}" name="{{ prop_name }}" form="{{ form_id }}" rows="3" {% if block.settings.max_length > 0 %}maxlength="{{ block.settings.max_length }}"{% endif %} {% if required %}required{% endif %}></textarea>
+        <textarea class="textarea" id="{{ field_id }}" name="{{ prop_name }}" form="{{ form_id }}" rows="3" {% if block.settings.max_length > 0 %}maxlength="{{ block.settings.max_length }}" aria-describedby="{{ field_id }}-count" data-char-count="{{ field_id }}-count"{% endif %} {% if required %}required{% endif %}></textarea>
       {%- else -%}
         <label class="field__label" for="{{ field_id }}">{{ block.settings.label }}{% if required %} <span class="muted">({{ 'products.custom_option.required' | t }})</span>{% endif %}</label>
-        <input class="input" type="text" id="{{ field_id }}" name="{{ prop_name }}" form="{{ form_id }}" {% if block.settings.max_length > 0 %}maxlength="{{ block.settings.max_length }}"{% endif %} {% if required %}required{% endif %}>
+        <input class="input" type="text" id="{{ field_id }}" name="{{ prop_name }}" form="{{ form_id }}" {% if block.settings.max_length > 0 %}maxlength="{{ block.settings.max_length }}" aria-describedby="{{ field_id }}-count" data-char-count="{{ field_id }}-count"{% endif %} {% if required %}required{% endif %}>
     {%- endcase -%}
+    {%- if block.settings.max_length > 0 and block.settings.type != 'checkbox' and block.settings.type != 'select' -%}
+      <span class="custom-option__count muted" id="{{ field_id }}-count" data-template="{{ 'products.custom_option.characters' | t: used: '[count]', max: block.settings.max_length }}">{{ 'products.custom_option.characters' | t: used: 0, max: block.settings.max_length }}</span>
+    {%- endif -%}
   </div>
 {%- endif -%}
 

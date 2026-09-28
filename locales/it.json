@@ -38,6 +38,7 @@
     "view_all": "Vedi tutti gli articoli"
   },
   "cart": {
+    "bundle_includes": "Include:",
     "checkout": "Vai al checkout",
     "discount": "Sconto",
     "empty": "Il carrello è vuoto",
@@ -352,6 +353,7 @@
       "seconds": "Secondi"
     },
     "custom_option": {
+      "characters": "{{ used }} / {{ max }} caratteri",
       "required": "Obbligatorio"
     },
     "delivery": {
@@ -435,6 +437,11 @@
     },
     "remind_me": "Avvisami quando torna",
     "reviews": "Recensioni",
+    "scent": {
+      "base": "Fondo",
+      "heart": "Cuore",
+      "top": "Testa"
+    },
     "select_option": "Seleziona {{ option }}",
     "share": {
       "copied": "Link copiato",

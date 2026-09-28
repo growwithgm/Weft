@@ -1,6 +1,8 @@
 {%- comment -%}
   Featured collection: products from one collection as a grid or carousel, optional promotion
-  tile and "View all" link. Presets: "Featured collection" and "Gift guide".
+  tile and "View all" link. With tab blocks, each tab shows its own collection (ARIA tabs via
+  tabs.js; without JavaScript every tab's products show under its heading), for example price
+  bands in a gift guide. Presets: "Featured collection" and "Gift guide".
 {%- endcomment -%}
 {%- liquid
   assign s = section.settings
@@ -17,8 +19,32 @@
 {{ 'section-library.css' | asset_url | stylesheet_tag }}
 <div class="section product-row color-{{ s.color_scheme }}{% if section.index > 2 %} below-fold{% endif %}">
   <div class="page-width">
-    {%- render 'section-heading', title: s.title, align: s.heading_align, button_label: view_all, button_link: s.collection.url, button_style: 'link' -%}
-    {%- render 'product-row', products: s.collection.products, limit: s.products_to_show, section: section, placeholder: placeholder -%}
+    {%- if section.blocks.size > 0 -%}
+      {{ 'component-blocks.css' | asset_url | stylesheet_tag }}
+      {%- render 'section-heading', title: s.title, align: s.heading_align -%}
+      <product-tabs class="tabs" data-module="{{ 'tabs.js' | asset_url }}" data-load="visible">
+        <div class="tabs__list js-only" role="tablist" data-tablist></div>
+        {%- for block in section.blocks -%}
+          {%- liquid
+            assign tab_collection = block.settings.collection
+            assign tab_placeholder = false
+            if tab_collection == blank or tab_collection.products_count == 0
+              assign tab_placeholder = true
+            endif
+          -%}
+          <section class="tabs__panel" id="{{ section.id }}-{{ block.id }}" data-tab-panel data-tab-title="{{ block.settings.label | escape }}" {{ block.shopify_attributes }}>
+            <h3 class="tabs__heading h5">{{ block.settings.label | escape }}</h3>
+            {%- render 'product-row', products: tab_collection.products, limit: s.products_to_show, section: section, placeholder: tab_placeholder, id_prefix: block.id -%}
+            {%- if s.show_view_all and tab_collection.products_count > s.products_to_show -%}
+              <p class="product-row__more"><a class="link" href="{{ tab_collection.url }}">{{ 'collections.view_all' | t }}<span class="visually-hidden">: {{ block.settings.label | escape }}</span></a></p>
+            {%- endif -%}
+          </section>
+        {%- endfor -%}
+      </product-tabs>
+    {%- else -%}
+      {%- render 'section-heading', title: s.title, align: s.heading_align, button_label: view_all, button_link: s.collection.url, button_style: 'link' -%}
+      {%- render 'product-row', products: s.collection.products, limit: s.products_to_show, section: section, placeholder: placeholder -%}
+    {%- endif -%}
   </div>
 </div>
 
@@ -36,7 +62,32 @@
       "aside"
     ]
   },
+  "max_blocks": 5,
+  "blocks": [
+    {
+      "type": "tab",
+      "name": "t:labels.tab",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "t:labels.label",
+          "default": "Tab"
+        },
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "t:labels.collection",
+          "info": "t:text.sections.featured_collection.blocks.tab.settings.collection.info"
+        }
+      ]
+    }
+  ],
   "settings": [
+    {
+      "type": "paragraph",
+      "content": "t:text.sections.featured_collection.settings.add_tabs_to_show_a_different_collection_in_each_.content"
+    },
     {
       "type": "text",
       "id": "title",
@@ -229,7 +280,27 @@
         "promo_title": "Gifts they'll keep",
         "content": "<p>Ideas for every budget, wrapped and ready.</p>",
         "button_label": "Shop gifts"
-      }
+      },
+      "blocks": [
+        {
+          "type": "tab",
+          "settings": {
+            "label": "Small gifts"
+          }
+        },
+        {
+          "type": "tab",
+          "settings": {
+            "label": "Treats"
+          }
+        },
+        {
+          "type": "tab",
+          "settings": {
+            "label": "Special gifts"
+          }
+        }
+      ]
     }
   ]
 }

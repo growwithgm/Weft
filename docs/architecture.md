@@ -31,6 +31,7 @@ Verified on shopify.dev (28 Sep 2026):
 - Theme blocks live in `blocks/`, are rendered with `{% content_for 'blocks' %}`, and static blocks with `{% content_for 'block', type: '…', id: '…' %}`. A section either defines local blocks or accepts theme blocks (`@theme` / targeted types), never both. Private blocks start with `_`. Blocks need a preset to show in the picker. Static blocks can be rendered conditionally and receive extra parameters.
 - Conditional settings use `"visible_if": "{{ block.settings.x == 'y' }}"` (also `section.settings`, `settings`).
 - Preset templates go in `listings/<preset>/templates/*.json`, with optional `listings/<preset>/sections/*.json` section groups; not needed with a single preset.
+  Re-checked before P6 (Theme Store requirements, "Adding presets to your theme zip submission" and the zip structure example): folder names are the preset names in lower case with hyphens (`listings/weft`, `listings/tress`, `listings/balm`); root `templates/` and `sections/` keep the complete base set; each listing file overrides the base file of the same name; the CLI and GitHub integration ignore `listings/` (it is in `.shopifyignore`), so it only matters in the Theme Store zip.
 - Fonts: `cormorant_n6`, `jost_n4`, `archivo_n7`, `instrument_sans_n4`, `instrument_serif_n4`, `figtree_n4` exist in Shopify's font library.
 
 ---

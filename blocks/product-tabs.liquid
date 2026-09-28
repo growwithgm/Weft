@@ -61,6 +61,7 @@
   {%- endif -%}
 {%- endcapture -%}
 {%- if count > 0 -%}
+  {{ 'component-blocks.css' | asset_url | stylesheet_tag }}
   {%- if b.style == 'tabs' -%}
     <product-tabs class="tabs" data-module="{{ 'tabs.js' | asset_url }}" data-load="visible" {{ block.shopify_attributes }}>
       <div class="tabs__list js-only" role="tablist" data-tablist></div>
