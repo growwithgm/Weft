@@ -10,7 +10,7 @@
 import { readFileSync, readdirSync, existsSync, statSync } from 'node:fs';
 import { join, relative, basename, dirname, resolve } from 'node:path';
 import { gzipSync } from 'node:zlib';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 
 const REPO = join(dirname(fileURLToPath(import.meta.url)), '..');
 // --root <dir> lints a built package (dist/themestore, dist/<store>) instead of the repository.
@@ -18,8 +18,15 @@ const rootArg = process.argv.indexOf('--root');
 const ROOT = rootArg > 0 ? resolve(process.argv[rootArg + 1]) : REPO;
 const THEME_DIRS = ['assets', 'blocks', 'config', 'layout', 'locales', 'sections', 'snippets', 'templates'];
 const problems = [];
-const report = (level, file, message, line) =>
-  problems.push({ level, file: relative(ROOT, file), line: line || null, message });
+// Templates and context section groups that a store's theme editor committed back (Shopify's GitHub
+// integration) are the store's content, not the theme's: their findings are listed as STORE notes
+// for the owner and don't fail the lint. The theme's own templates are in scripts/src/theme-templates.mjs.
+const ownTemplates = new Set((await import(pathToFileURL(join(REPO, 'scripts/src/theme-templates.mjs')).href)).default);
+const storeOwned = (rel) => ROOT === REPO && ((rel.startsWith('templates/') && !ownTemplates.has(rel)) || /^sections\/[^/]+\.context\.[^/]+\.json$/.test(rel));
+const report = (level, file, message, line) => {
+  const rel = relative(ROOT, file).split('\\').join('/');
+  problems.push({ level: storeOwned(rel) ? 'store' : level, file: rel, line: line || null, message });
+};
 
 const read = (f) => readFileSync(f, 'utf8');
 const list = (dir, ext) => {
@@ -648,8 +655,9 @@ const errors = problems.filter((p) => p.level === 'error');
 const warnings = problems.filter((p) => p.level === 'warning');
 if (process.argv.includes('--json')) console.log(JSON.stringify(problems, null, 2));
 else {
-  for (const p of problems) console.log(`${p.level === 'error' ? 'ERROR  ' : 'WARNING'} ${p.file}${p.line ? `:${p.line}` : ''}  ${p.message}`);
+  for (const p of problems) console.log(`${p.level === 'error' ? 'ERROR  ' : p.level === 'store' ? 'STORE  ' : 'WARNING'} ${p.file}${p.line ? `:${p.line}` : ''}  ${p.message}`);
   const counted = THEME_DIRS.reduce((n, d) => n + list(join(ROOT, d)).length, 0);
-  console.log(`\ntheme-lint: ${counted} theme files, ${errors.length} errors, ${warnings.length} warnings`);
+  const notes = problems.length - errors.length - warnings.length;
+  console.log(`\ntheme-lint: ${counted} theme files, ${errors.length} errors, ${warnings.length} warnings${notes ? `, ${notes} notes on store-owned templates` : ''}`);
 }
 process.exit(errors.length || warnings.length ? 1 : 0);
