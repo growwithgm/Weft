@@ -1,0 +1,88 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "show_title": true,
+        "heading_align": "center"
+      }
+    },
+    "image_banner_jrzHxY": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_UQyqUf": {
+          "type": "heading",
+          "disabled": true,
+          "settings": {
+            "heading": "Image banner",
+            "size": "h1",
+            "tag": "auto"
+          }
+        },
+        "text_XK8pk6": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.</p>",
+            "style": "large"
+          }
+        },
+        "button_bcVEMr": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "label": "Optional button",
+            "link": "",
+            "style": "primary"
+          }
+        },
+        "button_bcVEMr-2": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "label": "Optional button",
+            "link": "",
+            "style": "primary"
+          }
+        }
+      },
+      "block_order": [
+        "heading_UQyqUf",
+        "text_XK8pk6",
+        "button_bcVEMr",
+        "button_bcVEMr-2"
+      ],
+      "settings": {
+        "image_desktop": "shopify://shop_images/sa.png",
+        "image_mobile": "shopify://shop_images/sa.png",
+        "link": "",
+        "height": "adapt",
+        "fixed_height_desktop": 600,
+        "fixed_height_mobile": 350,
+        "overlay_position": "middle-center",
+        "text_align": "center",
+        "mobile_center": false,
+        "mobile_stacked": false,
+        "color_scheme": "scheme-1",
+        "full_width": true,
+        "text_color": "#ffffff",
+        "tint_color": "#000000",
+        "tint_opacity": 0
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_banner_jrzHxY"
+  ]
+}

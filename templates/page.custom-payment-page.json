@@ -1,0 +1,33 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "show_title": false,
+        "heading_align": "center"
+      }
+    },
+    "custom_liquid_y6UAAi": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<div class=\"custom-pay-wrap\">\n  <iframe\n    src=\"https://ibban-com.myshopify.com/apps/custom-pay\"\n    class=\"custom-pay-frame\"\n    title=\"Custom Pay\"\n    scrolling=\"no\">\n  </iframe>\n</div>\n\n<style>\n  .custom-pay-wrap {\n    width: 100%;\n    max-width: 600px; \n    margin: 0 auto;   \n    padding: 20px 0;\n  }\n\n  .custom-pay-frame {\n    width: 100%;\n    height: 950px; /* Thori height desktop ke liye bhi barha di hai */\n    border: none;\n    display: block;\n    overflow: hidden;\n  }\n\n  /* Mobile Screens (Phones) */\n  @media (max-width: 768px) {\n    .custom-pay-frame {\n      height: 1150px !important; /* Mobile ke liye height kafi zyada kar di hai taake kuch na kate */\n    }\n  }\n</style>",
+        "spacing": "normal",
+        "full_width": false
+      }
+    }
+  },
+  "order": [
+    "main",
+    "custom_liquid_y6UAAi"
+  ]
+}
