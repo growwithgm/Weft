@@ -250,7 +250,7 @@
         "zoom": "lightbox",
         "lightbox_mobile": true,
         "video_loop": true,
-        "group_media_by_option": true,
+        "group_media_by_option": false,
         "group_media_option_names": "Color,Colour,Couleur,Farbe,Colore,Kleur,Cor"
       }
     },

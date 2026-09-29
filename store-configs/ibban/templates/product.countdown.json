@@ -171,7 +171,8 @@
         "gallery_layout": "grid_even",
         "column_gap": 64,
         "column_divider": true,
-        "media_ratio": "portrait"
+        "media_ratio": "portrait",
+        "group_media_by_option": false
       }
     },
     "video": {

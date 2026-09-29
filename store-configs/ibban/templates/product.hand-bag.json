@@ -164,7 +164,7 @@
         "show_counter": true,
         "thumbnails": "none",
         "media_bg": "#f4f4f4",
-        "group_media_by_option": true,
+        "group_media_by_option": false,
         "section_width": "full",
         "column_gap": 64,
         "column_divider": true
