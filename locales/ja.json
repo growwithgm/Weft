@@ -223,7 +223,9 @@
     "back_to_top": "トップへ戻る",
     "breadcrumbs": "パンくずリスト",
     "chat": {
-      "label": "WhatsAppでチャット"
+      "editor_no_number": "このセクションにWhatsApp番号を追加するか、テーマ設定 > ソーシャルメディアにWhatsAppリンクを追加してください。それまではボタンはテーマエディターにのみ表示されます。",
+      "label": "WhatsAppでチャット",
+      "message": "こんにちは。このページについて質問があります："
     },
     "close": "閉じる",
     "continue_shopping": "買い物を続ける",

@@ -273,7 +273,6 @@
     "installments_provider": "Klarna",
     "installments_count": 3,
     "installments_countries": "ES, GB, US, DE, AT, NL, BE, FR, IT, PT, IE, FI, SE, DK, NO, PL, CZ, GR, RO, SK, CH",
-    "chat_button_enable": true,
     "wholesale_show_sku": true,
     "wholesale_request_page": "bn2b-request-form",
     "integration_reviews_enable": true,

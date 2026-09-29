@@ -371,6 +371,18 @@ export async function run() {
     }
   }
 
+  // Approved group sections: Weft sections that replace live-theme code (the WhatsApp bubble).
+  for (const [rel, add] of Object.entries(approved.groupSections || {})) {
+    const group = files.get(rel);
+    if (!group) continue;
+    for (const [id, sec] of Object.entries(add)) {
+      if (Object.values(group.sections).some((x) => x.type === sec.type)) continue;
+      group.sections[id] = structuredClone(sec);
+      group.order.push(id);
+      m.report.push({ file: rel, where: `section "${id}" (${sec.type})`, item: 'section', action: 'changed', reason: approved.reasons.groupSections, explained: true });
+    }
+  }
+
   // Static sections kept in the live settings (the password page header) go to their template.
   for (const [id, sec] of Object.entries((liveData.current || {}).sections || {})) {
     const rule = map.staticSections && map.staticSections[sec.type];

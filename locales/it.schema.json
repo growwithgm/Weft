@@ -20,6 +20,7 @@
     "add_app_snippets_or_other_liquid_code": "Aggiungi snippet di app o altro codice Liquid.",
     "add_faq_structured_data_for_search_engines": "Aggiungi dati strutturati FAQ per i motori di ricerca",
     "add_space_around_the_apps": "Aggiungi spazio intorno alle app",
+    "add_the_page_address_to_the_message": "Aggiungi l’indirizzo della pagina al messaggio",
     "additional_images": "Immagini aggiuntive",
     "addresses": "Indirizzi",
     "adds_a_required_checkbox": "Aggiunge una casella di controllo obbligatoria.",
@@ -38,6 +39,7 @@
     "align_values_to_the_end": "Allinea i valori alla fine",
     "alignment": "Allineamento",
     "all": "Tutti",
+    "all_devices": "Tutti i dispositivi",
     "all_products_when_empty": "Tutti i prodotti se vuoto.",
     "all_reviews_label": "Etichetta di tutte le recensioni",
     "all_reviews_link": "Link a tutte le recensioni",
@@ -117,6 +119,8 @@
     "bottom": "In basso",
     "bottom_center": "In basso al centro",
     "bottom_end": "In basso alla fine",
+    "bottom_left": "In basso a sinistra",
+    "bottom_right": "In basso a destra",
     "bottom_start": "In basso all'inizio",
     "box_background": "Sfondo del riquadro",
     "box_border": "Bordo del riquadro",
@@ -125,11 +129,14 @@
     "breadcrumbs": "Breadcrumb",
     "button": "Pulsante",
     "button_and_input_border": "Bordo di pulsanti e campi",
+    "button_color": "Colore del pulsante",
     "button_corner_radius": "Raggio degli angoli dei pulsanti",
     "button_label": "Etichetta del pulsante",
     "button_link": "Link del pulsante",
     "button_on_hover": "Pulsante al passaggio del mouse",
+    "button_size": "Dimensione del pulsante",
     "button_style": "Stile del pulsante",
+    "button_text": "Testo del pulsante",
     "buttons": "Pulsanti",
     "buy_buttons": "Pulsanti di acquisto",
     "call_to_action_button": "Pulsante di invito all'azione",
@@ -152,8 +159,8 @@
     "change_testimonials_automatically": "Cambia testimonianze automaticamente",
     "character_limit": "Limite di caratteri",
     "chat": "Chat",
-    "chat_button": "Pulsante della chat",
     "chat_line_text": "Testo della riga della chat",
+    "chat_window": "Finestra di chat",
     "check": "Spunta",
     "check_mark": "Segno di spunta",
     "checkbox": "Casella di controllo",
@@ -205,6 +212,7 @@
     "connect_a_product_metafield_hidden_when_empty": "Collega un metacampo del prodotto. Nascosto se vuoto.",
     "connect_the_matching_count_metafield": "Collega il metacampo di conteggio corrispondente.",
     "consent_text": "Testo del consenso",
+    "contact": "Contatto",
     "contact_form": "Modulo di contatto",
     "content": "Contenuto",
     "content_position": "Posizione del contenuto",
@@ -241,12 +249,16 @@
     "delivery_information": "Informazioni sulla consegna",
     "delivery_list": "Elenco consegne",
     "description": "Descrizione",
+    "devices": "Dispositivi",
     "direction": "Direzione",
     "disabled_button": "Pulsante disattivato",
     "disabled_button_text": "Testo del pulsante disattivato",
     "discord": "Discord",
     "discount": "Sconto",
     "discount_code": "Codice sconto",
+    "distance_from_the_bottom_on_large_screens": "Distanza dal basso su schermi grandi",
+    "distance_from_the_bottom_on_phones": "Distanza dal basso su telefoni",
+    "distance_from_the_side": "Distanza dal lato",
     "divider": "Divisore",
     "dividing_lines_between_cards": "Linee divisorie tra le schede",
     "dividing_lines_between_items": "Linee divisorie tra gli elementi",
@@ -335,6 +347,7 @@
     "go_to_the_cart_page": "Vai alla pagina del carrello",
     "google_site_verification_code": "Codice di verifica del sito Google",
     "google_tag_manager_container_id": "ID contenitore di Google Tag Manager",
+    "greeting": "Saluto",
     "grid": "Griglia",
     "grid_first_option_down_other_options_across": "Griglia: prima opzione in righe, altre opzioni in colonne",
     "group": "Gruppo",
@@ -361,7 +374,7 @@
     "hidden": "Nascosto",
     "hide_after_a_delay": "Nascondi dopo un certo tempo",
     "hide_for_wholesale_buyers": "Nascondi agli acquirenti all’ingrosso",
-    "hide_on_pages": "Nascondi nelle pagine",
+    "hide_on_these_pages": "Nascondi in queste pagine",
     "hide_the_backorder_notice": "Nascondi l'avviso di ordine arretrato",
     "hide_when_the_countdown_ends": "Nascondi alla fine del conto alla rovescia",
     "hide_while_filters_are_active": "Nascondi quando ci sono filtri attivi",
@@ -381,6 +394,8 @@
     "hotspot_color": "Colore dell'hotspot",
     "how_to_use": "Modo d'uso",
     "icon": "Icona",
+    "icon_and_text": "Icona e testo",
+    "icon_and_text_color": "Colore di icona e testo",
     "icon_button": "Pulsante con icona",
     "icon_position": "Posizione dell'icona",
     "icon_size": "Dimensione dell'icona",
@@ -563,6 +578,7 @@
     "number_of_payments": "Numero di pagamenti",
     "number_the_products_as_steps": "Numera i prodotti come passaggi",
     "off": "Disattivato",
+    "off_the_button_opens_whatsapp_straight_away": "Disattivato: il pulsante apre subito WhatsApp.",
     "on_hover": "Al passaggio del mouse",
     "one_column": "Una colonna",
     "one_item": "Un elemento",
@@ -574,6 +590,7 @@
     "only_claims_you_can_support": "Solo dichiarazioni che puoi dimostrare.",
     "only_show_to_visitors_who_aren_t_signed_in": "Mostra solo ai visitatori che non hanno effettuato l'accesso",
     "only_show_when_the_product_is_unavailable": "Mostra solo quando il prodotto non è disponibile",
+    "open_a_chat_window_first": "Apri prima una finestra di chat",
     "open_all_filters": "Apri tutti i filtri",
     "open_by_default": "Aperto per impostazione predefinita",
     "open_external_links_in_a_new_tab": "Apri i link esterni in una nuova scheda",
@@ -583,6 +600,7 @@
     "open_the_first_row": "Apri la prima riga",
     "open_the_full_list": "Apri l'elenco completo",
     "open_the_lightbox_on_mobile": "Apri la lightbox su dispositivi mobili",
+    "open_the_window_automatically_after": "Apri la finestra automaticamente dopo",
     "option_names_to_group_by": "Nomi delle opzioni per il raggruppamento",
     "optional_uses_the_main_image_when_empty": "Facoltativo. Se vuoto, usa l'immagine principale.",
     "or_a_youtube_vimeo_url": "Oppure un URL di YouTube / Vimeo",
@@ -597,12 +615,13 @@
     "pack_image_metafield": "Metacampo dell'immagine della confezione",
     "padding": "Spaziatura interna",
     "page": "Pagina",
+    "page_addresses": "Indirizzi delle pagine",
     "page_content": "Contenuto della pagina",
-    "page_handles_separated_by_commas": "Handle delle pagine separati da virgole.",
     "page_numbers": "Numeri di pagina",
     "page_width": "Larghezza della pagina",
     "page_width_on_wide_screens": "Larghezza pagina su schermi ampi",
     "page_with_the_guide": "Pagina con la guida",
+    "pages": "Pagine",
     "pagination": "Paginazione",
     "panels_and_image_backgrounds": "Pannelli e sfondi delle immagini",
     "paragraph": "Paragrafo",
@@ -614,6 +633,9 @@
     "percentage_saved": "Percentuale risparmiata",
     "period_after_opening": "Periodo dopo l'apertura",
     "phone": "Telefono",
+    "phones_and_tablets_only": "Solo telefoni e tablet",
+    "photo": "Foto",
+    "photo_or_logo": "Foto o logo",
     "pill": "Pillola",
     "pinterest": "Pinterest",
     "play_the_video_automatically_muted": "Riproduci il video automaticamente, senza audio",
@@ -630,6 +652,7 @@
     "position_on_product_cards": "Posizione nelle schede prodotto",
     "posts_per_page": "Articoli per pagina",
     "posts_to_show": "Articoli da mostrare",
+    "pre_filled_message": "Messaggio precompilato",
     "pre_order": "Preordine",
     "preload_links_on_hover": "Precarica i link al passaggio del mouse",
     "preselect_the_first_available_variant": "Preseleziona la prima variante disponibile",
@@ -731,6 +754,7 @@
     "reviews_section_on_this_page": "Sezione recensioni in questa pagina",
     "reviews_wall": "Bacheca delle recensioni",
     "rich_text": "Testo formattato",
+    "role": "Ruolo",
     "rotate_prompts_on_mobile": "Ruota i suggerimenti su dispositivi mobili",
     "round_converted_amounts_up": "Arrotonda per eccesso gli importi convertiti",
     "round_images": "Immagini rotonde",
@@ -812,7 +836,6 @@
     "show_button": "Mostra il pulsante",
     "show_cards_as_boxes": "Mostra le schede come riquadri",
     "show_cents_as_superscript": "Mostra i centesimi in apice",
-    "show_chat_button": "Mostra il pulsante della chat",
     "show_chat_contact_line": "Mostra la riga di contatto via chat",
     "show_checkout_button": "Mostra il pulsante di check-out",
     "show_collection_description": "Mostra la descrizione della collezione",
@@ -852,6 +875,7 @@
     "show_new_label": "Mostra l'etichetta Novità",
     "show_on": "Mostra su",
     "show_on_mobile": "Mostra su dispositivi mobili",
+    "show_only_on_these_pages": "Mostra solo in queste pagine",
     "show_order_note": "Mostra la nota dell'ordine",
     "show_over_the_product_media": "Mostra sopra i contenuti multimediali del prodotto",
     "show_page_title": "Mostra il titolo della pagina",
@@ -958,7 +982,9 @@
     "star_rating": "Valutazione a stelle",
     "stars_only": "Solo stelle",
     "start": "Inizio",
+    "start_chat_button": "Pulsante per avviare la chat",
     "starting_position": "Posizione iniziale",
+    "status_line": "Riga di stato",
     "stay_on_the_page": "Rimani sulla pagina",
     "step": "Passaggio",
     "step_label": "Etichetta del passaggio",
@@ -1094,11 +1120,14 @@
     "wechat": "WeChat",
     "weight": "Peso",
     "whatsapp": "WhatsApp",
+    "whatsapp_chat": "Chat WhatsApp",
+    "whatsapp_number": "Numero WhatsApp",
     "when_leaving_the_page": "Quando si lascia la pagina",
     "when_low": "Quando le scorte sono basse",
     "when_no_variant_with_that_value_is_available": "Quando nessuna variante con quel valore è disponibile",
     "when_the_cart_is_empty": "Quando il carrello è vuoto",
     "when_the_exact_combination_is_unavailable": "Quando la combinazione esatta non è disponibile",
+    "where_it_shows": "Dove appare",
     "where_this_block_is_placed": "Dove si trova questo blocco",
     "wholesale": "Ingrosso",
     "wholesale_access": "Accesso all'ingrosso",
@@ -1505,6 +1534,37 @@
           }
         }
       },
+      "whatsapp_chat": {
+        "blocks": {
+          "contact": {
+            "settings": {
+              "phone": {
+                "info": "Prefisso internazionale e numero, solo cifre. Se vuoto usa il numero della sezione."
+              }
+            }
+          }
+        },
+        "settings": {
+          "a_floating_whatsapp_button_it_never_covers_add_t": {
+            "content": "Un pulsante WhatsApp fluttuante. Non copre mai i pulsanti di aggiunta al carrello o di pagamento e si nasconde quando sono aperti pannelli o finestre di dialogo."
+          },
+          "button_bg": {
+            "info": "Mantieni un contrasto di 4,5:1 con il colore di icona e testo. Il verde WhatsApp #25D366 richiede un’icona scura."
+          },
+          "message": {
+            "info": "Lascia vuoto per usare un testo tradotto: \"Ciao, ho una domanda su questa pagina:\""
+          },
+          "open_delay": {
+            "info": "Una volta per visita. 0 la lascia chiusa finché non si fa clic sul pulsante."
+          },
+          "phone": {
+            "info": "Prefisso internazionale e numero, solo cifre, ad esempio 34600000000. Lascia vuoto per usare il link WhatsApp in Impostazioni tema > Social media."
+          },
+          "urls": {
+            "info": "Un indirizzo per riga, ad esempio /pages/contact, /cart o un link completo. Termina con * per includere tutto ciò che inizia così, ad esempio /collections/*."
+          }
+        }
+      },
       "wholesale_access": {
         "settings": {
           "apply_page": {
@@ -1651,14 +1711,11 @@
       },
       "social_media": {
         "settings": {
-          "chat_button": {
-            "info": "Un pulsante fluttuante che apre WhatsApp con il link della pagina già inserito."
-          },
           "links_show_in_the_footer_and_on_the_password_pag": {
             "content": "I link appaiono nel footer e nella pagina della password."
           },
           "social_whatsapp_url": {
-            "info": "Un link wa.me, ad esempio https://wa.me/34600000000. Usato anche dal pulsante della chat."
+            "info": "Un link wa.me, ad esempio https://wa.me/34600000000. Usato anche dalla sezione Chat WhatsApp (Overlay) quando non ha un numero proprio."
           }
         }
       },

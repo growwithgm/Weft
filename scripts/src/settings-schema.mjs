@@ -272,7 +272,7 @@ export default [
       text('social_threads_url', 'Threads'),
       text('social_linkedin_url', 'LinkedIn'),
       text('social_snapchat_url', 'Snapchat'),
-      text('social_whatsapp_url', 'WhatsApp', null, 'A wa.me link, for example https://wa.me/34600000000. Also used by the chat button.'),
+      text('social_whatsapp_url', 'WhatsApp', null, 'A wa.me link, for example https://wa.me/34600000000. Also used by the WhatsApp chat section (Overlays) when it has no number of its own.'),
       text('social_wechat_url', 'WeChat'),
       text('social_vimeo_url', 'Vimeo'),
       text('social_tumblr_url', 'Tumblr'),
@@ -282,11 +282,7 @@ export default [
       text('social_mastodon_url', 'Mastodon'),
       header('Custom network'),
       { type: 'image_picker', id: 'social_custom_icon', label: 'Icon' },
-      text('social_custom_url', 'Link'),
-      header('Chat button', 'A floating button that opens WhatsApp with the page link filled in.'),
-      check('chat_button_enable', 'Show chat button'),
-      text('chat_button_message', 'Message', 'Hello, I have a question about this page:'),
-      text('chat_button_hide_on', 'Hide on pages', null, 'Page handles separated by commas.')
+      text('social_custom_url', 'Link')
     ]
   },
   {

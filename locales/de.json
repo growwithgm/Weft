@@ -223,7 +223,9 @@
     "back_to_top": "Nach oben",
     "breadcrumbs": "Brotkrümelnavigation",
     "chat": {
-      "label": "Auf WhatsApp chatten"
+      "editor_no_number": "Füge in diesem Abschnitt eine WhatsApp-Nummer oder unter Theme-Einstellungen > Social Media einen WhatsApp-Link hinzu. Bis dahin ist die Schaltfläche nur im Theme-Editor sichtbar.",
+      "label": "Auf WhatsApp chatten",
+      "message": "Hallo, ich habe eine Frage zu dieser Seite:"
     },
     "close": "Schließen",
     "continue_shopping": "Weiter einkaufen",

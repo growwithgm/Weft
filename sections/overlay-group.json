@@ -26,6 +26,10 @@
       "type": "popup",
       "disabled": true,
       "settings": {}
+    },
+    "whatsapp": {
+      "type": "whatsapp-chat",
+      "settings": {}
     }
   },
   "order": [
@@ -34,6 +38,7 @@
     "search",
     "location",
     "compare",
-    "popup"
+    "popup",
+    "whatsapp"
   ]
 }

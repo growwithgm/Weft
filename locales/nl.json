@@ -223,7 +223,9 @@
     "back_to_top": "Terug naar boven",
     "breadcrumbs": "Kruimelpad",
     "chat": {
-      "label": "Chat via WhatsApp"
+      "editor_no_number": "Voeg in deze sectie een WhatsApp-nummer toe, of een WhatsApp-link bij Thema-instellingen > Social media. Tot die tijd is de knop alleen zichtbaar in de thema-editor.",
+      "label": "Chat via WhatsApp",
+      "message": "Hallo, ik heb een vraag over deze pagina:"
     },
     "close": "Sluiten",
     "continue_shopping": "Verder winkelen",

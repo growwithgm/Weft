@@ -20,6 +20,7 @@
     "add_app_snippets_or_other_liquid_code": "Voeg app-snippets of andere Liquid-code toe.",
     "add_faq_structured_data_for_search_engines": "Gestructureerde FAQ-gegevens voor zoekmachines toevoegen",
     "add_space_around_the_apps": "Ruimte rond de apps toevoegen",
+    "add_the_page_address_to_the_message": "Paginaadres aan het bericht toevoegen",
     "additional_images": "Extra afbeeldingen",
     "addresses": "Adressen",
     "adds_a_required_checkbox": "Voegt een verplicht selectievakje toe.",
@@ -38,6 +39,7 @@
     "align_values_to_the_end": "Waarden aan het einde uitlijnen",
     "alignment": "Uitlijning",
     "all": "Alle",
+    "all_devices": "Alle apparaten",
     "all_products_when_empty": "Alle producten als dit leeg is.",
     "all_reviews_label": "Label voor alle reviews",
     "all_reviews_link": "Link naar alle reviews",
@@ -117,6 +119,8 @@
     "bottom": "Onder",
     "bottom_center": "Midden onder",
     "bottom_end": "Onder aan het einde",
+    "bottom_left": "Linksonder",
+    "bottom_right": "Rechtsonder",
     "bottom_start": "Onder aan het begin",
     "box_background": "Achtergrond van vak",
     "box_border": "Rand van vak",
@@ -125,11 +129,14 @@
     "breadcrumbs": "Kruimelpad",
     "button": "Knop",
     "button_and_input_border": "Rand van knoppen en invoervelden",
+    "button_color": "Knopkleur",
     "button_corner_radius": "Hoekradius van knoppen",
     "button_label": "Knoplabel",
     "button_link": "Knoplink",
     "button_on_hover": "Knop bij aanwijzen",
+    "button_size": "Knopgrootte",
     "button_style": "Knopstijl",
+    "button_text": "Knoptekst",
     "buttons": "Knoppen",
     "buy_buttons": "Koopknoppen",
     "call_to_action_button": "Call-to-action-knop",
@@ -152,8 +159,8 @@
     "change_testimonials_automatically": "Getuigenissen automatisch wisselen",
     "character_limit": "Tekenlimiet",
     "chat": "Chat",
-    "chat_button": "Chatknop",
     "chat_line_text": "Tekst van chatregel",
+    "chat_window": "Chatvenster",
     "check": "Vinkje",
     "check_mark": "Vinkje",
     "checkbox": "Selectievakje",
@@ -205,6 +212,7 @@
     "connect_a_product_metafield_hidden_when_empty": "Koppel een productmetaveld. Verborgen als dit leeg is.",
     "connect_the_matching_count_metafield": "Koppel het bijbehorende metaveld voor het aantal.",
     "consent_text": "Toestemmingstekst",
+    "contact": "Contact",
     "contact_form": "Contactformulier",
     "content": "Content",
     "content_position": "Positie van content",
@@ -241,12 +249,16 @@
     "delivery_information": "Leveringsinformatie",
     "delivery_list": "Leveringslijst",
     "description": "Beschrijving",
+    "devices": "Apparaten",
     "direction": "Richting",
     "disabled_button": "Uitgeschakelde knop",
     "disabled_button_text": "Tekst van uitgeschakelde knop",
     "discord": "Discord",
     "discount": "Korting",
     "discount_code": "Kortingscode",
+    "distance_from_the_bottom_on_large_screens": "Afstand tot de onderkant op grote schermen",
+    "distance_from_the_bottom_on_phones": "Afstand tot de onderkant op telefoons",
+    "distance_from_the_side": "Afstand tot de zijkant",
     "divider": "Scheidingslijn",
     "dividing_lines_between_cards": "Scheidingslijnen tussen kaarten",
     "dividing_lines_between_items": "Scheidingslijnen tussen items",
@@ -335,6 +347,7 @@
     "go_to_the_cart_page": "Naar de winkelwagenpagina gaan",
     "google_site_verification_code": "Code voor Google-siteverificatie",
     "google_tag_manager_container_id": "Container-ID van Google Tag Manager",
+    "greeting": "Begroeting",
     "grid": "Raster",
     "grid_first_option_down_other_options_across": "Raster: eerste optie onder elkaar, andere opties naast elkaar",
     "group": "Groep",
@@ -361,7 +374,7 @@
     "hidden": "Verborgen",
     "hide_after_a_delay": "Verbergen na een vertraging",
     "hide_for_wholesale_buyers": "Verbergen voor groothandelsklanten",
-    "hide_on_pages": "Verbergen op pagina's",
+    "hide_on_these_pages": "Verbergen op deze pagina's",
     "hide_the_backorder_notice": "Melding over nabestelling verbergen",
     "hide_when_the_countdown_ends": "Verbergen als het aftellen afloopt",
     "hide_while_filters_are_active": "Verbergen terwijl filters actief zijn",
@@ -381,6 +394,8 @@
     "hotspot_color": "Kleur van hotspot",
     "how_to_use": "Gebruiksaanwijzing",
     "icon": "Pictogram",
+    "icon_and_text": "Pictogram en tekst",
+    "icon_and_text_color": "Kleur van pictogram en tekst",
     "icon_button": "Pictogramknop",
     "icon_position": "Positie van pictogram",
     "icon_size": "Grootte van pictogram",
@@ -563,6 +578,7 @@
     "number_of_payments": "Aantal betalingen",
     "number_the_products_as_steps": "Producten nummeren als stappen",
     "off": "Uit",
+    "off_the_button_opens_whatsapp_straight_away": "Uit: de knop opent WhatsApp meteen.",
     "on_hover": "Bij aanwijzen",
     "one_column": "Eén kolom",
     "one_item": "Eén item",
@@ -574,6 +590,7 @@
     "only_claims_you_can_support": "Alleen beweringen die je kunt onderbouwen.",
     "only_show_to_visitors_who_aren_t_signed_in": "Alleen weergeven aan bezoekers die niet zijn ingelogd",
     "only_show_when_the_product_is_unavailable": "Alleen weergeven als het product niet beschikbaar is",
+    "open_a_chat_window_first": "Eerst een chatvenster openen",
     "open_all_filters": "Alle filters openen",
     "open_by_default": "Standaard geopend",
     "open_external_links_in_a_new_tab": "Externe links in een nieuw tabblad openen",
@@ -583,6 +600,7 @@
     "open_the_first_row": "Eerste rij openen",
     "open_the_full_list": "Volledige lijst openen",
     "open_the_lightbox_on_mobile": "Lightbox openen op mobiel",
+    "open_the_window_automatically_after": "Venster automatisch openen na",
     "option_names_to_group_by": "Optienamen om op te groeperen",
     "optional_uses_the_main_image_when_empty": "Optioneel. Gebruikt de hoofdafbeelding als dit leeg is.",
     "or_a_youtube_vimeo_url": "Of een URL van YouTube / Vimeo",
@@ -597,12 +615,13 @@
     "pack_image_metafield": "Metaveld voor verpakkingsafbeelding",
     "padding": "Opvulling",
     "page": "Pagina",
+    "page_addresses": "Paginaadressen",
     "page_content": "Paginacontent",
-    "page_handles_separated_by_commas": "Paginahandles gescheiden door komma's.",
     "page_numbers": "Paginanummers",
     "page_width": "Paginabreedte",
     "page_width_on_wide_screens": "Paginabreedte op brede schermen",
     "page_with_the_guide": "Pagina met de gids",
+    "pages": "Pagina's",
     "pagination": "Paginering",
     "panels_and_image_backgrounds": "Panelen en afbeeldingsachtergronden",
     "paragraph": "Alinea",
@@ -614,6 +633,9 @@
     "percentage_saved": "Bespaard percentage",
     "period_after_opening": "Houdbaarheid na opening",
     "phone": "Telefoon",
+    "phones_and_tablets_only": "Alleen telefoons en tablets",
+    "photo": "Foto",
+    "photo_or_logo": "Foto of logo",
     "pill": "Pil",
     "pinterest": "Pinterest",
     "play_the_video_automatically_muted": "Video automatisch afspelen, zonder geluid",
@@ -630,6 +652,7 @@
     "position_on_product_cards": "Positie op productkaarten",
     "posts_per_page": "Berichten per pagina",
     "posts_to_show": "Te tonen berichten",
+    "pre_filled_message": "Vooraf ingevuld bericht",
     "pre_order": "Pre-order",
     "preload_links_on_hover": "Links vooraf laden bij aanwijzen",
     "preselect_the_first_available_variant": "Eerste beschikbare variant vooraf selecteren",
@@ -731,6 +754,7 @@
     "reviews_section_on_this_page": "Reviewsectie op deze pagina",
     "reviews_wall": "Reviewmuur",
     "rich_text": "Tekst met opmaak",
+    "role": "Functie",
     "rotate_prompts_on_mobile": "Suggesties afwisselen op mobiel",
     "round_converted_amounts_up": "Omgerekende bedragen naar boven afronden",
     "round_images": "Ronde afbeeldingen",
@@ -812,7 +836,6 @@
     "show_button": "Knop weergeven",
     "show_cards_as_boxes": "Kaarten als vakken weergeven",
     "show_cents_as_superscript": "Centen in superscript weergeven",
-    "show_chat_button": "Chatknop weergeven",
     "show_chat_contact_line": "Contactregel voor chat weergeven",
     "show_checkout_button": "Checkoutknop weergeven",
     "show_collection_description": "Collectiebeschrijving weergeven",
@@ -852,6 +875,7 @@
     "show_new_label": "Label Nieuw weergeven",
     "show_on": "Weergeven op",
     "show_on_mobile": "Weergeven op mobiel",
+    "show_only_on_these_pages": "Alleen op deze pagina's tonen",
     "show_order_note": "Bestelopmerking weergeven",
     "show_over_the_product_media": "Over de productmedia weergeven",
     "show_page_title": "Paginatitel weergeven",
@@ -958,7 +982,9 @@
     "star_rating": "Sterrenbeoordeling",
     "stars_only": "Alleen sterren",
     "start": "Begin",
+    "start_chat_button": "Knop om de chat te starten",
     "starting_position": "Beginpositie",
+    "status_line": "Statusregel",
     "stay_on_the_page": "Op de pagina blijven",
     "step": "Stap",
     "step_label": "Label van stap",
@@ -1094,11 +1120,14 @@
     "wechat": "WeChat",
     "weight": "Gewicht",
     "whatsapp": "WhatsApp",
+    "whatsapp_chat": "WhatsApp-chat",
+    "whatsapp_number": "WhatsApp-nummer",
     "when_leaving_the_page": "Bij het verlaten van de pagina",
     "when_low": "Bij lage voorraad",
     "when_no_variant_with_that_value_is_available": "Als er geen variant met die waarde beschikbaar is",
     "when_the_cart_is_empty": "Als de winkelwagen leeg is",
     "when_the_exact_combination_is_unavailable": "Als de exacte combinatie niet beschikbaar is",
+    "where_it_shows": "Waar het wordt getoond",
     "where_this_block_is_placed": "Waar dit blok is geplaatst",
     "wholesale": "Groothandel",
     "wholesale_access": "Groothandelstoegang",
@@ -1505,6 +1534,37 @@
           }
         }
       },
+      "whatsapp_chat": {
+        "blocks": {
+          "contact": {
+            "settings": {
+              "phone": {
+                "info": "Landcode en nummer, alleen cijfers. Leeg gebruikt het nummer van de sectie."
+              }
+            }
+          }
+        },
+        "settings": {
+          "a_floating_whatsapp_button_it_never_covers_add_t": {
+            "content": "Een zwevende WhatsApp-knop. Hij bedekt nooit de knoppen voor winkelwagen of afrekenen en verbergt zich zolang lades of dialogen open zijn."
+          },
+          "button_bg": {
+            "info": "Houd een contrast van 4,5:1 met de kleur van pictogram en tekst. WhatsApp-groen #25D366 heeft een donker pictogram nodig."
+          },
+          "message": {
+            "info": "Laat leeg voor een vertaalde standaardtekst: \"Hallo, ik heb een vraag over deze pagina:\""
+          },
+          "open_delay": {
+            "info": "Eén keer per bezoek. 0 houdt het gesloten tot er op de knop wordt geklikt."
+          },
+          "phone": {
+            "info": "Landcode en nummer, alleen cijfers, bijvoorbeeld 34600000000. Laat leeg om de WhatsApp-link uit Thema-instellingen > Social media te gebruiken."
+          },
+          "urls": {
+            "info": "Eén adres per regel, bijvoorbeeld /pages/contact, /cart of een volledige link. Eindig met * om alles op te nemen wat daarmee begint, bijvoorbeeld /collections/*."
+          }
+        }
+      },
       "wholesale_access": {
         "settings": {
           "apply_page": {
@@ -1651,14 +1711,11 @@
       },
       "social_media": {
         "settings": {
-          "chat_button": {
-            "info": "Een zwevende knop die WhatsApp opent met de paginalink al ingevuld."
-          },
           "links_show_in_the_footer_and_on_the_password_pag": {
             "content": "Links worden getoond in de voettekst en op de wachtwoordpagina."
           },
           "social_whatsapp_url": {
-            "info": "Een wa.me-link, bijvoorbeeld https://wa.me/34600000000. Wordt ook gebruikt door de chatknop."
+            "info": "Een wa.me-link, bijvoorbeeld https://wa.me/34600000000. Wordt ook gebruikt door de sectie WhatsApp-chat (Overlays) als die geen eigen nummer heeft."
           }
         }
       },

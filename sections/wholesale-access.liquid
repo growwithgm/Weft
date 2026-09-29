@@ -36,10 +36,12 @@
           <a class="button button--full" href="{{ routes.account_login_url }}">{% if s.sign_in_label != blank %}{{ s.sign_in_label }}{% else %}{{ 'wholesale.sign_in' | t }}{% endif %}</a>
           {%- if apply_url -%}<a class="button button--secondary button--full" href="{{ apply_url }}">{% if s.apply_label != blank %}{{ s.apply_label }}{% else %}{{ 'wholesale.apply' | t }}{% endif %}</a>{%- endif -%}
         </div>
-        {%- if s.show_chat and settings.social_whatsapp_url != blank -%}
+        {%- capture wa_link -%}{%- render 'whatsapp-link' -%}{%- endcapture -%}
+        {%- assign wa_link = wa_link | strip -%}
+        {%- if s.show_chat and wa_link != blank -%}
           <p class="wholesale-access__chat">
             {%- render 'icon', name: 'chat', size: 18 -%}
-            <span>{{ s.chat_text }} <a href="{{ settings.social_whatsapp_url }}" target="_blank" rel="noopener">WhatsApp<span class="visually-hidden"> ({{ 'general.opens_new_window' | t }})</span></a></span>
+            <span>{{ s.chat_text }} <a href="{{ wa_link }}" target="_blank" rel="noopener">WhatsApp<span class="visually-hidden"> ({{ 'general.opens_new_window' | t }})</span></a></span>
           </p>
         {%- endif -%}
       {%- endif -%}

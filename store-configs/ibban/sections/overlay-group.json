@@ -115,11 +115,20 @@
         "tint_opacity": 60,
         "color_scheme": "scheme-5"
       }
+    },
+    "whatsapp": {
+      "type": "whatsapp-chat",
+      "settings": {
+        "add_page_link": true,
+        "show_window": false,
+        "audience": "all"
+      }
     }
   },
   "order": [
     "cart-drawer",
     "product-compare",
-    "popup"
+    "popup",
+    "whatsapp"
   ]
 }

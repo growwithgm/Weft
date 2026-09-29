@@ -154,14 +154,11 @@
   .media--blend { background: var(--c-blend, var(--c-surface)); } .media--blend img { mix-blend-mode: multiply; }
   .media svg.placeholder-svg { background: var(--c-surface); fill: color-mix(in srgb, var(--c-fg) 25%, transparent); }
 
-  /* Skip link, chat button */
+  /* Skip link */
   .skip-link { position: absolute; z-index: 100; inset-block-start: 8px; inset-inline-start: 8px; padding: 12px 20px; background: var(--c-bg); color: var(--c-fg); border-radius: var(--r-button); }
-  .chat-button { position: fixed; inset-inline-end: 20px; inset-block-end: 20px; z-index: 35; display: grid; place-items: center; width: 56px; height: 56px; border-radius: 50%; background: #25D366; color: #fff; box-shadow: 0 6px 18px rgb(15 17 17 / 0.18); transition: transform 200ms ease, opacity 200ms ease; }
   @media (max-width: 989px) {
     body:has(sticky-bar) .footer { padding-block-end: 144px; }
-    body:has(.matrix__summary:not(.matrix__summary--rows)) .chat-button, body:has(.compare-bar:not([hidden])) .chat-button { inset-block-end: 140px; }
   }
-  .chat-button[data-chat-hidden] { opacity: 0; transform: translateY(12px); pointer-events: none; }
 
   /* Announcement bar */
   .announcement { font-size: var(--t-13); }

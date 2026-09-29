@@ -223,7 +223,9 @@
     "back_to_top": "Retour en haut",
     "breadcrumbs": "Fil d'Ariane",
     "chat": {
-      "label": "Discuter sur WhatsApp"
+      "editor_no_number": "Ajoutez un numéro WhatsApp dans cette section, ou un lien WhatsApp dans Paramètres du thème > Réseaux sociaux. D’ici là, le bouton n’apparaît que dans l’éditeur de thème.",
+      "label": "Discuter sur WhatsApp",
+      "message": "Bonjour, j’ai une question sur cette page :"
     },
     "close": "Fermer",
     "continue_shopping": "Continuer vos achats",

@@ -223,7 +223,9 @@
     "back_to_top": "Back to top",
     "breadcrumbs": "Breadcrumbs",
     "chat": {
-      "label": "Chat on WhatsApp"
+      "editor_no_number": "Add a WhatsApp number in this section, or a WhatsApp link in Theme settings > Social media. Until then the button only shows in the theme editor.",
+      "label": "Chat on WhatsApp",
+      "message": "Hello, I have a question about this page:"
     },
     "close": "Close",
     "continue_shopping": "Continue shopping",

@@ -33,7 +33,7 @@ const productPage = `
   <div style="height: 3000px">Details</div>
   <sticky-bar class="sticky-bar" hidden><button type="button">Add</button></sticky-bar>
 </product-section>
-<a class="chat-button" data-chat-button href="#">Chat</a>
+<wa-chat class="wa" data-chat-button><a class="wa__button" href="#">Chat</a></wa-chat>
 <button type="button" data-open-dialog="SomeDrawer" id="open-drawer" style="position: fixed; top: 0; right: 0">Open</button>
 <dialog id="SomeDrawer" class="drawer drawer--end"><div data-dialog-body><button type="button" data-close-dialog id="close-drawer">Close</button></div></dialog>`;
 

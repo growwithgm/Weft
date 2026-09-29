@@ -31,7 +31,6 @@ None.
 | current | setting installments_provider | moved | Klarna row of the live delivery widget (3 payments, same country list). |
 | current | setting installments_count | moved | Klarna row of the live delivery widget. |
 | current | setting installments_countries | moved | Klarna countries of the live delivery widget. |
-| current | setting chat_button_enable | moved | The live store shows a floating WhatsApp bubble (brief §5: one WhatsApp number from the theme setting). |
 | current | setting wholesale_show_sku | moved | Pilot wholesale setting (architecture §8, Wholesale group). |
 | current | setting wholesale_request_page | moved | Page linked as "Apply for Access" on the live B2B login page. |
 | current | setting integration_reviews_enable | moved | The live product and reviews pages read Judge.me's synced data. |
@@ -110,6 +109,7 @@ None.
 | section "popup" (pop-up) | setting text_color | dropped | Colours come from the pop-up's colour scheme. |
 | section "popup" (pop-up) | setting bg_color | dropped | Colours come from the pop-up's colour scheme. |
 | section "popup" (pop-up) | setting bg_grad | dropped | Colours come from the pop-up's colour scheme (scheme-5 carries the live gradient). |
+| section "whatsapp" (whatsapp-chat) | section | changed | The live store shows a floating WhatsApp bubble (brief §5); in Weft it is the WhatsApp chat section in the overlay group, using the number from Theme settings > Social media. |
 
 ### templates/article.json
 

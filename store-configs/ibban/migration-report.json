@@ -2954,14 +2954,6 @@
   {
     "file": "config/settings_data.json",
     "where": "current",
-    "item": "setting chat_button_enable",
-    "action": "moved",
-    "reason": "The live store shows a floating WhatsApp bubble (brief §5: one WhatsApp number from the theme setting).",
-    "explained": true
-  },
-  {
-    "file": "config/settings_data.json",
-    "where": "current",
     "item": "setting wholesale_show_sku",
     "action": "moved",
     "reason": "Pilot wholesale setting (architecture §8, Wholesale group).",
@@ -3285,6 +3277,14 @@
     "item": "blocks: wholesale-terms, order-matrix, wholesale-quantity, volume-pricing",
     "action": "changed",
     "reason": "The live theme sold wholesale through SparkLayer / BSS markup, which is dropped (native B2B only). Weft's wholesale blocks (terms, tier table, one-size stepper, order matrix) replace it so the B2B market shows per-piece prices, rules and the matrix; buy buttons are retail-only so wholesale buyers order through the matrix or stepper. Owner request (28 Sep 2026): for wholesale buyers the order matrix follows the title and price, in the rows layout with the minimum order and pack bar, as on the live store.",
+    "explained": true
+  },
+  {
+    "file": "sections/overlay-group.json",
+    "where": "section \"whatsapp\" (whatsapp-chat)",
+    "item": "section",
+    "action": "changed",
+    "reason": "The live store shows a floating WhatsApp bubble (brief §5); in Weft it is the WhatsApp chat section in the overlay group, using the number from Theme settings > Social media.",
     "explained": true
   },
   {

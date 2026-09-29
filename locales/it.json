@@ -223,7 +223,9 @@
     "back_to_top": "Torna su",
     "breadcrumbs": "Percorso di navigazione",
     "chat": {
-      "label": "Chatta su WhatsApp"
+      "editor_no_number": "Aggiungi un numero WhatsApp in questa sezione o un link WhatsApp in Impostazioni tema > Social media. Fino ad allora il pulsante è visibile solo nell’editor del tema.",
+      "label": "Chatta su WhatsApp",
+      "message": "Ciao, ho una domanda su questa pagina:"
     },
     "close": "Chiudi",
     "continue_shopping": "Continua lo shopping",

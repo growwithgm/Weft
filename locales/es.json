@@ -223,7 +223,9 @@
     "back_to_top": "Volver arriba",
     "breadcrumbs": "Ruta de navegación",
     "chat": {
-      "label": "Chatear por WhatsApp"
+      "editor_no_number": "Añade un número de WhatsApp en esta sección o un enlace de WhatsApp en Configuración del tema > Redes sociales. Hasta entonces, el botón solo se ve en el editor de temas.",
+      "label": "Chatear por WhatsApp",
+      "message": "Hola, tengo una pregunta sobre esta página:"
     },
     "close": "Cerrar",
     "continue_shopping": "Seguir comprando",

@@ -20,6 +20,7 @@
     "add_app_snippets_or_other_liquid_code": "Add app snippets or other Liquid code.",
     "add_faq_structured_data_for_search_engines": "Add FAQ structured data for search engines",
     "add_space_around_the_apps": "Add space around the apps",
+    "add_the_page_address_to_the_message": "Add the page address to the message",
     "additional_images": "Additional images",
     "addresses": "Addresses",
     "adds_a_required_checkbox": "Adds a required checkbox.",
@@ -38,6 +39,7 @@
     "align_values_to_the_end": "Align values to the end",
     "alignment": "Alignment",
     "all": "All",
+    "all_devices": "All devices",
     "all_products_when_empty": "All products when empty.",
     "all_reviews_label": "All reviews label",
     "all_reviews_link": "All reviews link",
@@ -117,6 +119,8 @@
     "bottom": "Bottom",
     "bottom_center": "Bottom center",
     "bottom_end": "Bottom end",
+    "bottom_left": "Bottom left",
+    "bottom_right": "Bottom right",
     "bottom_start": "Bottom start",
     "box_background": "Box background",
     "box_border": "Box border",
@@ -125,11 +129,14 @@
     "breadcrumbs": "Breadcrumbs",
     "button": "Button",
     "button_and_input_border": "Button and input border",
+    "button_color": "Button color",
     "button_corner_radius": "Button corner radius",
     "button_label": "Button label",
     "button_link": "Button link",
     "button_on_hover": "Button on hover",
+    "button_size": "Button size",
     "button_style": "Button style",
+    "button_text": "Button text",
     "buttons": "Buttons",
     "buy_buttons": "Buy buttons",
     "call_to_action_button": "Call to action button",
@@ -152,8 +159,8 @@
     "change_testimonials_automatically": "Change testimonials automatically",
     "character_limit": "Character limit",
     "chat": "Chat",
-    "chat_button": "Chat button",
     "chat_line_text": "Chat line text",
+    "chat_window": "Chat window",
     "check": "Check",
     "check_mark": "Check mark",
     "checkbox": "Checkbox",
@@ -205,6 +212,7 @@
     "connect_a_product_metafield_hidden_when_empty": "Connect a product metafield. Hidden when empty.",
     "connect_the_matching_count_metafield": "Connect the matching count metafield.",
     "consent_text": "Consent text",
+    "contact": "Contact",
     "contact_form": "Contact form",
     "content": "Content",
     "content_position": "Content position",
@@ -241,12 +249,16 @@
     "delivery_information": "Delivery information",
     "delivery_list": "Delivery list",
     "description": "Description",
+    "devices": "Devices",
     "direction": "Direction",
     "disabled_button": "Disabled button",
     "disabled_button_text": "Disabled button text",
     "discord": "Discord",
     "discount": "Discount",
     "discount_code": "Discount code",
+    "distance_from_the_bottom_on_large_screens": "Distance from the bottom on large screens",
+    "distance_from_the_bottom_on_phones": "Distance from the bottom on phones",
+    "distance_from_the_side": "Distance from the side",
     "divider": "Divider",
     "dividing_lines_between_cards": "Dividing lines between cards",
     "dividing_lines_between_items": "Dividing lines between items",
@@ -335,6 +347,7 @@
     "go_to_the_cart_page": "Go to the cart page",
     "google_site_verification_code": "Google site verification code",
     "google_tag_manager_container_id": "Google Tag Manager container ID",
+    "greeting": "Greeting",
     "grid": "Grid",
     "grid_first_option_down_other_options_across": "Grid: first option down, other options across",
     "group": "Group",
@@ -361,7 +374,7 @@
     "hidden": "Hidden",
     "hide_after_a_delay": "Hide after a delay",
     "hide_for_wholesale_buyers": "Hide for wholesale buyers",
-    "hide_on_pages": "Hide on pages",
+    "hide_on_these_pages": "Hide on these pages",
     "hide_the_backorder_notice": "Hide the backorder notice",
     "hide_when_the_countdown_ends": "Hide when the countdown ends",
     "hide_while_filters_are_active": "Hide while filters are active",
@@ -381,6 +394,8 @@
     "hotspot_color": "Hotspot color",
     "how_to_use": "How to use",
     "icon": "Icon",
+    "icon_and_text": "Icon and text",
+    "icon_and_text_color": "Icon and text color",
     "icon_button": "Icon button",
     "icon_position": "Icon position",
     "icon_size": "Icon size",
@@ -563,6 +578,7 @@
     "number_of_payments": "Number of payments",
     "number_the_products_as_steps": "Number the products as steps",
     "off": "Off",
+    "off_the_button_opens_whatsapp_straight_away": "Off: the button opens WhatsApp straight away.",
     "on_hover": "On hover",
     "one_column": "One column",
     "one_item": "One item",
@@ -574,6 +590,7 @@
     "only_claims_you_can_support": "Only claims you can support.",
     "only_show_to_visitors_who_aren_t_signed_in": "Only show to visitors who aren't signed in",
     "only_show_when_the_product_is_unavailable": "Only show when the product is unavailable",
+    "open_a_chat_window_first": "Open a chat window first",
     "open_all_filters": "Open all filters",
     "open_by_default": "Open by default",
     "open_external_links_in_a_new_tab": "Open external links in a new tab",
@@ -583,6 +600,7 @@
     "open_the_first_row": "Open the first row",
     "open_the_full_list": "Open the full list",
     "open_the_lightbox_on_mobile": "Open the lightbox on mobile",
+    "open_the_window_automatically_after": "Open the window automatically after",
     "option_names_to_group_by": "Option names to group by",
     "optional_uses_the_main_image_when_empty": "Optional. Uses the main image when empty.",
     "or_a_youtube_vimeo_url": "Or a YouTube / Vimeo URL",
@@ -597,12 +615,13 @@
     "pack_image_metafield": "Pack image metafield",
     "padding": "Padding",
     "page": "Page",
+    "page_addresses": "Page addresses",
     "page_content": "Page content",
-    "page_handles_separated_by_commas": "Page handles separated by commas.",
     "page_numbers": "Page numbers",
     "page_width": "Page width",
     "page_width_on_wide_screens": "Page width on wide screens",
     "page_with_the_guide": "Page with the guide",
+    "pages": "Pages",
     "pagination": "Pagination",
     "panels_and_image_backgrounds": "Panels and image backgrounds",
     "paragraph": "Paragraph",
@@ -614,6 +633,9 @@
     "percentage_saved": "Percentage saved",
     "period_after_opening": "Period after opening",
     "phone": "Phone",
+    "phones_and_tablets_only": "Phones and tablets only",
+    "photo": "Photo",
+    "photo_or_logo": "Photo or logo",
     "pill": "Pill",
     "pinterest": "Pinterest",
     "play_the_video_automatically_muted": "Play the video automatically, muted",
@@ -630,6 +652,7 @@
     "position_on_product_cards": "Position on product cards",
     "posts_per_page": "Posts per page",
     "posts_to_show": "Posts to show",
+    "pre_filled_message": "Pre-filled message",
     "pre_order": "Pre-order",
     "preload_links_on_hover": "Preload links on hover",
     "preselect_the_first_available_variant": "Preselect the first available variant",
@@ -731,6 +754,7 @@
     "reviews_section_on_this_page": "Reviews section on this page",
     "reviews_wall": "Reviews wall",
     "rich_text": "Rich text",
+    "role": "Role",
     "rotate_prompts_on_mobile": "Rotate prompts on mobile",
     "round_converted_amounts_up": "Round converted amounts up",
     "round_images": "Round images",
@@ -812,7 +836,6 @@
     "show_button": "Show button",
     "show_cards_as_boxes": "Show cards as boxes",
     "show_cents_as_superscript": "Show cents as superscript",
-    "show_chat_button": "Show chat button",
     "show_chat_contact_line": "Show chat contact line",
     "show_checkout_button": "Show checkout button",
     "show_collection_description": "Show collection description",
@@ -852,6 +875,7 @@
     "show_new_label": "Show new label",
     "show_on": "Show on",
     "show_on_mobile": "Show on mobile",
+    "show_only_on_these_pages": "Show only on these pages",
     "show_order_note": "Show order note",
     "show_over_the_product_media": "Show over the product media",
     "show_page_title": "Show page title",
@@ -958,7 +982,9 @@
     "star_rating": "Star rating",
     "stars_only": "Stars only",
     "start": "Start",
+    "start_chat_button": "Start chat button",
     "starting_position": "Starting position",
+    "status_line": "Status line",
     "stay_on_the_page": "Stay on the page",
     "step": "Step",
     "step_label": "Step label",
@@ -1094,11 +1120,14 @@
     "wechat": "WeChat",
     "weight": "Weight",
     "whatsapp": "WhatsApp",
+    "whatsapp_chat": "WhatsApp chat",
+    "whatsapp_number": "WhatsApp number",
     "when_leaving_the_page": "When leaving the page",
     "when_low": "When low",
     "when_no_variant_with_that_value_is_available": "When no variant with that value is available",
     "when_the_cart_is_empty": "When the cart is empty",
     "when_the_exact_combination_is_unavailable": "When the exact combination is unavailable",
+    "where_it_shows": "Where it shows",
     "where_this_block_is_placed": "Where this block is placed",
     "wholesale": "Wholesale",
     "wholesale_access": "Wholesale access",
@@ -1505,6 +1534,37 @@
           }
         }
       },
+      "whatsapp_chat": {
+        "blocks": {
+          "contact": {
+            "settings": {
+              "phone": {
+                "info": "Country code and number, digits only. Empty uses the section's number."
+              }
+            }
+          }
+        },
+        "settings": {
+          "a_floating_whatsapp_button_it_never_covers_add_t": {
+            "content": "A floating WhatsApp button. It never covers add-to-cart or checkout buttons, and it hides while drawers and dialogs are open."
+          },
+          "button_bg": {
+            "info": "Keep 4.5:1 contrast with the icon and text color. WhatsApp green #25D366 needs a dark icon."
+          },
+          "message": {
+            "info": "Leave empty to use a translated default: \"Hello, I have a question about this page:\""
+          },
+          "open_delay": {
+            "info": "Once per visit. 0 keeps it closed until the button is clicked."
+          },
+          "phone": {
+            "info": "Country code and number, digits only, for example 34600000000. Leave empty to use the WhatsApp link in Theme settings > Social media."
+          },
+          "urls": {
+            "info": "One address per line, for example /pages/contact, /cart or a full link. End with * to include everything that starts with it, for example /collections/*."
+          }
+        }
+      },
       "wholesale_access": {
         "settings": {
           "apply_page": {
@@ -1651,14 +1711,11 @@
       },
       "social_media": {
         "settings": {
-          "chat_button": {
-            "info": "A floating button that opens WhatsApp with the page link filled in."
-          },
           "links_show_in_the_footer_and_on_the_password_pag": {
             "content": "Links show in the footer and on the password page."
           },
           "social_whatsapp_url": {
-            "info": "A wa.me link, for example https://wa.me/34600000000. Also used by the chat button."
+            "info": "A wa.me link, for example https://wa.me/34600000000. Also used by the WhatsApp chat section (Overlays) when it has no number of its own."
           }
         }
       },

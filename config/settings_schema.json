@@ -1784,29 +1784,6 @@
         "type": "text",
         "id": "social_custom_url",
         "label": "t:labels.link"
-      },
-      {
-        "type": "header",
-        "content": "t:labels.chat_button",
-        "info": "t:text.settings_schema.social_media.settings.chat_button.info"
-      },
-      {
-        "type": "checkbox",
-        "id": "chat_button_enable",
-        "label": "t:labels.show_chat_button",
-        "default": false
-      },
-      {
-        "type": "text",
-        "id": "chat_button_message",
-        "label": "t:labels.message",
-        "default": "Hello, I have a question about this page:"
-      },
-      {
-        "type": "text",
-        "id": "chat_button_hide_on",
-        "label": "t:labels.hide_on_pages",
-        "info": "t:labels.page_handles_separated_by_commas"
       }
     ]
   },

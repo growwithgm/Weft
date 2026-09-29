@@ -223,7 +223,9 @@
     "back_to_top": "Voltar ao topo",
     "breadcrumbs": "Navegação estrutural",
     "chat": {
-      "label": "Conversar no WhatsApp"
+      "editor_no_number": "Adicione um número de WhatsApp nesta secção ou um link de WhatsApp em Definições do tema > Redes sociais. Até lá, o botão só aparece no editor de temas.",
+      "label": "Conversar no WhatsApp",
+      "message": "Olá, tenho uma pergunta sobre esta página:"
     },
     "close": "Fechar",
     "continue_shopping": "Continuar a comprar",
