@@ -113,7 +113,7 @@ test('the ibBan migration has no unexplained items and keeps every content value
 });
 
 test('the ibBan store config keeps text readable in every colour scheme', { skip: !existsSync(join(ROOT, 'store-configs/ibban/config/settings_data.json')) && 'no store config yet' }, () => {
-  const { current } = JSON.parse(readFileSync(join(ROOT, 'store-configs/ibban/config/settings_data.json'), 'utf8'));
+  const { current } = JSON.parse(readFileSync(join(ROOT, 'store-configs/ibban/config/settings_data.json'), 'utf8').replace(/^\s*\/\*[\s\S]*?\*\/\s*/, ''));
   const failures = [];
   for (const [id, { settings: c }] of Object.entries(current.color_schemes)) {
     for (const [label, fg, bg] of [['text', c.text, c.background], ['heading', c.heading, c.background], ['button', c.button_text, c.button_bg], ['secondary button', c.button_secondary_text, c.button_secondary_bg]]) {

@@ -6,7 +6,7 @@ import { contrast } from './helpers/contrast.mjs';
 
 // WCAG 2.2 contrast for every text pair each preset can put on screen. Settings a preset leaves out
 // fall back to the schema defaults, as they do in the theme editor.
-const schema = JSON.parse(readFileSync(new URL('../../config/settings_schema.json', import.meta.url), 'utf8'));
+const schema = JSON.parse(readFileSync(new URL('../../config/settings_schema.json', import.meta.url), 'utf8').replace(/^\s*\/\*[\s\S]*?\*\/\s*/, ''));
 const defaults = Object.fromEntries(schema.flatMap((g) => g.settings || []).filter((s) => s.id && 'default' in s).map((s) => [s.id, s.default]));
 
 const TEXT = 4.5;

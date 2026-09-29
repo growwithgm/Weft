@@ -30,7 +30,7 @@ export function loadThemeSchemas(root) {
   const global = {};
   const schemaFile = join(root, 'config/settings_schema.json');
   if (existsSync(schemaFile)) {
-    for (const g of JSON.parse(readFileSync(schemaFile, 'utf8'))) for (const s of g.settings || []) if (s.id) global[s.id] = s;
+    for (const g of JSON.parse(readFileSync(schemaFile, 'utf8').replace(/^\s*\/\*[\s\S]*?\*\/\s*/, ''))) for (const s of g.settings || []) if (s.id) global[s.id] = s;
   }
   return { sections, blocks, global };
 }

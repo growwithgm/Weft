@@ -23,10 +23,10 @@ const flatten = (o, p = '', out = new Map()) => {
 // Locale parity
 const dir = join(ROOT, 'locales');
 const files = readdirSync(dir).filter((f) => f.endsWith('.json') && !f.endsWith('.schema.json'));
-const base = flatten(JSON.parse(readFileSync(join(dir, 'en.default.json'), 'utf8')));
+const base = flatten(JSON.parse(readFileSync(join(dir, 'en.default.json'), 'utf8').replace(/^\s*\/\*[\s\S]*?\*\/\s*/, '')));
 for (const f of files) {
   if (f === 'en.default.json') continue;
-  const other = flatten(JSON.parse(readFileSync(join(dir, f), 'utf8')));
+  const other = flatten(JSON.parse(readFileSync(join(dir, f), 'utf8').replace(/^\s*\/\*[\s\S]*?\*\/\s*/, '')));
   for (const k of base.keys()) if (!other.has(k)) problems.push(`locales/${f}: missing "${k}"`);
   for (const k of other.keys()) if (!base.has(k)) problems.push(`locales/${f}: extra "${k}"`);
   for (const [k, v] of other) if (typeof v === 'string' && !v.trim()) problems.push(`locales/${f}: empty "${k}"`);
@@ -107,7 +107,7 @@ const AMERICAN = /\b(colours?|coloured|centred?|centres|greys?|catalogues?|custo
 // Editor text follows the Theme Store text rules: American English, no ampersands (the Search &
 // Discovery app's name aside), statements rather than questions, Shopify's terms, "64 x 64px" sizes.
 {
-  const schemaText = flatten(JSON.parse(readFileSync(join(dir, 'en.default.schema.json'), 'utf8')));
+  const schemaText = flatten(JSON.parse(readFileSync(join(dir, 'en.default.schema.json'), 'utf8').replace(/^\s*\/\*[\s\S]*?\*\/\s*/, '')));
   const rules = [
     [AMERICAN, 'use American English'],
     [/&(?! Discovery)/, 'no ampersands'],

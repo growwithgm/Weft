@@ -147,11 +147,12 @@ if (themestore) {
     const rel = relative(out, file).split(sep).join('/');
     if (!ownTemplates.has(rel)) rmSync(file);
   }
-  // The default preset's listing mirrors the base templates.
+  // The base templates follow the default preset's listing: the root templates carry the connected
+  // store's editor saves (its apps and integrations), the listing holds the neutral defaults.
   const presets = Object.keys(readJSON(join(out, 'config/settings_data.json')).presets || {});
   const handle = (presets[0] || '').toLowerCase().replace(/ /g, '-');
   for (const file of walk(join(out, 'listings', handle, 'templates'))) {
-    cpSync(join(out, 'templates', basename(file)), file);
+    cpSync(file, join(out, 'templates', basename(file)));
   }
   const removed = removeIntegrations(out);
   const hits = verifyClean(out);

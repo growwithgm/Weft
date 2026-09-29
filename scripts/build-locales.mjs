@@ -23,6 +23,9 @@ const problems = [];
 
 const write = (file, content) => {
   const prev = existsSync(file) ? readFileSync(file, 'utf8') : null;
+  // Shopify's GitHub sync adds an "auto-generated" comment on top of locale files; keep it.
+  const header = prev && file.endsWith('.json') && (prev.match(/^\s*\/\*[\s\S]*?\*\/\s*\n/) || [''])[0];
+  if (header && !content.startsWith('/*')) content = header + content;
   if (prev === content) return;
   changed.push(file.replace(ROOT + '/', ''));
   if (!CHECK) {
@@ -34,7 +37,7 @@ const json = (data) => JSON.stringify(data, null, 2) + '\n';
 
 // ---------- editor strings ----------
 const existingSchema = existsSync(join(ROOT, 'locales/en.default.schema.json'))
-  ? JSON.parse(readFileSync(join(ROOT, 'locales/en.default.schema.json'), 'utf8'))
+  ? JSON.parse(readFileSync(join(ROOT, 'locales/en.default.schema.json'), 'utf8').replace(/^\s*\/\*[\s\S]*?\*\/\s*/, ''))
   : {};
 const enSchema = {};
 const valueByKey = new Map();
