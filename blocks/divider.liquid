@@ -1,0 +1,43 @@
+<div class="block-divider block-divider--{{ block.settings.spacing }}" {{ block.shopify_attributes }}>
+  {%- if block.settings.show_line -%}<hr>{%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "t:labels.divider",
+  "tag": null,
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_line",
+      "label": "t:labels.show_line",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "spacing",
+      "label": "t:labels.spacing",
+      "options": [
+        {
+          "value": "small",
+          "label": "t:labels.small"
+        },
+        {
+          "value": "medium",
+          "label": "t:labels.medium"
+        },
+        {
+          "value": "large",
+          "label": "t:labels.large"
+        }
+      ],
+      "default": "medium"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:labels.divider"
+    }
+  ]
+}
+{% endschema %}

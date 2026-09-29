@@ -1,0 +1,54 @@
+{%- comment -%}
+  Video that loads on demand (<deferred-video>, video.js). Shopify-hosted video or a YouTube /
+  Vimeo URL. Inline: poster + play button. Background (autoplay): muted loop once in view, with a
+  pause button; external URLs never autoplay because their players can't be paused from the page.
+  Params: video (Shopify video), video_url (video_url setting), poster (image), description,
+          background (bool), sizes, eager (bool)
+{%- endcomment -%}
+{%- liquid
+  assign poster_image = poster
+  if poster_image == blank and video
+    assign poster_image = video.preview_image
+  endif
+  assign autoplay = false
+  if background and video
+    assign autoplay = true
+  endif
+  assign label = description | default: video.alt
+  assign poster_sizes = sizes | default: '100vw'
+-%}
+<deferred-video class="deferred-video{% if background %} deferred-video--background{% endif %}" data-autoplay="{{ autoplay }}" data-module="{{ 'video.js' | asset_url }}" data-load="visible">
+  <div class="deferred-video__slot" data-video-slot>
+    <div class="deferred-video__poster" data-video-poster>
+      {%- if poster_image -%}
+        {%- render 'image', image: poster_image, sizes: poster_sizes, eager: eager, class: 'deferred-video__image' -%}
+      {%- else -%}
+        {{ 'lifestyle-2' | placeholder_svg_tag: 'deferred-video__image placeholder-svg' }}
+      {%- endif -%}
+      {%- unless autoplay -%}
+        {%- if video or video_url -%}
+          <button type="button" class="deferred-video__play" data-video-play aria-label="{{ 'general.play_video' | t: title: label | escape }}">{%- render 'icon', name: 'play', size: 28 -%}</button>
+        {%- endif -%}
+      {%- endunless -%}
+    </div>
+  </div>
+  {%- if autoplay -%}
+    <button type="button" class="icon-button deferred-video__toggle" data-video-toggle hidden aria-pressed="false" aria-label="{{ 'general.pause' | t }}" data-pause-label="{{ 'general.pause' | t | escape }}" data-play-label="{{ 'general.play' | t | escape }}">
+      <span class="slideshow__pause-icon">{%- render 'icon', name: 'pause', size: 16 -%}</span>
+      <span class="slideshow__play-icon">{%- render 'icon', name: 'play', size: 16 -%}</span>
+    </button>
+  {%- endif -%}
+  <template data-video-template>
+    {%- if video -%}
+      {%- if autoplay -%}
+        {{ video | video_tag: autoplay: true, muted: true, loop: true, playsinline: true, controls: false, image_size: '1920x', class: 'deferred-video__player' }}
+      {%- else -%}
+        {{ video | video_tag: autoplay: true, controls: true, playsinline: true, image_size: '1920x', class: 'deferred-video__player' }}
+      {%- endif -%}
+    {%- elsif video_url.type == 'youtube' -%}
+      <iframe class="deferred-video__player" src="https://www.youtube-nocookie.com/embed/{{ video_url.id }}?autoplay=1&amp;rel=0&amp;playsinline=1" title="{{ label | default: 'YouTube' | escape }}" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+    {%- elsif video_url.type == 'vimeo' -%}
+      <iframe class="deferred-video__player" src="https://player.vimeo.com/video/{{ video_url.id }}?autoplay=1&amp;dnt=1" title="{{ label | default: 'Vimeo' | escape }}" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+    {%- endif -%}
+  </template>
+</deferred-video>

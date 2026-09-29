@@ -1,0 +1,25 @@
+{%- comment -%} Cart free-shipping progress from Theme settings > Cart (thresholds per currency). {%- endcomment -%}
+{%- liquid
+  assign threshold = nil
+  assign lines = settings.cart_free_shipping_rules | newline_to_br | split: '<br />'
+  for raw in lines
+    assign pair = raw | strip | split: ':'
+    assign code = pair | first | strip | upcase
+    if code == cart.currency.iso_code and pair.size > 1
+      assign threshold = pair | last | strip | replace: ',', '.' | times: 100 | round
+    endif
+  endfor
+-%}
+{%- if threshold and threshold > 0 -%}
+  {%- liquid
+    assign left = threshold | minus: cart.total_price
+    assign pct = cart.total_price | times: 100 | divided_by: threshold | at_most: 100
+    assign left_money = left | money
+  -%}
+  <div class="free-shipping color-{{ settings.cart_free_shipping_scheme }}">
+    <p class="free-shipping__text">
+      {%- if left > 0 -%}{{ 'products.delivery.to_go' | t: amount: left_money }}{%- else -%}{{ 'products.delivery.free' | t }}{%- endif -%}
+    </p>
+    <span class="progress" role="progressbar" aria-label="{{ 'products.delivery.progress' | t }}" aria-valuemin="0" aria-valuemax="100" aria-valuenow="{{ pct }}"><span class="progress__bar" style="width: {{ pct }}%"></span></span>
+  </div>
+{%- endif -%}

@@ -1,0 +1,47 @@
+{%- comment -%}
+  Active filter chips with Shopify's remove URLs, plus "Clear all". Plain links, so they work
+  without JavaScript; facets.js intercepts them to re-render in place.
+  Params: results (collection or search), clear_url
+{%- endcomment -%}
+{%- liquid
+  assign any_active = false
+  for filter in results.filters
+    if filter.active_values.size > 0 or filter.min_value.value != nil or filter.max_value.value != nil
+      assign any_active = true
+      break
+    endif
+  endfor
+-%}
+<div class="active-facets" data-facets-active>
+  {%- if any_active -%}
+    <ul class="active-facets__list" role="list">
+      {%- for filter in results.filters -%}
+        {%- for value in filter.active_values -%}
+          <li>
+            <a class="active-facets__chip" href="{{ value.url_to_remove }}" data-facet-link>
+              <span>{{ filter.label | escape }}: {{ value.label | escape }}</span>
+              {%- render 'icon', name: 'close', size: 14 -%}
+              <span class="visually-hidden">{{ 'collections.remove_filter' | t }}</span>
+            </a>
+          </li>
+        {%- endfor -%}
+        {%- if filter.type == 'price_range' -%}
+          {%- if filter.min_value.value != nil or filter.max_value.value != nil -%}
+            {%- liquid
+              assign price_min = filter.min_value.value | default: 0 | money
+              assign price_max = filter.max_value.value | default: filter.range_max | money
+            -%}
+            <li>
+              <a class="active-facets__chip" href="{{ filter.url_to_remove }}" data-facet-link>
+                <span>{{ 'collections.price_range' | t: min: price_min, max: price_max }}</span>
+                {%- render 'icon', name: 'close', size: 14 -%}
+                <span class="visually-hidden">{{ 'collections.remove_filter' | t }}</span>
+              </a>
+            </li>
+          {%- endif -%}
+        {%- endif -%}
+      {%- endfor -%}
+      <li><a class="link active-facets__clear" href="{{ clear_url }}" data-facet-link>{{ 'collections.clear_all' | t }}</a></li>
+    </ul>
+  {%- endif -%}
+</div>

@@ -1,0 +1,93 @@
+{%- comment -%} One highlight: icon (or custom image) and short text. {%- endcomment -%}
+{%- assign b = block.settings -%}
+{%- if b.text != blank -%}
+  <li class="highlights__item" {{ block.shopify_attributes }}>
+    <span class="highlights__icon" aria-hidden="true">
+      {%- if b.custom_icon -%}{{ b.custom_icon | image_url: width: 96 | image_tag: width: 24, height: 24, alt: '', loading: 'lazy' }}{%- else -%}{%- render 'icon', name: b.icon, size: 22 -%}{%- endif -%}
+    </span>
+    <span class="highlights__text">{{ b.text }}</span>
+  </li>
+{%- endif -%}
+{% schema %}
+{
+  "name": "t:labels.highlight",
+  "tag": null,
+  "settings": [
+    {
+      "type": "select",
+      "id": "icon",
+      "label": "t:labels.icon",
+      "options": [
+        {
+          "value": "sparkle",
+          "label": "t:labels.sparkle"
+        },
+        {
+          "value": "leaf",
+          "label": "t:labels.leaf"
+        },
+        {
+          "value": "drop",
+          "label": "t:labels.drop"
+        },
+        {
+          "value": "check",
+          "label": "t:labels.check_mark"
+        },
+        {
+          "value": "star",
+          "label": "t:labels.star"
+        },
+        {
+          "value": "jar",
+          "label": "t:labels.jar"
+        },
+        {
+          "value": "ruler",
+          "label": "t:labels.ruler"
+        },
+        {
+          "value": "truck",
+          "label": "t:labels.delivery"
+        },
+        {
+          "value": "return",
+          "label": "t:labels.returns"
+        },
+        {
+          "value": "lock",
+          "label": "t:labels.secure"
+        },
+        {
+          "value": "globe",
+          "label": "t:labels.worldwide"
+        },
+        {
+          "value": "clock",
+          "label": "t:labels.clock"
+        },
+        {
+          "value": "tag",
+          "label": "t:labels.price_tag"
+        },
+        {
+          "value": "info",
+          "label": "t:labels.information"
+        }
+      ],
+      "default": "sparkle"
+    },
+    {
+      "type": "image_picker",
+      "id": "custom_icon",
+      "label": "t:labels.custom_icon"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "text",
+      "label": "t:labels.text",
+      "default": "Key benefit"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,43 @@
+{%- comment -%}
+  Discount code with a copy button (promo strip, pop-up, banners). The code is shown as text;
+  copying needs JavaScript, and the button stays hidden without it.
+{%- endcomment -%}
+{%- assign code = block.settings.discount_code | strip -%}
+{%- if code != blank -%}
+  {{ 'component-blocks.css' | asset_url | stylesheet_tag }}
+  <div class="discount-code" {{ block.shopify_attributes }}>
+    {%- if block.settings.label != blank -%}<span class="discount-code__label">{{ block.settings.label | escape }}</span>{%- endif -%}
+    <code class="discount-code__value">{{ code | escape }}</code>
+    <button type="button" class="button button--secondary button--small discount-code__copy js-only" data-copy-text="{{ code | escape }}" data-copied-label="{{ 'products.share.copied' | t | escape }}">{{ 'general.copy_code' | t }}</button>
+  </div>
+{%- elsif request.design_mode -%}
+  <p class="muted" {{ block.shopify_attributes }}>{{ 'general.copy_code' | t }}</p>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "t:labels.discount_code",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "t:labels.label",
+      "default": "Use code"
+    },
+    {
+      "type": "text",
+      "id": "discount_code",
+      "label": "t:labels.discount_code",
+      "default": "WELCOME10",
+      "info": "t:labels.create_the_code_in_discounts_first"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:labels.discount_code",
+      "category": "t:labels.promotions"
+    }
+  ]
+}
+{% endschema %}

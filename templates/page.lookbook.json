@@ -1,0 +1,145 @@
+{
+	"sections": {
+		"hero": {
+			"type": "image-banner",
+			"settings": {
+				"height": "large",
+				"overlay_position": "middle-center",
+				"text_align": "center",
+				"tint_opacity": 30
+			},
+			"blocks": {
+				"title": {
+					"type": "heading",
+					"settings": {
+						"heading": "Lookbook",
+						"size": "h1"
+					}
+				},
+				"text": {
+					"type": "text",
+					"settings": {
+						"text": "<p>The season in pictures.</p>"
+					}
+				}
+			},
+			"block_order": [
+				"title",
+				"text"
+			]
+		},
+		"intro": {
+			"type": "rich-text",
+			"settings": {},
+			"blocks": {
+				"t": {
+					"type": "text",
+					"settings": {
+						"text": "<p>Introduce the season's story and the ideas behind it.</p>"
+					}
+				}
+			},
+			"block_order": [
+				"t"
+			]
+		},
+		"grid": {
+			"type": "promo-grid",
+			"settings": {},
+			"blocks": {
+				"a": {
+					"type": "_promo-tile",
+					"settings": {
+						"columns": 2,
+						"rows": 2,
+						"line1": "Look one"
+					}
+				},
+				"b": {
+					"type": "_promo-tile",
+					"settings": {
+						"line1": "Look two"
+					}
+				},
+				"c": {
+					"type": "_promo-tile",
+					"settings": {
+						"line1": "Look three"
+					}
+				}
+			},
+			"block_order": [
+				"a",
+				"b",
+				"c"
+			]
+		},
+		"shop": {
+			"type": "shoppable-image",
+			"settings": {
+				"heading": "Shop the look"
+			},
+			"blocks": {
+				"h1": {
+					"type": "_hotspot",
+					"settings": {
+						"hotspot_x": 35,
+						"hotspot_y": 40
+					}
+				},
+				"h2": {
+					"type": "_hotspot",
+					"settings": {
+						"hotspot_x": 65,
+						"hotspot_y": 60
+					}
+				}
+			},
+			"block_order": [
+				"h1",
+				"h2"
+			]
+		},
+		"products": {
+			"type": "featured-collection",
+			"settings": {
+				"title": "In this lookbook",
+				"collection": "all",
+				"layout": "carousel"
+			}
+		},
+		"media": {
+			"type": "media-grid",
+			"settings": {},
+			"blocks": {
+				"a": {
+					"type": "_media-tile",
+					"settings": {}
+				},
+				"b": {
+					"type": "_media-tile",
+					"settings": {}
+				},
+				"c": {
+					"type": "_media-tile",
+					"settings": {
+						"columns": 2
+					}
+				}
+			},
+			"block_order": [
+				"a",
+				"b",
+				"c"
+			]
+		}
+	},
+	"order": [
+		"hero",
+		"intro",
+		"grid",
+		"shop",
+		"products",
+		"media"
+	]
+}

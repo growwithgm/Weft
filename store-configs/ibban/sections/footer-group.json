@@ -1,0 +1,81 @@
+{
+  "type": "footer",
+  "name": "Footer Group",
+  "sections": {
+    "1774551757cfad37b8": {
+      "type": "apps",
+      "settings": {
+        "full_width": false,
+        "show_space": true
+      }
+    },
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "text": {
+          "type": "text",
+          "settings": {
+            "image": "shopify://shop_images/1_8c8e1b58-fb05-4374-b8b1-a129ab195fc0.png",
+            "image_width": 180,
+            "heading": "",
+            "text": "<p>Hand-embroidered by our artisans. Handmade since 1982.</p><p>Calle Manuel Cobo Calleja 19, Fuenlabrada, Madrid</p><p><a href=\"mailto:ibban@ibban.com\">ibban@ibban.com</a> &middot; <a href=\"tel:+34689948641\">+34 689 948 641</a></p>",
+            "button_label": "",
+            "button_link": "",
+            "follow_on_shop": true,
+            "show_social": true,
+            "text_align": "start"
+          }
+        },
+        "link-list-shop": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Shop",
+            "menu": "footer-shop"
+          }
+        },
+        "link-list-2": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Help",
+            "menu": "footer"
+          }
+        },
+        "forms_inline_m3Tqa6": {
+          "type": "shopify://apps/forms/blocks/inline/8744a304-fcb1-4347-b211-bb6b4759a76a",
+          "settings": {
+            "form_id": "931203",
+            "text_color": "#ffffff",
+            "button_background_color": "#FBD816",
+            "button_label_color": "#000000",
+            "links_color": "#cfcfcf",
+            "errors_color": "#e02229",
+            "text_alignment": "left",
+            "form_alignment": "left",
+            "padding_top": 0,
+            "padding_bottom": 24,
+            "padding_right": 0,
+            "padding_left": 0
+          }
+        }
+      },
+      "block_order": [
+        "text",
+        "link-list-shop",
+        "link-list-2",
+        "forms_inline_m3Tqa6"
+      ],
+      "settings": {
+        "show_back_to_top": true,
+        "show_payment_icons": true,
+        "show_powered_by": false,
+        "show_country": true,
+        "show_language": true,
+        "color_scheme": "scheme-3"
+      }
+    }
+  },
+  "order": [
+    "1774551757cfad37b8",
+    "footer"
+  ]
+}

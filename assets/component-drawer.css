@@ -1,0 +1,99 @@
+/* Drawers, sheets and modals on native <dialog>. */
+@layer components {
+  dialog { padding: 0; border: 0; background: transparent; color: var(--c-fg); max-width: none; max-height: none; }
+  dialog::backdrop { background: rgb(42 43 42 / 0.45); }
+  html:has(dialog:modal) { overflow: hidden; }
+  .drawer { position: fixed; inset: 0; width: 100%; height: 100%; margin: 0; }
+  .drawer__panel {
+    position: absolute; inset-block: 0; display: flex; flex-direction: column;
+    width: min(420px, 100%); background: var(--c-bg); box-shadow: var(--shadow-overlay); overflow: hidden;
+  }
+  .drawer--start .drawer__panel { inset-inline-start: 0; border-start-end-radius: var(--r-drawer); border-end-end-radius: var(--r-drawer); width: min(360px, 88%); }
+  .drawer--end .drawer__panel { inset-inline-end: 0; border-start-start-radius: var(--r-drawer); border-end-start-radius: var(--r-drawer); }
+  .drawer--bottom .drawer__panel { inset-block: auto 0; inset-inline: 0; width: 100%; max-height: 88vh; max-height: 88dvh; border-start-start-radius: var(--r-drawer); border-start-end-radius: var(--r-drawer); }
+  .drawer--top .drawer__panel { inset-block: 0 auto; inset-inline: 0; width: 100%; max-height: 85vh; max-height: 85dvh; border-end-start-radius: var(--r-drawer); border-end-end-radius: var(--r-drawer); }
+  .drawer__header { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 8px 8px 8px 20px; border-block-end: 1px solid var(--c-line); }
+  .drawer__title { margin: 0; }
+  .drawer__body { flex: 1; overflow: auto; display: flex; flex-direction: column; overscroll-behavior: contain; }
+  .drawer__footer { border-block-start: 1px solid var(--c-line); padding: 16px 20px 20px; }
+
+  .sheet { position: fixed; inset: auto 0 0; width: 100%; margin: 0; }
+  .sheet__panel { position: relative; padding: 12px 20px 24px; background: var(--c-bg); border-radius: var(--r-drawer) var(--r-drawer) 0 0; box-shadow: 0 -10px 40px rgb(15 17 17 / 0.18); max-height: 85vh; max-height: 85dvh; overflow: auto; }
+  .sheet__handle { display: block; width: 40px; height: 4px; border-radius: 2px; background: var(--c-line); margin: 0 auto 12px; }
+  .sheet__close { position: absolute; inset-block-start: 4px; inset-inline-end: 4px; }
+  @media (min-width: 750px) {
+    .sheet--modal-desktop { inset: 0; margin: auto; width: min(560px, 92vw); height: fit-content; }
+    .sheet--modal-desktop .sheet__panel { border-radius: var(--r-modal); }
+    .sheet--modal-desktop .sheet__handle { display: none; }
+  }
+
+  .modal { position: fixed; inset: 0; margin: auto; width: min(720px, 92vw); max-height: 90vh; }
+  .modal__panel { background: var(--c-bg); border-radius: var(--r-modal); padding: 24px; max-height: 90vh; overflow: auto; display: flex; flex-direction: column; gap: 16px; }
+  .modal__header { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+  @media (max-width: 749px) {
+    .modal--fullscreen-mobile { width: 100%; height: 100%; max-height: none; }
+    .modal--fullscreen-mobile .modal__panel { height: 100%; max-height: none; border-radius: 0; }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    dialog[data-animate][open] .drawer__panel, dialog[data-animate][open] .sheet__panel, dialog[data-animate][open] .modal__panel { animation: weft-in 200ms ease-out; }
+    dialog[data-animate][data-state='closing'] .drawer__panel, dialog[data-animate][data-state='closing'] .sheet__panel, dialog[data-animate][data-state='closing'] .modal__panel { animation: weft-out 180ms ease-in forwards; }
+    .drawer--start[data-animate][open] .drawer__panel { --from: translateX(-100%); }
+    .drawer--end[data-animate][open] .drawer__panel { --from: translateX(100%); }
+    [dir='rtl'] .drawer--start[data-animate][open] .drawer__panel { --from: translateX(100%); }
+    [dir='rtl'] .drawer--end[data-animate][open] .drawer__panel { --from: translateX(-100%); }
+    .drawer--top[data-animate][open] .drawer__panel { --from: translateY(-100%); }
+    .drawer--bottom[data-animate][open] .drawer__panel { --from: translateY(100%); }
+    .sheet[data-animate][open] .sheet__panel { --from: translateY(100%); }
+    .modal[data-animate][open] .modal__panel { --from: translateY(12px); }
+    @keyframes weft-in { from { transform: var(--from, none); opacity: 0.6; } to { transform: none; opacity: 1; } }
+    @keyframes weft-out { from { transform: none; opacity: 1; } to { transform: var(--from, none); opacity: 0; } }
+  }
+
+  /* Search drawer */
+  .search-drawer { padding-block: 16px 24px; }
+  .search-drawer__field { display: flex; align-items: center; gap: 8px; height: 56px; padding-inline: 16px 4px; border: 1px solid var(--c-line); border-radius: var(--r-input); }
+  .search-drawer__input { flex: 1; min-width: 0; height: 100%; border: 0; background: none; font-family: var(--f-search, inherit); font-size: var(--t-16); }
+  .search-drawer__input:focus { outline: none; }
+  .search-drawer__field:focus-within { outline: 2px solid var(--c-fg); outline-offset: 1px; }
+  .search-drawer__voice[aria-pressed='true'] { color: var(--voice-color, var(--c-bad)); }
+  .search-drawer__results:not(:empty) { margin-block-start: 16px; max-height: min(70vh, 640px); max-height: min(70dvh, 640px); overflow: auto; overscroll-behavior: contain; }
+  .search-drawer__results[aria-busy='true'] { opacity: 0.6; }
+  .search-drawer__type { width: auto; max-width: 40%; min-height: 40px; border: 0; background-color: var(--c-surface); font-size: var(--t-14); }
+
+  /* Predictive results */
+  .predictive { display: grid; gap: 20px; }
+  @media (min-width: 750px) { .predictive { grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); } .predictive__group--products { grid-row: span 3; grid-column: 2; } .predictive__footer { grid-column: 1 / -1; } }
+  .predictive__heading { font-size: var(--t-12); font-weight: var(--fw-bold); letter-spacing: 0.06em; text-transform: uppercase; color: var(--c-muted); margin-block-end: 6px; }
+  .predictive__list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 2px; }
+  .predictive__item { border-radius: 8px; }
+  .predictive__item[aria-selected='true'] { background: var(--c-surface); }
+  .predictive__link { display: flex; align-items: center; gap: 12px; min-height: 40px; padding: 6px 8px; text-decoration: none; }
+  .predictive__link mark { background: none; font-weight: var(--fw-bold); color: inherit; }
+  .predictive__thumb { width: 56px; height: 70px; flex: 0 0 auto; }
+  .predictive__text { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+  .predictive__vendor { font-size: var(--t-12); }
+  .predictive__title { font-size: var(--t-15); }
+  .predictive__footer[aria-selected='true'] .predictive__all { box-shadow: 0 0 0 2px var(--c-fg); }
+  .predictive__empty { margin-block-end: 12px; }
+
+  /* Product compare */
+  .compare-bar { position: fixed; inset-inline: 0; bottom: 0; z-index: 30; display: flex; flex-wrap: wrap; align-items: center; gap: 12px; padding: 12px var(--gutter); background: var(--c-bg); box-shadow: 0 -6px 24px rgb(15 17 17 / 0.1); }
+  .compare-bar[hidden] { display: none; }
+  .compare-bar__count { flex: 1; margin: 0; font-size: var(--t-14); font-weight: var(--fw-medium); }
+  .compare-bar__notice { width: 100%; margin: 0; font-size: var(--t-13); color: var(--c-error); }
+  .compare-bar__notice:empty { display: none; }
+  @media (min-width: 750px) { .compare-bar { inset-inline: auto var(--gutter); bottom: var(--gutter); max-width: 460px; flex-wrap: wrap; border-radius: var(--r-card); } }
+  .compare-drawer__body { padding: 0 20px 24px; overflow: auto; }
+  .compare-table { border-collapse: collapse; min-width: 100%; font-size: var(--t-14); }
+  .compare-table th, .compare-table td { padding: 12px; border-block-end: 1px solid var(--c-line); text-align: start; vertical-align: top; }
+  .compare-table tbody th { position: sticky; inset-inline-start: 0; background: var(--c-bg); font-weight: var(--fw-medium); color: var(--c-muted); width: 140px; }
+  .compare-table thead th { font-weight: var(--fw-body); }
+  .compare-table--narrow td, .compare-table--narrow thead th { min-width: 160px; }
+  .compare-table--medium td, .compare-table--medium thead th { min-width: 220px; }
+  .compare-table--wide td, .compare-table--wide thead th { min-width: 300px; }
+  .compare-col__head { display: flex; flex-direction: column; gap: 8px; }
+  .compare-col__media { aspect-ratio: 1; border-radius: var(--r-media); }
+  .compare-col__title { font-weight: var(--fw-medium); text-decoration: none; }
+  .compare-table__empty { color: var(--c-muted); }
+}

@@ -1,0 +1,31 @@
+root: .
+ignore:
+  - reference/**
+  - docs/**
+  - scripts/**
+  - tests/**
+  - demo-content/**
+  - store-configs/**
+  - dist/**
+  - node_modules/**
+
+# Store integrations talk to outside services by design (review photos from Judge.me's CDN);
+# they are removed from the Theme Store package.
+RemoteAsset:
+  ignore:
+    - sections/integration-*.liquid
+    - snippets/integration-*.liquid
+
+# App blocks (shopify://apps/...) that merchants add in the theme editor are committed back into
+# templates and section groups; Theme Check can't see app blocks, so it would flag them as missing.
+# scripts/theme-lint.mjs still checks every theme block type in these files.
+JSONMissingBlock:
+  ignore:
+    - templates/**
+    - sections/*.json
+
+# With the store's editor templates in the repository, OrphanedSnippet reports every snippet as
+# unused (the same quirk the store build check has). It stays on for the Theme Store package check,
+# and scripts/theme-lint.mjs reports unused snippets in the repository.
+OrphanedSnippet:
+  enabled: false

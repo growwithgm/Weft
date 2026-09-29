@@ -1,0 +1,194 @@
+{%- comment -%}
+  Collection list: chosen collections as cards (Theme settings > Collection cards); grid or carousel.
+{%- endcomment -%}
+{%- assign s = section.settings -%}
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'section-library.css' | asset_url | stylesheet_tag }}
+{{ 'component-carousel.css' | asset_url | stylesheet_tag }}
+<div class="section collection-list{% if s.circle_image %} collection-list--circle{% endif %}{% if s.show_border %} collection-list--border{% endif %} color-{{ s.color_scheme }}{% if section.index > 2 %} below-fold{% endif %}" data-reveal>
+  <div class="page-width{% if s.full_width %} page-width--full{% endif %}">
+    {%- render 'section-heading', title: s.title, align: s.heading_align, button_label: s.button_label, button_link: s.button_link, button_style: s.button_style -%}
+    <scroll-row class="scroll-row scroll-row--{{ s.layout | default: 'grid' }}" data-module="{{ 'carousel.js' | asset_url }}" data-load="visible">
+      <ul class="product-grid collection-list__list{% if s.layout == 'carousel' %} is-carousel{% endif %}" role="list" data-scroll-list style="--cols: {{ s.columns | default: 3 }}; --cols-mobile: {{ s.columns_mobile | default: 1 }}">
+        {%- content_for 'blocks' -%}
+      </ul>
+      {%- if s.layout == 'carousel' -%}
+        <div class="scroll-row__buttons js-only">
+          <button type="button" class="icon-button" data-scroll-prev aria-label="{{ 'general.previous' | t }}">{%- render 'icon', name: 'chevron-left', size: 20 -%}</button>
+          <button type="button" class="icon-button" data-scroll-next aria-label="{{ 'general.next' | t }}">{%- render 'icon', name: 'chevron-right', size: 20 -%}</button>
+        </div>
+      {%- endif -%}
+    </scroll-row>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:labels.collection_list",
+  "class": "section-collection-list",
+  "disabled_on": {
+    "groups": [
+      "header",
+      "footer",
+      "aside"
+    ]
+  },
+  "max_blocks": 16,
+  "blocks": [
+    {
+      "type": "_collection-tile"
+    }
+  ],
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "t:labels.heading",
+      "default": "Shop by category"
+    },
+    {
+      "type": "select",
+      "id": "heading_align",
+      "label": "t:labels.heading_alignment",
+      "options": [
+        {
+          "value": "start",
+          "label": "t:labels.start"
+        },
+        {
+          "value": "center",
+          "label": "t:labels.center"
+        }
+      ],
+      "default": "start"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "t:labels.button_label"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "t:labels.button_link"
+    },
+    {
+      "type": "select",
+      "id": "button_style",
+      "label": "t:labels.button_style",
+      "options": [
+        {
+          "value": "primary",
+          "label": "t:labels.primary"
+        },
+        {
+          "value": "secondary",
+          "label": "t:labels.secondary"
+        },
+        {
+          "value": "link",
+          "label": "t:labels.link"
+        }
+      ],
+      "default": "secondary"
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "t:labels.layout",
+      "options": [
+        {
+          "value": "grid",
+          "label": "t:labels.grid"
+        },
+        {
+          "value": "carousel",
+          "label": "t:labels.carousel"
+        }
+      ],
+      "default": "grid"
+    },
+    {
+      "type": "range",
+      "id": "columns",
+      "label": "t:labels.columns_on_large_screens",
+      "min": 1,
+      "max": 6,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "select",
+      "id": "columns_mobile",
+      "label": "t:labels.columns_on_mobile",
+      "options": [
+        {
+          "value": "1",
+          "label": "t:labels.1"
+        },
+        {
+          "value": "2",
+          "label": "t:labels.2"
+        }
+      ],
+      "default": "2"
+    },
+    {
+      "type": "checkbox",
+      "id": "use_product_image",
+      "label": "t:text.sections.collection_banner.settings.use_product_image.label",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "circle_image",
+      "label": "t:labels.round_images",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_border",
+      "label": "t:labels.show_image_border",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_count",
+      "label": "t:labels.show_product_count",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "t:labels.full_width",
+      "default": false
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:labels.color_scheme",
+      "default": "scheme-1"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:labels.collection_list",
+      "category": "t:labels.collections",
+      "blocks": [
+        {
+          "type": "_collection-tile"
+        },
+        {
+          "type": "_collection-tile"
+        },
+        {
+          "type": "_collection-tile"
+        },
+        {
+          "type": "_collection-tile"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

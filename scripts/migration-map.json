@@ -1,0 +1,2576 @@
+{
+  "_comment": "Live theme (Enterprise 2.0.1, ibBan) to Weft. Kept in sync with docs/migration-map.md. Setting rules: \"newId\", {\"to\": id or [ids], \"values\": {live: weft}}, or {\"drop\": reason}. $set adds Weft values the live section had no setting for. Block rules: {\"to\": type, \"settings\": {...}, \"blocks\": {...}} or {\"drop\": reason}; \"variants\" pick a rule by setting content; \"handler\" names a function in scripts/src/migration-handlers.mjs.",
+  "colorSchemes": {
+    "1": "scheme-4",
+    "2": "scheme-5",
+    "3": "scheme-6",
+    "none": "scheme-1",
+    "default": "scheme-1",
+    "white": "scheme-1"
+  },
+  "sharedSettings": {
+    "heading_align": {
+      "to": "heading_align",
+      "values": {
+        "text-start": "start",
+        "text-center": "center",
+        "text-end": "start"
+      }
+    },
+    "text_align": {
+      "to": "text_align",
+      "values": {
+        "text-start": "start",
+        "text-center": "center",
+        "text-end": "end"
+      }
+    },
+    "button_style": {
+      "to": "button_style",
+      "values": {
+        "btn btn--primary": "primary",
+        "btn btn--secondary": "secondary",
+        "btn btn--tertiary": "secondary",
+        "btn--primary": "primary",
+        "btn--secondary": "secondary"
+      }
+    },
+    "mob_center_text": "mobile_center",
+    "prevent_animation": {
+      "drop": "Weft reveals sections through Theme settings > Animations, for every section at once."
+    },
+    "padding_top": {
+      "drop": "Weft spaces sections with Theme settings > Layout and design > Section spacing."
+    },
+    "padding_bottom": {
+      "drop": "Weft spaces sections with Theme settings > Layout and design > Section spacing."
+    },
+    "title_type_scale": {
+      "drop": "Weft sizes text with the theme's type scale (Theme settings > Typography)."
+    },
+    "text_type_scale": {
+      "drop": "Weft sizes text with the theme's type scale (Theme settings > Typography)."
+    },
+    "card_size": {
+      "to": "columns",
+      "values": {
+        "small": 5,
+        "medium": 4,
+        "large": 3
+      }
+    },
+    "card_size_mobile": {
+      "to": "columns_mobile",
+      "values": {
+        "small": "2",
+        "medium": "2",
+        "large": "1"
+      }
+    },
+    "heading_size": {
+      "to": "size",
+      "values": {
+        "h0": "h0",
+        "h1": "h1",
+        "h2": "h2",
+        "h3": "h3",
+        "h4": "h3",
+        "h5": "h3",
+        "h6": "h3"
+      }
+    },
+    "heading_h1": {
+      "to": "tag",
+      "values": {
+        "true": "h1",
+        "false": "auto"
+      }
+    },
+    "enlarge_text": {
+      "to": "style",
+      "values": {
+        "true": "large",
+        "false": "body"
+      }
+    },
+    "text_size": {
+      "to": "style",
+      "values": {
+        "large": "large",
+        "medium": "body",
+        "small": "small"
+      }
+    },
+    "overlay_position": {
+      "to": "overlay_position",
+      "values": {
+        "justify-start items-start": "top-start",
+        "justify-start items-center": "middle-start",
+        "justify-start items-end": "bottom-start",
+        "justify-center items-start": "top-center",
+        "justify-center items-center": "middle-center",
+        "justify-center items-end": "bottom-center",
+        "justify-end items-start": "top-end",
+        "justify-end items-center": "middle-end",
+        "justify-end items-end": "bottom-end"
+      }
+    },
+    "text_alignment": {
+      "to": "text_align",
+      "values": {
+        "text-start": "start",
+        "text-center": "center",
+        "text-end": "end"
+      }
+    }
+  },
+  "globals": {
+    "ignore": {
+      "heading_type_scale": "Legacy value with no setting in the live schema; Weft's heading scale comes from heading_scale_start.",
+      "no_stock_text_color": "Weft shows sold-out text in the colour scheme's secondary text colour.",
+      "no_stock_backordered_text_color": "Weft colours backorder notes with the low-stock colour."
+    },
+    "schemes": {
+      "bg_color": [
+        [
+          "scheme-1",
+          "background"
+        ]
+      ],
+      "heading_color": [
+        [
+          "scheme-1",
+          "heading"
+        ]
+      ],
+      "text_color": [
+        [
+          "scheme-1",
+          "text"
+        ]
+      ],
+      "link_color": [
+        [
+          "scheme-1",
+          "link"
+        ]
+      ],
+      "button_bg_color": [
+        [
+          "scheme-1",
+          "button_bg"
+        ],
+        [
+          "scheme-1",
+          "button_hover"
+        ]
+      ],
+      "button_text_color": [
+        [
+          "scheme-1",
+          "button_text"
+        ]
+      ],
+      "button_alt_bg_color": [
+        [
+          "scheme-1",
+          "button_secondary_bg"
+        ]
+      ],
+      "button_alt_text_color": [
+        [
+          "scheme-1",
+          "button_secondary_text"
+        ]
+      ],
+      "color_scheme_1_bg": [
+        [
+          "scheme-4",
+          "background"
+        ]
+      ],
+      "color_scheme_1_bg_grad": [
+        [
+          "scheme-4",
+          "background_gradient"
+        ]
+      ],
+      "color_scheme_1_heading": [
+        [
+          "scheme-4",
+          "heading"
+        ]
+      ],
+      "color_scheme_1_text": [
+        [
+          "scheme-4",
+          "text"
+        ]
+      ],
+      "color_scheme_1_btn_bg": [
+        [
+          "scheme-4",
+          "button_bg"
+        ],
+        [
+          "scheme-4",
+          "button_hover"
+        ]
+      ],
+      "color_scheme_1_btn_text": [
+        [
+          "scheme-4",
+          "button_text"
+        ]
+      ],
+      "color_scheme_2_bg": [
+        [
+          "scheme-5",
+          "background"
+        ]
+      ],
+      "color_scheme_2_bg_grad": [
+        [
+          "scheme-5",
+          "background_gradient"
+        ]
+      ],
+      "color_scheme_2_heading": [
+        [
+          "scheme-5",
+          "heading"
+        ]
+      ],
+      "color_scheme_2_text": [
+        [
+          "scheme-5",
+          "text"
+        ]
+      ],
+      "color_scheme_2_btn_bg": [
+        [
+          "scheme-5",
+          "button_bg"
+        ],
+        [
+          "scheme-5",
+          "button_hover"
+        ]
+      ],
+      "color_scheme_2_btn_text": [
+        [
+          "scheme-5",
+          "button_text"
+        ]
+      ],
+      "color_scheme_3_bg": [
+        [
+          "scheme-6",
+          "background"
+        ]
+      ],
+      "color_scheme_3_bg_grad": [
+        [
+          "scheme-6",
+          "background_gradient"
+        ]
+      ],
+      "color_scheme_3_heading": [
+        [
+          "scheme-6",
+          "heading"
+        ]
+      ],
+      "color_scheme_3_text": [
+        [
+          "scheme-6",
+          "text"
+        ]
+      ],
+      "color_scheme_3_btn_bg": [
+        [
+          "scheme-6",
+          "button_bg"
+        ],
+        [
+          "scheme-6",
+          "button_hover"
+        ]
+      ],
+      "color_scheme_3_btn_text": [
+        [
+          "scheme-6",
+          "button_text"
+        ]
+      ],
+      "panel_bg_color": [
+        [
+          "scheme-2",
+          "background"
+        ]
+      ],
+      "panel_heading_color": [
+        [
+          "scheme-2",
+          "heading"
+        ]
+      ],
+      "panel_text_color": [
+        [
+          "scheme-2",
+          "text"
+        ]
+      ],
+      "drawer_bg_color": [
+        [
+          "scheme-7",
+          "background"
+        ]
+      ],
+      "drawer_text_color": [
+        [
+          "scheme-7",
+          "text"
+        ],
+        [
+          "scheme-7",
+          "heading"
+        ]
+      ]
+    },
+    "handlers": {
+      "custom_html_head": "customHead",
+      "navigation_font": "navigationFont"
+    },
+    "settings": {
+      "star_color": "color_star",
+      "error_bg_color": "color_error_bg",
+      "error_text_color": "color_error",
+      "success_bg_color": "color_success_bg",
+      "success_text_color": "color_success",
+      "info_bg_color": "color_info_bg",
+      "info_text_color": "color_info",
+      "blend_product_images": "image_blend_products",
+      "blend_collection_images": "image_blend_collections",
+      "blend_bg_color": "image_blend_color",
+      "button_text_uppercase": "button_uppercase",
+      "heading_scale_start": {
+        "to": "heading_scale",
+        "values": {
+          "2": 90,
+          "4": 100,
+          "6": 110
+        }
+      },
+      "body_font_size": "body_size",
+      "max_page_width": "page_width",
+      "section_gap": "section_spacing",
+      "input_button_border_width": "border_width",
+      "slider_show_arrows": "carousel_arrows",
+      "slider_button_style": {
+        "to": "carousel_arrow_style",
+        "values": {
+          "btn--primary": "solid",
+          "btn--secondary": "outline"
+        }
+      },
+      "slider_items_per_nav": {
+        "to": "carousel_step",
+        "values": {
+          "1": "slide",
+          "page": "page"
+        }
+      },
+      "drawer_border_radius": "radius_drawer",
+      "overlay_border_radius": "radius_modal",
+      "disclosure_toggle": {
+        "to": "accordion_icon",
+        "values": {
+          "plus": "plus",
+          "chevron": "chevron",
+          "caret": "chevron"
+        }
+      },
+      "show_breadcrumbs_product": "breadcrumbs_product",
+      "show_breadcrumbs_collection": "breadcrumbs_collection",
+      "show_breadcrumbs_collection_list": "breadcrumbs_list_collections",
+      "show_breadcrumbs_article": "breadcrumbs_article",
+      "show_breadcrumbs_blog": "breadcrumbs_blog",
+      "show_breadcrumbs_blog_rss": "breadcrumbs_blog_rss",
+      "pagination_style": {
+        "to": "pagination_style",
+        "values": {
+          "traditional": "numbers",
+          "modern": "load_more"
+        }
+      },
+      "coll_card_image_ratio": {
+        "to": "collection_card_ratio",
+        "values": {
+          "1": "square",
+          "shortest": "natural",
+          "tallest": "natural",
+          "1.77": "landscape",
+          "0.75": "tall",
+          "circle": "square"
+        }
+      },
+      "coll_card_image_fit": "collection_card_fit",
+      "coll_image_align": "collection_card_image_position",
+      "coll_text_align": {
+        "to": "collection_card_text_align",
+        "values": {
+          "text-start": "start",
+          "text-center": "center",
+          "start": "start",
+          "center": "center"
+        }
+      },
+      "coll_show_link": "collection_card_show_link",
+      "coll_label_color": "collection_card_label_color",
+      "coll_bg_color": "collection_card_bg",
+      "coll_border_color": "collection_card_border",
+      "prod_card_image_ratio": {
+        "to": "card_ratio",
+        "values": {
+          "1": "square",
+          "shortest": "natural",
+          "tallest": "natural",
+          "1.77": "landscape",
+          "0.75": "tall"
+        }
+      },
+      "prod_card_image_fit": "card_fit",
+      "prod_card_image_align": "card_image_position",
+      "card_hover_action": "card_hover",
+      "card_url_within_coll": "card_url_in_collection",
+      "enable_quick_add": "quick_add_enable",
+      "card_atc_mobile": {
+        "to": "quick_add_style_mobile",
+        "values": {
+          "text_button_bottom": "text",
+          "icon": "icon"
+        }
+      },
+      "card_atc_desktop": {
+        "to": "quick_add_style_desktop",
+        "values": {
+          "icon": "text",
+          "text_button_hover": "hover_button",
+          "text_button_bottom": "button"
+        }
+      },
+      "quick_add_sticky_buttons": "quick_add_sticky_footer",
+      "show_dividers": "card_dividers",
+      "card_contain": "card_boxed",
+      "card_bg_color": "card_bg",
+      "card_text_color": "card_text",
+      "card_border_color": "card_border",
+      "card_highlight_bg_color": "card_highlight_bg",
+      "card_highlight_text_color": "card_highlight_text",
+      "card_highlight_border_color": "card_highlight_border",
+      "enable_compare": "compare_enable",
+      "compare_show_empty_metafields": "compare_show_empty",
+      "compare_empty_field_text": "compare_empty_text",
+      "inventory_threshold_low": "stock_low_threshold",
+      "inventory_threshold_very_low": "stock_very_low_threshold",
+      "inventory_show_notice": "stock_notice",
+      "hide_no_stock_backordered": "stock_hide_backorder_notice",
+      "inventory_show_count": "stock_show_count",
+      "in_stock_text_color": "color_stock_ok",
+      "low_stock_text_color": "color_stock_low",
+      "very_low_stock_text_color": "color_stock_out",
+      "product_label_card_position": {
+        "to": "label_card_position",
+        "values": {
+          "top-start": "top_start",
+          "top-end": "top_end",
+          "bottom-start": "bottom_start",
+          "bottom-end": "bottom_end"
+        }
+      },
+      "show_sale_label": "label_sale_show",
+      "sale_label_bg_color": "label_sale_bg",
+      "sale_label_text_color": "label_sale_text",
+      "sale_label_icon": {
+        "to": "label_sale_icon",
+        "values": {
+          "price_tag": "tag",
+          "percent": "percent",
+          "star": "star",
+          "clock": "clock",
+          "check_mark": "check"
+        }
+      },
+      "sale_label_type": {
+        "to": "label_sale_type",
+        "values": {
+          "standard": "text",
+          "percent": "percent",
+          "money": "amount"
+        }
+      },
+      "show_sold_out_label": "label_sold_out_show",
+      "sold_out_label_bg_color": "label_sold_out_bg",
+      "sold_out_label_text_color": "label_sold_out_text",
+      "show_new_label": "label_new_show",
+      "new_label_bg_color": "label_new_bg",
+      "new_label_text_color": "label_new_text",
+      "show_new_label_collection": "label_new_by_collection",
+      "new_label_collections": "label_new_collections",
+      "show_new_label_tag": "label_new_by_tag",
+      "new_label_tag": "label_new_tag",
+      "show_new_label_days": "label_new_by_age",
+      "new_label_date_limit": "label_new_days",
+      "preorder_label_bg_color": "label_preorder_bg",
+      "preorder_label_text_color": "label_preorder_text",
+      "show_custom_label": "label_custom_show",
+      "custom_label_bg_color": "label_custom_bg",
+      "custom_label_text_color": "label_custom_text",
+      "swatch_option_name": "swatch_option_names",
+      "variant_picker_color_style": {
+        "to": "swatch_product_style",
+        "values": {
+          "variant-images": "variant_image",
+          "swatches": "color",
+          "native": "color",
+          "text": "button"
+        }
+      },
+      "variant_picker_swatch_shape": "swatch_product_shape",
+      "variant_picker_swatch_size": "swatch_product_size",
+      "card_colors_style": {
+        "to": "swatch_card_style",
+        "values": {
+          "variant-images": "variant_image",
+          "swatches": "color",
+          "native": "color",
+          "text": "color",
+          "none": "none"
+        }
+      },
+      "card_swatch_shape": "swatch_card_shape",
+      "card_swatch_size": "swatch_card_size",
+      "filter_color_style": {
+        "to": "swatch_filter_style",
+        "values": {
+          "swatches": "color",
+          "native": "color",
+          "none": "none"
+        }
+      },
+      "swatch_colors": "swatch_color_list",
+      "show_search_types": "search_type_filter",
+      "enable_predictive_search": "predictive_search_enable",
+      "predictive_search_include_skus": "predictive_search_skus",
+      "predictive_search_include_tags": "predictive_search_tags",
+      "search_input_placeholder_1": "search_placeholder_1",
+      "search_input_placeholder_2": "search_placeholder_2",
+      "search_input_placeholder_3": "search_placeholder_3",
+      "search_input_font": "search_font",
+      "prompts_mobile": "search_placeholders_mobile",
+      "enable_speech_search": "voice_search_enable",
+      "speech_icon_color": "voice_search_color",
+      "show_currency_code": "currency_code_enable",
+      "superscript_decimals": "currency_superscript",
+      "after_add_to_cart": "cart_after_add",
+      "cart_empty_shop_link": "cart_empty_link",
+      "show_recommendations": "cart_recommendations",
+      "recommendations_heading": "cart_recommendations_heading",
+      "recommendations_to_show": "cart_recommendations_limit",
+      "recommendations_layout": "cart_recommendations_layout",
+      "cart_shaking": "cart_shake",
+      "cart_shaking_frequency": "cart_shake_every",
+      "show_free_shipping_notice": "cart_free_shipping_bar",
+      "free_shipping_minimum": "cart_free_shipping_rules",
+      "free_shipping_color_scheme": "cart_free_shipping_scheme",
+      "animations_enabled": {
+        "to": "reveal_on_scroll",
+        "values": {
+          "disabled": "none",
+          "mobile_desktop": "fade",
+          "desktop": "fade"
+        }
+      },
+      "animation_speed": "reveal_speed",
+      "image_quality": {
+        "to": "image_quality",
+        "values": {
+          "1": "standard",
+          "0.75": "standard",
+          "1.25": "high"
+        }
+      },
+      "show_blur_messages": "tab_messages_enable",
+      "blur_message_1": "tab_message_1",
+      "blur_message_2": "tab_message_2",
+      "blur_message_delay": "tab_message_delay",
+      "vibrate_on_atc": "vibrate_on_add",
+      "input_button_border_radius": {
+        "to": [
+          "radius_button",
+          "radius_input"
+        ]
+      }
+    }
+  },
+  "sections": {
+    "announcement": {
+      "to": "announcement-bar",
+      "settings": {
+        "enable_country_selector": "show_country",
+        "enable_language_selector": "show_language",
+        "read_time": "rotate_seconds",
+        "text_type_scale": {
+          "to": "text_size",
+          "values": {
+            "small": "small",
+            "medium": "medium",
+            "large": "medium"
+          }
+        },
+        "bg_color": {
+          "drop": "Colours come from colour scheme scheme-3 (Inverse), the dark scheme closest to the live #141414 / #ffffff pair."
+        },
+        "text_color": {
+          "drop": "Colours come from colour scheme scheme-3 (Inverse)."
+        },
+        "$set": {
+          "color_scheme": "scheme-3"
+        }
+      },
+      "blocks": {
+        "announcement": {
+          "to": "announcement"
+        }
+      }
+    },
+    "apps": {},
+    "article-comments": {
+      "drop": "Comments are part of Weft's main-article section (comments per page setting)."
+    },
+    "background-video": {
+      "to": "video",
+      "note": "Background video section merged into Weft's video section (layout: background).",
+      "settings": {
+        "video_shopify": "video",
+        "video_external": "video_url",
+        "video_description": "description",
+        "video_height": {
+          "to": "height",
+          "values": {
+            "landscape": "large",
+            "portrait": "full",
+            "fullscreen": "full",
+            "small": "small",
+            "medium": "medium",
+            "large": "large"
+          }
+        },
+        "overlay_text_align": {
+          "to": "text_align",
+          "values": {
+            "text-start": "start",
+            "text-center": "center",
+            "text-end": "start"
+          }
+        },
+        "overlay_position": {
+          "to": "overlay_position",
+          "values": {
+            "justify-start items-start": "top-start",
+            "justify-start items-center": "middle-start",
+            "justify-start items-end": "bottom-start",
+            "justify-center items-start": "top-center",
+            "justify-center items-center": "middle-center",
+            "justify-center items-end": "bottom-center",
+            "justify-end items-start": "top-center",
+            "justify-end items-center": "middle-center",
+            "justify-end items-end": "bottom-center"
+          }
+        },
+        "transparent_content_color": "text_color",
+        "lazyload": {
+          "drop": "Weft always loads videos when they come into view."
+        },
+        "$set": {
+          "layout": "background"
+        }
+      },
+      "blocks": {
+        "heading": {
+          "to": "heading"
+        },
+        "subheading": {
+          "to": "text"
+        },
+        "text": {
+          "to": "text"
+        },
+        "button": {
+          "handler": "bannerButtons"
+        }
+      }
+    },
+    "cart-drawer": {
+      "settings": {
+        "show_cart_page_link": "show_view_cart",
+        "show_backorder_text": "show_backorder_note",
+        "position_cart_summary": "summary_position",
+        "stick_footer": "sticky_footer",
+        "show_shipping_text_notice": "show_tax_note",
+        "show_additional_checkout_buttons": "show_accelerated",
+        "show_checkout_button": "show_checkout",
+        "cart_terms_page": "terms_page",
+        "promoted_products_visibility": {
+          "to": "promoted_visibility",
+          "values": {
+            "empty-cart": "empty",
+            "always": "always",
+            "never": "never",
+            "non-empty-cart": "always"
+          }
+        },
+        "promoted_products_heading": "promoted_heading",
+        "promoted_products_list": "promoted_products",
+        "promoted_products_layout": {
+          "to": "promoted_layout",
+          "values": {
+            "carousel": "grid",
+            "grid": "grid",
+            "list": "list"
+          }
+        },
+        "show_media_promotion": "promo_show",
+        "media_promotion_visibility": {
+          "to": "promo_visibility",
+          "values": {
+            "empty-cart": "empty",
+            "non-empty-cart": "always",
+            "always": "always"
+          }
+        },
+        "media_promotion_image": "promo_image",
+        "link_url": "promo_link",
+        "media_promotion_min_height": "promo_min_height",
+        "content": "promo_content",
+        "text_alignment": {
+          "to": "promo_text_align",
+          "values": {
+            "justify-start items-start": "start",
+            "justify-start items-center": "start",
+            "justify-start items-end": "start",
+            "justify-center items-start": "center",
+            "justify-center items-center": "center",
+            "justify-center items-end": "center",
+            "justify-end items-start": "end",
+            "justify-end items-center": "end",
+            "justify-end items-end": "end",
+            "justify-start": "start",
+            "justify-center": "center",
+            "justify-end": "end"
+          }
+        },
+        "text_width": {
+          "drop": "The Weft cart promotion uses the drawer width for its text."
+        },
+        "button_label": "promo_button_label",
+        "button_style": {
+          "to": "promo_button_style",
+          "values": {
+            "btn btn--primary": "primary",
+            "btn btn--secondary": "secondary"
+          }
+        },
+        "text_color": "promo_text_color",
+        "tint_color": "promo_tint_color",
+        "tint_opacity": "promo_tint_opacity"
+      }
+    },
+    "collection-list": {
+      "settings": {
+        "card_size": {
+          "to": "columns",
+          "values": {
+            "small": 6,
+            "medium": 4,
+            "large": 3
+          }
+        }
+      },
+      "blocks": {
+        "collection": {
+          "to": "_collection-tile"
+        }
+      }
+    },
+    "contact-form": {
+      "settings": {
+        "image_position": {
+          "to": "image_position",
+          "values": {
+            "top": "start",
+            "bottom": "end",
+            "left": "start",
+            "right": "end"
+          }
+        }
+      },
+      "blocks": {
+        "name": {
+          "to": "_form-field",
+          "settings": {
+            "$set": {
+              "type": "name"
+            }
+          }
+        },
+        "email": {
+          "to": "_form-field",
+          "settings": {
+            "$set": {
+              "type": "email"
+            }
+          }
+        },
+        "phone": {
+          "to": "_form-field",
+          "settings": {
+            "$set": {
+              "type": "phone"
+            }
+          }
+        },
+        "body": {
+          "to": "_form-field",
+          "settings": {
+            "$set": {
+              "type": "message"
+            }
+          }
+        },
+        "text": {
+          "to": "_form-field",
+          "settings": {
+            "$set": {
+              "type": "text"
+            }
+          }
+        },
+        "dropdown": {
+          "to": "_form-field",
+          "settings": {
+            "$set": {
+              "type": "dropdown"
+            }
+          }
+        },
+        "checkbox": {
+          "to": "_form-field",
+          "settings": {
+            "$set": {
+              "type": "checkbox"
+            }
+          }
+        }
+      }
+    },
+    "countdown-timer": {
+      "settings": {
+        "height_mode": {
+          "to": "height",
+          "values": {
+            "auto": "medium",
+            "fixed": "fixed"
+          }
+        },
+        "overlay_position": {
+          "to": "overlay_position",
+          "values": {
+            "justify-start": "middle-start",
+            "justify-center": "middle-center",
+            "justify-end": "middle-end",
+            "justify-start items-start": "middle-start",
+            "justify-start items-center": "middle-start",
+            "justify-start items-end": "middle-start",
+            "justify-center items-start": "middle-center",
+            "justify-center items-center": "middle-center",
+            "justify-center items-end": "middle-center",
+            "justify-end items-start": "middle-end",
+            "justify-end items-center": "middle-end",
+            "justify-end items-end": "middle-end"
+          }
+        },
+        "countdown_size": {
+          "drop": "Weft sizes the countdown digits with the heading scale."
+        }
+      },
+      "blocks": {
+        "countdown": {
+          "to": "product-countdown",
+          "settings": {
+            "countdown_end_date": "end_date",
+            "countdown_end_time": "end_time",
+            "countdown_end_text": "end_text",
+            "countdown_hide_on_end": "hide_on_end",
+            "countdown_size": {
+              "to": "size",
+              "values": {
+                "24": "small",
+                "32": "large",
+                "40": "large",
+                "48": "large"
+              }
+            },
+            "count_bg_color": {
+              "drop": "The countdown uses the section's colour scheme or its custom colours."
+            },
+            "count_bg_grad": {
+              "drop": "The countdown uses the section's colour scheme or its custom colours."
+            },
+            "enlarge_end_text": {
+              "drop": "Weft uses one text size for the end message."
+            }
+          }
+        },
+        "heading": {
+          "to": "heading"
+        },
+        "subheading": {
+          "to": "text"
+        },
+        "text": {
+          "to": "text"
+        },
+        "button": {
+          "handler": "bannerButtons"
+        }
+      }
+    },
+    "custom-liquid": {
+      "note": "Custom Liquid content moves unchanged (BUILD_SPEC §8.2).",
+      "settings": {
+        "section_height": {
+          "to": "spacing",
+          "values": {
+            "default": "normal",
+            "xsmall": "flush",
+            "tight": "flush",
+            "small": "normal",
+            "medium": "normal",
+            "large": "normal"
+          }
+        },
+        "dividers": {
+          "drop": "Weft separates sections with spacing, not divider lines, in Custom Liquid sections."
+        }
+      }
+    },
+    "faq": {
+      "blocks": {
+        "question": {
+          "to": "_faq-item",
+          "settings": {
+            "icon": {
+              "to": "icon",
+              "values": {
+                "check_mark": "info",
+                "calendar": "info",
+                "chat_bubble": "chat",
+                "clock": "info",
+                "map_pin": "info",
+                "question_mark": "info",
+                "return": "return",
+                "truck": "truck",
+                "lock": "lock",
+                "ruler": "ruler",
+                "leaf": "leaf",
+                "price_tag": "tag",
+                "none": "none"
+              }
+            }
+          }
+        },
+        "category": {
+          "to": "_faq-category"
+        },
+        "button": {
+          "handler": "bannerButtons"
+        }
+      }
+    },
+    "featured-collection": {
+      "settings": {
+        "image_ratio": {
+          "to": "image_ratio",
+          "values": {
+            "1": "square",
+            "fill": "portrait",
+            "1.77": "landscape",
+            "0.75": "portrait",
+            "shortest": "square",
+            "tallest": "portrait"
+          }
+        }
+      }
+    },
+    "footer": {
+      "settings": {
+        "enable_country_selector": "show_country",
+        "enable_language_selector": "show_language",
+        "bg_color": {
+          "drop": "Colours come from colour scheme scheme-3 (Inverse), the dark scheme closest to the live #141414 / #ffffff pair."
+        },
+        "text_color": {
+          "drop": "Colours come from colour scheme scheme-3 (Inverse)."
+        },
+        "$set": {
+          "color_scheme": "scheme-3"
+        }
+      },
+      "blocks": {
+        "link_list": {
+          "to": "link_list"
+        },
+        "text": {
+          "to": "text",
+          "settings": {
+            "enable_follow_on_shop": "follow_on_shop"
+          }
+        },
+        "newsletter": {
+          "to": "newsletter"
+        }
+      }
+    },
+    "gn-product-reviews": {
+      "to": "integration-reviews-grid",
+      "note": "Judge.me reviews section → integration reviews grid (store build). Turn on Theme settings > Integrations > Judge.me.",
+      "settings": {
+        "show_product": "others",
+        "see_all_url": "all_reviews_link",
+        "see_all_label": "all_reviews_label",
+        "total_label": {
+          "drop": "Weft labels this in the storefront language (locale strings) instead of a section setting."
+        },
+        "this_label": {
+          "drop": "Weft labels this in the storefront language (locale strings) instead of a section setting."
+        },
+        "verified_label": {
+          "drop": "Weft labels this in the storefront language (locale strings) instead of a section setting."
+        },
+        "photo_label": {
+          "drop": "Weft labels this in the storefront language (locale strings) instead of a section setting."
+        },
+        "showing_label": {
+          "drop": "Weft labels this in the storefront language (locale strings) instead of a section setting."
+        },
+        "of_label": {
+          "drop": "Weft labels this in the storefront language (locale strings) instead of a section setting."
+        },
+        "more_label": {
+          "drop": "Weft labels this in the storefront language (locale strings) instead of a section setting."
+        },
+        "chip_all": {
+          "drop": "Weft labels this in the storefront language (locale strings) instead of a section setting."
+        },
+        "chip_5": {
+          "drop": "Weft labels this in the storefront language (locale strings) instead of a section setting."
+        },
+        "chip_4": {
+          "drop": "Weft labels this in the storefront language (locale strings) instead of a section setting."
+        },
+        "chip_photos": {
+          "drop": "Weft labels this in the storefront language (locale strings) instead of a section setting."
+        },
+        "note": {
+          "drop": "Weft's reviews grid shows the heading, score and count without a note line."
+        },
+        "write_url": {
+          "drop": "Writing reviews happens in Judge.me's own widget and emails."
+        },
+        "write_label": {
+          "drop": "Writing reviews happens in Judge.me's own widget and emails."
+        },
+        "columns": {
+          "drop": "Weft fits as many review columns as the width allows."
+        }
+      }
+    },
+    "gn-reviews-wall": {
+      "to": "integration-reviews-wall",
+      "note": "Judge.me reviews wall → integration reviews wall (store build).",
+      "settings": {
+        "subheading": "text",
+        "all_reviews_url": "all_reviews_link",
+        "total_label": {
+          "drop": "Weft labels this in the storefront language (locale strings) instead of a section setting."
+        },
+        "verified_label": {
+          "drop": "Weft labels this in the storefront language (locale strings) instead of a section setting."
+        },
+        "photo_label": {
+          "drop": "Weft labels this in the storefront language (locale strings) instead of a section setting."
+        },
+        "more_label": {
+          "drop": "Weft labels this in the storefront language (locale strings) instead of a section setting."
+        },
+        "show_product": {
+          "drop": "Weft always names the product a review is about."
+        },
+        "columns": {
+          "drop": "Weft fits as many review columns as the width allows."
+        },
+        "$set": {
+          "media_first": true
+        }
+      }
+    },
+    "header": {
+      "settings": {
+        "enable_sticky": "sticky",
+        "mobile_menu_position": {
+          "to": "mobile_menu_position",
+          "values": {
+            "burger-left": "start",
+            "burger-right": "end"
+          }
+        },
+        "logo_text": {
+          "drop": "Without a logo image Weft shows the shop name."
+        },
+        "logo_type_scale": {
+          "drop": "Weft sizes the text logo with the heading scale."
+        },
+        "logo": {
+          "drop": "The live header used the brand logo ({{ shop.brand.logo }}); Weft's header falls back to the brand logo when Theme settings > Logo is empty."
+        },
+        "logo_width": {
+          "drop": "Logo width is Theme settings > Logo and favicon (160 px, the live value)."
+        },
+        "logo_h1": {
+          "drop": "Weft makes the logo the page heading on the home page automatically."
+        },
+        "logo_center": {
+          "to": "logo_position",
+          "values": {
+            "true": "center",
+            "false": "left"
+          }
+        },
+        "enable_search": "show_search",
+        "minimise_search_mobile": {
+          "drop": "Weft shows a search button that opens the search drawer on every screen size."
+        },
+        "minimise_search_desktop": {
+          "drop": "Weft shows a search button that opens the search drawer on every screen size."
+        },
+        "menu_center": {
+          "to": "menu_align",
+          "values": {
+            "true": "center",
+            "false": "start"
+          }
+        },
+        "repeat_links": {
+          "drop": "Weft's mobile menu lists every link once, with parent links included."
+        },
+        "menu_featured_link": {
+          "drop": "Empty in the live store; Weft highlights links through mega menu badges."
+        },
+        "quicklinks_menu": "quick_links_menu",
+        "cta_icon": {
+          "to": "cta_icon",
+          "values": {
+            "phone": "chat",
+            "chat": "chat",
+            "store": "store",
+            "map_pin": "pin",
+            "truck": "truck",
+            "none": "none"
+          }
+        },
+        "cta_border_color": {
+          "drop": "The header button uses the colour scheme's button styles (cta_style)."
+        },
+        "cta_bg_color": {
+          "drop": "The header button uses the colour scheme's button styles (cta_style)."
+        },
+        "cta_text_color": {
+          "drop": "The header button uses the colour scheme's button styles (cta_style)."
+        },
+        "bg_color": {
+          "drop": "The header uses colour scheme scheme-1 (white); the live header was #f8f8f8."
+        },
+        "text_color": {
+          "drop": "Colours come from the header's colour scheme."
+        },
+        "accent_color": {
+          "drop": "Weft marks the current link with an underline in the text colour."
+        }
+      },
+      "blocks": {
+        "sidebar": {
+          "to": "mega_menu",
+          "settings": {
+            "title": "menu_item",
+            "show_collection_images": {
+              "to": "link_images",
+              "values": {
+                "true": "small",
+                "false": "none"
+              }
+            },
+            "collection_images": {
+              "drop": "Weft reads link images from the menu's collections and products (link_images)."
+            },
+            "collection_use_product_image": "use_product_image",
+            "sidebar_link_use_product_image": {
+              "drop": "Folded into use_product_image."
+            },
+            "show_product_images": {
+              "drop": "Folded into link_images."
+            },
+            "collection_circle_image": "circle_images",
+            "aspect_ratio": {
+              "to": "image_ratio",
+              "values": {
+                "1": "square",
+                "0.75": "portrait",
+                "1.33": "landscape",
+                "1.77": "landscape",
+                "natural": "square"
+              }
+            },
+            "$set": {
+              "style": "sidebar"
+            }
+          }
+        },
+        "columns": {
+          "to": "mega_menu",
+          "settings": {
+            "$set": {
+              "style": "columns"
+            }
+          }
+        },
+        "pills": {
+          "to": "mega_menu",
+          "settings": {
+            "$set": {
+              "style": "buttons"
+            }
+          }
+        }
+      }
+    },
+    "icons-with-text": {
+      "settings": {
+        "heading": "title",
+        "icon_position": {
+          "to": "icon_position",
+          "values": {
+            "above": "top",
+            "start": "start",
+            "inline": "start"
+          }
+        },
+        "mobile_stack": {
+          "to": "columns_mobile",
+          "values": {
+            "true": "1",
+            "false": "2"
+          }
+        },
+        "section_height": {
+          "to": "density",
+          "values": {
+            "small": "compact",
+            "xsmall": "compact",
+            "tight": "compact",
+            "default": "normal",
+            "medium": "normal",
+            "large": "normal"
+          }
+        },
+        "dividers": {
+          "to": "dividers",
+          "values": {
+            "none": false,
+            "border-top": true,
+            "border-bottom": true,
+            "border-top-bottom": true
+          }
+        }
+      },
+      "blocks": {
+        "item": {
+          "to": "_icon-item",
+          "settings": {
+            "icon": {
+              "to": "icon",
+              "values": {
+                "check_mark": "check",
+                "return": "return",
+                "truck": "truck",
+                "lock": "lock",
+                "ruler": "ruler",
+                "chat_bubble": "chat",
+                "leaf": "leaf",
+                "price_tag": "tag",
+                "clock": "clock",
+                "star": "star",
+                "percent": "percent",
+                "map_pin": "pin",
+                "none": "none",
+                "award": "star",
+                "feather": "sparkle",
+                "gift": "sparkle",
+                "heart": "star",
+                "credit_card": "lock",
+                "plane": "globe",
+                "shirt": "tag",
+                "scissors": "sparkle",
+                "silhouette": "star",
+                "washing": "drop",
+                "email": "chat",
+                "phone": "chat"
+              }
+            }
+          }
+        }
+      }
+    },
+    "image-banner": {
+      "settings": {
+        "url": "link",
+        "height_mode": {
+          "to": "height",
+          "values": {
+            "auto": "adapt",
+            "fixed": "fixed",
+            "small": "small",
+            "medium": "medium",
+            "large": "large",
+            "full": "full"
+          }
+        },
+        "overlay_position": {
+          "to": "overlay_position",
+          "values": {
+            "justify-start items-start": "top-start",
+            "justify-start items-center": "middle-start",
+            "justify-start items-end": "bottom-start",
+            "justify-center items-start": "top-center",
+            "justify-center items-center": "middle-center",
+            "justify-center items-end": "bottom-center",
+            "justify-end items-start": "top-end",
+            "justify-end items-center": "middle-end",
+            "justify-end items-end": "bottom-end"
+          }
+        },
+        "overlay_text_align": {
+          "to": "text_align",
+          "values": {
+            "text-start": "start",
+            "text-center": "center",
+            "text-end": "end"
+          }
+        },
+        "transparent_content_color": "text_color"
+      },
+      "blocks": {
+        "heading": {
+          "to": "heading"
+        },
+        "subheading": {
+          "to": "text"
+        },
+        "text": {
+          "to": "text"
+        },
+        "button": {
+          "handler": "bannerButtons"
+        }
+      }
+    },
+    "main-404": {},
+    "main-account": {},
+    "main-addresses": {},
+    "main-blog": {},
+    "main-cart": {
+      "blocks": {
+        "summary-and-checkout": {
+          "drop": "The cart summary and checkout are a fixed part of Weft's cart page."
+        }
+      }
+    },
+    "main-list-collections": {},
+    "main-login": {},
+    "main-order": {},
+    "main-register": {},
+    "main-search": {},
+    "main-password": {},
+    "main-activate_account": {
+      "to": "main-activate-account"
+    },
+    "main-reset_password": {
+      "to": "main-reset-password"
+    },
+    "main-article": {
+      "settings": {
+        "pagination": {
+          "to": "show_pagination",
+          "values": {
+            "bar-reading": true,
+            "bar": true,
+            "none": false
+          }
+        }
+      }
+    },
+    "main-collection-banner": {
+      "to": "collection-banner",
+      "settings": {
+        "show_collection_title": "show_title",
+        "show_product_count": "show_count",
+        "show_collection_description": "show_description",
+        "text_width": {
+          "to": "text_width",
+          "values": {
+            "standard": "medium",
+            "narrow": "narrow",
+            "wide": "wide",
+            "full": "wide"
+          }
+        },
+        "collection_image": {
+          "to": "image_style",
+          "values": {
+            "natural": "beside",
+            "none": "none",
+            "background": "behind",
+            "cover": "behind"
+          }
+        }
+      }
+    },
+    "main-collection-products": {
+      "to": "main-collection",
+      "settings": {
+        "sort_first": {
+          "drop": "Weft shows the sort control before the filters on every layout."
+        }
+      }
+    },
+    "main-contact": {
+      "to": "main-page",
+      "settings": {
+        "show_contact_title": "show_title"
+      }
+    },
+    "main-page": {
+      "settings": {
+        "show_page_title": "show_title"
+      }
+    },
+    "main-product": {
+      "settings": {
+        "stick_on_scroll": "sticky_info",
+        "sticky_atc_panel": {
+          "drop": "Weft's approved mobile sticky bar replaces the theme's sticky panel (brief §14.4); it is main-product > Mobile sticky bar."
+        },
+        "sticky_atc_position": {
+          "drop": "Weft's mobile sticky bar sits at the bottom of the screen."
+        },
+        "sticky_atc_mobile": "sticky_bar_mobile",
+        "media_layout": {
+          "to": "gallery_layout",
+          "values": {
+            "stacked": "stacked",
+            "grid": "grid",
+            "slider": "carousel",
+            "thumbnails": "thumbnails",
+            "collage": "grid"
+          }
+        },
+        "media_size": {
+          "to": "gallery_width",
+          "values": {
+            "small": "narrow",
+            "medium": "half",
+            "large": "wide"
+          }
+        },
+        "media_crop": {
+          "drop": "Weft fits product media with the media ratio and fit settings."
+        },
+        "enable_video_looping": "video_loop",
+        "enable_zoom": {
+          "to": "zoom",
+          "values": {
+            "true": "lightbox",
+            "false": "none"
+          }
+        },
+        "zoom_mode": {
+          "drop": "Folded into the zoom setting (live: lightbox)."
+        },
+        "hover_zoom": {
+          "drop": "Folded into the zoom setting; hover magnify is zoom: hover or both."
+        },
+        "enable_lightbox_mobile": "lightbox_mobile",
+        "stacked_scroll": {
+          "drop": "Weft's stacked gallery always scrolls with the page."
+        },
+        "underline_active": {
+          "drop": "Weft marks the current thumbnail with a border."
+        },
+        "media_arrows": {
+          "drop": "Weft shows arrows on the mobile carousel only."
+        },
+        "show_slide_count": "show_counter",
+        "media_thumbs": {
+          "to": "thumbnails",
+          "values": {
+            "always": "both",
+            "desktop": "desktop",
+            "never": "none",
+            "mobile": "both"
+          }
+        },
+        "lightbox_thumbnails": {
+          "drop": "Weft's lightbox scrolls through every image without thumbnails."
+        },
+        "thumb_ratio": {
+          "drop": "Weft thumbnails follow the media ratio."
+        },
+        "thumb_crop": {
+          "drop": "Weft thumbnails follow the media ratio."
+        },
+        "border_color": {
+          "drop": "Weft media has no border colour; the line colour comes from the colour scheme."
+        },
+        "bg_color": "media_bg",
+        "enable_media_grouping": "group_media_by_option",
+        "media_grouping_option": {
+          "drop": "Weft groups media by the option names in group_media_option_names (default: Color, Colour and translations); the live value was a metafield expression."
+        }
+      },
+      "blocks": {
+        "title": {
+          "to": "product-title"
+        },
+        "price": {
+          "to": "product-price",
+          "settings": {
+            "show_tax_and_shipping": "show_tax_note"
+          }
+        },
+        "rating": {
+          "to": "product-rating"
+        },
+        "vendor-sku": {
+          "to": "product-meta"
+        },
+        "weight": {
+          "to": "product-meta",
+          "settings": {
+            "$set": {
+              "show_weight": true
+            }
+          }
+        },
+        "barcode": {
+          "to": "product-meta",
+          "settings": {
+            "$set": {
+              "show_barcode": true
+            }
+          }
+        },
+        "type": {
+          "to": "product-meta",
+          "settings": {
+            "$set": {
+              "show_type": true
+            }
+          }
+        },
+        "product-labels": {
+          "settings": {
+            "show_variant_icon": {
+              "drop": "Label icons are Theme settings > Product labels in Weft."
+            }
+          }
+        },
+        "variant-picker": {
+          "handler": "variantPicker",
+          "settings": {
+            "selector_style": {
+              "to": "style",
+              "values": {
+                "buttons": "buttons",
+                "dropdown": "dropdown",
+                "listed": "buttons",
+                "swatches": "buttons"
+              }
+            },
+            "enable_dynamic_availability": {
+              "drop": "Weft always marks unavailable option values."
+            },
+            "dynamic_availability_downwards": {
+              "to": "availability",
+              "values": {
+                "true": "top_down",
+                "false": "adjacent"
+              }
+            },
+            "show_backorder_text": {
+              "drop": "The backorder note is buy-buttons > Backorder note in Weft (on by default)."
+            },
+            "enable_size_chart": {
+              "drop": "Size chart moved to the product-guide block (see the variantPicker note)."
+            },
+            "size_chart_page": {
+              "drop": "Size chart moved to the product-guide block (see the variantPicker note)."
+            },
+            "size_chart_variant": "guide_option"
+          }
+        },
+        "buy-buttons": {
+          "settings": {
+            "show_qty_selector": "show_quantity",
+            "enable_dynamic_checkout": "show_accelerated",
+            "show_pickup_availability": "show_pickup"
+          }
+        },
+        "collapsible-content": {
+          "variants": [
+            {
+              "when": {
+                "setting": "text",
+                "matches": "^\\s*\\{\\{\\s*product\\.description\\s*\\}\\}\\s*$"
+              },
+              "to": "description",
+              "settings": {
+                "text": {
+                  "drop": "Shows the product description, which is what the Weft description block does."
+                },
+                "icon": {
+                  "drop": "The Weft description row has no icon."
+                },
+                "page": {
+                  "drop": "Unused (empty) in the live block."
+                },
+                "$set": {
+                  "accordion": true,
+                  "clamp_chars": 200
+                }
+              }
+            },
+            {
+              "to": "collapsible",
+              "settings": {
+                "icon": {
+                  "to": "icon",
+                  "values": {
+                    "check_mark": "check",
+                    "return": "return",
+                    "truck": "truck",
+                    "lock": "lock",
+                    "ruler": "ruler",
+                    "chat_bubble": "chat",
+                    "leaf": "leaf",
+                    "price_tag": "tag",
+                    "clock": "clock",
+                    "star": "star",
+                    "percent": "percent",
+                    "map_pin": "pin",
+                    "none": "none",
+                    "calendar": "info",
+                    "question_mark": "info"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "message": {
+          "to": "flash-message",
+          "settings": {
+            "title": "text",
+            "icon": {
+              "to": "icon",
+              "values": {
+                "calendar": "info",
+                "price_tag": "tag",
+                "none": "none",
+                "truck": "truck",
+                "check_mark": "check",
+                "star": "sparkle",
+                "clock": "info"
+              }
+            },
+            "close": {
+              "to": "close",
+              "values": {
+                "none": "none",
+                "once": "button",
+                "always": "button",
+                "auto": "auto"
+              }
+            },
+            "show_over_media": "over_media",
+            "visibility_duration": "duration"
+          }
+        },
+        "divider": {
+          "settings": {
+            "spacing": {
+              "to": "spacing",
+              "values": {
+                "mt-4 mb-4": "small",
+                "mt-6 mb-6": "small",
+                "mt-8 mb-8": "medium",
+                "mt-10 mb-10": "large",
+                "mt-12 mb-12": "large"
+              }
+            }
+          }
+        },
+        "newsletter-signup": {
+          "to": "email-signup"
+        },
+        "custom-liquid": {
+          "handler": "productLiquid"
+        },
+        "richtext": {
+          "to": "text"
+        },
+        "link": {
+          "to": "button"
+        },
+        "inventory-status": {
+          "to": "stock-line",
+          "settings": {
+            "show_indicator_bar": "show_bar",
+            "show_urgency_message": {
+              "drop": "Weft shows the low-stock text whenever stock is low (Theme settings > Product inventory)."
+            },
+            "text_very_low": {
+              "drop": "Weft has one low-stock message (text_low); the very-low threshold changes its colour."
+            },
+            "text_normal": "in_stock_extra",
+            "text_no_stock": "text_sold_out",
+            "text_no_stock_backordered": "text_backorder"
+          }
+        },
+        "complementary": {
+          "to": "complementary-products"
+        },
+        "custom-option": {
+          "to": "custom-option"
+        },
+        "description": {
+          "to": "description"
+        },
+        "pop-up": {
+          "to": "popup-link"
+        },
+        "image": {
+          "to": "image"
+        }
+      }
+    },
+    "media-grid": {
+      "settings": {
+        "gallery_cols_max": "cols_max",
+        "gallery_cols_min": "cols_mobile",
+        "fixed_height_desktop": "row_height",
+        "fixed_height_mobile": "row_height_mobile"
+      },
+      "blocks": {
+        "media": {
+          "to": "_media-tile",
+          "settings": {
+            "heading_size": {
+              "to": "heading_size",
+              "values": {
+                "h0": "xlarge",
+                "h1": "xlarge",
+                "h2": "large",
+                "h3": "large",
+                "h4": "medium",
+                "h5": "medium",
+                "h6": "small"
+              }
+            }
+          }
+        }
+      }
+    },
+    "media-with-text": {
+      "settings": {
+        "video_external": "video_url",
+        "layout": {
+          "to": "layout",
+          "values": {
+            "left": "media-start",
+            "right": "media-end"
+          }
+        },
+        "media_scale": {
+          "drop": "Weft media fills its column; the live value was 100 %."
+        }
+      },
+      "blocks": {
+        "heading": {
+          "to": "heading"
+        },
+        "subheading": {
+          "to": "text"
+        },
+        "text": {
+          "to": "text"
+        },
+        "button": {
+          "handler": "bannerButtons"
+        }
+      }
+    },
+    "newsletter": {
+      "settings": {
+        "overlay_position": {
+          "to": "overlay_position",
+          "values": {
+            "justify-start": "middle-start",
+            "justify-center": "middle-center",
+            "justify-end": "middle-end",
+            "justify-start items-start": "middle-start",
+            "justify-start items-center": "middle-start",
+            "justify-start items-end": "middle-start",
+            "justify-center items-start": "middle-center",
+            "justify-center items-center": "middle-center",
+            "justify-center items-end": "middle-center",
+            "justify-end items-start": "middle-end",
+            "justify-end items-center": "middle-end",
+            "justify-end items-end": "middle-end"
+          }
+        }
+      },
+      "blocks": {
+        "heading": {
+          "to": "heading"
+        },
+        "subheading": {
+          "to": "text"
+        },
+        "text": {
+          "to": "text"
+        },
+        "form": {
+          "to": "email-signup"
+        }
+      }
+    },
+    "pop-up": {
+      "to": "popup",
+      "note": "Pop-up → Weft popup section (overlay group).",
+      "settings": {
+        "show_to_guests_only": "guests_only",
+        "position": {
+          "to": "position",
+          "values": {
+            "justify-center items-center": "center",
+            "justify-start items-end": "bottom-start",
+            "justify-end items-end": "bottom-end"
+          }
+        },
+        "padding": {
+          "drop": "Weft pop-ups use the theme's spacing."
+        },
+        "shrink_width": {
+          "to": "width",
+          "values": {
+            "true": "narrow",
+            "false": "wide"
+          }
+        },
+        "heading_color": {
+          "drop": "Colours come from the pop-up's colour scheme (scheme-5, the live dark gradient)."
+        },
+        "text_color": {
+          "drop": "Colours come from the pop-up's colour scheme."
+        },
+        "bg_color": {
+          "drop": "Colours come from the pop-up's colour scheme."
+        },
+        "bg_grad": {
+          "drop": "Colours come from the pop-up's colour scheme (scheme-5 carries the live gradient)."
+        },
+        "$set": {
+          "color_scheme": "scheme-5"
+        }
+      },
+      "blocks": {
+        "heading": {
+          "to": "heading"
+        },
+        "subheading": {
+          "to": "text"
+        },
+        "text": {
+          "to": "text",
+          "settings": {
+            "text_size": {
+              "to": "style",
+              "values": {
+                "enlarge-text": "large",
+                "large": "large",
+                "medium": "body",
+                "small": "small",
+                "": "body"
+              }
+            }
+          }
+        },
+        "newsletter": {
+          "to": "email-signup"
+        },
+        "button": {
+          "handler": "bannerButtons"
+        },
+        "discount": {
+          "to": "discount-code"
+        },
+        "countdown": {
+          "to": "product-countdown",
+          "settings": {
+            "countdown_end_date": "end_date",
+            "countdown_end_time": "end_time",
+            "countdown_end_text": "end_text",
+            "countdown_hide_on_end": "hide_on_end",
+            "countdown_size": {
+              "to": "size",
+              "values": {
+                "22": "small",
+                "24": "small",
+                "32": "large",
+                "40": "large",
+                "48": "large"
+              }
+            },
+            "count_bg_color": {
+              "drop": "The countdown uses the pop-up's colour scheme."
+            },
+            "count_bg_grad": {
+              "drop": "The countdown uses the pop-up's colour scheme."
+            },
+            "count_color": {
+              "drop": "The countdown uses the pop-up's colour scheme."
+            },
+            "use_custom_colors": {
+              "drop": "The countdown uses the pop-up's colour scheme."
+            },
+            "enlarge_end_text": {
+              "drop": "Weft uses one text size for the end message."
+            }
+          }
+        },
+        "social": {
+          "to": "social-links"
+        }
+      }
+    },
+    "product-compare": {
+      "to": "compare-drawer",
+      "note": "Compare section → Weft compare drawer; the fields are fixed rows plus the metafield rows in Theme settings > Product compare.",
+      "blocks": {
+        "description": {
+          "drop": "Compare rows are fixed in Weft (image, title, vendor, price, variants, description) plus metafield rows from Theme settings."
+        },
+        "image": {
+          "drop": "Compare rows are fixed in Weft (image, title, vendor, price, variants, description) plus metafield rows from Theme settings."
+        },
+        "price": {
+          "drop": "Compare rows are fixed in Weft (image, title, vendor, price, variants, description) plus metafield rows from Theme settings."
+        },
+        "title": {
+          "drop": "Compare rows are fixed in Weft (image, title, vendor, price, variants, description) plus metafield rows from Theme settings."
+        },
+        "variants": {
+          "drop": "Compare rows are fixed in Weft (image, title, vendor, price, variants, description) plus metafield rows from Theme settings."
+        },
+        "vendor": {
+          "drop": "Compare rows are fixed in Weft (image, title, vendor, price, variants, description) plus metafield rows from Theme settings."
+        },
+        "metafield": {
+          "drop": "Compare rows are fixed in Weft (image, title, vendor, price, variants, description) plus metafield rows from Theme settings."
+        },
+        "rating": {
+          "drop": "Compare rows are fixed in Weft (image, title, vendor, price, variants, description) plus metafield rows from Theme settings."
+        }
+      }
+    },
+    "product-comparison-grid": {
+      "settings": {
+        "image_ratio": {
+          "to": "image_ratio",
+          "values": {
+            "1": "square",
+            "shortest": "square",
+            "tallest": "portrait",
+            "0.75": "portrait",
+            "1.77": "landscape"
+          }
+        },
+        "image_crop": {
+          "drop": "Weft crops comparison images to the chosen ratio from the centre."
+        },
+        "num_rows": {
+          "drop": "Weft shows every row the section has."
+        },
+        "highlight_row": "highlight_rows"
+      },
+      "blocks": {
+        "product": {
+          "drop": "The product row is always shown in Weft (image, title and button are section settings)."
+        },
+        "vendor": {
+          "to": "_comparison-row",
+          "settings": {
+            "$set": {
+              "type": "vendor"
+            }
+          }
+        },
+        "price": {
+          "to": "_comparison-row",
+          "settings": {
+            "$set": {
+              "type": "price"
+            }
+          }
+        },
+        "description": {
+          "to": "_comparison-row",
+          "settings": {
+            "truncate_description": "truncate",
+            "words_to_show": "words",
+            "$set": {
+              "type": "description"
+            }
+          }
+        },
+        "rating": {
+          "to": "_comparison-row",
+          "settings": {
+            "$set": {
+              "type": "rating"
+            }
+          }
+        },
+        "metafield": {
+          "to": "_comparison-row",
+          "settings": {
+            "$set": {
+              "type": "metafield"
+            }
+          }
+        }
+      }
+    },
+    "product-details": {
+      "blocks": {
+        "tabs": {
+          "to": "product-tabs",
+          "settings": {
+            "style": {
+              "to": "style",
+              "values": {
+                "collapsible": "accordion",
+                "tabs": "tabs"
+              }
+            },
+            "spec_show_empty_metafields": "spec_show_empty",
+            "spec_empty_field_text": "spec_empty_text"
+          }
+        },
+        "highlight-text": {
+          "to": "highlight-text"
+        },
+        "payment-methods": {
+          "to": "payment-methods"
+        }
+      }
+    },
+    "product-features": {
+      "to": "product-hotspots",
+      "settings": {
+        "show_content": {
+          "to": "layout",
+          "values": {
+            "false": "image-only"
+          },
+          "valuesExplained": true
+        },
+        "layout": {
+          "to": "layout",
+          "values": {
+            "text_first": "image-end",
+            "image_first": "image-start"
+          }
+        },
+        "heading_size": {
+          "drop": "Weft sizes section headings with the heading scale."
+        },
+        "enlarge_text": {
+          "drop": "Weft uses one text size for section text."
+        },
+        "title": "heading",
+        "description": "text",
+        "mob_center_text": {
+          "drop": "The Weft product hotspots section centres text through its text alignment."
+        }
+      },
+      "blocks": {
+        "feature": {
+          "to": "_feature",
+          "settings": {
+            "content_align": {
+              "to": "content_align",
+              "values": {
+                "text-start": "start",
+                "text-center": "center",
+                "text-end": "start"
+              }
+            }
+          }
+        }
+      }
+    },
+    "product-recommendations": {
+      "settings": {
+        "products_to_show": "limit"
+      }
+    },
+    "promo-grid": {
+      "settings": {
+        "gallery_cols_max": "cols_max",
+        "gallery_cols_min": "cols_mobile",
+        "fixed_height_desktop": "row_height",
+        "fixed_height_mobile": "row_height_mobile"
+      },
+      "blocks": {
+        "media": {
+          "to": "_promo-tile",
+          "settings": {
+            "line1_text": "line1",
+            "line2_text": "line2",
+            "line3_text": "line3",
+            "background_color": {
+              "drop": "Promo tiles use the section's colour scheme behind the image; the live tiles had images."
+            }
+          }
+        }
+      }
+    },
+    "promo-strip": {
+      "settings": {
+        "section_height": {
+          "to": "height",
+          "values": {
+            "small": "compact",
+            "xsmall": "compact",
+            "medium": "normal",
+            "large": "large"
+          }
+        },
+        "dividers": {
+          "to": "dividers",
+          "values": {
+            "none": false,
+            "border-top": true,
+            "border-bottom": true,
+            "border-top-bottom": true
+          }
+        }
+      },
+      "blocks": {
+        "heading": {
+          "to": "heading"
+        },
+        "subheading": {
+          "to": "text"
+        },
+        "text": {
+          "to": "text"
+        },
+        "discount": {
+          "to": "discount-code"
+        },
+        "button": {
+          "handler": "bannerButtons"
+        },
+        "countdown": {
+          "to": "product-countdown"
+        }
+      }
+    },
+    "recently-viewed": {},
+    "rich-text": {
+      "settings": {},
+      "blocks": {
+        "heading": {
+          "to": "heading"
+        },
+        "subheading": {
+          "to": "text"
+        },
+        "text": {
+          "to": "text"
+        },
+        "button": {
+          "handler": "bannerButtons"
+        }
+      }
+    },
+    "scrolling-banner": {
+      "settings": {
+        "section_height": {
+          "to": "height",
+          "values": {
+            "small": "compact",
+            "xsmall": "compact",
+            "medium": "normal",
+            "large": "large"
+          }
+        },
+        "direction": {
+          "to": "direction",
+          "values": {
+            "normal": "left",
+            "reverse": "right"
+          }
+        },
+        "dividers": {
+          "to": "dividers",
+          "values": {
+            "none": false,
+            "border-top": true,
+            "border-bottom": true,
+            "border-top-bottom": true
+          }
+        },
+        "speed": {
+          "to": "speed",
+          "values": {}
+        }
+      },
+      "blocks": {
+        "text": {
+          "to": "_marquee-item",
+          "settings": {
+            "heading_size": {
+              "to": "size",
+              "values": {
+                "h1": "large",
+                "h2": "large",
+                "h3": "medium",
+                "h4": "medium",
+                "h5": "small",
+                "h6": "small"
+              }
+            },
+            "$set": {
+              "type": "text"
+            }
+          }
+        },
+        "icon": {
+          "to": "_marquee-item",
+          "settings": {
+            "icon": {
+              "to": "icon",
+              "values": {
+                "feather": "sparkle",
+                "star": "star",
+                "leaf": "leaf",
+                "truck": "truck",
+                "check_mark": "check",
+                "award": "star",
+                "heart": "star",
+                "gift": "sparkle"
+              }
+            },
+            "$set": {
+              "type": "icon"
+            }
+          }
+        },
+        "image": {
+          "to": "_marquee-item",
+          "settings": {
+            "$set": {
+              "type": "image"
+            }
+          }
+        },
+        "button": {
+          "to": "_marquee-item",
+          "settings": {
+            "$set": {
+              "type": "button"
+            }
+          }
+        }
+      }
+    },
+    "shoppable-image": {
+      "settings": {
+        "layout": {
+          "to": "layout",
+          "values": {
+            "image_first": "image-start",
+            "text_first": "image-end"
+          }
+        },
+        "show_content": {
+          "to": "layout",
+          "values": {
+            "false": "image-only"
+          },
+          "valuesExplained": true
+        },
+        "show_vendor": {
+          "drop": "Weft hotspot cards show the product title and price."
+        },
+        "mob_center_text": {
+          "drop": "The Weft shoppable image centres text through its text alignment."
+        }
+      },
+      "blocks": {
+        "hotspot": {
+          "to": "_hotspot"
+        }
+      }
+    },
+    "slideshow": {
+      "settings": {
+        "height_mode": {
+          "to": "height",
+          "values": {
+            "auto": "adapt",
+            "fixed": "fixed"
+          }
+        },
+        "nav_style": {
+          "to": "nav_style",
+          "values": {
+            "slideshow_nav_dots": "dots",
+            "slideshow_nav_arrows": "arrows",
+            "slideshow_nav_both": "both",
+            "none": "none"
+          }
+        },
+        "pagination_color": {
+          "drop": "Slideshow controls use the section's text colour."
+        },
+        "nav_position": {
+          "drop": "Weft centres the slideshow controls."
+        }
+      },
+      "blocks": {
+        "slide": {
+          "handler": "slide"
+        }
+      }
+    },
+    "video": {
+      "settings": {
+        "video_shopify": "video",
+        "video_external": "video_url",
+        "video_description": "description",
+        "video_size": {
+          "drop": "Weft inline videos use the page width; the ratio setting sets their shape."
+        },
+        "video_autoplay": {
+          "to": "layout",
+          "values": {
+            "true": "background",
+            "false": "inline"
+          }
+        }
+      },
+      "blocks": {
+        "heading": {
+          "to": "heading"
+        },
+        "subheading": {
+          "to": "text"
+        },
+        "text": {
+          "to": "text"
+        },
+        "button": {
+          "handler": "bannerButtons"
+        }
+      }
+    },
+    "_blocks": {
+      "handler": "aiBlocksSection"
+    }
+  },
+  "templates": {
+    "templates/gift_card": {
+      "drop": "Weft ships its own gift_card.liquid; the live one is theme code."
+    },
+    "templates/search.bss.b2b": {
+      "drop": "BSS B2B search template removed on purpose (brief §4.9: native B2B only)."
+    }
+  },
+  "staticSections": {
+    "main-password-header": {
+      "template": "templates/password.json",
+      "section": "main-password",
+      "settings": {
+        "logo_position": {
+          "drop": "The Weft password page centres the logo."
+        }
+      }
+    }
+  },
+  "approved": {
+    "_comment": "Approved decisions (brief §5) that replace the live value in the store config.",
+    "schemes": {
+      "scheme-1": {
+        "button_bg": "#FBD816",
+        "button_text": "#0F1111",
+        "button_hover": "#E8C70F"
+      },
+      "scheme-4": {
+        "button_text": "#0F1111"
+      }
+    },
+    "sections": {
+      "main-product": {
+        "sticky_bar_mobile": true,
+        "section_width": "full",
+        "gallery_width": "extra_wide",
+        "gallery_layout": "grid_even",
+        "column_gap": 64,
+        "column_divider": true,
+        "media_ratio": "portrait",
+        "group_media_by_option": false
+      },
+      "main-collection": {
+        "filters_open_lg": false,
+        "columns_mobile": "2",
+        "columns_tablet": "3",
+        "columns": 4,
+        "columns_wide": 4
+      }
+    },
+    "reasons": {
+      "schemes": "Yellow primary button approved in brief §5 (#FBD816 / #0F1111, hover #E8C70F) replaces the live black button.",
+      "main-product": "Mobile sticky bar approved in brief §5 (retail) replaces the theme's own sticky panel, which was off. Owner layout spec (28 Sep 2026): full-width product row from 1440 px, media 65% in a two-column grid, 60 px gap, as on the live store. Owner request (28 Sep 2026): product images default to 4:5, the ratio the store's photos are made in. The gallery shows all product media by default (owner request, 29 Sep 2026); selecting a variant jumps to its image. \"Show only the media for the selected option value\" stays available in the section.",
+      "scheme-4": "Accessibility floor: white button text on the live orange accent (#ff580d) was 3.16:1; dark text (#0F1111) meets 4.5:1.",
+      "main-collection": "Owner layout spec (28 Sep 2026): filters in a drawer so the grid uses the full width; 2 / 3 / 4 / 4 columns (mobile, tablet, desktop, wide).",
+      "blocks:main-product": "The live theme sold wholesale through SparkLayer / BSS markup, which is dropped (native B2B only). Weft's wholesale blocks (terms, tier table, one-size stepper, order matrix) replace it so the B2B market shows per-piece prices, rules and the matrix; buy buttons are retail-only so wholesale buyers order through the matrix or stepper. Owner request (28 Sep 2026): for wholesale buyers the order matrix follows the title and price, in the rows layout with the minimum order and pack bar, as on the live store.",
+      "groupSections": "The live store shows a floating WhatsApp bubble (brief §5); in Weft it is the WhatsApp chat section in the overlay group, using the number from Theme settings > Social media."
+    },
+    "blocks": {
+      "main-product": {
+        "settings": {
+          "buy-buttons": {
+            "audience": "retail"
+          }
+        },
+        "insert": [
+          {
+            "id": "wholesale_terms",
+            "type": "wholesale-terms",
+            "after": "product-price"
+          },
+          {
+            "id": "wholesale_matrix",
+            "type": "order-matrix",
+            "after": "wholesale-terms",
+            "settings": {
+              "layout": "rows",
+              "show_rules_bar": true
+            }
+          },
+          {
+            "id": "wholesale_quantity",
+            "type": "wholesale-quantity",
+            "after": "order-matrix"
+          },
+          {
+            "id": "wholesale_tiers",
+            "type": "volume-pricing",
+            "after": "wholesale-quantity"
+          }
+        ]
+      }
+    },
+    "groupSections": {
+      "sections/overlay-group.json": {
+        "whatsapp": {
+          "type": "whatsapp-chat",
+          "settings": {
+            "add_page_link": true,
+            "show_window": false,
+            "audience": "all"
+          }
+        }
+      }
+    }
+  },
+  "storeSettings": {
+    "_comment": "ibBan values that lived inside live-theme code (snippets and layout), carried as data into Weft settings.",
+    "settings": {
+      "delivery_rules": "CY, CZ, EE, FI, HR, HU, IS, LT, LV, RO, SI, SK = 24.95 / 179\nAE, AL, BA, BH, BY, IQ, KW, MD, MK, UA, YE = 140\nDK, GR, IE, LU, NO = 4.95 / 99\nBE, CH, IT, NL = 4.95 / 99\nBG, MT, RS, TR = 29.95\nJO, OM, PS, QA = 49.95\nAT, DE, FR = 4.95 / 99\nAD, ES = 4.95 / 69\nEG = 14.95 / 129\nPL = 4.95 / 99\nLB, SA = 39.95\nRU, VE = 34.95\nAR, AU, BR, CA, CL, MX, NZ, UY, ZA = 12.95\nGB = GBP 4.95 / 99\nHK = 9.95 / 129\nIL = 19.95\nPT = 7.95 / 99\nSE = 4.95 / 99\nUS = USD 4.95 / 99",
+      "delivery_default_rule": "54.95",
+      "installments_provider": "Klarna",
+      "installments_count": 3,
+      "installments_countries": "ES, GB, US, DE, AT, NL, BE, FR, IT, PT, IE, FI, SE, DK, NO, PL, CZ, GR, RO, SK, CH",
+      "wholesale_show_sku": true,
+      "wholesale_request_page": "bn2b-request-form",
+      "integration_reviews_enable": true,
+      "integration_bis_enable": true,
+      "integration_bis_endpoint": "https://wasify-super.vercel.app/api/stock/subscribe",
+      "integration_gtm_id": "GTM-55DG66F6",
+      "integration_google_verification": "-0OIKeydZTIfzNFO7PGU_crZ0rjXm-uZnPhon8ydO6Y",
+      "integration_meta_verification": "j7y6vq2q62bdo9vs8063nmqniudzap",
+      "page_width_wide": "full",
+      "gutter_desktop": 64,
+      "wholesale_editor_preview": false,
+      "card_ratio": "portrait",
+      "collection_card_ratio": "portrait"
+    },
+    "sources": {
+      "delivery_rules": "Shipping zones from the live delivery widget (rules resynced with Settings > Shipping and delivery on 12 Sep 2026); delivery days are left out because Weft never shows a delivery date (brief §5).",
+      "delivery_default_rule": "Rest of world rate from the live delivery widget.",
+      "installments_provider": "Klarna row of the live delivery widget (3 payments, same country list).",
+      "installments_count": "Klarna row of the live delivery widget.",
+      "installments_countries": "Klarna countries of the live delivery widget.",
+      "wholesale_show_sku": "Pilot wholesale setting (architecture §8, Wholesale group).",
+      "wholesale_request_page": "Page linked as \"Apply for Access\" on the live B2B login page.",
+      "integration_reviews_enable": "The live product and reviews pages read Judge.me's synced data.",
+      "integration_bis_enable": "The live back-in-stock widget posts to Wasify.",
+      "integration_bis_endpoint": "Wasify subscribe URL used by the live back-in-stock widget.",
+      "integration_gtm_id": "Google Tag Manager container in the live layout; it now loads after consent, without the no-JavaScript iframe.",
+      "integration_google_verification": "Google site verification tag in the live layout (it appeared twice; kept once).",
+      "integration_meta_verification": "Meta domain verification tag in the live layout.",
+      "page_width_wide": "Owner layout spec (28 Sep 2026): the live store widens its pages with custom CSS (1920 px from 1440 px, 2000 px from 1700 px); Weft uses its own wide-screen setting.",
+      "gutter_desktop": "Owner layout spec (28 Sep 2026): 64 px side padding from 1280 px, as on the live store.",
+      "wholesale_editor_preview": "Owner request (28 Sep 2026): as on the live theme, wholesale content shows only to B2B customers, also in the theme editor preview."
+    },
+    "notLoaded": {
+      "integration_clarity_id": "The live layout loaded Microsoft Clarity (project wqwq1r58rv) while the Microsoft Clarity app embed also loads it; the app embed stays on and the layout copy is left out so Clarity loads once."
+    }
+  }
+}

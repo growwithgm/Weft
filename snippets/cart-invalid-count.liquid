@@ -1,0 +1,22 @@
+{%- comment -%}
+  Outputs how many wholesale cart lines break their variant's quantity rule (minimum, increment,
+  maximum). Checkout stays disabled while this is above 0. Retail carts output 0.
+  Usage: {%- capture invalid_count -%}{% render 'cart-invalid-count' %}{%- endcapture -%}
+{%- endcomment -%}
+{%- liquid
+  assign count = 0
+  if customer and customer.b2b?
+    for item in cart.items
+      assign r_min = item.variant.quantity_rule.min | default: 1
+      assign r_inc = item.variant.quantity_rule.increment | default: 1
+      assign r_max = item.variant.quantity_rule.max
+      assign rem = item.quantity | modulo: r_inc
+      if rem != 0 or item.quantity < r_min
+        assign count = count | plus: 1
+      elsif r_max and item.quantity > r_max
+        assign count = count | plus: 1
+      endif
+    endfor
+  endif
+  echo count
+-%}

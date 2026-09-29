@@ -1,0 +1,367 @@
+{
+  "sections": {
+    "hero": {
+      "type": "image-banner",
+      "blocks": {
+        "eyebrow": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Body rituals</p>",
+            "style": "subheading"
+          }
+        },
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Soft skin, slowly.",
+            "size": "h0",
+            "tag": "h2"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Whipped butters, oils and scrubs made in small batches. Scent notes you can read before you buy.</p>",
+            "style": "large"
+          }
+        },
+        "button": {
+          "type": "button",
+          "settings": {
+            "label": "Shop the ritual",
+            "link": "shopify://collections/all",
+            "style": "primary"
+          }
+        },
+        "button_2": {
+          "type": "button",
+          "settings": {
+            "label": "Find your scent",
+            "link": "shopify://collections/all",
+            "style": "secondary"
+          }
+        }
+      },
+      "block_order": [
+        "eyebrow",
+        "heading",
+        "text",
+        "button",
+        "button_2"
+      ],
+      "settings": {
+        "height": "large",
+        "overlay_position": "middle-start",
+        "text_align": "start",
+        "tint_opacity": 20
+      }
+    },
+    "usp": {
+      "type": "icons-with-text",
+      "blocks": {
+        "i1": {
+          "type": "_icon-item",
+          "settings": {
+            "icon": "leaf",
+            "heading": "Vegan",
+            "text": "<p>Plant butters and oils only.</p>"
+          }
+        },
+        "i2": {
+          "type": "_icon-item",
+          "settings": {
+            "icon": "jar",
+            "heading": "Small batches",
+            "text": "<p>Made fresh, a few hundred jars at a time.</p>"
+          }
+        },
+        "i3": {
+          "type": "_icon-item",
+          "settings": {
+            "icon": "drop",
+            "heading": "Refillable jars",
+            "text": "<p>Keep the jar, refill the balm.</p>"
+          }
+        },
+        "i4": {
+          "type": "_icon-item",
+          "settings": {
+            "icon": "sparkle",
+            "heading": "Gift wrapping",
+            "text": "<p>Add a note at checkout.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "i1",
+        "i2",
+        "i3",
+        "i4"
+      ],
+      "settings": {
+        "columns": 4,
+        "columns_mobile": "2",
+        "icon_size": 24,
+        "icon_position": "start",
+        "text_align": "start",
+        "density": "compact",
+        "color_scheme": "scheme-2"
+      }
+    },
+    "new_in": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "New in",
+        "collection": "all",
+        "products_to_show": 8,
+        "layout": "carousel",
+        "columns": 4
+      }
+    },
+    "categories": {
+      "type": "collection-list",
+      "blocks": {
+        "c1": {
+          "type": "_collection-tile",
+          "settings": {}
+        },
+        "c2": {
+          "type": "_collection-tile",
+          "settings": {}
+        },
+        "c3": {
+          "type": "_collection-tile",
+          "settings": {}
+        },
+        "c4": {
+          "type": "_collection-tile",
+          "settings": {}
+        },
+        "c5": {
+          "type": "_collection-tile",
+          "settings": {}
+        },
+        "c6": {
+          "type": "_collection-tile",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "c1",
+        "c2",
+        "c3",
+        "c4",
+        "c5",
+        "c6"
+      ],
+      "settings": {
+        "title": "Shop by category",
+        "columns": 6,
+        "columns_mobile": "2"
+      }
+    },
+    "finder": {
+      "type": "guided-finder",
+      "blocks": {
+        "q1": {
+          "type": "_finder-question",
+          "settings": {
+            "question": "How does your skin feel today?",
+            "param": "filter.p.m.shopify.skin-type",
+            "answers": "Dry\nSensitive\nNormal\nOily"
+          }
+        },
+        "q2": {
+          "type": "_finder-question",
+          "settings": {
+            "question": "Which scent do you like?",
+            "param": "filter.p.tag",
+            "answers": "Warm\nFresh\nFloral\nUnscented"
+          }
+        }
+      },
+      "block_order": [
+        "q1",
+        "q2"
+      ],
+      "settings": {
+        "heading": "How does your skin feel today?",
+        "text": "<p>Each answer takes you to the products made for it.</p>",
+        "submit_label": "Show my products",
+        "color_scheme": "scheme-2"
+      }
+    },
+    "routine": {
+      "type": "routine-steps",
+      "blocks": {
+        "s1": {
+          "type": "_routine-step",
+          "settings": {
+            "label": "Step 1",
+            "heading": "Cleanse",
+            "text": "<p>A gentle wash that leaves skin comfortable.</p>"
+          }
+        },
+        "s2": {
+          "type": "_routine-step",
+          "settings": {
+            "label": "Step 2",
+            "heading": "Exfoliate",
+            "text": "<p>Twice a week, polish away dry skin.</p>"
+          }
+        },
+        "s3": {
+          "type": "_routine-step",
+          "settings": {
+            "label": "Step 3",
+            "heading": "Moisturize",
+            "text": "<p>Warm a little butter in your hands and press in.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "s1",
+        "s2",
+        "s3"
+      ],
+      "settings": {
+        "heading": "The ritual",
+        "layout": "row"
+      }
+    },
+    "results": {
+      "type": "before-after",
+      "settings": {
+        "heading": "Softer in two weeks",
+        "text": "<p>Same light, same crop, two weeks apart.</p>",
+        "disclaimer": "Individual results vary.",
+        "layout": "text-end"
+      }
+    },
+    "gifts": {
+      "type": "featured-collection",
+      "blocks": {
+        "t1": {
+          "type": "tab",
+          "settings": {
+            "label": "Under €25"
+          }
+        },
+        "t2": {
+          "type": "tab",
+          "settings": {
+            "label": "€25 to €50"
+          }
+        },
+        "t3": {
+          "type": "tab",
+          "settings": {
+            "label": "Over €50"
+          }
+        }
+      },
+      "block_order": [
+        "t1",
+        "t2",
+        "t3"
+      ],
+      "settings": {
+        "title": "Gift guide",
+        "products_to_show": 4,
+        "layout": "grid",
+        "columns": 4,
+        "show_promo_info": true,
+        "promo_title": "Gifts they'll keep",
+        "content": "<p>Ideas for every budget, wrapped and ready.</p>",
+        "button_label": "Shop gifts",
+        "color_scheme": "scheme-5"
+      }
+    },
+    "pro": {
+      "type": "image-banner",
+      "blocks": {
+        "eyebrow": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Wholesale</p>",
+            "style": "subheading"
+          }
+        },
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "For spas and retailers",
+            "size": "h1",
+            "tag": "h2"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Testers, case packs and volume pricing. Sign in with your wholesale account.</p>"
+          }
+        },
+        "button": {
+          "type": "button",
+          "settings": {
+            "label": "Wholesale sign-in",
+            "link": "/account/login",
+            "style": "secondary"
+          }
+        }
+      },
+      "block_order": [
+        "eyebrow",
+        "heading",
+        "text",
+        "button"
+      ],
+      "settings": {
+        "height": "small",
+        "overlay_position": "middle-start",
+        "text_align": "start",
+        "tint_opacity": 40
+      }
+    },
+    "signup": {
+      "type": "newsletter",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Letters from the atelier",
+            "size": "h2"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>New scents, rituals and the occasional offer.</p>"
+          }
+        },
+        "form": {
+          "type": "email-signup",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "heading",
+        "text",
+        "form"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "hero",
+    "usp",
+    "new_in",
+    "categories",
+    "finder",
+    "routine",
+    "results",
+    "gifts",
+    "pro",
+    "signup"
+  ]
+}

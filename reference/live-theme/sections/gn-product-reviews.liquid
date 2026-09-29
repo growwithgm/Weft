@@ -1,0 +1,627 @@
+{%- comment -%}
+  GN PRODUCT REVIEWS - ibBan
+  Product-page reviews section. Card markup lives in snippets/gn-review-card.liquid.
+
+  WHY THIS IS NOT A JUDGE.ME WIDGET
+  Judge.me's own blocks cannot do what was asked: show only 4-5 star reviews
+  AND fall back to other products when this product has none. So this reads
+  the JSON Judge.me already syncs into shop.metafields.judgeme.reviews_grid
+  and renders it as our own markup.
+
+  WHAT IS IN THAT METAFIELD
+    average_rating, number_of_reviews   the true store aggregate
+    all_reviews.reviews                 newest page, ~25 reviews
+    product_reviews.reviews             newest page, ~25 reviews
+    store_reviews.reviews               the store (not product) reviews
+    *.media_only.reviews                the ones carrying photos
+  Judge.me writes only the FIRST page into it, so after merging and
+  de-duplicating the pool is roughly 40 unique reviews across the whole
+  catalogue - not all 1,081. Judge.me refreshes it periodically, so the
+  section rotates on its own. This is the ceiling of this approach: a
+  product with 30 Judge.me reviews will usually still show 0 of its own
+  here, because its reviews are not in that first page.
+
+  HOW THE TWO PASSES WORK
+  Pass 1 renders reviews whose product_url matches the product being viewed
+  and marks them with this_label. Pass 2 fills the rest of the grid from
+  every other product, each card carrying a link to the product it is about,
+  so no one can mistake another dress's review for this one. That labelling
+  is deliberate - with a 4-star floor, unlabelled borrowed reviews would be
+  misleading, and EU/UK review rules care about that.
+
+  The header prints the real store average and count, never the filtered
+  pool's, so the numbers on screen stay true.
+
+  WRITE A REVIEW  (added 25 Sep 2026)
+  Judge.me has no standalone "write a review" block - its form only lives
+  inside the Review Widget, which is switched off on this template. So the
+  button opens Judge.me's HOSTED review form instead:
+      https://judge.me/product_reviews/<shop uuid>/new?id=<product id>&source=shareable-link
+  The write_url setting takes EITHER the full link copied from Judge.me
+  (Settings > Request reviews > Links, QR codes and point of sale review
+  collection > Product review collection link, "Judge.me page") for ANY one
+  product, OR just the uuid. The uuid is pulled out of it and a link is built
+  for whichever product is being viewed. Anything else - including the old
+  "/pages/reviews" value, which had no form on it - hides the button.
+  Judge.me's own note: these links are public, so anyone can submit through
+  them; verification happens by email afterwards, on Judge.me's side.
+
+  URL BUILDING - same trap as snippets/gn-rating.liquid. Do NOT use
+  remove_last: '/' on routes.root_url; on "/es-es" it strips the leading
+  slash and produces a relative URL that 404s. Append then collapse '//'.
+
+  snippets/gn-rating.liquid (the pill under the price) finds this section by
+  the selector section.gnpr and scrolls to it. Keep that class.
+{%- endcomment -%}
+
+{%- liquid
+  assign jm = shop.metafields.judgeme.reviews_grid.value
+  assign empty_arr = '' | split: ','
+
+  assign min_rating = section.settings.min_rating | plus: 0
+  assign min_length = section.settings.min_length | plus: 0
+  assign max_reviews = section.settings.max_reviews | plus: 0
+  assign first_batch = section.settings.first_batch | plus: 0
+
+  assign src_a = jm.all_reviews.media_only.reviews | default: empty_arr
+  assign src_b = jm.product_reviews.media_only.reviews | default: empty_arr
+  assign src_c = jm.product_reviews.reviews | default: empty_arr
+  assign src_d = jm.all_reviews.reviews | default: empty_arr
+  assign src_e = jm.store_reviews.reviews | default: empty_arr
+  assign pool = src_a | concat: src_b | concat: src_c | concat: src_d | concat: src_e
+
+  assign want = '/products/' | append: product.handle
+
+  assign avg_raw = jm.average_rating | default: shop.metafields.judgeme.all_reviews_rating
+  assign total_raw = jm.number_of_reviews | default: shop.metafields.judgeme.all_reviews_count
+  assign avg_num = avg_raw | plus: 0.0
+  assign avg_pct = avg_num | times: 20.0
+
+  assign see_all = section.settings.see_all_url
+  if see_all != blank
+    assign see_all = routes.root_url | append: see_all | replace: '//', '/'
+  endif
+
+  assign jm_in = section.settings.write_url | strip
+  assign jm_uuid = ''
+  if jm_in contains '/product_reviews/'
+    assign jm_uuid = jm_in | split: '/product_reviews/' | last | split: '/' | first | split: '?' | first
+  elsif jm_in.size == 36 and jm_in contains '-'
+    unless jm_in contains '/'
+      assign jm_uuid = jm_in
+    endunless
+  endif
+  assign write_href = ''
+  if jm_uuid != blank and product.id != blank
+    assign write_href = 'https://judge.me/product_reviews/' | append: jm_uuid | append: '/new?id=' | append: product.id | append: '&source=shareable-link'
+  endif
+-%}
+
+{%- if pool.size > 0 -%}
+  <section
+    id="gnpr-{{ section.id }}"
+    class="gnpr"
+    style="--gnpr-cols:{{ section.settings.columns }};--gnpr-pt:{{ section.settings.padding_top }}px;--gnpr-pb:{{ section.settings.padding_bottom }}px;"
+  >
+    <div class="gnpr__wrap">
+      <aside class="gnpr__aside">
+        {%- if section.settings.heading != blank -%}
+          <h2 class="gnpr__h">{{ section.settings.heading }}</h2>
+        {%- endif -%}
+
+        <div class="gnpr__score">
+          <div class="gnpr__big">{{ avg_raw }}</div>
+          <div class="gnpr__scoremeta">
+            <span class="gnpr__stars" style="--gnpr-pct:{{ avg_pct }}%" aria-hidden="true">
+              <span class="gnpr__sbg">★★★★★</span><span class="gnpr__sfg">★★★★★</span>
+            </span>
+            <span class="gnpr__total" data-gnpr-total="{{ total_raw }}"><span data-gnpr-totalnum>{{ total_raw }}</span> {{ section.settings.total_label }}</span>
+          </div>
+        </div>
+
+        {%- if section.settings.note != blank -%}
+          <p class="gnpr__note">{{ section.settings.note }}</p>
+        {%- endif -%}
+
+        <div class="gnpr__actions">
+          {%- if write_href != blank -%}
+            <a class="gnpr__btn gnpr__btn--solid" href="{{ write_href }}" target="_blank" rel="noopener">{{ section.settings.write_label }}</a>
+          {%- endif -%}
+          {%- if see_all != blank -%}
+            <a class="gnpr__btn gnpr__btn--ghost" href="{{ see_all }}">{{ section.settings.see_all_label }}</a>
+          {%- endif -%}
+        </div>
+      </aside>
+
+      <div class="gnpr__main">
+        <div class="gnpr__bar">
+          <div class="gnpr__chips" role="group">
+            <button type="button" class="gnpr__chip is-on" data-gnpr-chip="all">{{ section.settings.chip_all }}</button>
+            <button type="button" class="gnpr__chip" data-gnpr-chip="5">{{ section.settings.chip_5 }}</button>
+            {%- if min_rating < 5 -%}
+              <button type="button" class="gnpr__chip" data-gnpr-chip="4">{{ section.settings.chip_4 }}</button>
+            {%- endif -%}
+            <button type="button" class="gnpr__chip" data-gnpr-chip="photos">{{ section.settings.chip_photos }}</button>
+          </div>
+          <div class="gnpr__showing">{{ section.settings.showing_label }} <span data-gnpr-shown>0</span> {{ section.settings.of_label }} <span data-gnpr-matching>0</span></div>
+        </div>
+
+        <div class="gnpr__grid" data-gnpr-grid>
+          {%- assign seen = '|' -%}
+          {%- assign shown = 0 -%}
+
+          {%- comment -%} Pass 1 - reviews of the product being viewed {%- endcomment -%}
+          {%- for r in pool -%}
+            {%- if shown >= max_reviews -%}{%- break -%}{%- endif -%}
+            {%- assign key = '|' | append: r.uuid | append: '|' -%}
+            {%- unless seen contains key -%}
+              {%- assign purl = r.product_url | split: '?' | first -%}
+              {%- if purl == want -%}
+                {%- assign rt = r.rating | plus: 0 -%}
+                {%- assign blen = r.body | strip | size -%}
+                {%- if rt >= min_rating and blen >= min_length -%}
+                  {%- assign seen = seen | append: r.uuid | append: '|' -%}
+                  {%- assign shown = shown | plus: 1 -%}
+                  {%- assign is_hidden = false -%}
+                  {%- if shown > first_batch -%}{%- assign is_hidden = true -%}{%- endif -%}
+                  {%- render 'gn-review-card',
+                      r: r,
+                      is_own: true,
+                      hidden: is_hidden,
+                      show_product: section.settings.show_product,
+                      this_label: section.settings.this_label,
+                      verified_label: section.settings.verified_label,
+                      photo_label: section.settings.photo_label -%}
+                {%- endif -%}
+              {%- endif -%}
+            {%- endunless -%}
+          {%- endfor -%}
+
+          {%- comment -%} Pass 2 - fill the rest from every other product {%- endcomment -%}
+          {%- for r in pool -%}
+            {%- if shown >= max_reviews -%}{%- break -%}{%- endif -%}
+            {%- assign key = '|' | append: r.uuid | append: '|' -%}
+            {%- unless seen contains key -%}
+              {%- assign rt = r.rating | plus: 0 -%}
+              {%- assign blen = r.body | strip | size -%}
+              {%- if rt >= min_rating and blen >= min_length -%}
+                {%- assign seen = seen | append: r.uuid | append: '|' -%}
+                {%- assign shown = shown | plus: 1 -%}
+                {%- assign is_hidden = false -%}
+                {%- if shown > first_batch -%}{%- assign is_hidden = true -%}{%- endif -%}
+                {%- render 'gn-review-card',
+                    r: r,
+                    is_own: false,
+                    hidden: is_hidden,
+                    show_product: section.settings.show_product,
+                    this_label: section.settings.this_label,
+                    verified_label: section.settings.verified_label,
+                    photo_label: section.settings.photo_label -%}
+              {%- endif -%}
+            {%- endunless -%}
+          {%- endfor -%}
+        </div>
+
+        {%- if shown > first_batch -%}
+          <div class="gnpr__morewrap">
+            <button type="button" class="gnpr__btn gnpr__btn--ghost" data-gnpr-more>{{ section.settings.more_label }}</button>
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+
+    <div class="gnpr__lb" data-gnpr-lb hidden>
+      <button type="button" class="gnpr__lbx" data-gnpr-lbclose aria-label="Close">&times;</button>
+      <img src="" alt="" data-gnpr-lbimg>
+    </div>
+  </section>
+
+  <style>
+    #gnpr-{{ section.id }}{
+      --gnpr-star:#F2A93B; --gnpr-empty:#D4D4D4;
+      --gnpr-ink:#111111; --gnpr-body:#333333;
+      --gnpr-mute:#757575; --gnpr-mute2:#666666;
+      --gnpr-line:#E5E5E5; --gnpr-soft:#F6F6F6;
+      background:#FFFFFF; color:var(--gnpr-ink);
+      padding:var(--gnpr-pt,72px) 80px var(--gnpr-pb,72px);
+      font-variant-numeric:tabular-nums lining-nums;
+    }
+    #gnpr-{{ section.id }} *{ box-sizing:border-box; }
+    #gnpr-{{ section.id }} .gnpr__wrap{
+      max-width:1120px; margin:0 auto;
+      display:grid; grid-template-columns:280px minmax(0,1fr); gap:56px;
+    }
+
+    #gnpr-{{ section.id }} .gnpr__aside{
+      display:flex; flex-direction:column; gap:22px;
+      position:sticky; top:20px; align-self:start;
+    }
+    #gnpr-{{ section.id }} .gnpr__h{ margin:0; font-size:38px; line-height:1.1; font-weight:500; }
+    #gnpr-{{ section.id }} .gnpr__score{ display:flex; align-items:flex-end; gap:14px; }
+    #gnpr-{{ section.id }} .gnpr__big{ font-size:72px; line-height:.9; font-weight:500; }
+    #gnpr-{{ section.id }} .gnpr__scoremeta{ display:flex; flex-direction:column; gap:4px; padding-bottom:4px; }
+    #gnpr-{{ section.id }} .gnpr__total{ font-size:14px; color:var(--gnpr-mute2); }
+    #gnpr-{{ section.id }} .gnpr__note{ margin:0; font-size:14px; line-height:1.6; color:var(--gnpr-mute2); }
+    #gnpr-{{ section.id }} .gnpr__actions{ display:flex; flex-direction:column; gap:10px; }
+
+    #gnpr-{{ section.id }} .gnpr__btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      height:52px; padding:0 26px; border-radius:26px;
+      font:inherit; font-size:15px; font-weight:600; text-decoration:none; cursor:pointer;
+      border:1.5px solid var(--gnpr-ink); background:#fff; color:var(--gnpr-ink);
+      transition:background .15s ease,color .15s ease;
+    }
+    #gnpr-{{ section.id }} .gnpr__btn--solid{ background:var(--gnpr-ink); color:#fff; }
+    #gnpr-{{ section.id }} .gnpr__btn--solid:hover{ background:#333; color:#fff; }
+    #gnpr-{{ section.id }} .gnpr__btn--ghost:hover{ background:var(--gnpr-ink); color:#fff; }
+
+    #gnpr-{{ section.id }} .gnpr__stars{ position:relative; display:inline-block; white-space:nowrap; letter-spacing:2px; font-size:18px; line-height:1; }
+    #gnpr-{{ section.id }} .gnpr__stars--sm{ font-size:15px; }
+    #gnpr-{{ section.id }} .gnpr__sbg{ color:var(--gnpr-empty); }
+    #gnpr-{{ section.id }} .gnpr__sfg{ position:absolute; left:0; top:0; overflow:hidden; white-space:nowrap; letter-spacing:inherit; width:var(--gnpr-pct,0%); color:var(--gnpr-star); }
+
+    #gnpr-{{ section.id }} .gnpr__main{ display:flex; flex-direction:column; gap:28px; min-width:0; }
+    #gnpr-{{ section.id }} .gnpr__bar{ display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap; }
+    #gnpr-{{ section.id }} .gnpr__chips{ display:flex; gap:8px; flex-wrap:wrap; }
+    #gnpr-{{ section.id }} .gnpr__chip{
+      height:38px; padding:0 18px; border-radius:19px; cursor:pointer;
+      border:1.5px solid var(--gnpr-line); background:#fff; color:var(--gnpr-ink);
+      font:inherit; font-size:14px; font-weight:500;
+    }
+    #gnpr-{{ section.id }} .gnpr__chip.is-on{ border-color:var(--gnpr-ink); background:var(--gnpr-ink); color:#fff; }
+    #gnpr-{{ section.id }} .gnpr__showing{ font-size:14px; color:var(--gnpr-mute2); }
+
+    #gnpr-{{ section.id }} .gnpr__grid{ columns:var(--gnpr-cols,2); column-gap:20px; }
+    #gnpr-{{ section.id }} .gnpr__card{
+      break-inside:avoid; -webkit-column-break-inside:avoid; page-break-inside:avoid;
+      display:flex; flex-direction:column; gap:14px; width:100%; margin:0 0 20px;
+      background:var(--gnpr-soft); border:1px solid var(--gnpr-line); border-radius:14px; padding:26px;
+    }
+    #gnpr-{{ section.id }} .gnpr__card.is-hidden{ display:none; }
+    #gnpr-{{ section.id }} .gnpr__cardtop{ display:flex; justify-content:space-between; align-items:center; gap:10px; }
+    #gnpr-{{ section.id }} .gnpr__date{ font-size:13px; color:var(--gnpr-mute); white-space:nowrap; }
+    #gnpr-{{ section.id }} .gnpr__ttl{ margin:0; font-size:22px; line-height:1.2; font-weight:600; }
+    #gnpr-{{ section.id }} .gnpr__body{ margin:0; font-size:15px; line-height:1.6; color:var(--gnpr-body); }
+
+    #gnpr-{{ section.id }} .gnpr__pics{ display:flex; gap:8px; }
+    #gnpr-{{ section.id }} .gnpr__pic{ appearance:none; border:0; padding:0; background:none; cursor:zoom-in; border-radius:8px; overflow:hidden; line-height:0; }
+    #gnpr-{{ section.id }} .gnpr__pic img{ width:72px; height:72px; object-fit:cover; display:block; border-radius:8px; }
+
+    #gnpr-{{ section.id }} .gnpr__thisone{
+      align-self:flex-start; font-size:12px; font-weight:600; letter-spacing:.04em; text-transform:uppercase;
+      background:#fff; border:1px solid var(--gnpr-line); border-radius:999px; padding:5px 12px; color:var(--gnpr-mute);
+    }
+    #gnpr-{{ section.id }} .gnpr__prod{
+      align-self:flex-start; max-width:100%;
+      display:inline-flex; align-items:center; gap:8px;
+      padding:6px 12px 6px 6px; border-radius:999px;
+      background:#fff; border:1px solid var(--gnpr-line);
+      text-decoration:none; color:var(--gnpr-ink);
+    }
+    #gnpr-{{ section.id }} .gnpr__prod img,
+    #gnpr-{{ section.id }} .gnpr__proddot{ flex:none; width:24px; height:24px; border-radius:50%; background:#E2E2E2; object-fit:cover; display:block; }
+    #gnpr-{{ section.id }} .gnpr__prodname{ font-size:13px; font-weight:500; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+    #gnpr-{{ section.id }} .gnpr__prod:hover .gnpr__prodname{ text-decoration:underline; text-underline-offset:2px; }
+
+    #gnpr-{{ section.id }} .gnpr__foot{ display:flex; align-items:center; gap:10px; padding-top:14px; border-top:1px solid var(--gnpr-line); min-width:0; }
+    #gnpr-{{ section.id }} .gnpr__ava{
+      flex:none; width:36px; height:36px; border-radius:50%; background:#E2E2E2;
+      display:flex; align-items:center; justify-content:center;
+      font-size:14px; font-weight:600; text-transform:uppercase;
+    }
+    #gnpr-{{ section.id }} .gnpr__who{ display:flex; flex-direction:column; gap:2px; min-width:0; }
+    #gnpr-{{ section.id }} .gnpr__name{ font-size:14px; font-weight:600; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+    #gnpr-{{ section.id }} .gnpr__vf{ font-size:12px; color:var(--gnpr-ink); }
+
+    #gnpr-{{ section.id }} .gnpr__morewrap{ display:flex; justify-content:center; }
+
+    #gnpr-{{ section.id }} .gnpr__lb{ position:fixed; inset:0; z-index:9999; background:rgba(17,17,17,.88); display:flex; align-items:center; justify-content:center; padding:24px; }
+    #gnpr-{{ section.id }} .gnpr__lb[hidden]{ display:none; }
+    #gnpr-{{ section.id }} .gnpr__lb img{ max-width:min(92vw,900px); max-height:88vh; border-radius:10px; }
+    #gnpr-{{ section.id }} .gnpr__lbx{ position:absolute; top:16px; right:20px; appearance:none; border:0; background:none; color:#fff; font-size:38px; line-height:1; cursor:pointer; }
+
+    @media (min-width:1600px){
+      #gnpr-{{ section.id }}{ padding-left:160px; padding-right:160px; }
+      #gnpr-{{ section.id }} .gnpr__wrap{ max-width:1600px; grid-template-columns:340px minmax(0,1fr); gap:80px; }
+      #gnpr-{{ section.id }} .gnpr__h{ font-size:44px; }
+    }
+    @media (max-width:1100px){
+      #gnpr-{{ section.id }}{ padding-left:40px; padding-right:40px; }
+      #gnpr-{{ section.id }} .gnpr__wrap{ grid-template-columns:240px minmax(0,1fr); gap:36px; }
+      #gnpr-{{ section.id }} .gnpr__h{ font-size:32px; }
+      #gnpr-{{ section.id }} .gnpr__grid{ columns:1; }
+    }
+    @media (max-width:749px){
+      #gnpr-{{ section.id }}{ padding:40px 20px; }
+      #gnpr-{{ section.id }} .gnpr__wrap{ display:flex; flex-direction:column; gap:22px; }
+      #gnpr-{{ section.id }} .gnpr__aside{ position:static; gap:16px; }
+      #gnpr-{{ section.id }} .gnpr__h{ font-size:30px; line-height:1.15; }
+      #gnpr-{{ section.id }} .gnpr__score{ align-items:center; gap:16px; padding:18px; background:var(--gnpr-soft); border-radius:14px; }
+      #gnpr-{{ section.id }} .gnpr__big{ font-size:56px; }
+      #gnpr-{{ section.id }} .gnpr__chips{ flex-wrap:nowrap; overflow-x:auto; margin:0 -20px; padding:0 20px; scrollbar-width:none; }
+      #gnpr-{{ section.id }} .gnpr__chips::-webkit-scrollbar{ display:none; }
+      #gnpr-{{ section.id }} .gnpr__chip{ flex:none; height:44px; border-radius:22px; }
+      #gnpr-{{ section.id }} .gnpr__bar{ flex-direction:column; align-items:flex-start; gap:10px; }
+      #gnpr-{{ section.id }} .gnpr__grid{ columns:1; }
+      #gnpr-{{ section.id }} .gnpr__card{ padding:20px; gap:12px; margin-bottom:14px; }
+      #gnpr-{{ section.id }} .gnpr__ttl{ font-size:20px; }
+      #gnpr-{{ section.id }} .gnpr__btn{ width:100%; }
+    }
+  </style>
+
+  <script>
+    (function () {
+      var root = document.getElementById('gnpr-{{ section.id }}');
+      if (!root || root.dataset.gnprWired) return;
+      root.dataset.gnprWired = '1';
+
+      var FIRST = {{ first_batch }};
+      var cards = [].slice.call(root.querySelectorAll('[data-gnpr-card]'));
+      var moreBtn = root.querySelector('[data-gnpr-more]');
+      var moreWrap = moreBtn ? moreBtn.parentNode : null;
+      var shownEl = root.querySelector('[data-gnpr-shown]');
+      var matchEl = root.querySelector('[data-gnpr-matching]');
+      var filter = 'all';
+      var expanded = false;
+
+      var totalNum = root.querySelector('[data-gnpr-totalnum]');
+      var totalWrap = root.querySelector('[data-gnpr-total]');
+      if (totalNum && totalWrap) {
+        var n = parseInt(totalWrap.getAttribute('data-gnpr-total'), 10);
+        if (!isNaN(n)) {
+          try { totalNum.textContent = n.toLocaleString(document.documentElement.lang || 'en'); }
+          catch (e) {}
+        }
+      }
+
+      function matches(card) {
+        if (filter === 'all') return true;
+        if (filter === 'photos') return card.getAttribute('data-photos') === '1';
+        return card.getAttribute('data-rating') === filter;
+      }
+
+      function apply() {
+        var matching = 0, visible = 0;
+        for (var i = 0; i < cards.length; i++) {
+          var ok = matches(cards[i]);
+          if (ok) matching++;
+          var show = ok && (expanded || matching <= FIRST);
+          cards[i].classList.toggle('is-hidden', !show);
+          if (show) visible++;
+        }
+        if (shownEl) shownEl.textContent = visible;
+        if (matchEl) matchEl.textContent = matching;
+        if (moreWrap) moreWrap.style.display = (!expanded && matching > FIRST) ? '' : 'none';
+      }
+
+      var chips = root.querySelectorAll('[data-gnpr-chip]');
+      for (var c = 0; c < chips.length; c++) {
+        chips[c].addEventListener('click', function () {
+          for (var k = 0; k < chips.length; k++) chips[k].classList.remove('is-on');
+          this.classList.add('is-on');
+          filter = this.getAttribute('data-gnpr-chip');
+          expanded = false;
+          apply();
+        });
+      }
+
+      if (moreBtn) moreBtn.addEventListener('click', function () { expanded = true; apply(); });
+
+      var lb = root.querySelector('[data-gnpr-lb]');
+      var lbImg = root.querySelector('[data-gnpr-lbimg]');
+      function closeLb() {
+        if (!lb) return;
+        lb.hidden = true;
+        if (lbImg) lbImg.src = '';
+        document.documentElement.style.overflow = '';
+      }
+      root.addEventListener('click', function (e) {
+        if (!e.target.closest) return;
+        var hit = e.target.closest('[data-gnpr-full]');
+        if (hit && lb && lbImg) {
+          lbImg.src = hit.getAttribute('data-gnpr-full');
+          lb.hidden = false;
+          document.documentElement.style.overflow = 'hidden';
+          return;
+        }
+        if (e.target.closest('[data-gnpr-lbclose]')) closeLb();
+      });
+      if (lb) lb.addEventListener('click', function (e) { if (e.target === lb) closeLb(); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeLb(); });
+
+      apply();
+    })();
+  </script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "GN Product Reviews",
+  "tag": "section",
+  "enabled_on": { "templates": ["product"] },
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "What our customers say"
+    },
+    {
+      "type": "text",
+      "id": "total_label",
+      "label": "Word after the review count",
+      "default": "store reviews"
+    },
+    {
+      "type": "textarea",
+      "id": "note",
+      "label": "Note under the score",
+      "default": "A selection of our highest-rated reviews from across the collection."
+    },
+    { "type": "header", "content": "Which reviews show" },
+    {
+      "type": "select",
+      "id": "min_rating",
+      "label": "Minimum star rating",
+      "options": [
+        { "value": "4", "label": "4 and 5 stars" },
+        { "value": "5", "label": "5 stars only" }
+      ],
+      "default": "4"
+    },
+    {
+      "type": "range",
+      "id": "min_length",
+      "label": "Minimum review length",
+      "info": "Hides one-word and emoji-only reviews. Characters.",
+      "min": 0,
+      "max": 120,
+      "step": 5,
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "max_reviews",
+      "label": "Maximum reviews rendered",
+      "min": 4,
+      "max": 60,
+      "step": 2,
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "first_batch",
+      "label": "Reviews shown before Show more",
+      "min": 2,
+      "max": 40,
+      "step": 1,
+      "default": 6
+    },
+    {
+      "type": "checkbox",
+      "id": "show_product",
+      "label": "Show which product a borrowed review is about",
+      "info": "Keep this on. It is what stops another product's review reading as this one's.",
+      "default": true
+    },
+    { "type": "header", "content": "Labels" },
+    {
+      "type": "text",
+      "id": "this_label",
+      "label": "Badge on this product's own reviews",
+      "default": "This piece"
+    },
+    {
+      "type": "text",
+      "id": "verified_label",
+      "label": "Verified buyer label",
+      "default": "\u2713 Verified"
+    },
+    {
+      "type": "text",
+      "id": "photo_label",
+      "label": "Photo button label (accessibility)",
+      "default": "Open customer photo"
+    },
+    {
+      "type": "text",
+      "id": "chip_all",
+      "label": "Filter: all",
+      "default": "All"
+    },
+    {
+      "type": "text",
+      "id": "chip_5",
+      "label": "Filter: 5 star",
+      "default": "5 \u2605"
+    },
+    {
+      "type": "text",
+      "id": "chip_4",
+      "label": "Filter: 4 star",
+      "default": "4 \u2605"
+    },
+    {
+      "type": "text",
+      "id": "chip_photos",
+      "label": "Filter: with photos",
+      "default": "With photos"
+    },
+    {
+      "type": "text",
+      "id": "showing_label",
+      "label": "Counter: prefix",
+      "default": "Showing"
+    },
+    {
+      "type": "text",
+      "id": "of_label",
+      "label": "Counter: middle word",
+      "default": "of"
+    },
+    {
+      "type": "text",
+      "id": "more_label",
+      "label": "Show more button",
+      "default": "Show more reviews"
+    },
+    { "type": "header", "content": "Buttons" },
+    {
+      "type": "text",
+      "id": "see_all_url",
+      "label": "See all reviews link",
+      "info": "A path, not a full address. The market prefix is added automatically.",
+      "default": "/pages/reviews"
+    },
+    {
+      "type": "text",
+      "id": "see_all_label",
+      "label": "See all reviews text",
+      "default": "Read all reviews"
+    },
+    {
+      "type": "text",
+      "id": "write_url",
+      "label": "Judge.me review link",
+      "info": "Judge.me admin > Settings > Request reviews > Links, QR codes and point of sale review collection > Product review collection link. Pick any product, choose Judge.me page, copy, paste here. Each product gets its own link automatically. Empty hides the button."
+    },
+    {
+      "type": "text",
+      "id": "write_label",
+      "label": "Write a review text",
+      "default": "Write a review"
+    },
+    { "type": "header", "content": "Layout" },
+    {
+      "type": "range",
+      "id": "columns",
+      "label": "Card columns on desktop",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "default": 2
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 72
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 72
+    }
+  ],
+  "presets": [{ "name": "GN Product Reviews" }]
+}
+{% endschema %}

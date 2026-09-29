@@ -1,0 +1,23 @@
+{%- comment -%} Social media links from Theme settings > Social media. {%- endcomment -%}
+<div class="block-social" {{ block.shopify_attributes }}>
+  {%- render 'social-links' -%}
+</div>
+
+{% schema %}
+{
+  "name": "t:labels.social_links",
+  "tag": null,
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "t:labels.links_come_from_theme_settings_social_media"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:labels.social_links",
+      "category": "t:labels.links"
+    }
+  ]
+}
+{% endschema %}

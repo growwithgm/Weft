@@ -1,0 +1,118 @@
+<div
+  class="flash-message{% if block.settings.over_media %} flash-message--over-media{% endif %}"
+  style="--flash-bg: {{ block.settings.bg_color }}; --flash-fg: {{ block.settings.text_color }}"
+  role="status"
+  data-flash
+  data-duration="{{ block.settings.duration }}"
+  data-close="{{ block.settings.close }}"
+  {% if block.settings.over_media %}data-flash-over-media{% endif %}
+  {{ block.shopify_attributes }}
+>
+  {%- if block.settings.icon != 'none' -%}{%- render 'icon', name: block.settings.icon, size: 20 -%}{%- endif -%}
+  <div class="flash-message__text rte">{{ block.settings.text }}</div>
+  {%- if block.settings.close == 'button' -%}
+    <button type="button" class="icon-button flash-message__close" aria-label="{{ 'general.dismiss' | t }}" onclick="this.closest('[data-flash]').hidden = true">{%- render 'icon', name: 'close', size: 16 -%}</button>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "t:labels.flash_message",
+  "tag": null,
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "text",
+      "label": "t:labels.message",
+      "default": "Share a short message about this product."
+    },
+    {
+      "type": "select",
+      "id": "icon",
+      "label": "t:labels.icon",
+      "options": [
+        {
+          "value": "none",
+          "label": "t:labels.none"
+        },
+        {
+          "value": "info",
+          "label": "t:labels.information"
+        },
+        {
+          "value": "truck",
+          "label": "t:labels.delivery"
+        },
+        {
+          "value": "tag",
+          "label": "t:labels.tag"
+        },
+        {
+          "value": "sparkle",
+          "label": "t:labels.sparkle"
+        },
+        {
+          "value": "check",
+          "label": "t:labels.check"
+        }
+      ],
+      "default": "info"
+    },
+    {
+      "type": "select",
+      "id": "close",
+      "label": "t:labels.closing",
+      "options": [
+        {
+          "value": "none",
+          "label": "t:labels.always_visible"
+        },
+        {
+          "value": "button",
+          "label": "t:labels.close_button"
+        },
+        {
+          "value": "auto",
+          "label": "t:labels.hide_after_a_delay"
+        }
+      ],
+      "default": "none"
+    },
+    {
+      "type": "range",
+      "id": "duration",
+      "label": "t:labels.delay",
+      "min": 2,
+      "max": 20,
+      "step": 1,
+      "default": 6,
+      "unit": "s",
+      "visible_if": "{{ block.settings.close == 'auto' }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "over_media",
+      "label": "t:labels.show_over_the_product_media",
+      "default": false
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "t:labels.background",
+      "default": "#F4F4F4"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "t:labels.text",
+      "default": "#2A2B2A"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:labels.flash_message",
+      "category": "t:labels.product"
+    }
+  ]
+}
+{% endschema %}

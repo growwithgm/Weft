@@ -1,0 +1,374 @@
+{
+  "sections": {
+    "hero": {
+      "type": "image-banner",
+      "blocks": {
+        "eyebrow": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Salon-grade care</p>",
+            "style": "subheading"
+          }
+        },
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Repair that you can measure.",
+            "size": "h0",
+            "tag": "h2"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Bond-building formulas with the ingredient list up front. Tested on every hair type and used in professional salons.</p>",
+            "style": "large"
+          }
+        },
+        "button": {
+          "type": "button",
+          "settings": {
+            "label": "Shop repair",
+            "link": "shopify://collections/all",
+            "style": "primary"
+          }
+        },
+        "button_2": {
+          "type": "button",
+          "settings": {
+            "label": "Find your routine",
+            "link": "shopify://collections/all",
+            "style": "secondary"
+          }
+        }
+      },
+      "block_order": [
+        "eyebrow",
+        "heading",
+        "text",
+        "button",
+        "button_2"
+      ],
+      "settings": {
+        "height": "large",
+        "overlay_position": "middle-start",
+        "text_align": "start",
+        "tint_opacity": 20
+      }
+    },
+    "usp": {
+      "type": "icons-with-text",
+      "blocks": {
+        "i1": {
+          "type": "_icon-item",
+          "settings": {
+            "icon": "drop",
+            "heading": "Sulfate-free",
+            "text": "<p>Gentle cleansing for every hair type.</p>"
+          }
+        },
+        "i2": {
+          "type": "_icon-item",
+          "settings": {
+            "icon": "leaf",
+            "heading": "Vegan formulas",
+            "text": "<p>No animal-derived ingredients.</p>"
+          }
+        },
+        "i3": {
+          "type": "_icon-item",
+          "settings": {
+            "icon": "star",
+            "heading": "Salon tested",
+            "text": "<p>Developed with working stylists.</p>"
+          }
+        },
+        "i4": {
+          "type": "_icon-item",
+          "settings": {
+            "icon": "return",
+            "heading": "Free returns",
+            "text": "<p>Changed your mind? Send it back.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "i1",
+        "i2",
+        "i3",
+        "i4"
+      ],
+      "settings": {
+        "columns": 4,
+        "columns_mobile": "2",
+        "icon_size": 24,
+        "icon_position": "start",
+        "text_align": "start",
+        "density": "compact",
+        "color_scheme": "scheme-2"
+      }
+    },
+    "new_in": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "New in",
+        "collection": "all",
+        "products_to_show": 8,
+        "layout": "carousel",
+        "columns": 4
+      }
+    },
+    "categories": {
+      "type": "collection-list",
+      "blocks": {
+        "c1": {
+          "type": "_collection-tile",
+          "settings": {}
+        },
+        "c2": {
+          "type": "_collection-tile",
+          "settings": {}
+        },
+        "c3": {
+          "type": "_collection-tile",
+          "settings": {}
+        },
+        "c4": {
+          "type": "_collection-tile",
+          "settings": {}
+        },
+        "c5": {
+          "type": "_collection-tile",
+          "settings": {}
+        },
+        "c6": {
+          "type": "_collection-tile",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "c1",
+        "c2",
+        "c3",
+        "c4",
+        "c5",
+        "c6"
+      ],
+      "settings": {
+        "title": "Shop by category",
+        "columns": 6,
+        "columns_mobile": "2"
+      }
+    },
+    "finder": {
+      "type": "guided-finder",
+      "blocks": {
+        "q1": {
+          "type": "_finder-question",
+          "settings": {
+            "question": "What is your hair type?",
+            "param": "filter.p.m.shopify.hair-type",
+            "answers": "Straight\nWavy\nCurly\nCoily"
+          }
+        },
+        "q2": {
+          "type": "_finder-question",
+          "settings": {
+            "question": "What would you like to fix?",
+            "param": "filter.p.tag",
+            "answers": "Damage\nFrizz\nVolume\nColor care"
+          }
+        }
+      },
+      "block_order": [
+        "q1",
+        "q2"
+      ],
+      "settings": {
+        "heading": "What is your hair type?",
+        "text": "<p>Each answer takes you to the products made for it.</p>",
+        "submit_label": "Show my products",
+        "color_scheme": "scheme-3"
+      }
+    },
+    "routine": {
+      "type": "routine-steps",
+      "blocks": {
+        "s1": {
+          "type": "_routine-step",
+          "settings": {
+            "label": "Step 1",
+            "heading": "Wash",
+            "text": "<p>Cleanse the scalp without stripping the lengths.</p>"
+          }
+        },
+        "s2": {
+          "type": "_routine-step",
+          "settings": {
+            "label": "Step 2",
+            "heading": "Condition",
+            "text": "<p>Detangle and seal the cuticle.</p>"
+          }
+        },
+        "s3": {
+          "type": "_routine-step",
+          "settings": {
+            "label": "Step 3",
+            "heading": "Treat",
+            "text": "<p>Once a week, a mask for deeper repair.</p>"
+          }
+        },
+        "s4": {
+          "type": "_routine-step",
+          "settings": {
+            "label": "Step 4",
+            "heading": "Style",
+            "text": "<p>Define and protect before heat.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4"
+      ],
+      "settings": {
+        "heading": "Your routine",
+        "layout": "row"
+      }
+    },
+    "results": {
+      "type": "before-after",
+      "settings": {
+        "heading": "Results you can see",
+        "text": "<p>Same light, same crop, four weeks apart.</p>",
+        "disclaimer": "Individual results vary.",
+        "layout": "text-start"
+      }
+    },
+    "spotlight": {
+      "type": "ingredient-spotlight",
+      "blocks": {
+        "i1": {
+          "type": "_ingredient",
+          "settings": {
+            "name": "Argan oil",
+            "text": "Softens and adds shine."
+          }
+        },
+        "i2": {
+          "type": "_ingredient",
+          "settings": {
+            "name": "Plant keratin",
+            "text": "Smooths the surface of the hair."
+          }
+        },
+        "i3": {
+          "type": "_ingredient",
+          "settings": {
+            "name": "Panthenol",
+            "text": "Holds moisture without weighing hair down."
+          }
+        }
+      },
+      "block_order": [
+        "i1",
+        "i2",
+        "i3"
+      ],
+      "settings": {
+        "heading": "What's inside",
+        "text": "<p>Every key ingredient and what it does for your hair.</p>",
+        "layout": "image-start",
+        "color_scheme": "scheme-2"
+      }
+    },
+    "pro": {
+      "type": "image-banner",
+      "blocks": {
+        "eyebrow": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Professional</p>",
+            "style": "subheading"
+          }
+        },
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "For professionals",
+            "size": "h1",
+            "tag": "h2"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Back-bar sizes, case packs and volume pricing for salons. Sign in with your wholesale account.</p>"
+          }
+        },
+        "button": {
+          "type": "button",
+          "settings": {
+            "label": "Wholesale sign-in",
+            "link": "/account/login",
+            "style": "secondary"
+          }
+        }
+      },
+      "block_order": [
+        "eyebrow",
+        "heading",
+        "text",
+        "button"
+      ],
+      "settings": {
+        "height": "small",
+        "overlay_position": "middle-start",
+        "text_align": "start",
+        "tint_opacity": 40
+      }
+    },
+    "signup": {
+      "type": "newsletter",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Salon notes, once a month",
+            "size": "h2"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>New formulas, routines and professional tips.</p>"
+          }
+        },
+        "form": {
+          "type": "email-signup",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "heading",
+        "text",
+        "form"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "hero",
+    "usp",
+    "new_in",
+    "categories",
+    "finder",
+    "routine",
+    "results",
+    "spotlight",
+    "pro",
+    "signup"
+  ]
+}

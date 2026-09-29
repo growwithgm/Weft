@@ -1,0 +1,23 @@
+{%- comment -%} Breadcrumb trail for product, collection, blog, article and page templates. {%- endcomment -%}
+<nav class="breadcrumbs" aria-label="{{ 'general.breadcrumbs' | t }}">
+  <ol>
+    <li><a href="{{ routes.root_url }}">{{ 'general.home' | t }}</a></li>
+    {%- case request.page_type -%}
+      {%- when 'product' -%}
+        {%- if collection -%}<li><a href="{{ collection.url }}">{{ collection.title }}</a></li>{%- endif -%}
+        <li><span aria-current="page">{{ product.title }}</span></li>
+      {%- when 'collection' -%}
+        <li><span aria-current="page">{{ collection.title }}</span></li>
+      {%- when 'list-collections' -%}
+        <li><span aria-current="page">{{ page_title }}</span></li>
+      {%- when 'blog' -%}
+        <li><span aria-current="page">{{ blog.title }}</span></li>
+        {%- if settings.breadcrumbs_blog_rss -%}<li><a href="{{ blog.url }}.atom" class="breadcrumbs__rss">{%- render 'icon', name: 'rss', size: 14 -%}<span class="visually-hidden">RSS</span></a></li>{%- endif -%}
+      {%- when 'article' -%}
+        <li><a href="{{ blog.url }}">{{ blog.title }}</a></li>
+        <li><span aria-current="page">{{ article.title }}</span></li>
+      {%- when 'page' -%}
+        <li><span aria-current="page">{{ page.title }}</span></li>
+    {%- endcase -%}
+  </ol>
+</nav>

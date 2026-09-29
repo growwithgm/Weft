@@ -1,0 +1,32 @@
+name: Lighthouse CI
+
+on:
+  pull_request:
+
+jobs:
+  lighthouse:
+    name: Lighthouse (clean benchmark profile)
+    runs-on: ubuntu-latest
+    env:
+      SHOP_STORE: ${{ secrets.SHOPIFY_STORE }}
+      SHOP_ACCESS_TOKEN: ${{ secrets.SHOPIFY_CLI_THEME_TOKEN }}
+      SHOP_PASSWORD: ${{ secrets.SHOPIFY_STOREFRONT_PASSWORD }}
+      SHOP_PRODUCT_HANDLE: ${{ vars.LHCI_PRODUCT_HANDLE }}
+      SHOP_COLLECTION_HANDLE: ${{ vars.LHCI_COLLECTION_HANDLE }}
+    steps:
+      - name: Skip when store secrets are missing
+        if: env.SHOP_STORE == '' || env.SHOP_ACCESS_TOKEN == ''
+        run: echo "Store secrets are not set; skipping Lighthouse (see docs/progress.md, Owner actions)."
+      - uses: actions/checkout@v4
+        if: env.SHOP_STORE != '' && env.SHOP_ACCESS_TOKEN != ''
+      - name: Lighthouse
+        if: env.SHOP_STORE != '' && env.SHOP_ACCESS_TOKEN != ''
+        uses: shopify/lighthouse-ci-action@v1
+        with:
+          store: ${{ env.SHOP_STORE }}
+          access_token: ${{ env.SHOP_ACCESS_TOKEN }}
+          password: ${{ env.SHOP_PASSWORD }}
+          product_handle: ${{ env.SHOP_PRODUCT_HANDLE }}
+          collection_handle: ${{ env.SHOP_COLLECTION_HANDLE }}
+          lhci_min_score_performance: 0.95
+          lhci_min_score_accessibility: 1

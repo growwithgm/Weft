@@ -1,0 +1,223 @@
+{%- comment -%}
+  Countdown timer section: a banner with text blocks and a countdown to a date the merchant
+  sets (never a fake timer). Optional background image; countdown colors can differ from the
+  color scheme.
+{%- endcomment -%}
+{%- liquid
+  assign s = section.settings
+  assign has_image = false
+  if s.image != blank
+    assign has_image = true
+  endif
+-%}
+{{ 'section-banner.css' | asset_url | stylesheet_tag }}
+{{ 'section-library.css' | asset_url | stylesheet_tag }}
+<div class="section countdown-section color-{{ s.color_scheme }}{% unless s.full_width %} page-width{% endunless %}{% if section.index > 2 %} below-fold{% endif %}"{% if s.use_custom_colors %} style="--count-fg: {{ s.count_color }}; --count-bg: {{ s.count_bg }};"{% endif %}>
+  <div class="banner banner--{{ s.height }} banner--{{ s.overlay_position }} banner--text-{{ s.text_align }}{% if s.mobile_center %} banner--mobile-center{% endif %}{% unless has_image %} banner--plain{% endunless %}" style="--banner-h: {{ s.fixed_height_desktop }}px; --banner-h-m: {{ s.fixed_height_mobile }}px; --banner-tint: {{ s.tint_color }}; --banner-tint-opacity: {{ s.tint_opacity | divided_by: 100.0 }}; --banner-text: {% if has_image %}{{ s.text_color }}{% else %}currentColor{% endif %};">
+    {%- if has_image -%}<div class="banner__media">{%- render 'image', image: s.image, sizes: '100vw', class: 'banner__image' -%}</div>{%- endif -%}
+    <div class="banner__content"><div class="banner__box stack countdown-section__box">{%- content_for 'blocks' -%}</div></div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:labels.countdown_timer",
+  "class": "section-countdown-timer",
+  "disabled_on": {
+    "groups": [
+      "header",
+      "footer",
+      "aside"
+    ]
+  },
+  "blocks": [
+    {
+      "type": "heading"
+    },
+    {
+      "type": "text"
+    },
+    {
+      "type": "button"
+    },
+    {
+      "type": "product-countdown"
+    },
+    {
+      "type": "discount-code"
+    }
+  ],
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:labels.background_image"
+    },
+    {
+      "type": "select",
+      "id": "height",
+      "label": "t:labels.height",
+      "options": [
+        {
+          "value": "small",
+          "label": "t:labels.small"
+        },
+        {
+          "value": "medium",
+          "label": "t:labels.medium"
+        },
+        {
+          "value": "large",
+          "label": "t:labels.large"
+        },
+        {
+          "value": "fixed",
+          "label": "t:labels.fixed"
+        }
+      ],
+      "default": "small"
+    },
+    {
+      "type": "range",
+      "id": "fixed_height_desktop",
+      "label": "t:labels.fixed_height_on_large_screens",
+      "min": 200,
+      "max": 800,
+      "step": 20,
+      "unit": "px",
+      "default": 400,
+      "visible_if": "{{ section.settings.height == 'fixed' }}"
+    },
+    {
+      "type": "range",
+      "id": "fixed_height_mobile",
+      "label": "t:labels.fixed_height_on_mobile",
+      "min": 200,
+      "max": 800,
+      "step": 20,
+      "unit": "px",
+      "default": 360,
+      "visible_if": "{{ section.settings.height == 'fixed' }}"
+    },
+    {
+      "type": "select",
+      "id": "overlay_position",
+      "label": "t:labels.content_position",
+      "options": [
+        {
+          "value": "middle-start",
+          "label": "t:labels.middle_start"
+        },
+        {
+          "value": "middle-center",
+          "label": "t:labels.middle_center"
+        },
+        {
+          "value": "middle-end",
+          "label": "t:labels.middle_end"
+        }
+      ],
+      "default": "middle-center"
+    },
+    {
+      "type": "select",
+      "id": "text_align",
+      "label": "t:labels.text_alignment",
+      "options": [
+        {
+          "value": "start",
+          "label": "t:labels.start"
+        },
+        {
+          "value": "center",
+          "label": "t:labels.center"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "checkbox",
+      "id": "mobile_center",
+      "label": "t:labels.center_text_on_mobile",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "use_custom_colors",
+      "label": "t:labels.custom_countdown_colors",
+      "default": false
+    },
+    {
+      "type": "color",
+      "id": "count_color",
+      "label": "t:labels.countdown_numbers",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "count_bg",
+      "label": "t:labels.countdown_background",
+      "default": "#2A2B2A"
+    },
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "t:labels.full_width",
+      "default": true
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:labels.color_scheme",
+      "default": "scheme-2"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "t:labels.text_on_the_image",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "tint_color",
+      "label": "t:labels.image_tint",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "tint_opacity",
+      "label": "t:labels.image_tint_opacity",
+      "min": 0,
+      "max": 90,
+      "step": 5,
+      "unit": "%",
+      "default": 30
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:labels.countdown_timer",
+      "category": "t:labels.promotions",
+      "blocks": [
+        {
+          "type": "heading",
+          "settings": {
+            "heading": "The sale ends soon",
+            "size": "h2"
+          }
+        },
+        {
+          "type": "product-countdown"
+        },
+        {
+          "type": "button",
+          "settings": {
+            "label": "Shop the sale",
+            "style": "primary"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

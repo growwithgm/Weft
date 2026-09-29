@@ -1,0 +1,876 @@
+{%- comment -%}
+  Collection products (brief §14.3, S6): toolbar with product count, sorting and grid/list
+  toggle; Storefront filtering in a sticky side column on large screens and a drawer on small
+  ones (same form, moved by facets.js, so there is one copy in the DOM); active filter chips;
+  product grid with promotion tiles at chosen positions; page numbers, "Load more" or infinite
+  scroll (Theme settings > Layout > Pagination).
+  Wholesale buyers see wholesale cards; tag-fallback wholesale-only products render nothing for
+  retail, so the grid never has empty cells.
+  Without JavaScript the filter form submits normally and pagination links work.
+{%- endcomment -%}
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'section-collection.css' | asset_url | stylesheet_tag }}
+{%- liquid
+  assign s = section.settings
+  assign form_id = 'FacetsForm-' | append: section.id
+  assign drawer_id = 'FacetsDrawer-' | append: section.id
+  assign sort_value = collection.sort_by | default: collection.default_sort_by
+  assign clear_url = collection.url | append: '?sort_by=' | append: sort_value
+  assign filtering = false
+  if s.enable_filtering and collection.filters.size > 0
+    assign filtering = true
+  endif
+  assign any_active = false
+  for filter in collection.filters
+    if filter.active_values.size > 0 or filter.min_value.value != nil or filter.max_value.value != nil
+      assign any_active = true
+      break
+    endif
+  endfor
+  assign sidebar = false
+  if filtering and s.filters_open_lg
+    assign sidebar = true
+  endif
+-%}
+<collection-results
+  class="section collection color-{{ s.color_scheme }}"
+  data-section-id="{{ section.id }}"
+  data-module="{{ 'facets.js' | asset_url }}"
+  data-load="idle"
+>
+  <div class="page-width">
+    {%- comment -%} Theme settings > Breadcrumbs > Collections; the collection banner shows its own trail when it comes first. {%- endcomment -%}
+    {%- if settings.breadcrumbs_collection and section.index == 1 -%}{%- render 'breadcrumbs' -%}{%- endif -%}
+    {%- paginate collection.products by s.products_per_page -%}
+      <div class="collection__toolbar">
+        {%- if filtering -%}
+          <button type="button" class="button button--secondary collection__filter-toggle{% if sidebar %} collection__filter-toggle--small{% endif %} js-only" data-open-dialog="{{ drawer_id }}" aria-haspopup="dialog">
+            {%- render 'icon', name: 'filter', size: 18 -%}
+            <span>{{ 'collections.filter_and_sort' | t }}</span>
+          </button>
+        {%- endif -%}
+        <p class="collection__count muted" data-product-count>{{ 'collections.product_count' | t: count: collection.products_count }}</p>
+        {%- if s.enable_sorting -%}
+          <div class="collection__sort">
+            <label class="collection__sort-label" for="SortBy-{{ section.id }}">{{ 'collections.sort_by' | t }}</label>
+            <select class="select collection__sort-select" id="SortBy-{{ section.id }}" name="sort_by" form="{{ form_id }}" data-facets-sort>
+              {%- for option in collection.sort_options -%}
+                {%- liquid
+                  assign show_option = true
+                  case option.value
+                    when 'manual'
+                      assign show_option = s.sort_show_featured
+                    when 'best-selling'
+                      assign show_option = s.sort_show_best
+                    when 'title-ascending', 'title-descending'
+                      assign show_option = s.sort_show_alpha
+                    when 'price-ascending', 'price-descending'
+                      assign show_option = s.sort_show_price
+                    when 'created-ascending', 'created-descending'
+                      assign show_option = s.sort_show_date
+                  endcase
+                  if option.value == sort_value
+                    assign show_option = true
+                  endif
+                -%}
+                {%- if show_option -%}
+                  <option value="{{ option.value | escape }}"{% if option.value == sort_value %} selected{% endif %}>{{ option.name | escape }}</option>
+                {%- endif -%}
+              {%- endfor -%}
+            </select>
+          </div>
+          {%- unless filtering -%}
+            <form id="{{ form_id }}" action="{{ collection.url }}" method="get" data-facets-form hidden></form>
+            <noscript><button type="submit" form="{{ form_id }}" class="button button--secondary">{{ 'collections.apply' | t }}</button></noscript>
+          {%- endunless -%}
+        {%- endif -%}
+        {%- if s.show_layout_toggle -%}
+          <div class="collection__layout-toggle js-only" role="group" aria-label="{{ 'collections.layout' | t }}">
+            <button type="button" class="icon-button" data-layout-option="grid" aria-pressed="true" aria-label="{{ 'collections.layout_grid' | t }}">{%- render 'icon', name: 'grid', size: 20 -%}</button>
+            <button type="button" class="icon-button" data-layout-option="list" aria-pressed="false" aria-label="{{ 'collections.layout_list' | t }}">{%- render 'icon', name: 'list', size: 20 -%}</button>
+          </div>
+        {%- endif -%}
+      </div>
+
+      <div class="collection__layout{% if sidebar %} collection__layout--sidebar{% endif %}{% if s.stick_on_scroll %} collection__layout--sticky{% endif %}">
+        {%- if filtering -%}
+          <aside class="collection__facets{% unless sidebar %} collection__facets--drawer-only{% endunless %}" aria-label="{{ 'collections.filters' | t }}" data-facets-home>
+            {%- render 'facets', results: collection, form_id: form_id, clear_url: clear_url, show_counts: s.show_filter_counts, expand: s.expand_filters, max_options: s.max_filter_options -%}
+            {%- for block in section.blocks -%}
+              {%- if block.type == 'promo_filter' -%}{%- render 'collection-promo', block: block, sizes: '300px' -%}{%- endif -%}
+            {%- endfor -%}
+          </aside>
+        {%- endif -%}
+
+        <div class="collection__results" data-facets-results aria-live="polite">
+          {%- render 'facets-active', results: collection, clear_url: clear_url -%}
+          {%- if collection.products.size > 0 -%}
+            {%- liquid
+              # Image sizes follow the columns at each breakpoint, so wide layouts get sharp images and phones small ones.
+              assign tablet_vw = 100 | divided_by: s.columns_tablet | append: 'vw'
+              assign mobile_vw = '50vw'
+              if s.columns_mobile == '1'
+                assign mobile_vw = '100vw'
+              endif
+              assign card_sizes = '(min-width: 1440px) calc(100vw / ' | append: s.columns_wide | append: '), (min-width: 990px) calc(100vw / ' | append: s.columns | append: '), (min-width: 750px) ' | append: tablet_vw | append: ', ' | append: mobile_vw
+            -%}
+            <ul
+              class="product-grid collection__grid"
+              id="ProductGrid-{{ section.id }}"
+              role="list"
+              data-product-grid
+              data-layout="grid"
+              style="--cols: {{ s.columns }}; --cols-mobile: {{ s.columns_mobile }}; --cols-tablet: {{ s.columns_tablet }}; --cols-wide: {{ s.columns_wide }}"
+            >
+              {%- for product in collection.products -%}
+                {%- assign product_index = forloop.index -%}
+                {%- if paginate.current_page == 1 -%}
+                  {%- for block in section.blocks -%}
+                    {%- liquid
+                      assign show_promo = false
+                      if block.type != 'promo_filter' and block.settings.position == product_index
+                        assign show_promo = true
+                        if block.settings.hide_on_filter and any_active
+                          assign show_promo = false
+                        endif
+                      endif
+                    -%}
+                    {%- if show_promo -%}
+                      <li class="collection__promo collection__promo--{{ block.type | remove: 'promo_' }}{% if block.settings.span == '2' %} collection__promo--span{% endif %}">
+                        {%- render 'collection-promo', block: block, sizes: card_sizes -%}
+                      </li>
+                    {%- endif -%}
+                  {%- endfor -%}
+                {%- endif -%}
+                {%- liquid
+                  assign eager = false
+                  if paginate.current_page == 1 and product_index <= 2
+                    assign eager = true
+                  endif
+                -%}
+                {%- render 'product-card', product: product, wrapper: 'li', index: product_index, sizes: card_sizes, eager: eager, highlight: true, collection: collection -%}
+              {%- endfor -%}
+            </ul>
+          {%- else -%}
+            <div class="collection__empty stack">
+              <p class="h4">{{ 'collections.empty' | t }}</p>
+              {%- if any_active -%}<a class="link" href="{{ clear_url }}" data-facet-link>{{ 'collections.clear_all' | t }}</a>{%- endif -%}
+            </div>
+          {%- endif -%}
+
+          {%- if paginate.pages > 1 -%}
+            {%- if settings.pagination_style != 'numbers' -%}
+              {%- assign shown = paginate.current_offset | plus: collection.products.size -%}
+              <div class="collection__load-more" data-load-more-wrap>
+                <p class="muted collection__shown">{{ 'collections.showing' | t: shown: shown, total: collection.products_count }}</p>
+                {%- if paginate.next -%}
+                  <a class="button button--secondary" href="{{ paginate.next.url }}" data-load-more{% if settings.pagination_style == 'infinite' %} data-infinite{% endif %}>{{ 'general.pagination.load_more' | t }}</a>
+                {%- endif -%}
+              </div>
+            {%- else -%}
+              {%- render 'pagination', paginate: paginate -%}
+            {%- endif -%}
+          {%- endif -%}
+        </div>
+      </div>
+
+      {%- if filtering -%}
+        <dialog id="{{ drawer_id }}" class="drawer drawer--start facets-drawer" aria-label="{{ 'collections.filter_and_sort' | t }}" data-light-dismiss data-animate>
+          <div class="drawer__panel">
+            <div class="drawer__header">
+              <span class="drawer__title h3">{{ 'collections.filter_and_sort' | t }}</span>
+              <button type="button" class="icon-button" data-close-dialog aria-label="{{ 'general.close' | t }}">{%- render 'icon', name: 'close' -%}</button>
+            </div>
+            <div class="drawer__body facets-drawer__body" data-facets-slot></div>
+            <div class="drawer__footer facets-drawer__footer">
+              <a class="link" href="{{ clear_url }}" data-facet-link>{{ 'collections.clear_all' | t }}</a>
+              <button type="button" class="button" data-close-dialog data-facets-show>{{ 'collections.show_results' | t: count: collection.products_count }}</button>
+            </div>
+          </div>
+        </dialog>
+      {%- endif -%}
+    {%- endpaginate -%}
+  </div>
+</collection-results>
+
+{% schema %}
+{
+  "name": "t:labels.collection_products",
+  "class": "section-main-collection",
+  "settings": [
+    {
+      "type": "range",
+      "id": "products_per_page",
+      "label": "t:labels.products_per_page",
+      "min": 8,
+      "max": 50,
+      "step": 2,
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "columns",
+      "label": "t:labels.columns_on_large_screens",
+      "min": 2,
+      "max": 5,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "columns_wide",
+      "label": "t:labels.columns_on_wide_screens",
+      "info": "t:labels.from_1440_px_wide",
+      "min": 3,
+      "max": 6,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "select",
+      "id": "columns_tablet",
+      "label": "t:labels.columns_on_tablets",
+      "options": [
+        {
+          "value": "2",
+          "label": "t:labels.2"
+        },
+        {
+          "value": "3",
+          "label": "t:labels.3"
+        }
+      ],
+      "default": "3"
+    },
+    {
+      "type": "select",
+      "id": "columns_mobile",
+      "label": "t:labels.columns_on_mobile",
+      "options": [
+        {
+          "value": "1",
+          "label": "t:labels.1"
+        },
+        {
+          "value": "2",
+          "label": "t:labels.2"
+        }
+      ],
+      "default": "2"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_layout_toggle",
+      "label": "t:labels.show_grid_and_list_toggle",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "t:labels.filters"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_filtering",
+      "label": "t:labels.enable_filtering",
+      "default": true,
+      "info": "t:labels.customize_filters_in_the_search_and_discovery_ap"
+    },
+    {
+      "type": "checkbox",
+      "id": "filters_open_lg",
+      "label": "t:labels.show_filters_beside_products_on_large_screens",
+      "default": true,
+      "info": "t:text.sections.main_collection.settings.filters_open_lg.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "stick_on_scroll",
+      "label": "t:labels.keep_filters_in_view_while_scrolling",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_filter_counts",
+      "label": "t:labels.show_product_counts",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "expand_filters",
+      "label": "t:labels.open_all_filters",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "max_filter_options",
+      "label": "t:labels.values_before_show_more",
+      "min": 4,
+      "max": 20,
+      "step": 1,
+      "default": 8
+    },
+    {
+      "type": "header",
+      "content": "t:labels.sorting"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_sorting",
+      "label": "t:labels.enable_sorting",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "sort_show_featured",
+      "label": "t:labels.show_featured",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "sort_show_best",
+      "label": "t:labels.show_best_selling",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "sort_show_alpha",
+      "label": "t:labels.show_alphabetical_options",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "sort_show_price",
+      "label": "t:labels.show_price_options",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "sort_show_date",
+      "label": "t:labels.show_date_options",
+      "default": true
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:labels.color_scheme",
+      "default": "scheme-1"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "promo_wide",
+      "name": "t:labels.wide_promotion",
+      "settings": [
+        {
+          "type": "range",
+          "id": "position",
+          "label": "t:labels.before_product_number",
+          "min": 1,
+          "max": 50,
+          "step": 1,
+          "default": 5,
+          "info": "t:labels.promotions_show_on_the_first_page_only"
+        },
+        {
+          "type": "checkbox",
+          "id": "hide_on_filter",
+          "label": "t:labels.hide_while_filters_are_active",
+          "default": true
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "t:labels.image"
+        },
+        {
+          "type": "video",
+          "id": "video",
+          "label": "t:labels.video",
+          "info": "t:labels.plays_muted_in_a_loop_instead_of_the_image"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "t:labels.link"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "t:labels.text",
+          "default": "<h3>Promotion headline</h3><p>Pair text with an image to highlight a range.</p>"
+        },
+        {
+          "type": "select",
+          "id": "text_size",
+          "label": "t:labels.text_size",
+          "options": [
+            {
+              "value": "small",
+              "label": "t:labels.small"
+            },
+            {
+              "value": "medium",
+              "label": "t:labels.medium"
+            },
+            {
+              "value": "large",
+              "label": "t:labels.large"
+            }
+          ],
+          "default": "medium"
+        },
+        {
+          "type": "select",
+          "id": "text_align",
+          "label": "t:labels.text_alignment",
+          "options": [
+            {
+              "value": "start",
+              "label": "t:labels.start"
+            },
+            {
+              "value": "center",
+              "label": "t:labels.center"
+            },
+            {
+              "value": "end",
+              "label": "t:labels.end"
+            }
+          ],
+          "default": "center"
+        },
+        {
+          "type": "range",
+          "id": "min_height",
+          "label": "t:labels.minimum_height",
+          "min": 160,
+          "max": 640,
+          "step": 20,
+          "unit": "px",
+          "default": 320
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "t:labels.button_label"
+        },
+        {
+          "type": "select",
+          "id": "button_style",
+          "label": "t:labels.button_style",
+          "options": [
+            {
+              "value": "primary",
+              "label": "t:labels.primary"
+            },
+            {
+              "value": "secondary",
+              "label": "t:labels.secondary"
+            }
+          ],
+          "default": "primary"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "t:labels.text",
+          "default": "#FFFFFF"
+        },
+        {
+          "type": "color",
+          "id": "tint_color",
+          "label": "t:labels.image_tint",
+          "default": "#000000"
+        },
+        {
+          "type": "range",
+          "id": "tint_opacity",
+          "label": "t:labels.image_tint_opacity",
+          "min": 0,
+          "max": 90,
+          "step": 5,
+          "unit": "%",
+          "default": 30
+        }
+      ]
+    },
+    {
+      "type": "promo_media",
+      "name": "t:labels.media_promotion",
+      "settings": [
+        {
+          "type": "range",
+          "id": "position",
+          "label": "t:labels.before_product_number",
+          "min": 1,
+          "max": 50,
+          "step": 1,
+          "default": 3,
+          "info": "t:labels.promotions_show_on_the_first_page_only"
+        },
+        {
+          "type": "select",
+          "id": "span",
+          "label": "t:labels.width",
+          "options": [
+            {
+              "value": "1",
+              "label": "t:labels.one_column"
+            },
+            {
+              "value": "2",
+              "label": "t:labels.two_columns"
+            }
+          ],
+          "default": "1"
+        },
+        {
+          "type": "checkbox",
+          "id": "hide_on_filter",
+          "label": "t:labels.hide_while_filters_are_active",
+          "default": true
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "t:labels.image"
+        },
+        {
+          "type": "video",
+          "id": "video",
+          "label": "t:labels.video",
+          "info": "t:labels.plays_muted_in_a_loop_instead_of_the_image"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "t:labels.link"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "t:labels.text",
+          "default": "<h3>Promotion headline</h3>"
+        },
+        {
+          "type": "select",
+          "id": "text_size",
+          "label": "t:labels.text_size",
+          "options": [
+            {
+              "value": "small",
+              "label": "t:labels.small"
+            },
+            {
+              "value": "medium",
+              "label": "t:labels.medium"
+            },
+            {
+              "value": "large",
+              "label": "t:labels.large"
+            }
+          ],
+          "default": "medium"
+        },
+        {
+          "type": "select",
+          "id": "text_align",
+          "label": "t:labels.text_alignment",
+          "options": [
+            {
+              "value": "start",
+              "label": "t:labels.start"
+            },
+            {
+              "value": "center",
+              "label": "t:labels.center"
+            },
+            {
+              "value": "end",
+              "label": "t:labels.end"
+            }
+          ],
+          "default": "center"
+        },
+        {
+          "type": "range",
+          "id": "min_height",
+          "label": "t:labels.minimum_height",
+          "min": 160,
+          "max": 640,
+          "step": 20,
+          "unit": "px",
+          "default": 320
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "t:labels.button_label"
+        },
+        {
+          "type": "select",
+          "id": "button_style",
+          "label": "t:labels.button_style",
+          "options": [
+            {
+              "value": "primary",
+              "label": "t:labels.primary"
+            },
+            {
+              "value": "secondary",
+              "label": "t:labels.secondary"
+            }
+          ],
+          "default": "primary"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "t:labels.text",
+          "default": "#FFFFFF"
+        },
+        {
+          "type": "color",
+          "id": "tint_color",
+          "label": "t:labels.image_tint",
+          "default": "#000000"
+        },
+        {
+          "type": "range",
+          "id": "tint_opacity",
+          "label": "t:labels.image_tint_opacity",
+          "min": 0,
+          "max": 90,
+          "step": 5,
+          "unit": "%",
+          "default": 30
+        }
+      ]
+    },
+    {
+      "type": "promo_card",
+      "name": "t:labels.card_promotion",
+      "settings": [
+        {
+          "type": "range",
+          "id": "position",
+          "label": "t:labels.before_product_number",
+          "min": 1,
+          "max": 50,
+          "step": 1,
+          "default": 7,
+          "info": "t:labels.promotions_show_on_the_first_page_only"
+        },
+        {
+          "type": "checkbox",
+          "id": "hide_on_filter",
+          "label": "t:labels.hide_while_filters_are_active",
+          "default": true
+        },
+        {
+          "type": "color_scheme",
+          "id": "color_scheme",
+          "label": "t:labels.color_scheme",
+          "default": "scheme-2"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "t:labels.image"
+        },
+        {
+          "type": "select",
+          "id": "image_ratio",
+          "label": "t:labels.image_aspect_ratio",
+          "options": [
+            {
+              "value": "square",
+              "label": "t:labels.square"
+            },
+            {
+              "value": "portrait",
+              "label": "t:labels.portrait"
+            },
+            {
+              "value": "landscape",
+              "label": "t:labels.landscape"
+            }
+          ],
+          "default": "landscape"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "t:labels.link"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "t:labels.heading",
+          "default": "Card promotion"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "t:labels.text",
+          "default": "<p>Tell shoppers about an offer, a guide or a service.</p>"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "t:labels.button_label",
+          "default": "Learn more"
+        },
+        {
+          "type": "select",
+          "id": "button_style",
+          "label": "t:labels.button_style",
+          "options": [
+            {
+              "value": "primary",
+              "label": "t:labels.primary"
+            },
+            {
+              "value": "secondary",
+              "label": "t:labels.secondary"
+            }
+          ],
+          "default": "secondary"
+        },
+        {
+          "type": "checkbox",
+          "id": "button_bottom",
+          "label": "t:labels.align_button_to_the_bottom",
+          "default": true
+        }
+      ]
+    },
+    {
+      "type": "promo_filter",
+      "name": "t:labels.filter_promotion",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "t:labels.shows_under_the_filters_on_large_screens"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "t:labels.image"
+        },
+        {
+          "type": "video",
+          "id": "video",
+          "label": "t:labels.video",
+          "info": "t:labels.plays_muted_in_a_loop_instead_of_the_image"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "t:labels.link"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "t:labels.text",
+          "default": "<h3>Promotion headline</h3>"
+        },
+        {
+          "type": "select",
+          "id": "text_size",
+          "label": "t:labels.text_size",
+          "options": [
+            {
+              "value": "small",
+              "label": "t:labels.small"
+            },
+            {
+              "value": "medium",
+              "label": "t:labels.medium"
+            },
+            {
+              "value": "large",
+              "label": "t:labels.large"
+            }
+          ],
+          "default": "small"
+        },
+        {
+          "type": "select",
+          "id": "text_align",
+          "label": "t:labels.text_alignment",
+          "options": [
+            {
+              "value": "start",
+              "label": "t:labels.start"
+            },
+            {
+              "value": "center",
+              "label": "t:labels.center"
+            },
+            {
+              "value": "end",
+              "label": "t:labels.end"
+            }
+          ],
+          "default": "center"
+        },
+        {
+          "type": "range",
+          "id": "min_height",
+          "label": "t:labels.minimum_height",
+          "min": 160,
+          "max": 640,
+          "step": 20,
+          "unit": "px",
+          "default": 360
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "t:labels.button_label"
+        },
+        {
+          "type": "select",
+          "id": "button_style",
+          "label": "t:labels.button_style",
+          "options": [
+            {
+              "value": "primary",
+              "label": "t:labels.primary"
+            },
+            {
+              "value": "secondary",
+              "label": "t:labels.secondary"
+            }
+          ],
+          "default": "primary"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "t:labels.text",
+          "default": "#FFFFFF"
+        },
+        {
+          "type": "color",
+          "id": "tint_color",
+          "label": "t:labels.image_tint",
+          "default": "#000000"
+        },
+        {
+          "type": "range",
+          "id": "tint_opacity",
+          "label": "t:labels.image_tint_opacity",
+          "min": 0,
+          "max": 90,
+          "step": 5,
+          "unit": "%",
+          "default": 30
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,56 @@
+{%- comment -%}
+  Badges (VERTICALS §2): short claims such as vegan, cruelty-free or organic cotton. Always
+  merchant-entered text; the theme adds nothing of its own.
+{%- endcomment -%}
+<ul class="badges badges--{{ block.settings.style }}" role="list" {{ block.shopify_attributes }}>{%- content_for 'blocks' -%}</ul>
+{% schema %}
+{
+  "name": "t:labels.badges",
+  "tag": null,
+  "blocks": [
+    {
+      "type": "_badge"
+    }
+  ],
+  "settings": [
+    {
+      "type": "select",
+      "id": "style",
+      "label": "t:labels.style",
+      "options": [
+        {
+          "value": "outline",
+          "label": "t:labels.outline"
+        },
+        {
+          "value": "filled",
+          "label": "t:labels.filled"
+        }
+      ],
+      "default": "outline"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:labels.badges",
+      "category": "t:labels.product",
+      "blocks": [
+        {
+          "type": "_badge",
+          "settings": {
+            "text": "Vegan",
+            "icon": "leaf"
+          }
+        },
+        {
+          "type": "_badge",
+          "settings": {
+            "text": "Cruelty-free",
+            "icon": "check"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

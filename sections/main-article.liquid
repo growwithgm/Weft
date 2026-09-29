@@ -1,0 +1,207 @@
+{%- comment -%}
+  Blog post: featured image, title, author, date, tags, content, share links, previous / next
+  posts and comments (paginated, with Shopify's success, moderation and error messages).
+  Merges the live "Blog post" and "Article comments" sections.
+{%- endcomment -%}
+{%- liquid
+  assign s = section.settings
+  assign share_url = shop.url | append: article.url
+  assign share_image = article.image | image_url: width: 1200
+-%}
+{{ 'section-content.css' | asset_url | stylesheet_tag }}
+<article class="section main-article color-{{ s.color_scheme }}">
+  {%- if s.show_image and article.image -%}
+    <div class="main-article__media main-article__media--{{ s.image_width }} media">
+      {%- render 'image', image: article.image, sizes: '100vw', eager: true, widths: '550,750,1100,1500,1920,2400' -%}
+    </div>
+  {%- endif -%}
+  <div class="page-width page-width--narrow main-article__inner">
+    {%- if settings.breadcrumbs_article -%}{%- render 'breadcrumbs' -%}{%- endif -%}
+    <header class="main-article__header stack main-article__header--{{ s.heading_align }}">
+      {%- if s.show_tags and article.tags.size > 0 -%}
+        <p class="main-article__tags muted">{%- for tag in article.tags -%}<a href="{{ blog.url }}/tagged/{{ tag | handleize }}">{{ tag | escape }}</a>{%- unless forloop.last %} · {% endunless -%}{%- endfor -%}</p>
+      {%- endif -%}
+      <h1 class="h1 main-article__title">{{ article.title | escape }}</h1>
+      {%- if s.show_author or s.show_date -%}
+        <p class="main-article__meta muted">
+          {%- if s.show_author -%}<span>{{ article.author }}</span>{%- endif -%}
+          {%- if s.show_author and s.show_date %} · {% endif -%}
+          {%- if s.show_date -%}{{ article.published_at | time_tag: format: 'date' }}{%- endif -%}
+        </p>
+      {%- endif -%}
+    </header>
+    <div class="rte main-article__content">{{ article.content }}</div>
+    {%- if s.show_share -%}
+      {%- render 'share-links', url: share_url, title: article.title, image: share_image, x: s.share_x, facebook: s.share_facebook, pinterest: s.share_pinterest, copy: true -%}
+    {%- endif -%}
+    {%- if s.show_pagination -%}
+      {%- if blog.previous_article or blog.next_article -%}
+        <nav class="main-article__pager" aria-label="{{ 'blogs.more_posts' | t }}">
+          {%- if blog.previous_article -%}<a class="main-article__prev" href="{{ blog.previous_article.url }}" rel="prev"><span class="muted">{{ 'blogs.older' | t }}</span><span>{{ blog.previous_article.title | escape }}</span></a>{%- endif -%}
+          {%- if blog.next_article -%}<a class="main-article__next" href="{{ blog.next_article.url }}" rel="next"><span class="muted">{{ 'blogs.newer' | t }}</span><span>{{ blog.next_article.title | escape }}</span></a>{%- endif -%}
+        </nav>
+      {%- endif -%}
+    {%- endif -%}
+
+    {%- if blog.comments_enabled? -%}
+      <section class="main-article__comments" id="Comments" aria-labelledby="CommentsTitle">
+        <h2 class="h3" id="CommentsTitle">{{ 'blogs.comments.title' | t: count: article.comments_count }}</h2>
+        {%- paginate article.comments by s.comments_per_page -%}
+          {%- if article.comments_count > 0 -%}
+            <ol class="comments" role="list">
+              {%- for comment in article.comments -%}
+                <li class="comment" id="{{ comment.id }}">
+                  <div class="rte comment__body">{{ comment.content }}</div>
+                  <p class="comment__meta muted"><span>{{ comment.author | escape }}</span> · {{ comment.created_at | time_tag: format: 'date' }}</p>
+                </li>
+              {%- endfor -%}
+            </ol>
+            {%- render 'pagination', paginate: paginate, anchor: '#Comments' -%}
+          {%- endif -%}
+        {%- endpaginate -%}
+        {%- form 'new_comment', article, class: 'comment-form' -%}
+          <h3 class="h4">{{ 'blogs.comments.leave' | t }}</h3>
+          {%- if form.posted_successfully? -%}
+            <p class="form-message form-message--success" role="status" tabindex="-1" autofocus>{%- render 'icon', name: 'check', size: 18 -%}{%- if blog.moderated? -%}{{ 'blogs.comments.moderated' | t }}{%- else -%}{{ 'blogs.comments.posted' | t }}{%- endif -%}</p>
+          {%- elsif form.errors -%}
+            <div class="form-message form-message--error" role="alert" tabindex="-1" autofocus>{%- render 'icon', name: 'alert', size: 18 -%}<span>{{ form.errors | default_errors }}</span></div>
+          {%- endif -%}
+          <div class="form-fields">
+            <div class="form-field form-field--half">
+              <label class="field__label" for="CommentAuthor">{{ 'contact.name' | t }} <span aria-hidden="true">*</span></label>
+              <input class="input" type="text" id="CommentAuthor" name="comment[author]" value="{{ form.author }}" autocomplete="name" required>
+            </div>
+            <div class="form-field form-field--half">
+              <label class="field__label" for="CommentEmail">{{ 'contact.email' | t }} <span aria-hidden="true">*</span></label>
+              <input class="input" type="email" id="CommentEmail" name="comment[email]" value="{{ form.email }}" autocomplete="email" spellcheck="false" autocapitalize="off" required>
+            </div>
+            <div class="form-field">
+              <label class="field__label" for="CommentBody">{{ 'blogs.comments.message' | t }} <span aria-hidden="true">*</span></label>
+              <textarea class="textarea" id="CommentBody" name="comment[body]" rows="5" required>{{ form.body }}</textarea>
+            </div>
+          </div>
+          {%- if blog.moderated? -%}<p class="muted form-fields__note">{{ 'blogs.comments.moderation_note' | t }}</p>{%- endif -%}
+          <button type="submit" class="button">{{ 'blogs.comments.post' | t }}</button>
+        {%- endform -%}
+      </section>
+    {%- endif -%}
+  </div>
+</article>
+
+<script type="application/ld+json">
+  {{ article | structured_data }}
+</script>
+
+{% schema %}
+{
+  "name": "t:labels.blog_post",
+  "class": "section-main-article",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_image",
+      "label": "t:labels.show_featured_image",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "image_width",
+      "label": "t:labels.featured_image_width",
+      "options": [
+        {
+          "value": "full",
+          "label": "t:labels.full_width"
+        },
+        {
+          "value": "page",
+          "label": "t:labels.page_width"
+        },
+        {
+          "value": "narrow",
+          "label": "t:labels.text_width"
+        }
+      ],
+      "default": "page"
+    },
+    {
+      "type": "select",
+      "id": "heading_align",
+      "label": "t:labels.heading_alignment",
+      "options": [
+        {
+          "value": "start",
+          "label": "t:labels.start"
+        },
+        {
+          "value": "center",
+          "label": "t:labels.center"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_tags",
+      "label": "t:labels.show_tags",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_author",
+      "label": "t:labels.show_author",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_date",
+      "label": "t:labels.show_date",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_share",
+      "label": "t:labels.show_share_links",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "share_x",
+      "label": "t:labels.x_formerly_twitter",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "share_facebook",
+      "label": "t:labels.facebook",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "share_pinterest",
+      "label": "t:labels.pinterest",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_pagination",
+      "label": "t:labels.show_links_to_the_previous_and_next_posts",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "comments_per_page",
+      "label": "t:labels.comments_per_page",
+      "min": 5,
+      "max": 50,
+      "step": 5,
+      "default": 10
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:labels.color_scheme",
+      "default": "scheme-1"
+    }
+  ]
+}
+{% endschema %}

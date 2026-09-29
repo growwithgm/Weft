@@ -1,0 +1,180 @@
+{%- comment -%}
+  Product comparison grid: chosen products side by side, with a summary row (image, title,
+  button) and rows chosen as blocks. Scrolls sideways on small screens with the labels fixed.
+{%- endcomment -%}
+{%- liquid
+  assign s = section.settings
+  assign products = s.product_list
+-%}
+{{ 'section-content.css' | asset_url | stylesheet_tag }}
+<div class="section comparison color-{{ s.color_scheme }}{% if s.highlight_rows %} comparison--striped{% endif %}{% if section.index > 2 %} below-fold{% endif %}" data-reveal>
+  <div class="page-width">
+    {%- render 'section-heading', title: s.heading, align: s.heading_align, button_label: s.view_more_label, button_link: s.view_more_link, button_style: 'link' -%}
+    {%- if s.text != blank -%}<div class="rte comparison__intro">{{ s.text }}</div>{%- endif -%}
+    {%- if products == blank or products.count == 0 -%}
+      <p class="muted">{{ 'compare.choose_products' | t }}</p>
+    {%- else -%}
+      <div class="comparison__scroll" role="region" aria-label="{{ s.heading | escape }}" tabindex="0">
+        <table class="comparison__table">
+          <thead>
+            <tr>
+              <td></td>
+              {%- for product in products -%}
+                <th scope="col" class="comparison__product">
+                  {%- if s.show_image -%}
+                    <a class="comparison__media media media--{{ s.image_ratio }}" href="{{ product.url }}" tabindex="-1" aria-hidden="true">
+                      {%- if product.featured_media -%}{{ product.featured_media.preview_image | image_url: width: 480 | image_tag: widths: '240,360,480', sizes: '220px', alt: '', loading: 'lazy' }}{%- endif -%}
+                    </a>
+                  {%- endif -%}
+                  <a class="comparison__title" href="{{ product.url }}">{{ product.title | escape }}</a>
+                  {%- if s.show_button -%}<a class="button button--secondary button--small comparison__button" href="{{ product.url }}">{{ 'products.quick_add.view_details' | t }}</a>{%- endif -%}
+                </th>
+              {%- endfor -%}
+            </tr>
+          </thead>
+          <tbody>{%- content_for 'blocks' -%}</tbody>
+        </table>
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:labels.product_comparison_grid",
+  "class": "section-product-comparison-grid",
+  "disabled_on": {
+    "groups": [
+      "header",
+      "footer",
+      "aside"
+    ]
+  },
+  "blocks": [
+    {
+      "type": "_comparison-row"
+    }
+  ],
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:labels.heading",
+      "default": "Compare"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "t:labels.text"
+    },
+    {
+      "type": "select",
+      "id": "heading_align",
+      "label": "t:labels.heading_alignment",
+      "options": [
+        {
+          "value": "start",
+          "label": "t:labels.start"
+        },
+        {
+          "value": "center",
+          "label": "t:labels.center"
+        }
+      ],
+      "default": "start"
+    },
+    {
+      "type": "text",
+      "id": "view_more_label",
+      "label": "t:labels.link_label"
+    },
+    {
+      "type": "url",
+      "id": "view_more_link",
+      "label": "t:labels.link"
+    },
+    {
+      "type": "product_list",
+      "id": "product_list",
+      "label": "t:labels.products",
+      "limit": 6
+    },
+    {
+      "type": "checkbox",
+      "id": "show_image",
+      "label": "t:labels.show_images",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "image_ratio",
+      "label": "t:labels.image_aspect_ratio",
+      "options": [
+        {
+          "value": "square",
+          "label": "t:labels.square"
+        },
+        {
+          "value": "portrait",
+          "label": "t:labels.portrait"
+        },
+        {
+          "value": "landscape",
+          "label": "t:labels.landscape"
+        }
+      ],
+      "default": "square"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_button",
+      "label": "t:labels.show_product_button",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "empty_field_text",
+      "label": "t:labels.text_for_empty_fields",
+      "default": "–"
+    },
+    {
+      "type": "checkbox",
+      "id": "highlight_rows",
+      "label": "t:labels.shade_every_other_row",
+      "default": true
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:labels.color_scheme",
+      "default": "scheme-1"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:labels.product_comparison_grid",
+      "category": "t:labels.products",
+      "blocks": [
+        {
+          "type": "_comparison-row",
+          "settings": {
+            "type": "price"
+          }
+        },
+        {
+          "type": "_comparison-row",
+          "settings": {
+            "type": "variants"
+          }
+        },
+        {
+          "type": "_comparison-row",
+          "settings": {
+            "type": "description"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,125 @@
+{%- comment -%}
+  FAQ / collapsible content: questions grouped by category headings, with buttons. Outputs
+  FAQPage structured data from the questions.
+{%- endcomment -%}
+{%- assign s = section.settings -%}
+{{ 'section-content.css' | asset_url | stylesheet_tag }}
+<div class="section faq color-{{ s.color_scheme }}{% if section.index > 2 %} below-fold{% endif %}" data-reveal>
+  <div class="page-width{% unless s.full_width %} page-width--narrow{% endunless %}">
+    {%- render 'section-heading', title: s.heading, align: s.heading_align -%}
+    <div class="faq__list">{%- content_for 'blocks' -%}</div>
+  </div>
+</div>
+{%- liquid
+  assign questions = ''
+  for block in section.blocks
+    if block.type == '_faq-item' and block.settings.heading != blank
+      assign q = block.settings.heading | json
+      assign a = block.settings.text | strip_html | json
+      assign entry = '{"@type":"Question","name":' | append: q | append: ',"acceptedAnswer":{"@type":"Answer","text":' | append: a | append: '}}'
+      if questions != ''
+        assign questions = questions | append: ','
+      endif
+      assign questions = questions | append: entry
+    endif
+  endfor
+-%}
+{%- if questions != '' and s.structured_data -%}
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{{ questions }}]}</script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "t:labels.collapsible_content",
+  "class": "section-faq",
+  "disabled_on": {
+    "groups": [
+      "header",
+      "footer",
+      "aside"
+    ]
+  },
+  "blocks": [
+    {
+      "type": "_faq-item"
+    },
+    {
+      "type": "_faq-category"
+    },
+    {
+      "type": "button"
+    }
+  ],
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:labels.heading",
+      "default": "Frequently asked questions"
+    },
+    {
+      "type": "select",
+      "id": "heading_align",
+      "label": "t:labels.heading_alignment",
+      "options": [
+        {
+          "value": "start",
+          "label": "t:labels.start"
+        },
+        {
+          "value": "center",
+          "label": "t:labels.center"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "checkbox",
+      "id": "structured_data",
+      "label": "t:labels.add_faq_structured_data_for_search_engines",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "t:labels.full_width",
+      "default": false
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:labels.color_scheme",
+      "default": "scheme-1"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:labels.collapsible_content",
+      "category": "t:labels.text",
+      "blocks": [
+        {
+          "type": "_faq-item",
+          "settings": {
+            "icon": "truck",
+            "heading": "How long does delivery take?"
+          }
+        },
+        {
+          "type": "_faq-item",
+          "settings": {
+            "icon": "return",
+            "heading": "Can I return an item?"
+          }
+        },
+        {
+          "type": "_faq-item",
+          "settings": {
+            "icon": "ruler",
+            "heading": "How do I find my size?"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

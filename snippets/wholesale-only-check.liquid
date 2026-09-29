@@ -1,0 +1,23 @@
+{%- comment -%}
+  Outputs "1" when a retail visitor must not see this product: it carries the wholesale-only tag
+  (Theme settings > Wholesale > Wholesale-only tag). Wholesale buyers and products without the tag
+  output nothing. Catalog-excluded products never reach Liquid for retail visitors at all.
+  Usage: {% capture hidden %}{% render 'wholesale-only-check', product: p %}{% endcapture %}
+  Params: product
+{%- endcomment -%}
+{%- liquid
+  assign b2b = false
+  if customer and customer.b2b?
+    assign b2b = true
+  endif
+  if b2b == false and settings.wholesale_only_tag != blank and product
+    assign gate_tag = settings.wholesale_only_tag | strip | downcase
+    for tag in product.tags
+      assign t = tag | downcase
+      if t == gate_tag
+        echo '1'
+        break
+      endif
+    endfor
+  endif
+-%}

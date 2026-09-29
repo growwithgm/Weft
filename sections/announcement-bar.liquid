@@ -1,0 +1,152 @@
+{%- comment -%}
+  Announcement bar: rotating messages (with a pause control, WCAG 2.2.2), optional links and
+  country/language selectors on large screens. Rotation stops for reduced motion.
+{%- endcomment -%}
+{%- liquid
+  assign messages = section.blocks | where: 'type', 'announcement'
+  assign count = messages.size
+  assign show_tools = false
+  if section.settings.link1_label != blank or section.settings.link2_label != blank or section.settings.show_country or section.settings.show_language
+    assign show_tools = true
+  endif
+-%}
+{%- if count > 0 or show_tools -%}
+  <div
+    class="announcement color-{{ section.settings.color_scheme }} announcement--{{ section.settings.text_size }}"
+    role="region"
+    aria-label="{{ 'accessibility.announcements' | t }}"
+    {% if count > 1 %}data-module="{{ 'announcement.js' | asset_url }}" data-load="idle" data-rotate="{{ section.settings.rotate_seconds }}"{% endif %}
+  >
+    <div class="page-width announcement__inner">
+      {%- if count > 0 -%}
+        <div class="announcement__messages{% if show_tools %} announcement__messages--start{% endif %}" data-messages>
+          {%- for block in messages -%}
+            <div class="announcement__message rte" {% unless forloop.first %}aria-hidden="true"{% endunless %} data-message {{ block.shopify_attributes }}>
+              {{- block.settings.text -}}
+            </div>
+          {%- endfor -%}
+        </div>
+        {%- if count > 1 -%}
+          <button type="button" class="icon-button announcement__pause js-only" data-pause aria-pressed="false" aria-label="{{ 'general.pause' | t }}" data-label-pause="{{ 'general.pause' | t }}" data-label-play="{{ 'general.play' | t }}">
+            {%- render 'icon', name: 'pause', size: 12 -%}
+          </button>
+        {%- endif -%}
+      {%- endif -%}
+      {%- if show_tools -%}
+        <div class="announcement__tools">
+          {%- if section.settings.link1_label != blank -%}<a href="{{ section.settings.link1 | default: '#' }}">{{ section.settings.link1_label }}</a>{%- endif -%}
+          {%- if section.settings.link2_label != blank -%}<a href="{{ section.settings.link2 | default: '#' }}">{{ section.settings.link2_label }}</a>{%- endif -%}
+          {%- render 'localization-form', id: 'AnnouncementLocalization', country: section.settings.show_country, language: section.settings.show_language, compact: true -%}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "t:labels.announcement_bar",
+  "class": "section-announcement",
+  "enabled_on": {
+    "groups": [
+      "header"
+    ]
+  },
+  "max_blocks": 3,
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:labels.color_scheme",
+      "default": "scheme-3"
+    },
+    {
+      "type": "select",
+      "id": "text_size",
+      "label": "t:labels.text_size",
+      "options": [
+        {
+          "value": "small",
+          "label": "t:labels.small"
+        },
+        {
+          "value": "medium",
+          "label": "t:labels.medium"
+        }
+      ],
+      "default": "small"
+    },
+    {
+      "type": "range",
+      "id": "rotate_seconds",
+      "label": "t:labels.time_per_message",
+      "min": 3,
+      "max": 15,
+      "step": 1,
+      "default": 5,
+      "unit": "s"
+    },
+    {
+      "type": "header",
+      "content": "t:labels.links_and_selectors",
+      "info": "t:labels.shown_on_large_screens"
+    },
+    {
+      "type": "text",
+      "id": "link1_label",
+      "label": "t:labels.link_1_label"
+    },
+    {
+      "type": "url",
+      "id": "link1",
+      "label": "t:labels.link_1"
+    },
+    {
+      "type": "text",
+      "id": "link2_label",
+      "label": "t:labels.link_2_label"
+    },
+    {
+      "type": "url",
+      "id": "link2",
+      "label": "t:labels.link_2"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_country",
+      "label": "t:labels.show_country_region_selector",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_language",
+      "label": "t:labels.show_language_selector",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "announcement",
+      "name": "t:labels.announcement",
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "text",
+          "label": "t:labels.text",
+          "default": "Welcome to our store"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:labels.announcement_bar",
+      "blocks": [
+        {
+          "type": "announcement"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,72 @@
+{%- comment -%}
+  Product details (product templates): a full-width area under the product for tabs, highlight
+  notes, payment information, rich text, custom Liquid and app blocks. Product blocks (ingredients,
+  how to use, scent notes and the rest) are styled by section-product.css, which the product
+  section above has already loaded.
+{%- endcomment -%}
+{%- assign s = section.settings -%}
+{{ 'section-product.css' | asset_url | stylesheet_tag }}
+{{ 'section-content.css' | asset_url | stylesheet_tag }}
+<div class="section product-details color-{{ s.color_scheme }}">
+  <div class="page-width{% if s.width == 'narrow' %} page-width--narrow{% endif %} product-details__inner stack">
+    {%- content_for 'blocks' -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:labels.product_details",
+  "class": "section-product-details",
+  "enabled_on": {
+    "templates": [
+      "product"
+    ]
+  },
+  "blocks": [
+    {
+      "type": "@theme"
+    },
+    {
+      "type": "@app"
+    }
+  ],
+  "settings": [
+    {
+      "type": "select",
+      "id": "width",
+      "label": "t:labels.width",
+      "options": [
+        {
+          "value": "narrow",
+          "label": "t:labels.narrow"
+        },
+        {
+          "value": "page",
+          "label": "t:labels.page"
+        }
+      ],
+      "default": "narrow"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:labels.color_scheme",
+      "default": "scheme-1"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:labels.product_details",
+      "category": "t:labels.product",
+      "blocks": [
+        {
+          "type": "product-tabs"
+        },
+        {
+          "type": "payment-methods"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

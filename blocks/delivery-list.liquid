@@ -1,0 +1,254 @@
+{%- comment -%}
+  Delivery list (brief §5, approved): borderless rows with hairlines, in this order:
+  Fit, Shipping (rate and free-shipping progress for the visitor's country), Installments,
+  Notify (sold-out options), Returns (always last, directly above Add to cart when placed there).
+  Rows drop out when empty. No delivery date is shown. Amounts in another currency are converted
+  in the browser and rounded up so the page never quotes less than checkout.
+{%- endcomment -%}
+{%- liquid
+  assign p = closest.product
+  assign v = p.selected_or_first_available_variant
+  assign iso = localization.country.iso_code
+
+  assign ship_rate = nil
+  assign ship_free = nil
+  assign ship_currency = shop.currency
+  assign ship_found = false
+  assign rule_lines = settings.delivery_rules | newline_to_br | split: '<br />'
+  for raw_line in rule_lines
+    assign line = raw_line | strip
+    unless line contains '='
+      continue
+    endunless
+    assign parts = line | split: '='
+    assign countries = parts | first | upcase | remove: ' ' | split: ','
+    if countries contains iso
+      assign rest = parts | last | strip
+      assign first_word = rest | split: ' ' | first
+      assign first_size = first_word | size
+      assign letters = first_word | upcase | remove: '0' | remove: '1' | remove: '2' | remove: '3' | remove: '4' | remove: '5' | remove: '6' | remove: '7' | remove: '8' | remove: '9' | remove: '.' | remove: ','
+      if first_size == 3 and letters.size == 3
+        assign ship_currency = first_word | upcase
+        assign rest = rest | remove_first: first_word | strip
+      endif
+      assign amounts = rest | split: '/'
+      assign ship_rate = amounts | first | strip | replace: ',', '.'
+      if amounts.size > 1
+        assign ship_free = amounts | last | strip | replace: ',', '.'
+      endif
+      assign ship_found = true
+      break
+    endif
+  endfor
+  if ship_found == false and settings.delivery_default_rule != blank
+    assign default_parts = settings.delivery_default_rule | split: '/'
+    assign ship_rate = default_parts | first | strip | replace: ',', '.'
+    if default_parts.size > 1
+      assign ship_free = default_parts | last | strip | replace: ',', '.'
+    endif
+    assign ship_found = true
+  endif
+
+  assign rate_cents = ship_rate | times: 100 | round
+  assign free_cents = 0
+  if ship_free != blank
+    assign free_cents = ship_free | times: 100 | round
+  endif
+  assign same_currency = false
+  if ship_currency == cart.currency.iso_code
+    assign same_currency = true
+  endif
+  assign cart_cents = cart.total_price
+
+  assign show_installments = false
+  if settings.installments_provider != blank and v and v.available
+    assign show_installments = true
+    if settings.installments_countries != blank
+      assign inst_countries = settings.installments_countries | upcase | remove: ' ' | split: ','
+      unless inst_countries contains iso
+        assign show_installments = false
+      endunless
+    endif
+  endif
+
+  assign sold_count = 0
+  for variant in p.variants limit: 250
+    if variant.available == false
+      assign sold_count = sold_count | plus: 1
+    endif
+  endfor
+-%}
+{%- capture visible -%}{% render 'audience-check', audience: block.settings.audience %}{%- endcapture -%}
+{%- if visible == '1' -%}
+  <dl class="delivery-list" data-swap="{{ block.id }}" {{ block.shopify_attributes }}>
+    {%- if block.settings.fit_text != blank -%}
+      <div class="delivery-list__row">
+        <dt>{{ 'products.delivery.fit' | t }}</dt>
+        <dd>{{ block.settings.fit_text }}</dd>
+      </div>
+    {%- endif -%}
+
+    {%- if block.settings.show_shipping and ship_found -%}
+      <div
+        class="delivery-list__row"
+        data-shipping-row
+        data-rate="{{ rate_cents }}"
+        data-free="{{ free_cents }}"
+        data-rule-currency="{{ ship_currency }}"
+        data-cart-currency="{{ cart.currency.iso_code }}"
+        data-cart-total="{{ cart_cents }}"
+        data-round-up="{{ settings.delivery_round_up }}"
+      >
+        <dt>{{ 'products.delivery.shipping' | t }}</dt>
+        <dd>
+          <span class="delivery-list__ship" data-ship-text>
+            {{- 'products.delivery.shipping_to' | t: country: localization.country.name }}
+            {%- if same_currency -%}
+              {%- liquid
+                assign rate_money = rate_cents | money
+                assign free_money = free_cents | money
+              -%}
+              {%- if rate_cents == 0 %} · {{ 'products.delivery.free' | t }}
+              {%- elsif free_cents > 0 and cart_cents >= free_cents %} · {{ 'products.delivery.free' | t }}
+              {%- elsif free_cents > 0 %} · {{ 'products.delivery.rate' | t: rate: rate_money, amount: free_money }}
+              {%- else %} · {{ rate_money }}
+              {%- endif -%}
+            {%- endif -%}
+          </span>
+          {%- if free_cents > 0 and rate_cents > 0 -%}
+            {%- liquid
+              assign pct = 0
+              if same_currency
+                assign pct = cart_cents | times: 100 | divided_by: free_cents
+                if pct > 100
+                  assign pct = 100
+                endif
+              endif
+              assign left = free_cents | minus: cart_cents
+              assign left_money = left | money
+            -%}
+            <span class="delivery-list__progress" data-ship-progress {% if same_currency and cart_cents >= free_cents %}hidden{% endif %}>
+              <span class="progress" role="progressbar" aria-label="{{ 'products.delivery.progress' | t }}" aria-valuemin="0" aria-valuemax="100" aria-valuenow="{{ pct }}"><span class="progress__bar" style="width: {{ pct }}%"></span></span>
+              <span class="delivery-list__to-go tabular" data-ship-to-go>{%- if same_currency and left > 0 -%}{{ 'products.delivery.to_go' | t: amount: left_money }}{%- endif -%}</span>
+            </span>
+            <template data-ship-strings data-free="{{ 'products.delivery.free' | t | escape }}" data-rate="{{ 'products.delivery.rate' | t: rate: '__rate__', amount: '__amount__' | escape }}" data-to-go="{{ 'products.delivery.to_go' | t: amount: '__amount__' | escape }}" data-shipping-to="{{ 'products.delivery.shipping_to' | t: country: localization.country.name | escape }}"></template>
+          {%- endif -%}
+        </dd>
+      </div>
+    {%- endif -%}
+
+    {%- if block.settings.show_installments and show_installments -%}
+      {%- liquid
+        assign count = settings.installments_count
+        assign installment = v.price | plus: count | minus: 1 | divided_by: count
+        assign installment_money = installment | money
+      -%}
+      <div class="delivery-list__row delivery-list__row--installments">
+        <dt>{{ settings.installments_provider | escape }}</dt>
+        <dd>{{ 'products.delivery.installments' | t: count: count, amount: installment_money }}</dd>
+      </div>
+    {%- endif -%}
+
+    {%- if block.settings.show_notify and sold_count > 0 and v.available -%}
+      <div class="delivery-list__row delivery-list__row--notify">
+        <dt>{{ 'products.delivery.notify' | t }}</dt>
+        <dd>
+          <button type="button" class="link delivery-list__notify" data-open-dialog="BackInStock-{{ section.id }}">
+            {%- render 'icon', name: 'bell', size: 16 -%}{{ 'products.delivery.options_sold_out' | t: count: sold_count }}
+          </button>
+        </dd>
+      </div>
+    {%- endif -%}
+
+    {%- assign returns_text = block.settings.returns_text | default: settings.delivery_returns_text -%}
+    {%- if block.settings.show_returns and returns_text != blank -%}
+      <div class="delivery-list__row">
+        <dt>{{ 'products.delivery.returns' | t }}</dt>
+        <dd>
+          {%- if block.settings.returns_page != blank -%}<a href="{{ block.settings.returns_page.url }}">{{ returns_text }}</a>{%- else -%}{{ returns_text }}{%- endif -%}
+        </dd>
+      </div>
+    {%- endif -%}
+  </dl>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "t:labels.delivery_list",
+  "tag": null,
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "t:text.blocks.delivery_list.settings.shipping_rules_installments_and_the_returns_text.content"
+    },
+    {
+      "type": "text",
+      "id": "fit_text",
+      "label": "t:labels.fit_row",
+      "info": "t:text.blocks.delivery_list.settings.fit_text.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_shipping",
+      "label": "t:labels.show_shipping_row",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_installments",
+      "label": "t:labels.show_installments_row",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_notify",
+      "label": "t:labels.show_sold_out_options_row",
+      "default": true,
+      "info": "t:text.blocks.delivery_list.settings.show_notify.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_returns",
+      "label": "t:labels.show_returns_row",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "returns_text",
+      "label": "t:labels.returns_text",
+      "info": "t:labels.overrides_the_text_from_theme_settings"
+    },
+    {
+      "type": "page",
+      "id": "returns_page",
+      "label": "t:labels.returns_page"
+    },
+    {
+      "type": "select",
+      "id": "audience",
+      "label": "t:labels.show_to",
+      "options": [
+        {
+          "value": "all",
+          "label": "t:labels.everyone"
+        },
+        {
+          "value": "retail",
+          "label": "t:labels.retail_shoppers"
+        },
+        {
+          "value": "wholesale",
+          "label": "t:labels.wholesale_buyers"
+        }
+      ],
+      "default": "retail"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:labels.delivery_list",
+      "category": "t:labels.product"
+    }
+  ]
+}
+{% endschema %}

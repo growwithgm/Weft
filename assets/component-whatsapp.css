@@ -1,0 +1,45 @@
+/* WhatsApp chat (sections/whatsapp-chat.liquid): a floating button and an optional chat window. */
+@layer components {
+  .wa { position: fixed; z-index: 35; inset-block-end: var(--wa-offset-mobile); inset-inline-end: var(--wa-side); transition: transform 200ms ease, opacity 200ms ease; }
+  .wa--start { inset-inline-end: auto; inset-inline-start: var(--wa-side); }
+  @media (min-width: 990px) { .wa { inset-block-end: var(--wa-offset); } .wa--show-mobile { display: none; } }
+  @media (max-width: 989px) {
+    .wa--show-desktop { display: none; }
+    body:has(.matrix__summary:not(.matrix__summary--rows)) .wa, body:has(.compare-bar:not([hidden])) .wa { inset-block-end: max(var(--wa-offset-mobile), 140px); }
+  }
+  /* Hidden while an overlay or the sticky bar is up (core.js, sticky-bar.js) or while it would sit on
+     top of an add-to-cart or checkout button (whatsapp.js). */
+  .wa[data-chat-hidden], .wa[data-chat-overlap] { opacity: 0; transform: translateY(12px); pointer-events: none; }
+  .wa[data-chat-hidden] .wa__button, .wa[data-chat-overlap] .wa__button { visibility: hidden; transition: visibility 0s 200ms; }
+
+  .wa__button { display: flex; align-items: center; justify-content: center; gap: 8px; min-width: var(--wa-size); height: var(--wa-size); padding: 0; border-radius: 999px; background: var(--wa-bg); color: var(--wa-fg); box-shadow: 0 6px 18px rgb(15 17 17 / 0.18); cursor: pointer; list-style: none; font-weight: 500; text-decoration: none; }
+  .wa__button::-webkit-details-marker { display: none; }
+  .wa__button:hover { transform: scale(1.04); }
+  .wa--labelled .wa__button { padding-inline: calc(var(--wa-size) / 4) 20px; }
+  .wa__icon { display: grid; place-items: center; }
+  .wa__label { white-space: nowrap; }
+  @media (max-width: 749px) { .wa--labelled .wa__label { display: none; } .wa--labelled .wa__button { padding-inline: 0; } }
+
+  .wa__window { position: absolute; inset-block-end: calc(100% + 12px); inset-inline-end: 0; width: min(340px, calc(100vw - 2 * var(--wa-side))); max-height: min(520px, calc(100dvh - var(--wa-size) - 48px)); display: flex; flex-direction: column; overflow: hidden; border-radius: 16px; background: var(--c-bg); color: var(--c-fg); box-shadow: 0 12px 40px rgb(15 17 17 / 0.22); }
+  .wa--start .wa__window { inset-inline-end: auto; inset-inline-start: 0; }
+  .wa__details[open] .wa__window { animation: wa-in 180ms ease; }
+  @keyframes wa-in { from { opacity: 0; transform: translateY(8px); } }
+  .wa__head { display: flex; align-items: center; gap: 12px; padding: 14px 12px 14px 16px; background: var(--wa-head); color: var(--wa-fg); }
+  .wa__avatar { flex: none; display: grid; place-items: center; width: 48px; height: 48px; overflow: hidden; border-radius: 50%; background: rgb(255 255 255 / 0.2); }
+  .wa__avatar img { width: 100%; height: 100%; object-fit: cover; }
+  .wa__avatar--small { width: 40px; height: 40px; background: var(--wa-bg); color: var(--wa-fg); font-weight: 600; }
+  .wa__who { display: grid; flex: 1; min-width: 0; line-height: 1.3; }
+  .wa__name { font-weight: 600; }
+  .wa__status { font-size: var(--t-13); opacity: 0.85; }
+  .wa__close { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; color: inherit; }
+  .wa__body { display: grid; gap: 14px; padding: 16px; overflow: auto; }
+  .wa__greeting { margin: 0; padding: 12px 14px; border-radius: 4px 14px 14px 14px; background: var(--c-surface); }
+  .wa__contacts { display: grid; gap: 8px; margin: 0; padding: 0; }
+  .wa__contact { display: flex; align-items: center; gap: 12px; min-height: 56px; padding: 8px 12px; border: 1px solid var(--c-line); border-radius: 12px; color: inherit; text-decoration: none; }
+  .wa__contact:hover { border-color: var(--wa-bg); }
+  .wa__go { color: var(--wa-bg); }
+  .wa__start { gap: 8px; background: var(--wa-start); border-color: var(--wa-start); color: var(--wa-start-fg); }
+  .wa__note { margin: 0; font-size: var(--t-13); }
+
+  @media (prefers-reduced-motion: reduce) { .wa, .wa__details[open] .wa__window { transition: none; animation: none; } .wa__button:hover { transform: none; } }
+}

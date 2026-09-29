@@ -1,0 +1,32 @@
+name: Scenario suite
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  e2e:
+    name: Playwright scenarios against the dev store
+    runs-on: ubuntu-latest
+    env:
+      SHOP_STORE: ${{ secrets.SHOPIFY_STORE }}
+      SHOP_PASSWORD: ${{ secrets.SHOPIFY_STOREFRONT_PASSWORD }}
+      SHOP_THEME_ID: ${{ secrets.SHOPIFY_THEME_ID }}
+      B2B_EMAIL: ${{ secrets.B2B_TEST_EMAIL }}
+      B2B_STORAGE_STATE: ${{ secrets.B2B_STORAGE_STATE }}
+    steps:
+      - name: Skip when store secrets are missing
+        if: env.SHOP_STORE == '' || env.SHOP_THEME_ID == ''
+        run: echo "Store secrets are not set; skipping the scenario suite (see docs/progress.md, Owner actions)."
+      - uses: actions/checkout@v4
+        if: env.SHOP_STORE != '' && env.SHOP_THEME_ID != ''
+      - uses: actions/setup-node@v4
+        if: env.SHOP_STORE != '' && env.SHOP_THEME_ID != ''
+        with:
+          node-version: 22
+      - name: Run scenarios
+        if: env.SHOP_STORE != '' && env.SHOP_THEME_ID != ''
+        run: |
+          npm install --no-save @playwright/test@1.56.1 @axe-core/playwright@4
+          npx playwright install --with-deps chromium
+          npx playwright test --config tests/e2e/playwright.config.mjs

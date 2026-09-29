@@ -1,0 +1,9 @@
+{%- comment -%}
+  Integration (store builds only): the store-wide review score and count from the Judge.me shop
+  metafields, as "rating|count". Shop metafields can't be dynamic sources in templates, so the
+  product rating block reads them through this snippet when Theme settings > Integrations >
+  Judge.me reviews is on. Removed from the Theme Store package with every integration-* file.
+{%- endcomment -%}
+{%- if settings.integration_reviews_enable -%}
+  {{- shop.metafields.judgeme.all_reviews_rating.value -}}|{{- shop.metafields.judgeme.all_reviews_count.value -}}
+{%- endif -%}

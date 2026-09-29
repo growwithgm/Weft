@@ -1,0 +1,92 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {}
+    },
+    "finder": {
+      "type": "guided-finder",
+      "blocks": {
+        "q1": {
+          "type": "_finder-question",
+          "settings": {
+            "question": "What would you like help with?",
+            "param": "filter.p.product_type",
+            "answers": "Hair care\nBody care\nGifts"
+          }
+        },
+        "q2": {
+          "type": "_finder-question",
+          "settings": {
+            "question": "What matters most to you?",
+            "param": "filter.p.tag",
+            "answers": "Repair\nMoisture\nSensitive skin\nScent"
+          }
+        }
+      },
+      "block_order": [
+        "q1",
+        "q2"
+      ],
+      "settings": {
+        "heading": "Find your routine",
+        "text": "<p>Answer two questions to see the products made for you.</p>",
+        "submit_label": "Show my products",
+        "color_scheme": "scheme-2"
+      }
+    },
+    "routine": {
+      "type": "routine-steps",
+      "blocks": {
+        "s1": {
+          "type": "_routine-step",
+          "settings": {
+            "label": "Step 1",
+            "heading": "Cleanse",
+            "text": "<p>Start with a gentle wash.</p>"
+          }
+        },
+        "s2": {
+          "type": "_routine-step",
+          "settings": {
+            "label": "Step 2",
+            "heading": "Treat",
+            "text": "<p>Target what needs care.</p>"
+          }
+        },
+        "s3": {
+          "type": "_routine-step",
+          "settings": {
+            "label": "Step 3",
+            "heading": "Protect",
+            "text": "<p>Seal in moisture.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "s1",
+        "s2",
+        "s3"
+      ],
+      "settings": {
+        "heading": "The routine",
+        "layout": "row"
+      }
+    },
+    "results": {
+      "type": "before-after",
+      "settings": {
+        "heading": "See the difference",
+        "text": "<p>Same light, same crop.</p>",
+        "disclaimer": "Individual results vary.",
+        "layout": "text-start"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "finder",
+    "routine",
+    "results"
+  ]
+}

@@ -1,0 +1,56 @@
+<div class="section custom-liquid-section section--{{ section.settings.spacing }}{% if section.settings.full_width == false %} page-width{% endif %}{% if section.settings.color_scheme != '' %} color-{{ section.settings.color_scheme }}{% endif %}">
+  {{- section.settings.custom_liquid -}}
+</div>
+
+{% schema %}
+{
+  "name": "t:labels.custom_liquid",
+  "class": "section-custom-liquid",
+  "disabled_on": {
+    "groups": [
+      "aside"
+    ]
+  },
+  "settings": [
+    {
+      "type": "liquid",
+      "id": "custom_liquid",
+      "label": "t:labels.liquid_code",
+      "info": "t:text.sections.custom_liquid.settings.custom_liquid.info"
+    },
+    {
+      "type": "select",
+      "id": "spacing",
+      "label": "t:labels.section_spacing",
+      "options": [
+        {
+          "value": "normal",
+          "label": "t:labels.normal"
+        },
+        {
+          "value": "flush",
+          "label": "t:labels.none"
+        }
+      ],
+      "default": "normal"
+    },
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "t:labels.full_width",
+      "default": false
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:labels.color_scheme"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:labels.custom_liquid",
+      "category": "t:labels.advanced"
+    }
+  ]
+}
+{% endschema %}

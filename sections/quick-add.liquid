@@ -1,0 +1,76 @@
+{%- comment -%}
+  Quick add drawer (S13) and, for wholesale buyers, the quick order drawer. The overlay renders an
+  empty drawer; quick-add.js fetches <product url>?section_id=quick-add and inserts the product
+  content, which reuses the product blocks (static) and product.js for variant changes and adding
+  to cart. Retail and wholesale blocks each render only for their audience.
+{%- endcomment -%}
+{%- if product and section.id == 'quick-add' -%}
+  {{ 'section-product.css' | asset_url | stylesheet_tag }}
+  <product-section
+    class="quick-add color-{{ settings.drawer_color_scheme }}{% if settings.quick_add_sticky_footer %} quick-add--sticky-buttons{% endif %}"
+    data-product-section
+    data-section-id="quick-add"
+    data-product-url="{{ product.url }}"
+    data-quick-add-content
+    data-custom-options="{{ section.settings.quick_add_marker }}"
+  >
+    {%- assign qa_variant = product.selected_or_first_available_variant -%}
+    <div class="quick-add__media media">
+      {%- if qa_variant.featured_media or product.featured_media -%}
+        {%- assign qa_media = qa_variant.featured_media | default: product.featured_media -%}
+        {%- render 'image', image: qa_media.preview_image, sizes: '(min-width: 750px) 200px, 40vw', widths: '240,400,600' -%}
+      {%- endif -%}
+    </div>
+    <div class="quick-add__info product__info">
+      <script type="application/json" data-product-state data-swap="state-quick-add">
+        { "variantId": {{ qa_variant.id | default: 'null' }}, "available": {{ qa_variant.available | default: false }}, "title": {{ product.title | json }} }
+      </script>
+      {%- content_for 'block', type: 'product-title', id: 'title', size: 'h2' -%}
+      {%- content_for 'block', type: 'product-price', id: 'price' -%}
+      {%- content_for 'block', type: 'variant-picker', id: 'variant_picker' -%}
+      {%- content_for 'block', type: 'buy-buttons', id: 'buy_buttons' -%}
+      {%- comment -%}Wholesale buyers (Theme settings > Wholesale > Order from product cards): the same blocks as the product page.{%- endcomment -%}
+      {%- content_for 'block', type: 'wholesale-terms', id: 'wholesale_terms' -%}
+      {%- content_for 'block', type: 'volume-pricing', id: 'volume_pricing' -%}
+      {%- content_for 'block', type: 'wholesale-quantity', id: 'wholesale_quantity' -%}
+      {%- content_for 'block', type: 'order-matrix', id: 'order_matrix' -%}
+      <a class="link quick-add__details" href="{{ product.url }}">{{ 'products.quick_add.view_details' | t }}</a>
+    </div>
+  </product-section>
+{%- else -%}
+  <dialog id="QuickAdd" class="drawer drawer--end color-{{ settings.drawer_color_scheme }}" aria-label="{{ 'products.quick_add.choose_options' | t }}" data-light-dismiss data-animate>
+    <div class="drawer__panel" data-dialog-body>
+      <div class="drawer__header">
+        <span class="drawer__title h3">{{ 'products.quick_add.choose_options' | t }}</span>
+        <button type="button" class="icon-button" data-close-dialog aria-label="{{ 'general.close' | t }}">{%- render 'icon', name: 'close' -%}</button>
+      </div>
+      <div class="drawer__body quick-add__body" data-quick-add-body aria-live="polite"></div>
+    </div>
+  </dialog>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "t:labels.quick_add",
+  "class": "section-quick-add",
+  "enabled_on": {
+    "groups": [
+      "aside"
+    ]
+  },
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "select_first_variant",
+      "label": "t:labels.preselect_the_first_available_variant",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "quick_add_marker",
+      "label": "t:labels.show_custom_options_marked_for_quick_add",
+      "default": true
+    }
+  ]
+}
+{% endschema %}

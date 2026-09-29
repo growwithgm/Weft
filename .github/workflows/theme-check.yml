@@ -1,0 +1,63 @@
+name: Theme checks
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  static:
+    name: Lint, i18n and unit tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node scripts/theme-lint.mjs
+      - run: node scripts/i18n-check.mjs
+      - run: npm run test:unit
+      - name: Packages (Theme Store and store build)
+        run: |
+          node scripts/package-theme.mjs --themestore
+          node scripts/package-theme.mjs --store ibban
+      - name: Component tests (Playwright on static fixtures)
+        run: |
+          npm install --no-save playwright@1.56.1
+          npx playwright install --with-deps chromium
+          node tests/components/run.mjs
+
+  theme-check:
+    name: Theme Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install -g @shopify/cli@latest
+      - run: shopify theme check --fail-level suggestion
+      - name: Theme Check on the Theme Store package
+        run: |
+          set -o pipefail
+          node scripts/package-theme.mjs --themestore
+          # The repository config ignores dist/**, so the package gets a plain one.
+          printf 'root: .\n' > dist/themestore/.theme-check.yml
+          shopify theme check --path dist/themestore --fail-level suggestion | tee theme-check-package.txt
+          if grep -q ' 0 files inspected' theme-check-package.txt; then echo "Theme Check inspected no files in the package"; exit 1; fi
+      - name: Theme Check on the ibBan store build
+        run: |
+          set -o pipefail
+          node scripts/package-theme.mjs --store ibban
+          # Integrations load review photos from Judge.me's CDN by design. Store templates hold the
+          # store's app blocks (Judge.me, Shopify Forms), which Theme Check reads as missing theme
+          # blocks in sections that also take theme blocks; those files skip that one check.
+          # OrphanedSnippet reports every snippet as unused in the store build although the same
+          # snippets pass in the repository and Theme Store checks, so it is off here only.
+          {
+            printf 'root: .\nOrphanedSnippet:\n  enabled: false\nRemoteAsset:\n  ignore:\n    - sections/integration-*.liquid\n    - snippets/integration-*.liquid\nJSONMissingBlock:\n  ignore:\n'
+            (cd dist/ibban && grep -rl 'shopify://apps/' templates sections --include='*.json' | sed 's/^/    - /')
+          } > dist/ibban/.theme-check.yml
+          cat dist/ibban/.theme-check.yml
+          shopify theme check --path dist/ibban --fail-level suggestion | tee theme-check-store.txt
+          if grep -q ' 0 files inspected' theme-check-store.txt; then echo "Theme Check inspected no files in the store build"; exit 1; fi

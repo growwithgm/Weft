@@ -1,0 +1,47 @@
+{%- comment -%} Logo list item: image with optional link; the text is its accessible name. {%- endcomment -%}
+{%- assign b = block.settings -%}
+<li class="logo-item" style="--logo-w: {{ b.logo_width }}px" {{ block.shopify_attributes }}>
+  {%- capture logo_img -%}
+    {%- if b.image -%}
+      {{ b.image | image_url: width: 480 | image_tag: widths: '120,240,360,480', sizes: '(min-width: 750px) 160px, 120px', alt: b.text, loading: 'lazy', class: 'logo-item__image' }}
+    {%- else -%}
+      {{ 'logo' | placeholder_svg_tag: 'logo-item__image placeholder-svg' }}
+    {%- endif -%}
+  {%- endcapture -%}
+  {%- if b.url != blank -%}<a class="logo-item__link" href="{{ b.url }}">{{ logo_img }}</a>{%- else -%}{{ logo_img }}{%- endif -%}
+</li>
+
+{% schema %}
+{
+  "name": "t:labels.logo",
+  "tag": null,
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:labels.image"
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "label": "t:labels.brand_name",
+      "info": "t:labels.read_by_screen_readers"
+    },
+    {
+      "type": "url",
+      "id": "url",
+      "label": "t:labels.link"
+    },
+    {
+      "type": "range",
+      "id": "logo_width",
+      "label": "t:labels.width",
+      "min": 60,
+      "max": 240,
+      "step": 10,
+      "unit": "px",
+      "default": 140
+    }
+  ]
+}
+{% endschema %}

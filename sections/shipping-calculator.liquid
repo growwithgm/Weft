@@ -1,0 +1,64 @@
+{%- comment -%}
+  Shipping calculator section (page.shipping-calculator): estimates rates for the current cart.
+  Shows a note when the cart is empty or needs no shipping.
+{%- endcomment -%}
+{%- assign s = section.settings -%}
+{{ 'component-cart.css' | asset_url | stylesheet_tag }}
+<div class="section shipping-section color-{{ s.color_scheme }}">
+  <div class="page-width page-width--narrow stack">
+    {%- if s.heading != blank -%}<h1 class="h2">{{ s.heading | escape }}</h1>{%- endif -%}
+    {%- if s.text != blank -%}<div class="rte">{{ s.text }}</div>{%- endif -%}
+    {%- if cart.item_count > 0 and cart.requires_shipping -%}
+      {%- render 'shipping-calculator', default_country: s.default_country -%}
+    {%- else -%}
+      <p class="muted">{{ 'cart.shipping.empty_cart' | t }}</p>
+      <a class="button button--secondary" href="{{ routes.all_products_collection_url }}">{{ 'general.continue_shopping' | t }}</a>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:labels.shipping_calculator",
+  "class": "section-shipping-calculator",
+  "disabled_on": {
+    "groups": [
+      "header",
+      "footer",
+      "aside"
+    ]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:labels.heading",
+      "default": "Shipping rates"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "t:labels.text",
+      "default": "<p>Estimate delivery costs for the items in your cart.</p>"
+    },
+    {
+      "type": "text",
+      "id": "default_country",
+      "label": "t:labels.default_country",
+      "info": "t:text.sections.shipping_calculator.settings.default_country.info"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:labels.color_scheme",
+      "default": "scheme-1"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:labels.shipping_calculator",
+      "category": "t:labels.forms"
+    }
+  ]
+}
+{% endschema %}

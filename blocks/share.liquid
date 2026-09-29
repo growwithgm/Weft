@@ -1,0 +1,47 @@
+{%- liquid
+  assign p = closest.product
+  assign share_url = shop.url | append: p.url
+  assign share_image = p.featured_media | image_url: width: 1200
+-%}
+<div class="block-share" {{ block.shopify_attributes }}>
+  {%- render 'share-links', url: share_url, title: p.title, image: share_image, x: block.settings.show_twitter, facebook: block.settings.show_facebook, pinterest: block.settings.show_pinterest, copy: block.settings.show_copy -%}
+</div>
+
+{% schema %}
+{
+  "name": "t:labels.share",
+  "tag": null,
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_twitter",
+      "label": "t:labels.x_formerly_twitter",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_facebook",
+      "label": "t:labels.facebook",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_pinterest",
+      "label": "t:labels.pinterest",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_copy",
+      "label": "t:labels.copy_link",
+      "default": false
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:labels.share",
+      "category": "t:labels.product"
+    }
+  ]
+}
+{% endschema %}

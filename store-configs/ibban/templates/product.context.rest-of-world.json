@@ -1,0 +1,53 @@
+{
+  "context": {
+    "market": "rest-of-world"
+  },
+  "parent": "product.json",
+  "sections": {
+    "main": {
+      "blocks": {
+        "inventory_status_q4fYb": {
+          "type": "stock-line",
+          "disabled": true,
+          "settings": {
+            "show_bar": true,
+            "text_low": "- Hurry while stocks last!",
+            "in_stock_extra": "",
+            "text_sold_out": "",
+            "text_backorder": "Backordered"
+          }
+        },
+        "custom_liquid_wbis": {
+          "disabled": false
+        },
+        "collapsible_content_wTPX4g": {
+          "settings": {
+            "heading": "Description"
+          }
+        },
+        "collapsible_content_j98RbT": {
+          "disabled": true
+        }
+      },
+      "block_order": [
+        "vendor-sku",
+        "product-labels",
+        "title",
+        "price",
+        "custom_liquid_gnrating",
+        "judge_me_reviews_preview_badge_McwKbz",
+        "variant-picker",
+        "custom_liquid_wbis",
+        "custom_liquid_gnship-delivery",
+        "buy-buttons",
+        "inventory_status_q4fYb",
+        "message-2",
+        "collapsible_content_j98RbT",
+        "collapsible-content-1",
+        "collapsible_content_wTPX4g",
+        "share",
+        "message-3"
+      ]
+    }
+  }
+}

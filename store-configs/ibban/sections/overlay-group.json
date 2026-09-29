@@ -1,0 +1,134 @@
+{
+  "type": "aside",
+  "name": "Overlay group",
+  "sections": {
+    "cart-drawer": {
+      "type": "cart-drawer",
+      "settings": {
+        "show_view_cart": true,
+        "show_backorder_note": true,
+        "show_vendor": false,
+        "summary_position": "top",
+        "sticky_footer": true,
+        "show_order_note": true,
+        "show_tax_note": false,
+        "show_accelerated": true,
+        "show_checkout": true,
+        "terms_page": "",
+        "show_shipping_calculator": false,
+        "shipping_calculator_default_country": "United States",
+        "promoted_visibility": "empty",
+        "promoted_heading": "",
+        "promoted_products": [],
+        "promoted_layout": "grid",
+        "promo_show": false,
+        "promo_visibility": "always",
+        "promo_link": "",
+        "promo_min_height": 160,
+        "promo_content": "",
+        "promo_text_align": "start",
+        "promo_button_label": "Shop Smart Tech",
+        "promo_button_style": "secondary",
+        "promo_text_color": "#ffffff",
+        "promo_tint_color": "#000000",
+        "promo_tint_opacity": 5
+      }
+    },
+    "product-compare": {
+      "type": "compare-drawer",
+      "settings": {}
+    },
+    "popup": {
+      "type": "popup",
+      "disabled": true,
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "disabled": true,
+          "settings": {
+            "heading": "Flash Sale!",
+            "size": "h0"
+          }
+        },
+        "forms_inline_8gAgLz": {
+          "type": "shopify://apps/forms/blocks/inline/8744a304-fcb1-4347-b211-bb6b4759a76a",
+          "settings": {
+            "form_id": "931203",
+            "text_color": "#ffffff",
+            "button_background_color": "#9d9d9d",
+            "button_label_color": "#ffffff",
+            "links_color": "#1878b9",
+            "errors_color": "#e02229",
+            "text_alignment": "center",
+            "form_alignment": "center",
+            "padding_top": 0,
+            "padding_bottom": 24,
+            "padding_right": 0,
+            "padding_left": 0
+          }
+        },
+        "text": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "<p>Hurry! Offers end soon.</p>",
+            "style": "large"
+          }
+        },
+        "countdown": {
+          "type": "product-countdown",
+          "disabled": true,
+          "settings": {
+            "end_date": "",
+            "end_time": "",
+            "end_text": "",
+            "hide_on_end": true,
+            "size": "small"
+          }
+        },
+        "button": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "label": "Shop Flash Sale",
+            "link": "",
+            "style": "primary"
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "forms_inline_8gAgLz",
+        "text",
+        "countdown",
+        "button"
+      ],
+      "settings": {
+        "trigger": "delay",
+        "delay": 5,
+        "guests_only": false,
+        "show_on_mobile": true,
+        "dismiss_days": 2,
+        "position": "center",
+        "text_align": "center",
+        "width": "wide",
+        "tint_opacity": 60,
+        "color_scheme": "scheme-5"
+      }
+    },
+    "whatsapp": {
+      "type": "whatsapp-chat",
+      "settings": {
+        "add_page_link": true,
+        "show_window": false,
+        "audience": "all"
+      }
+    }
+  },
+  "order": [
+    "cart-drawer",
+    "product-compare",
+    "popup",
+    "whatsapp"
+  ]
+}

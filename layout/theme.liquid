@@ -1,0 +1,145 @@
+<!doctype html>
+{%- liquid
+  assign wholesale = false
+  if customer and customer.b2b?
+    assign wholesale = true
+  endif
+
+  assign gated = false
+  if template.name == 'product' and wholesale == false and settings.wholesale_only_tag != blank
+    assign gate_tag = settings.wholesale_only_tag | strip | downcase
+    for tag in product.tags
+      assign t = tag | downcase
+      if t == gate_tag
+        assign gated = true
+        break
+      endif
+    endfor
+  endif
+
+  assign rtl_locales = 'ar,he,fa,ur'
+  assign lang = request.locale.iso_code | split: '-' | first
+  assign dir = 'ltr'
+  if rtl_locales contains lang
+    assign dir = 'rtl'
+  endif
+-%}
+<html class="no-js" lang="{{ request.locale.iso_code }}" dir="{{ dir }}" data-carousel-arrows="{{ settings.carousel_arrows }}" data-carousel-arrow-style="{{ settings.carousel_arrow_style }}" data-carousel-step="{{ settings.carousel_step }}">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="{{ settings.color_schemes.first.settings.background }}">
+    <link rel="canonical" href="{{ canonical_url }}">
+    <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
+
+    {%- if settings.favicon != blank -%}
+      <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
+    {%- endif -%}
+
+    {%- if gated -%}
+      <meta name="robots" content="noindex">
+    {%- endif -%}
+
+    {%- render 'meta-tags' -%}
+
+    <script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');</script>
+
+    {%- render 'tokens' -%}
+    {{ settings.body_font | font_url | preload_tag: as: 'font', type: 'font/woff2', crossorigin: 'anonymous' }}
+    {%- unless settings.heading_font.family == settings.body_font.family and settings.heading_font.weight == settings.body_font.weight -%}
+      {{ settings.heading_font | font_url | preload_tag: as: 'font', type: 'font/woff2', crossorigin: 'anonymous' }}
+    {%- endunless -%}
+    {{ 'base.css' | asset_url | stylesheet_tag }}
+    <link rel="stylesheet" href="{{ 'component-drawer.css' | asset_url }}" media="print" onload="this.media='all'">
+    <noscript>{{ 'component-drawer.css' | asset_url | stylesheet_tag }}</noscript>
+
+    <script type="importmap">
+      {
+        "imports": {
+          "@weft/core": "{{ 'core.js' | asset_url }}",
+          "@weft/rules": "{{ 'rules.js' | asset_url }}",
+          "@weft/quantity": "{{ 'quantity.js' | asset_url }}"
+        }
+      }
+    </script>
+    <script>
+      window.Weft = {
+        routes: {
+          root: {{ routes.root_url | json }},
+          cart: {{ routes.cart_url | json }},
+          cartAdd: {{ routes.cart_add_url | json }},
+          cartChange: {{ routes.cart_change_url | json }},
+          cartUpdate: {{ routes.cart_update_url | json }},
+          search: {{ routes.search_url | json }},
+          predictiveSearch: {{ routes.predictive_search_url | json }},
+          recommendations: {{ routes.product_recommendations_url | json }}
+        },
+        modules: {
+          header: {{ 'header.js' | asset_url | json }},
+          localization: {{ 'localization.js' | asset_url | json }},
+          customCode: {{ 'custom-code.js' | asset_url | json }},
+          quickAdd: {{ 'quick-add.js' | asset_url | json }},
+          product: {{ 'product.js' | asset_url | json }}
+        },
+        settings: {
+          cartType: {{ settings.cart_type | json }},
+          afterAdd: {{ settings.cart_after_add | json }},
+          cartShake: {{ settings.cart_shake | json }},
+          cartShakeEvery: {{ settings.cart_shake_every | json }},
+          vibrate: {{ settings.vibrate_on_add | json }},
+          preloadLinks: {{ settings.preload_links | json }},
+          externalNewTab: {{ settings.external_links_new_tab | json }},
+          tabMessages: {
+            enabled: {{ settings.tab_messages_enable | json }},
+            one: {{ settings.tab_message_1 | json }},
+            two: {{ settings.tab_message_2 | json }},
+            delay: {{ settings.tab_message_delay | json }}
+          }
+        },
+        strings: {
+          error: {{ 'general.error' | t | json }},
+          loading: {{ 'general.loading' | t | json }},
+          locationUpdated: {{ 'wholesale.location_updated' | t: location: '__location__' | json }},
+          cartUpdated: {{ 'cart.updated' | t | json }}
+        },
+        wholesale: {{ wholesale | json }},
+        moneyFormat: {{ shop.money_format | json }},
+        currency: {{ cart.currency.iso_code | json }},
+        designMode: {{ request.design_mode | json }}
+      };
+    </script>
+    <script type="module" src="{{ 'core.js' | asset_url }}"></script>
+    <script type="module" src="{{ 'header.js' | asset_url }}"></script>
+
+    {%- if settings.custom_code_head != blank and settings.custom_code_head_mode == 'immediately' -%}
+      {{ settings.custom_code_head }}
+    {%- endif -%}
+    {%- comment -%} integration:start {%- endcomment -%}
+    {%- render 'integration-tracking', part: 'head' -%}
+    {%- comment -%} integration:end {%- endcomment -%}
+
+    {{ content_for_header }}
+  </head>
+
+  <body class="template-{{ template.name | handle }}{% if template.suffix %} template-{{ template.name | handle }}--{{ template.suffix | handle }}{% endif %}{% if wholesale %} is-wholesale{% endif %}"{% if settings.reveal_on_scroll != 'none' %} data-reveal="{{ settings.reveal_on_scroll }}"{% endif %}>
+    <a class="skip-link visually-hidden-focusable" href="#MainContent">{{ 'general.skip_to_content' | t }}</a>
+
+    {% sections 'header-group' %}
+
+    <main id="MainContent" class="main" role="main" tabindex="-1" data-gated="{{ gated }}">
+      {{ content_for_layout }}
+    </main>
+
+    {% sections 'footer-group' %}
+    {% sections 'overlay-group' %}
+
+
+    <div class="visually-hidden" aria-live="polite" aria-atomic="true" data-announcer></div>
+
+    {%- render 'custom-code' -%}
+    {%- comment -%} integration:start {%- endcomment -%}
+    {%- render 'integration-tracking', part: 'body' -%}
+    {%- comment -%} integration:end {%- endcomment -%}
+  </body>
+</html>

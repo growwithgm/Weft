@@ -1,0 +1,83 @@
+{
+  "type": "header",
+  "name": "Header Group",
+  "sections": {
+    "announcement": {
+      "type": "announcement-bar",
+      "blocks": {
+        "ann_delivery": {
+          "type": "announcement",
+          "settings": {
+            "text": "Hand-embroidered by our artisans &middot; Handmade since 1982"
+          }
+        },
+        "ann_dispatch": {
+          "type": "announcement",
+          "settings": {
+            "text": "Order by 4pm Madrid for same-day dispatch, Mon&ndash;Fri"
+          }
+        }
+      },
+      "block_order": [
+        "ann_delivery",
+        "ann_dispatch"
+      ],
+      "settings": {
+        "link1": "",
+        "link1_label": "",
+        "link2": "",
+        "link2_label": "",
+        "show_country": true,
+        "show_language": true,
+        "text_size": "small",
+        "rotate_seconds": 6,
+        "color_scheme": "scheme-3"
+      }
+    },
+    "header": {
+      "type": "header",
+      "blocks": {
+        "a94eb2f1-b98e-4c70-9e55-999dfdaeb047": {
+          "type": "mega_menu",
+          "settings": {
+            "menu_item": "Shop",
+            "use_product_image": false,
+            "circle_images": true,
+            "show_underline": true,
+            "link_images": "small",
+            "image_ratio": "square",
+            "badge1_color": "#ff580d",
+            "badge1_link": "",
+            "badge1_text": "",
+            "badge2_color": "#00a6ed",
+            "badge2_link": "",
+            "badge2_text": "",
+            "badge3_color": "#b0ff00",
+            "badge3_link": "",
+            "badge3_text": "",
+            "style": "sidebar"
+          }
+        }
+      },
+      "block_order": [
+        "a94eb2f1-b98e-4c70-9e55-999dfdaeb047"
+      ],
+      "settings": {
+        "sticky": true,
+        "mobile_menu_position": "start",
+        "logo_position": "left",
+        "show_search": true,
+        "menu": "main-menu",
+        "menu_align": "center",
+        "cta_show": false,
+        "cta_icon": "chat",
+        "cta_label": "Expert help",
+        "cta_link": ""
+      }
+    }
+  },
+  "order": [
+    "announcement",
+    "header"
+  ]
+}

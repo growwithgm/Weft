@@ -1,0 +1,181 @@
+{%- comment -%} Scrolling banner item: text, icon, image or button. {%- endcomment -%}
+{%- assign b = block.settings -%}
+<li class="marquee__item marquee__item--{{ b.type }}" {{ block.shopify_attributes }}>
+  {%- case b.type -%}
+    {%- when 'icon' -%}
+      <span class="marquee__icon" aria-hidden="true">{%- render 'icon', name: b.icon, size: b.icon_size -%}</span>
+    {%- when 'image' -%}
+      {%- if b.image -%}
+        {%- capture item_img -%}{{ b.image | image_url: width: 400 | image_tag: height: b.image_height, alt: b.image.alt, loading: 'lazy', class: 'marquee__image', style: 'height: var(--marquee-image-h)' }}{%- endcapture -%}
+        <span style="--marquee-image-h: {{ b.image_height }}px">{%- if b.link != blank -%}<a href="{{ b.link }}">{{ item_img }}</a>{%- else -%}{{ item_img }}{%- endif -%}</span>
+      {%- endif -%}
+    {%- when 'button' -%}
+      {%- if b.text != blank -%}<a class="button button--{{ b.button_style }} button--small"{% if b.link != blank %} href="{{ b.link }}"{% else %} role="link" aria-disabled="true"{% endif %}>{{ b.text | escape }}</a>{%- endif -%}
+    {%- else -%}
+      {%- if b.link != blank -%}
+        <a class="marquee__text marquee__text--{{ b.font }} marquee__text--{{ b.size }}" href="{{ b.link }}">{{ b.text | escape }}</a>
+      {%- else -%}
+        <span class="marquee__text marquee__text--{{ b.font }} marquee__text--{{ b.size }}">{{ b.text | escape }}</span>
+      {%- endif -%}
+  {%- endcase -%}
+</li>
+
+{% schema %}
+{
+  "name": "t:labels.item",
+  "tag": null,
+  "settings": [
+    {
+      "type": "select",
+      "id": "type",
+      "label": "t:labels.type",
+      "options": [
+        {
+          "value": "text",
+          "label": "t:labels.text"
+        },
+        {
+          "value": "icon",
+          "label": "t:labels.icon"
+        },
+        {
+          "value": "image",
+          "label": "t:labels.image"
+        },
+        {
+          "value": "button",
+          "label": "t:labels.button"
+        }
+      ],
+      "default": "text"
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "label": "t:labels.text",
+      "default": "Free delivery over a set amount",
+      "visible_if": "{{ block.settings.type == 'text' or block.settings.type == 'button' }}"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "t:labels.link"
+    },
+    {
+      "type": "select",
+      "id": "font",
+      "label": "t:labels.font",
+      "options": [
+        {
+          "value": "body",
+          "label": "t:labels.body"
+        },
+        {
+          "value": "heading",
+          "label": "t:labels.heading"
+        }
+      ],
+      "default": "heading",
+      "visible_if": "{{ block.settings.type == 'text' }}"
+    },
+    {
+      "type": "select",
+      "id": "size",
+      "label": "t:labels.text_size",
+      "options": [
+        {
+          "value": "small",
+          "label": "t:labels.small"
+        },
+        {
+          "value": "medium",
+          "label": "t:labels.medium"
+        },
+        {
+          "value": "large",
+          "label": "t:labels.large"
+        }
+      ],
+      "default": "medium",
+      "visible_if": "{{ block.settings.type == 'text' }}"
+    },
+    {
+      "type": "select",
+      "id": "icon",
+      "label": "t:labels.icon",
+      "options": [
+        {
+          "value": "sparkle",
+          "label": "t:labels.sparkle"
+        },
+        {
+          "value": "star",
+          "label": "t:labels.star"
+        },
+        {
+          "value": "leaf",
+          "label": "t:labels.leaf"
+        },
+        {
+          "value": "drop",
+          "label": "t:labels.drop"
+        },
+        {
+          "value": "truck",
+          "label": "t:labels.delivery"
+        },
+        {
+          "value": "check",
+          "label": "t:labels.check_mark"
+        }
+      ],
+      "default": "sparkle",
+      "visible_if": "{{ block.settings.type == 'icon' }}"
+    },
+    {
+      "type": "range",
+      "id": "icon_size",
+      "label": "t:labels.icon_size",
+      "min": 12,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 20,
+      "visible_if": "{{ block.settings.type == 'icon' }}"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:labels.image"
+    },
+    {
+      "type": "range",
+      "id": "image_height",
+      "label": "t:labels.image_height",
+      "min": 16,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 40,
+      "visible_if": "{{ block.settings.type == 'image' }}"
+    },
+    {
+      "type": "select",
+      "id": "button_style",
+      "label": "t:labels.button_style",
+      "options": [
+        {
+          "value": "primary",
+          "label": "t:labels.primary"
+        },
+        {
+          "value": "secondary",
+          "label": "t:labels.secondary"
+        }
+      ],
+      "default": "primary",
+      "visible_if": "{{ block.settings.type == 'button' }}"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,32 @@
+{%- comment -%}
+  Email signup through Shopify's customer form (tagged "newsletter").
+  Params: id (unique form id), button_style (optional).
+{%- endcomment -%}
+{%- assign form_id = 'Newsletter-' | append: id -%}
+{%- form 'customer', id: form_id, class: 'newsletter-form' -%}
+  <input type="hidden" name="contact[tags]" value="newsletter">
+  {%- if form.posted_successfully? -%}
+    <p class="form-message form-message--success" role="status" tabindex="-1" autofocus>{%- render 'icon', name: 'check', size: 18 -%}{{ 'newsletter.success' | t }}</p>
+  {%- else -%}
+    <div class="newsletter-form__row">
+      <label class="visually-hidden" for="{{ form_id }}-email">{{ 'newsletter.label' | t }}</label>
+      <input
+        class="input newsletter-form__input"
+        id="{{ form_id }}-email"
+        type="email"
+        name="contact[email]"
+        value="{{ form.email }}"
+        autocomplete="email"
+        autocorrect="off"
+        autocapitalize="off"
+        placeholder="{{ 'newsletter.placeholder' | t }}"
+        required
+        {% if form.errors %}aria-invalid="true" aria-describedby="{{ form_id }}-error"{% endif %}
+      >
+      <button type="submit" class="button newsletter-form__button">{{ 'newsletter.subscribe' | t }}</button>
+    </div>
+    {%- if form.errors -%}
+      <p class="form-message form-message--error" id="{{ form_id }}-error">{%- render 'icon', name: 'alert', size: 18 -%}{{ form.errors.translated_fields.email | capitalize }} {{ form.errors.messages.email }}</p>
+    {%- endif -%}
+  {%- endif -%}
+{%- endform -%}

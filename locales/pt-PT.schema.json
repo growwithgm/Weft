@@ -1,0 +1,1783 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "labels": {
+    "1": "1",
+    "2": "2",
+    "3": "3",
+    "0_means_no_limit": "0 significa sem limite.",
+    "1920_px": "1920 px",
+    "1_px": "1 px",
+    "2000_px": "2000 px",
+    "2_px": "2 px",
+    "404_page": "Página 404",
+    "a_page": "Uma página",
+    "above_the_text": "Acima do texto",
+    "accents": "Cores de destaque",
+    "accordions": "Acordeões",
+    "account": "Conta",
+    "activate_account": "Ativar conta",
+    "adapt_to_first_image": "Adaptar à primeira imagem",
+    "adapt_to_image": "Adaptar à imagem",
+    "add_app_snippets_or_other_liquid_code": "Adicione fragmentos de apps ou outro código Liquid.",
+    "add_faq_structured_data_for_search_engines": "Adicionar dados estruturados de perguntas frequentes para motores de pesquisa",
+    "add_space_around_the_apps": "Adicionar espaço à volta das apps",
+    "add_the_page_address_to_the_message": "Adicionar o endereço da página à mensagem",
+    "additional_images": "Imagens adicionais",
+    "addresses": "Endereços",
+    "adds_a_required_checkbox": "Adiciona uma caixa de verificação obrigatória.",
+    "advanced": "Avançado",
+    "after_a_delay": "Após um intervalo",
+    "after_adding_to_cart": "Após adicionar ao carrinho",
+    "after_first_interaction": "Após a primeira interação",
+    "after_image": "Imagem de depois",
+    "after_label": "Etiqueta de depois",
+    "after_page_load": "Após o carregamento da página",
+    "after_scrolling_halfway": "Ao percorrer metade da página",
+    "after_the_links": "Após as ligações",
+    "age_verification": "Verificação de idade",
+    "align_button_to_the_bottom": "Alinhar o botão em baixo",
+    "align_price_to_the_bottom": "Alinhar o preço em baixo",
+    "align_values_to_the_end": "Alinhar os valores ao fim",
+    "alignment": "Alinhamento",
+    "all": "Todos",
+    "all_devices": "Todos os dispositivos",
+    "all_products_when_empty": "Todos os produtos quando vazio.",
+    "all_reviews_label": "Texto de todas as avaliações",
+    "all_reviews_link": "Ligação de todas as avaliações",
+    "all_screen_sizes": "Todos os tamanhos de ecrã",
+    "all_screens": "Todos os ecrãs",
+    "all_variant_options": "Todas as opções de variante",
+    "also_the_cover_image_when_a_video_is_set": "Também é a imagem de capa quando há um vídeo definido.",
+    "always": "Sempre",
+    "always_use_the_first_product_image": "Usar sempre a primeira imagem do produto",
+    "always_use_the_pre_order_label": "Usar sempre a etiqueta Pré-encomenda",
+    "always_visible": "Sempre visível",
+    "amount_saved": "Montante poupado",
+    "anchor": "Âncora",
+    "animations": "Animações",
+    "announcement": "Anúncio",
+    "announcement_bar": "Barra de anúncios",
+    "answer": "Resposta",
+    "answers": "Respostas",
+    "application_page": "Página de candidatura",
+    "apply_button_label": "Texto do botão de candidatura",
+    "apply_the_color_scheme_to_the_text_box_only": "Aplicar o esquema de cores apenas à caixa de texto",
+    "apps": "Apps",
+    "arrow_button_style": "Estilo dos botões de seta",
+    "arrow_buttons_on_large_screens": "Botões de seta em ecrãs grandes",
+    "arrows": "Setas",
+    "aspect_ratio": "Proporção",
+    "attention_messages": "Mensagens de atenção",
+    "attribute_chips": "Etiquetas de atributos",
+    "author": "Autor",
+    "author_details": "Detalhes do autor",
+    "author_image": "Imagem do autor",
+    "automatic": "Automático",
+    "back_in_stock": "Aviso de reposição",
+    "background": "Fundo",
+    "background_gradient": "Gradiente de fundo",
+    "background_image": "Imagem de fundo",
+    "background_video": "Vídeo de fundo",
+    "background_video_with_text": "Vídeo de fundo com texto",
+    "backorder": "Encomenda pendente",
+    "backorder_note": "Nota de encomenda pendente",
+    "badge": "Selo",
+    "badge_1_color": "Cor do selo 1",
+    "badge_1_link_title": "Título da ligação do selo 1",
+    "badge_1_text": "Texto do selo 1",
+    "badge_2_color": "Cor do selo 2",
+    "badge_2_link_title": "Título da ligação do selo 2",
+    "badge_2_text": "Texto do selo 2",
+    "badge_3_color": "Cor do selo 3",
+    "badge_3_link_title": "Título da ligação do selo 3",
+    "badge_3_text": "Texto do selo 3",
+    "badges": "Selos",
+    "bag": "Saco",
+    "banners": "Faixas",
+    "barcode": "Código de barras",
+    "base_notes": "Notas de fundo",
+    "base_size": "Tamanho base",
+    "basket": "Cesto",
+    "before_and_after": "Antes e depois",
+    "before_collection_number": "Antes da coleção número",
+    "before_image": "Imagem de antes",
+    "before_label": "Etiqueta de antes",
+    "before_product_number": "Antes do produto número",
+    "before_the_links": "Antes das ligações",
+    "behind_the_text": "Atrás do texto",
+    "bell": "Sino",
+    "beside_the_text": "Ao lado do texto",
+    "blend_collection_images_with_the_background": "Fundir as imagens das coleções com o fundo",
+    "blend_color": "Cor de fusão",
+    "blend_product_images_with_the_background": "Fundir as imagens dos produtos com o fundo",
+    "blog": "Blogue",
+    "blog_post": "Publicação no blogue",
+    "blog_posts": "Publicações no blogue",
+    "blogs": "Blogues",
+    "body": "Corpo",
+    "body_font": "Tipo de letra do corpo",
+    "borders_and_dividers": "Contornos e divisores",
+    "bottom": "Em baixo",
+    "bottom_center": "Em baixo ao centro",
+    "bottom_end": "Em baixo no fim",
+    "bottom_left": "Em baixo à esquerda",
+    "bottom_right": "Em baixo à direita",
+    "bottom_start": "Em baixo no início",
+    "box_background": "Fundo da caixa",
+    "box_border": "Contorno da caixa",
+    "box_text": "Texto da caixa",
+    "brand_name": "Nome da marca",
+    "breadcrumbs": "Trilho de navegação",
+    "button": "Botão",
+    "button_and_input_border": "Contorno de botões e campos",
+    "button_color": "Cor do botão",
+    "button_corner_radius": "Raio dos cantos dos botões",
+    "button_label": "Texto do botão",
+    "button_link": "Ligação do botão",
+    "button_on_hover": "Botão ao passar o rato",
+    "button_size": "Tamanho do botão",
+    "button_style": "Estilo do botão",
+    "button_text": "Texto do botão",
+    "buttons": "Botões",
+    "buy_buttons": "Botões de compra",
+    "call_to_action_button": "Botão de apelo à ação",
+    "caption": "Legenda",
+    "card_and_panel_corner_radius": "Raio dos cantos de cartões e painéis",
+    "card_promotion": "Promoção no cartão",
+    "care": "Cuidados",
+    "carousel": "Carrossel",
+    "carousels": "Carrosséis",
+    "cart": "Carrinho",
+    "cart_drawer": "Gaveta do carrinho",
+    "cart_icon": "Ícone do carrinho",
+    "cart_type": "Tipo de carrinho",
+    "category": "Categoria",
+    "center": "Centro",
+    "center_text_on_mobile": "Centrar o texto no telemóvel",
+    "change_every": "Mudar a cada",
+    "change_slides_automatically": "Mudar diapositivos automaticamente",
+    "change_slides_every": "Mudar diapositivos a cada",
+    "change_testimonials_automatically": "Mudar testemunhos automaticamente",
+    "character_limit": "Limite de caracteres",
+    "chat": "Chat",
+    "chat_line_text": "Texto da linha de chat",
+    "chat_window": "Janela de chat",
+    "check": "Visto",
+    "check_mark": "Marca de verificação",
+    "checkbox": "Caixa de verificação",
+    "chevron": "Seta",
+    "chip_in_the_header": "Etiqueta no cabeçalho",
+    "circle": "Círculo",
+    "circle_background": "Fundo do círculo",
+    "circle_text": "Texto do círculo",
+    "circular_images": "Imagens circulares",
+    "clock": "Relógio",
+    "close_button": "Botão de fechar",
+    "closing": "Encerramento",
+    "code_before_the_closing_body_tag": "Código antes da tag de fecho do body",
+    "code_for_the_head": "Código para o head",
+    "collapse_on_mobile": "Recolher no telemóvel",
+    "collapsible_content": "Conteúdo recolhível",
+    "collapsible_row": "Linha recolhível",
+    "collapsible_rows": "Linhas recolhíveis",
+    "collection": "Coleção",
+    "collection_banner": "Faixa da coleção",
+    "collection_cards": "Cartões de coleção",
+    "collection_image": "Imagem da coleção",
+    "collection_list": "Lista de coleções",
+    "collection_products": "Produtos da coleção",
+    "collection_to_filter": "Coleção a filtrar",
+    "collections": "Coleções",
+    "collections_list": "Lista de coleções",
+    "collections_per_page": "Coleções por página",
+    "collections_to_show": "Coleções a mostrar",
+    "color": "Cor",
+    "color_filters": "Filtros de cor",
+    "color_option_names": "Nomes da opção de cor",
+    "color_scheme": "Esquema de cores",
+    "colors": "Cores",
+    "column": "Coluna",
+    "column_alignment": "Alinhamento das colunas",
+    "column_width_on_large_screens": "Largura da coluna em ecrãs grandes",
+    "columns": "Colunas",
+    "columns_on_large_screens": "Colunas em ecrãs grandes",
+    "columns_on_mobile": "Colunas no telemóvel",
+    "columns_on_tablets": "Colunas em tablets",
+    "columns_on_wide_screens": "Colunas em ecrãs largos",
+    "columns_to_span": "Colunas a ocupar",
+    "comments_per_page": "Comentários por página",
+    "compact": "Compacto",
+    "compare_control_on_cards": "Controlo de comparação nos cartões",
+    "complementary_products": "Produtos complementares",
+    "confirm_button": "Botão de confirmar",
+    "connect_a_product_metafield_hidden_when_empty": "Ligue um metacampo de produto. Fica oculto quando está vazio.",
+    "connect_the_matching_count_metafield": "Ligue o metacampo de contagem correspondente.",
+    "consent_text": "Texto de consentimento",
+    "contact": "Contacto",
+    "contact_form": "Formulário de contacto",
+    "content": "Conteúdo",
+    "content_position": "Posição do conteúdo",
+    "content_position_on_the_image": "Posição do conteúdo sobre a imagem",
+    "continue_shopping_link": "Ligação \"Continuar a comprar\"",
+    "copy_link": "Copiar ligação",
+    "count_label": "Texto da contagem",
+    "countdown_background": "Fundo da contagem decrescente",
+    "countdown_numbers": "Números da contagem decrescente",
+    "countdown_timer": "Contagem decrescente",
+    "countries": "Países",
+    "cover_image": "Imagem de capa",
+    "create_account": "Criar conta",
+    "create_the_code_in_discounts_first": "Crie primeiro o código em Descontos.",
+    "currency_format": "Formato da moeda",
+    "custom": "Personalizado",
+    "custom_code_and_tracking": "Código personalizado e rastreio",
+    "custom_countdown_colors": "Cores personalizadas da contagem decrescente",
+    "custom_icon": "Ícone personalizado",
+    "custom_input": "Campo personalizado",
+    "custom_liquid": "Liquid personalizado",
+    "custom_network": "Rede personalizada",
+    "custom_option": "Opção personalizada",
+    "custom_tabs": "Separadores personalizados",
+    "custom_text": "Texto personalizado",
+    "customer_account_menu": "Menu da conta de cliente",
+    "customer_login": "Início de sessão de clientes",
+    "customize_filters_in_the_search_and_discovery_ap": "Personalize os filtros na app Search & Discovery.",
+    "date": "Data",
+    "decline_button": "Botão de recusar",
+    "default_country": "País predefinido",
+    "delay": "Atraso",
+    "delivery": "Entrega",
+    "delivery_information": "Informações de entrega",
+    "delivery_list": "Lista de entrega",
+    "description": "Descrição",
+    "devices": "Dispositivos",
+    "direction": "Direção",
+    "disabled_button": "Botão desativado",
+    "disabled_button_text": "Texto do botão desativado",
+    "discord": "Discord",
+    "discount": "Desconto",
+    "discount_code": "Código de desconto",
+    "distance_from_the_bottom_on_large_screens": "Distância ao fundo em ecrãs grandes",
+    "distance_from_the_bottom_on_phones": "Distância ao fundo em telemóveis",
+    "distance_from_the_side": "Distância à lateral",
+    "divider": "Divisor",
+    "dividing_lines_between_cards": "Linhas divisórias entre cartões",
+    "dividing_lines_between_items": "Linhas divisórias entre itens",
+    "don_t_show": "Não mostrar",
+    "don_t_show_again_for": "Não voltar a mostrar durante",
+    "dots": "Pontos",
+    "dots_and_arrows": "Pontos e setas",
+    "drawer": "Gaveta",
+    "drawer_corner_radius": "Raio dos cantos das gavetas",
+    "drawers_and_pop_ups": "Gavetas e pop-ups",
+    "drop": "Gota",
+    "dropdown": "Menu pendente",
+    "dropdown_choices": "Opções do menu pendente",
+    "dropdown_options": "Opções do menu pendente",
+    "each_one_names_the_product_it_is_about": "Cada uma indica o produto a que se refere.",
+    "email": "E-mail",
+    "email_signup": "Subscrição de e-mail",
+    "empty_cart_link": "Ligação do carrinho vazio",
+    "enable_filtering": "Ativar filtragem",
+    "enable_predictive_search": "Ativar pesquisa preditiva",
+    "enable_product_compare": "Ativar comparação de produtos",
+    "enable_quick_add": "Ativar adição rápida",
+    "enable_sorting": "Ativar ordenação",
+    "enable_voice_search": "Ativar pesquisa por voz",
+    "end": "Fim",
+    "end_date": "Data de fim",
+    "end_time": "Hora de fim",
+    "error_background": "Fundo de erro",
+    "error_text": "Texto de erro",
+    "everyone": "Todos",
+    "exclude_product_types": "Excluir tipos de produto",
+    "explanation": "Explicação",
+    "extra_large": "Muito grande",
+    "extra_links_shown_after_the_main_menu": "Ligações adicionais mostradas após o menu principal.",
+    "extra_rows_from_metafields": "Linhas adicionais a partir de metacampos",
+    "extra_wide_65_35": "Extra larga (65 / 35)",
+    "facebook": "Facebook",
+    "fade": "Desvanecer",
+    "fade_and_rise": "Desvanecer e subir",
+    "fade_in": "Aparecer gradualmente",
+    "fallback_colors": "Cores alternativas",
+    "fast": "Rápida",
+    "favicon": "Favicon",
+    "feature": "Característica",
+    "featured_collection": "Coleção em destaque",
+    "featured_image_width": "Largura da imagem em destaque",
+    "featured_product": "Produto em destaque",
+    "field": "Campo",
+    "fill": "Preencher",
+    "fill_with_reviews_of_other_products": "Completar com avaliações de outros produtos",
+    "filled": "Preenchido",
+    "filter_parameter": "Parâmetro do filtro",
+    "filter_promotion": "Promoção nos filtros",
+    "filters": "Filtros",
+    "first_part_heading": "Título da primeira parte",
+    "first_part_text": "Texto da primeira parte",
+    "fit": "Ajustar",
+    "fit_row": "Linha de ajuste",
+    "fixed": "Fixa",
+    "fixed_height_on_large_screens": "Altura fixa em ecrãs grandes",
+    "fixed_height_on_mobile": "Altura fixa no telemóvel",
+    "flash_message": "Mensagem de destaque",
+    "font": "Tipo de letra",
+    "footer": "Rodapé",
+    "for_certification_logos": "Para logótipos de certificação.",
+    "for_example_gtm_xxxxxxx": "Por exemplo, GTM-XXXXXXX.",
+    "for_policy_and_legal_links": "Para ligações de políticas e informações legais.",
+    "for_pre_order_product_templates": "Para modelos de produto em pré-encomenda.",
+    "for_professionals": "Para profissionais",
+    "format_hh_mm_24_hour": "Formato HH:MM (24 horas).",
+    "format_yyyy_mm_dd_uses_your_store_s_time_zone": "Formato AAAA-MM-DD. Usa o fuso horário da loja.",
+    "forms": "Formulários",
+    "free_shipping_bar": "Barra de envio gratuito",
+    "from_1440_px_wide": "A partir de 1440 px de largura.",
+    "full_list": "Lista completa",
+    "full_list_label": "Título da lista completa",
+    "full_screen": "Ecrã inteiro",
+    "full_width": "Largura total",
+    "gallery": "Galeria",
+    "gallery_width": "Largura da galeria",
+    "gap": "Espaçamento",
+    "gift_card": "Cartão de oferta",
+    "gift_card_image": "Imagem do cartão de oferta",
+    "gift_guide": "Guia de presentes",
+    "gift_message": "Mensagem de oferta",
+    "go_to_the_cart_page": "Ir para a página do carrinho",
+    "google_site_verification_code": "Código de verificação do site da Google",
+    "google_tag_manager_container_id": "ID do contentor do Google Tag Manager",
+    "greeting": "Saudação",
+    "grid": "Grelha",
+    "grid_first_option_down_other_options_across": "Grelha: primeira opção em linhas, outras opções em colunas",
+    "group": "Grupo",
+    "guide_image": "Imagem do guia",
+    "guided_finder": "Localizador guiado",
+    "h1": "H1",
+    "h2": "H2",
+    "h3": "H3",
+    "half": "Metade",
+    "half_width_on_large_screens": "Meia largura em ecrãs grandes",
+    "header": "Cabeçalho",
+    "heading": "Título",
+    "heading_alignment": "Alinhamento do título",
+    "heading_background": "Fundo do título",
+    "heading_font": "Tipo de letra dos títulos",
+    "heading_level": "Nível do título",
+    "heading_size": "Tamanho dos títulos",
+    "heading_text": "Texto do título",
+    "headings": "Títulos",
+    "heart_notes": "Notas de coração",
+    "height": "Altura",
+    "height_on_large_screens": "Altura em ecrãs grandes",
+    "height_on_mobile": "Altura no telemóvel",
+    "hidden": "Oculto",
+    "hide_after_a_delay": "Ocultar após um intervalo",
+    "hide_for_wholesale_buyers": "Ocultar a compradores grossistas",
+    "hide_on_these_pages": "Ocultar nestas páginas",
+    "hide_the_backorder_notice": "Ocultar o aviso de encomenda pendente",
+    "hide_when_the_countdown_ends": "Ocultar quando a contagem decrescente terminar",
+    "hide_while_filters_are_active": "Ocultar enquanto houver filtros ativos",
+    "high": "Alta",
+    "highlight": "Destaque",
+    "highlight_background": "Fundo de destaque",
+    "highlight_border": "Contorno de destaque",
+    "highlight_products_with_the_highlight_tag": "Destacar produtos com a etiqueta de destaque",
+    "highlight_tag": "Etiqueta de destaque",
+    "highlight_text": "Texto de destaque",
+    "highlighted_products": "Produtos destacados",
+    "highlights": "Destaques",
+    "hint": "Dica",
+    "horizontal": "Horizontal",
+    "horizontal_position": "Posição horizontal",
+    "hotspot": "Ponto de interesse",
+    "hotspot_color": "Cor do ponto de interesse",
+    "how_to_use": "Modo de utilização",
+    "icon": "Ícone",
+    "icon_and_text": "Ícone e texto",
+    "icon_and_text_color": "Cor do ícone e do texto",
+    "icon_button": "Botão de ícone",
+    "icon_position": "Posição do ícone",
+    "icon_size": "Tamanho do ícone",
+    "icons_with_text": "Ícones com texto",
+    "image": "Imagem",
+    "image_aspect_ratio": "Proporção da imagem",
+    "image_background": "Fundo da imagem",
+    "image_banner": "Faixa de imagem",
+    "image_border": "Contorno da imagem",
+    "image_corner_radius": "Raio dos cantos das imagens",
+    "image_first": "Imagem primeiro",
+    "image_fit": "Ajuste da imagem",
+    "image_height": "Altura da imagem",
+    "image_last": "Imagem no fim",
+    "image_layout": "Esquema da imagem",
+    "image_only": "Apenas imagem",
+    "image_overlay": "Sobreposição da imagem",
+    "image_overlay_opacity": "Opacidade da sobreposição da imagem",
+    "image_position": "Posição da imagem",
+    "image_resolution": "Resolução da imagem",
+    "image_tint": "Tonalidade da imagem",
+    "image_tint_opacity": "Opacidade da tonalidade da imagem",
+    "image_width": "Largura da imagem",
+    "images": "Imagens",
+    "images_next_to_links": "Imagens junto às ligações",
+    "immediately": "Imediatamente",
+    "in_characters": "Em caracteres.",
+    "in_stock": "Em stock",
+    "infinite_scroll": "Deslocamento infinito",
+    "information": "Informação",
+    "information_background": "Fundo informativo",
+    "information_text": "Texto informativo",
+    "ingredient": "Ingrediente",
+    "ingredient_spotlight": "Ingrediente em destaque",
+    "ingredients": "Ingredientes",
+    "input_corner_radius": "Raio dos cantos dos campos",
+    "input_type": "Tipo de campo",
+    "inside_the_account_menu": "Dentro do menu da conta",
+    "instagram": "Instagram",
+    "installments": "Pagamento a prestações",
+    "installments_row_tint": "Tonalidade da linha de pagamento a prestações",
+    "integrations": "Integrações",
+    "inventory_for_a_full_bar": "Inventário para a barra completa",
+    "item": "Item",
+    "jar": "Frasco",
+    "keep_filters_in_view_while_scrolling": "Manter os filtros visíveis ao percorrer a página",
+    "keep_product_information_in_view_while_scrolling": "Manter as informações do produto visíveis ao percorrer a página",
+    "keep_the_checkout_area_in_view": "Manter a área de finalização da compra visível",
+    "keep_the_collection_in_product_links": "Manter a coleção nas ligações de produto",
+    "keep_the_quick_add_buttons_in_view": "Manter os botões de adição rápida visíveis",
+    "label": "Etiqueta",
+    "label_backorders_as_pre_order": "Apresentar as encomendas pendentes como pré-encomenda",
+    "label_color": "Cor da etiqueta",
+    "label_metafield": "Metacampo da etiqueta",
+    "labels": "Etiquetas",
+    "landscape": "Paisagem",
+    "landscape_4_3": "Paisagem (4:3)",
+    "large": "Grande",
+    "large_screens_only": "Apenas ecrãs grandes",
+    "layout": "Esquema",
+    "layout_and_design": "Esquema e design",
+    "layout_on_large_screens": "Esquema em ecrãs grandes",
+    "leaf": "Folha",
+    "leave_empty_for_recently_viewed": "Deixe vazio para \"Vistos recentemente\".",
+    "leave_empty_for_the_default": "Deixe vazio para usar o predefinido.",
+    "leave_empty_for_the_default_text": "Deixe vazio para usar o texto predefinido.",
+    "leave_empty_for_you_may_also_like": "Deixe vazio para \"Também poderá gostar\".",
+    "leave_empty_to_hide_the_row": "Deixe vazio para ocultar a linha.",
+    "left": "Esquerda",
+    "lightbox_and_hover_magnify": "Lightbox e lupa ao passar o rato",
+    "line_1": "Linha 1",
+    "line_1_size": "Tamanho da linha 1",
+    "line_2": "Linha 2",
+    "line_2_size": "Tamanho da linha 2",
+    "line_3": "Linha 3",
+    "line_3_size": "Tamanho da linha 3",
+    "line_between_media_and_information": "Linha entre os conteúdos multimédia e a informação",
+    "lines_above_and_below": "Linhas acima e abaixo",
+    "link": "Ligação",
+    "link_1": "Ligação 1",
+    "link_1_label": "Texto da ligação 1",
+    "link_2": "Ligação 2",
+    "link_2_label": "Texto da ligação 2",
+    "link_badges": "Selos de ligações",
+    "link_for_the_whole_banner": "Ligação para toda a faixa",
+    "link_label": "Texto da ligação",
+    "link_lists": "Listas de ligações",
+    "link_position": "Posição da ligação",
+    "link_text": "Texto da ligação",
+    "link_to": "Ligar a",
+    "linkedin": "LinkedIn",
+    "links": "Ligações",
+    "links_and_selectors": "Ligações e seletores",
+    "links_come_from_theme_settings_social_media": "As ligações vêm de Definições do tema > Redes sociais.",
+    "liquid_code": "Código Liquid",
+    "list": "Lista",
+    "list_all_colors_on_one_size_lines": "Listar todas as cores nas linhas de tamanho único",
+    "listening_indicator": "Indicador de escuta",
+    "load_body_code": "Carregar o código do body",
+    "load_head_code": "Carregar o código do head",
+    "load_more_button": "Botão Carregar mais",
+    "load_tracking": "Carregar o rastreio",
+    "location": "Localização",
+    "location_switcher": "Seletor de localização",
+    "logo": "Logótipo",
+    "logo_alignment": "Alinhamento dos logótipos",
+    "logo_and_favicon": "Logótipo e favicon",
+    "logo_list": "Lista de logótipos",
+    "logo_position_on_large_screens": "Posição do logótipo em ecrãs grandes",
+    "logo_width": "Largura do logótipo",
+    "logo_width_on_large_screens": "Largura do logótipo em ecrãs grandes",
+    "logo_width_on_mobile": "Largura do logótipo no telemóvel",
+    "long_text": "Texto longo",
+    "loop_videos": "Repetir vídeos",
+    "low_stock": "Stock baixo",
+    "low_stock_and_backorder": "Stock baixo e encomenda pendente",
+    "low_stock_threshold": "Limite de stock baixo",
+    "lowest_rating_shown": "Classificação mínima mostrada",
+    "magnify_on_hover": "Lupa ao passar o rato",
+    "mark_values_as_unavailable": "Marcar valores como indisponíveis",
+    "mastodon": "Mastodon",
+    "maximum_page_width": "Largura máxima da página",
+    "maximum_products": "Máximo de produtos",
+    "maximum_reviews": "Máximo de avaliações",
+    "maximum_width": "Largura máxima",
+    "media": "Multimédia",
+    "media_alignment": "Alinhamento do conteúdo multimédia",
+    "media_aspect_ratio": "Proporção do conteúdo multimédia",
+    "media_background": "Fundo do conteúdo multimédia",
+    "media_fit": "Ajuste do conteúdo multimédia",
+    "media_grid": "Grelha multimédia",
+    "media_grouping": "Agrupamento do conteúdo multimédia",
+    "media_position": "Posição do conteúdo multimédia",
+    "media_promotion": "Promoção multimédia",
+    "media_size": "Tamanho do conteúdo multimédia",
+    "media_width": "Largura do conteúdo multimédia",
+    "media_with_text": "Multimédia com texto",
+    "medium": "Médio",
+    "mega_menu": "Mega menu",
+    "mention_shipping_at_checkout": "Mencionar o envio na finalização da compra",
+    "menu": "Menu",
+    "menu_alignment": "Alinhamento do menu",
+    "menu_item": "Item de menu",
+    "message": "Mensagem",
+    "message_1": "Mensagem 1",
+    "message_2": "Mensagem 2",
+    "message_after_declining": "Mensagem após recusar",
+    "meta_domain_verification_code": "Código de verificação de domínio da Meta",
+    "metafield": "Metacampo",
+    "microsoft_clarity_project_id": "ID do projeto do Microsoft Clarity",
+    "middle_center": "Meio ao centro",
+    "middle_end": "Meio no fim",
+    "middle_start": "Meio no início",
+    "minimum_height": "Altura mínima",
+    "mobile": "Telemóvel",
+    "mobile_image": "Imagem para telemóvel",
+    "mobile_menu_opens_from": "O menu do telemóvel abre a partir de",
+    "mobile_only": "Apenas telemóvel",
+    "mobile_sticky_bar": "Barra fixa no telemóvel",
+    "mobile_uses_60_of_this_value": "No telemóvel é usado 60% deste valor.",
+    "months": "Meses",
+    "multi_column": "Várias colunas",
+    "name": "Nome",
+    "namespace_key_for_example_custom_material": "namespace.key, por exemplo custom.material",
+    "narrow": "Estreito",
+    "narrow_5_of_12_columns": "Estreita (5 de 12 colunas)",
+    "natural": "Natural",
+    "navigation": "Navegação",
+    "navigation_and_buttons": "Navegação e botões",
+    "navigation_font": "Tipo de letra da navegação",
+    "navigation_slideshow": "Apresentação de diapositivos com navegação",
+    "needs_shop_pay_to_be_active": "Requer o Shop Pay ativo.",
+    "never": "Nunca",
+    "new": "Novidade",
+    "none": "Nenhum",
+    "normal": "Normal",
+    "note": "Nota",
+    "number": "Número",
+    "number_of_page_views_between_shakes": "Número de visualizações de página entre cada abanão.",
+    "number_of_payments": "Número de pagamentos",
+    "number_the_products_as_steps": "Numerar os produtos como passos",
+    "off": "Desativado",
+    "off_the_button_opens_whatsapp_straight_away": "Desativado: o botão abre o WhatsApp de imediato.",
+    "on_hover": "Ao passar o rato",
+    "one_column": "Uma coluna",
+    "one_item": "Um item",
+    "one_option_per_line": "Uma opção por linha.",
+    "one_page": "Uma página",
+    "one_per_line": "Um por linha.",
+    "one_per_line_label_namespace_key": "Um por linha: Etiqueta = namespace.key",
+    "one_variant_option": "Uma opção de variante",
+    "only_claims_you_can_support": "Apenas afirmações que possa comprovar.",
+    "only_show_to_visitors_who_aren_t_signed_in": "Mostrar apenas a visitantes sem sessão iniciada",
+    "only_show_when_the_product_is_unavailable": "Mostrar apenas quando o produto não estiver disponível",
+    "open_a_chat_window_first": "Abrir primeiro uma janela de chat",
+    "open_all_filters": "Abrir todos os filtros",
+    "open_by_default": "Aberto por predefinição",
+    "open_external_links_in_a_new_tab": "Abrir ligações externas num novo separador",
+    "open_in_a_lightbox": "Abrir numa lightbox",
+    "open_in_a_new_tab": "Abrir num novo separador",
+    "open_the_cart_drawer": "Abrir a gaveta do carrinho",
+    "open_the_first_row": "Abrir a primeira linha",
+    "open_the_full_list": "Abrir a lista completa",
+    "open_the_lightbox_on_mobile": "Abrir a lightbox no telemóvel",
+    "open_the_window_automatically_after": "Abrir a janela automaticamente após",
+    "option_names_to_group_by": "Nomes de opções para agrupar",
+    "optional_uses_the_main_image_when_empty": "Opcional. Usa a imagem principal quando está vazio.",
+    "or_a_youtube_vimeo_url": "Ou um URL do YouTube / Vimeo",
+    "or_read_a_product_metafield": "Ou ler um metacampo do produto",
+    "order": "Encomenda",
+    "order_from_product_cards_in_a_drawer": "Encomendar a partir dos cartões de produto numa gaveta",
+    "order_matrix": "Matriz de encomenda",
+    "order_matrix_tag": "Etiqueta da matriz de encomenda",
+    "outline": "Contorno",
+    "overlays": "Sobreposições",
+    "overrides_the_text_from_theme_settings": "Substitui o texto das definições do tema.",
+    "pack_image_metafield": "Metacampo da imagem da embalagem",
+    "padding": "Preenchimento",
+    "page": "Página",
+    "page_addresses": "Endereços de página",
+    "page_content": "Conteúdo da página",
+    "page_numbers": "Números de página",
+    "page_width": "Largura da página",
+    "page_width_on_wide_screens": "Largura da página em ecrãs largos",
+    "page_with_the_guide": "Página com o guia",
+    "pages": "Páginas",
+    "pagination": "Paginação",
+    "panels_and_image_backgrounds": "Painéis e fundos de imagem",
+    "paragraph": "Parágrafo",
+    "password_page": "Página de palavra-passe",
+    "pause_on_hover": "Pausar ao passar o rato",
+    "payment": "Pagamento",
+    "payment_methods": "Métodos de pagamento",
+    "percent": "Percentagem",
+    "percentage_saved": "Percentagem poupada",
+    "period_after_opening": "Período após abertura",
+    "phone": "Telefone",
+    "phones_and_tablets_only": "Só telemóveis e tablets",
+    "photo": "Foto",
+    "photo_or_logo": "Foto ou logótipo",
+    "pill": "Pílula",
+    "pinterest": "Pinterest",
+    "play_the_video_automatically_muted": "Reproduzir o vídeo automaticamente, sem som",
+    "plays_muted_in_a_loop_instead_of_the_image": "É reproduzido em ciclo e sem som em vez da imagem.",
+    "plus_and_minus": "Mais e menos",
+    "pop_up": "Pop-up",
+    "pop_up_corner_radius": "Raio dos cantos dos pop-ups",
+    "pop_up_link": "Ligação de pop-up",
+    "pop_up_name": "Nome do pop-up",
+    "pop_up_text": "Texto do pop-up",
+    "portrait": "Retrato",
+    "portrait_4_5": "Retrato (4:5)",
+    "position": "Posição",
+    "position_on_product_cards": "Posição nos cartões de produto",
+    "posts_per_page": "Publicações por página",
+    "posts_to_show": "Publicações a mostrar",
+    "pre_filled_message": "Mensagem pré-preenchida",
+    "pre_order": "Pré-encomenda",
+    "preload_links_on_hover": "Pré-carregar ligações ao passar o rato",
+    "preselect_the_first_available_variant": "Pré-selecionar a primeira variante disponível",
+    "preview_as_a_wholesale_buyer_in_the_editor": "Pré-visualizar como comprador grossista no editor",
+    "preview_the_wholesale_price_in_the_editor": "Pré-visualizar o preço por grosso no editor",
+    "price": "Preço",
+    "price_tag": "Etiqueta de preço",
+    "primary": "Principal",
+    "primary_button": "Botão principal",
+    "primary_button_hover": "Botão principal ao passar o rato",
+    "primary_button_text": "Texto do botão principal",
+    "product": "Produto",
+    "product_cards": "Cartões de produto",
+    "product_compare": "Comparação de produtos",
+    "product_comparison_grid": "Grelha de comparação de produtos",
+    "product_details": "Detalhes do produto",
+    "product_details_line": "Linha de detalhes do produto",
+    "product_features": "Características do produto",
+    "product_guide": "Guia do produto",
+    "product_inventory": "Inventário de produtos",
+    "product_labels": "Etiquetas de produto",
+    "product_list": "Lista de produtos",
+    "product_page": "Página de produto",
+    "product_signup": "Subscrição do produto",
+    "product_tabs": "Separadores do produto",
+    "product_type": "Tipo de produto",
+    "product_type_filter_in_the_search_field": "Filtro de tipo de produto no campo de pesquisa",
+    "product_types_separated_by_commas": "Tipos de produto separados por vírgulas.",
+    "products": "Produtos",
+    "products_in_these_collections": "Produtos destas coleções",
+    "products_per_page": "Produtos por página",
+    "products_per_row_on_large_screens": "Produtos por linha em ecrãs grandes",
+    "products_per_row_on_mobile": "Produtos por linha no telemóvel",
+    "products_published_recently": "Produtos publicados recentemente",
+    "products_to_show": "Produtos a mostrar",
+    "products_with_this_tag": "Produtos com esta etiqueta",
+    "promo_grid": "Grelha de promoções",
+    "promo_strip": "Faixa promocional",
+    "promoted_products": "Produtos promovidos",
+    "promotion": "Promoção",
+    "promotion_1_image": "Imagem da promoção 1",
+    "promotion_1_link": "Ligação da promoção 1",
+    "promotion_1_text": "Texto da promoção 1",
+    "promotion_1_text_position": "Posição do texto da promoção 1",
+    "promotion_2_image": "Imagem da promoção 2",
+    "promotion_2_link": "Ligação da promoção 2",
+    "promotion_2_text": "Texto da promoção 2",
+    "promotion_2_text_position": "Posição do texto da promoção 2",
+    "promotion_3_image": "Imagem da promoção 3",
+    "promotion_3_link": "Ligação da promoção 3",
+    "promotion_3_text": "Texto da promoção 3",
+    "promotion_3_text_position": "Posição do texto da promoção 3",
+    "promotion_color_scheme": "Esquema de cores da promoção",
+    "promotions": "Promoções",
+    "promotions_show_on_the_first_page_only": "As promoções só são mostradas na primeira página.",
+    "prompt_1": "Sugestão 1",
+    "prompt_2": "Sugestão 2",
+    "prompt_3": "Sugestão 3",
+    "prompts": "Sugestões",
+    "prompts_rotate_inside_the_empty_search_field": "As sugestões rodam dentro do campo de pesquisa vazio.",
+    "provider_name": "Nome do fornecedor",
+    "published_within": "Publicados nos últimos",
+    "purchase_options": "Opções de compra",
+    "question": "Pergunta",
+    "quick_add": "Adição rápida",
+    "quick_links": "Ligações rápidas",
+    "quick_navigation": "Navegação rápida",
+    "quick_navigation_color_scheme": "Esquema de cores da navegação rápida",
+    "quick_order_list": "Lista de encomenda rápida",
+    "quick_order_page": "Página de encomenda rápida",
+    "rating": "Classificação",
+    "rating_stars": "Estrelas de classificação",
+    "read_by_screen_readers": "Lido pelos leitores de ecrã.",
+    "recently_viewed": "Vistos recentemente",
+    "recommendations": "Recomendações",
+    "related_products": "Produtos relacionados",
+    "replacement_image": "Imagem de substituição",
+    "replaces_the_background_color_where_supported": "Substitui a cor de fundo quando suportado.",
+    "replaces_the_icon_above": "Substitui o ícone acima.",
+    "replaces_the_text": "Substitui o texto.",
+    "required": "Obrigatório",
+    "reset_password": "Redefinir palavra-passe",
+    "results_per_page": "Resultados por página",
+    "results_per_type": "Resultados por tipo",
+    "retail_shoppers": "Clientes de retalho",
+    "retail_shoppers_only": "Apenas clientes de retalho.",
+    "returns": "Devoluções",
+    "returns_page": "Página de devoluções",
+    "returns_row": "Linha de devoluções",
+    "returns_text": "Texto de devoluções",
+    "reveal_sections_on_scroll": "Revelar secções ao percorrer a página",
+    "review_count": "Número de avaliações",
+    "reviews": "Avaliações",
+    "reviews_app_code": "Código da app de avaliações",
+    "reviews_before_show_more": "Avaliações antes de \"Mostrar mais\"",
+    "reviews_grid": "Grelha de avaliações",
+    "reviews_judge_me": "Avaliações (Judge.me)",
+    "reviews_section_anchor": "Âncora da secção de avaliações",
+    "reviews_section_on_this_page": "Secção de avaliações nesta página",
+    "reviews_wall": "Mural de avaliações",
+    "rich_text": "Texto formatado",
+    "role": "Função",
+    "rotate_prompts_on_mobile": "Rodar sugestões no telemóvel",
+    "round_converted_amounts_up": "Arredondar para cima os montantes convertidos",
+    "round_images": "Imagens redondas",
+    "routine_steps": "Passos da rotina",
+    "row": "Linha",
+    "row_1_label": "Etiqueta da linha 1",
+    "row_1_value": "Valor da linha 1",
+    "row_2_label": "Etiqueta da linha 2",
+    "row_2_value": "Valor da linha 2",
+    "row_height_on_large_screens": "Altura da linha em ecrãs grandes",
+    "row_height_on_mobile": "Altura da linha no telemóvel",
+    "row_label": "Etiqueta da linha",
+    "rows_from_metafields": "Linhas a partir de metacampos",
+    "rows_one_row_per_variant": "Linhas: uma linha por variante",
+    "rows_to_span": "Linhas a ocupar",
+    "rss_link_in_blog_breadcrumbs": "Ligação RSS no trilho de navegação do blogue",
+    "rule_for_other_countries": "Regra para outros países",
+    "ruler": "Régua",
+    "sale": "Em promoção",
+    "same_as_maximum_page_width": "Igual à largura máxima da página",
+    "scaled_down_to_32_x_32px": "Reduzido para 32 x 32px.",
+    "scent_notes": "Notas olfativas",
+    "score": "Pontuação",
+    "scroll_per_arrow_click": "Deslocamento por clique na seta",
+    "scrolling_banner": "Faixa em deslocamento",
+    "search": "Pesquisa",
+    "search_and_account": "Pesquisa e conta",
+    "search_field_font": "Tipo de letra do campo de pesquisa",
+    "search_products_only": "Pesquisar apenas produtos",
+    "search_results": "Resultados da pesquisa",
+    "search_settings_are_in_theme_settings_search": "As definições de pesquisa estão em Definições do tema > Pesquisa.",
+    "search_skus": "Pesquisar SKUs",
+    "search_tags": "Pesquisar etiquetas",
+    "second_image_on_hover": "Segunda imagem ao passar o rato",
+    "second_part_heading": "Título da segunda parte",
+    "second_part_logo": "Logótipo da segunda parte",
+    "second_part_text": "Texto da segunda parte",
+    "secondary": "Secundário",
+    "secondary_button": "Botão secundário",
+    "secondary_button_text_and_border": "Texto e contorno do botão secundário",
+    "secondary_menu": "Menu secundário",
+    "secondary_text": "Texto secundário",
+    "section": "Secção",
+    "section_height": "Altura da secção",
+    "section_spacing": "Espaçamento da secção",
+    "section_width": "Largura da secção",
+    "secure": "Seguro",
+    "secure_payment": "Pagamento seguro",
+    "selected": "Selecionados",
+    "send_back_in_stock_requests_to_a_service": "Enviar os pedidos de aviso de reposição para um serviço",
+    "separate_notes_with_commas": "Separe as notas com vírgulas.",
+    "shade_every_other_row": "Sombrear linhas alternadas",
+    "shake_every": "Abanar a cada",
+    "shake_the_cart_icon_when_it_has_items": "Abanar o ícone do carrinho quando tem artigos",
+    "shape": "Forma",
+    "shapes": "Formas",
+    "share": "Partilhar",
+    "shipping_calculator": "Calculadora de envio",
+    "shipping_rules": "Regras de envio",
+    "shoppable_image": "Imagem comprável",
+    "shorten_the_description": "Encurtar a descrição",
+    "shorten_to_about": "Encurtar para cerca de",
+    "shortest_review_shown": "Avaliação mais curta mostrada",
+    "show": "Mostrar",
+    "show_a_divider_above": "Mostrar um divisor acima",
+    "show_a_link_when_other_options_are_sold_out": "Mostrar uma ligação quando outras opções estiverem esgotadas",
+    "show_a_promotion_tile_first": "Mostrar primeiro um mosaico promocional",
+    "show_accelerated_checkout_buttons": "Mostrar botões de finalização da compra acelerada",
+    "show_alphabetical_options": "Mostrar opções alfabéticas",
+    "show_as_accordion": "Mostrar como acordeão",
+    "show_attention_messages": "Mostrar mensagens de atenção",
+    "show_author": "Mostrar autor",
+    "show_available_swatches_first": "Mostrar primeiro as amostras disponíveis",
+    "show_back_to_top_link": "Mostrar ligação para voltar ao topo",
+    "show_backorder_note": "Mostrar nota de encomenda pendente",
+    "show_backorder_note_on_lines": "Mostrar nota de encomenda pendente nas linhas",
+    "show_best_selling": "Mostrar \"Mais vendidos\"",
+    "show_blog_title": "Mostrar título do blogue",
+    "show_breadcrumbs": "Mostrar trilho de navegação",
+    "show_button": "Mostrar botão",
+    "show_cards_as_boxes": "Mostrar cartões como caixas",
+    "show_cents_as_superscript": "Mostrar cêntimos em expoente",
+    "show_chat_contact_line": "Mostrar linha de contacto por chat",
+    "show_checkout_button": "Mostrar botão de finalização da compra",
+    "show_collection_description": "Mostrar descrição da coleção",
+    "show_collection_title": "Mostrar título da coleção",
+    "show_country_and_language_in_the_mobile_menu": "Mostrar país e idioma no menu do telemóvel",
+    "show_country_region_selector": "Mostrar seletor de país/região",
+    "show_currency_codes": "Mostrar códigos de moeda",
+    "show_custom_label": "Mostrar etiqueta personalizada",
+    "show_custom_options_marked_for_quick_add": "Mostrar opções personalizadas marcadas para adição rápida",
+    "show_date": "Mostrar data",
+    "show_date_options": "Mostrar opções de data",
+    "show_description": "Mostrar descrição",
+    "show_email_signup": "Mostrar subscrição de e-mail",
+    "show_exact_count_to_retail_shoppers": "Mostrar quantidade exata aos clientes de retalho",
+    "show_excerpt": "Mostrar excerto",
+    "show_featured": "Mostrar \"Em destaque\"",
+    "show_featured_image": "Mostrar imagem em destaque",
+    "show_filter_by_name_or_sku": "Mostrar filtro por nome ou SKU",
+    "show_filters_beside_products_on_large_screens": "Mostrar os filtros ao lado dos produtos em ecrãs grandes",
+    "show_follow_on_shop": "Mostrar Seguir no Shop",
+    "show_free_shipping_progress": "Mostrar progresso para envio gratuito",
+    "show_grid_and_list_toggle": "Mostrar alternador de grelha e lista",
+    "show_image_border": "Mostrar contorno da imagem",
+    "show_images": "Mostrar imagens",
+    "show_in_quick_add": "Mostrar na adição rápida",
+    "show_installments_row": "Mostrar linha de pagamento a prestações",
+    "show_inventory": "Mostrar inventário",
+    "show_inventory_bar": "Mostrar barra de inventário",
+    "show_language_selector": "Mostrar seletor de idioma",
+    "show_line": "Mostrar linha",
+    "show_link_to_order_history": "Mostrar ligação para o histórico de encomendas",
+    "show_links_to_the_previous_and_next_posts": "Mostrar ligações para as publicações anterior e seguinte",
+    "show_media": "Mostrar conteúdo multimédia",
+    "show_media_counter_on_mobile": "Mostrar contador de multimédia no telemóvel",
+    "show_media_promotion": "Mostrar promoção multimédia",
+    "show_minimum_order_and_pack_size_bar": "Mostrar barra de encomenda mínima e tamanho do pack",
+    "show_new_label": "Mostrar etiqueta de novidade",
+    "show_on": "Mostrar em",
+    "show_on_mobile": "Mostrar no telemóvel",
+    "show_only_on_these_pages": "Mostrar só nestas páginas",
+    "show_order_note": "Mostrar nota da encomenda",
+    "show_over_the_product_media": "Mostrar sobre o conteúdo multimédia do produto",
+    "show_page_title": "Mostrar título da página",
+    "show_payment_icons": "Mostrar ícones de pagamento",
+    "show_pickup_availability": "Mostrar disponibilidade de recolha",
+    "show_powered_by_shopify": "Mostrar \"Com tecnologia Shopify\"",
+    "show_price": "Mostrar preço",
+    "show_price_options": "Mostrar opções de preço",
+    "show_prices_for_product_links": "Mostrar preços nas ligações de produto",
+    "show_product_button": "Mostrar botão do produto",
+    "show_product_count": "Mostrar número de produtos",
+    "show_product_counts": "Mostrar contagens de produtos",
+    "show_product_images": "Mostrar imagens de produto",
+    "show_quantity_selector": "Mostrar seletor de quantidade",
+    "show_quotation_marks": "Mostrar aspas",
+    "show_rating": "Mostrar classificação",
+    "show_read_more": "Mostrar \"Ler mais\"",
+    "show_recipient_form_for_gift_cards": "Mostrar formulário de destinatário para cartões de oferta",
+    "show_related_products": "Mostrar produtos relacionados",
+    "show_returns_row": "Mostrar linha de devoluções",
+    "show_review_photos": "Mostrar fotos das avaliações",
+    "show_reviews_from_judge_me_data": "Mostrar avaliações a partir dos dados do Judge.me",
+    "show_reviews_tab": "Mostrar separador de avaliações",
+    "show_reviews_with_photos_first": "Mostrar primeiro as avaliações com fotos",
+    "show_rows_without_a_value": "Mostrar linhas sem valor",
+    "show_rows_without_data": "Mostrar linhas sem dados",
+    "show_sale_label": "Mostrar etiqueta de promoção",
+    "show_search": "Mostrar pesquisa",
+    "show_share_links": "Mostrar ligações de partilha",
+    "show_shipping_calculator": "Mostrar calculadora de envio",
+    "show_shipping_row": "Mostrar linha de envio",
+    "show_shop_pay_installments": "Mostrar Shop Pay Installments",
+    "show_sku": "Mostrar SKU",
+    "show_skus_to_wholesale_buyers": "Mostrar SKUs aos compradores por grosso",
+    "show_social_media_links": "Mostrar ligações das redes sociais",
+    "show_sold_out_label": "Mostrar etiqueta de esgotado",
+    "show_sold_out_options_row": "Mostrar linha de opções esgotadas",
+    "show_sold_out_variants": "Mostrar variantes esgotadas",
+    "show_specification": "Mostrar especificação",
+    "show_star_rating": "Mostrar classificação por estrelas",
+    "show_stock_notice_on_cards": "Mostrar aviso de stock nos cartões",
+    "show_subtitle": "Mostrar subtítulo",
+    "show_swatches": "Mostrar amostras",
+    "show_tag_filter": "Mostrar filtro de etiquetas",
+    "show_tags": "Mostrar etiquetas",
+    "show_tax_and_shipping_note": "Mostrar nota de impostos e envio",
+    "show_tax_note": "Mostrar nota de impostos",
+    "show_text_below_the_image_on_mobile": "Mostrar o texto abaixo da imagem no telemóvel",
+    "show_text_in_a_circle": "Mostrar o texto num círculo",
+    "show_the_installments_line_to_wholesale_buyers": "Mostrar a linha de pagamento a prestações aos compradores por grosso",
+    "show_the_latest_post_larger": "Mostrar a publicação mais recente em tamanho maior",
+    "show_the_product_guide_link_next_to": "Mostrar a ligação do guia do produto junto a",
+    "show_the_wholesale_sign_in_line": "Mostrar a linha de início de sessão para venda por grosso",
+    "show_to": "Mostrar a",
+    "show_vendor": "Mostrar fornecedor",
+    "show_vendor_on_lines": "Mostrar fornecedor nas linhas",
+    "show_view_all_link": "Mostrar ligação \"Ver tudo\"",
+    "show_view_cart_link": "Mostrar ligação \"Ver carrinho\"",
+    "show_view_collection_link": "Mostrar ligação \"Ver coleção\"",
+    "show_weight": "Mostrar peso",
+    "show_weight_on_lines": "Mostrar peso nas linhas",
+    "shown_after_the_text": "Mostrado após o texto.",
+    "shown_on_large_screens": "Mostrado em ecrãs grandes.",
+    "shows_the_page_content_in_the_pop_up": "Mostra o conteúdo da página no pop-up.",
+    "shows_under_the_filters_on_large_screens": "Mostrado sob os filtros em ecrãs grandes.",
+    "side_padding_on_large_screens": "Margem lateral em ecrãs grandes",
+    "sidebar": "Barra lateral",
+    "sign_in_button_label": "Texto do botão de início de sessão",
+    "signup_heading": "Título da subscrição",
+    "size": "Tamanho",
+    "sizing": "Tamanhos",
+    "sku": "SKU",
+    "slide": "Diapositivo",
+    "slide_link": "Ligação do diapositivo",
+    "slideshow": "Apresentação de diapositivos",
+    "slideshow_description": "Descrição da apresentação de diapositivos",
+    "slideshow_on_hover": "Apresentação ao passar o rato",
+    "slow": "Lenta",
+    "small": "Pequeno",
+    "snapchat": "Snapchat",
+    "social_links": "Ligações sociais",
+    "social_media": "Redes sociais",
+    "sold_out": "Esgotado",
+    "sold_out_and_errors": "Esgotado e erros",
+    "sold_out_colors_move_to_the_end_of_the_row": "As cores esgotadas passam para o fim da fila.",
+    "solid": "Sólido",
+    "sorting": "Ordenação",
+    "space_between_items": "Espaço entre itens",
+    "space_between_logos": "Espaço entre logótipos",
+    "space_between_media_and_information": "Espaço entre multimédia e informação",
+    "space_between_sections": "Espaço entre secções",
+    "spacer": "Espaçador",
+    "spacing": "Espaçamento",
+    "sparkle": "Brilho",
+    "specification": "Especificação",
+    "specifications": "Especificações",
+    "speed": "Velocidade",
+    "spotify": "Spotify",
+    "square": "Quadrado",
+    "square_1_1": "Quadrado (1:1)",
+    "stacked": "Empilhado",
+    "standard": "Padrão",
+    "standard_4_3": "Padrão (4:3)",
+    "star": "Estrela",
+    "star_rating": "Classificação por estrelas",
+    "stars_only": "Apenas estrelas",
+    "start": "Início",
+    "start_chat_button": "Botão para iniciar o chat",
+    "starting_position": "Posição inicial",
+    "status_line": "Linha de estado",
+    "stay_on_the_page": "Permanecer na página",
+    "step": "Passo",
+    "step_label": "Etiqueta do passo",
+    "sticky_header": "Cabeçalho fixo",
+    "stock": "Stock",
+    "store": "Loja",
+    "store_integrations": "Integrações da loja",
+    "store_reviews": "Avaliações da loja",
+    "stretch": "Esticar",
+    "style": "Estilo",
+    "style_for_options_without_swatches": "Estilo das opções sem amostras",
+    "style_on_large_screens": "Estilo em ecrãs grandes",
+    "style_on_mobile": "Estilo no telemóvel",
+    "subheading": "Subtítulo",
+    "subscribe_url": "URL de subscrição",
+    "subtitle_metafield": "Metacampo do subtítulo",
+    "success_background": "Fundo de sucesso",
+    "success_text": "Texto de sucesso",
+    "summary_position": "Posição do resumo",
+    "swatch_content": "Conteúdo da amostra",
+    "swatches": "Amostras",
+    "swipe_tiles_on_mobile": "Deslizar mosaicos no telemóvel",
+    "switch": "Interruptor",
+    "tab": "Separador",
+    "tab_1_heading": "Título do separador 1",
+    "tab_1_page": "Página do separador 1",
+    "tab_1_text": "Texto do separador 1",
+    "tab_2_heading": "Título do separador 2",
+    "tab_2_page": "Página do separador 2",
+    "tab_2_text": "Texto do separador 2",
+    "tab_3_heading": "Título do separador 3",
+    "tab_3_page": "Página do separador 3",
+    "tab_3_text": "Texto do separador 3",
+    "tabs": "Separadores",
+    "tag": "Etiqueta",
+    "tag_set_in_theme_settings_product_cards": "Etiqueta definida em Definições do tema > Cartões de produto.",
+    "tall_3_4": "Alto (3:4)",
+    "terms_and_conditions_link": "Ligação dos termos e condições",
+    "terms_and_conditions_page": "Página de termos e condições",
+    "testimonial": "Testemunho",
+    "testimonials": "Testemunhos",
+    "text": "Texto",
+    "text_above": "Texto acima",
+    "text_after_in_stock": "Texto após \"Em stock\"",
+    "text_after_the_end": "Texto após o fim",
+    "text_alignment": "Alinhamento do texto",
+    "text_button": "Botão de texto",
+    "text_first": "Texto primeiro",
+    "text_for_empty_fields": "Texto para campos vazios",
+    "text_for_empty_values": "Texto para valores vazios",
+    "text_image_and_socials": "Texto, imagem e redes sociais",
+    "text_last": "Texto no fim",
+    "text_link": "Ligação de texto",
+    "text_on_images": "Texto sobre as imagens",
+    "text_on_the_image": "Texto sobre a imagem",
+    "text_on_video": "Texto sobre o vídeo",
+    "text_only": "Apenas texto",
+    "text_or_table": "Texto ou tabela",
+    "text_over_the_image": "Texto sobreposto à imagem",
+    "text_position": "Posição do texto",
+    "text_size": "Tamanho do texto",
+    "text_width": "Largura do texto",
+    "the_rating_block_links_here": "O bloco de classificação liga para aqui.",
+    "the_rating_link_on_the_product_jumps_here": "A ligação da classificação no produto salta para aqui.",
+    "threads": "Threads",
+    "thresholds": "Limites",
+    "thumbnails": "Miniaturas",
+    "tiktok": "TikTok",
+    "tile_text_font": "Tipo de letra do texto dos mosaicos",
+    "time_per_message": "Tempo por mensagem",
+    "title": "Título",
+    "title_of_the_link_that_gets_the_badge": "Título da ligação que recebe o selo.",
+    "toggle_icon": "Ícone de alternância",
+    "top": "Em cima",
+    "top_center": "Em cima ao centro",
+    "top_end": "Em cima no fim",
+    "top_notes": "Notas de topo",
+    "top_start": "Em cima no início",
+    "towards_the_end": "Para o fim",
+    "towards_the_start": "Para o início",
+    "tracking": "Rastreio",
+    "transition": "Transição",
+    "tumblr": "Tumblr",
+    "twitch": "Twitch",
+    "two_columns": "Duas colunas",
+    "two_columns_same_size": "Duas colunas do mesmo tamanho",
+    "type": "Tipo",
+    "typography": "Tipografia",
+    "underline_column_headings": "Sublinhar títulos das colunas",
+    "uploaded_videos_only": "Apenas vídeos carregados.",
+    "uppercase": "Maiúsculas",
+    "uppercase_button_text": "Texto dos botões em maiúsculas",
+    "uppercase_headings": "Títulos em maiúsculas",
+    "uppercase_subheadings": "Subtítulos em maiúsculas",
+    "url": "URL",
+    "use_count_for_the_number_left": "Use [count] para o número de unidades restantes.",
+    "use_images_of_the_same_size": "Use imagens do mesmo tamanho.",
+    "used_for_stacked_text_and_buttons": "Usado para texto e botões empilhados.",
+    "useful_for_routines_step_1_step_2": "Útil para rotinas: Passo 1, Passo 2…",
+    "uses_real_inventory_counts": "Usa as quantidades reais de inventário.",
+    "uses_the_menu_title_when_empty": "Usa o título do menu quando está vazio.",
+    "uses_the_theme_logo_when_empty": "Usa o logótipo do tema quando está vazio.",
+    "value": "Valor",
+    "value_when_checked": "Valor quando selecionado",
+    "value_when_not_checked": "Valor quando não selecionado",
+    "values": "Valores",
+    "values_before_show_more": "Valores antes de \"Mostrar mais\"",
+    "variant_image": "Imagem da variante",
+    "variant_picker": "Seletor de variantes",
+    "vendor": "Fornecedor",
+    "verification_tags_must_load_immediately": "As etiquetas de verificação têm de ser carregadas imediatamente.",
+    "vertical": "Vertical",
+    "vertical_9_16": "Vertical (9:16)",
+    "vertical_position": "Posição vertical",
+    "very_low_stock_threshold": "Limite de stock muito baixo",
+    "vibrate_on_add_to_cart": "Vibrar ao adicionar ao carrinho",
+    "video": "Vídeo",
+    "video_cover_image": "Imagem de capa do vídeo",
+    "video_description": "Descrição do vídeo",
+    "video_shape": "Formato do vídeo",
+    "video_tint": "Tonalidade do vídeo",
+    "video_tint_opacity": "Opacidade da tonalidade do vídeo",
+    "video_with_play_button": "Vídeo com botão de reprodução",
+    "view_all_link": "Ligação \"Ver tudo\"",
+    "view_more": "Ver mais",
+    "vimeo": "Vimeo",
+    "voice_search": "Pesquisa por voz",
+    "volume_price_rows_before_show_all": "Linhas de preços por volume antes de \"Mostrar tudo\"",
+    "volume_pricing": "Preços por volume",
+    "wait_for_marketing_consent": "Aguardar consentimento de marketing",
+    "warning": "Aviso",
+    "warnings": "Avisos",
+    "wechat": "WeChat",
+    "weight": "Peso",
+    "whatsapp": "WhatsApp",
+    "whatsapp_chat": "Chat do WhatsApp",
+    "whatsapp_number": "Número de WhatsApp",
+    "when_leaving_the_page": "Ao sair da página",
+    "when_low": "Quando está baixo",
+    "when_no_variant_with_that_value_is_available": "Quando nenhuma variante com esse valor está disponível",
+    "when_the_cart_is_empty": "Quando o carrinho está vazio",
+    "when_the_exact_combination_is_unavailable": "Quando a combinação exata não está disponível",
+    "where_it_shows": "Onde aparece",
+    "where_this_block_is_placed": "Onde este bloco está colocado",
+    "wholesale": "Venda por grosso",
+    "wholesale_access": "Acesso à venda por grosso",
+    "wholesale_application_page": "Página de candidatura à venda por grosso",
+    "wholesale_buyers": "Compradores por grosso",
+    "wholesale_installments": "Pagamento a prestações por grosso",
+    "wholesale_low_stock_threshold": "Limite de stock baixo para venda por grosso",
+    "wholesale_only_tag": "Etiqueta exclusiva de venda por grosso",
+    "wholesale_quantity": "Quantidade por grosso",
+    "wholesale_sign_in_page": "Página de início de sessão para venda por grosso",
+    "wholesale_terms": "Condições de venda por grosso",
+    "wide": "Largo",
+    "wide_16_9": "Panorâmico (16:9)",
+    "wide_7_of_12_columns": "Largo (7 de 12 colunas)",
+    "wide_content": "Conteúdo largo",
+    "wide_promotion": "Promoção larga",
+    "width": "Largura",
+    "words_to_show": "Palavras a mostrar",
+    "worldwide": "Todo o mundo",
+    "write_a_review_label": "Texto de \"Escrever uma avaliação\"",
+    "write_a_review_link": "Ligação de \"Escrever uma avaliação\"",
+    "x_formerly_twitter": "X (antigo Twitter)",
+    "youtube": "YouTube",
+    "zoom": "Zoom"
+  },
+  "text": {
+    "blocks": {
+      "attribute_chips": {
+        "settings": {
+          "metafield": {
+            "info": "namespace.key, por exemplo shopify.hair-type. Usado em vez dos valores quando definido."
+          },
+          "values": {
+            "info": "Separe os valores com vírgulas. Aceita fontes dinâmicas."
+          }
+        }
+      },
+      "back_in_stock": {
+        "settings": {
+          "show_link": {
+            "info": "A lista de entrega já mostra esta linha. Ative quando a página de produto não tiver lista de entrega."
+          }
+        }
+      },
+      "buy_buttons": {
+        "settings": {
+          "audience": {
+            "info": "Os compradores por grosso usam o bloco de quantidade por grosso ou a matriz de encomenda."
+          },
+          "show_accelerated": {
+            "info": "Shop Pay e outros métodos de pagamento expresso configurados nas definições de pagamento da loja."
+          }
+        }
+      },
+      "comparison_row": {
+        "settings": {
+          "title": {
+            "info": "Para uma opção de variante, use o nome da opção, por exemplo \"Tamanho\"."
+          }
+        }
+      },
+      "complementary_products": {
+        "settings": {
+          "heading": {
+            "info": "Por exemplo Complete o look, Complete a rotina ou Complete o ritual."
+          },
+          "pick_complementary_products_in_the_search_and_di": {
+            "content": "Escolha produtos complementares na app Search & Discovery."
+          }
+        }
+      },
+      "delivery_list": {
+        "settings": {
+          "fit_text": {
+            "info": "Ligue um metacampo, como um guia de ajuste. A linha fica oculta quando está vazia."
+          },
+          "shipping_rules_installments_and_the_returns_text": {
+            "content": "As regras de envio, o pagamento a prestações e o texto de devoluções estão em Definições do tema > Informações de entrega e Pagamento a prestações."
+          },
+          "show_notify": {
+            "info": "Abre a gaveta de aviso de reposição quando o produto tem uma."
+          }
+        }
+      },
+      "description": {
+        "settings": {
+          "clamp_chars": {
+            "info": "0 mostra a descrição completa. Os textos mais longos têm uma ligação Ver mais."
+          },
+          "heading": {
+            "info": "Deixe vazio para mostrar \"Descrição\" no idioma do cliente."
+          }
+        }
+      },
+      "finder_question": {
+        "settings": {
+          "answers": {
+            "info": "Um por linha. Use \"Etiqueta = valor do filtro\" quando a etiqueta for diferente do valor do filtro."
+          },
+          "param": {
+            "info": "Copie-o do URL da coleção depois de escolher o filtro, por exemplo filter.v.option.size ou filter.p.tag."
+          }
+        }
+      },
+      "form_field": {
+        "settings": {
+          "title": {
+            "info": "Deixe vazio para usar a etiqueta predefinida. Os campos personalizados precisam de uma etiqueta."
+          }
+        }
+      },
+      "group": {
+        "settings": {
+          "color_scheme": {
+            "info": "Mantenha o esquema da secção ou escolha um para um painel."
+          }
+        }
+      },
+      "heading": {
+        "settings": {
+          "tag": {
+            "info": "Automático usa H1 na primeira secção de uma página e H2 nas restantes."
+          }
+        }
+      },
+      "ingredients": {
+        "settings": {
+          "full_list": {
+            "info": "Aceita fontes dinâmicas, por exemplo um metacampo do produto."
+          }
+        }
+      },
+      "installments_note": {
+        "settings": {
+          "shown_to_wholesale_buyers_when_theme_settings_wh": {
+            "content": "Mostrado aos compradores por grosso quando Definições do tema > Venda por grosso o permite e Definições do tema > Pagamento a prestações tem um nome de fornecedor. Usa a encomenda mínima como montante."
+          }
+        }
+      },
+      "order_matrix": {
+        "settings": {
+          "shown_to_wholesale_buyers_on_products_with_the_o": {
+            "content": "Mostrado aos compradores por grosso em produtos com a etiqueta da matriz de encomenda (Definições do tema > Venda por grosso). As linhas usam a primeira opção; as colunas usam as restantes opções."
+          }
+        }
+      },
+      "pao_icon": {
+        "settings": {
+          "months": {
+            "info": "Aceita fontes dinâmicas, por exemplo um metacampo numérico."
+          }
+        }
+      },
+      "product_guide": {
+        "settings": {
+          "image": {
+            "info": "Ligue um metacampo de produto para mostrar um guia diferente em cada produto."
+          },
+          "label": {
+            "info": "Por exemplo Guia de tamanhos, Guia de tons ou Como escolher. Deixe vazio para usar o predefinido."
+          },
+          "link_position": {
+            "options": {
+              "picker": "Junto à opção correspondente no seletor de variantes"
+            }
+          }
+        }
+      },
+      "product_labels": {
+        "settings": {
+          "sale_sold_out_new_pre_order_and_custom_labels_fo": {
+            "content": "As etiquetas de promoção, esgotado, novidade, pré-encomenda e personalizadas seguem a variante selecionada. Edite-as em Definições do tema > Etiquetas de produto."
+          }
+        }
+      },
+      "product_price": {
+        "settings": {
+          "show_installments": {
+            "info": "Aparece quando o Shop Pay Installments está disponível para a loja."
+          }
+        }
+      },
+      "product_rating": {
+        "settings": {
+          "rating_value": {
+            "info": "Ligue um metacampo de classificação. Deixe vazio para usar a classificação do próprio produto (reviews.rating)."
+          }
+        }
+      },
+      "purchase_options": {
+        "settings": {
+          "heading": {
+            "info": "Deixe vazio para usar o predefinido. Só é mostrado em produtos com subscrições ou outros planos de venda."
+          }
+        }
+      },
+      "slide": {
+        "settings": {
+          "link": {
+            "info": "Transforma todo o diapositivo numa ligação. Os botões mantêm as suas próprias ligações."
+          }
+        }
+      },
+      "stock_line": {
+        "settings": {
+          "in_stock_extra": {
+            "info": "Por exemplo, o seu prazo de expedição. Só é mostrado para artigos em stock."
+          }
+        }
+      },
+      "variant_picker": {
+        "settings": {
+          "guide_option": {
+            "info": "Nomes de opções separados por vírgulas. Requer um bloco Guia do produto."
+          }
+        }
+      },
+      "volume_pricing": {
+        "settings": {
+          "shows_the_selected_variant_s_volume_pricing_from": {
+            "content": "Mostra os preços por volume da variante selecionada a partir do seu catálogo B2B. Fica oculto quando um produto não tem escalões de preço. As linhas antes de \"Mostrar tudo\" são definidas em Definições do tema > Venda por grosso."
+          }
+        }
+      },
+      "wholesale_quantity": {
+        "settings": {
+          "buy_box_for_wholesale_buyers_on_products_without": {
+            "content": "Caixa de compra para compradores por grosso em produtos sem a matriz de encomenda. Segue a regra de quantidade e os preços por volume de cada variante."
+          }
+        }
+      },
+      "wholesale_terms": {
+        "settings": {
+          "minimum_pack_size_and_maximum_from_your_b2b_quan": {
+            "content": "Mínimo, tamanho da embalagem e máximo das suas regras de quantidade B2B. Só é mostrado a compradores por grosso; as regras predefinidas não mostram nada."
+          }
+        }
+      }
+    },
+    "sections": {
+      "before_after": {
+        "settings": {
+          "disclaimer": {
+            "info": "Por exemplo, como o resultado foi alcançado. Os resultados são afirmações suas."
+          }
+        }
+      },
+      "cart_drawer": {
+        "settings": {
+          "shipping_calculator_default_country": {
+            "info": "Código de duas letras. Deixe vazio para usar o país do visitante."
+          }
+        }
+      },
+      "collection_banner": {
+        "settings": {
+          "use_product_image": {
+            "label": "Usar a imagem do primeiro produto quando a coleção não tem nenhuma"
+          }
+        }
+      },
+      "compare_drawer": {
+        "settings": {
+          "turn_compare_on_and_choose_its_rows_in_theme_set": {
+            "content": "Ative a comparação e escolha as linhas em Definições do tema > Comparação de produtos."
+          }
+        }
+      },
+      "custom_liquid": {
+        "settings": {
+          "custom_liquid": {
+            "info": "Adicione fragmentos de apps ou outro código. O tema não verifica este código."
+          }
+        }
+      },
+      "featured_collection": {
+        "blocks": {
+          "tab": {
+            "settings": {
+              "collection": {
+                "info": "Para intervalos de preço, use coleções automáticas com uma condição de preço."
+              }
+            }
+          }
+        },
+        "settings": {
+          "add_tabs_to_show_a_different_collection_in_each_": {
+            "content": "Adicione separadores para mostrar uma coleção diferente em cada um. A coleção abaixo é usada quando não há separadores."
+          }
+        }
+      },
+      "header": {
+        "blocks": {
+          "mega_menu": {
+            "settings": {
+              "link_images": {
+                "info": "Imagens da coleção ou a primeira imagem de produto quando a coleção não tem nenhuma."
+              },
+              "menu_item": {
+                "info": "Título do item de menu de primeiro nível que abre este mega menu."
+              }
+            }
+          }
+        }
+      },
+      "integration_reviews_grid": {
+        "settings": {
+          "store_integration_shows_reviews_from_judge_me_s_": {
+            "content": "Integração da loja: mostra avaliações a partir dos dados sincronizados do Judge.me. Ative-a em Definições do tema > Integrações."
+          }
+        }
+      },
+      "location_sheet": {
+        "settings": {
+          "shown_to_wholesale_buyers_whose_company_has_two_": {
+            "content": "Mostrado aos compradores por grosso cuja empresa tem duas ou mais localizações."
+          }
+        }
+      },
+      "main_404": {
+        "settings": {
+          "show_wholesale_line": {
+            "info": "Ajuda os compradores por grosso que seguem uma ligação antiga para um produto exclusivo para profissionais."
+          }
+        }
+      },
+      "main_cart": {
+        "settings": {
+          "shipping_default_country": {
+            "info": "Nome do país tal como aparece na lista, por exemplo \"Spain\". Usa o país do comprador quando está vazio."
+          },
+          "terms_page": {
+            "info": "Quando definido, os compradores marcam uma caixa para aceitar os termos antes da finalização da compra."
+          }
+        }
+      },
+      "main_collection": {
+        "settings": {
+          "filters_open_lg": {
+            "info": "Quando desativado, os filtros abrem numa gaveta em todos os tamanhos de ecrã."
+          }
+        }
+      },
+      "main_product": {
+        "settings": {
+          "group_media_by_option": {
+            "info": "A imagem em destaque de cada variante inicia o respetivo grupo. Coloque juntas as imagens de cada valor, pela ordem das variantes.",
+            "label": "Mostrar apenas o conteúdo multimédia do valor de opção selecionado"
+          },
+          "section_width": {
+            "info": "Largura total usa quase todo o ecrã a partir de 990 px de largura."
+          },
+          "sticky_bar_mobile": {
+            "info": "Mostra as opções selecionadas e Adicionar ao carrinho quando o botão principal sai do ecrã. Oculto para compradores por grosso."
+          }
+        }
+      },
+      "main_search": {
+        "settings": {
+          "products_only": {
+            "info": "Quando desativado, as páginas e as publicações no blogue aparecem depois dos produtos."
+          }
+        }
+      },
+      "navigation_slideshow": {
+        "settings": {
+          "quick_nav_use_product_image": {
+            "label": "Usar a imagem do primeiro produto quando uma coleção não tem nenhuma"
+          }
+        }
+      },
+      "product_hotspots": {
+        "settings": {
+          "product": {
+            "info": "A imagem vem deste produto quando não é escolhida nenhuma imagem."
+          }
+        }
+      },
+      "product_recommendations": {
+        "settings": {
+          "recommendations_are_based_on_sales_and_product_d": {
+            "content": "As recomendações baseiam-se nas vendas e nas descrições dos produtos. Ajuste-as na app Search & Discovery."
+          }
+        }
+      },
+      "quick_order_list": {
+        "settings": {
+          "wholesale_buyers_order_several_products_from_one": {
+            "content": "Os compradores por grosso encomendam vários produtos a partir de uma única lista. Cada variante segue a sua própria regra de quantidade, stock e preços por volume. Os visitantes de retalho veem um convite para iniciar sessão."
+          }
+        }
+      },
+      "shipping_calculator": {
+        "settings": {
+          "default_country": {
+            "info": "Nome do país tal como aparece na lista. Usa o país do comprador quando está vazio."
+          }
+        }
+      },
+      "video": {
+        "settings": {
+          "video": {
+            "info": "Os vídeos de fundo só são reproduzidos automaticamente quando carregados para o Shopify."
+          }
+        }
+      },
+      "whatsapp_chat": {
+        "blocks": {
+          "contact": {
+            "settings": {
+              "phone": {
+                "info": "Indicativo do país e número, só dígitos. Vazio usa o número da secção."
+              }
+            }
+          }
+        },
+        "settings": {
+          "a_floating_whatsapp_button_it_never_covers_add_t": {
+            "content": "Um botão flutuante do WhatsApp. Nunca tapa os botões de adicionar ao carrinho ou de finalizar a compra e esconde-se enquanto houver painéis ou caixas de diálogo abertos."
+          },
+          "button_bg": {
+            "info": "Mantenha um contraste de 4,5:1 com a cor do ícone e do texto. O verde do WhatsApp #25D366 precisa de um ícone escuro."
+          },
+          "message": {
+            "info": "Deixe vazio para usar um texto traduzido: \"Olá, tenho uma pergunta sobre esta página:\""
+          },
+          "open_delay": {
+            "info": "Uma vez por visita. 0 mantém-na fechada até o botão ser clicado."
+          },
+          "phone": {
+            "info": "Indicativo do país e número, só dígitos, por exemplo 34600000000. Deixe vazio para usar o link do WhatsApp em Definições do tema > Redes sociais."
+          },
+          "urls": {
+            "info": "Um endereço por linha, por exemplo /pages/contact, /cart ou um link completo. Termine com * para incluir tudo o que começa assim, por exemplo /collections/*."
+          }
+        }
+      },
+      "wholesale_access": {
+        "settings": {
+          "apply_page": {
+            "info": "Usa a página de Definições do tema > Venda por grosso quando está vazio."
+          }
+        }
+      }
+    },
+    "settings_schema": {
+      "advanced": {
+        "settings": {
+          "attention_messages": {
+            "info": "Mostrado no título do separador do navegador enquanto os visitantes estão noutro separador."
+          }
+        }
+      },
+      "animations": {
+        "settings": {
+          "reveal_on_scroll": {
+            "info": "Sempre desativado para visitantes que pedem movimento reduzido."
+          }
+        }
+      },
+      "cart": {
+        "settings": {
+          "cart_free_shipping_rules": {
+            "info": "Uma linha por moeda, por exemplo \"EUR: 69\". A barra só é mostrada para as moedas que indicar."
+          }
+        }
+      },
+      "colors": {
+        "settings": {
+          "accents": {
+            "info": "As cores de estado são sempre mostradas juntamente com uma etiqueta de texto."
+          }
+        }
+      },
+      "currency_format": {
+        "settings": {
+          "currency_code_enable": {
+            "info": "Útil quando vende em várias moedas com o mesmo símbolo."
+          }
+        }
+      },
+      "custom_code_and_tracking": {
+        "settings": {
+          "code_runs_on_every_page_marketing_code_waits_for": {
+            "content": "O código é executado em todas as páginas. O código de marketing aguarda o consentimento através das definições de privacidade de clientes do Shopify."
+          }
+        }
+      },
+      "delivery_information": {
+        "settings": {
+          "delivery_default_rule": {
+            "info": "Exemplo: \"54.95\". Deixe vazio para ocultar a linha de envio nos países não listados."
+          },
+          "delivery_round_up": {
+            "info": "Mantém os montantes convertidos iguais ou superiores ao que é cobrado na finalização da compra."
+          },
+          "delivery_rules": {
+            "info": "Uma linha por zona: países = tarifa / grátis a partir de, com moeda opcional. Exemplo: \"ES, AD = 4.95 / 69\". Deixe \"grátis a partir de\" vazio quando não houver envio gratuito. Os montantes usam a moeda da loja, a menos que a linha comece com um código de moeda, por exemplo \"GB = GBP 4.95 / 99\"."
+          },
+          "rules_for_the_delivery_list_on_product_pages_no_": {
+            "content": "Regras da lista de entrega nas páginas de produto. Nunca é mostrada uma data de entrega."
+          }
+        }
+      },
+      "installments": {
+        "settings": {
+          "installments_countries": {
+            "info": "Códigos de país de duas letras separados por vírgulas. Deixe vazio para todos os países."
+          },
+          "the_installments_row_on_product_pages_shopify_pa": {
+            "content": "A linha de pagamento a prestações nas páginas de produto. As prestações do Shopify Payments são mostradas separadamente quando disponíveis."
+          }
+        }
+      },
+      "integrations": {
+        "settings": {
+          "connections_to_outside_services_for_this_store_t": {
+            "content": "Ligações a serviços externos para esta loja. Não fazem parte da versão do Weft para a Theme Store."
+          },
+          "integration_bis_endpoint": {
+            "info": "O serviço recebe o pedido em JSON. Sem URL, os pedidos são enviados através do formulário de contacto."
+          },
+          "integration_reviews_enable": {
+            "info": "Usado pelas secções \"Grelha de avaliações\" e \"Mural de avaliações\". Lê as avaliações que o Judge.me guarda nos metacampos da loja."
+          },
+          "integration_tracking_mode": {
+            "info": "O rastreio também aguarda o consentimento de marketing quando \"Aguardar consentimento de marketing\" está ativado em Código personalizado e rastreio."
+          }
+        }
+      },
+      "layout_and_design": {
+        "settings": {
+          "gutter_desktop": {
+            "info": "A partir de 1280 px de largura. Ecrãs mais pequenos usam 20 ou 32 px."
+          },
+          "page_width_wide": {
+            "info": "Aplica-se a partir de 1440 px de largura, para que monitores grandes usem o espaço. 2000 px começa a 1700 px de largura, com 1920 px antes."
+          }
+        }
+      },
+      "product_cards": {
+        "settings": {
+          "card_subtitle_metafield": {
+            "info": "Espaço de nomes e chave de um metacampo de texto de linha única."
+          },
+          "highlighted_products": {
+            "info": "As secções de coleção podem destacar produtos com uma etiqueta."
+          }
+        }
+      },
+      "product_compare": {
+        "settings": {
+          "compare_metafields": {
+            "info": "Um por linha: Etiqueta = namespace.key, por exemplo \"Material = custom.material\"."
+          }
+        }
+      },
+      "product_inventory": {
+        "settings": {
+          "stock_low_threshold": {
+            "info": "Os clientes de retalho veem \"Restam poucos\" com este número ou menos. As quantidades exatas nunca são mostradas aos clientes de retalho, a menos que o escolha abaixo."
+          },
+          "stock_wholesale_low_threshold": {
+            "info": "Os compradores por grosso veem quantidades exatas; com este número ou menos, a quantidade é marcada como baixa."
+          }
+        }
+      },
+      "product_labels": {
+        "settings": {
+          "label_custom_metafield": {
+            "info": "Espaço de nomes e chave de um metacampo de texto de linha única. O respetivo texto torna-se a etiqueta."
+          }
+        }
+      },
+      "search": {
+        "settings": {
+          "voice_search_enable": {
+            "info": "Mostra um botão de microfone nos navegadores que suportam reconhecimento de voz."
+          }
+        }
+      },
+      "social_media": {
+        "settings": {
+          "links_show_in_the_footer_and_on_the_password_pag": {
+            "content": "As ligações aparecem no rodapé e na página de palavra-passe."
+          },
+          "social_whatsapp_url": {
+            "info": "Um link wa.me, por exemplo https://wa.me/34600000000. Também é usado pela secção Chat do WhatsApp (Sobreposições) quando esta não tem número próprio."
+          }
+        }
+      },
+      "swatches": {
+        "settings": {
+          "swatch_color_list": {
+            "info": "Usadas quando o Shopify não tem amostra para um valor. Uma por linha, por exemplo \"Cru: #E6DCC6\"."
+          },
+          "swatch_option_names": {
+            "info": "Separe os nomes com vírgulas. As opções com estes nomes mostram amostras."
+          },
+          "swatch_product_size": {
+            "info": "A partir de 56 px, as amostras esgotadas mostram uma faixa \"Esgotado\"; as mais pequenas, uma linha diagonal."
+          }
+        }
+      },
+      "typography": {
+        "settings": {
+          "navigation_font_source": {
+            "info": "Usa um dos dois tipos de letra acima, para que as páginas não carreguem nenhum ficheiro de tipo de letra adicional."
+          }
+        }
+      },
+      "wholesale": {
+        "settings": {
+          "wholesale_assorted_packs": {
+            "info": "Para produtos vendidos em packs sortidos: as linhas de tamanho único mostram todos os valores de cor."
+          },
+          "wholesale_editor_preview": {
+            "info": "O editor de temas mostra a página que um cliente B2B vê: blocos grossistas com dados de exemplo e blocos só de retalho ocultos. Na loja, os blocos grossistas só aparecem a clientes B2B com sessão iniciada."
+          },
+          "wholesale_installments": {
+            "info": "Ative apenas quando a finalização da compra B2B oferecer o fornecedor de pagamento a prestações."
+          },
+          "wholesale_matrix_tag": {
+            "info": "Os produtos com esta etiqueta mostram aos compradores por grosso a matriz de encomenda por cor e tamanho."
+          },
+          "wholesale_mode_is_on_for_customers_signed_in_to_": {
+            "content": "O modo de venda por grosso está ativo para clientes com sessão iniciada numa localização de empresa B2B do Shopify. Os preços, as regras de quantidade e os preços por volume vêm sempre dos seus catálogos B2B."
+          },
+          "wholesale_only_tag": {
+            "info": "Alternativa para produtos que continuam visíveis para o retalho. É preferível excluí-los dos seus catálogos de retalho."
+          },
+          "wholesale_pack_image_metafield": {
+            "info": "Metacampo de produto com uma imagem que substitui a imagem da linha para compradores por grosso."
+          },
+          "wholesale_quick_order_drawer": {
+            "info": "Os compradores por grosso abrem a matriz de encomenda ou a caixa de quantidade a partir de um cartão sem sair da coleção."
+          }
+        }
+      }
+    }
+  }
+}

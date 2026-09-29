@@ -1,0 +1,146 @@
+{%- comment -%}
+  Scrolling banner (marquee): text, icon, image and button items that scroll continuously.
+  carousel.js duplicates the row once for a seamless loop (the copy is hidden from assistive
+  technology). It stops for reduced motion and can pause on hover.
+{%- endcomment -%}
+{%- assign s = section.settings -%}
+{{ 'section-library.css' | asset_url | stylesheet_tag }}
+<div class="section marquee-section marquee-section--{{ s.height }}{% if s.dividers %} marquee-section--dividers{% endif %} color-{{ s.color_scheme }}">
+  <marquee-row
+    class="marquee marquee--{{ s.direction }}{% if s.pausable %} marquee--pausable{% endif %}"
+    style="--marquee-gap: {{ s.spacing }}px; --marquee-speed: {{ s.speed }};"
+    data-module="{{ 'carousel.js' | asset_url }}"
+    data-load="visible"
+  >
+    <ul class="marquee__track" role="list" data-marquee-track>{%- content_for 'blocks' -%}</ul>
+  </marquee-row>
+</div>
+
+{% schema %}
+{
+  "name": "t:labels.scrolling_banner",
+  "class": "section-scrolling-banner",
+  "max_blocks": 16,
+  "disabled_on": {
+    "groups": [
+      "aside"
+    ]
+  },
+  "blocks": [
+    {
+      "type": "_marquee-item"
+    }
+  ],
+  "settings": [
+    {
+      "type": "select",
+      "id": "height",
+      "label": "t:labels.height",
+      "options": [
+        {
+          "value": "compact",
+          "label": "t:labels.compact"
+        },
+        {
+          "value": "normal",
+          "label": "t:labels.normal"
+        },
+        {
+          "value": "large",
+          "label": "t:labels.large"
+        }
+      ],
+      "default": "normal"
+    },
+    {
+      "type": "range",
+      "id": "spacing",
+      "label": "t:labels.space_between_items",
+      "min": 8,
+      "max": 96,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "speed",
+      "label": "t:labels.speed",
+      "min": 1,
+      "max": 10,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "select",
+      "id": "direction",
+      "label": "t:labels.direction",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:labels.towards_the_start"
+        },
+        {
+          "value": "right",
+          "label": "t:labels.towards_the_end"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "checkbox",
+      "id": "pausable",
+      "label": "t:labels.pause_on_hover",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "dividers",
+      "label": "t:labels.lines_above_and_below",
+      "default": false
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:labels.color_scheme",
+      "default": "scheme-3"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:labels.scrolling_banner",
+      "category": "t:labels.text",
+      "blocks": [
+        {
+          "type": "_marquee-item",
+          "settings": {
+            "type": "text",
+            "text": "New collection"
+          }
+        },
+        {
+          "type": "_marquee-item",
+          "settings": {
+            "type": "icon",
+            "icon": "sparkle"
+          }
+        },
+        {
+          "type": "_marquee-item",
+          "settings": {
+            "type": "text",
+            "text": "Free delivery over a set amount"
+          }
+        },
+        {
+          "type": "_marquee-item",
+          "settings": {
+            "type": "icon",
+            "icon": "sparkle"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

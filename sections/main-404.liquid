@@ -1,0 +1,38 @@
+<div class="section main-404 page-width page-width--narrow text-center stack">
+  <h1>{{ 'not_found.title' | t }}</h1>
+  <p class="muted">{{ 'not_found.text' | t }}</p>
+  <form action="{{ routes.search_url }}" method="get" role="search" class="main-404__search">
+    <label class="visually-hidden" for="NotFoundSearch">{{ 'header.search' | t }}</label>
+    <input class="input" id="NotFoundSearch" type="search" name="q" placeholder="{{ 'header.search_placeholder' | t }}">
+    <button type="submit" class="button button--secondary">{{ 'header.search' | t }}</button>
+  </form>
+  <a class="button" href="{{ routes.all_products_collection_url }}">{{ 'general.continue_shopping' | t }}</a>
+  {%- if section.settings.show_wholesale_line -%}
+    {%- unless customer and customer.b2b? -%}
+      {%- liquid
+        if settings.wholesale_access_page != blank
+          assign wholesale_url = settings.wholesale_access_page.url
+        else
+          assign wholesale_url = routes.account_login_url
+        endif
+      -%}
+      <p class="main-404__wholesale"><a href="{{ wholesale_url }}">{{ 'wholesale.not_found_line' | t }}</a></p>
+    {%- endunless -%}
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "t:labels.404_page",
+  "class": "section-main-404",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_wholesale_line",
+      "label": "t:labels.show_the_wholesale_sign_in_line",
+      "default": true,
+      "info": "t:text.sections.main_404.settings.show_wholesale_line.info"
+    }
+  ]
+}
+{% endschema %}

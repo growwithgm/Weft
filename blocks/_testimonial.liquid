@@ -1,0 +1,63 @@
+{%- comment -%} Testimonial slide: quote, stars, author with image and details. {%- endcomment -%}
+{%- assign b = block.settings -%}
+<figure class="slideshow__slide testimonial" data-slide role="group" aria-roledescription="{{ 'accessibility.slide' | t }}" {{ block.shopify_attributes }}>
+  {%- if b.show_star_rating -%}
+    <p class="testimonial__stars">
+      <span class="rating-pill__stars" style="--stars: {{ b.star_rating | times: 20 }}%" aria-hidden="true"></span>
+      <span class="visually-hidden">{{ 'accessibility.star_rating' | t: rating: b.star_rating, max: 5 }}</span>
+    </p>
+  {%- endif -%}
+  <blockquote class="testimonial__quote rte">{{ b.testimonial }}</blockquote>
+  {%- if b.author != blank -%}
+    <figcaption class="testimonial__author">
+      {%- if b.author_image -%}{{ b.author_image | image_url: width: 120 | image_tag: width: 56, height: 56, alt: '', loading: 'lazy', class: 'testimonial__avatar' }}{%- endif -%}
+      <span><strong>{{ b.author | escape }}</strong>{%- if b.author_info != blank -%}<span class="testimonial__info muted">{{ b.author_info | escape }}</span>{%- endif -%}</span>
+    </figcaption>
+  {%- endif -%}
+</figure>
+
+{% schema %}
+{
+  "name": "t:labels.testimonial",
+  "tag": null,
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "testimonial",
+      "label": "t:labels.testimonial",
+      "default": "<p>Add customer reviews and testimonials to showcase your store's happy customers.</p>"
+    },
+    {
+      "type": "text",
+      "id": "author",
+      "label": "t:labels.author",
+      "default": "Author's name"
+    },
+    {
+      "type": "text",
+      "id": "author_info",
+      "label": "t:labels.author_details"
+    },
+    {
+      "type": "image_picker",
+      "id": "author_image",
+      "label": "t:labels.author_image"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_star_rating",
+      "label": "t:labels.show_star_rating",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "star_rating",
+      "label": "t:labels.star_rating",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 5
+    }
+  ]
+}
+{% endschema %}

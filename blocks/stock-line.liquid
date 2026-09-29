@@ -1,0 +1,146 @@
+{%- comment -%}
+  Retail stock line (brief §7.4): "In stock", "Only a few left" (at or below the low stock
+  threshold), "Sold out" or "On backorder". Retail never sees exact counts unless the store turns
+  that on. Optional urgency bar shows real inventory only (no fake urgency).
+{%- endcomment -%}
+{%- liquid
+  assign p = closest.product
+  assign v = p.selected_or_first_available_variant
+  assign tracked = false
+  if v.inventory_management != blank
+    assign tracked = true
+  endif
+  assign qty = v.inventory_quantity | default: 0
+  assign state = 'in_stock'
+  if v == nil
+    assign state = 'none'
+  elsif v.available == false
+    assign state = 'sold_out'
+  elsif tracked and qty <= 0 and v.inventory_policy == 'continue'
+    assign state = 'backorder'
+    # Theme settings > Product inventory > Hide the backorder notice
+    if settings.stock_hide_backorder_notice
+      assign state = 'none'
+    endif
+  elsif tracked and qty <= settings.stock_very_low_threshold
+    assign state = 'very_low'
+  elsif tracked and qty <= settings.stock_low_threshold
+    assign state = 'low'
+  endif
+  assign show_count = false
+  if settings.stock_show_count == 'always' and tracked
+    assign show_count = true
+  elsif settings.stock_show_count == 'low' and tracked
+    if state == 'low' or state == 'very_low'
+      assign show_count = true
+    endif
+  endif
+  assign bar_max = block.settings.bar_max
+  assign bar_percent = 100
+  if tracked and qty < bar_max
+    assign bar_percent = qty | times: 100 | divided_by: bar_max
+  endif
+-%}
+{%- capture visible -%}{% render 'audience-check', audience: block.settings.audience %}{%- endcapture -%}
+{%- if visible == '1' -%}
+  <div class="stock-line stock-line--{{ state }}" data-swap="{{ block.id }}" data-stock-state="{{ state }}" {{ block.shopify_attributes }}>
+    {%- if state != 'none' -%}
+      <p class="stock-line__text">
+        <span class="stock-line__dot" aria-hidden="true"></span>
+        {%- case state -%}
+          {%- when 'sold_out' -%}
+            {%- if block.settings.text_sold_out != blank -%}{{ block.settings.text_sold_out }}{%- else -%}{{ 'products.sold_out' | t }}{%- endif -%}
+          {%- when 'backorder' -%}
+            {%- if block.settings.text_backorder != blank -%}{{ block.settings.text_backorder }}{%- else -%}{{ 'products.stock.backorder' | t }}{%- endif -%}
+          {%- when 'low', 'very_low' -%}
+            {%- comment -%} Very low stock always names the real count ("Only 2 left"); low stock follows the count setting. {%- endcomment -%}
+            {%- if block.settings.text_low != blank -%}{{ block.settings.text_low | replace: '[count]', qty }}{%- elsif show_count or state == 'very_low' -%}{{ 'products.stock.low_count' | t: count: qty }}{%- else -%}{{ 'products.stock.low' | t }}{%- endif -%}
+          {%- else -%}
+            {%- if show_count -%}{{ 'products.stock.count' | t: count: qty }}{%- else -%}{{ 'products.stock.in_stock' | t }}{%- endif -%}
+            {%- if block.settings.in_stock_extra != blank %} · {{ block.settings.in_stock_extra }}{%- endif -%}
+        {%- endcase -%}
+      </p>
+      {%- if block.settings.show_bar and tracked and state != 'sold_out' and state != 'backorder' -%}
+        <div class="stock-line__bar" aria-hidden="true"><span style="width: {{ bar_percent }}%"></span></div>
+      {%- endif -%}
+    {%- endif -%}
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "t:labels.stock",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "in_stock_extra",
+      "label": "t:labels.text_after_in_stock",
+      "info": "t:text.blocks.stock_line.settings.in_stock_extra.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_bar",
+      "label": "t:labels.show_inventory_bar",
+      "default": false,
+      "info": "t:labels.uses_real_inventory_counts"
+    },
+    {
+      "type": "range",
+      "id": "bar_max",
+      "label": "t:labels.inventory_for_a_full_bar",
+      "min": 5,
+      "max": 100,
+      "step": 5,
+      "default": 20,
+      "visible_if": "{{ block.settings.show_bar }}"
+    },
+    {
+      "type": "header",
+      "content": "t:labels.custom_text"
+    },
+    {
+      "type": "text",
+      "id": "text_low",
+      "label": "t:labels.low_stock",
+      "info": "t:labels.use_count_for_the_number_left"
+    },
+    {
+      "type": "text",
+      "id": "text_sold_out",
+      "label": "t:labels.sold_out"
+    },
+    {
+      "type": "text",
+      "id": "text_backorder",
+      "label": "t:labels.backorder"
+    },
+    {
+      "type": "select",
+      "id": "audience",
+      "label": "t:labels.show_to",
+      "options": [
+        {
+          "value": "all",
+          "label": "t:labels.everyone"
+        },
+        {
+          "value": "retail",
+          "label": "t:labels.retail_shoppers"
+        },
+        {
+          "value": "wholesale",
+          "label": "t:labels.wholesale_buyers"
+        }
+      ],
+      "default": "retail"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:labels.stock",
+      "category": "t:labels.product"
+    }
+  ]
+}
+{% endschema %}

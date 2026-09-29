@@ -1,0 +1,1783 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "labels": {
+    "1": "1",
+    "2": "2",
+    "3": "3",
+    "0_means_no_limit": "0 betekent geen limiet.",
+    "1920_px": "1920 px",
+    "1_px": "1 px",
+    "2000_px": "2000 px",
+    "2_px": "2 px",
+    "404_page": "404-pagina",
+    "a_page": "Een pagina",
+    "above_the_text": "Boven de tekst",
+    "accents": "Accenten",
+    "accordions": "Accordeons",
+    "account": "Account",
+    "activate_account": "Account activeren",
+    "adapt_to_first_image": "Aanpassen aan eerste afbeelding",
+    "adapt_to_image": "Aanpassen aan afbeelding",
+    "add_app_snippets_or_other_liquid_code": "Voeg app-snippets of andere Liquid-code toe.",
+    "add_faq_structured_data_for_search_engines": "Gestructureerde FAQ-gegevens voor zoekmachines toevoegen",
+    "add_space_around_the_apps": "Ruimte rond de apps toevoegen",
+    "add_the_page_address_to_the_message": "Paginaadres aan het bericht toevoegen",
+    "additional_images": "Extra afbeeldingen",
+    "addresses": "Adressen",
+    "adds_a_required_checkbox": "Voegt een verplicht selectievakje toe.",
+    "advanced": "Geavanceerd",
+    "after_a_delay": "Na een vertraging",
+    "after_adding_to_cart": "Na toevoegen aan winkelwagen",
+    "after_first_interaction": "Na eerste interactie",
+    "after_image": "Afbeelding na",
+    "after_label": "Label na",
+    "after_page_load": "Na laden van de pagina",
+    "after_scrolling_halfway": "Na halverwege scrollen",
+    "after_the_links": "Na de links",
+    "age_verification": "Leeftijdsverificatie",
+    "align_button_to_the_bottom": "Knop onderaan uitlijnen",
+    "align_price_to_the_bottom": "Prijs onderaan uitlijnen",
+    "align_values_to_the_end": "Waarden aan het einde uitlijnen",
+    "alignment": "Uitlijning",
+    "all": "Alle",
+    "all_devices": "Alle apparaten",
+    "all_products_when_empty": "Alle producten als dit leeg is.",
+    "all_reviews_label": "Label voor alle reviews",
+    "all_reviews_link": "Link naar alle reviews",
+    "all_screen_sizes": "Alle schermformaten",
+    "all_screens": "Alle schermen",
+    "all_variant_options": "Alle variantopties",
+    "also_the_cover_image_when_a_video_is_set": "Ook de omslagafbeelding als er een video is ingesteld.",
+    "always": "Altijd",
+    "always_use_the_first_product_image": "Altijd de eerste productafbeelding gebruiken",
+    "always_use_the_pre_order_label": "Altijd het label Pre-order gebruiken",
+    "always_visible": "Altijd zichtbaar",
+    "amount_saved": "Bespaard bedrag",
+    "anchor": "Anker",
+    "animations": "Animaties",
+    "announcement": "Aankondiging",
+    "announcement_bar": "Aankondigingsbalk",
+    "answer": "Antwoord",
+    "answers": "Antwoorden",
+    "application_page": "Aanvraagpagina",
+    "apply_button_label": "Knoplabel voor aanvragen",
+    "apply_the_color_scheme_to_the_text_box_only": "Kleurschema alleen op het tekstvak toepassen",
+    "apps": "Apps",
+    "arrow_button_style": "Stijl van pijlknoppen",
+    "arrow_buttons_on_large_screens": "Pijlknoppen op grote schermen",
+    "arrows": "Pijlen",
+    "aspect_ratio": "Beeldverhouding",
+    "attention_messages": "Aandachtsberichten",
+    "attribute_chips": "Kenmerkchips",
+    "author": "Auteur",
+    "author_details": "Auteursgegevens",
+    "author_image": "Afbeelding van auteur",
+    "automatic": "Automatisch",
+    "back_in_stock": "Weer op voorraad",
+    "background": "Achtergrond",
+    "background_gradient": "Achtergrondverloop",
+    "background_image": "Achtergrondafbeelding",
+    "background_video": "Achtergrondvideo",
+    "background_video_with_text": "Achtergrondvideo met tekst",
+    "backorder": "Nabestelling",
+    "backorder_note": "Opmerking over nabestelling",
+    "badge": "Badge",
+    "badge_1_color": "Kleur badge 1",
+    "badge_1_link_title": "Linktitel badge 1",
+    "badge_1_text": "Tekst badge 1",
+    "badge_2_color": "Kleur badge 2",
+    "badge_2_link_title": "Linktitel badge 2",
+    "badge_2_text": "Tekst badge 2",
+    "badge_3_color": "Kleur badge 3",
+    "badge_3_link_title": "Linktitel badge 3",
+    "badge_3_text": "Tekst badge 3",
+    "badges": "Badges",
+    "bag": "Tas",
+    "banners": "Banners",
+    "barcode": "Streepjescode",
+    "base_notes": "Basisnoten",
+    "base_size": "Basisgrootte",
+    "basket": "Mandje",
+    "before_and_after": "Voor en na",
+    "before_collection_number": "Vóór collectie nummer",
+    "before_image": "Afbeelding voor",
+    "before_label": "Label voor",
+    "before_product_number": "Vóór product nummer",
+    "before_the_links": "Vóór de links",
+    "behind_the_text": "Achter de tekst",
+    "bell": "Bel",
+    "beside_the_text": "Naast de tekst",
+    "blend_collection_images_with_the_background": "Collectieafbeeldingen laten opgaan in de achtergrond",
+    "blend_color": "Mengkleur",
+    "blend_product_images_with_the_background": "Productafbeeldingen laten opgaan in de achtergrond",
+    "blog": "Blog",
+    "blog_post": "Blogbericht",
+    "blog_posts": "Blogberichten",
+    "blogs": "Blogs",
+    "body": "Hoofdtekst",
+    "body_font": "Lettertype hoofdtekst",
+    "borders_and_dividers": "Randen en scheidingslijnen",
+    "bottom": "Onder",
+    "bottom_center": "Midden onder",
+    "bottom_end": "Onder aan het einde",
+    "bottom_left": "Linksonder",
+    "bottom_right": "Rechtsonder",
+    "bottom_start": "Onder aan het begin",
+    "box_background": "Achtergrond van vak",
+    "box_border": "Rand van vak",
+    "box_text": "Tekst van vak",
+    "brand_name": "Merknaam",
+    "breadcrumbs": "Kruimelpad",
+    "button": "Knop",
+    "button_and_input_border": "Rand van knoppen en invoervelden",
+    "button_color": "Knopkleur",
+    "button_corner_radius": "Hoekradius van knoppen",
+    "button_label": "Knoplabel",
+    "button_link": "Knoplink",
+    "button_on_hover": "Knop bij aanwijzen",
+    "button_size": "Knopgrootte",
+    "button_style": "Knopstijl",
+    "button_text": "Knoptekst",
+    "buttons": "Knoppen",
+    "buy_buttons": "Koopknoppen",
+    "call_to_action_button": "Call-to-action-knop",
+    "caption": "Bijschrift",
+    "card_and_panel_corner_radius": "Hoekradius van kaarten en panelen",
+    "card_promotion": "Promotie in kaart",
+    "care": "Verzorging",
+    "carousel": "Carrousel",
+    "carousels": "Carrousels",
+    "cart": "Winkelwagen",
+    "cart_drawer": "Winkelwagenlade",
+    "cart_icon": "Winkelwagenpictogram",
+    "cart_type": "Type winkelwagen",
+    "category": "Categorie",
+    "center": "Midden",
+    "center_text_on_mobile": "Tekst centreren op mobiel",
+    "change_every": "Wisselen elke",
+    "change_slides_automatically": "Dia's automatisch wisselen",
+    "change_slides_every": "Dia's wisselen elke",
+    "change_testimonials_automatically": "Getuigenissen automatisch wisselen",
+    "character_limit": "Tekenlimiet",
+    "chat": "Chat",
+    "chat_line_text": "Tekst van chatregel",
+    "chat_window": "Chatvenster",
+    "check": "Vinkje",
+    "check_mark": "Vinkje",
+    "checkbox": "Selectievakje",
+    "chevron": "Chevron",
+    "chip_in_the_header": "Chip in de koptekst",
+    "circle": "Cirkel",
+    "circle_background": "Achtergrond van cirkel",
+    "circle_text": "Tekst in cirkel",
+    "circular_images": "Ronde afbeeldingen",
+    "clock": "Klok",
+    "close_button": "Sluitknop",
+    "closing": "Afsluiting",
+    "code_before_the_closing_body_tag": "Code vóór de afsluitende body-tag",
+    "code_for_the_head": "Code voor de head",
+    "collapse_on_mobile": "Inklappen op mobiel",
+    "collapsible_content": "Inklapbare content",
+    "collapsible_row": "Inklapbare rij",
+    "collapsible_rows": "Inklapbare rijen",
+    "collection": "Collectie",
+    "collection_banner": "Collectiebanner",
+    "collection_cards": "Collectiekaarten",
+    "collection_image": "Collectieafbeelding",
+    "collection_list": "Collectielijst",
+    "collection_products": "Collectieproducten",
+    "collection_to_filter": "Te filteren collectie",
+    "collections": "Collecties",
+    "collections_list": "Lijst met collecties",
+    "collections_per_page": "Collecties per pagina",
+    "collections_to_show": "Te tonen collecties",
+    "color": "Kleur",
+    "color_filters": "Kleurfilters",
+    "color_option_names": "Namen van kleuropties",
+    "color_scheme": "Kleurschema",
+    "colors": "Kleuren",
+    "column": "Kolom",
+    "column_alignment": "Kolomuitlijning",
+    "column_width_on_large_screens": "Kolombreedte op grote schermen",
+    "columns": "Kolommen",
+    "columns_on_large_screens": "Kolommen op grote schermen",
+    "columns_on_mobile": "Kolommen op mobiel",
+    "columns_on_tablets": "Kolommen op tablets",
+    "columns_on_wide_screens": "Kolommen op brede schermen",
+    "columns_to_span": "Te overspannen kolommen",
+    "comments_per_page": "Reacties per pagina",
+    "compact": "Compact",
+    "compare_control_on_cards": "Vergelijkknop op kaarten",
+    "complementary_products": "Aanvullende producten",
+    "confirm_button": "Bevestigingsknop",
+    "connect_a_product_metafield_hidden_when_empty": "Koppel een productmetaveld. Verborgen als dit leeg is.",
+    "connect_the_matching_count_metafield": "Koppel het bijbehorende metaveld voor het aantal.",
+    "consent_text": "Toestemmingstekst",
+    "contact": "Contact",
+    "contact_form": "Contactformulier",
+    "content": "Content",
+    "content_position": "Positie van content",
+    "content_position_on_the_image": "Positie van content op de afbeelding",
+    "continue_shopping_link": "Link \"Verder winkelen\"",
+    "copy_link": "Link kopiëren",
+    "count_label": "Label voor aantal",
+    "countdown_background": "Achtergrond van afteltimer",
+    "countdown_numbers": "Cijfers van afteltimer",
+    "countdown_timer": "Afteltimer",
+    "countries": "Landen",
+    "cover_image": "Omslagafbeelding",
+    "create_account": "Account aanmaken",
+    "create_the_code_in_discounts_first": "Maak de code eerst aan in Kortingen.",
+    "currency_format": "Valutanotatie",
+    "custom": "Aangepast",
+    "custom_code_and_tracking": "Aangepaste code en tracking",
+    "custom_countdown_colors": "Aangepaste kleuren voor afteltimer",
+    "custom_icon": "Aangepast pictogram",
+    "custom_input": "Aangepast invoerveld",
+    "custom_liquid": "Aangepaste Liquid",
+    "custom_network": "Aangepast netwerk",
+    "custom_option": "Aangepaste optie",
+    "custom_tabs": "Aangepaste tabbladen",
+    "custom_text": "Aangepaste tekst",
+    "customer_account_menu": "Menu klantaccount",
+    "customer_login": "Inloggen voor klanten",
+    "customize_filters_in_the_search_and_discovery_ap": "Pas filters aan in de app Search & Discovery.",
+    "date": "Datum",
+    "decline_button": "Weigerknop",
+    "default_country": "Standaardland",
+    "delay": "Vertraging",
+    "delivery": "Levering",
+    "delivery_information": "Leveringsinformatie",
+    "delivery_list": "Leveringslijst",
+    "description": "Beschrijving",
+    "devices": "Apparaten",
+    "direction": "Richting",
+    "disabled_button": "Uitgeschakelde knop",
+    "disabled_button_text": "Tekst van uitgeschakelde knop",
+    "discord": "Discord",
+    "discount": "Korting",
+    "discount_code": "Kortingscode",
+    "distance_from_the_bottom_on_large_screens": "Afstand tot de onderkant op grote schermen",
+    "distance_from_the_bottom_on_phones": "Afstand tot de onderkant op telefoons",
+    "distance_from_the_side": "Afstand tot de zijkant",
+    "divider": "Scheidingslijn",
+    "dividing_lines_between_cards": "Scheidingslijnen tussen kaarten",
+    "dividing_lines_between_items": "Scheidingslijnen tussen items",
+    "don_t_show": "Niet weergeven",
+    "don_t_show_again_for": "Niet opnieuw weergeven gedurende",
+    "dots": "Stippen",
+    "dots_and_arrows": "Stippen en pijlen",
+    "drawer": "Lade",
+    "drawer_corner_radius": "Hoekradius van lades",
+    "drawers_and_pop_ups": "Lades en pop-ups",
+    "drop": "Druppel",
+    "dropdown": "Vervolgkeuzelijst",
+    "dropdown_choices": "Keuzes in vervolgkeuzelijst",
+    "dropdown_options": "Opties in vervolgkeuzelijst",
+    "each_one_names_the_product_it_is_about": "Bij elk item staat het product waarop het betrekking heeft.",
+    "email": "E-mail",
+    "email_signup": "Aanmelding voor e-mail",
+    "empty_cart_link": "Link bij lege winkelwagen",
+    "enable_filtering": "Filteren inschakelen",
+    "enable_predictive_search": "Voorspellend zoeken inschakelen",
+    "enable_product_compare": "Producten vergelijken inschakelen",
+    "enable_quick_add": "Snel toevoegen inschakelen",
+    "enable_sorting": "Sorteren inschakelen",
+    "enable_voice_search": "Zoeken met spraak inschakelen",
+    "end": "Einde",
+    "end_date": "Einddatum",
+    "end_time": "Eindtijd",
+    "error_background": "Achtergrond bij fout",
+    "error_text": "Fouttekst",
+    "everyone": "Iedereen",
+    "exclude_product_types": "Producttypen uitsluiten",
+    "explanation": "Uitleg",
+    "extra_large": "Extra groot",
+    "extra_links_shown_after_the_main_menu": "Extra links die na het hoofdmenu worden getoond.",
+    "extra_rows_from_metafields": "Extra rijen uit metavelden",
+    "extra_wide_65_35": "Extra breed (65 / 35)",
+    "facebook": "Facebook",
+    "fade": "Vervagen",
+    "fade_and_rise": "Vervagen en omhoog",
+    "fade_in": "Invloeien",
+    "fallback_colors": "Terugvalkleuren",
+    "fast": "Snel",
+    "favicon": "Favicon",
+    "feature": "Kenmerk",
+    "featured_collection": "Uitgelichte collectie",
+    "featured_image_width": "Breedte van uitgelichte afbeelding",
+    "featured_product": "Uitgelicht product",
+    "field": "Veld",
+    "fill": "Vullen",
+    "fill_with_reviews_of_other_products": "Aanvullen met reviews van andere producten",
+    "filled": "Gevuld",
+    "filter_parameter": "Filterparameter",
+    "filter_promotion": "Promotie in filters",
+    "filters": "Filters",
+    "first_part_heading": "Kop van eerste deel",
+    "first_part_text": "Tekst van eerste deel",
+    "fit": "Passend",
+    "fit_row": "Rij voor pasvorm",
+    "fixed": "Vast",
+    "fixed_height_on_large_screens": "Vaste hoogte op grote schermen",
+    "fixed_height_on_mobile": "Vaste hoogte op mobiel",
+    "flash_message": "Flitsbericht",
+    "font": "Lettertype",
+    "footer": "Voettekst",
+    "for_certification_logos": "Voor certificeringslogo's.",
+    "for_example_gtm_xxxxxxx": "Bijvoorbeeld GTM-XXXXXXX.",
+    "for_policy_and_legal_links": "Voor links naar beleid en juridische informatie.",
+    "for_pre_order_product_templates": "Voor productsjablonen voor pre-orders.",
+    "for_professionals": "Voor professionals",
+    "format_hh_mm_24_hour": "Notatie UU:MM (24-uurs).",
+    "format_yyyy_mm_dd_uses_your_store_s_time_zone": "Notatie JJJJ-MM-DD. Gebruikt de tijdzone van je winkel.",
+    "forms": "Formulieren",
+    "free_shipping_bar": "Balk voor gratis verzending",
+    "from_1440_px_wide": "Vanaf 1440 px breed.",
+    "full_list": "Volledige lijst",
+    "full_list_label": "Label voor volledige lijst",
+    "full_screen": "Volledig scherm",
+    "full_width": "Volledige breedte",
+    "gallery": "Galerij",
+    "gallery_width": "Breedte van galerij",
+    "gap": "Tussenruimte",
+    "gift_card": "Cadeaubon",
+    "gift_card_image": "Afbeelding van cadeaubon",
+    "gift_guide": "Cadeaugids",
+    "gift_message": "Cadeaubericht",
+    "go_to_the_cart_page": "Naar de winkelwagenpagina gaan",
+    "google_site_verification_code": "Code voor Google-siteverificatie",
+    "google_tag_manager_container_id": "Container-ID van Google Tag Manager",
+    "greeting": "Begroeting",
+    "grid": "Raster",
+    "grid_first_option_down_other_options_across": "Raster: eerste optie onder elkaar, andere opties naast elkaar",
+    "group": "Groep",
+    "guide_image": "Afbeelding van gids",
+    "guided_finder": "Keuzehulp",
+    "h1": "H1",
+    "h2": "H2",
+    "h3": "H3",
+    "half": "Half",
+    "half_width_on_large_screens": "Halve breedte op grote schermen",
+    "header": "Koptekst",
+    "heading": "Kop",
+    "heading_alignment": "Uitlijning van kop",
+    "heading_background": "Achtergrond van kop",
+    "heading_font": "Lettertype koppen",
+    "heading_level": "Kopniveau",
+    "heading_size": "Grootte van koppen",
+    "heading_text": "Tekst van kop",
+    "headings": "Koppen",
+    "heart_notes": "Hartnoten",
+    "height": "Hoogte",
+    "height_on_large_screens": "Hoogte op grote schermen",
+    "height_on_mobile": "Hoogte op mobiel",
+    "hidden": "Verborgen",
+    "hide_after_a_delay": "Verbergen na een vertraging",
+    "hide_for_wholesale_buyers": "Verbergen voor groothandelsklanten",
+    "hide_on_these_pages": "Verbergen op deze pagina's",
+    "hide_the_backorder_notice": "Melding over nabestelling verbergen",
+    "hide_when_the_countdown_ends": "Verbergen als het aftellen afloopt",
+    "hide_while_filters_are_active": "Verbergen terwijl filters actief zijn",
+    "high": "Hoog",
+    "highlight": "Hoogtepunt",
+    "highlight_background": "Achtergrond van markering",
+    "highlight_border": "Rand van markering",
+    "highlight_products_with_the_highlight_tag": "Producten met de markeringstag uitlichten",
+    "highlight_tag": "Markeringstag",
+    "highlight_text": "Tekst van markering",
+    "highlighted_products": "Uitgelichte producten",
+    "highlights": "Hoogtepunten",
+    "hint": "Hint",
+    "horizontal": "Horizontaal",
+    "horizontal_position": "Horizontale positie",
+    "hotspot": "Hotspot",
+    "hotspot_color": "Kleur van hotspot",
+    "how_to_use": "Gebruiksaanwijzing",
+    "icon": "Pictogram",
+    "icon_and_text": "Pictogram en tekst",
+    "icon_and_text_color": "Kleur van pictogram en tekst",
+    "icon_button": "Pictogramknop",
+    "icon_position": "Positie van pictogram",
+    "icon_size": "Grootte van pictogram",
+    "icons_with_text": "Pictogrammen met tekst",
+    "image": "Afbeelding",
+    "image_aspect_ratio": "Beeldverhouding van afbeelding",
+    "image_background": "Achtergrond van afbeelding",
+    "image_banner": "Afbeeldingsbanner",
+    "image_border": "Rand van afbeelding",
+    "image_corner_radius": "Hoekradius van afbeeldingen",
+    "image_first": "Eerst afbeelding",
+    "image_fit": "Passing van afbeelding",
+    "image_height": "Hoogte van afbeelding",
+    "image_last": "Afbeelding als laatste",
+    "image_layout": "Indeling van afbeelding",
+    "image_only": "Alleen afbeelding",
+    "image_overlay": "Overlay van afbeelding",
+    "image_overlay_opacity": "Dekking van afbeeldingsoverlay",
+    "image_position": "Positie van afbeelding",
+    "image_resolution": "Resolutie van afbeeldingen",
+    "image_tint": "Tint van afbeelding",
+    "image_tint_opacity": "Dekking van afbeeldingstint",
+    "image_width": "Breedte van afbeelding",
+    "images": "Afbeeldingen",
+    "images_next_to_links": "Afbeeldingen naast links",
+    "immediately": "Direct",
+    "in_characters": "In tekens.",
+    "in_stock": "Op voorraad",
+    "infinite_scroll": "Oneindig scrollen",
+    "information": "Informatie",
+    "information_background": "Achtergrond bij informatie",
+    "information_text": "Informatietekst",
+    "ingredient": "Ingrediënt",
+    "ingredient_spotlight": "Ingrediënt in de schijnwerpers",
+    "ingredients": "Ingrediënten",
+    "input_corner_radius": "Hoekradius van invoervelden",
+    "input_type": "Type invoerveld",
+    "inside_the_account_menu": "In het accountmenu",
+    "instagram": "Instagram",
+    "installments": "Betalen in termijnen",
+    "installments_row_tint": "Tint van rij voor betalen in termijnen",
+    "integrations": "Integraties",
+    "inventory_for_a_full_bar": "Voorraad voor een volle balk",
+    "item": "Item",
+    "jar": "Pot",
+    "keep_filters_in_view_while_scrolling": "Filters in beeld houden tijdens scrollen",
+    "keep_product_information_in_view_while_scrolling": "Productinformatie in beeld houden tijdens scrollen",
+    "keep_the_checkout_area_in_view": "Checkoutgedeelte in beeld houden",
+    "keep_the_collection_in_product_links": "Collectie behouden in productlinks",
+    "keep_the_quick_add_buttons_in_view": "Knoppen voor snel toevoegen in beeld houden",
+    "label": "Label",
+    "label_backorders_as_pre_order": "Nabestellingen als pre-order labelen",
+    "label_color": "Kleur van label",
+    "label_metafield": "Metaveld voor label",
+    "labels": "Labels",
+    "landscape": "Liggend",
+    "landscape_4_3": "Liggend (4:3)",
+    "large": "Groot",
+    "large_screens_only": "Alleen grote schermen",
+    "layout": "Indeling",
+    "layout_and_design": "Indeling en ontwerp",
+    "layout_on_large_screens": "Indeling op grote schermen",
+    "leaf": "Blad",
+    "leave_empty_for_recently_viewed": "Laat leeg voor \"Recent bekeken\".",
+    "leave_empty_for_the_default": "Laat leeg voor de standaardwaarde.",
+    "leave_empty_for_the_default_text": "Laat leeg voor de standaardtekst.",
+    "leave_empty_for_you_may_also_like": "Laat leeg voor \"Misschien vind je dit ook leuk\".",
+    "leave_empty_to_hide_the_row": "Laat leeg om de rij te verbergen.",
+    "left": "Links",
+    "lightbox_and_hover_magnify": "Lightbox en vergroten bij aanwijzen",
+    "line_1": "Regel 1",
+    "line_1_size": "Grootte van regel 1",
+    "line_2": "Regel 2",
+    "line_2_size": "Grootte van regel 2",
+    "line_3": "Regel 3",
+    "line_3_size": "Grootte van regel 3",
+    "line_between_media_and_information": "Lijn tussen media en informatie",
+    "lines_above_and_below": "Lijnen boven en onder",
+    "link": "Link",
+    "link_1": "Link 1",
+    "link_1_label": "Label van link 1",
+    "link_2": "Link 2",
+    "link_2_label": "Label van link 2",
+    "link_badges": "Linkbadges",
+    "link_for_the_whole_banner": "Link voor de hele banner",
+    "link_label": "Linklabel",
+    "link_lists": "Linklijsten",
+    "link_position": "Positie van link",
+    "link_text": "Linktekst",
+    "link_to": "Link naar",
+    "linkedin": "LinkedIn",
+    "links": "Links",
+    "links_and_selectors": "Links en kiezers",
+    "links_come_from_theme_settings_social_media": "Links komen uit Thema-instellingen > Social media.",
+    "liquid_code": "Liquid-code",
+    "list": "Lijst",
+    "list_all_colors_on_one_size_lines": "Alle kleuren weergeven op regels met één maat",
+    "listening_indicator": "Luisterindicator",
+    "load_body_code": "Body-code laden",
+    "load_head_code": "Head-code laden",
+    "load_more_button": "Knop Meer laden",
+    "load_tracking": "Tracking laden",
+    "location": "Locatie",
+    "location_switcher": "Locatiekiezer",
+    "logo": "Logo",
+    "logo_alignment": "Uitlijning van logo's",
+    "logo_and_favicon": "Logo en favicon",
+    "logo_list": "Logolijst",
+    "logo_position_on_large_screens": "Logopositie op grote schermen",
+    "logo_width": "Logobreedte",
+    "logo_width_on_large_screens": "Logobreedte op grote schermen",
+    "logo_width_on_mobile": "Logobreedte op mobiel",
+    "long_text": "Lange tekst",
+    "loop_videos": "Video's herhalen",
+    "low_stock": "Lage voorraad",
+    "low_stock_and_backorder": "Lage voorraad en nabestelling",
+    "low_stock_threshold": "Drempel voor lage voorraad",
+    "lowest_rating_shown": "Laagste getoonde beoordeling",
+    "magnify_on_hover": "Vergroten bij aanwijzen",
+    "mark_values_as_unavailable": "Waarden als niet beschikbaar markeren",
+    "mastodon": "Mastodon",
+    "maximum_page_width": "Maximale paginabreedte",
+    "maximum_products": "Maximum aantal producten",
+    "maximum_reviews": "Maximum aantal reviews",
+    "maximum_width": "Maximale breedte",
+    "media": "Media",
+    "media_alignment": "Uitlijning van media",
+    "media_aspect_ratio": "Beeldverhouding van media",
+    "media_background": "Achtergrond van media",
+    "media_fit": "Passing van media",
+    "media_grid": "Mediaraster",
+    "media_grouping": "Groepering van media",
+    "media_position": "Positie van media",
+    "media_promotion": "Mediapromotie",
+    "media_size": "Grootte van media",
+    "media_width": "Breedte van media",
+    "media_with_text": "Media met tekst",
+    "medium": "Gemiddeld",
+    "mega_menu": "Megamenu",
+    "mention_shipping_at_checkout": "Verzending bij de checkout vermelden",
+    "menu": "Menu",
+    "menu_alignment": "Uitlijning van menu",
+    "menu_item": "Menu-item",
+    "message": "Bericht",
+    "message_1": "Bericht 1",
+    "message_2": "Bericht 2",
+    "message_after_declining": "Bericht na weigeren",
+    "meta_domain_verification_code": "Code voor domeinverificatie van Meta",
+    "metafield": "Metaveld",
+    "microsoft_clarity_project_id": "Project-ID van Microsoft Clarity",
+    "middle_center": "Midden",
+    "middle_end": "Midden aan het einde",
+    "middle_start": "Midden aan het begin",
+    "minimum_height": "Minimale hoogte",
+    "mobile": "Mobiel",
+    "mobile_image": "Mobiele afbeelding",
+    "mobile_menu_opens_from": "Mobiel menu opent vanaf",
+    "mobile_only": "Alleen mobiel",
+    "mobile_sticky_bar": "Vaste balk op mobiel",
+    "mobile_uses_60_of_this_value": "Op mobiel wordt 60% van deze waarde gebruikt.",
+    "months": "Maanden",
+    "multi_column": "Meerdere kolommen",
+    "name": "Naam",
+    "namespace_key_for_example_custom_material": "namespace.key, bijvoorbeeld custom.material",
+    "narrow": "Smal",
+    "narrow_5_of_12_columns": "Smal (5 van 12 kolommen)",
+    "natural": "Natuurlijk",
+    "navigation": "Navigatie",
+    "navigation_and_buttons": "Navigatie en knoppen",
+    "navigation_font": "Lettertype navigatie",
+    "navigation_slideshow": "Diavoorstelling met navigatie",
+    "needs_shop_pay_to_be_active": "Shop Pay moet actief zijn.",
+    "never": "Nooit",
+    "new": "Nieuw",
+    "none": "Geen",
+    "normal": "Normaal",
+    "note": "Opmerking",
+    "number": "Getal",
+    "number_of_page_views_between_shakes": "Aantal paginaweergaven tussen het schudden.",
+    "number_of_payments": "Aantal betalingen",
+    "number_the_products_as_steps": "Producten nummeren als stappen",
+    "off": "Uit",
+    "off_the_button_opens_whatsapp_straight_away": "Uit: de knop opent WhatsApp meteen.",
+    "on_hover": "Bij aanwijzen",
+    "one_column": "Eén kolom",
+    "one_item": "Eén item",
+    "one_option_per_line": "Eén optie per regel.",
+    "one_page": "Eén pagina",
+    "one_per_line": "Eén per regel.",
+    "one_per_line_label_namespace_key": "Eén per regel: Label = namespace.key",
+    "one_variant_option": "Eén variantoptie",
+    "only_claims_you_can_support": "Alleen beweringen die je kunt onderbouwen.",
+    "only_show_to_visitors_who_aren_t_signed_in": "Alleen weergeven aan bezoekers die niet zijn ingelogd",
+    "only_show_when_the_product_is_unavailable": "Alleen weergeven als het product niet beschikbaar is",
+    "open_a_chat_window_first": "Eerst een chatvenster openen",
+    "open_all_filters": "Alle filters openen",
+    "open_by_default": "Standaard geopend",
+    "open_external_links_in_a_new_tab": "Externe links in een nieuw tabblad openen",
+    "open_in_a_lightbox": "Openen in een lightbox",
+    "open_in_a_new_tab": "Openen in een nieuw tabblad",
+    "open_the_cart_drawer": "Winkelwagenlade openen",
+    "open_the_first_row": "Eerste rij openen",
+    "open_the_full_list": "Volledige lijst openen",
+    "open_the_lightbox_on_mobile": "Lightbox openen op mobiel",
+    "open_the_window_automatically_after": "Venster automatisch openen na",
+    "option_names_to_group_by": "Optienamen om op te groeperen",
+    "optional_uses_the_main_image_when_empty": "Optioneel. Gebruikt de hoofdafbeelding als dit leeg is.",
+    "or_a_youtube_vimeo_url": "Of een URL van YouTube / Vimeo",
+    "or_read_a_product_metafield": "Of een productmetaveld uitlezen",
+    "order": "Bestelling",
+    "order_from_product_cards_in_a_drawer": "Bestellen vanaf productkaarten in een lade",
+    "order_matrix": "Bestelmatrix",
+    "order_matrix_tag": "Tag voor bestelmatrix",
+    "outline": "Omlijning",
+    "overlays": "Overlays",
+    "overrides_the_text_from_theme_settings": "Overschrijft de tekst uit Thema-instellingen.",
+    "pack_image_metafield": "Metaveld voor verpakkingsafbeelding",
+    "padding": "Opvulling",
+    "page": "Pagina",
+    "page_addresses": "Paginaadressen",
+    "page_content": "Paginacontent",
+    "page_numbers": "Paginanummers",
+    "page_width": "Paginabreedte",
+    "page_width_on_wide_screens": "Paginabreedte op brede schermen",
+    "page_with_the_guide": "Pagina met de gids",
+    "pages": "Pagina's",
+    "pagination": "Paginering",
+    "panels_and_image_backgrounds": "Panelen en afbeeldingsachtergronden",
+    "paragraph": "Alinea",
+    "password_page": "Wachtwoordpagina",
+    "pause_on_hover": "Pauzeren bij aanwijzen",
+    "payment": "Betaling",
+    "payment_methods": "Betaalmethoden",
+    "percent": "Procent",
+    "percentage_saved": "Bespaard percentage",
+    "period_after_opening": "Houdbaarheid na opening",
+    "phone": "Telefoon",
+    "phones_and_tablets_only": "Alleen telefoons en tablets",
+    "photo": "Foto",
+    "photo_or_logo": "Foto of logo",
+    "pill": "Pil",
+    "pinterest": "Pinterest",
+    "play_the_video_automatically_muted": "Video automatisch afspelen, zonder geluid",
+    "plays_muted_in_a_loop_instead_of_the_image": "Wordt zonder geluid herhaald afgespeeld in plaats van de afbeelding.",
+    "plus_and_minus": "Plus en min",
+    "pop_up": "Pop-up",
+    "pop_up_corner_radius": "Hoekradius van pop-ups",
+    "pop_up_link": "Pop-uplink",
+    "pop_up_name": "Naam van pop-up",
+    "pop_up_text": "Tekst van pop-up",
+    "portrait": "Staand",
+    "portrait_4_5": "Staand (4:5)",
+    "position": "Positie",
+    "position_on_product_cards": "Positie op productkaarten",
+    "posts_per_page": "Berichten per pagina",
+    "posts_to_show": "Te tonen berichten",
+    "pre_filled_message": "Vooraf ingevuld bericht",
+    "pre_order": "Pre-order",
+    "preload_links_on_hover": "Links vooraf laden bij aanwijzen",
+    "preselect_the_first_available_variant": "Eerste beschikbare variant vooraf selecteren",
+    "preview_as_a_wholesale_buyer_in_the_editor": "In de editor bekijken als groothandelsklant",
+    "preview_the_wholesale_price_in_the_editor": "Groothandelsprijs bekijken in de editor",
+    "price": "Prijs",
+    "price_tag": "Prijskaartje",
+    "primary": "Primair",
+    "primary_button": "Primaire knop",
+    "primary_button_hover": "Primaire knop bij aanwijzen",
+    "primary_button_text": "Tekst van primaire knop",
+    "product": "Product",
+    "product_cards": "Productkaarten",
+    "product_compare": "Producten vergelijken",
+    "product_comparison_grid": "Vergelijkingstabel voor producten",
+    "product_details": "Productgegevens",
+    "product_details_line": "Regel met productgegevens",
+    "product_features": "Productkenmerken",
+    "product_guide": "Productgids",
+    "product_inventory": "Productvoorraad",
+    "product_labels": "Productlabels",
+    "product_list": "Productlijst",
+    "product_page": "Productpagina",
+    "product_signup": "Productaanmelding",
+    "product_tabs": "Producttabbladen",
+    "product_type": "Producttype",
+    "product_type_filter_in_the_search_field": "Filter op producttype in het zoekveld",
+    "product_types_separated_by_commas": "Producttypen gescheiden door komma's.",
+    "products": "Producten",
+    "products_in_these_collections": "Producten in deze collecties",
+    "products_per_page": "Producten per pagina",
+    "products_per_row_on_large_screens": "Producten per rij op grote schermen",
+    "products_per_row_on_mobile": "Producten per rij op mobiel",
+    "products_published_recently": "Recent gepubliceerde producten",
+    "products_to_show": "Te tonen producten",
+    "products_with_this_tag": "Producten met deze tag",
+    "promo_grid": "Promoraster",
+    "promo_strip": "Promostrook",
+    "promoted_products": "Gepromote producten",
+    "promotion": "Promotie",
+    "promotion_1_image": "Afbeelding promotie 1",
+    "promotion_1_link": "Link promotie 1",
+    "promotion_1_text": "Tekst promotie 1",
+    "promotion_1_text_position": "Tekstpositie promotie 1",
+    "promotion_2_image": "Afbeelding promotie 2",
+    "promotion_2_link": "Link promotie 2",
+    "promotion_2_text": "Tekst promotie 2",
+    "promotion_2_text_position": "Tekstpositie promotie 2",
+    "promotion_3_image": "Afbeelding promotie 3",
+    "promotion_3_link": "Link promotie 3",
+    "promotion_3_text": "Tekst promotie 3",
+    "promotion_3_text_position": "Tekstpositie promotie 3",
+    "promotion_color_scheme": "Kleurschema van promotie",
+    "promotions": "Promoties",
+    "promotions_show_on_the_first_page_only": "Promoties worden alleen op de eerste pagina getoond.",
+    "prompt_1": "Suggestie 1",
+    "prompt_2": "Suggestie 2",
+    "prompt_3": "Suggestie 3",
+    "prompts": "Suggesties",
+    "prompts_rotate_inside_the_empty_search_field": "Suggesties wisselen elkaar af in het lege zoekveld.",
+    "provider_name": "Naam van aanbieder",
+    "published_within": "Gepubliceerd in de afgelopen",
+    "purchase_options": "Aankoopopties",
+    "question": "Vraag",
+    "quick_add": "Snel toevoegen",
+    "quick_links": "Snelle links",
+    "quick_navigation": "Snelle navigatie",
+    "quick_navigation_color_scheme": "Kleurschema van snelle navigatie",
+    "quick_order_list": "Snelle bestellijst",
+    "quick_order_page": "Pagina voor snel bestellen",
+    "rating": "Beoordeling",
+    "rating_stars": "Beoordelingssterren",
+    "read_by_screen_readers": "Wordt voorgelezen door schermlezers.",
+    "recently_viewed": "Recent bekeken",
+    "recommendations": "Aanbevelingen",
+    "related_products": "Gerelateerde producten",
+    "replacement_image": "Vervangende afbeelding",
+    "replaces_the_background_color_where_supported": "Vervangt de achtergrondkleur waar dit wordt ondersteund.",
+    "replaces_the_icon_above": "Vervangt het pictogram hierboven.",
+    "replaces_the_text": "Vervangt de tekst.",
+    "required": "Verplicht",
+    "reset_password": "Wachtwoord opnieuw instellen",
+    "results_per_page": "Resultaten per pagina",
+    "results_per_type": "Resultaten per type",
+    "retail_shoppers": "Retailklanten",
+    "retail_shoppers_only": "Alleen retailklanten.",
+    "returns": "Retouren",
+    "returns_page": "Retourpagina",
+    "returns_row": "Rij voor retouren",
+    "returns_text": "Tekst over retouren",
+    "reveal_sections_on_scroll": "Secties onthullen bij scrollen",
+    "review_count": "Aantal reviews",
+    "reviews": "Reviews",
+    "reviews_app_code": "Code van review-app",
+    "reviews_before_show_more": "Reviews vóór \"Meer weergeven\"",
+    "reviews_grid": "Reviewraster",
+    "reviews_judge_me": "Reviews (Judge.me)",
+    "reviews_section_anchor": "Anker van reviewsectie",
+    "reviews_section_on_this_page": "Reviewsectie op deze pagina",
+    "reviews_wall": "Reviewmuur",
+    "rich_text": "Tekst met opmaak",
+    "role": "Functie",
+    "rotate_prompts_on_mobile": "Suggesties afwisselen op mobiel",
+    "round_converted_amounts_up": "Omgerekende bedragen naar boven afronden",
+    "round_images": "Ronde afbeeldingen",
+    "routine_steps": "Routinestappen",
+    "row": "Rij",
+    "row_1_label": "Label rij 1",
+    "row_1_value": "Waarde rij 1",
+    "row_2_label": "Label rij 2",
+    "row_2_value": "Waarde rij 2",
+    "row_height_on_large_screens": "Rijhoogte op grote schermen",
+    "row_height_on_mobile": "Rijhoogte op mobiel",
+    "row_label": "Rijlabel",
+    "rows_from_metafields": "Rijen uit metavelden",
+    "rows_one_row_per_variant": "Rijen: één rij per variant",
+    "rows_to_span": "Te overspannen rijen",
+    "rss_link_in_blog_breadcrumbs": "RSS-link in kruimelpad van blog",
+    "rule_for_other_countries": "Regel voor andere landen",
+    "ruler": "Liniaal",
+    "sale": "Uitverkoop",
+    "same_as_maximum_page_width": "Gelijk aan maximale paginabreedte",
+    "scaled_down_to_32_x_32px": "Verkleind tot 32 x 32px.",
+    "scent_notes": "Geurnoten",
+    "score": "Score",
+    "scroll_per_arrow_click": "Scrollen per klik op pijl",
+    "scrolling_banner": "Scrollende banner",
+    "search": "Zoeken",
+    "search_and_account": "Zoeken en account",
+    "search_field_font": "Lettertype zoekveld",
+    "search_products_only": "Alleen producten zoeken",
+    "search_results": "Zoekresultaten",
+    "search_settings_are_in_theme_settings_search": "Zoekinstellingen staan in Thema-instellingen > Zoeken.",
+    "search_skus": "SKU's zoeken",
+    "search_tags": "Tags zoeken",
+    "second_image_on_hover": "Tweede afbeelding bij aanwijzen",
+    "second_part_heading": "Kop van tweede deel",
+    "second_part_logo": "Logo van tweede deel",
+    "second_part_text": "Tekst van tweede deel",
+    "secondary": "Secundair",
+    "secondary_button": "Secundaire knop",
+    "secondary_button_text_and_border": "Tekst en rand van secundaire knop",
+    "secondary_menu": "Secundair menu",
+    "secondary_text": "Secundaire tekst",
+    "section": "Sectie",
+    "section_height": "Sectiehoogte",
+    "section_spacing": "Sectieafstand",
+    "section_width": "Sectiebreedte",
+    "secure": "Veilig",
+    "secure_payment": "Veilig betalen",
+    "selected": "Geselecteerd",
+    "send_back_in_stock_requests_to_a_service": "Aanvragen voor voorraadmeldingen naar een dienst sturen",
+    "separate_notes_with_commas": "Scheid noten met komma's.",
+    "shade_every_other_row": "Om de andere rij arceren",
+    "shake_every": "Schudden elke",
+    "shake_the_cart_icon_when_it_has_items": "Winkelwagenpictogram laten schudden als er items in zitten",
+    "shape": "Vorm",
+    "shapes": "Vormen",
+    "share": "Delen",
+    "shipping_calculator": "Verzendcalculator",
+    "shipping_rules": "Verzendregels",
+    "shoppable_image": "Shopbare afbeelding",
+    "shorten_the_description": "Beschrijving inkorten",
+    "shorten_to_about": "Inkorten tot ongeveer",
+    "shortest_review_shown": "Kortste getoonde review",
+    "show": "Weergeven",
+    "show_a_divider_above": "Scheidingslijn erboven weergeven",
+    "show_a_link_when_other_options_are_sold_out": "Een link weergeven als andere opties uitverkocht zijn",
+    "show_a_promotion_tile_first": "Eerst een promotietegel weergeven",
+    "show_accelerated_checkout_buttons": "Versnelde checkout-knoppen weergeven",
+    "show_alphabetical_options": "Alfabetische opties weergeven",
+    "show_as_accordion": "Als accordeon weergeven",
+    "show_attention_messages": "Aandachtsberichten weergeven",
+    "show_author": "Auteur weergeven",
+    "show_available_swatches_first": "Beschikbare stalen eerst tonen",
+    "show_back_to_top_link": "Link terug naar boven weergeven",
+    "show_backorder_note": "Opmerking over nabestelling weergeven",
+    "show_backorder_note_on_lines": "Opmerking over nabestelling op regels weergeven",
+    "show_best_selling": "\"Bestverkocht\" weergeven",
+    "show_blog_title": "Blogtitel weergeven",
+    "show_breadcrumbs": "Kruimelpad weergeven",
+    "show_button": "Knop weergeven",
+    "show_cards_as_boxes": "Kaarten als vakken weergeven",
+    "show_cents_as_superscript": "Centen in superscript weergeven",
+    "show_chat_contact_line": "Contactregel voor chat weergeven",
+    "show_checkout_button": "Checkoutknop weergeven",
+    "show_collection_description": "Collectiebeschrijving weergeven",
+    "show_collection_title": "Collectietitel weergeven",
+    "show_country_and_language_in_the_mobile_menu": "Land en taal weergeven in het mobiele menu",
+    "show_country_region_selector": "Land-/regiokiezer weergeven",
+    "show_currency_codes": "Valutacodes weergeven",
+    "show_custom_label": "Aangepast label weergeven",
+    "show_custom_options_marked_for_quick_add": "Aangepaste opties weergeven die zijn gemarkeerd voor snel toevoegen",
+    "show_date": "Datum weergeven",
+    "show_date_options": "Datumopties weergeven",
+    "show_description": "Beschrijving weergeven",
+    "show_email_signup": "Aanmelding voor e-mail weergeven",
+    "show_exact_count_to_retail_shoppers": "Exact aantal weergeven aan retailklanten",
+    "show_excerpt": "Fragment weergeven",
+    "show_featured": "\"Uitgelicht\" weergeven",
+    "show_featured_image": "Uitgelichte afbeelding weergeven",
+    "show_filter_by_name_or_sku": "Filter op naam of SKU weergeven",
+    "show_filters_beside_products_on_large_screens": "Filters naast producten weergeven op grote schermen",
+    "show_follow_on_shop": "Volgen op Shop weergeven",
+    "show_free_shipping_progress": "Voortgang naar gratis verzending weergeven",
+    "show_grid_and_list_toggle": "Schakelaar voor raster en lijst weergeven",
+    "show_image_border": "Rand van afbeelding weergeven",
+    "show_images": "Afbeeldingen weergeven",
+    "show_in_quick_add": "Weergeven bij snel toevoegen",
+    "show_installments_row": "Rij voor betalen in termijnen weergeven",
+    "show_inventory": "Voorraad weergeven",
+    "show_inventory_bar": "Voorraadbalk weergeven",
+    "show_language_selector": "Taalkiezer weergeven",
+    "show_line": "Regel weergeven",
+    "show_link_to_order_history": "Link naar bestelgeschiedenis weergeven",
+    "show_links_to_the_previous_and_next_posts": "Links naar het vorige en volgende bericht weergeven",
+    "show_media": "Media weergeven",
+    "show_media_counter_on_mobile": "Mediateller weergeven op mobiel",
+    "show_media_promotion": "Mediapromotie weergeven",
+    "show_minimum_order_and_pack_size_bar": "Balk met minimale bestelling en pakgrootte tonen",
+    "show_new_label": "Label Nieuw weergeven",
+    "show_on": "Weergeven op",
+    "show_on_mobile": "Weergeven op mobiel",
+    "show_only_on_these_pages": "Alleen op deze pagina's tonen",
+    "show_order_note": "Bestelopmerking weergeven",
+    "show_over_the_product_media": "Over de productmedia weergeven",
+    "show_page_title": "Paginatitel weergeven",
+    "show_payment_icons": "Betalingspictogrammen weergeven",
+    "show_pickup_availability": "Beschikbaarheid voor afhalen weergeven",
+    "show_powered_by_shopify": "\"Mogelijk gemaakt door Shopify\" weergeven",
+    "show_price": "Prijs weergeven",
+    "show_price_options": "Prijsopties weergeven",
+    "show_prices_for_product_links": "Prijzen weergeven bij productlinks",
+    "show_product_button": "Productknop weergeven",
+    "show_product_count": "Aantal producten weergeven",
+    "show_product_counts": "Productaantallen weergeven",
+    "show_product_images": "Productafbeeldingen weergeven",
+    "show_quantity_selector": "Hoeveelheidskiezer weergeven",
+    "show_quotation_marks": "Aanhalingstekens weergeven",
+    "show_rating": "Beoordeling weergeven",
+    "show_read_more": "\"Meer lezen\" weergeven",
+    "show_recipient_form_for_gift_cards": "Ontvangersformulier weergeven voor cadeaubonnen",
+    "show_related_products": "Gerelateerde producten weergeven",
+    "show_returns_row": "Rij voor retouren weergeven",
+    "show_review_photos": "Reviewfoto's weergeven",
+    "show_reviews_from_judge_me_data": "Reviews weergeven uit gegevens van Judge.me",
+    "show_reviews_tab": "Tabblad Reviews weergeven",
+    "show_reviews_with_photos_first": "Reviews met foto's eerst weergeven",
+    "show_rows_without_a_value": "Rijen zonder waarde weergeven",
+    "show_rows_without_data": "Rijen zonder gegevens weergeven",
+    "show_sale_label": "Label Uitverkoop weergeven",
+    "show_search": "Zoeken weergeven",
+    "show_share_links": "Deellinks weergeven",
+    "show_shipping_calculator": "Verzendcalculator weergeven",
+    "show_shipping_row": "Verzendrij weergeven",
+    "show_shop_pay_installments": "Shop Pay Installments weergeven",
+    "show_sku": "SKU weergeven",
+    "show_skus_to_wholesale_buyers": "SKU's weergeven aan groothandelskopers",
+    "show_social_media_links": "Links naar social media weergeven",
+    "show_sold_out_label": "Label Uitverkocht weergeven",
+    "show_sold_out_options_row": "Rij met uitverkochte opties weergeven",
+    "show_sold_out_variants": "Uitverkochte varianten weergeven",
+    "show_specification": "Specificatie weergeven",
+    "show_star_rating": "Sterrenbeoordeling weergeven",
+    "show_stock_notice_on_cards": "Voorraadmelding op kaarten weergeven",
+    "show_subtitle": "Ondertitel weergeven",
+    "show_swatches": "Stalen weergeven",
+    "show_tag_filter": "Tagfilter weergeven",
+    "show_tags": "Tags weergeven",
+    "show_tax_and_shipping_note": "Opmerking over belasting en verzending weergeven",
+    "show_tax_note": "Opmerking over belasting weergeven",
+    "show_text_below_the_image_on_mobile": "Tekst onder de afbeelding weergeven op mobiel",
+    "show_text_in_a_circle": "Tekst in een cirkel weergeven",
+    "show_the_installments_line_to_wholesale_buyers": "Regel voor betalen in termijnen weergeven aan groothandelskopers",
+    "show_the_latest_post_larger": "Nieuwste bericht groter weergeven",
+    "show_the_product_guide_link_next_to": "Link naar productgids weergeven naast",
+    "show_the_wholesale_sign_in_line": "Inlogregel voor groothandel weergeven",
+    "show_to": "Weergeven aan",
+    "show_vendor": "Verkoper weergeven",
+    "show_vendor_on_lines": "Verkoper op regels weergeven",
+    "show_view_all_link": "Link \"Alles bekijken\" weergeven",
+    "show_view_cart_link": "Link \"Winkelwagen bekijken\" weergeven",
+    "show_view_collection_link": "Link \"Collectie bekijken\" weergeven",
+    "show_weight": "Gewicht weergeven",
+    "show_weight_on_lines": "Gewicht op regels weergeven",
+    "shown_after_the_text": "Getoond na de tekst.",
+    "shown_on_large_screens": "Getoond op grote schermen.",
+    "shows_the_page_content_in_the_pop_up": "Toont de paginacontent in de pop-up.",
+    "shows_under_the_filters_on_large_screens": "Wordt onder de filters getoond op grote schermen.",
+    "side_padding_on_large_screens": "Zijmarge op grote schermen",
+    "sidebar": "Zijbalk",
+    "sign_in_button_label": "Label van inlogknop",
+    "signup_heading": "Kop van aanmelding",
+    "size": "Grootte",
+    "sizing": "Maten",
+    "sku": "SKU",
+    "slide": "Dia",
+    "slide_link": "Dialink",
+    "slideshow": "Diavoorstelling",
+    "slideshow_description": "Beschrijving van diavoorstelling",
+    "slideshow_on_hover": "Diavoorstelling bij aanwijzen",
+    "slow": "Langzaam",
+    "small": "Klein",
+    "snapchat": "Snapchat",
+    "social_links": "Sociale links",
+    "social_media": "Social media",
+    "sold_out": "Uitverkocht",
+    "sold_out_and_errors": "Uitverkocht en fouten",
+    "sold_out_colors_move_to_the_end_of_the_row": "Uitverkochte kleuren schuiven naar het einde van de rij.",
+    "solid": "Effen",
+    "sorting": "Sorteren",
+    "space_between_items": "Ruimte tussen items",
+    "space_between_logos": "Ruimte tussen logo's",
+    "space_between_media_and_information": "Ruimte tussen media en informatie",
+    "space_between_sections": "Ruimte tussen secties",
+    "spacer": "Tussenruimte",
+    "spacing": "Afstand",
+    "sparkle": "Glinstering",
+    "specification": "Specificatie",
+    "specifications": "Specificaties",
+    "speed": "Snelheid",
+    "spotify": "Spotify",
+    "square": "Vierkant",
+    "square_1_1": "Vierkant (1:1)",
+    "stacked": "Gestapeld",
+    "standard": "Standaard",
+    "standard_4_3": "Standaard (4:3)",
+    "star": "Ster",
+    "star_rating": "Sterrenbeoordeling",
+    "stars_only": "Alleen sterren",
+    "start": "Begin",
+    "start_chat_button": "Knop om de chat te starten",
+    "starting_position": "Beginpositie",
+    "status_line": "Statusregel",
+    "stay_on_the_page": "Op de pagina blijven",
+    "step": "Stap",
+    "step_label": "Label van stap",
+    "sticky_header": "Vaste koptekst",
+    "stock": "Voorraad",
+    "store": "Winkel",
+    "store_integrations": "Winkelintegraties",
+    "store_reviews": "Winkelreviews",
+    "stretch": "Uitrekken",
+    "style": "Stijl",
+    "style_for_options_without_swatches": "Stijl voor opties zonder stalen",
+    "style_on_large_screens": "Stijl op grote schermen",
+    "style_on_mobile": "Stijl op mobiel",
+    "subheading": "Subkop",
+    "subscribe_url": "Aanmeldings-URL",
+    "subtitle_metafield": "Metaveld voor ondertitel",
+    "success_background": "Achtergrond bij succes",
+    "success_text": "Succestekst",
+    "summary_position": "Positie van samenvatting",
+    "swatch_content": "Inhoud van staal",
+    "swatches": "Stalen",
+    "swipe_tiles_on_mobile": "Tegels vegen op mobiel",
+    "switch": "Schakelaar",
+    "tab": "Tabblad",
+    "tab_1_heading": "Kop tabblad 1",
+    "tab_1_page": "Pagina tabblad 1",
+    "tab_1_text": "Tekst tabblad 1",
+    "tab_2_heading": "Kop tabblad 2",
+    "tab_2_page": "Pagina tabblad 2",
+    "tab_2_text": "Tekst tabblad 2",
+    "tab_3_heading": "Kop tabblad 3",
+    "tab_3_page": "Pagina tabblad 3",
+    "tab_3_text": "Tekst tabblad 3",
+    "tabs": "Tabbladen",
+    "tag": "Tag",
+    "tag_set_in_theme_settings_product_cards": "Tag ingesteld in Thema-instellingen > Productkaarten.",
+    "tall_3_4": "Hoog (3:4)",
+    "terms_and_conditions_link": "Link naar algemene voorwaarden",
+    "terms_and_conditions_page": "Pagina met algemene voorwaarden",
+    "testimonial": "Getuigenis",
+    "testimonials": "Getuigenissen",
+    "text": "Tekst",
+    "text_above": "Tekst erboven",
+    "text_after_in_stock": "Tekst na \"Op voorraad\"",
+    "text_after_the_end": "Tekst na afloop",
+    "text_alignment": "Tekstuitlijning",
+    "text_button": "Tekstknop",
+    "text_first": "Eerst tekst",
+    "text_for_empty_fields": "Tekst voor lege velden",
+    "text_for_empty_values": "Tekst voor lege waarden",
+    "text_image_and_socials": "Tekst, afbeelding en socials",
+    "text_last": "Tekst als laatste",
+    "text_link": "Tekstlink",
+    "text_on_images": "Tekst op afbeeldingen",
+    "text_on_the_image": "Tekst op de afbeelding",
+    "text_on_video": "Tekst op video",
+    "text_only": "Alleen tekst",
+    "text_or_table": "Tekst of tabel",
+    "text_over_the_image": "Tekst over de afbeelding",
+    "text_position": "Tekstpositie",
+    "text_size": "Tekstgrootte",
+    "text_width": "Tekstbreedte",
+    "the_rating_block_links_here": "Het beoordelingsblok linkt hiernaartoe.",
+    "the_rating_link_on_the_product_jumps_here": "De beoordelingslink bij het product springt hiernaartoe.",
+    "threads": "Threads",
+    "thresholds": "Drempels",
+    "thumbnails": "Miniaturen",
+    "tiktok": "TikTok",
+    "tile_text_font": "Lettertype tegeltekst",
+    "time_per_message": "Tijd per bericht",
+    "title": "Titel",
+    "title_of_the_link_that_gets_the_badge": "Titel van de link die de badge krijgt.",
+    "toggle_icon": "Uitklappictogram",
+    "top": "Boven",
+    "top_center": "Midden boven",
+    "top_end": "Boven aan het einde",
+    "top_notes": "Topnoten",
+    "top_start": "Boven aan het begin",
+    "towards_the_end": "Richting het einde",
+    "towards_the_start": "Richting het begin",
+    "tracking": "Tracking",
+    "transition": "Overgang",
+    "tumblr": "Tumblr",
+    "twitch": "Twitch",
+    "two_columns": "Twee kolommen",
+    "two_columns_same_size": "Twee kolommen, zelfde formaat",
+    "type": "Type",
+    "typography": "Typografie",
+    "underline_column_headings": "Kolomkoppen onderstrepen",
+    "uploaded_videos_only": "Alleen geüploade video's.",
+    "uppercase": "Hoofdletters",
+    "uppercase_button_text": "Knoptekst in hoofdletters",
+    "uppercase_headings": "Koppen in hoofdletters",
+    "uppercase_subheadings": "Subkoppen in hoofdletters",
+    "url": "URL",
+    "use_count_for_the_number_left": "Gebruik [count] voor het resterende aantal.",
+    "use_images_of_the_same_size": "Gebruik afbeeldingen van hetzelfde formaat.",
+    "used_for_stacked_text_and_buttons": "Gebruikt voor gestapelde tekst en knoppen.",
+    "useful_for_routines_step_1_step_2": "Handig voor routines: Stap 1, Stap 2…",
+    "uses_real_inventory_counts": "Gebruikt echte voorraadaantallen.",
+    "uses_the_menu_title_when_empty": "Gebruikt de menutitel als dit leeg is.",
+    "uses_the_theme_logo_when_empty": "Gebruikt het themalogo als dit leeg is.",
+    "value": "Waarde",
+    "value_when_checked": "Waarde indien aangevinkt",
+    "value_when_not_checked": "Waarde indien niet aangevinkt",
+    "values": "Waarden",
+    "values_before_show_more": "Waarden vóór \"Meer weergeven\"",
+    "variant_image": "Variantafbeelding",
+    "variant_picker": "Variantkiezer",
+    "vendor": "Verkoper",
+    "verification_tags_must_load_immediately": "Verificatietags moeten direct laden.",
+    "vertical": "Verticaal",
+    "vertical_9_16": "Verticaal (9:16)",
+    "vertical_position": "Verticale positie",
+    "very_low_stock_threshold": "Drempel voor zeer lage voorraad",
+    "vibrate_on_add_to_cart": "Trillen bij toevoegen aan winkelwagen",
+    "video": "Video",
+    "video_cover_image": "Omslagafbeelding van video",
+    "video_description": "Videobeschrijving",
+    "video_shape": "Videovorm",
+    "video_tint": "Videotint",
+    "video_tint_opacity": "Dekking van videotint",
+    "video_with_play_button": "Video met afspeelknop",
+    "view_all_link": "Link \"Alles bekijken\"",
+    "view_more": "Meer bekijken",
+    "vimeo": "Vimeo",
+    "voice_search": "Zoeken met spraak",
+    "volume_price_rows_before_show_all": "Rijen met volumeprijzen vóór \"Alles weergeven\"",
+    "volume_pricing": "Volumeprijzen",
+    "wait_for_marketing_consent": "Wachten op toestemming voor marketing",
+    "warning": "Waarschuwing",
+    "warnings": "Waarschuwingen",
+    "wechat": "WeChat",
+    "weight": "Gewicht",
+    "whatsapp": "WhatsApp",
+    "whatsapp_chat": "WhatsApp-chat",
+    "whatsapp_number": "WhatsApp-nummer",
+    "when_leaving_the_page": "Bij het verlaten van de pagina",
+    "when_low": "Bij lage voorraad",
+    "when_no_variant_with_that_value_is_available": "Als er geen variant met die waarde beschikbaar is",
+    "when_the_cart_is_empty": "Als de winkelwagen leeg is",
+    "when_the_exact_combination_is_unavailable": "Als de exacte combinatie niet beschikbaar is",
+    "where_it_shows": "Waar het wordt getoond",
+    "where_this_block_is_placed": "Waar dit blok is geplaatst",
+    "wholesale": "Groothandel",
+    "wholesale_access": "Groothandelstoegang",
+    "wholesale_application_page": "Aanvraagpagina voor groothandel",
+    "wholesale_buyers": "Groothandelskopers",
+    "wholesale_installments": "Betalen in termijnen voor groothandel",
+    "wholesale_low_stock_threshold": "Drempel voor lage voorraad bij groothandel",
+    "wholesale_only_tag": "Tag voor alleen groothandel",
+    "wholesale_quantity": "Groothandelshoeveelheid",
+    "wholesale_sign_in_page": "Inlogpagina voor groothandel",
+    "wholesale_terms": "Groothandelsvoorwaarden",
+    "wide": "Breed",
+    "wide_16_9": "Breed (16:9)",
+    "wide_7_of_12_columns": "Breed (7 van 12 kolommen)",
+    "wide_content": "Brede content",
+    "wide_promotion": "Brede promotie",
+    "width": "Breedte",
+    "words_to_show": "Te tonen woorden",
+    "worldwide": "Wereldwijd",
+    "write_a_review_label": "Label voor review schrijven",
+    "write_a_review_link": "Link voor review schrijven",
+    "x_formerly_twitter": "X (voorheen Twitter)",
+    "youtube": "YouTube",
+    "zoom": "Zoomen"
+  },
+  "text": {
+    "blocks": {
+      "attribute_chips": {
+        "settings": {
+          "metafield": {
+            "info": "namespace.key, bijvoorbeeld shopify.hair-type. Wordt indien ingesteld gebruikt in plaats van de waarden."
+          },
+          "values": {
+            "info": "Scheid waarden met komma's. Accepteert dynamische bronnen."
+          }
+        }
+      },
+      "back_in_stock": {
+        "settings": {
+          "show_link": {
+            "info": "De leveringslijst toont deze rij al. Schakel in als de productpagina geen leveringslijst heeft."
+          }
+        }
+      },
+      "buy_buttons": {
+        "settings": {
+          "audience": {
+            "info": "Groothandelskopers gebruiken het blok Groothandelshoeveelheid of de bestelmatrix."
+          },
+          "show_accelerated": {
+            "info": "Shop Pay en andere express-betaalmethoden die in de betalingsinstellingen van je winkel zijn ingesteld."
+          }
+        }
+      },
+      "comparison_row": {
+        "settings": {
+          "title": {
+            "info": "Gebruik voor één variantoptie de naam van de optie, bijvoorbeeld \"Maat\"."
+          }
+        }
+      },
+      "complementary_products": {
+        "settings": {
+          "heading": {
+            "info": "Bijvoorbeeld Maak de look compleet, Maak de routine compleet of Maak het ritueel compleet."
+          },
+          "pick_complementary_products_in_the_search_and_di": {
+            "content": "Kies aanvullende producten in de app Search & Discovery."
+          }
+        }
+      },
+      "delivery_list": {
+        "settings": {
+          "fit_text": {
+            "info": "Koppel een metaveld, zoals een pasvormgids. De rij wordt verborgen als deze leeg is."
+          },
+          "shipping_rules_installments_and_the_returns_text": {
+            "content": "Verzendregels, betalen in termijnen en de retourtekst staan in Thema-instellingen > Leveringsinformatie en Betalen in termijnen."
+          },
+          "show_notify": {
+            "info": "Opent de lade Weer op voorraad als het product die heeft."
+          }
+        }
+      },
+      "description": {
+        "settings": {
+          "clamp_chars": {
+            "info": "Bij 0 wordt de volledige beschrijving getoond. Langere teksten krijgen een link Meer bekijken."
+          },
+          "heading": {
+            "info": "Laat leeg voor \"Beschrijving\" in de taal van de klant."
+          }
+        }
+      },
+      "finder_question": {
+        "settings": {
+          "answers": {
+            "info": "Eén per regel. Gebruik \"Label = filterwaarde\" als het label verschilt van de filterwaarde."
+          },
+          "param": {
+            "info": "Kopieer dit uit de collectie-URL nadat je het filter hebt gekozen, bijvoorbeeld filter.v.option.size of filter.p.tag."
+          }
+        }
+      },
+      "form_field": {
+        "settings": {
+          "title": {
+            "info": "Laat leeg voor het standaardlabel. Aangepaste velden hebben een label nodig."
+          }
+        }
+      },
+      "group": {
+        "settings": {
+          "color_scheme": {
+            "info": "Laat het schema van de sectie staan of kies er een voor een paneel."
+          }
+        }
+      },
+      "heading": {
+        "settings": {
+          "tag": {
+            "info": "Automatisch gebruikt H1 voor de eerste sectie van een pagina en elders H2."
+          }
+        }
+      },
+      "ingredients": {
+        "settings": {
+          "full_list": {
+            "info": "Accepteert dynamische bronnen, bijvoorbeeld een productmetaveld."
+          }
+        }
+      },
+      "installments_note": {
+        "settings": {
+          "shown_to_wholesale_buyers_when_theme_settings_wh": {
+            "content": "Getoond aan groothandelskopers als Thema-instellingen > Groothandel dit toestaat en Thema-instellingen > Betalen in termijnen een naam van een aanbieder heeft. Gebruikt de minimale bestelling als bedrag."
+          }
+        }
+      },
+      "order_matrix": {
+        "settings": {
+          "shown_to_wholesale_buyers_on_products_with_the_o": {
+            "content": "Getoond aan groothandelskopers bij producten met de tag voor de bestelmatrix (Thema-instellingen > Groothandel). Rijen gebruiken de eerste optie; kolommen de overige opties."
+          }
+        }
+      },
+      "pao_icon": {
+        "settings": {
+          "months": {
+            "info": "Accepteert dynamische bronnen, bijvoorbeeld een metaveld met een getal."
+          }
+        }
+      },
+      "product_guide": {
+        "settings": {
+          "image": {
+            "info": "Koppel een productmetaveld om per product een andere tabel te tonen."
+          },
+          "label": {
+            "info": "Bijvoorbeeld Maattabel, Kleurengids of Zo kies je. Laat leeg voor de standaardtekst."
+          },
+          "link_position": {
+            "options": {
+              "picker": "Naast de bijbehorende optie in de variantkiezer"
+            }
+          }
+        }
+      },
+      "product_labels": {
+        "settings": {
+          "sale_sold_out_new_pre_order_and_custom_labels_fo": {
+            "content": "Labels voor uitverkoop, uitverkocht, nieuw, pre-order en aangepaste labels volgen de geselecteerde variant. Bewerk ze in Thema-instellingen > Productlabels."
+          }
+        }
+      },
+      "product_price": {
+        "settings": {
+          "show_installments": {
+            "info": "Verschijnt als Shop Pay Installments beschikbaar is voor de winkel."
+          }
+        }
+      },
+      "product_rating": {
+        "settings": {
+          "rating_value": {
+            "info": "Koppel een beoordelingsmetaveld. Laat leeg om de eigen beoordeling van het product te gebruiken (reviews.rating)."
+          }
+        }
+      },
+      "purchase_options": {
+        "settings": {
+          "heading": {
+            "info": "Laat leeg voor de standaardwaarde. Alleen getoond bij producten met abonnementen of andere verkoopplannen."
+          }
+        }
+      },
+      "slide": {
+        "settings": {
+          "link": {
+            "info": "Maakt van de hele dia een link. Knoppen houden hun eigen links."
+          }
+        }
+      },
+      "stock_line": {
+        "settings": {
+          "in_stock_extra": {
+            "info": "Bijvoorbeeld je verzendtijd. Alleen getoond voor artikelen op voorraad."
+          }
+        }
+      },
+      "variant_picker": {
+        "settings": {
+          "guide_option": {
+            "info": "Optienamen gescheiden door komma's. Vereist een blok Productgids."
+          }
+        }
+      },
+      "volume_pricing": {
+        "settings": {
+          "shows_the_selected_variant_s_volume_pricing_from": {
+            "content": "Toont de volumeprijzen van de geselecteerde variant uit je B2B-catalogus. Verborgen als een product geen prijsstaffels heeft. Het aantal rijen vóór \"Alles weergeven\" stel je in bij Thema-instellingen > Groothandel."
+          }
+        }
+      },
+      "wholesale_quantity": {
+        "settings": {
+          "buy_box_for_wholesale_buyers_on_products_without": {
+            "content": "Koopvak voor groothandelskopers bij producten zonder bestelmatrix. Volgt de hoeveelheidsregel en volumeprijzen van elke variant."
+          }
+        }
+      },
+      "wholesale_terms": {
+        "settings": {
+          "minimum_pack_size_and_maximum_from_your_b2b_quan": {
+            "content": "Minimum, verpakkingsgrootte en maximum uit je B2B-hoeveelheidsregels. Alleen getoond aan groothandelskopers; bij standaardregels wordt niets getoond."
+          }
+        }
+      }
+    },
+    "sections": {
+      "before_after": {
+        "settings": {
+          "disclaimer": {
+            "info": "Bijvoorbeeld hoe het resultaat is bereikt. Resultaten zijn je eigen bewering."
+          }
+        }
+      },
+      "cart_drawer": {
+        "settings": {
+          "shipping_calculator_default_country": {
+            "info": "Code van twee letters. Laat leeg om het land van de bezoeker te gebruiken."
+          }
+        }
+      },
+      "collection_banner": {
+        "settings": {
+          "use_product_image": {
+            "label": "Afbeelding van het eerste product gebruiken als de collectie er geen heeft"
+          }
+        }
+      },
+      "compare_drawer": {
+        "settings": {
+          "turn_compare_on_and_choose_its_rows_in_theme_set": {
+            "content": "Schakel vergelijken in en kies de rijen in Thema-instellingen > Producten vergelijken."
+          }
+        }
+      },
+      "custom_liquid": {
+        "settings": {
+          "custom_liquid": {
+            "info": "Voeg app-snippets of andere code toe. Het thema controleert deze code niet."
+          }
+        }
+      },
+      "featured_collection": {
+        "blocks": {
+          "tab": {
+            "settings": {
+              "collection": {
+                "info": "Gebruik voor prijsklassen geautomatiseerde collecties met een prijsvoorwaarde."
+              }
+            }
+          }
+        },
+        "settings": {
+          "add_tabs_to_show_a_different_collection_in_each_": {
+            "content": "Voeg tabbladen toe om in elk tabblad een andere collectie te tonen. De collectie hieronder wordt gebruikt als er geen tabbladen zijn."
+          }
+        }
+      },
+      "header": {
+        "blocks": {
+          "mega_menu": {
+            "settings": {
+              "link_images": {
+                "info": "Collectieafbeeldingen, of de eerste productafbeelding als een collectie er geen heeft."
+              },
+              "menu_item": {
+                "info": "Titel van het menu-item op het hoogste niveau dat dit megamenu opent."
+              }
+            }
+          }
+        }
+      },
+      "integration_reviews_grid": {
+        "settings": {
+          "store_integration_shows_reviews_from_judge_me_s_": {
+            "content": "Winkelintegratie: toont reviews uit de gesynchroniseerde gegevens van Judge.me. Schakel dit in bij Thema-instellingen > Integraties."
+          }
+        }
+      },
+      "location_sheet": {
+        "settings": {
+          "shown_to_wholesale_buyers_whose_company_has_two_": {
+            "content": "Getoond aan groothandelskopers van wie het bedrijf twee of meer locaties heeft."
+          }
+        }
+      },
+      "main_404": {
+        "settings": {
+          "show_wholesale_line": {
+            "info": "Helpt groothandelskopers die een oude link volgen naar een product dat alleen voor de handel is."
+          }
+        }
+      },
+      "main_cart": {
+        "settings": {
+          "shipping_default_country": {
+            "info": "Landnaam zoals die in de lijst staat, bijvoorbeeld \"Spain\". Gebruikt het land van de klant als dit leeg is."
+          },
+          "terms_page": {
+            "info": "Indien ingesteld, vinken klanten een vakje aan om de voorwaarden te accepteren vóór de checkout."
+          }
+        }
+      },
+      "main_collection": {
+        "settings": {
+          "filters_open_lg": {
+            "info": "Indien uit, openen filters in een lade op elk schermformaat."
+          }
+        }
+      },
+      "main_product": {
+        "settings": {
+          "group_media_by_option": {
+            "info": "De uitgelichte afbeelding van elke variant begint de groep. Zet de afbeeldingen voor elke waarde bij elkaar, in de volgorde van de varianten.",
+            "label": "Alleen media van de geselecteerde optiewaarde weergeven"
+          },
+          "section_width": {
+            "info": "Volledige breedte gebruikt vanaf 990 px breed bijna het hele scherm."
+          },
+          "sticky_bar_mobile": {
+            "info": "Toont de geselecteerde opties en Toevoegen aan winkelwagen als de hoofdknop uit beeld scrolt. Verborgen voor groothandelskopers."
+          }
+        }
+      },
+      "main_search": {
+        "settings": {
+          "products_only": {
+            "info": "Indien uit, verschijnen pagina's en blogberichten na producten."
+          }
+        }
+      },
+      "navigation_slideshow": {
+        "settings": {
+          "quick_nav_use_product_image": {
+            "label": "Afbeelding van het eerste product gebruiken als een collectie er geen heeft"
+          }
+        }
+      },
+      "product_hotspots": {
+        "settings": {
+          "product": {
+            "info": "De afbeelding komt van dit product als er geen afbeelding is gekozen."
+          }
+        }
+      },
+      "product_recommendations": {
+        "settings": {
+          "recommendations_are_based_on_sales_and_product_d": {
+            "content": "Aanbevelingen zijn gebaseerd op verkopen en productbeschrijvingen. Pas ze aan in de app Search & Discovery."
+          }
+        }
+      },
+      "quick_order_list": {
+        "settings": {
+          "wholesale_buyers_order_several_products_from_one": {
+            "content": "Groothandelskopers bestellen meerdere producten vanuit één lijst. Elke variant volgt zijn eigen hoeveelheidsregel, voorraad en volumeprijzen. Retailbezoekers zien een uitnodiging om in te loggen."
+          }
+        }
+      },
+      "shipping_calculator": {
+        "settings": {
+          "default_country": {
+            "info": "Landnaam zoals die in de lijst staat. Gebruikt het land van de klant als dit leeg is."
+          }
+        }
+      },
+      "video": {
+        "settings": {
+          "video": {
+            "info": "Achtergrondvideo's worden alleen automatisch afgespeeld als ze naar Shopify zijn geüpload."
+          }
+        }
+      },
+      "whatsapp_chat": {
+        "blocks": {
+          "contact": {
+            "settings": {
+              "phone": {
+                "info": "Landcode en nummer, alleen cijfers. Leeg gebruikt het nummer van de sectie."
+              }
+            }
+          }
+        },
+        "settings": {
+          "a_floating_whatsapp_button_it_never_covers_add_t": {
+            "content": "Een zwevende WhatsApp-knop. Hij bedekt nooit de knoppen voor winkelwagen of afrekenen en verbergt zich zolang lades of dialogen open zijn."
+          },
+          "button_bg": {
+            "info": "Houd een contrast van 4,5:1 met de kleur van pictogram en tekst. WhatsApp-groen #25D366 heeft een donker pictogram nodig."
+          },
+          "message": {
+            "info": "Laat leeg voor een vertaalde standaardtekst: \"Hallo, ik heb een vraag over deze pagina:\""
+          },
+          "open_delay": {
+            "info": "Eén keer per bezoek. 0 houdt het gesloten tot er op de knop wordt geklikt."
+          },
+          "phone": {
+            "info": "Landcode en nummer, alleen cijfers, bijvoorbeeld 34600000000. Laat leeg om de WhatsApp-link uit Thema-instellingen > Social media te gebruiken."
+          },
+          "urls": {
+            "info": "Eén adres per regel, bijvoorbeeld /pages/contact, /cart of een volledige link. Eindig met * om alles op te nemen wat daarmee begint, bijvoorbeeld /collections/*."
+          }
+        }
+      },
+      "wholesale_access": {
+        "settings": {
+          "apply_page": {
+            "info": "Gebruikt de pagina uit Thema-instellingen > Groothandel als dit leeg is."
+          }
+        }
+      }
+    },
+    "settings_schema": {
+      "advanced": {
+        "settings": {
+          "attention_messages": {
+            "info": "Getoond in de titel van het browsertabblad terwijl bezoekers een ander tabblad bekijken."
+          }
+        }
+      },
+      "animations": {
+        "settings": {
+          "reveal_on_scroll": {
+            "info": "Altijd uit voor bezoekers die om minder beweging vragen."
+          }
+        }
+      },
+      "cart": {
+        "settings": {
+          "cart_free_shipping_rules": {
+            "info": "Eén regel per valuta, bijvoorbeeld \"EUR: 69\". De balk wordt alleen getoond voor valuta die je opgeeft."
+          }
+        }
+      },
+      "colors": {
+        "settings": {
+          "accents": {
+            "info": "Statuskleuren worden altijd samen met een tekstlabel getoond."
+          }
+        }
+      },
+      "currency_format": {
+        "settings": {
+          "currency_code_enable": {
+            "info": "Handig als je in meerdere valuta met hetzelfde symbool verkoopt."
+          }
+        }
+      },
+      "custom_code_and_tracking": {
+        "settings": {
+          "code_runs_on_every_page_marketing_code_waits_for": {
+            "content": "Code wordt op elke pagina uitgevoerd. Marketingcode wacht op toestemming via de instellingen voor klantprivacy van Shopify."
+          }
+        }
+      },
+      "delivery_information": {
+        "settings": {
+          "delivery_default_rule": {
+            "info": "Voorbeeld: \"54.95\". Laat leeg om de verzendrij te verbergen voor landen die niet in de lijst staan."
+          },
+          "delivery_round_up": {
+            "info": "Houdt omgerekende bedragen gelijk aan of hoger dan wat de checkout in rekening brengt."
+          },
+          "delivery_rules": {
+            "info": "Eén regel per zone: landen = tarief / gratis vanaf, met een optionele valuta. Voorbeeld: \"ES, AD = 4.95 / 69\". Laat \"gratis vanaf\" leeg als er geen gratis verzending is. Bedragen gebruiken je winkelvaluta, tenzij de regel begint met een valutacode, bijvoorbeeld \"GB = GBP 4.95 / 99\"."
+          },
+          "rules_for_the_delivery_list_on_product_pages_no_": {
+            "content": "Regels voor de leveringslijst op productpagina's. Er wordt nooit een leverdatum getoond."
+          }
+        }
+      },
+      "installments": {
+        "settings": {
+          "installments_countries": {
+            "info": "Landcodes van twee letters gescheiden door komma's. Laat leeg voor alle landen."
+          },
+          "the_installments_row_on_product_pages_shopify_pa": {
+            "content": "De rij voor betalen in termijnen op productpagina's. Termijnbetalingen via Shopify Payments worden apart getoond als ze beschikbaar zijn."
+          }
+        }
+      },
+      "integrations": {
+        "settings": {
+          "connections_to_outside_services_for_this_store_t": {
+            "content": "Koppelingen met externe diensten voor deze winkel. Ze maken geen deel uit van de Theme Store-versie van Weft."
+          },
+          "integration_bis_endpoint": {
+            "info": "De dienst ontvangt de aanvraag als JSON. Zonder URL gaan aanvragen via het contactformulier."
+          },
+          "integration_reviews_enable": {
+            "info": "Gebruikt door de secties \"Reviewraster\" en \"Reviewmuur\". Leest de reviews die Judge.me in winkelmetavelden bewaart."
+          },
+          "integration_tracking_mode": {
+            "info": "Tracking wacht ook op toestemming voor marketing als \"Wachten op toestemming voor marketing\" is ingeschakeld in Aangepaste code en tracking."
+          }
+        }
+      },
+      "layout_and_design": {
+        "settings": {
+          "gutter_desktop": {
+            "info": "Vanaf 1280 px breed. Kleinere schermen gebruiken 20 of 32 px."
+          },
+          "page_width_wide": {
+            "info": "Geldt vanaf 1440 px breed, zodat grote monitors de ruimte gebruiken. 2000 px begint bij 1700 px breed, daarvoor 1920 px."
+          }
+        }
+      },
+      "product_cards": {
+        "settings": {
+          "card_subtitle_metafield": {
+            "info": "Naamruimte en sleutel van een metaveld met tekst van één regel."
+          },
+          "highlighted_products": {
+            "info": "Collectiesecties kunnen producten met een tag uitlichten."
+          }
+        }
+      },
+      "product_compare": {
+        "settings": {
+          "compare_metafields": {
+            "info": "Eén per regel: Label = namespace.key, bijvoorbeeld \"Materiaal = custom.material\"."
+          }
+        }
+      },
+      "product_inventory": {
+        "settings": {
+          "stock_low_threshold": {
+            "info": "Retailklanten zien \"Nog maar een paar over\" bij dit aantal of minder. Exacte aantallen worden nooit aan retailklanten getoond, tenzij je dat hieronder kiest."
+          },
+          "stock_wholesale_low_threshold": {
+            "info": "Groothandelskopers zien exacte aantallen; bij dit aantal of minder wordt het aantal als laag gemarkeerd."
+          }
+        }
+      },
+      "product_labels": {
+        "settings": {
+          "label_custom_metafield": {
+            "info": "Naamruimte en sleutel van een metaveld met tekst van één regel. De tekst wordt het label."
+          }
+        }
+      },
+      "search": {
+        "settings": {
+          "voice_search_enable": {
+            "info": "Toont een microfoonknop in browsers die spraakherkenning ondersteunen."
+          }
+        }
+      },
+      "social_media": {
+        "settings": {
+          "links_show_in_the_footer_and_on_the_password_pag": {
+            "content": "Links worden getoond in de voettekst en op de wachtwoordpagina."
+          },
+          "social_whatsapp_url": {
+            "info": "Een wa.me-link, bijvoorbeeld https://wa.me/34600000000. Wordt ook gebruikt door de sectie WhatsApp-chat (Overlays) als die geen eigen nummer heeft."
+          }
+        }
+      },
+      "swatches": {
+        "settings": {
+          "swatch_color_list": {
+            "info": "Gebruikt als Shopify geen staal voor een waarde heeft. Eén per regel, bijvoorbeeld \"Ecru: #E6DCC6\"."
+          },
+          "swatch_option_names": {
+            "info": "Scheid namen met komma's. Opties met deze namen tonen stalen."
+          },
+          "swatch_product_size": {
+            "info": "Vanaf 56 px tonen uitverkochte stalen een band 'Uitverkocht'; kleinere een diagonale lijn."
+          }
+        }
+      },
+      "typography": {
+        "settings": {
+          "navigation_font_source": {
+            "info": "Gebruikt een van de twee lettertypen hierboven, zodat pagina's geen extra lettertypebestand laden."
+          }
+        }
+      },
+      "wholesale": {
+        "settings": {
+          "wholesale_assorted_packs": {
+            "info": "Voor producten die als gesorteerde pakketten worden verkocht: regels met één maat tonen elke kleurwaarde."
+          },
+          "wholesale_editor_preview": {
+            "info": "De thema-editor toont de pagina die een B2B-klant ziet: groothandelsblokken met voorbeeldgegevens, alleen-retailblokken verborgen. In de winkel zien alleen ingelogde B2B-klanten groothandelsblokken."
+          },
+          "wholesale_installments": {
+            "info": "Schakel dit alleen in als je B2B-checkout deze aanbieder voor betalen in termijnen aanbiedt."
+          },
+          "wholesale_matrix_tag": {
+            "info": "Producten met deze tag tonen groothandelskopers de bestelmatrix per kleur en maat."
+          },
+          "wholesale_mode_is_on_for_customers_signed_in_to_": {
+            "content": "De groothandelsmodus is actief voor klanten die zijn ingelogd bij een bedrijfslocatie in Shopify B2B. Prijzen, hoeveelheidsregels en volumeprijzen komen altijd uit je B2B-catalogi."
+          },
+          "wholesale_only_tag": {
+            "info": "Terugvaloptie voor producten die nog zichtbaar zijn voor retailklanten. Sluit ze bij voorkeur uit van je retailcatalogi."
+          },
+          "wholesale_pack_image_metafield": {
+            "info": "Productmetaveld met een afbeelding die de regelafbeelding vervangt voor groothandelskopers."
+          },
+          "wholesale_quick_order_drawer": {
+            "info": "Groothandelskopers openen de bestelmatrix of het hoeveelheidsvak vanaf een kaart zonder de collectie te verlaten."
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{%- layout none -%}
+<!doctype html>
+<html class="js" lang="{{ request.locale.iso_code }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex">
+    <title>{{ 'gift_card.title' | t }} &ndash; {{ shop.name }}</title>
+    {%- render 'tokens' -%}
+    {{ 'base.css' | asset_url | stylesheet_tag }}
+    {{ 'section-gift-card.css' | asset_url | stylesheet_tag }}
+    <script src="{{ 'vendor/qrcode.js' | shopify_asset_url }}" defer></script>
+    {{ content_for_header }}
+  </head>
+  <body>
+    {% section 'main-gift-card' %}
+    <script>
+      addEventListener('DOMContentLoaded', () => {
+        const el = document.querySelector('[data-qr]');
+        if (el && window.QRCode) new QRCode(el, { text: el.dataset.qr, width: 120, height: 120, correctLevel: QRCode.CorrectLevel.M });
+        const copy = document.querySelector('[data-copy]');
+        if (copy && navigator.clipboard) copy.addEventListener('click', () => navigator.clipboard.writeText(copy.dataset.copy).then(() => { copy.textContent = copy.dataset.copied; }));
+        const print = document.querySelector('[data-print]');
+        if (print) print.addEventListener('click', () => window.print());
+      });
+    </script>
+  </body>
+</html>

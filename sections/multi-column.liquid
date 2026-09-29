@@ -1,0 +1,226 @@
+{%- comment -%}
+  Multi-column: columns with optional media, heading, text and a link; grid or carousel.
+{%- endcomment -%}
+{%- assign s = section.settings -%}
+{{ 'section-library.css' | asset_url | stylesheet_tag }}
+{{ 'component-carousel.css' | asset_url | stylesheet_tag }}
+<div class="section multi-column color-{{ s.color_scheme }}{% if section.index > 2 %} below-fold{% endif %}" data-reveal>
+  <div class="page-width{% if s.full_width %} page-width--full{% endif %}">
+    {%- render 'section-heading', title: s.title, align: s.heading_align, button_label: s.button_label, button_link: s.button_link, button_style: s.button_style -%}
+    <scroll-row class="scroll-row scroll-row--{{ s.layout | default: 'grid' }}" data-module="{{ 'carousel.js' | asset_url }}" data-load="visible">
+      <ul class="columns-grid multi-column__list{% if s.layout == 'carousel' %} is-carousel{% endif %}" role="list" data-scroll-list style="--cols: {{ s.columns | default: 3 }}; --cols-mobile: {{ s.columns_mobile | default: 1 }}">
+        {%- content_for 'blocks' -%}
+      </ul>
+      {%- if s.layout == 'carousel' -%}
+        <div class="scroll-row__buttons js-only">
+          <button type="button" class="icon-button" data-scroll-prev aria-label="{{ 'general.previous' | t }}">{%- render 'icon', name: 'chevron-left', size: 20 -%}</button>
+          <button type="button" class="icon-button" data-scroll-next aria-label="{{ 'general.next' | t }}">{%- render 'icon', name: 'chevron-right', size: 20 -%}</button>
+        </div>
+      {%- endif -%}
+    </scroll-row>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:labels.multi_column",
+  "class": "section-multi-column",
+  "disabled_on": {
+    "groups": [
+      "header",
+      "footer",
+      "aside"
+    ]
+  },
+  "max_blocks": 12,
+  "blocks": [
+    {
+      "type": "_column"
+    }
+  ],
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "t:labels.heading",
+      "default": "Multi-column"
+    },
+    {
+      "type": "select",
+      "id": "heading_align",
+      "label": "t:labels.heading_alignment",
+      "options": [
+        {
+          "value": "start",
+          "label": "t:labels.start"
+        },
+        {
+          "value": "center",
+          "label": "t:labels.center"
+        }
+      ],
+      "default": "start"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "t:labels.button_label"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "t:labels.button_link"
+    },
+    {
+      "type": "select",
+      "id": "button_style",
+      "label": "t:labels.button_style",
+      "options": [
+        {
+          "value": "primary",
+          "label": "t:labels.primary"
+        },
+        {
+          "value": "secondary",
+          "label": "t:labels.secondary"
+        },
+        {
+          "value": "link",
+          "label": "t:labels.link"
+        }
+      ],
+      "default": "secondary"
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "t:labels.layout",
+      "options": [
+        {
+          "value": "grid",
+          "label": "t:labels.grid"
+        },
+        {
+          "value": "carousel",
+          "label": "t:labels.carousel"
+        }
+      ],
+      "default": "grid"
+    },
+    {
+      "type": "range",
+      "id": "columns",
+      "label": "t:labels.columns_on_large_screens",
+      "min": 1,
+      "max": 6,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "select",
+      "id": "columns_mobile",
+      "label": "t:labels.columns_on_mobile",
+      "options": [
+        {
+          "value": "1",
+          "label": "t:labels.1"
+        },
+        {
+          "value": "2",
+          "label": "t:labels.2"
+        }
+      ],
+      "default": "1"
+    },
+    {
+      "type": "select",
+      "id": "column_align",
+      "label": "t:labels.column_alignment",
+      "options": [
+        {
+          "value": "start",
+          "label": "t:labels.start"
+        },
+        {
+          "value": "center",
+          "label": "t:labels.center"
+        }
+      ],
+      "default": "start"
+    },
+    {
+      "type": "select",
+      "id": "media_align",
+      "label": "t:labels.media_alignment",
+      "options": [
+        {
+          "value": "start",
+          "label": "t:labels.start"
+        },
+        {
+          "value": "center",
+          "label": "t:labels.center"
+        }
+      ],
+      "default": "start"
+    },
+    {
+      "type": "select",
+      "id": "image_ratio",
+      "label": "t:labels.image_aspect_ratio",
+      "options": [
+        {
+          "value": "natural",
+          "label": "t:labels.natural"
+        },
+        {
+          "value": "square",
+          "label": "t:labels.square"
+        },
+        {
+          "value": "portrait",
+          "label": "t:labels.portrait"
+        },
+        {
+          "value": "landscape",
+          "label": "t:labels.landscape"
+        },
+        {
+          "value": "circle",
+          "label": "t:labels.circle"
+        }
+      ],
+      "default": "landscape"
+    },
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "t:labels.full_width",
+      "default": false
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:labels.color_scheme",
+      "default": "scheme-1"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:labels.multi_column",
+      "category": "t:labels.text",
+      "blocks": [
+        {
+          "type": "_column"
+        },
+        {
+          "type": "_column"
+        },
+        {
+          "type": "_column"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

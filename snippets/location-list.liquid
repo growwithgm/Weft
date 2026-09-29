@@ -1,0 +1,36 @@
+{%- comment -%}
+  "Ordering for" panel content: company, locations (current one marked), store credit,
+  account and sign-out links. Used by the header dropdown and the mobile location sheet.
+  Params: locations.
+{%- endcomment -%}
+<div class="location-list">
+  <span class="location-list__eyebrow muted">{{ 'wholesale.ordering_for' | t }}</span>
+  <span class="location-list__company">{{ customer.current_company.name }}</span>
+  <ul class="location-list__items" role="list">
+    {%- for location in locations limit: 50 -%}
+      <li>
+        {%- if location.current? -%}
+          <span class="location-list__item is-current" aria-current="true">
+            <span class="location-list__radio" aria-hidden="true"></span>
+            <span>{{ location.name }}</span>
+            <span class="visually-hidden">({{ 'wholesale.current_location' | t }})</span>
+          </span>
+        {%- else -%}
+          <a class="location-list__item" href="{{ location.url_to_set_as_current }}" data-location-link="{{ location.name | escape }}" aria-label="{{ 'wholesale.switch_location' | t: location: location.name }}">
+            <span class="location-list__radio" aria-hidden="true"></span>
+            <span>{{ location.name }}</span>
+          </a>
+        {%- endif -%}
+      </li>
+    {%- endfor -%}
+  </ul>
+  {%- assign credit = customer.current_location.store_credit_account -%}
+  {%- if credit -%}
+    <div class="location-list__row">
+      <span>{{ 'wholesale.store_credit' | t }}</span>
+      <span class="tabular">{{ credit.balance | money }}</span>
+    </div>
+  {%- endif -%}
+  <a class="location-list__link" href="{{ routes.account_url }}">{{ 'wholesale.account_and_orders' | t }}</a>
+  <a class="location-list__link" href="{{ routes.account_logout_url }}">{{ 'wholesale.sign_out' | t }}</a>
+</div>

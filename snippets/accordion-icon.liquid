@@ -1,0 +1,6 @@
+{%- comment -%} Toggle icon for accordions, following Theme settings > Layout > Accordions. {%- endcomment -%}
+{%- if settings.accordion_icon == 'chevron' -%}
+  <span class="accordion__icon accordion__icon--chevron" aria-hidden="true">{%- render 'icon', name: 'chevron-down', size: 18 -%}</span>
+{%- else -%}
+  <span class="accordion__icon accordion__icon--plus" aria-hidden="true"></span>
+{%- endif -%}

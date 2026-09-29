@@ -1,0 +1,45 @@
+{
+  "type": "footer",
+  "name": "t:labels.footer",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "menu-1": {
+          "type": "link_list",
+          "settings": {
+            "menu": "footer"
+          }
+        },
+        "text-1": {
+          "type": "text",
+          "settings": {
+            "heading": "About us",
+            "text": "<p>Tell customers about your brand, your values and how you work.</p>",
+            "show_social": true,
+            "follow_on_shop": true
+          }
+        },
+        "newsletter-1": {
+          "type": "newsletter",
+          "settings": {
+            "heading": "Join our newsletter"
+          }
+        }
+      },
+      "block_order": [
+        "menu-1",
+        "text-1",
+        "newsletter-1"
+      ],
+      "settings": {
+        "color_scheme": "scheme-2",
+        "show_payment_icons": true,
+        "show_back_to_top": true
+      }
+    }
+  },
+  "order": [
+    "footer"
+  ]
+}

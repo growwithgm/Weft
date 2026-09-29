@@ -1,0 +1,520 @@
+{%- comment -%}
+  Collections list page (/collections): heading, text, collection cards (all collections,
+  paginated, or a chosen list), promotion tiles before a chosen card.
+{%- endcomment -%}
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'section-collection.css' | asset_url | stylesheet_tag }}
+{%- liquid
+  assign s = section.settings
+  assign card_sizes = '(min-width: 990px) calc(100vw / ' | append: s.columns | append: '), 50vw'
+-%}
+<div class="section list-collections color-{{ s.color_scheme }}">
+  <div class="page-width">
+    {%- if settings.breadcrumbs_list_collections -%}{%- render 'breadcrumbs' -%}{%- endif -%}
+    {%- if s.title != blank or s.description != blank -%}
+      <div class="list-collections__head stack list-collections__head--{{ s.text_align }}">
+        {%- if s.title != blank -%}<h1 class="h1">{{ s.title | escape }}</h1>{%- endif -%}
+        {%- if s.description != blank -%}<div class="rte muted">{{ s.description }}</div>{%- endif -%}
+      </div>
+    {%- endif -%}
+    {%- if s.display_type == 'selected' and s.selected_collections.count > 0 -%}
+      <ul class="product-grid list-collections__grid" role="list" style="--cols: {{ s.columns }}; --cols-mobile: {{ s.columns_mobile }}">
+        {%- for collection in s.selected_collections -%}
+          {%- assign card_index = forloop.index -%}
+          {%- for block in section.blocks -%}
+            {%- if block.settings.position == card_index -%}
+              <li class="collection__promo collection__promo--{{ block.type | remove: 'promo_' }}">{%- render 'collection-promo', block: block, sizes: card_sizes -%}</li>
+            {%- endif -%}
+          {%- endfor -%}
+          <li>{%- render 'collection-card', collection: collection, sizes: card_sizes, eager: forloop.first, use_product_image: s.use_product_image, show_count: s.show_count -%}</li>
+        {%- endfor -%}
+      </ul>
+    {%- else -%}
+      {%- paginate collections by s.per_page -%}
+        <ul class="product-grid list-collections__grid" role="list" style="--cols: {{ s.columns }}; --cols-mobile: {{ s.columns_mobile }}">
+          {%- for collection in collections -%}
+            {%- assign card_index = forloop.index -%}
+            {%- if paginate.current_page == 1 -%}
+              {%- for block in section.blocks -%}
+                {%- if block.settings.position == card_index -%}
+                  <li class="collection__promo collection__promo--{{ block.type | remove: 'promo_' }}">{%- render 'collection-promo', block: block, sizes: card_sizes -%}</li>
+                {%- endif -%}
+              {%- endfor -%}
+            {%- endif -%}
+            {%- liquid
+              assign eager = false
+              if paginate.current_page == 1 and forloop.index <= 2
+                assign eager = true
+              endif
+            -%}
+            <li>{%- render 'collection-card', collection: collection, sizes: card_sizes, eager: eager, use_product_image: s.use_product_image, show_count: s.show_count -%}</li>
+          {%- endfor -%}
+        </ul>
+        {%- render 'pagination', paginate: paginate -%}
+      {%- endpaginate -%}
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:labels.collections_list",
+  "class": "section-main-list-collections",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "t:labels.heading",
+      "default": "Collections"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "t:labels.text"
+    },
+    {
+      "type": "select",
+      "id": "text_align",
+      "label": "t:labels.text_alignment",
+      "options": [
+        {
+          "value": "start",
+          "label": "t:labels.start"
+        },
+        {
+          "value": "center",
+          "label": "t:labels.center"
+        }
+      ],
+      "default": "start"
+    },
+    {
+      "type": "select",
+      "id": "display_type",
+      "label": "t:labels.collections_to_show",
+      "options": [
+        {
+          "value": "all",
+          "label": "t:labels.all"
+        },
+        {
+          "value": "selected",
+          "label": "t:labels.selected"
+        }
+      ],
+      "default": "all"
+    },
+    {
+      "type": "collection_list",
+      "id": "selected_collections",
+      "label": "t:labels.collections",
+      "limit": 50
+    },
+    {
+      "type": "range",
+      "id": "per_page",
+      "label": "t:labels.collections_per_page",
+      "min": 8,
+      "max": 48,
+      "step": 4,
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "columns",
+      "label": "t:labels.columns_on_large_screens",
+      "min": 2,
+      "max": 6,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "select",
+      "id": "columns_mobile",
+      "label": "t:labels.columns_on_mobile",
+      "options": [
+        {
+          "value": "1",
+          "label": "t:labels.1"
+        },
+        {
+          "value": "2",
+          "label": "t:labels.2"
+        }
+      ],
+      "default": "2"
+    },
+    {
+      "type": "checkbox",
+      "id": "use_product_image",
+      "label": "t:text.sections.collection_banner.settings.use_product_image.label",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_count",
+      "label": "t:labels.show_product_count",
+      "default": false
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:labels.color_scheme",
+      "default": "scheme-1"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "promo_wide",
+      "name": "t:labels.wide_promotion",
+      "settings": [
+        {
+          "type": "range",
+          "id": "position",
+          "label": "t:labels.before_collection_number",
+          "min": 1,
+          "max": 50,
+          "step": 1,
+          "default": 5
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "t:labels.image"
+        },
+        {
+          "type": "video",
+          "id": "video",
+          "label": "t:labels.video",
+          "info": "t:labels.plays_muted_in_a_loop_instead_of_the_image"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "t:labels.link"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "t:labels.text",
+          "default": "<h3>Promotion headline</h3>"
+        },
+        {
+          "type": "select",
+          "id": "text_size",
+          "label": "t:labels.text_size",
+          "options": [
+            {
+              "value": "small",
+              "label": "t:labels.small"
+            },
+            {
+              "value": "medium",
+              "label": "t:labels.medium"
+            },
+            {
+              "value": "large",
+              "label": "t:labels.large"
+            }
+          ],
+          "default": "medium"
+        },
+        {
+          "type": "select",
+          "id": "text_align",
+          "label": "t:labels.text_alignment",
+          "options": [
+            {
+              "value": "start",
+              "label": "t:labels.start"
+            },
+            {
+              "value": "center",
+              "label": "t:labels.center"
+            },
+            {
+              "value": "end",
+              "label": "t:labels.end"
+            }
+          ],
+          "default": "center"
+        },
+        {
+          "type": "range",
+          "id": "min_height",
+          "label": "t:labels.minimum_height",
+          "min": 160,
+          "max": 640,
+          "step": 20,
+          "unit": "px",
+          "default": 320
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "t:labels.button_label"
+        },
+        {
+          "type": "select",
+          "id": "button_style",
+          "label": "t:labels.button_style",
+          "options": [
+            {
+              "value": "primary",
+              "label": "t:labels.primary"
+            },
+            {
+              "value": "secondary",
+              "label": "t:labels.secondary"
+            }
+          ],
+          "default": "primary"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "t:labels.text",
+          "default": "#FFFFFF"
+        },
+        {
+          "type": "color",
+          "id": "tint_color",
+          "label": "t:labels.image_tint",
+          "default": "#000000"
+        },
+        {
+          "type": "range",
+          "id": "tint_opacity",
+          "label": "t:labels.image_tint_opacity",
+          "min": 0,
+          "max": 90,
+          "step": 5,
+          "unit": "%",
+          "default": 30
+        }
+      ]
+    },
+    {
+      "type": "promo_media",
+      "name": "t:labels.media_promotion",
+      "settings": [
+        {
+          "type": "range",
+          "id": "position",
+          "label": "t:labels.before_collection_number",
+          "min": 1,
+          "max": 50,
+          "step": 1,
+          "default": 3
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "t:labels.image"
+        },
+        {
+          "type": "video",
+          "id": "video",
+          "label": "t:labels.video",
+          "info": "t:labels.plays_muted_in_a_loop_instead_of_the_image"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "t:labels.link"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "t:labels.text",
+          "default": "<h3>Promotion headline</h3>"
+        },
+        {
+          "type": "select",
+          "id": "text_size",
+          "label": "t:labels.text_size",
+          "options": [
+            {
+              "value": "small",
+              "label": "t:labels.small"
+            },
+            {
+              "value": "medium",
+              "label": "t:labels.medium"
+            },
+            {
+              "value": "large",
+              "label": "t:labels.large"
+            }
+          ],
+          "default": "medium"
+        },
+        {
+          "type": "select",
+          "id": "text_align",
+          "label": "t:labels.text_alignment",
+          "options": [
+            {
+              "value": "start",
+              "label": "t:labels.start"
+            },
+            {
+              "value": "center",
+              "label": "t:labels.center"
+            },
+            {
+              "value": "end",
+              "label": "t:labels.end"
+            }
+          ],
+          "default": "center"
+        },
+        {
+          "type": "range",
+          "id": "min_height",
+          "label": "t:labels.minimum_height",
+          "min": 160,
+          "max": 640,
+          "step": 20,
+          "unit": "px",
+          "default": 320
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "t:labels.button_label"
+        },
+        {
+          "type": "select",
+          "id": "button_style",
+          "label": "t:labels.button_style",
+          "options": [
+            {
+              "value": "primary",
+              "label": "t:labels.primary"
+            },
+            {
+              "value": "secondary",
+              "label": "t:labels.secondary"
+            }
+          ],
+          "default": "primary"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "t:labels.text",
+          "default": "#FFFFFF"
+        },
+        {
+          "type": "color",
+          "id": "tint_color",
+          "label": "t:labels.image_tint",
+          "default": "#000000"
+        },
+        {
+          "type": "range",
+          "id": "tint_opacity",
+          "label": "t:labels.image_tint_opacity",
+          "min": 0,
+          "max": 90,
+          "step": 5,
+          "unit": "%",
+          "default": 30
+        }
+      ]
+    },
+    {
+      "type": "promo_card",
+      "name": "t:labels.card_promotion",
+      "settings": [
+        {
+          "type": "range",
+          "id": "position",
+          "label": "t:labels.before_collection_number",
+          "min": 1,
+          "max": 50,
+          "step": 1,
+          "default": 7
+        },
+        {
+          "type": "color_scheme",
+          "id": "color_scheme",
+          "label": "t:labels.color_scheme",
+          "default": "scheme-2"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "t:labels.image"
+        },
+        {
+          "type": "select",
+          "id": "image_ratio",
+          "label": "t:labels.image_aspect_ratio",
+          "options": [
+            {
+              "value": "square",
+              "label": "t:labels.square"
+            },
+            {
+              "value": "portrait",
+              "label": "t:labels.portrait"
+            },
+            {
+              "value": "landscape",
+              "label": "t:labels.landscape"
+            }
+          ],
+          "default": "landscape"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "t:labels.link"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "t:labels.heading",
+          "default": "Card promotion"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "t:labels.text",
+          "default": "<p>Tell shoppers about an offer, a guide or a service.</p>"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "t:labels.button_label",
+          "default": "Learn more"
+        },
+        {
+          "type": "select",
+          "id": "button_style",
+          "label": "t:labels.button_style",
+          "options": [
+            {
+              "value": "primary",
+              "label": "t:labels.primary"
+            },
+            {
+              "value": "secondary",
+              "label": "t:labels.secondary"
+            }
+          ],
+          "default": "secondary"
+        },
+        {
+          "type": "checkbox",
+          "id": "button_bottom",
+          "label": "t:labels.align_button_to_the_bottom",
+          "default": true
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

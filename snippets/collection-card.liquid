@@ -1,0 +1,28 @@
+{%- comment -%}
+  Collection card (Theme settings > Collection cards): image (collection image, or the first
+  product's image when allowed), title, optional product count and "View collection" link. The
+  whole card is one link.
+  Params: collection (required), image (replacement image), sizes, eager (bool), use_product_image (bool),
+          show_count (bool)
+{%- endcomment -%}
+{%- liquid
+  assign card_image = image | default: collection.featured_image
+  if card_image == blank and use_product_image
+    assign card_image = collection.products.first.featured_media.preview_image
+  endif
+  assign card_sizes = sizes | default: '(min-width: 990px) 25vw, 50vw'
+-%}
+<div class="collection-card collection-card--ratio-{{ settings.collection_card_ratio }}" style="--cc-align: {{ settings.collection_card_text_align }}; --cc-position: {{ settings.collection_card_image_position }};{% if card_image %} --cc-natural: {{ card_image.aspect_ratio }};{% endif %}">
+  <div class="collection-card__media media{% if settings.collection_card_fit == 'contain' %} media--contain{% endif %}{% if settings.image_blend_collections %} media--blend{% endif %}">
+    {%- if card_image -%}
+      {%- render 'image', image: card_image, sizes: card_sizes, eager: eager, widths: '240,360,480,640,800,960' -%}
+    {%- else -%}
+      {{ 'collection-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+    {%- endif -%}
+  </div>
+  <p class="collection-card__title">
+    <a class="collection-card__link" href="{{ collection.url }}">{{ collection.title | escape }}</a>
+  </p>
+  {%- if show_count -%}<p class="collection-card__count">{{ 'collections.product_count' | t: count: collection.all_products_count }}</p>{%- endif -%}
+  {%- if settings.collection_card_show_link -%}<span class="collection-card__more" aria-hidden="true">{{ 'collections.view_collection' | t }}</span>{%- endif -%}
+</div>

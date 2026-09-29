@@ -1,0 +1,37 @@
+{%- comment -%}
+  Period after opening (VERTICALS §4): the open-jar symbol with the number of months, from a
+  setting that accepts dynamic sources (for example a number metafield).
+{%- endcomment -%}
+{%- assign months = block.settings.months | strip -%}
+{%- if months != blank -%}
+  <p class="pao" {{ block.shopify_attributes }}>
+    <span class="pao__symbol" aria-hidden="true">
+      <svg width="36" height="36" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 14h20l-2 16a2 2 0 01-2 2H12a2 2 0 01-2-2L8 14z"/><path d="M7 10l20-4 1 4"/></svg>
+      <span class="pao__months">{{ months | escape }}M</span>
+    </span>
+    <span class="pao__text">{{ 'products.pao' | t: months: months }}</span>
+  </p>
+{%- elsif request.design_mode -%}
+  <p class="muted" {{ block.shopify_attributes }}>{{ 'products.pao' | t: months: 12 }}</p>
+{%- endif -%}
+{% schema %}
+{
+  "name": "t:labels.period_after_opening",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "months",
+      "label": "t:labels.months",
+      "default": "12",
+      "info": "t:text.blocks.pao_icon.settings.months.info"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:labels.period_after_opening",
+      "category": "t:labels.product"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,120 @@
+{
+  "sections": {
+    "hero": {
+      "type": "image-banner",
+      "settings": {
+        "height": "medium",
+        "overlay_position": "middle-center",
+        "text_align": "center",
+        "tint_opacity": 30
+      },
+      "blocks": {
+        "title": {
+          "type": "heading",
+          "settings": {
+            "heading": "About us",
+            "size": "h1"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>The people and ideas behind our products.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "text"
+      ]
+    },
+    "story": {
+      "type": "media-with-text",
+      "settings": {
+        "layout": "media-start"
+      },
+      "blocks": {
+        "h": {
+          "type": "heading",
+          "settings": {
+            "heading": "How we started",
+            "size": "h2"
+          }
+        },
+        "t": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Tell the story of your brand: who you are, what you make and why.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "h",
+        "t"
+      ]
+    },
+    "values": {
+      "type": "multi-column",
+      "settings": {
+        "title": "What we care about",
+        "columns": 3
+      },
+      "blocks": {
+        "c1": {
+          "type": "_column",
+          "settings": {
+            "heading": "Quality"
+          }
+        },
+        "c2": {
+          "type": "_column",
+          "settings": {
+            "heading": "People"
+          }
+        },
+        "c3": {
+          "type": "_column",
+          "settings": {
+            "heading": "Planet"
+          }
+        }
+      },
+      "block_order": [
+        "c1",
+        "c2",
+        "c3"
+      ]
+    },
+    "craft": {
+      "type": "media-with-text",
+      "settings": {
+        "layout": "media-end"
+      },
+      "blocks": {
+        "h": {
+          "type": "heading",
+          "settings": {
+            "heading": "Made with care",
+            "size": "h2"
+          }
+        },
+        "t": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Explain how your products are made and who makes them.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "h",
+        "t"
+      ]
+    }
+  },
+  "order": [
+    "hero",
+    "story",
+    "values",
+    "craft"
+  ]
+}

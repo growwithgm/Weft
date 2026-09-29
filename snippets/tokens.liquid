@@ -1,0 +1,150 @@
+{%- comment -%}
+  Design tokens: global settings → CSS custom properties, in one small inline style.
+  Font files: heading (one weight) + body regular + body bold, the 3-file budget (BUILD_SPEC §3.6).
+  Medium weight (500) has no @font-face of its own, so browsers use the regular file; italic has
+  none either (the browser slants the regular face) since a fourth file broke the budget in QA.
+{%- endcomment -%}
+{%- liquid
+  assign heading_font = settings.heading_font
+  assign body_font = settings.body_font
+  assign body_bold = body_font | font_modify: 'weight', '600'
+  if body_bold == blank
+    assign body_bold = body_font | font_modify: 'weight', 'bolder'
+  endif
+
+  assign scale = settings.heading_scale | divided_by: 100.0
+  assign base = settings.body_size | default: 16
+  assign spacing = settings.section_spacing | default: 80
+  assign spacing_mobile = spacing | times: 0.6 | round
+
+  if settings.navigation_font_source == 'heading'
+    assign nav_family = 'var(--f-heading)'
+    assign nav_weight = 'var(--fw-heading)'
+  else
+    assign nav_family = 'var(--f-body)'
+    assign nav_weight = 'var(--fw-medium)'
+  endif
+-%}
+{% style %}
+  {{ heading_font | font_face: font_display: 'swap' }}
+  {{ body_font | font_face: font_display: 'swap' }}
+  {%- if body_bold != blank -%}{{ body_bold | font_face: font_display: 'swap' }}{%- endif -%}
+
+  :root {
+    --f-heading: {{ heading_font.family }}, {{ heading_font.fallback_families }};
+    --fw-heading: {{ heading_font.weight }};
+    --fs-heading: {{ heading_font.style }};
+    --f-body: {{ body_font.family }}, {{ body_font.fallback_families }};
+    --fw-body: {{ body_font.weight }};
+    --fw-medium: 500;
+    --fw-bold: {{ body_bold.weight | default: 600 }};
+    --f-nav: {{ nav_family }};
+    --f-search: {% if settings.search_font == 'heading' %}var(--f-heading){% else %}var(--f-body){% endif %};
+    --fw-nav: {{ nav_weight }};
+    --tt-heading: {% if settings.heading_uppercase %}uppercase{% else %}none{% endif %};
+    --tt-subheading: {% if settings.subheading_uppercase %}uppercase{% else %}none{% endif %};
+    --tt-button: {% if settings.button_uppercase %}uppercase{% else %}none{% endif %};
+
+    --t-base: {{ base }}px;
+    --t-12: {{ base | times: 0.75 }}px;
+    --t-13: {{ base | times: 0.8125 }}px;
+    --t-14: {{ base | times: 0.875 }}px;
+    --t-15: {{ base | times: 0.9375 }}px;
+    --t-16: {{ base }}px;
+    --t-20: {{ base | times: 1.25 }}px;
+    --h-26: {{ base | times: 1.625 | times: scale }}px;
+    --h-34: {{ base | times: 2.125 | times: scale }}px;
+    --h-44: {{ base | times: 2.75 | times: scale }}px;
+    --h-56: {{ base | times: 3.5 | times: scale }}px;
+
+    --page-width: {{ settings.page_width }}px;
+    --gutter: 20px;
+    --section-gap: {{ spacing_mobile }}px;
+    --section-gap-desktop: {{ spacing }}px;
+
+    --border-width: {{ settings.border_width }}px;
+    --r-button: {{ settings.radius_button }}px;
+    --r-input: {{ settings.radius_input }}px;
+    --r-card: {{ settings.radius_card }}px;
+    --r-media: {{ settings.radius_media }}px;
+    --r-drawer: {{ settings.radius_drawer }}px;
+    --r-modal: {{ settings.radius_modal }}px;
+
+    --c-sale: {{ settings.color_sale }};
+    --c-star: {{ settings.color_star }};
+    --c-ok: {{ settings.color_stock_ok }};
+    --c-low: {{ settings.color_stock_low }};
+    --c-bad: {{ settings.color_stock_out }};
+    --c-success: {{ settings.color_success }};
+    --c-success-bg: {{ settings.color_success_bg }};
+    --c-error: {{ settings.color_error }};
+    --c-error-bg: {{ settings.color_error_bg }};
+    --c-info: {{ settings.color_info }};
+    --c-info-bg: {{ settings.color_info_bg }};
+    --c-installments: {{ settings.color_installments_tint }};
+    --c-disabled-bg: {{ settings.color_disabled_bg }};
+    --c-disabled-fg: {{ settings.color_disabled_text }};
+    --c-blend: {{ settings.image_blend_color }};
+
+    --logo-width: {{ settings.logo_width_mobile }}px;
+    --logo-width-desktop: {{ settings.logo_width }}px;
+    --swatch-size: {{ settings.swatch_product_size }}px;
+    --swatch-card-size: {{ settings.swatch_card_size }}px;
+    --card-bg: {{ settings.card_bg }};
+    --card-text: {{ settings.card_text }};
+    --card-border: {{ settings.card_border }};
+    --card-highlight-bg: {{ settings.card_highlight_bg }};
+    --card-highlight-text: {{ settings.card_highlight_text }};
+    --card-highlight-border: {{ settings.card_highlight_border | default: 'transparent' }};
+    --cc-bg: {{ settings.collection_card_bg }};
+    --cc-border: {{ settings.collection_card_border }};
+    --cc-label: {{ settings.collection_card_label_color }};
+    --reveal-duration: {% case settings.reveal_speed %}{% when 'slow' %}900ms{% when 'normal' %}600ms{% else %}350ms{% endcase %};
+    --shadow-overlay: 0 12px 40px rgb(15 17 17 / 0.16);
+  }
+
+  {% for scheme in settings.color_schemes -%}
+    {%- if forloop.first %}:root,{% endif %} .color-{{ scheme.id }} {
+      --c-bg: {{ scheme.settings.background }};
+      --c-bg-image: {{ scheme.settings.background_gradient | default: 'none' }};
+      --c-fg: {{ scheme.settings.text }};
+      --c-heading: {{ scheme.settings.heading }};
+      --c-muted: {{ scheme.settings.muted }};
+      --c-surface: {{ scheme.settings.surface }};
+      --c-line: {{ scheme.settings.line }};
+      --c-link: {{ scheme.settings.link }};
+      --c-primary: {{ scheme.settings.button_bg }};
+      --c-on-primary: {{ scheme.settings.button_text }};
+      --c-primary-hover: {{ scheme.settings.button_hover }};
+      --c-secondary: {{ scheme.settings.button_secondary_bg }};
+      --c-on-secondary: {{ scheme.settings.button_secondary_text }};
+      {%- comment -%} Sale and stock colours that would miss 4.5:1 on this background use the scheme's text colour. {%- endcomment -%}
+      {%- liquid
+        assign sale_ratio = settings.color_sale | color_contrast: scheme.settings.background
+        assign ok_ratio = settings.color_stock_ok | color_contrast: scheme.settings.background
+        assign low_ratio = settings.color_stock_low | color_contrast: scheme.settings.background
+        assign bad_ratio = settings.color_stock_out | color_contrast: scheme.settings.background
+      -%}
+      {%- if sale_ratio < 4.5 %} --c-sale: {{ scheme.settings.text }};{% endif -%}
+      {%- if ok_ratio < 4.5 %} --c-ok: {{ scheme.settings.text }};{% endif -%}
+      {%- if low_ratio < 4.5 %} --c-low: {{ scheme.settings.text }};{% endif -%}
+      {%- if bad_ratio < 4.5 %} --c-bad: {{ scheme.settings.text }};{% endif %}
+    }
+  {% endfor %}
+
+  @media (min-width: 600px) { :root { --gutter: 32px; } }
+  @media (min-width: 990px) {
+    :root { --section-gap: var(--section-gap-desktop); --logo-width: var(--logo-width-desktop); }
+  }
+  {%- comment -%} Theme settings > Layout and design: side padding and page width on wide screens. {%- endcomment -%}
+  @media (min-width: 1280px) { :root { --gutter: {{ settings.gutter_desktop | default: 32 }}px; } }
+  {%- case settings.page_width_wide -%}
+    {%- when 'full' -%}
+      @media (min-width: 1440px) { :root { --page-width: 100vw; } }
+    {%- when '2000' -%}
+      @media (min-width: 1440px) { :root { --page-width: 1920px; } }
+      @media (min-width: 1700px) { :root { --page-width: 2000px; } }
+    {%- when '1920' -%}
+      @media (min-width: 1440px) { :root { --page-width: 1920px; } }
+  {%- endcase -%}
+{% endstyle %}

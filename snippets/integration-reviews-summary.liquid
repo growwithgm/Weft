@@ -1,0 +1,17 @@
+{%- comment -%}
+  Integration (store builds only): store score, stars and review count as Judge.me reports them.
+  Nothing renders without a score. Params: average, total
+{%- endcomment -%}
+{%- if average > 0 -%}
+  {%- liquid
+    assign rounded = average | times: 10 | round | divided_by: 10.0
+    assign pct = average | times: 20 | round
+  -%}
+  <div class="reviews-summary">
+    <p class="reviews-summary__score tabular">{{ rounded }}</p>
+    <div>
+      <p class="reviews-summary__stars" role="img" aria-label="{{ 'accessibility.star_rating' | t: rating: rounded, max: 5 }}"><span class="review-stars" style="--stars: {{ pct }}%"></span></p>
+      {%- if total > 0 -%}<p class="reviews-summary__count muted">{{ total }} {{ 'products.rating.store_reviews' | t }}</p>{%- endif -%}
+    </div>
+  </div>
+{%- endif -%}

@@ -1,0 +1,155 @@
+{%- comment -%}
+  Product gallery: stacked / two-column / thumbnails / carousel on large screens, swipe
+  carousel with a counter on mobile, lightbox markup deferred in a <template>.
+  Optional grouping shows only the media of the selected option value (each variant's featured
+  media starts a group).
+  Params: product, variant, section.
+{%- endcomment -%}
+{%- liquid
+  assign s = section.settings
+  assign start_pos = 0
+  assign end_pos = 100000
+  if s.group_media_by_option and variant and variant.featured_media
+    assign group_names = s.group_media_option_names | downcase | remove: ' ' | split: ','
+    for option in product.options_with_values
+      assign option_name = option.name | downcase | remove: ' '
+      if group_names contains option_name
+        assign start_pos = variant.featured_media.position
+        for value in option.values
+          assign vm = value.variant.featured_media
+          if vm and vm.position > start_pos and vm.position < end_pos
+            assign end_pos = vm.position
+          endif
+        endfor
+        break
+      endif
+    endfor
+  endif
+
+  # sizes follow the media column: its share of the row, halved in a two-column grid, and the
+  # full-width section option (about 98vw from 990 px).
+  case s.gallery_width
+    when 'extra_wide'
+      assign media_share = 65
+    when 'half'
+      assign media_share = 50
+    when 'narrow'
+      assign media_share = 42
+    else
+      assign media_share = 58
+  endcase
+  if s.gallery_layout == 'grid' or s.gallery_layout == 'grid_even'
+    assign media_share = media_share | divided_by: 2
+  endif
+  assign row_vw = 100
+  if s.section_width == 'full'
+    assign row_vw = 98
+  endif
+  assign wide_vw = row_vw | times: media_share | divided_by: 100 | append: 'vw'
+  assign desk_vw = media_share | append: 'vw'
+  if s.section_width == 'full'
+    assign desk_vw = wide_vw
+  endif
+  assign sizes = '(min-width: 1440px) ' | append: wide_vw | append: ', (min-width: 990px) ' | append: desk_vw | append: ', (min-width: 750px) 50vw, 100vw'
+
+  assign featured_id = variant.featured_media.id | default: product.featured_media.id
+  assign shown = 0
+
+  # With every image shown, the gallery starts at the selected variant's image and wraps around,
+  # so the selected color is what the buyer sees first.
+  assign rot = 0
+  if start_pos == 0 and variant.featured_media and variant.featured_media.position > 1
+    assign rot = variant.featured_media.position | minus: 1
+  endif
+-%}
+<product-gallery
+  class="gallery gallery--{{ s.gallery_layout }} gallery--ratio-{{ s.media_ratio }} gallery--fit-{{ s.media_fit }} gallery--thumbs-{{ s.thumbnails }}"
+  style="--media-bg: {{ s.media_bg }};"
+  data-gallery
+  data-zoom="{{ s.zoom }}"
+  data-lightbox-mobile="{{ s.lightbox_mobile }}"
+  data-module="{{ 'gallery.js' | asset_url }}"
+  data-load="visible"
+  role="region"
+  aria-label="{{ 'products.gallery.label' | t }}"
+>
+  {%- if product.media.size == 0 -%}
+    <div class="gallery__placeholder media">{{ 'product-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}</div>
+  {%- else -%}
+    <ul class="gallery__list" role="list" data-gallery-list>
+      {%- for pass in (1..2) -%}{%- if pass == 1 -%}{%- assign m_off = rot -%}{%- assign m_lim = 1000 -%}{%- else -%}{%- if rot == 0 -%}{%- break -%}{%- endif -%}{%- assign m_off = 0 -%}{%- assign m_lim = rot -%}{%- endif -%}
+      {%- for media in product.media offset: m_off limit: m_lim -%}
+        {%- if media.position < start_pos or media.position >= end_pos -%}{%- continue -%}{%- endif -%}
+        {%- assign shown = shown | plus: 1 -%}
+        {%- if shown == 1 -%}{%- assign first_media = true -%}{%- else -%}{%- assign first_media = false -%}{%- endif -%}
+        <li class="gallery__item{% if media.id == featured_id %} is-active{% endif %}" data-media-id="{{ media.id }}" data-media-type="{{ media.media_type }}">
+          {%- render 'product-media', media: media, index: shown, eager: first_media, sizes: sizes, zoom: s.zoom, loop: s.video_loop -%}
+        </li>
+      {%- endfor -%}{%- endfor -%}
+    </ul>
+
+    {%- if shown > 1 -%}
+      {%- if s.show_counter -%}
+        <span class="gallery__counter tabular" aria-hidden="true" data-gallery-counter data-template="{{ 'products.gallery.counter' | t: index: '__i__', count: shown | escape }}">{{ 'products.gallery.counter' | t: index: 1, count: shown }}</span>
+      {%- endif -%}
+      {%- if s.thumbnails != 'none' or s.gallery_layout == 'thumbnails' or s.gallery_layout == 'carousel' -%}
+        <ul class="gallery__thumbs" role="list" aria-label="{{ 'products.gallery.thumbnails' | t }}" data-gallery-thumbs>
+          {%- assign thumb_index = 0 -%}
+          {%- for pass in (1..2) -%}{%- if pass == 1 -%}{%- assign m_off = rot -%}{%- assign m_lim = 1000 -%}{%- else -%}{%- if rot == 0 -%}{%- break -%}{%- endif -%}{%- assign m_off = 0 -%}{%- assign m_lim = rot -%}{%- endif -%}
+      {%- for media in product.media offset: m_off limit: m_lim -%}
+            {%- if media.position < start_pos or media.position >= end_pos -%}{%- continue -%}{%- endif -%}
+            {%- assign thumb_index = thumb_index | plus: 1 -%}
+            <li>
+              <button type="button" class="gallery__thumb media" data-thumb-target="{{ media.id }}" aria-label="{{ 'products.gallery.open' | t: index: thumb_index }}" {% if media.id == featured_id %}aria-current="true"{% endif %}>
+                {{ media.preview_image | image_url: width: 160 | image_tag: widths: '80,160', sizes: '80px', alt: '', loading: 'lazy' }}
+                {%- if media.media_type == 'video' or media.media_type == 'external_video' -%}<span class="gallery__thumb-badge">{%- render 'icon', name: 'play', size: 14 -%}</span>{%- endif -%}
+              </button>
+            </li>
+          {%- endfor -%}{%- endfor -%}
+        </ul>
+      {%- endif -%}
+    {%- endif -%}
+
+    {%- if s.zoom == 'lightbox' or s.zoom == 'both' -%}
+      <link rel="stylesheet" href="{{ 'component-lightbox.css' | asset_url }}" media="print" onload="this.media='all'">
+      <dialog class="lightbox color-{{ settings.drawer_color_scheme }}" data-lightbox aria-label="{{ 'products.gallery.label' | t }}" data-light-dismiss>
+        <div class="lightbox__panel" data-dialog-body>
+          <button type="button" class="icon-button lightbox__close" data-close-dialog aria-label="{{ 'general.close' | t }}">{%- render 'icon', name: 'close' -%}</button>
+          <template data-deferred>
+            {%- comment -%} Large screens: thumbnails on the left. Phones: a 2 px line on the right edge and an "n / total" counter. {%- endcomment -%}
+            <div class="lightbox__layout" data-lightbox-layout>
+              <ul class="lightbox__thumbs" role="list">
+                {%- assign lb_index = 0 -%}
+                {%- for pass in (1..2) -%}{%- if pass == 1 -%}{%- assign m_off = rot -%}{%- assign m_lim = 1000 -%}{%- else -%}{%- if rot == 0 -%}{%- break -%}{%- endif -%}{%- assign m_off = 0 -%}{%- assign m_lim = rot -%}{%- endif -%}
+      {%- for media in product.media offset: m_off limit: m_lim -%}
+                  {%- if media.position < start_pos or media.position >= end_pos -%}{%- continue -%}{%- endif -%}
+                  {%- if media.media_type == 'image' -%}
+                    {%- assign lb_index = lb_index | plus: 1 -%}
+                    <li>
+                      <button type="button" class="lightbox__thumb media" data-lightbox-thumb="{{ media.id }}" aria-label="{{ 'products.gallery.open' | t: index: lb_index }}">
+                        {{ media | image_url: width: 200 | image_tag: widths: '100,200', sizes: '96px', alt: '', loading: 'lazy' }}
+                      </button>
+                    </li>
+                  {%- endif -%}
+                {%- endfor -%}{%- endfor -%}
+              </ul>
+              <ul class="lightbox__list" role="list" data-lightbox-list>
+                {%- for pass in (1..2) -%}{%- if pass == 1 -%}{%- assign m_off = rot -%}{%- assign m_lim = 1000 -%}{%- else -%}{%- if rot == 0 -%}{%- break -%}{%- endif -%}{%- assign m_off = 0 -%}{%- assign m_lim = rot -%}{%- endif -%}
+      {%- for media in product.media offset: m_off limit: m_lim -%}
+                  {%- if media.position < start_pos or media.position >= end_pos -%}{%- continue -%}{%- endif -%}
+                  {%- if media.media_type == 'image' -%}
+                    <li class="lightbox__item" data-lightbox-item="{{ media.id }}">
+                      {{ media | image_url: width: 2400 | image_tag: widths: '1200,1800,2400', sizes: '100vw', loading: 'lazy', class: 'lightbox__image', data-zoomable: '' }}
+                    </li>
+                  {%- endif -%}
+                {%- endfor -%}{%- endfor -%}
+              </ul>
+              <div class="lightbox__progress" aria-hidden="true"><span></span></div>
+              <span class="lightbox__counter tabular" aria-hidden="true" data-lightbox-counter></span>
+            </div>
+          </template>
+        </div>
+      </dialog>
+    {%- endif -%}
+  {%- endif -%}
+</product-gallery>

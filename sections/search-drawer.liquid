@@ -1,0 +1,86 @@
+{%- comment -%}
+  Search overlay. The form works without JavaScript (submits to the search page); search.js
+  adds predictive results (Shopify's predictive search API) and voice input.
+{%- endcomment -%}
+{%- liquid
+  assign fields = 'title,product_type,variants.title,vendor'
+  if settings.predictive_search_skus
+    assign fields = fields | append: ',variants.sku'
+  endif
+  if settings.predictive_search_tags
+    assign fields = fields | append: ',tag'
+  endif
+  capture prompts
+    echo '['
+    echo settings.search_placeholder_1 | json
+    if settings.search_placeholder_2 != blank
+      echo ','
+      echo settings.search_placeholder_2 | json
+    endif
+    if settings.search_placeholder_3 != blank
+      echo ','
+      echo settings.search_placeholder_3 | json
+    endif
+    echo ']'
+  endcapture
+-%}
+<dialog id="SearchDrawer" class="drawer drawer--top color-{{ settings.drawer_color_scheme }}" aria-label="{{ 'header.search' | t }}" data-light-dismiss data-animate>
+  <div class="drawer__panel search-drawer" data-dialog-body>
+    <form action="{{ routes.search_url }}" method="get" role="search" class="search-drawer__form page-width" data-module="{{ 'search.js' | asset_url }}" data-load="interaction" data-predictive-limit="{{ settings.predictive_search_limit }}" data-predictive-fields="{{ fields }}" data-prompts="{{ prompts | strip | escape }}" data-prompts-mobile="{{ settings.search_placeholders_mobile }}">
+      <div class="search-drawer__field">
+        {%- render 'icon', name: 'search', size: 20 -%}
+        <label class="visually-hidden" for="SearchDrawerInput">{{ 'header.search' | t }}</label>
+        <input
+          id="SearchDrawerInput"
+          class="search-drawer__input"
+          type="search"
+          name="q"
+          value="{{ search.terms | escape }}"
+          placeholder="{% if settings.search_placeholder_1 != blank %}{{ settings.search_placeholder_1 | escape }}{% else %}{{ 'header.search_placeholder' | t }}{% endif %}"
+          autocomplete="off"
+          autocorrect="off"
+          spellcheck="false"
+          autofocus
+          {% if settings.predictive_search_enable %}role="combobox" aria-expanded="false" aria-controls="PredictiveResults" aria-autocomplete="list"{% endif %}
+        >
+        <input type="hidden" name="options[prefix]" value="last">
+        {%- if settings.search_type_filter and shop.types.size > 0 -%}
+          <label class="visually-hidden" for="SearchDrawerType">{{ 'search.product_type' | t }}</label>
+          <select class="select search-drawer__type" id="SearchDrawerType" data-type-filter>
+            <option value="">{{ 'search.all_types' | t }}</option>
+            {%- for type in shop.types -%}
+              {%- if type != blank -%}<option value="{{ type | escape }}">{{ type | escape }}</option>{%- endif -%}
+            {%- endfor -%}
+          </select>
+        {%- endif -%}
+        {%- if settings.voice_search_enable -%}
+          <button type="button" class="icon-button search-drawer__voice" data-voice hidden aria-label="{{ 'header.voice_search' | t }}" style="--voice-color: {{ settings.voice_search_color }}">
+            {%- render 'icon', name: 'mic', size: 20 -%}
+          </button>
+        {%- endif -%}
+        <button type="button" class="icon-button" data-close-dialog aria-label="{{ 'general.close' | t }}">{%- render 'icon', name: 'close' -%}</button>
+      </div>
+      {%- if settings.predictive_search_enable -%}
+        <div id="PredictiveResults" class="search-drawer__results" data-predictive-results aria-live="polite"></div>
+      {%- endif -%}
+    </form>
+  </div>
+</dialog>
+
+{% schema %}
+{
+  "name": "t:labels.search",
+  "class": "section-search-drawer",
+  "enabled_on": {
+    "groups": [
+      "aside"
+    ]
+  },
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "t:labels.search_settings_are_in_theme_settings_search"
+    }
+  ]
+}
+{% endschema %}
