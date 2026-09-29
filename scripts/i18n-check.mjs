@@ -81,7 +81,8 @@ const AMERICAN = /\b(colours?|coloured|centred?|centres|greys?|catalogues?|custo
   }
   for (const file of jsonFiles) {
     const data = JSON.parse(readFileSync(file, 'utf8').replace(/^\s*\/\*[\s\S]*?\*\//, ''));
-    for (const [key, value] of flatten(data)) check(`${relative(ROOT, file)}: "${key}"`, value);
+    // Merchant code (Custom Liquid / HTML settings saved in the theme editor) is the store's own text.
+    for (const [key, value] of flatten(data)) if (!/\.(custom_liquid|liquid|html)$/.test(key)) check(`${relative(ROOT, file)}: "${key}"`, value);
   }
   const defaults = (node, where) => {
     if (Array.isArray(node)) node.forEach((n) => defaults(n, where));

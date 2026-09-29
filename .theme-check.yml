@@ -15,3 +15,11 @@ RemoteAsset:
   ignore:
     - sections/integration-*.liquid
     - snippets/integration-*.liquid
+
+# App blocks (shopify://apps/...) that merchants add in the theme editor are committed back into
+# templates and section groups; Theme Check can't see app blocks, so it would flag them as missing.
+# scripts/theme-lint.mjs still checks every theme block type in these files.
+JSONMissingBlock:
+  ignore:
+    - templates/**
+    - sections/*.json

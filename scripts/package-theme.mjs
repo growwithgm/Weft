@@ -15,8 +15,8 @@
 // Both builds are linted with scripts/theme-lint.mjs --root <build>; the Theme Store build also
 // goes through `shopify theme package` when Shopify CLI is installed. Nothing is uploaded.
 import { readFileSync, writeFileSync, readdirSync, existsSync, statSync, rmSync, mkdirSync, cpSync, renameSync } from 'node:fs';
-import { join, dirname, relative, basename, extname } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { join, dirname, relative, basename, extname, sep } from 'node:path';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 import { execFileSync } from 'node:child_process';
 import { stripRegions } from './src/integrations.mjs';
 
@@ -134,6 +134,19 @@ if (themestore) {
   fresh(out);
   copyTheme(out, ['listings']);
   rmSync(join(out, 'config/markets.json'), { force: true });
+  // `current` holds the connected store's editor values; the package ships the default preset instead.
+  {
+    const file = join(out, 'config/settings_data.json');
+    const data = readJSON(file);
+    const first = Object.keys(data.presets || {})[0];
+    if (first) writeFileSync(file, JSON.stringify({ current: data.presets[first], presets: data.presets }, null, 2) + '\n');
+  }
+  // Store templates committed back from a theme editor stay out of the Theme Store package.
+  const ownTemplates = new Set((await import(pathToFileURL(join(ROOT, 'scripts/src/theme-templates.mjs')).href)).default);
+  for (const file of walk(join(out, 'templates'))) {
+    const rel = relative(out, file).split(sep).join('/');
+    if (!ownTemplates.has(rel)) rmSync(file);
+  }
   // The default preset's listing mirrors the base templates.
   const presets = Object.keys(readJSON(join(out, 'config/settings_data.json')).presets || {});
   const handle = (presets[0] || '').toLowerCase().replace(/ /g, '-');
