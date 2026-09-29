@@ -25,5 +25,7 @@ if (process.argv.includes('--check')) {
   }
   process.exit(0);
 }
-if (out !== prev) writeFileSync(file, out);
+// Shopify's GitHub sync keeps an "auto-generated" comment on top of the file; keep it too.
+const header = prev ? (prev.match(/^\s*\/\*[\s\S]*?\*\/\s*\n/) || [''])[0] : '';
+if (header + out !== prev) writeFileSync(file, header + out);
 console.log('build-presets: settings_data.json up to date');

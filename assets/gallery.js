@@ -17,9 +17,14 @@ class ProductGallery extends HTMLElement {
     this.list.addEventListener('scroll', () => this.onScroll(), { passive: true });
     this.addEventListener('click', (e) => this.onClick(e));
     if (this.dataset.zoom === 'hover' || this.dataset.zoom === 'both') this.initHoverZoom();
-    this.unsubscribe = bus.on('variant:change', ({ section, featuredMediaId }) => {
-      if (section && section.contains(this) && featuredMediaId) this.show(String(featuredMediaId));
+    this.unsubscribe = bus.on('variant:change', ({ section, featuredMediaId, variantId }) => {
+      if (!section || !section.contains(this) || !featuredMediaId) return;
+      const id = String(featuredMediaId);
+      // The page only scrolls when a picked variant brings a different image (not a size change, not the matrix).
+      this.show(id, { scroll: !!variantId && id !== this.lastVariantMedia });
+      this.lastVariantMedia = id;
     });
+    this.lastVariantMedia = this.list.querySelector('.is-active')?.dataset.mediaId;
   }
 
   disconnectedCallback() {
@@ -52,7 +57,7 @@ class ProductGallery extends HTMLElement {
     });
   }
 
-  show(mediaId) {
+  show(mediaId, { scroll = false } = {}) {
     const index = this.items.findIndex((i) => i.dataset.mediaId === mediaId);
     if (index < 0) return;
     const item = this.items[index];
@@ -62,8 +67,18 @@ class ProductGallery extends HTMLElement {
       this.targetTimer = setTimeout(() => (this.target = null), 1000);
       this.list.scrollTo({ left: item.offsetLeft - this.list.offsetLeft, behavior: reduced() ? 'auto' : 'smooth' });
     }
-    else if (this.dataset.layoutScroll !== 'none' && !this.matches('.gallery--stacked, .gallery--grid, .gallery--grid_even')) item.scrollIntoView({ block: 'nearest' });
+    else if (this.matches('.gallery--stacked, .gallery--grid, .gallery--grid_even')) { if (scroll) this.bringIntoView(item); }
+    else if (this.dataset.layoutScroll !== 'none') item.scrollIntoView({ block: 'nearest' });
     this.setActive(index);
+  }
+
+  // Stacked and grid galleries: scroll the page (up or down) to the variant's image unless it is
+  // already in view below the sticky header.
+  bringIntoView(item) {
+    const header = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-height')) || 0;
+    const r = item.getBoundingClientRect();
+    if (r.top >= header && r.top < innerHeight * 0.5) return;
+    scrollTo({ top: scrollY + r.top - header - 16, behavior: reduced() ? 'auto' : 'smooth' });
   }
 
   onClick(e) {

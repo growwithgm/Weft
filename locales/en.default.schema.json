@@ -836,6 +836,7 @@
     "show_as_accordion": "Show as accordion",
     "show_attention_messages": "Show attention messages",
     "show_author": "Show author",
+    "show_available_swatches_first": "Show available swatches first",
     "show_back_to_top_link": "Show back to top link",
     "show_backorder_note": "Show backorder note",
     "show_backorder_note_on_lines": "Show backorder note on lines",
@@ -969,6 +970,7 @@
     "social_media": "Social media",
     "sold_out": "Sold out",
     "sold_out_and_errors": "Sold out and errors",
+    "sold_out_colors_move_to_the_end_of_the_row": "Sold-out colors move to the end of the row.",
     "solid": "Solid",
     "sorting": "Sorting",
     "space_between_items": "Space between items",
@@ -1735,6 +1737,9 @@
           },
           "swatch_option_names": {
             "info": "Separate names with commas. Options with these names show swatches."
+          },
+          "swatch_product_size": {
+            "info": "From 56 px, sold-out swatches show a \"Sold out\" band; smaller ones show a diagonal line."
           }
         }
       },

@@ -836,6 +836,7 @@
     "show_as_accordion": "アコーディオンとして表示する",
     "show_attention_messages": "注意メッセージを表示する",
     "show_author": "投稿者を表示する",
+    "show_available_swatches_first": "在庫のあるスウォッチを先に表示",
     "show_back_to_top_link": "「トップに戻る」リンクを表示する",
     "show_backorder_note": "取り寄せ注文のメモを表示する",
     "show_backorder_note_on_lines": "カート行に取り寄せ注文のメモを表示する",
@@ -969,6 +970,7 @@
     "social_media": "ソーシャルメディア",
     "sold_out": "売り切れ",
     "sold_out_and_errors": "売り切れとエラー",
+    "sold_out_colors_move_to_the_end_of_the_row": "売り切れの色は列の最後に移動します。",
     "solid": "ソリッド",
     "sorting": "並べ替え",
     "space_between_items": "アイテム間の余白",
@@ -1735,6 +1737,9 @@
           },
           "swatch_option_names": {
             "info": "名前はカンマで区切ります。これらの名前のオプションにはスウォッチが表示されます。"
+          },
+          "swatch_product_size": {
+            "info": "56px以上では、売り切れのスウォッチに「売り切れ」の帯が表示されます。それより小さい場合は斜線になります。"
           }
         }
       },

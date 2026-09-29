@@ -33,6 +33,7 @@
 -%}
 {%- comment -%} On matrix products the grid replaces the picker for wholesale buyers (brief §4.10, gap 13). {%- endcomment -%}
 {%- if p and p.has_only_default_variant == false and hide_for_matrix == false -%}
+  {{ 'component-swatch.css' | asset_url | stylesheet_tag }}
   <div
     class="variant-picker js-only"
     data-variant-picker
@@ -86,6 +87,7 @@
             {%- if show_guide -%}{%- render 'product-guide-link', section: section -%}{%- endif -%}
           </div>
           <div class="variant-picker__values{% if is_swatch %} variant-picker__values--swatches swatch-shape--{{ settings.swatch_product_shape }}{% else %} variant-picker__values--buttons{% endif %}">
+            {%- assign sold_out_values = '' -%}
             {%- for value in option.values -%}
               {%- liquid
                 assign input_id = base_id | append: '-' | append: forloop.index0
@@ -98,6 +100,7 @@
                   assign missing = true
                 endif
               -%}
+              {%- capture value_html -%}
               <input
                 type="radio"
                 class="variant-picker__input visually-hidden"
@@ -140,6 +143,8 @@
                     {%- if swatch_image -%}{{ swatch_image | image_url: width: 120 | image_tag: widths: '60,120', sizes: 'var(--swatch-size)', alt: '', loading: 'lazy' }}{%- endif -%}
                   </span>
                   <span class="visually-hidden">{{ value }}</span>
+                  <span class="swatch__check" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
+                  {%- if available == false and missing == false -%}<span class="swatch__band" aria-hidden="true">{{ 'products.sold_out' | t }}</span>{%- endif -%}
                 {%- else -%}
                   <span>{{ value }}</span>
                 {%- endif -%}
@@ -149,7 +154,15 @@
                   <span class="visually-hidden">, {{ 'products.sold_out' | t }}</span>
                 {%- endif -%}
               </label>
+              {%- endcapture -%}
+              {%- comment -%} Available colors first, sold-out ones after them (block setting). {%- endcomment -%}
+              {%- if is_swatch and block.settings.available_first and available == false -%}
+                {%- assign sold_out_values = sold_out_values | append: value_html -%}
+              {%- else -%}
+                {{- value_html -}}
+              {%- endif -%}
             {%- endfor -%}
+            {{- sold_out_values -}}
           </div>
         </fieldset>
       {%- endif -%}
@@ -193,6 +206,13 @@
         }
       ],
       "default": "top_down"
+    },
+    {
+      "type": "checkbox",
+      "id": "available_first",
+      "label": "t:labels.show_available_swatches_first",
+      "info": "t:labels.sold_out_colors_move_to_the_end_of_the_row",
+      "default": true
     },
     {
       "type": "text",

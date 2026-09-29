@@ -836,6 +836,7 @@
     "show_as_accordion": "Als Akkordeon anzeigen",
     "show_attention_messages": "Hinweismeldungen anzeigen",
     "show_author": "Autor anzeigen",
+    "show_available_swatches_first": "Verfügbare Muster zuerst anzeigen",
     "show_back_to_top_link": "Link „Nach oben“ anzeigen",
     "show_backorder_note": "Hinweis zur Nachlieferung anzeigen",
     "show_backorder_note_on_lines": "Hinweis zur Nachlieferung in den Positionen anzeigen",
@@ -969,6 +970,7 @@
     "social_media": "Social Media",
     "sold_out": "Ausverkauft",
     "sold_out_and_errors": "Ausverkauft und Fehler",
+    "sold_out_colors_move_to_the_end_of_the_row": "Ausverkaufte Farben rücken ans Ende der Reihe.",
     "solid": "Durchgehend",
     "sorting": "Sortierung",
     "space_between_items": "Abstand zwischen Elementen",
@@ -1735,6 +1737,9 @@
           },
           "swatch_option_names": {
             "info": "Trenne die Namen durch Kommas. Optionen mit diesen Namen zeigen Farbfelder."
+          },
+          "swatch_product_size": {
+            "info": "Ab 56 px zeigen ausverkaufte Muster ein Band „Ausverkauft“, kleinere eine diagonale Linie."
           }
         }
       },

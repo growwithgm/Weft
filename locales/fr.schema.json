@@ -836,6 +836,7 @@
     "show_as_accordion": "Afficher en accordéon",
     "show_attention_messages": "Afficher les messages d'attention",
     "show_author": "Afficher l'auteur",
+    "show_available_swatches_first": "Afficher d’abord les pastilles disponibles",
     "show_back_to_top_link": "Afficher le lien de retour en haut",
     "show_backorder_note": "Afficher la note de réapprovisionnement",
     "show_backorder_note_on_lines": "Afficher la note de réapprovisionnement sur les lignes",
@@ -969,6 +970,7 @@
     "social_media": "Réseaux sociaux",
     "sold_out": "Épuisé",
     "sold_out_and_errors": "Épuisé et erreurs",
+    "sold_out_colors_move_to_the_end_of_the_row": "Les couleurs épuisées passent en fin de rangée.",
     "solid": "Uni",
     "sorting": "Tri",
     "space_between_items": "Espace entre les éléments",
@@ -1735,6 +1737,9 @@
           },
           "swatch_option_names": {
             "info": "Séparez les noms par des virgules. Les options portant ces noms affichent des échantillons."
+          },
+          "swatch_product_size": {
+            "info": "À partir de 56 px, les pastilles épuisées affichent un bandeau « Épuisé » ; les plus petites, une ligne diagonale."
           }
         }
       },

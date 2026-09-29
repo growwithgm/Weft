@@ -54,6 +54,13 @@
 
   assign featured_id = variant.featured_media.id | default: product.featured_media.id
   assign shown = 0
+
+  # With every image shown, the gallery starts at the selected variant's image and wraps around,
+  # so the selected color is what the buyer sees first.
+  assign rot = 0
+  if start_pos == 0 and variant.featured_media and variant.featured_media.position > 1
+    assign rot = variant.featured_media.position | minus: 1
+  endif
 -%}
 <product-gallery
   class="gallery gallery--{{ s.gallery_layout }} gallery--ratio-{{ s.media_ratio }} gallery--fit-{{ s.media_fit }} gallery--thumbs-{{ s.thumbnails }}"
@@ -70,13 +77,15 @@
     <div class="gallery__placeholder media">{{ 'product-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}</div>
   {%- else -%}
     <ul class="gallery__list" role="list" data-gallery-list>
-      {%- for media in product.media -%}
+      {%- for pass in (1..2) -%}{%- if pass == 1 -%}{%- assign m_off = rot -%}{%- assign m_lim = 1000 -%}{%- else -%}{%- if rot == 0 -%}{%- break -%}{%- endif -%}{%- assign m_off = 0 -%}{%- assign m_lim = rot -%}{%- endif -%}
+      {%- for media in product.media offset: m_off limit: m_lim -%}
         {%- if media.position < start_pos or media.position >= end_pos -%}{%- continue -%}{%- endif -%}
         {%- assign shown = shown | plus: 1 -%}
+        {%- if shown == 1 -%}{%- assign first_media = true -%}{%- else -%}{%- assign first_media = false -%}{%- endif -%}
         <li class="gallery__item{% if media.id == featured_id %} is-active{% endif %}" data-media-id="{{ media.id }}" data-media-type="{{ media.media_type }}">
-          {%- render 'product-media', media: media, index: shown, eager: forloop.first, sizes: sizes, zoom: s.zoom, loop: s.video_loop -%}
+          {%- render 'product-media', media: media, index: shown, eager: first_media, sizes: sizes, zoom: s.zoom, loop: s.video_loop -%}
         </li>
-      {%- endfor -%}
+      {%- endfor -%}{%- endfor -%}
     </ul>
 
     {%- if shown > 1 -%}
@@ -86,7 +95,8 @@
       {%- if s.thumbnails != 'none' or s.gallery_layout == 'thumbnails' or s.gallery_layout == 'carousel' -%}
         <ul class="gallery__thumbs" role="list" aria-label="{{ 'products.gallery.thumbnails' | t }}" data-gallery-thumbs>
           {%- assign thumb_index = 0 -%}
-          {%- for media in product.media -%}
+          {%- for pass in (1..2) -%}{%- if pass == 1 -%}{%- assign m_off = rot -%}{%- assign m_lim = 1000 -%}{%- else -%}{%- if rot == 0 -%}{%- break -%}{%- endif -%}{%- assign m_off = 0 -%}{%- assign m_lim = rot -%}{%- endif -%}
+      {%- for media in product.media offset: m_off limit: m_lim -%}
             {%- if media.position < start_pos or media.position >= end_pos -%}{%- continue -%}{%- endif -%}
             {%- assign thumb_index = thumb_index | plus: 1 -%}
             <li>
@@ -95,7 +105,7 @@
                 {%- if media.media_type == 'video' or media.media_type == 'external_video' -%}<span class="gallery__thumb-badge">{%- render 'icon', name: 'play', size: 14 -%}</span>{%- endif -%}
               </button>
             </li>
-          {%- endfor -%}
+          {%- endfor -%}{%- endfor -%}
         </ul>
       {%- endif -%}
     {%- endif -%}
@@ -110,7 +120,8 @@
             <div class="lightbox__layout" data-lightbox-layout>
               <ul class="lightbox__thumbs" role="list">
                 {%- assign lb_index = 0 -%}
-                {%- for media in product.media -%}
+                {%- for pass in (1..2) -%}{%- if pass == 1 -%}{%- assign m_off = rot -%}{%- assign m_lim = 1000 -%}{%- else -%}{%- if rot == 0 -%}{%- break -%}{%- endif -%}{%- assign m_off = 0 -%}{%- assign m_lim = rot -%}{%- endif -%}
+      {%- for media in product.media offset: m_off limit: m_lim -%}
                   {%- if media.position < start_pos or media.position >= end_pos -%}{%- continue -%}{%- endif -%}
                   {%- if media.media_type == 'image' -%}
                     {%- assign lb_index = lb_index | plus: 1 -%}
@@ -120,17 +131,18 @@
                       </button>
                     </li>
                   {%- endif -%}
-                {%- endfor -%}
+                {%- endfor -%}{%- endfor -%}
               </ul>
               <ul class="lightbox__list" role="list" data-lightbox-list>
-                {%- for media in product.media -%}
+                {%- for pass in (1..2) -%}{%- if pass == 1 -%}{%- assign m_off = rot -%}{%- assign m_lim = 1000 -%}{%- else -%}{%- if rot == 0 -%}{%- break -%}{%- endif -%}{%- assign m_off = 0 -%}{%- assign m_lim = rot -%}{%- endif -%}
+      {%- for media in product.media offset: m_off limit: m_lim -%}
                   {%- if media.position < start_pos or media.position >= end_pos -%}{%- continue -%}{%- endif -%}
                   {%- if media.media_type == 'image' -%}
                     <li class="lightbox__item" data-lightbox-item="{{ media.id }}">
                       {{ media | image_url: width: 2400 | image_tag: widths: '1200,1800,2400', sizes: '100vw', loading: 'lazy', class: 'lightbox__image', data-zoomable: '' }}
                     </li>
                   {%- endif -%}
-                {%- endfor -%}
+                {%- endfor -%}{%- endfor -%}
               </ul>
               <div class="lightbox__progress" aria-hidden="true"><span></span></div>
               <span class="lightbox__counter tabular" aria-hidden="true" data-lightbox-counter></span>

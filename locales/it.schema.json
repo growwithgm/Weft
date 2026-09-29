@@ -836,6 +836,7 @@
     "show_as_accordion": "Mostra come accordion",
     "show_attention_messages": "Mostra i messaggi di attenzione",
     "show_author": "Mostra l'autore",
+    "show_available_swatches_first": "Mostra prima i campioni disponibili",
     "show_back_to_top_link": "Mostra il link per tornare all'inizio",
     "show_backorder_note": "Mostra la nota sull'ordine arretrato",
     "show_backorder_note_on_lines": "Mostra la nota sull'ordine arretrato nelle righe",
@@ -969,6 +970,7 @@
     "social_media": "Social media",
     "sold_out": "Esaurito",
     "sold_out_and_errors": "Esaurito ed errori",
+    "sold_out_colors_move_to_the_end_of_the_row": "I colori esauriti vanno in fondo alla riga.",
     "solid": "Tinta unita",
     "sorting": "Ordinamento",
     "space_between_items": "Spazio tra gli elementi",
@@ -1735,6 +1737,9 @@
           },
           "swatch_option_names": {
             "info": "Separa i nomi con virgole. Le opzioni con questi nomi mostrano i campioni."
+          },
+          "swatch_product_size": {
+            "info": "Da 56 px, i campioni esauriti mostrano una fascia \"Esaurito\"; quelli più piccoli una linea diagonale."
           }
         }
       },

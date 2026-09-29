@@ -836,6 +836,7 @@
     "show_as_accordion": "Als accordeon weergeven",
     "show_attention_messages": "Aandachtsberichten weergeven",
     "show_author": "Auteur weergeven",
+    "show_available_swatches_first": "Beschikbare stalen eerst tonen",
     "show_back_to_top_link": "Link terug naar boven weergeven",
     "show_backorder_note": "Opmerking over nabestelling weergeven",
     "show_backorder_note_on_lines": "Opmerking over nabestelling op regels weergeven",
@@ -969,6 +970,7 @@
     "social_media": "Social media",
     "sold_out": "Uitverkocht",
     "sold_out_and_errors": "Uitverkocht en fouten",
+    "sold_out_colors_move_to_the_end_of_the_row": "Uitverkochte kleuren schuiven naar het einde van de rij.",
     "solid": "Effen",
     "sorting": "Sorteren",
     "space_between_items": "Ruimte tussen items",
@@ -1735,6 +1737,9 @@
           },
           "swatch_option_names": {
             "info": "Scheid namen met komma's. Opties met deze namen tonen stalen."
+          },
+          "swatch_product_size": {
+            "info": "Vanaf 56 px tonen uitverkochte stalen een band 'Uitverkocht'; kleinere een diagonale lijn."
           }
         }
       },

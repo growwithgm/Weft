@@ -836,6 +836,7 @@
     "show_as_accordion": "Mostrar como acordeão",
     "show_attention_messages": "Mostrar mensagens de atenção",
     "show_author": "Mostrar autor",
+    "show_available_swatches_first": "Mostrar primeiro as amostras disponíveis",
     "show_back_to_top_link": "Mostrar ligação para voltar ao topo",
     "show_backorder_note": "Mostrar nota de encomenda pendente",
     "show_backorder_note_on_lines": "Mostrar nota de encomenda pendente nas linhas",
@@ -969,6 +970,7 @@
     "social_media": "Redes sociais",
     "sold_out": "Esgotado",
     "sold_out_and_errors": "Esgotado e erros",
+    "sold_out_colors_move_to_the_end_of_the_row": "As cores esgotadas passam para o fim da fila.",
     "solid": "Sólido",
     "sorting": "Ordenação",
     "space_between_items": "Espaço entre itens",
@@ -1735,6 +1737,9 @@
           },
           "swatch_option_names": {
             "info": "Separe os nomes com vírgulas. As opções com estes nomes mostram amostras."
+          },
+          "swatch_product_size": {
+            "info": "A partir de 56 px, as amostras esgotadas mostram uma faixa \"Esgotado\"; as mais pequenas, uma linha diagonal."
           }
         }
       },

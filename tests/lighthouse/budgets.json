@@ -16,7 +16,7 @@
     "announcement.js": 1024,
     "footer.js": 512,
     "localization.js": 512,
-    "custom-code.js": 1536,
+    "custom-code.js": 1024,
     "carousel.js": 3072,
     "video.js": 2048,
     "compare.js": 3072,
@@ -34,9 +34,9 @@
     "compare-slider.js": 1024,
     "section-vertical.css": 3072,
     "back-in-stock.js": 2048,
-    "custom-code.js": 1024,
     "integration-reviews.css": 1536,
-    "integration-reviews.js": 1024
+    "integration-reviews.js": 1024,
+    "component-swatch.css": 1536
   },
   "pages": {
     "renderBlockingCss": 14336,

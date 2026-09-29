@@ -1595,10 +1595,11 @@
         "id": "swatch_product_size",
         "label": "t:labels.size",
         "min": 32,
-        "max": 72,
+        "max": 96,
         "step": 4,
         "default": 48,
-        "unit": "px"
+        "unit": "px",
+        "info": "t:text.settings_schema.swatches.settings.swatch_product_size.info"
       },
       {
         "type": "header",

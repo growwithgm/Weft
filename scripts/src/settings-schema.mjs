@@ -249,7 +249,7 @@ export default [
       header('Product page'),
       select('swatch_product_style', 'Swatch content', [['variant_image', 'Variant image'], ['color', 'Color'], ['button', 'Text button']], 'variant_image'),
       select('swatch_product_shape', 'Shape', [['square', 'Square'], ['circle', 'Circle'], ['portrait', 'Portrait']], 'square'),
-      range('swatch_product_size', 'Size', 32, 72, 4, 48, 'px'),
+      range('swatch_product_size', 'Size', 32, 96, 4, 48, 'px', 'From 56 px, sold-out swatches show a "Sold out" band; smaller ones show a diagonal line.'),
       header('Product cards'),
       select('swatch_card_style', 'Swatch content', [['variant_image', 'Variant image'], ['color', 'Color'], ['none', 'None']], 'color'),
       select('swatch_card_shape', 'Shape', [['circle', 'Circle'], ['square', 'Square']], 'circle'),

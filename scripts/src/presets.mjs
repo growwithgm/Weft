@@ -54,7 +54,7 @@ export const weft = {
   card_fit: 'cover',
   swatch_product_style: 'variant_image',
   swatch_product_shape: 'square',
-  swatch_product_size: 48,
+  swatch_product_size: 64,
   stock_low_threshold: 8,
   cart_icon: 'bag'
 };
