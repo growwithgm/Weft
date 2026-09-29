@@ -9,19 +9,15 @@
  */
 {
   "context": {
-    "market": "b2b-wholesale"
+    "market": "rest-of-world"
   },
-  "parent": "product.json",
+  "parent": "header-group.json",
   "sections": {
-    "main": {
-      "blocks": {
-        "collapsible_content_j98RbT": {
-          "disabled": true
-        },
-        "custom_liquid_wbis": {
-          "disabled": true
-        }
-      }
+    "header": {
+      "settings": {
+        "menu": "main-menu"
+      },
+      "blocks": {}
     }
   }
 }
