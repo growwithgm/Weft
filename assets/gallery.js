@@ -136,6 +136,7 @@ class ProductGallery extends HTMLElement {
     if (!dialog.dataset.zoomBound) {
       dialog.dataset.zoomBound = '1';
       list.addEventListener('scroll', () => requestAnimationFrame(sync), { passive: true });
+      dialog.addEventListener('close', () => dialog.querySelectorAll('.is-zoomed').forEach((n) => n.classList.remove('is-zoomed')));
       dialog.addEventListener('click', (e) => {
         const thumb = e.target.closest('[data-lightbox-thumb]');
         if (thumb) {
@@ -145,8 +146,15 @@ class ProductGallery extends HTMLElement {
         }
         const img = e.target.closest('[data-zoomable]');
         if (!img) return;
-        img.classList.toggle('is-zoomed');
-        img.closest('.lightbox__item')?.classList.toggle('is-zoomed', img.classList.contains('is-zoomed'));
+        const box = img.closest('.lightbox__item');
+        const r = img.getBoundingClientRect();
+        const fx = (e.clientX - r.left) / (r.width || 1);
+        const fy = (e.clientY - r.top) / (r.height || 1);
+        const zoomed = img.classList.toggle('is-zoomed');
+        if (!box) return;
+        box.classList.toggle('is-zoomed', zoomed);
+        // Keep the clicked spot under the pointer: scroll the zoomed photo to it.
+        if (zoomed) box.scrollTo({ left: fx * img.offsetWidth - box.clientWidth / 2, top: fy * img.offsetHeight - box.clientHeight / 2 });
       });
       dialog.addEventListener('keydown', (e) => {
         if (e.key !== 'ArrowDown' && e.key !== 'ArrowUp' && e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
