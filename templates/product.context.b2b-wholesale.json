@@ -14,12 +14,17 @@
   "parent": "product.json",
   "sections": {
     "main": {
+      "settings": {
+        "media_ratio": "natural"
+      },
       "blocks": {
-        "collapsible_content_j98RbT": {
-          "disabled": true
-        },
         "custom_liquid_wbis": {
-          "disabled": true
+          "disabled": true,
+          "settings": {}
+        },
+        "collapsible_content_j98RbT": {
+          "disabled": true,
+          "settings": {}
         }
       }
     }
