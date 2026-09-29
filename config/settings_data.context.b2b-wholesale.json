@@ -11,21 +11,29 @@
   "context": {
     "market": "b2b-wholesale"
   },
-  "parent": "product.json",
-  "sections": {
-    "main": {
-      "settings": {
-        "media_ratio": "natural"
+  "current": {
+    "label_sale_show": true,
+    "color_schemes": {
+      "scheme-1": {
+        "settings": {}
       },
-      "blocks": {
-        "custom_liquid_wbis": {
-          "disabled": true,
-          "settings": {}
-        },
-        "collapsible_content_j98RbT": {
-          "disabled": true,
-          "settings": {}
-        }
+      "scheme-2": {
+        "settings": {}
+      },
+      "scheme-3": {
+        "settings": {}
+      },
+      "scheme-4": {
+        "settings": {}
+      },
+      "scheme-5": {
+        "settings": {}
+      },
+      "scheme-6": {
+        "settings": {}
+      },
+      "scheme-7": {
+        "settings": {}
       }
     }
   }
