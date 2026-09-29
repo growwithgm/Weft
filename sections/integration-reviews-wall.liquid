@@ -3,6 +3,9 @@
   photos first. Every product review names its product. Needs Theme settings > Integrations >
   "Show reviews from Judge.me data".
 {%- endcomment -%}
+{%- comment -%} Hidden from wholesale buyers when "Hide for wholesale buyers" is on. {%- endcomment -%}
+{%- capture retail_view -%}{% render 'audience-check', audience: 'retail' %}{%- endcapture -%}
+{%- if section.settings.hide_for_wholesale == false or retail_view == '1' -%}
 {%- liquid
   assign s = section.settings
   assign data = shop.metafields.judgeme.reviews_grid.value
@@ -25,6 +28,7 @@
 {%- elsif request.design_mode -%}
   <div class="section page-width"><p class="muted">{{ 'integrations.reviews.editor_note' | t }}</p></div>
 {%- endif -%}
+{%- endif -%}
 
 {% schema %}
 {
@@ -38,6 +42,12 @@
     ]
   },
   "settings": [
+    {
+      "type": "checkbox",
+      "id": "hide_for_wholesale",
+      "label": "t:labels.hide_for_wholesale_buyers",
+      "default": true
+    },
     {
       "type": "paragraph",
       "content": "t:text.sections.integration_reviews_grid.settings.store_integration_shows_reviews_from_judge_me_s_.content"

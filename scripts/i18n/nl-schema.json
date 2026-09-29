@@ -1226,5 +1226,6 @@
   "Show minimum order and pack size bar": "Balk met minimale bestelling en pakgrootte tonen",
   "The theme editor shows the page a B2B customer sees: wholesale blocks with sample data, retail-only blocks hidden. On the storefront wholesale blocks only show to signed-in B2B customers.": "De thema-editor toont de pagina die een B2B-klant ziet: groothandelsblokken met voorbeeldgegevens, alleen-retailblokken verborgen. In de winkel zien alleen ingelogde B2B-klanten groothandelsblokken.",
   "Full width uses almost the whole screen from 990 px wide.": "Volledige breedte gebruikt vanaf 990 px breed bijna het hele scherm.",
-  "Line between media and information": "Lijn tussen media en informatie"
+  "Line between media and information": "Lijn tussen media en informatie",
+  "Hide for wholesale buyers": "Verbergen voor groothandelsklanten"
 }

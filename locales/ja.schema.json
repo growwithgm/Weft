@@ -360,6 +360,7 @@
     "height_on_mobile": "モバイルでの高さ",
     "hidden": "非表示",
     "hide_after_a_delay": "一定時間後に非表示にする",
+    "hide_for_wholesale_buyers": "卸売バイヤーには非表示",
     "hide_on_pages": "非表示にするページ",
     "hide_the_backorder_notice": "取り寄せ注文のお知らせを非表示にする",
     "hide_when_the_countdown_ends": "カウントダウン終了時に非表示にする",

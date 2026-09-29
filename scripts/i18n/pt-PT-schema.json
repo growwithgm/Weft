@@ -1226,5 +1226,6 @@
   "Show minimum order and pack size bar": "Mostrar barra de encomenda mínima e tamanho do pack",
   "The theme editor shows the page a B2B customer sees: wholesale blocks with sample data, retail-only blocks hidden. On the storefront wholesale blocks only show to signed-in B2B customers.": "O editor de temas mostra a página que um cliente B2B vê: blocos grossistas com dados de exemplo e blocos só de retalho ocultos. Na loja, os blocos grossistas só aparecem a clientes B2B com sessão iniciada.",
   "Full width uses almost the whole screen from 990 px wide.": "Largura total usa quase todo o ecrã a partir de 990 px de largura.",
-  "Line between media and information": "Linha entre os conteúdos multimédia e a informação"
+  "Line between media and information": "Linha entre os conteúdos multimédia e a informação",
+  "Hide for wholesale buyers": "Ocultar a compradores grossistas"
 }

@@ -2,6 +2,9 @@
   Reviews section (core). Shows the product's standard rating (reviews.rating metafield) and
   hosts review app blocks. Store builds can use the integration reviews grid instead.
 {%- endcomment -%}
+{%- comment -%} Hidden from wholesale buyers when "Hide for wholesale buyers" is on. {%- endcomment -%}
+{%- capture retail_view -%}{% render 'audience-check', audience: 'retail' %}{%- endcapture -%}
+{%- if section.settings.hide_for_wholesale == false or retail_view == '1' -%}
 {{ 'component-card.css' | asset_url | stylesheet_tag }}
 {%- liquid
   assign s = section.settings
@@ -44,6 +47,7 @@
   </div>
 </div>
 {%- endunless -%}
+{%- endif -%}
 
 {% schema %}
 {
@@ -58,6 +62,12 @@
     }
   ],
   "settings": [
+    {
+      "type": "checkbox",
+      "id": "hide_for_wholesale",
+      "label": "t:labels.hide_for_wholesale_buyers",
+      "default": true
+    },
     {
       "type": "text",
       "id": "heading",
