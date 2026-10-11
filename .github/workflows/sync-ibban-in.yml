@@ -1,0 +1,92 @@
+name: Sync theme code to ibban.in
+
+# Every push to the working branch is merged into `store/ibban-in`.
+# That branch is connected to the Weft theme on ibban.in through Shopify's
+# GitHub integration, so Shopify pulls each sync onto the theme right away.
+#
+# Shopify also commits theme-editor saves back to `store/ibban-in`. Files the
+# editor owns (settings_data, JSON templates, section groups) keep the store's
+# copy when both sides changed them; everything else follows the working branch.
+
+on:
+  push:
+    branches: [claude/new-session-v98iub]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-ibban-in
+  cancel-in-progress: false
+
+env:
+  SOURCE: claude/new-session-v98iub
+  TARGET: store/ibban-in
+
+jobs:
+  sync:
+    name: Merge working branch into store/ibban-in
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: store/ibban-in
+          fetch-depth: 0
+
+      - name: Merge and push
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "weft-sync[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          editor_owned=(config/settings_data.json 'templates/*.json' 'sections/*.json')
+
+          sync_once() {
+            git fetch --quiet origin "$SOURCE" "$TARGET"
+            git reset --quiet --hard "origin/$TARGET"
+            local src="origin/$SOURCE"
+
+            if git merge-base --is-ancestor "$src" HEAD; then
+              echo "store/ibban-in already has every commit from $SOURCE."
+              return 0
+            fi
+
+            local base
+            base=$(git merge-base HEAD "$src")
+            git merge --no-ff --no-commit -X theirs "$src" >/dev/null 2>&1 || true
+
+            # Conflicts -X theirs can't settle (modify/delete, add/add): follow the working branch.
+            while IFS= read -r f; do
+              [ -z "$f" ] && continue
+              if git cat-file -e "$src:$f" 2>/dev/null; then
+                git checkout "$src" -- "$f"
+              else
+                git rm --quiet --force -- "$f"
+              fi
+            done < <(git diff --name-only --diff-filter=U)
+
+            # Editor-owned files changed on both sides: keep the store's copy.
+            while IFS= read -r f; do
+              [ -z "$f" ] && continue
+              git diff --quiet "$base" "$src" -- "$f" && continue
+              if git cat-file -e "HEAD:$f" 2>/dev/null; then
+                git checkout HEAD -- "$f"
+              else
+                git rm --quiet --force --ignore-unmatch -- "$f"
+              fi
+              echo "Kept the store's copy of $f"
+            done < <(git diff --name-only "$base" HEAD -- "${editor_owned[@]}")
+
+            git commit --quiet --no-edit -m "Sync from $SOURCE ($(git rev-parse --short "$src"))"
+            git push origin "HEAD:$TARGET"
+          }
+
+          for attempt in 1 2 3; do
+            if sync_once; then exit 0; fi
+            echo "Push failed (the store branch probably got a theme-editor commit); retrying."
+            sleep 5
+          done
+          echo "Sync failed after 3 attempts." >&2
+          exit 1
