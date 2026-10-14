@@ -1,0 +1,109 @@
+{
+  "sections": {
+    "image_banner_mP8x6G": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_NgpDhC": {
+          "type": "heading",
+          "disabled": true,
+          "settings": {
+            "heading": "Image banner",
+            "size": "h1",
+            "tag": "auto"
+          }
+        },
+        "text_dFxLUd": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.</p>",
+            "style": "large"
+          }
+        },
+        "button_BYcF4F": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "label": "Optional button",
+            "link": "",
+            "style": "primary"
+          }
+        },
+        "button_BYcF4F-2": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "label": "Optional button",
+            "link": "",
+            "style": "primary"
+          }
+        }
+      },
+      "block_order": [
+        "heading_NgpDhC",
+        "text_dFxLUd",
+        "button_BYcF4F",
+        "button_BYcF4F-2"
+      ],
+      "settings": {
+        "image_desktop": "shopify://shop_images/ChatGPT_Image_Aug_6_2026_01_31_05_PM.png",
+        "image_mobile": "shopify://shop_images/Winter_Jacket.jpg",
+        "link": "",
+        "height": "adapt",
+        "fixed_height_desktop": 600,
+        "fixed_height_mobile": 350,
+        "overlay_position": "middle-center",
+        "text_align": "center",
+        "mobile_center": false,
+        "mobile_stacked": false,
+        "color_scheme": "scheme-1",
+        "full_width": true,
+        "text_color": "#ffffff",
+        "tint_color": "#000000",
+        "tint_opacity": 0
+      }
+    },
+    "collection-banner": {
+      "type": "collection-banner",
+      "disabled": true,
+      "settings": {
+        "show_title": true,
+        "show_count": true,
+        "show_description": true,
+        "text_align": "start",
+        "image_style": "beside",
+        "use_product_image": false,
+        "text_width": "medium",
+        "color_scheme": "scheme-1"
+      }
+    },
+    "collection-products": {
+      "type": "main-collection",
+      "settings": {
+        "products_per_page": 50,
+        "columns_mobile": "2",
+        "columns": 4,
+        "show_layout_toggle": true,
+        "enable_filtering": false,
+        "filters_open_lg": false,
+        "stick_on_scroll": true,
+        "show_filter_counts": true,
+        "expand_filters": true,
+        "max_filter_options": 7,
+        "enable_sorting": true,
+        "sort_show_featured": false,
+        "sort_show_best": true,
+        "sort_show_alpha": true,
+        "sort_show_price": true,
+        "sort_show_date": true,
+        "columns_tablet": "3",
+        "columns_wide": 4
+      }
+    }
+  },
+  "order": [
+    "image_banner_mP8x6G",
+    "collection-banner",
+    "collection-products"
+  ]
+}
