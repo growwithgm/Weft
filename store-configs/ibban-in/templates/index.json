@@ -4,7 +4,7 @@
       "type": "video",
       "disabled": true,
       "settings": {
-        "video": "shopify://files/videos/0824(1).mp4",
+        "video": "",
         "description": "",
         "height": "large",
         "text_align": "center",
@@ -134,7 +134,7 @@
         "b2bs_text"
       ],
       "settings": {
-        "video": "shopify://files/videos/V main.mp4",
+        "video": "",
         "description": "",
         "layout": "background",
         "text_align": "center",
@@ -701,7 +701,7 @@
         "bs_text"
       ],
       "settings": {
-        "video": "shopify://files/videos/V main.mp4",
+        "video": "",
         "description": "",
         "layout": "background",
         "text_align": "center",
