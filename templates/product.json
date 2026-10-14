@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "main": {
@@ -42,7 +33,7 @@
           "settings": {
             "show_tax_note": false,
             "show_shipping_note": false,
-            "show_installments": true,
+            "show_installments": false,
             "preview_wholesale": false
           },
           "blocks": {}
@@ -84,17 +75,12 @@
           },
           "blocks": {}
         },
-        "judge_me_reviews_preview_badge_McwKbz": {
-          "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-          "disabled": true,
-          "settings": {}
-        },
         "variant-picker": {
           "type": "variant-picker",
           "settings": {
             "style": "buttons",
             "availability": "adjacent",
-            "guide_option": "Size Guide"
+            "guide_option": "Size"
           },
           "blocks": {}
         },
@@ -112,7 +98,7 @@
           "settings": {
             "fit_text": "{{ product.metafields.custom.fit_guide.value }}",
             "show_shipping": true,
-            "show_installments": true,
+            "show_installments": false,
             "show_notify": true,
             "show_returns": true,
             "returns_text": "",
@@ -163,23 +149,11 @@
           },
           "blocks": {}
         },
-        "collapsible-content-1": {
-          "type": "collapsible",
-          "settings": {
-            "heading": "Main Features",
-            "icon": "check",
-            "text": "<p><strong>Fabric </strong>({{ product.metafields.shopify.fabric | metafield_text: field: 'label' }})</p><p><strong>Embroidery</strong>({{ product.metafields.custom.embroidery.value }})<br/><strong>Color</strong> ({{ product.metafields.shopify[\"color-pattern\"] | metafield_text: field: 'label' }})<br/><strong>Sizes</strong> ({{ product.metafields.shopify.size | metafield_text: field: 'label' }})<br/></p>",
-            "page": "",
-            "open": true,
-            "audience": "all"
-          },
-          "blocks": {}
-        },
         "collapsible_content_wTPX4g": {
           "type": "description",
           "settings": {
             "accordion": true,
-            "heading": "Descripción",
+            "heading": "Description",
             "open": true,
             "clamp_chars": 200
           },
@@ -208,6 +182,78 @@
             "text_color": "#1a66d2"
           },
           "blocks": {}
+        },
+        "main-features": {
+          "type": "specifications",
+          "settings": {
+            "heading": "Main Features",
+            "accordion": true,
+            "open": true,
+            "audience": "all"
+          },
+          "blocks": {
+            "row-fabric": {
+              "type": "_spec-row",
+              "settings": {
+                "label": "Fabric",
+                "value": "{{ product.metafields.custom.fabric.value }}"
+              }
+            },
+            "row-craft_work": {
+              "type": "_spec-row",
+              "settings": {
+                "label": "Craft / work",
+                "value": "{{ product.metafields.custom.craft_work.value }}"
+              }
+            },
+            "row-measurements": {
+              "type": "_spec-row",
+              "settings": {
+                "label": "Measurements",
+                "value": "{{ product.metafields.custom.measurements.value }}"
+              }
+            },
+            "row-model_size": {
+              "type": "_spec-row",
+              "settings": {
+                "label": "Model size",
+                "value": "{{ product.metafields.custom.model_size.value }}"
+              }
+            },
+            "row-care_instructions": {
+              "type": "_spec-row",
+              "settings": {
+                "label": "Care instructions",
+                "value": "{{ product.metafields.custom.care_instructions.value }}"
+              }
+            }
+          },
+          "block_order": [
+            "row-fabric",
+            "row-craft_work",
+            "row-measurements",
+            "row-model_size",
+            "row-care_instructions"
+          ]
+        },
+        "size-chart": {
+          "type": "product-guide",
+          "settings": {
+            "label": "Size Guide",
+            "icon": "ruler",
+            "link_position": "picker",
+            "image": "{{ product.metafields.custom.size_chart.value }}"
+          }
+        },
+        "gift-message": {
+          "type": "custom-option",
+          "settings": {
+            "label": "Gift message (optional)",
+            "type": "textarea",
+            "required": false,
+            "max_length": 200,
+            "show_in_quick_add": false
+          }
         }
       },
       "block_order": [
@@ -220,14 +266,15 @@
         "wholesale_quantity",
         "wholesale_tiers",
         "custom_liquid_gnrating",
-        "judge_me_reviews_preview_badge_McwKbz",
         "variant-picker",
+        "size-chart",
         "custom_liquid_wbis",
         "custom_liquid_gnship-delivery",
+        "gift-message",
         "buy-buttons",
         "message-2",
         "collapsible_content_j98RbT",
-        "collapsible-content-1",
+        "main-features",
         "collapsible_content_wTPX4g",
         "share",
         "message-3"
@@ -446,28 +493,6 @@
         "color_scheme": "scheme-1"
       }
     },
-    "1777402422d2cde988": {
-      "type": "apps",
-      "blocks": {
-        "judge_me_reviews_review_widget_8agUY8": {
-          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-          "settings": {
-            "review_data": "real_data",
-            "max_width": 1200,
-            "show_shop_reviews": true,
-            "empty_state": "empty_widget"
-          }
-        }
-      },
-      "block_order": [
-        "judge_me_reviews_review_widget_8agUY8"
-      ],
-      "disabled": true,
-      "settings": {
-        "full_width": false,
-        "show_space": true
-      }
-    },
     "collection-list": {
       "type": "collection-list",
       "blocks": {
@@ -609,62 +634,6 @@
         "tint_opacity": 40
       }
     },
-    "1777579321ea4b8cdc": {
-      "type": "apps",
-      "blocks": {
-        "judge_me_reviews_cards_carousel_RBhCcV": {
-          "type": "shopify://apps/judge-me-reviews/blocks/cards_carousel/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-          "settings": {
-            "show_sample_reviews": true,
-            "reviews_selection": "all",
-            "products": [],
-            "filter_pinned": false,
-            "filter_featured": false,
-            "filter_custom_tags": "",
-            "star_rating": "4_to_5_star",
-            "show_review_media": true,
-            "display_order": "media_first",
-            "no_image_fallback": "review_text_only",
-            "max_reviews": 20,
-            "review_length": "medium",
-            "text_size": "medium",
-            "image_ratio": "1",
-            "reviews_shown": 5,
-            "show_reviewer_name": true,
-            "show_product_name": true,
-            "hide_arrows_mobile": true,
-            "arrows_position": "sides",
-            "max_width": 1100,
-            "corner_styling": "soft",
-            "header_text_color": "#000000",
-            "text_color": "#000000",
-            "card_color": "#f9f9f9",
-            "stars_color": "",
-            "arrows_color": "#000000",
-            "transition_speed": 5,
-            "header_text": "Customers are saying",
-            "show_average_rating": true,
-            "rating_display": "default"
-          }
-        },
-        "judge_me_reviews_featured_carousel_HyjdJ8": {
-          "type": "shopify://apps/judge-me-reviews/blocks/featured_carousel/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-          "disabled": true,
-          "settings": {
-            "maxwidth": 1080
-          }
-        }
-      },
-      "block_order": [
-        "judge_me_reviews_cards_carousel_RBhCcV",
-        "judge_me_reviews_featured_carousel_HyjdJ8"
-      ],
-      "disabled": true,
-      "settings": {
-        "full_width": false,
-        "show_space": true
-      }
-    },
     "gn_product_reviews": {
       "type": "integration-reviews-grid",
       "settings": {
@@ -712,10 +681,8 @@
     "details",
     "product-features",
     "product-comparison-grid",
-    "1777402422d2cde988",
     "collection-list",
     "image-banner",
-    "1777579321ea4b8cdc",
     "gn_product_reviews",
     "recommendations",
     "recently_viewed_EUgWDy"

@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "current": {
     "logo_width": 160,
@@ -93,10 +84,8 @@
     "swatch_product_size": 64,
     "swatch_card_style": "variant_image",
     "swatch_filter_style": "color",
-    "social_instagram_url": "https://www.instagram.com/ibban_official?igsh=MXIyYzlmemQweGJuaQ==",
-    "social_facebook_url": "https://www.facebook.com/share/1PbiyZcXe6/",
-    "social_tiktok_url": "https://www.tiktok.com/@ibban.europe?_r=1&_t=ZS-95BK2fWciwb",
-    "social_whatsapp_url": "https://api.whatsapp.com/send/?phone=%2B34689948641&text&type=phone_number&app_absent=0",
+    "social_facebook_url": "https://www.facebook.com/Ibban.8802505786/",
+    "social_whatsapp_url": "https://wa.me/918802505786",
     "predictive_search_limit": 5,
     "predictive_search_show_price": true,
     "predictive_search_show_vendor": true,
@@ -114,65 +103,31 @@
     "cart_recommendations_heading": "You may also like...",
     "cart_recommendations_limit": 3,
     "cart_shake": true,
-    "cart_free_shipping_bar": false,
-    "cart_free_shipping_rules": "EUR:100\nGBP:85\nUSD:110\nCAD:150\nAUD:170\nAED:405\nCHF:95",
+    "cart_free_shipping_bar": true,
+    "cart_free_shipping_rules": "INR: 2000",
     "cart_free_shipping_scheme": "scheme-4",
     "reveal_on_scroll": "none",
     "wholesale_editor_preview": false,
     "wholesale_show_sku": true,
     "wholesale_access_page": "b2b-login",
     "wholesale_request_page": "bn2b-request-form",
-    "delivery_rules": "CY, CZ, EE, FI, HR, HU, IS, LT, LV, RO, SI, SK = 24.95 / 179\nAE, AL, BA, BH, BY, IQ, KW, MD, MK, UA, YE = 140\nDK, GR, IE, LU, NO = 4.95 / 99\nBE, CH, IT, NL = 4.95 / 99\nBG, MT, RS, TR = 29.95\nJO, OM, PS, QA = 49.95\nAT, DE, FR = 4.95 / 99\nAD, ES = 4.95 / 69\nEG = 14.95 / 129\nPL = 4.95 / 99\nLB, SA = 39.95\nRU, VE = 34.95\nAR, AU, BR, CA, CL, MX, NZ, UY, ZA = 12.95\nGB = GBP 4.95 / 99\nHK = 9.95 / 129\nIL = 19.95\nPT = 7.95 / 99\nSE = 4.95 / 99\nUS = USD 4.95 / 99",
-    "delivery_default_rule": "54.95",
-    "installments_provider": "Klarna",
+    "delivery_rules": "IN = 150 / 2000",
+    "delivery_default_rule": "",
+    "installments_provider": "",
     "installments_count": 3,
-    "installments_countries": "ES, GB, US, DE, AT, NL, BE, FR, IT, PT, IE, FI, SE, DK, NO, PL, CZ, GR, RO, SK, CH",
+    "installments_countries": "",
     "custom_code_head": "<style>\n  /* Newsletter phone field styling */\n  .newsletter-form-wrapper .phone-input-wrapper {\n    margin-top: 12px;\n    display: flex;\n    flex-direction: column;\n  }\n\n  .newsletter-form-wrapper input[type=\"tel\"] {\n    border-radius: 26px;\n    border: 2px solid #141414;\n    background-color: #141414;\n    color: #ffffff;\n    padding: 12px 20px;\n    font-size: 16px;\n    font-family: inherit;\n    width: 100%;\n    box-sizing: border-box;\n    transition: all 0.3s ease;\n  }\n\n  .newsletter-form-wrapper input[type=\"tel\"]::placeholder {\n    color: rgba(255, 255, 255, 0.6);\n  }\n\n  .newsletter-form-wrapper input[type=\"tel\"]:focus {\n    outline: none;\n    border-color: #ffffff;\n    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);\n  }\n\n  .newsletter-form-wrapper input[type=\"tel\"]:hover {\n    border-color: #ffffff;\n  }\n\n  /* Ensure responsive behavior */\n  @media (max-width: 768px) {\n    .newsletter-form-wrapper input[type=\"tel\"] {\n      padding: 10px 16px;\n      font-size: 16px;\n    }\n  }\n</style>\n\n<script>\n  document.addEventListener('DOMContentLoaded', function() {\n    // Find all newsletter forms in the footer\n    const newsletterForms = document.querySelectorAll('form[action*=\"/contact\"], form[action*=\"/newsletter\"], .newsletter-form, [data-newsletter-form]');\n    \n    newsletterForms.forEach(function(form) {\n      // Check if phone field already exists\n      if (form.querySelector('input[type=\"tel\"]')) {\n        return;\n      }\n      \n      // Find the email input field\n      const emailInput = form.querySelector('input[type=\"email\"]');\n      \n      if (emailInput) {\n        // Create wrapper for phone field\n        const phoneWrapper = document.createElement('div');\n        phoneWrapper.className = 'phone-input-wrapper';\n        \n        // Create phone input field\n        const phoneInput = document.createElement('input');\n        phoneInput.type = 'tel';\n        phoneInput.name = 'phone';\n        phoneInput.placeholder = 'Phone number (optional)';\n        phoneInput.setAttribute('aria-label', 'Phone number');\n        \n        // Add phone field after email input\n        phoneWrapper.appendChild(phoneInput);\n        emailInput.parentNode.insertAfter(phoneWrapper, emailInput);\n        \n        // Wrap the form to apply custom styling\n        if (!form.classList.contains('newsletter-form-wrapper')) {\n          form.classList.add('newsletter-form-wrapper');\n        }\n        \n        // Handle form submission to include phone data\n        form.addEventListener('submit', function(e) {\n          const phoneValue = phoneInput.value.trim();\n          \n          // If phone is provided, add it to form data\n          if (phoneValue) {\n            // Create hidden input for phone if it doesn't exist\n            let hiddenPhone = form.querySelector('input[name=\"phone\"][type=\"hidden\"]');\n            if (!hiddenPhone) {\n              hiddenPhone = document.createElement('input');\n              hiddenPhone.type = 'hidden';\n              hiddenPhone.name = 'phone';\n              form.appendChild(hiddenPhone);\n            }\n            hiddenPhone.value = phoneValue;\n          }\n        });\n      }\n    });\n  });\n</script>",
     "custom_code_head_mode": "immediately",
     "integration_reviews_enable": true,
-    "integration_bis_enable": true,
-    "integration_bis_endpoint": "https://wasify-super.vercel.app/api/stock/subscribe",
-    "integration_gtm_id": "GTM-55DG66F6",
-    "integration_google_verification": "-0OIKeydZTIfzNFO7PGU_crZ0rjXm-uZnPhon8ydO6Y",
-    "integration_meta_verification": "j7y6vq2q62bdo9vs8063nmqniudzap",
+    "integration_bis_enable": false,
+    "integration_bis_endpoint": "",
+    "integration_gtm_id": "",
+    "integration_google_verification": "",
+    "integration_meta_verification": "",
     "image_quality": "high",
     "tab_message_delay": 4,
     "vibrate_on_add": true,
     "content_for_index": [],
-    "blocks": {
-      "13768625480086291342": {
-        "type": "shopify://apps/forms/blocks/forms/8744a304-fcb1-4347-b211-bb6b4759a76a",
-        "disabled": false,
-        "settings": {}
-      },
-      "12439146293631897289": {
-        "type": "shopify://apps/blockify-fraud-filter/blocks/app_embed/2e3e0ba5-0e70-447a-9ec5-3bf76b5ef12e",
-        "disabled": false,
-        "settings": {}
-      },
-      "14060646107696862457": {
-        "type": "shopify://apps/judge-me-reviews/blocks/judgeme_core/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-        "disabled": false,
-        "settings": {}
-      },
-      "2567389343055140935": {
-        "type": "shopify://apps/microsoft-clarity/blocks/clarity_js/31c3d126-8116-4b4a-8ba1-baeda7c4aeea",
-        "disabled": false,
-        "settings": {}
-      },
-      "855628211100114053": {
-        "type": "shopify://apps/klaviyo-email-marketing-sms/blocks/klaviyo-onsite-embed/2632fe16-c075-4321-a88b-50b567f42507",
-        "disabled": false,
-        "settings": {}
-      },
-      "7819919163331818802": {
-        "type": "shopify://apps/wasify-super-gn/blocks/popup/01a0bc1b-c8d7-71b6-8e38-1e5b0ccf34eb",
-        "disabled": false,
-        "settings": {
-          "proxy_path": "/apps/wasify"
-        }
-      }
-    },
     "color_schemes": {
       "scheme-1": {
         "settings": {
@@ -293,7 +248,9 @@
           "button_secondary_text": "#2a2b2a"
         }
       }
-    }
+    },
+    "delivery_returns_text": "Returns only for damaged or wrong items",
+    "wholesale_installments": false
   },
   "presets": {
     "Weft": {

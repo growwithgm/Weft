@@ -3,7 +3,7 @@
     "main": {
       "type": "main-product",
       "blocks": {
-        "labels": {
+        "product-labels": {
           "type": "product-labels",
           "settings": {}
         },
@@ -11,128 +11,228 @@
           "type": "product-title",
           "settings": {}
         },
+        "rating": {
+          "type": "product-rating",
+          "settings": {}
+        },
         "price": {
           "type": "product-price",
           "settings": {
-            "show_tax_note": true,
-            "show_installments": true
+            "show_tax_note": false
           }
         },
-        "picker": {
+        "message": {
+          "type": "flash-message",
+          "settings": {
+            "icon": "info",
+            "text": "Coming Soon! We're so excited about our upcoming releases that we just couldn't keep them under wraps anymore! Drop us your email in the box below, and we'll let you know when it's good to go :)",
+            "close": "none",
+            "over_media": false,
+            "duration": 7,
+            "bg_color": "#f5f5f5",
+            "text_color": "#000000"
+          }
+        },
+        "variant-picker": {
           "type": "variant-picker",
           "settings": {}
         },
-        "guide": {
-          "type": "product-guide",
+        "divider-1": {
+          "type": "divider",
           "settings": {
-            "link_position": "picker"
+            "show_line": true,
+            "spacing": "medium"
           }
         },
-        "options": {
-          "type": "purchase-options",
-          "settings": {}
-        },
-        "features": {
-          "type": "specifications",
+        "product-signup": {
+          "type": "product-signup",
           "settings": {
-            "heading": "Main features",
-            "accordion": true
-          },
-          "blocks": {
-            "row1": {
-              "type": "_spec-row",
-              "settings": {
-                "label": "Material"
-              }
-            },
-            "row2": {
-              "type": "_spec-row",
-              "settings": {
-                "label": "Care"
-              }
-            }
-          },
-          "block_order": [
-            "row1",
-            "row2"
-          ]
-        },
-        "description": {
-          "type": "description",
-          "settings": {
-            "accordion": true,
-            "open": true,
-            "clamp_chars": 200
-          }
-        },
-        "returns": {
-          "type": "collapsible",
-          "settings": {
-            "heading": "Returns",
-            "icon": "return",
-            "audience": "retail",
-            "text": "<p>Explain your returns policy in a few lines.</p>"
+            "heading": "",
+            "text": "<p>Sign up to be the first to know when it's here</p>"
           }
         },
         "share": {
           "type": "share",
           "settings": {}
         },
-        "signup": {
-          "type": "product-signup",
-          "settings": {
-            "heading": "Coming soon",
-            "text": "<p>Leave your email and we'll tell you when it launches.</p>"
-          }
-        },
-        "terms": {
+        "wholesale_terms": {
           "type": "wholesale-terms",
           "settings": {}
         },
-        "installments": {
-          "type": "installments-note",
-          "settings": {}
+        "wholesale_matrix": {
+          "type": "order-matrix",
+          "settings": {
+            "layout": "rows",
+            "show_rules_bar": true
+          }
         },
-        "tiers": {
-          "type": "volume-pricing",
-          "settings": {}
-        },
-        "wholesale_qty": {
+        "wholesale_quantity": {
           "type": "wholesale-quantity",
           "settings": {}
         },
-        "matrix": {
-          "type": "order-matrix",
+        "wholesale_tiers": {
+          "type": "volume-pricing",
           "settings": {}
         }
       },
       "block_order": [
-        "labels",
+        "product-labels",
         "title",
+        "rating",
         "price",
-        "terms",
-        "installments",
-        "tiers",
-        "picker",
-        "guide",
-        "options",
-        "signup",
-        "wholesale_qty",
-        "matrix",
-        "features",
-        "description",
-        "returns",
+        "wholesale_terms",
+        "wholesale_matrix",
+        "wholesale_quantity",
+        "wholesale_tiers",
+        "message",
+        "variant-picker",
+        "divider-1",
+        "product-signup",
         "share"
+      ],
+      "settings": {
+        "thumbnails": "both",
+        "sticky_bar_mobile": true,
+        "section_width": "full",
+        "gallery_width": "extra_wide",
+        "gallery_layout": "grid_even",
+        "column_gap": 64,
+        "column_divider": true,
+        "media_ratio": "portrait",
+        "group_media_by_option": false
+      }
+    },
+    "video": {
+      "type": "video",
+      "blocks": {
+        "video-heading": {
+          "type": "heading",
+          "settings": {
+            "size": "h2",
+            "tag": "auto"
+          }
+        },
+        "video-text": {
+          "type": "text",
+          "settings": {
+            "style": "large"
+          }
+        }
+      },
+      "block_order": [
+        "video-heading",
+        "video-text"
+      ],
+      "settings": {
+        "layout": "background",
+        "text_align": "center",
+        "color_scheme": "scheme-1"
+      }
+    },
+    "details": {
+      "type": "product-details",
+      "blocks": {
+        "tabs": {
+          "type": "product-tabs",
+          "settings": {
+            "style": "accordion",
+            "show_description": true,
+            "show_reviews": true,
+            "show_specification": true,
+            "spec_right_align": true,
+            "spec_show_empty": false
+          }
+        }
+      },
+      "block_order": [
+        "tabs"
       ],
       "settings": {}
     },
-    "related": {
-      "type": "product-recommendations",
+    "scrolling-banner": {
+      "type": "scrolling-banner",
+      "blocks": {
+        "scrolling-banner-text-1": {
+          "type": "_marquee-item",
+          "settings": {
+            "text": "Coming Soon!",
+            "link": "",
+            "font": "heading",
+            "size": "large",
+            "type": "text"
+          }
+        },
+        "scrolling-banner-text-2": {
+          "type": "_marquee-item",
+          "settings": {
+            "text": "Coming Soon!",
+            "link": "",
+            "font": "body",
+            "size": "large",
+            "type": "text"
+          }
+        }
+      },
+      "block_order": [
+        "scrolling-banner-text-1",
+        "scrolling-banner-text-2"
+      ],
+      "settings": {
+        "height": "normal",
+        "spacing": 60,
+        "speed": 10,
+        "direction": "left",
+        "pausable": true,
+        "color_scheme": "scheme-5",
+        "dividers": false
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "blocks": {
+        "newsletter-heading-1": {
+          "type": "heading",
+          "settings": {
+            "heading": "Be the first to know!",
+            "size": "h3"
+          }
+        },
+        "newsletter-text-2": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Sign up for updates, and we'll let you know when it's arrived.</p>",
+            "style": "body"
+          }
+        },
+        "newsletter-form-3": {
+          "type": "email-signup",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "newsletter-heading-1",
+        "newsletter-text-2",
+        "newsletter-form-3"
+      ],
       "settings": {}
+    },
+    "recommendations": {
+      "type": "product-recommendations",
+      "settings": {
+        "heading": "You may also like",
+        "heading_align": "start",
+        "layout": "carousel",
+        "columns": 5,
+        "limit": 8
+      }
     }
   },
   "order": [
     "main",
-    "related"
+    "video",
+    "details",
+    "scrolling-banner",
+    "newsletter",
+    "recommendations"
   ]
 }

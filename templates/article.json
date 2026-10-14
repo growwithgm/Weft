@@ -1,10 +1,13 @@
 {
   "sections": {
-    "main": { "type": "main-article", "settings": {} },
-    "related": {
-      "type": "featured-blog",
-      "settings": { "title": "More from the journal", "posts_to_show": 3 }
+    "main": {
+      "type": "main-article",
+      "settings": {
+        "show_pagination": true
+      }
     }
   },
-  "order": ["main", "related"]
+  "order": [
+    "main"
+  ]
 }
