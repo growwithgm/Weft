@@ -1,0 +1,72 @@
+{
+  "context": {
+    "market": "b2b-wholesale"
+  },
+  "parent": "index.json",
+  "sections": {
+    "b2b_video": {
+      "disabled": false,
+      "blocks": {}
+    },
+    "b2b_tiles": {
+      "disabled": false,
+      "blocks": {}
+    },
+    "b2b_story": {
+      "disabled": false,
+      "blocks": {}
+    },
+    "b2b_jackets": {
+      "disabled": false,
+      "blocks": {}
+    },
+    "b2b_slideshow": {
+      "disabled": false,
+      "blocks": {}
+    },
+    "hero_banner": {
+      "disabled": true,
+      "blocks": {}
+    },
+    "brand_marquee": {
+      "disabled": true,
+      "blocks": {}
+    },
+    "new_in_row": {
+      "disabled": true,
+      "blocks": {}
+    },
+    "shop_by_category": {
+      "disabled": true,
+      "blocks": {}
+    },
+    "outerwear_banner": {
+      "disabled": true,
+      "blocks": {}
+    },
+    "outerwear_row": {
+      "disabled": true,
+      "blocks": {}
+    },
+    "craft_story": {
+      "disabled": true,
+      "blocks": {}
+    },
+    "holiday_banner": {
+      "disabled": true,
+      "blocks": {}
+    },
+    "holiday_row": {
+      "disabled": true,
+      "blocks": {}
+    },
+    "brand_story": {
+      "disabled": true,
+      "blocks": {}
+    },
+    "trust_strip": {
+      "disabled": true,
+      "blocks": {}
+    }
+  }
+}
