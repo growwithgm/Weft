@@ -1,4 +1,4 @@
 {%- comment -%} Link that opens the Product guide dialog of this section (rendered by the product-guide block). Params: section. {%- endcomment -%}
 <button type="button" class="link product-guide-link" data-open-dialog="ProductGuide-{{ section.id }}" data-guide-link hidden>
-  {%- render 'icon', name: 'ruler', size: 18 -%}<span data-guide-label>{{ 'products.guide' | t }}</span>
+  <svg width="20" height="10" viewBox="0 0 20 10" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true" focusable="false"><rect x=".6" y=".6" width="18.8" height="8.8" rx="1"/><path d="M4 1v3M7.5 1v4.5M11 1v3M14.5 1v4.5"/></svg><span data-guide-label>{{ 'products.guide' | t }}</span>
 </button>

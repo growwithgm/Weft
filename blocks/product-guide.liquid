@@ -2,50 +2,232 @@
   Product guide (size chart, shade guide, usage chart): a modal with an image, a page or rich
   text, plus up to two label/value rows (e.g. Fit and Best suited for). Settings accept dynamic
   sources, so a metafield image (e.g. custom.size_chart) can feed it. Full screen on mobile.
+
+  Size chart table:
+    - One product metafield per measurement column: custom.sc_<column> (list of single line text).
+      One value per size, in the order of the product's Size option values.
+    - Rows come from the product's Size option values. A product without a Size option (free size)
+      or with a single size gets one row, with one value per field.
+    - A column a product leaves empty is hidden for that product, so a jacket can show
+      Bottom Around while a dress shows Waist Around and Hip Around.
+    - Column labels, unit and note are block settings, set once in the theme editor.
+  When the table exists but the product has no Size option (so no picker line to hold the link),
+  the link shows where this block is placed.
+  Size guide design (ibBan): desktop centered modal max 720px; mobile full screen, no horizontal scroll.
 {%- endcomment -%}
 {%- liquid
   assign label = block.settings.label | default: 'products.guide'
   if block.settings.label == blank
     assign label = 'products.guide' | t
   endif
+
+  assign p = closest.product
+  assign size_keys = 'size,sizes,taille,größe,talla,taglia,maat,tamanho' | split: ','
+  assign sc_columns = 'shoulder_across,bust_around,waist_around,hip_around,bottom_around,sleeve_length,total_length' | split: ','
+  assign has_size_option = false
+  assign row_labels = ''
+  assign active_cols = ''
+
+  if p
+    for option in p.options_with_values
+      assign okey = option.name | downcase | remove: ' '
+      if size_keys contains okey
+        assign has_size_option = true
+        if option.values.size > 1
+          assign row_labels = option.values
+        else
+          assign row_labels = option.values.first.name | split: '~~'
+        endif
+        break
+      endif
+    endfor
+    if row_labels == ''
+      assign row_labels = block.settings.free_size_label | default: 'One Size' | split: '~~'
+    endif
+
+    for col in sc_columns
+      assign mf_key = 'sc_' | append: col
+      if p.metafields.custom[mf_key].value != blank
+        assign active_cols = active_cols | append: col | append: ','
+      endif
+    endfor
+  endif
+  assign active_cols = active_cols | split: ','
+
+  assign table_mode = ''
+  if active_cols.size > 0
+    assign table_mode = 'table'
+  endif
+
+  assign link_position = block.settings.link_position
+  if link_position == 'picker' and table_mode != '' and has_size_option == false
+    assign link_position = 'block'
+  endif
+
   assign has_content = false
-  if block.settings.image != blank or block.settings.page != blank or block.settings.text != blank or block.settings.row1_value != blank or block.settings.row2_value != blank
+  if block.settings.image != blank or block.settings.page != blank or block.settings.text != blank or block.settings.row1_value != blank or block.settings.row2_value != blank or table_mode != ''
     assign has_content = true
   endif
 -%}
 {%- if has_content or request.design_mode -%}
-  <div class="product-guide" data-product-guide data-link-position="{{ block.settings.link_position }}" data-label="{{ label | escape }}" data-icon="{{ block.settings.icon }}" {{ block.shopify_attributes }}>
-    {%- if block.settings.link_position == 'block' -%}
+  <div class="product-guide" data-product-guide data-link-position="{{ link_position }}" data-label="{{ label | escape }}" data-icon="{{ block.settings.icon }}" {{ block.shopify_attributes }}>
+    {%- if link_position == 'block' -%}
       <button type="button" class="link product-guide-link" data-open-dialog="ProductGuide-{{ section.id }}">
-        {%- render 'icon', name: block.settings.icon, size: 18 -%}<span>{{ label }}</span>
+        {%- if block.settings.icon == 'ruler' -%}
+          <svg width="20" height="10" viewBox="0 0 20 10" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true" focusable="false"><rect x=".6" y=".6" width="18.8" height="8.8" rx="1"/><path d="M4 1v3M7.5 1v4.5M11 1v3M14.5 1v4.5"/></svg>
+        {%- else -%}
+          {%- render 'icon', name: block.settings.icon, size: 18 -%}
+        {%- endif -%}
+        <span>{{ label }}</span>
       </button>
     {%- endif -%}
-    <dialog id="ProductGuide-{{ section.id }}" class="modal modal--fullscreen-mobile color-{{ settings.drawer_color_scheme }}" aria-labelledby="ProductGuideTitle-{{ section.id }}" data-light-dismiss data-animate>
+    <dialog id="ProductGuide-{{ section.id }}" class="modal modal--fullscreen-mobile product-guide__dialog color-{{ settings.drawer_color_scheme }}" aria-labelledby="ProductGuideTitle-{{ section.id }}" data-light-dismiss data-animate>
       <div class="modal__panel" data-dialog-body>
-        <div class="modal__header">
-          <h2 class="h2" id="ProductGuideTitle-{{ section.id }}">{{ label }}</h2>
-          <button type="button" class="icon-button" data-close-dialog aria-label="{{ 'general.close' | t }}">{%- render 'icon', name: 'close' -%}</button>
+        <div class="modal__header product-guide__header">
+          <h2 class="h2 product-guide__title" id="ProductGuideTitle-{{ section.id }}">
+            <span>{{ label }}</span>
+            {%- if table_mode != '' and block.settings.table_unit != blank -%}
+              <span class="product-guide__unit">({{ block.settings.table_unit }})</span>
+            {%- endif -%}
+          </h2>
+          <button type="button" class="icon-button product-guide__close" data-close-dialog aria-label="{{ 'general.close' | t }}">{%- render 'icon', name: 'close' -%}</button>
         </div>
         <template data-deferred>
-          {%- if block.settings.image != blank -%}
-            <div class="product-guide__image media" style="aspect-ratio: {{ block.settings.image.aspect_ratio }}">
-              {{ block.settings.image | image_url: width: 1600 | image_tag: widths: '600,900,1200,1600', sizes: 'min(720px, 100vw)', loading: 'lazy' }}
-            </div>
-          {%- endif -%}
-          {%- if block.settings.text != blank -%}<div class="rte">{{ block.settings.text }}</div>{%- endif -%}
-          {%- if block.settings.page != blank -%}<div class="rte">{{ block.settings.page.content }}</div>{%- endif -%}
-          {%- if block.settings.row1_value != blank or block.settings.row2_value != blank -%}
-            <dl class="spec-list">
-              {%- if block.settings.row1_value != blank -%}<div class="spec-list__row"><dt>{{ block.settings.row1_label }}</dt><dd>{{ block.settings.row1_value }}</dd></div>{%- endif -%}
-              {%- if block.settings.row2_value != blank -%}<div class="spec-list__row"><dt>{{ block.settings.row2_label }}</dt><dd>{{ block.settings.row2_value }}</dd></div>{%- endif -%}
-            </dl>
-          {%- endif -%}
-          {%- if has_content == false -%}<p class="muted">{{ 'products.guide' | t }}</p>{%- endif -%}
+          <div class="product-guide__body">
+            {%- if table_mode != '' -%}
+              <table class="product-guide__table{% if active_cols.size > 6 %} product-guide__table--dense{% endif %}">
+                <thead>
+                  <tr>
+                    <th scope="col">{{ block.settings.size_column_label | default: 'Size' }}</th>
+                    {%- for col in active_cols -%}
+                      {%- assign col_setting = 'col_' | append: col -%}
+                      {%- assign col_fallback = col | replace: '_', ' ' -%}
+                      <th scope="col">{{ block.settings[col_setting] | default: col_fallback }}</th>
+                    {%- endfor -%}
+                  </tr>
+                </thead>
+                <tbody>
+                  {%- for row_label in row_labels -%}
+                    {%- assign idx = forloop.index0 -%}
+                    <tr>
+                      <th scope="row">{{ row_label }}</th>
+                      {%- for col in active_cols -%}
+                        {%- assign mf_key = 'sc_' | append: col -%}
+                        {%- assign col_values = p.metafields.custom[mf_key].value -%}
+                        {%- assign cell = col_values[idx] | strip -%}
+                        <td>{{ cell | default: '–' }}</td>
+                      {%- endfor -%}
+                    </tr>
+                  {%- endfor -%}
+                </tbody>
+              </table>
+              {%- if block.settings.table_note != blank -%}
+                <div class="product-guide__note rte">{{ block.settings.table_note }}</div>
+              {%- endif -%}
+            {%- endif -%}
+            {%- if block.settings.image != blank -%}
+              <div class="product-guide__image media" style="aspect-ratio: {{ block.settings.image.aspect_ratio }}">
+                {{ block.settings.image | image_url: width: 1600 | image_tag: widths: '600,900,1200,1600', sizes: 'min(720px, 100vw)', loading: 'lazy' }}
+              </div>
+            {%- endif -%}
+            {%- if block.settings.text != blank -%}<div class="rte">{{ block.settings.text }}</div>{%- endif -%}
+            {%- if block.settings.page != blank -%}<div class="rte">{{ block.settings.page.content }}</div>{%- endif -%}
+            {%- if block.settings.row1_value != blank or block.settings.row2_value != blank -%}
+              <dl class="spec-list">
+                {%- if block.settings.row1_value != blank -%}<div class="spec-list__row"><dt>{{ block.settings.row1_label }}</dt><dd>{{ block.settings.row1_value }}</dd></div>{%- endif -%}
+                {%- if block.settings.row2_value != blank -%}<div class="spec-list__row"><dt>{{ block.settings.row2_label }}</dt><dd>{{ block.settings.row2_value }}</dd></div>{%- endif -%}
+              </dl>
+            {%- endif -%}
+            {%- if has_content == false -%}<p class="muted">{{ 'products.guide' | t }}</p>{%- endif -%}
+          </div>
         </template>
       </div>
     </dialog>
   </div>
 {%- endif -%}
+
+{% stylesheet %}
+  /* Trigger link (next to the Size option, or where the block is placed) */
+  .product-guide-link { gap: 8px; font-size: 15px; text-decoration: none; }
+  .product-guide-link > span { text-decoration: underline; text-underline-offset: 4px; }
+  .product-guide-link > svg { flex: 0 0 auto; }
+
+  /* Modal (desktop: centered, max 720px) */
+  .product-guide__dialog { --sg-ink: #121212; --sg-muted: #6b6760; --sg-line: #e6e4df; }
+  .product-guide__dialog::backdrop { background: rgba(18, 18, 18, 0.5); }
+  .product-guide__dialog .modal__panel { border-radius: 12px; padding: 28px 32px; gap: 20px; }
+  .product-guide__title { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 8px; font-size: 30px; line-height: 1.1; }
+  .product-guide__unit { font-family: var(--f-body); font-weight: 400; font-size: 14px; letter-spacing: 0.04em; text-transform: none; color: var(--sg-muted); }
+  .product-guide__close { width: 40px; height: 40px; flex: 0 0 auto; }
+  .product-guide__body { display: flex; flex-direction: column; gap: 20px; }
+
+  /* Table */
+  .product-guide__table { width: 100%; border-collapse: collapse; table-layout: fixed; font-variant-numeric: tabular-nums; }
+  .product-guide__table thead th {
+    padding: 12px 8px;
+    border-bottom: 1px solid var(--sg-ink);
+    font-size: 11px;
+    line-height: 1.4;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--sg-muted);
+    text-align: center;
+    vertical-align: bottom;
+    word-break: keep-all;
+    overflow-wrap: normal;
+    hyphens: none;
+  }
+  .product-guide__table thead th:first-child { width: 96px; text-align: left; }
+  .product-guide__table tbody :is(th, td) {
+    padding: 14px 8px;
+    border-bottom: 1px solid var(--sg-line);
+    font-size: 15px;
+    line-height: 1.3;
+    font-weight: 400;
+    color: var(--sg-ink);
+    text-align: center;
+  }
+  .product-guide__table tbody th { text-align: left; font-weight: 600; }
+  .product-guide__table :is(th, td):nth-child(n + 3) { border-left: 1px solid var(--sg-line); }
+  .product-guide__note { font-size: 13px; line-height: 1.5; color: var(--sg-muted); }
+  .product-guide__image { margin-block-end: 8px; }
+
+  @media (min-width: 750px) and (max-width: 989px) {
+    .product-guide__table thead th { letter-spacing: 0.06em; }
+  }
+
+  /* Mobile: full screen, whole table on one screen, no horizontal scroll */
+  @media (max-width: 749px) {
+    .product-guide-link { gap: 6px; font-size: 14px; }
+    .product-guide__dialog .modal__panel { padding: 0; gap: 0; border-radius: 0; }
+    .product-guide__header { padding: 12px 12px 12px 16px; border-bottom: 1px solid var(--sg-line); }
+    .product-guide__title { gap: 0 6px; font-size: 26px; }
+    .product-guide__unit { font-size: 13px; letter-spacing: 0; }
+    .product-guide__close { width: 44px; height: 44px; }
+    .product-guide__body { padding: 20px 12px; gap: 14px; }
+    .product-guide__table { table-layout: auto; }
+    .product-guide__table thead th { padding: 8px 3px; font-size: 9px; line-height: 1.35; letter-spacing: 0.04em; }
+    .product-guide__table thead th:first-child { width: auto; }
+    .product-guide__table tbody :is(th, td) { padding: 11px 3px; font-size: 13px; white-space: nowrap; }
+    .product-guide__note { padding-left: 4px; font-size: 12px; }
+  }
+  @media (max-width: 389px) {
+    .product-guide__table thead th { font-size: 8px; letter-spacing: 0.02em; }
+    .product-guide__table tbody :is(th, td) { font-size: 12px; }
+  }
+  /* 8 columns (all measurements filled): the smaller phone sizes up to 479px so the table still fits */
+  @media (max-width: 479px) {
+    .product-guide__table--dense thead th { padding-inline: 2px; font-size: 8px; letter-spacing: 0.02em; }
+    .product-guide__table--dense tbody :is(th, td) { padding-inline: 2px; font-size: 12px; }
+  }
+  /* Very small phones (320px) */
+  @media (max-width: 359px) {
+    .product-guide__body { padding-inline: 8px; }
+    .product-guide__table thead th { padding-inline: 1px; font-size: 7px; letter-spacing: 0; }
+    .product-guide__table tbody :is(th, td) { padding-inline: 2px; font-size: 11px; }
+  }
+{% endstylesheet %}
 
 {% schema %}
 {
@@ -135,6 +317,84 @@
       "type": "text",
       "id": "row2_value",
       "label": "t:labels.row_2_value"
+    },
+    {
+      "type": "header",
+      "content": "Size chart table"
+    },
+    {
+      "type": "paragraph",
+      "content": "Values come from each product's \"Size chart ·\" fields. Rows follow the product's Size variants. Columns a product leaves empty are hidden."
+    },
+    {
+      "type": "select",
+      "id": "table_unit",
+      "label": "Unit",
+      "options": [
+        { "value": "cm", "label": "cm" },
+        { "value": "inch", "label": "inch" }
+      ],
+      "default": "cm"
+    },
+    {
+      "type": "text",
+      "id": "size_column_label",
+      "label": "Size column heading",
+      "default": "Size"
+    },
+    {
+      "type": "text",
+      "id": "free_size_label",
+      "label": "Free size row label",
+      "default": "One Size"
+    },
+    {
+      "type": "text",
+      "id": "col_shoulder_across",
+      "label": "Column heading: Shoulder Across",
+      "default": "Shoulder Across"
+    },
+    {
+      "type": "text",
+      "id": "col_bust_around",
+      "label": "Column heading: Bust Around",
+      "default": "Bust Around"
+    },
+    {
+      "type": "text",
+      "id": "col_waist_around",
+      "label": "Column heading: Waist Around",
+      "default": "Waist Around"
+    },
+    {
+      "type": "text",
+      "id": "col_hip_around",
+      "label": "Column heading: Hip Around",
+      "default": "Hip Around"
+    },
+    {
+      "type": "text",
+      "id": "col_bottom_around",
+      "label": "Column heading: Bottom Around",
+      "default": "Bottom Around"
+    },
+    {
+      "type": "text",
+      "id": "col_sleeve_length",
+      "label": "Column heading: Sleeve Length",
+      "default": "Sleeve Length"
+    },
+    {
+      "type": "text",
+      "id": "col_total_length",
+      "label": "Column heading: Total Length",
+      "default": "Total Length"
+    },
+    {
+      "type": "richtext",
+      "id": "table_note",
+      "label": "Note under the table",
+      "default": "<p>All measurements are in cm.</p>"
     }
   ],
   "presets": [
