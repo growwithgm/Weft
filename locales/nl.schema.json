@@ -918,6 +918,7 @@
     "show_shipping_calculator": "Verzendcalculator weergeven",
     "show_shipping_row": "Verzendrij weergeven",
     "show_shop_pay_installments": "Shop Pay Installments weergeven",
+    "show_sizes": "Maten weergeven",
     "show_sku": "SKU weergeven",
     "show_skus_to_wholesale_buyers": "SKU's weergeven aan groothandelskopers",
     "show_social_media_links": "Links naar social media weergeven",
@@ -956,6 +957,7 @@
     "sign_in_button_label": "Label van inlogknop",
     "signup_heading": "Kop van aanmelding",
     "size": "Grootte",
+    "size_option_names": "Namen van maatopties",
     "sizing": "Maten",
     "sku": "SKU",
     "slide": "Dia",
@@ -1681,6 +1683,12 @@
       },
       "product_cards": {
         "settings": {
+          "card_show_sizes": {
+            "info": "Toont de waarden van de maatoptie onder de prijs. Uitverkochte maten zijn doorgestreept."
+          },
+          "card_size_option_names": {
+            "info": "Scheid namen met komma's. Opties met deze namen worden als maatlabels weergegeven."
+          },
           "card_subtitle_metafield": {
             "info": "Naamruimte en sleutel van een metaveld met tekst van één regel."
           },

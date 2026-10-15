@@ -1271,5 +1271,9 @@
   "YouTube": "YouTube",
   "Zoom": "ズーム",
   "namespace.key, for example custom.material": "namespace.key (例: custom.material)",
-  "namespace.key, for example shopify.hair-type. Used instead of the values when set.": "namespace.key (例: shopify.hair-type)。設定すると、値の代わりに使用されます。"
+  "namespace.key, for example shopify.hair-type. Used instead of the values when set.": "namespace.key (例: shopify.hair-type)。設定すると、値の代わりに使用されます。",
+  "Show sizes": "サイズを表示する",
+  "Shows the values of the size option under the price. Sold-out sizes are crossed out.": "価格の下にサイズオプションの値を表示します。売り切れのサイズには取り消し線が付きます。",
+  "Size option names": "サイズオプション名",
+  "Separate names with commas. Options with these names show as size chips.": "名前はカンマで区切ります。これらの名前のオプションはサイズチップとして表示されます。"
 }

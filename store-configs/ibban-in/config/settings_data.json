@@ -251,7 +251,8 @@
     },
     "delivery_returns_text": "Returns only for damaged or wrong items",
     "wholesale_installments": false,
-    "logo": "shopify://shop_images/ibban_logo_fd0b4641-de48-42c0-bc97-8be1a63a98b0.png"
+    "logo": "shopify://shop_images/ibban_logo_fd0b4641-de48-42c0-bc97-8be1a63a98b0.png",
+    "card_show_sizes": true
   },
   "presets": {
     "Weft": {
