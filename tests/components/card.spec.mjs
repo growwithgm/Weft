@@ -90,6 +90,8 @@ const sentId = (body) => {
 
 export const tests = {
   async 'hover shows the size buttons; a swatch re-points them; a size adds that variant'({ page, base, expect, eventually }) {
+    // The swatch handler lives in quick-add.js, loaded on the first click; delay it as a cold load would.
+    await page.route('**/assets/quick-add.js', async (r) => { await new Promise((res) => setTimeout(res, 400)); r.continue(); });
     const posted = await open(page, base, [sona]);
     const panel = '#CardQuick-4-panel';
     expect(await page.$eval(panel, (p) => getComputedStyle(p).transform !== 'none'), 'panel parked below the image').toBe(true);
@@ -97,7 +99,7 @@ export const tests = {
     await eventually((sel) => getComputedStyle(document.querySelector(sel)).transform === 'none', 'panel slides up on hover', panel);
     expect(await page.$eval('[data-card-variant="2"]', (b) => b.disabled), 'sold-out size disabled').toBe(true);
     await page.click('[data-name="Maroon"]');
-    expect(await page.$eval('[data-name="Maroon"]', (b) => b.getAttribute('aria-pressed')), 'swatch pressed').toBe('true');
+    await eventually(() => document.querySelector('[data-name="Maroon"]').getAttribute('aria-pressed') === 'true', 'swatch pressed once the module has loaded');
     expect(await page.$eval('[data-name="Forest"]', (b) => b.getAttribute('aria-pressed')), 'previous swatch released').toBe('false');
     expect(await page.$eval('.card__color-name', (s) => s.textContent), 'color name follows').toBe('Maroon');
     expect(await page.$$eval('[data-card-variant]', (bs) => bs.map((b) => `${b.value}:${b.disabled ? 0 : 1}`).join(',')), 'buttons re-pointed').toBe('411:0,412:1,413:0');
