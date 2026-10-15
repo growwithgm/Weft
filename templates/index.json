@@ -568,14 +568,35 @@
         "c03": {
           "type": "_collection-tile",
           "settings": {
+            "collection": "jackets"
+          }
+        },
+        "c04": {
+          "type": "_collection-tile",
+          "settings": {
             "collection": "hand-bags"
+          }
+        },
+        "c05": {
+          "type": "_collection-tile",
+          "settings": {
+            "collection": "bucket-bag"
+          }
+        },
+        "c06": {
+          "type": "_collection-tile",
+          "settings": {
+            "collection": "clutch"
           }
         }
       },
       "block_order": [
         "c01",
         "c02",
-        "c03"
+        "c03",
+        "c04",
+        "c05",
+        "c06"
       ],
       "settings": {
         "title": "Shop by category",
@@ -598,7 +619,7 @@
       "type": "image-banner",
       "settings": {
         "image_desktop": "shopify://shop_images/Festive_Elegance_in_Bloom.png",
-        "link": "shopify://collections/dresses",
+        "link": "shopify://collections/jackets",
         "height": "adapt",
         "fixed_height_desktop": 600,
         "fixed_height_mobile": 350,
@@ -616,9 +637,9 @@
     "outerwear_row": {
       "type": "featured-collection",
       "settings": {
-        "title": "Dresses",
+        "title": "Jackets",
         "heading_align": "start",
-        "collection": "dresses",
+        "collection": "jackets",
         "products_to_show": 8,
         "show_view_all": true,
         "layout": "carousel",
@@ -691,7 +712,7 @@
       "type": "image-banner",
       "settings": {
         "image_desktop": "shopify://shop_images/Festive_Courtyard_Fashion_Glow_ac9c9b6c-4dcf-49c1-9c06-73a073555909.png",
-        "link": "shopify://collections/clothing",
+        "link": "shopify://collections/dresses",
         "height": "adapt",
         "fixed_height_desktop": 600,
         "fixed_height_mobile": 350,
@@ -709,9 +730,9 @@
     "holiday_row": {
       "type": "featured-collection",
       "settings": {
-        "title": "Hand Bags",
+        "title": "Dresses",
         "heading_align": "start",
-        "collection": "hand-bags",
+        "collection": "dresses",
         "products_to_show": 8,
         "show_view_all": true,
         "layout": "carousel",
