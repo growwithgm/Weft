@@ -70,7 +70,9 @@ document.addEventListener('click', (e) => {
   if (!e.target.closest('[data-menu-item], [data-account-menu]')) closeAll(null);
 });
 document.addEventListener('focusin', (e) => {
-  if (header && !header.contains(e.target)) closeAll(null);
+  // Keep open the menu that holds the newly focused element: closing it mid-tap (a link in the
+  // mobile drawer, which lives outside the header) froze Chromium's renderer.
+  if (header && !header.contains(e.target)) closeAll(e.target);
 });
 
 /* Mobile drawer: clone the desktop menu once, on first open. */
