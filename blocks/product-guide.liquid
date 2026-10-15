@@ -83,6 +83,7 @@
     {%- endif -%}
     <dialog id="ProductGuide-{{ section.id }}" class="modal modal--fullscreen-mobile product-guide__dialog color-{{ settings.drawer_color_scheme }}" aria-labelledby="ProductGuideTitle-{{ section.id }}" data-light-dismiss data-animate>
       <div class="modal__panel" data-dialog-body>
+        <span class="product-guide__handle" aria-hidden="true"></span>
         <div class="modal__header product-guide__header">
           <h2 class="h2 product-guide__title" id="ProductGuideTitle-{{ section.id }}">
             <span>{{ label }}</span>
@@ -160,6 +161,7 @@
   .product-guide__unit { font-family: var(--f-body); font-weight: 400; font-size: 14px; letter-spacing: 0.04em; text-transform: none; color: var(--sg-muted); }
   .product-guide__close { width: 40px; height: 40px; flex: 0 0 auto; }
   .product-guide__body { display: flex; flex-direction: column; gap: 20px; }
+  .product-guide__handle { display: none; }
 
   /* Table */
   .product-guide__table { width: 100%; border-collapse: collapse; table-layout: fixed; font-variant-numeric: tabular-nums; }
@@ -197,14 +199,17 @@
     .product-guide__table thead th { letter-spacing: 0.06em; }
   }
 
-  /* Mobile: full screen, whole table on one screen, no horizontal scroll */
+  /* Mobile: bottom sheet that fits its content, whole table on one screen, no horizontal scroll */
   @media (max-width: 749px) {
     .product-guide-link { gap: 6px; font-size: 14px; }
-    .product-guide__dialog .modal__panel { padding: 0; gap: 0; border-radius: 0; }
-    .product-guide__header { padding: 12px 12px 12px 16px; border-bottom: 1px solid var(--sg-line); }
+    .product-guide__dialog.modal--fullscreen-mobile { inset: auto 0 0; margin: 0; width: 100%; max-width: 100%; height: auto; max-height: 90vh; max-height: 90dvh; }
+    .product-guide__dialog .modal__panel { height: auto; max-height: 90vh; max-height: 90dvh; padding: 0 0 env(safe-area-inset-bottom); gap: 0; border-radius: 24px 24px 0 0; }
+    .product-guide__dialog[data-animate] .modal__panel { --from: translateY(100%); }
+    .product-guide__handle { display: block; flex: 0 0 auto; width: 40px; height: 4px; margin: 10px auto 0; border-radius: 2px; background: #d8d5ce; }
+    .product-guide__header { padding: 6px 12px 12px 20px; border-bottom: 1px solid var(--sg-line); }
     .product-guide__title { gap: 0 6px; font-size: 26px; }
     .product-guide__unit { font-size: 13px; letter-spacing: 0; }
-    .product-guide__close { width: 44px; height: 44px; }
+    .product-guide__close { width: 44px; height: 44px; border: 1px solid var(--sg-line); }
     .product-guide__body { padding: 20px 12px; gap: 14px; }
     .product-guide__table { table-layout: auto; }
     .product-guide__table thead th { padding: 8px 3px; font-size: 9px; line-height: 1.35; letter-spacing: 0.04em; }
