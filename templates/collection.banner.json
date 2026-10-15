@@ -36,7 +36,7 @@
     "main": {
       "type": "main-collection",
       "settings": {
-        "enable_filtering": true
+        "enable_filtering": false
       }
     }
   },
