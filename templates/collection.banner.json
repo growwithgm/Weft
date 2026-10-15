@@ -9,10 +9,24 @@
         "tint_opacity": 30
       },
       "blocks": {
-        "title": { "type": "heading", "settings": { "heading": "Seasonal edit", "size": "h1" } },
-        "text": { "type": "text", "settings": { "text": "<p>A short line about this collection.</p>" } }
+        "title": {
+          "type": "heading",
+          "settings": {
+            "heading": "Seasonal edit",
+            "size": "h1"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>A short line about this collection.</p>"
+          }
+        }
       },
-      "block_order": ["title", "text"]
+      "block_order": [
+        "title",
+        "text"
+      ]
     },
     "banner": {
       "type": "collection-banner",
@@ -21,8 +35,14 @@
     },
     "main": {
       "type": "main-collection",
-      "settings": {}
+      "settings": {
+        "enable_filtering": true
+      }
     }
   },
-  "order": ["hero", "banner", "main"]
+  "order": [
+    "hero",
+    "banner",
+    "main"
+  ]
 }
