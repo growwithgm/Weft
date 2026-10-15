@@ -103,7 +103,9 @@
       "settings": {
         "add_page_link": true,
         "show_window": false,
-        "audience": "all"
+        "audience": "all",
+        "button_bg": "#25D366",
+        "button_icon": "#FFFFFF"
       }
     }
   },

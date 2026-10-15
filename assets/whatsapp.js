@@ -11,6 +11,7 @@ const TARGETS = [
   'shopify-accelerated-checkout-cart'
 ].join(',');
 const GAP = 8;
+const SHIFT = 12; // translateY of .wa[data-chat-overlap] / .wa[data-chat-hidden] in component-whatsapp.css
 
 class WaChat extends HTMLElement {
   connectedCallback() {
@@ -27,8 +28,10 @@ class WaChat extends HTMLElement {
     addEventListener('resize', this.check, { passive: true });
     this.mo = new MutationObserver(this.check);
     this.mo.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['hidden', 'class', 'open', 'style'] });
-    // Sliding bars (the mobile sticky bar) settle after a transition.
-    document.addEventListener('transitionend', this.check, { passive: true });
+    // Sliding bars (the mobile sticky bar) settle after a transition. The button's own step-aside
+    // transition is ignored, or every slide would trigger another check and it would blink forever.
+    this.onTransition = (e) => { if (!this.contains(e.target)) this.check(); };
+    document.addEventListener('transitionend', this.onTransition, { passive: true });
     this.check();
 
     if (!this.details) return;
@@ -47,7 +50,7 @@ class WaChat extends HTMLElement {
   disconnectedCallback() {
     removeEventListener('scroll', this.check);
     removeEventListener('resize', this.check);
-    document.removeEventListener('transitionend', this.check);
+    this.onTransition && document.removeEventListener('transitionend', this.onTransition);
     this.mo && this.mo.disconnect();
     this.onKey && document.removeEventListener('keydown', this.onKey);
     this.onClick && document.removeEventListener('click', this.onClick);
@@ -71,8 +74,12 @@ class WaChat extends HTMLElement {
   // True while a visible buy or checkout button overlaps the button's box (plus a small gap).
   guard() {
     if (!this.button || this.details?.open) return;
-    const box = this.button.getBoundingClientRect();
-    if (!box.width) return;
+    const rect = this.button.getBoundingClientRect();
+    if (!rect.width) return;
+    // While stepped aside or hidden the button sits SHIFT px lower (component-whatsapp.css). Measure
+    // where it normally sits, so stepping aside never clears the overlap and flips it back.
+    const shift = this.matches('[data-chat-overlap], [data-chat-hidden]') ? SHIFT : 0;
+    const box = { left: rect.left, right: rect.right, top: rect.top - shift, bottom: rect.bottom - shift };
     let hit = false;
     for (const el of document.querySelectorAll(TARGETS)) {
       if (this.contains(el)) continue;

@@ -23,10 +23,13 @@ function showLineError(line, message) {
 
 function change(line, quantity, focusId) {
   queue = queue.then(async () => {
-    const index = Number(line.dataset.line);
+    // Address the line by its key, not its position: an earlier change in the queue (a removal) can
+    // shift positions, and the index would then hit the next product.
+    const key = line.dataset.lineKey;
+    const target = key ? { id: key } : { line: Number(line.dataset.line) };
     line.setAttribute('aria-busy', 'true');
     try {
-      const cart = await cartRequest(`${W.routes.cartChange}.js`, { line: index, quantity });
+      const cart = await cartRequest(`${W.routes.cartChange}.js`, { ...target, quantity });
       announce(W.strings.cartUpdated || '');
       if (focusId) document.getElementById(focusId)?.focus();
       return cart;
@@ -61,6 +64,7 @@ document.addEventListener('click', (e) => {
   const line = lineOf(remove);
   if (!line) return;
   e.preventDefault();
+  clearTimeout(timer); // drop a pending quantity change so it can't land after the removal
   change(line, 0);
 });
 
