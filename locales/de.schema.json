@@ -918,6 +918,7 @@
     "show_shipping_calculator": "Versandkostenrechner anzeigen",
     "show_shipping_row": "Versandzeile anzeigen",
     "show_shop_pay_installments": "Shop Pay Installments anzeigen",
+    "show_sizes": "Größen anzeigen",
     "show_sku": "SKU anzeigen",
     "show_skus_to_wholesale_buyers": "SKUs für Großhandelskunden anzeigen",
     "show_social_media_links": "Social-Media-Links anzeigen",
@@ -956,6 +957,7 @@
     "sign_in_button_label": "Beschriftung des Anmelde-Buttons",
     "signup_heading": "Überschrift der Anmeldung",
     "size": "Größe",
+    "size_option_names": "Namen der Größenoption",
     "sizing": "Größen",
     "sku": "SKU",
     "slide": "Folie",
@@ -1681,6 +1683,12 @@
       },
       "product_cards": {
         "settings": {
+          "card_show_sizes": {
+            "info": "Zeigt die Werte der Größenoption unter dem Preis. Ausverkaufte Größen sind durchgestrichen."
+          },
+          "card_size_option_names": {
+            "info": "Namen durch Kommas trennen. Optionen mit diesen Namen werden als Größen-Chips angezeigt."
+          },
           "card_subtitle_metafield": {
             "info": "Namespace und Schlüssel eines einzeiligen Text-Metafelds."
           },

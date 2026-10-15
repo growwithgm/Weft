@@ -1271,5 +1271,9 @@
   "YouTube": "YouTube",
   "Zoom": "Zoom",
   "namespace.key, for example custom.material": "namespace.key, por exemplo custom.material",
-  "namespace.key, for example shopify.hair-type. Used instead of the values when set.": "namespace.key, por exemplo shopify.hair-type. Usado em vez dos valores quando definido."
+  "namespace.key, for example shopify.hair-type. Used instead of the values when set.": "namespace.key, por exemplo shopify.hair-type. Usado em vez dos valores quando definido.",
+  "Show sizes": "Mostrar tamanhos",
+  "Shows the values of the size option under the price. Sold-out sizes are crossed out.": "Mostra os valores da opção de tamanho abaixo do preço. Os tamanhos esgotados aparecem riscados.",
+  "Size option names": "Nomes da opção de tamanho",
+  "Separate names with commas. Options with these names show as size chips.": "Separe os nomes com vírgulas. As opções com estes nomes aparecem como etiquetas de tamanho."
 }

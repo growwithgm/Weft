@@ -918,6 +918,7 @@
     "show_shipping_calculator": "Mostrar calculadora de envio",
     "show_shipping_row": "Mostrar linha de envio",
     "show_shop_pay_installments": "Mostrar Shop Pay Installments",
+    "show_sizes": "Mostrar tamanhos",
     "show_sku": "Mostrar SKU",
     "show_skus_to_wholesale_buyers": "Mostrar SKUs aos compradores por grosso",
     "show_social_media_links": "Mostrar ligações das redes sociais",
@@ -956,6 +957,7 @@
     "sign_in_button_label": "Texto do botão de início de sessão",
     "signup_heading": "Título da subscrição",
     "size": "Tamanho",
+    "size_option_names": "Nomes da opção de tamanho",
     "sizing": "Tamanhos",
     "sku": "SKU",
     "slide": "Diapositivo",
@@ -1681,6 +1683,12 @@
       },
       "product_cards": {
         "settings": {
+          "card_show_sizes": {
+            "info": "Mostra os valores da opção de tamanho abaixo do preço. Os tamanhos esgotados aparecem riscados."
+          },
+          "card_size_option_names": {
+            "info": "Separe os nomes com vírgulas. As opções com estes nomes aparecem como etiquetas de tamanho."
+          },
           "card_subtitle_metafield": {
             "info": "Espaço de nomes e chave de um metacampo de texto de linha única."
           },

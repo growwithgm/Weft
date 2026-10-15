@@ -918,6 +918,7 @@
     "show_shipping_calculator": "Show shipping calculator",
     "show_shipping_row": "Show shipping row",
     "show_shop_pay_installments": "Show Shop Pay Installments",
+    "show_sizes": "Show sizes",
     "show_sku": "Show SKU",
     "show_skus_to_wholesale_buyers": "Show SKUs to wholesale buyers",
     "show_social_media_links": "Show social media links",
@@ -956,6 +957,7 @@
     "sign_in_button_label": "Sign-in button label",
     "signup_heading": "Signup heading",
     "size": "Size",
+    "size_option_names": "Size option names",
     "sizing": "Sizing",
     "sku": "SKU",
     "slide": "Slide",
@@ -1681,6 +1683,12 @@
       },
       "product_cards": {
         "settings": {
+          "card_show_sizes": {
+            "info": "Shows the values of the size option under the price. Sold-out sizes are crossed out."
+          },
+          "card_size_option_names": {
+            "info": "Separate names with commas. Options with these names show as size chips."
+          },
           "card_subtitle_metafield": {
             "info": "Namespace and key of a single-line text metafield."
           },

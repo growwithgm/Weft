@@ -918,6 +918,7 @@
     "show_shipping_calculator": "配送料計算ツールを表示する",
     "show_shipping_row": "配送の行を表示する",
     "show_shop_pay_installments": "Shop Pay Installmentsを表示する",
+    "show_sizes": "サイズを表示する",
     "show_sku": "SKUを表示する",
     "show_skus_to_wholesale_buyers": "卸売購入者にSKUを表示する",
     "show_social_media_links": "ソーシャルメディアのリンクを表示する",
@@ -956,6 +957,7 @@
     "sign_in_button_label": "ログインボタンのラベル",
     "signup_heading": "登録の見出し",
     "size": "サイズ",
+    "size_option_names": "サイズオプション名",
     "sizing": "サイズ",
     "sku": "SKU",
     "slide": "スライド",
@@ -1681,6 +1683,12 @@
       },
       "product_cards": {
         "settings": {
+          "card_show_sizes": {
+            "info": "価格の下にサイズオプションの値を表示します。売り切れのサイズには取り消し線が付きます。"
+          },
+          "card_size_option_names": {
+            "info": "名前はカンマで区切ります。これらの名前のオプションはサイズチップとして表示されます。"
+          },
           "card_subtitle_metafield": {
             "info": "単一行テキストのメタフィールドのネームスペースとキー。"
           },

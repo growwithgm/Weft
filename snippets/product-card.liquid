@@ -1,6 +1,6 @@
 {%- comment -%}
   Product card (brief §7.12). One file for retail and wholesale.
-  Retail: image (second image on hover), labels, title, price, swatches, rating, quick add.
+  Retail: image (second image on hover), labels, title, price, swatches, size chips, rating, quick add.
   Wholesale: same frame, "per piece" price with "from X" when tiers exist, rule chips, stock hint,
   "Order" action to the product page.
   Wholesale-only products (tag fallback) never render for retail visitors: the card outputs
@@ -61,6 +61,24 @@
         break
       endif
     endfor
+  endif
+
+  # Size chips: the values of the size option, with sold-out values marked across every colour.
+  assign size_option = nil
+  assign available_sizes = ''
+  if settings.card_show_sizes and settings.card_size_option_names != blank
+    assign size_names = settings.card_size_option_names | downcase | remove: ' ' | split: ','
+    for option in product.options_with_values
+      assign option_key = option.name | downcase | remove: ' '
+      if size_names contains option_key
+        assign size_option = option
+        break
+      endif
+    endfor
+    if size_option
+      assign size_key = 'option' | append: size_option.position
+      assign available_sizes = product.variants | where: 'available' | map: size_key
+    endif
   endif
 
   assign breaks = v.quantity_price_breaks
@@ -161,6 +179,23 @@
           </li>
         {%- endfor -%}
         {%- if swatch_option.values.size > 6 -%}<li class="card__swatches-more muted">+{{ swatch_option.values.size | minus: 6 }}</li>{%- endif -%}
+      </ul>
+    {%- endif -%}
+    {%- if size_option -%}
+      <ul class="card__sizes" role="list" aria-label="{{ size_option.name | escape }}">
+        {%- for value in size_option.values limit: 8 -%}
+          {%- liquid
+            assign size_available = false
+            if available_sizes contains value.name
+              assign size_available = true
+            endif
+          -%}
+          <li class="card-size{% unless size_available %} card-size--sold-out{% endunless %}">
+            {{- value | escape -}}
+            {%- unless size_available -%}<span class="visually-hidden">, {{ 'products.sold_out' | t }}</span>{%- endunless -%}
+          </li>
+        {%- endfor -%}
+        {%- if size_option.values.size > 8 -%}<li class="card__sizes-more muted">+{{ size_option.values.size | minus: 8 }}</li>{%- endif -%}
       </ul>
     {%- endif -%}
     {%- if wholesale -%}

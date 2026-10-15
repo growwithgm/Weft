@@ -155,6 +155,8 @@ export default [
       select('card_image_position', 'Image position', [['center', 'Center'], ['top', 'Top'], ['bottom', 'Bottom']], 'center'),
       select('card_hover', 'Additional images', [['none', 'None'], ['second_image', 'Second image on hover'], ['slideshow', 'Slideshow on hover']], 'second_image'),
       check('card_show_swatches', 'Show swatches', true),
+      check('card_show_sizes', 'Show sizes', false, 'Shows the values of the size option under the price. Sold-out sizes are crossed out.'),
+      text('card_size_option_names', 'Size option names', 'Size,Talla,Größe,Taille,Taglia,Maat,Tamanho,サイズ', 'Separate names with commas. Options with these names show as size chips.'),
       check('card_show_rating', 'Show rating', true),
       check('card_show_vendor', 'Show vendor'),
       check('card_show_subtitle', 'Show subtitle'),

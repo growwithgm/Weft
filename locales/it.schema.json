@@ -918,6 +918,7 @@
     "show_shipping_calculator": "Mostra il calcolatore di spedizione",
     "show_shipping_row": "Mostra la riga della spedizione",
     "show_shop_pay_installments": "Mostra Shop Pay Installments",
+    "show_sizes": "Mostra le taglie",
     "show_sku": "Mostra SKU",
     "show_skus_to_wholesale_buyers": "Mostra gli SKU agli acquirenti all'ingrosso",
     "show_social_media_links": "Mostra i link ai social media",
@@ -956,6 +957,7 @@
     "sign_in_button_label": "Etichetta del pulsante di accesso",
     "signup_heading": "Titolo dell'iscrizione",
     "size": "Dimensione",
+    "size_option_names": "Nomi dell'opzione taglia",
     "sizing": "Taglie",
     "sku": "SKU",
     "slide": "Slide",
@@ -1681,6 +1683,12 @@
       },
       "product_cards": {
         "settings": {
+          "card_show_sizes": {
+            "info": "Mostra i valori dell'opzione taglia sotto il prezzo. Le taglie esaurite sono barrate."
+          },
+          "card_size_option_names": {
+            "info": "Separa i nomi con virgole. Le opzioni con questi nomi vengono mostrate come etichette di taglia."
+          },
           "card_subtitle_metafield": {
             "info": "Spazio dei nomi e chiave di un metacampo di testo a riga singola."
           },

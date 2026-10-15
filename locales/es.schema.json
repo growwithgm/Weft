@@ -918,6 +918,7 @@
     "show_shipping_calculator": "Mostrar calculadora de envío",
     "show_shipping_row": "Mostrar fila de envío",
     "show_shop_pay_installments": "Mostrar Shop Pay Installments",
+    "show_sizes": "Mostrar tallas",
     "show_sku": "Mostrar SKU",
     "show_skus_to_wholesale_buyers": "Mostrar SKU a compradores mayoristas",
     "show_social_media_links": "Mostrar enlaces a redes sociales",
@@ -956,6 +957,7 @@
     "sign_in_button_label": "Texto del botón de inicio de sesión",
     "signup_heading": "Título de la suscripción",
     "size": "Tamaño",
+    "size_option_names": "Nombres de la opción de talla",
     "sizing": "Tallas",
     "sku": "SKU",
     "slide": "Diapositiva",
@@ -1681,6 +1683,12 @@
       },
       "product_cards": {
         "settings": {
+          "card_show_sizes": {
+            "info": "Muestra los valores de la opción de talla debajo del precio. Las tallas agotadas aparecen tachadas."
+          },
+          "card_size_option_names": {
+            "info": "Separa los nombres con comas. Las opciones con estos nombres se muestran como etiquetas de talla."
+          },
           "card_subtitle_metafield": {
             "info": "Espacio de nombres y clave de un metacampo de texto de una línea."
           },

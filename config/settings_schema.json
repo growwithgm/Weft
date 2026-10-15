@@ -834,6 +834,20 @@
       },
       {
         "type": "checkbox",
+        "id": "card_show_sizes",
+        "label": "t:labels.show_sizes",
+        "default": false,
+        "info": "t:text.settings_schema.product_cards.settings.card_show_sizes.info"
+      },
+      {
+        "type": "text",
+        "id": "card_size_option_names",
+        "label": "t:labels.size_option_names",
+        "default": "Size,Talla,Größe,Taille,Taglia,Maat,Tamanho,サイズ",
+        "info": "t:text.settings_schema.product_cards.settings.card_size_option_names.info"
+      },
+      {
+        "type": "checkbox",
         "id": "card_show_rating",
         "label": "t:labels.show_rating",
         "default": true
