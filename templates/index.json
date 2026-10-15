@@ -367,7 +367,7 @@
     "hero_banner": {
       "type": "image-banner",
       "settings": {
-        "image_desktop": "shopify://shop_images/Festive_Courtyard_Fashion_Glow.png",
+        "image_desktop": "shopify://shop_images/Festive_Elegance_in_Golden_Courtyard.png",
         "link": "shopify://collections/gn-new-in",
         "height": "adapt",
         "fixed_height_desktop": 600,
@@ -656,6 +656,7 @@
     "outerwear_banner": {
       "type": "image-banner",
       "settings": {
+        "image_desktop": "shopify://shop_images/Festive_Elegance_in_Bloom.png",
         "link": "shopify://collections/gn-outerwear",
         "height": "adapt",
         "fixed_height_desktop": 600,
@@ -747,6 +748,7 @@
     "holiday_banner": {
       "type": "image-banner",
       "settings": {
+        "image_desktop": "shopify://shop_images/Festive_Courtyard_Fashion_Glow_ac9c9b6c-4dcf-49c1-9c06-73a073555909.png",
         "link": "shopify://collections/gn-holiday",
         "height": "adapt",
         "fixed_height_desktop": 600,
