@@ -259,7 +259,8 @@
     "card_swatch_limit": 4,
     "card_title_style": "split",
     "card_title_hide": "ibBan ,Ibban Women's ,Women’s ,Women's ",
-    "card_price_bottom": false
+    "card_price_bottom": false,
+    "swatch_card_size": 20
   },
   "presets": {
     "Weft": {
