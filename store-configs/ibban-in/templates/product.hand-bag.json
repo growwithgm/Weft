@@ -124,57 +124,10 @@
           "settings": {}
         },
         "main-features": {
-          "type": "specifications",
+          "type": "custom-liquid",
           "settings": {
-            "heading": "Main Features",
-            "accordion": true,
-            "open": true,
-            "audience": "all"
-          },
-          "blocks": {
-            "row-fabric": {
-              "type": "_spec-row",
-              "settings": {
-                "label": "Fabric",
-                "value": "{{ product.metafields.custom.fabric.value }}"
-              }
-            },
-            "row-craft_work": {
-              "type": "_spec-row",
-              "settings": {
-                "label": "Craft / work",
-                "value": "{{ product.metafields.custom.craft_work.value }}"
-              }
-            },
-            "row-measurements": {
-              "type": "_spec-row",
-              "settings": {
-                "label": "Measurements",
-                "value": "{{ product.metafields.custom.measurements.value }}"
-              }
-            },
-            "row-model_size": {
-              "type": "_spec-row",
-              "settings": {
-                "label": "Model size",
-                "value": "{{ product.metafields.custom.model_size.value }}"
-              }
-            },
-            "row-care_instructions": {
-              "type": "_spec-row",
-              "settings": {
-                "label": "Care instructions",
-                "value": "{{ product.metafields.custom.care_instructions.value }}"
-              }
-            }
-          },
-          "block_order": [
-            "row-fabric",
-            "row-craft_work",
-            "row-measurements",
-            "row-model_size",
-            "row-care_instructions"
-          ]
+            "custom_liquid": "{%- liquid\n  assign p = product\n  assign intro = p.metafields.custom.caracteristicas_principales\n  assign fabric = p.metafields.shopify.fabric | metafield_text: field: 'label'\n  assign embroidery = p.metafields.custom.embroidery.value\n  assign color = p.metafields.shopify['color-pattern'] | metafield_text: field: 'label'\n  assign sizes = p.metafields.shopify['size'] | metafield_text: field: 'label'\n  for o in p.options_with_values\n    assign oname = o.name | downcase | strip\n    if color == blank and oname == 'color' or color == blank and oname == 'colour'\n      assign color = o.values | join: ', '\n    endif\n    if sizes == blank and oname == 'size'\n      assign sizes = o.values | join: ', '\n    endif\n  endfor\n  assign measurements = p.metafields.custom.measurements.value\n  assign care = p.metafields.custom.care_instructions.value\n-%}\n{%- if intro != blank or fabric != blank or embroidery != blank or color != blank or sizes != blank or measurements != blank or care != blank -%}\n<details class=\"accordion\" open>\n  <summary class=\"accordion__summary\"><span>Main Features</span><span class=\"accordion__icon accordion__icon--plus\" aria-hidden=\"true\"></span></summary>\n  <div class=\"accordion__content\">\n    {%- if intro != blank -%}<div class=\"rte\">{{ intro | metafield_tag }}</div>{%- endif -%}\n    <dl class=\"spec-list\">\n      {%- if fabric != blank -%}<div class=\"spec-list__row\"><dt>Fabric</dt><dd>{{ fabric }}</dd></div>{%- endif -%}\n      {%- if embroidery != blank -%}<div class=\"spec-list__row\"><dt>Embroidery</dt><dd>{{ embroidery }}</dd></div>{%- endif -%}\n      {%- if color != blank -%}<div class=\"spec-list__row\"><dt>Color</dt><dd>{{ color }}</dd></div>{%- endif -%}\n      {%- if sizes != blank -%}<div class=\"spec-list__row\"><dt>Sizes</dt><dd>{{ sizes }}</dd></div>{%- endif -%}\n      {%- if measurements != blank -%}<div class=\"spec-list__row\"><dt>Measurements</dt><dd>{{ measurements }}</dd></div>{%- endif -%}\n      {%- if care != blank -%}<div class=\"spec-list__row\"><dt>Care instructions</dt><dd>{{ care }}</dd></div>{%- endif -%}\n    </dl>\n  </div>\n</details>\n{%- endif -%}"
+          }
         },
         "size-chart": {
           "type": "product-guide",
@@ -183,6 +136,12 @@
             "icon": "ruler",
             "link_position": "picker",
             "image": "{{ product.metafields.custom.size_chart.value }}"
+          }
+        },
+        "size-ideal": {
+          "type": "custom-liquid",
+          "settings": {
+            "custom_liquid": "{%- assign best_for = product.metafields.custom.best_suited_for.value -%}\n{%- if best_for != blank -%}\n<div class=\"size-ideal\" style=\"border-top:1px solid rgba(0,0,0,.1);padding-top:14px;\">\n  <div style=\"font-size:13.5px;font-weight:600;margin-bottom:5px;\">This Size Is Ideal For:</div>\n  <div style=\"font-size:14px;opacity:.8;line-height:1.4;margin-bottom:10px;\">{{ best_for }}</div>\n  <p style=\"font-size:12px;opacity:.65;margin:0;line-height:1.5;\">Need help? Check the Size Guide above or <a href=\"https://wa.me/918802505786?text=Hi%2C%20I%20need%20help%20choosing%20the%20right%20size.\" target=\"_blank\" rel=\"noopener\" style=\"text-decoration:underline;\">contact us on WhatsApp</a>.</p>\n</div>\n{%- endif -%}"
           }
         }
       },
@@ -198,6 +157,7 @@
         "divider-0",
         "variant-picker",
         "size-chart",
+        "size-ideal",
         "divider-1",
         "buy-buttons",
         "message-2",
