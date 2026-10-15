@@ -21,7 +21,9 @@ class QuantityInput extends HTMLElement {
     this.input.addEventListener('blur', () => {
       const { value } = commitTyped(this.input.value, this.rule, { cap: this.cap });
       const floor = this.hasAttribute('data-allow-zero') ? 0 : this.rule.min;
-      this.set(Math.max(value, value === 0 ? floor : value), true);
+      // Only report a change when rounding altered the value; the browser already fired `change`
+      // for the typed value, and a spurious one would re-send the cart line on every blur.
+      this.set(Math.max(value, value === 0 ? floor : value));
     });
     this.input.addEventListener('keydown', (e) => {
       if (e.key === 'Enter') this.input.blur();
