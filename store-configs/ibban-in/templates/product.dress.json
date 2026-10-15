@@ -183,16 +183,6 @@
             "link_position": "picker",
             "image": "{{ product.metafields.custom.size_chart.value }}"
           }
-        },
-        "gift-message": {
-          "type": "custom-option",
-          "settings": {
-            "label": "Gift message (optional)",
-            "type": "textarea",
-            "required": false,
-            "max_length": 200,
-            "show_in_quick_add": false
-          }
         }
       },
       "block_order": [
@@ -208,7 +198,6 @@
         "variant-picker",
         "size-chart",
         "divider-1",
-        "gift-message",
         "buy-buttons",
         "message-2",
         "main-features",
