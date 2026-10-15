@@ -13,7 +13,10 @@
     - Column labels, unit and note are block settings, set once in the theme editor.
   When the table exists but the product has no Size option (so no picker line to hold the link),
   the link shows where this block is placed.
-  Size guide design (ibBan): desktop centered modal max 720px; mobile full screen, no horizontal scroll.
+  Size guide design (ibBan): desktop centered modal max 720px; mobile bottom sheet. No horizontal scroll:
+  the column widths are estimated from the longest heading word and the longest value (Jost metrics),
+  and when the normal table (sizes as rows) would not fit, a flipped table (measurements as rows,
+  sizes as columns) is shown instead. Phone and desktop decide separately.
 {%- endcomment -%}
 {%- liquid
   assign label = block.settings.label | default: 'products.guide'
@@ -23,7 +26,7 @@
 
   assign p = closest.product
   assign size_keys = 'size,sizes,taille,größe,talla,taglia,maat,tamanho' | split: ','
-  assign sc_columns = 'shoulder_across,bust_around,waist_around,hip_around,bottom_around,sleeve_length,total_length' | split: ','
+  assign sc_columns = 'shoulder_across,neck_width,armhole_around,bust_around,bust_relaxed_around,bust_stretched_around,waist_around,waist_relaxed_around,waist_stretched_around,hip_around,bottom_around,half_bottom_on_seam,sleeve_length,sleeve_length_from_neck,total_length' | split: ','
   assign has_size_option = false
   assign row_labels = ''
   assign active_cols = ''
@@ -57,6 +60,123 @@
   assign table_mode = ''
   if active_cols.size > 0
     assign table_mode = 'table'
+  endif
+
+  assign layout_m = 'std'
+  assign layout_d = 'std'
+  assign size_heading = block.settings.size_column_label | default: 'Size'
+  if table_mode != ''
+    assign row_chars = size_heading.size
+    for row_label in row_labels
+      capture rl
+        echo row_label
+      endcapture
+      assign rl = rl | strip
+      if rl.size > row_chars
+        assign row_chars = rl.size
+      endif
+    endfor
+    assign val_chars = 2
+    assign word_max = 0
+    assign col_need_d_max = 0
+    assign need_std_m = row_chars | times: 7.2 | plus: 7
+    for col in active_cols
+      assign col_setting = 'col_' | append: col
+      assign col_fallback = col | replace: '_', ' '
+      assign col_label = block.settings[col_setting] | default: col_fallback
+      assign col_words = col_label | split: ' '
+      assign lw = 0
+      for w in col_words
+        if w.size > lw
+          assign lw = w.size
+        endif
+      endfor
+      if lw > word_max
+        assign word_max = lw
+      endif
+      assign mf_key = 'sc_' | append: col
+      assign cv = 1
+      for v in p.metafields.custom[mf_key].value
+        assign vs = v | strip
+        if vs.size > cv
+          assign cv = vs.size
+        endif
+      endfor
+      if cv > val_chars
+        assign val_chars = cv
+      endif
+      assign w_m = lw | times: 7.0
+      assign w_v = cv | times: 6.6
+      if w_v > w_m
+        assign w_m = w_v
+      endif
+      assign need_std_m = need_std_m | plus: w_m | plus: 7
+      assign w_d = lw | times: 8.9
+      assign w_v = cv | times: 7.6
+      if w_v > w_d
+        assign w_d = w_v
+      endif
+      assign w_d = w_d | plus: 17
+      if w_d > col_need_d_max
+        assign col_need_d_max = w_d
+      endif
+    endfor
+
+    assign rot_cell_m = row_chars | times: 7.2
+    assign w_v = val_chars | times: 6.6
+    if w_v > rot_cell_m
+      assign rot_cell_m = w_v
+    endif
+    assign need_rot_m = rot_cell_m | plus: 7 | times: row_labels.size
+    assign w_m = word_max | times: 7.0 | plus: 7
+    assign need_rot_m = need_rot_m | plus: w_m
+    if need_std_m > 360 and need_rot_m < need_std_m
+      assign layout_m = 'rot'
+    endif
+
+    assign need_std_d = col_need_d_max | times: active_cols.size
+    if need_std_d > 530
+      assign rot_cell_d = row_chars | times: 8.6
+      assign w_v = val_chars | times: 7.6
+      if w_v > rot_cell_d
+        assign rot_cell_d = w_v
+      endif
+      assign need_rot_d = rot_cell_d | plus: 17 | times: row_labels.size
+      assign w_d = word_max | times: 8.9 | plus: 17
+      assign need_rot_d = need_rot_d | plus: w_d
+      assign need_std_d_total = need_std_d | plus: 96
+      if need_rot_d < need_std_d_total
+        assign layout_d = 'rot'
+      endif
+    endif
+
+    assign rot_group = row_labels.size
+    if layout_m == 'rot'
+      assign label_m = word_max | times: 7.0 | plus: 7
+      assign cell_m = rot_cell_m | plus: 7
+      assign per_m = 360 | minus: label_m | divided_by: cell_m | floor
+      if per_m < rot_group
+        assign rot_group = per_m
+      endif
+    endif
+    if layout_d == 'rot'
+      assign rot_cell_d = row_chars | times: 8.6
+      assign w_v = val_chars | times: 7.6
+      if w_v > rot_cell_d
+        assign rot_cell_d = w_v
+      endif
+      assign cell_d = rot_cell_d | plus: 17
+      assign label_d = word_max | times: 8.9 | plus: 17
+      assign per_d = 620 | minus: label_d | divided_by: cell_d | floor
+      if per_d < rot_group
+        assign rot_group = per_d
+      endif
+    endif
+    if rot_group < 2
+      assign rot_group = 2
+    endif
+    assign rot_groups = row_labels.size | times: 1.0 | divided_by: rot_group | ceil
+    assign rot_group = row_labels.size | times: 1.0 | divided_by: rot_groups | ceil
   endif
 
   assign link_position = block.settings.link_position
@@ -96,10 +216,12 @@
         <template data-deferred>
           <div class="product-guide__body">
             {%- if table_mode != '' -%}
+              {%- if layout_m == 'std' or layout_d == 'std' -%}
+              <div class="product-guide__scroll{% if layout_m != 'std' %} product-guide__scroll--no-mobile{% endif %}{% if layout_d != 'std' %} product-guide__scroll--no-desktop{% endif %}">
               <table class="product-guide__table{% if active_cols.size > 6 %} product-guide__table--dense{% endif %}">
                 <thead>
                   <tr>
-                    <th scope="col">{{ block.settings.size_column_label | default: 'Size' }}</th>
+                    <th scope="col">{{ size_heading }}</th>
                     {%- for col in active_cols -%}
                       {%- assign col_setting = 'col_' | append: col -%}
                       {%- assign col_fallback = col | replace: '_', ' ' -%}
@@ -122,6 +244,39 @@
                   {%- endfor -%}
                 </tbody>
               </table>
+              </div>
+              {%- endif -%}
+              {%- if layout_m == 'rot' or layout_d == 'rot' -%}
+              <div class="product-guide__scroll{% if layout_m != 'rot' %} product-guide__scroll--no-mobile{% endif %}{% if layout_d != 'rot' %} product-guide__scroll--no-desktop{% endif %}">
+              {%- for g in (1..rot_groups) -%}
+              {%- assign g_start = forloop.index0 | times: rot_group -%}
+              <table class="product-guide__table product-guide__table--rot">
+                <thead>
+                  <tr>
+                    <th scope="col">{{ size_heading }}</th>
+                    {%- for row_label in row_labels limit: rot_group offset: g_start -%}<th scope="col">{{ row_label }}</th>{%- endfor -%}
+                  </tr>
+                </thead>
+                <tbody>
+                  {%- for col in active_cols -%}
+                    {%- assign col_setting = 'col_' | append: col -%}
+                    {%- assign col_fallback = col | replace: '_', ' ' -%}
+                    {%- assign mf_key = 'sc_' | append: col -%}
+                    {%- assign col_values = p.metafields.custom[mf_key].value -%}
+                    <tr>
+                      <th scope="row">{{ block.settings[col_setting] | default: col_fallback }}</th>
+                      {%- for row_label in row_labels limit: rot_group offset: g_start -%}
+                        {%- assign v_idx = g_start | plus: forloop.index0 -%}
+                        {%- assign cell = col_values[v_idx] | strip -%}
+                        <td>{{ cell | default: '–' }}</td>
+                      {%- endfor -%}
+                    </tr>
+                  {%- endfor -%}
+                </tbody>
+              </table>
+              {%- endfor -%}
+              </div>
+              {%- endif -%}
               {%- if block.settings.table_note != blank -%}
                 <div class="product-guide__note rte">{{ block.settings.table_note }}</div>
               {%- endif -%}
@@ -193,6 +348,30 @@
   .product-guide__table tbody th { text-align: left; font-weight: 600; }
   .product-guide__table :is(th, td):nth-child(n + 3) { border-left: 1px solid var(--sg-line); }
   .product-guide__note { font-size: 13px; line-height: 1.5; color: var(--sg-muted); }
+
+  /* Only one of the two tables shows per device; the scroll box is a last-resort safety net */
+  .product-guide__scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  @media (min-width: 750px) { .product-guide__scroll--no-desktop { display: none; } }
+  @media (max-width: 749px) { .product-guide__scroll--no-mobile { display: none; } }
+
+  /* Flipped table: measurements as rows, sizes as columns */
+  .product-guide__table.product-guide__table--rot { table-layout: auto; }
+  .product-guide__table--rot + .product-guide__table--rot { margin-top: 18px; }
+  .product-guide__table.product-guide__table--rot thead th:first-child { width: 40%; text-align: left; }
+  .product-guide__table.product-guide__table--rot thead th + th { font-size: 15px; font-weight: 600; letter-spacing: 0; text-transform: none; color: var(--sg-ink); text-align: center; }
+  .product-guide__table.product-guide__table--rot tbody th { font-size: 11px; line-height: 1.4; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--sg-muted); text-align: left; white-space: normal; }
+  .product-guide__table.product-guide__table--rot tbody td { white-space: nowrap; }
+  @media (max-width: 749px) {
+    .product-guide__table.product-guide__table--rot thead th:first-child { width: 34%; }
+    .product-guide__table.product-guide__table--rot thead th + th { font-size: 13px; }
+    .product-guide__table.product-guide__table--rot tbody th { padding: 9px 6px 9px 0; font-size: 9px; line-height: 1.35; letter-spacing: 0.04em; }
+    .product-guide__table.product-guide__table--rot tbody td { padding: 9px 3px; font-size: 13px; }
+  }
+  @media (max-width: 389px) {
+    .product-guide__table.product-guide__table--rot thead th + th,
+    .product-guide__table.product-guide__table--rot tbody td { font-size: 12px; }
+    .product-guide__table.product-guide__table--rot tbody th { font-size: 8px; letter-spacing: 0.02em; }
+  }
   .product-guide__image { margin-block-end: 8px; }
 
   @media (min-width: 750px) and (max-width: 989px) {
@@ -361,15 +540,51 @@
     },
     {
       "type": "text",
+      "id": "col_neck_width",
+      "label": "Column heading: Neck Width",
+      "default": "Neck Width"
+    },
+    {
+      "type": "text",
+      "id": "col_armhole_around",
+      "label": "Column heading: Armhole Around",
+      "default": "Armhole Around"
+    },
+    {
+      "type": "text",
       "id": "col_bust_around",
       "label": "Column heading: Bust Around",
       "default": "Bust Around"
     },
     {
       "type": "text",
+      "id": "col_bust_relaxed_around",
+      "label": "Column heading: Bust Relaxed Around",
+      "default": "Bust Relaxed Around"
+    },
+    {
+      "type": "text",
+      "id": "col_bust_stretched_around",
+      "label": "Column heading: Bust Stretched Around",
+      "default": "Bust Stretched Around"
+    },
+    {
+      "type": "text",
       "id": "col_waist_around",
       "label": "Column heading: Waist Around",
       "default": "Waist Around"
+    },
+    {
+      "type": "text",
+      "id": "col_waist_relaxed_around",
+      "label": "Column heading: Waist Relaxed Around",
+      "default": "Waist Relaxed Around"
+    },
+    {
+      "type": "text",
+      "id": "col_waist_stretched_around",
+      "label": "Column heading: Waist Stretched Around",
+      "default": "Waist Stretched Around"
     },
     {
       "type": "text",
@@ -385,9 +600,21 @@
     },
     {
       "type": "text",
+      "id": "col_half_bottom_on_seam",
+      "label": "Column heading: Half Bottom on Seam",
+      "default": "Half Bottom on Seam"
+    },
+    {
+      "type": "text",
       "id": "col_sleeve_length",
       "label": "Column heading: Sleeve Length",
       "default": "Sleeve Length"
+    },
+    {
+      "type": "text",
+      "id": "col_sleeve_length_from_neck",
+      "label": "Column heading: Sleeve Length from Neck",
+      "default": "Sleeve Length from Neck"
     },
     {
       "type": "text",
