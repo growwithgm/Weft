@@ -368,7 +368,7 @@
       "type": "image-banner",
       "settings": {
         "image_desktop": "shopify://shop_images/Festive_Elegance_in_Golden_Courtyard.png",
-        "link": "shopify://collections/gn-new-in",
+        "link": "shopify://collections/new-arrivals",
         "height": "adapt",
         "fixed_height_desktop": 600,
         "fixed_height_mobile": 350,
@@ -532,7 +532,7 @@
       "settings": {
         "title": "New in",
         "heading_align": "start",
-        "collection": "gn-new-in",
+        "collection": "new-arrivals",
         "products_to_show": 8,
         "show_view_all": true,
         "layout": "carousel",
@@ -556,85 +556,26 @@
         "c01": {
           "type": "_collection-tile",
           "settings": {
-            "collection": "gn-long-dresses"
-          },
-          "blocks": {}
+            "collection": "dresses"
+          }
         },
         "c02": {
           "type": "_collection-tile",
           "settings": {
-            "collection": "gn-short-dresses"
-          },
-          "blocks": {}
+            "collection": "long-tunic"
+          }
         },
         "c03": {
           "type": "_collection-tile",
           "settings": {
-            "collection": "gn-long-tunics"
-          },
-          "blocks": {}
-        },
-        "c04": {
-          "type": "_collection-tile",
-          "settings": {
-            "collection": "gn-short-tunics"
-          },
-          "blocks": {}
-        },
-        "c05": {
-          "type": "_collection-tile",
-          "settings": {
-            "collection": "gn-long-coats"
-          },
-          "blocks": {}
-        },
-        "c06": {
-          "type": "_collection-tile",
-          "settings": {
-            "collection": "gn-jackets"
-          },
-          "blocks": {}
-        },
-        "c07": {
-          "type": "_collection-tile",
-          "settings": {
-            "collection": "gn-gilets"
-          },
-          "blocks": {}
-        },
-        "c08": {
-          "type": "_collection-tile",
-          "settings": {
-            "collection": "gn-holiday"
-          },
-          "blocks": {}
-        },
-        "c09": {
-          "type": "_collection-tile",
-          "settings": {
-            "collection": "gn-swimwear"
-          },
-          "blocks": {}
-        },
-        "c10": {
-          "type": "_collection-tile",
-          "settings": {
-            "collection": "gn-bags"
-          },
-          "blocks": {}
+            "collection": "hand-bags"
+          }
         }
       },
       "block_order": [
         "c01",
         "c02",
-        "c03",
-        "c04",
-        "c05",
-        "c06",
-        "c07",
-        "c08",
-        "c09",
-        "c10"
+        "c03"
       ],
       "settings": {
         "title": "Shop by category",
@@ -643,7 +584,7 @@
         "button_link": "",
         "button_style": "secondary",
         "layout": "grid",
-        "columns": 4,
+        "columns": 3,
         "columns_mobile": "2",
         "use_product_image": true,
         "circle_image": false,
@@ -657,7 +598,7 @@
       "type": "image-banner",
       "settings": {
         "image_desktop": "shopify://shop_images/Festive_Elegance_in_Bloom.png",
-        "link": "shopify://collections/gn-outerwear",
+        "link": "shopify://collections/dresses",
         "height": "adapt",
         "fixed_height_desktop": 600,
         "fixed_height_mobile": 350,
@@ -675,9 +616,9 @@
     "outerwear_row": {
       "type": "featured-collection",
       "settings": {
-        "title": "Coats & jackets",
+        "title": "Dresses",
         "heading_align": "start",
-        "collection": "gn-outerwear",
+        "collection": "dresses",
         "products_to_show": 8,
         "show_view_all": true,
         "layout": "carousel",
@@ -742,14 +683,15 @@
         "media_width": 55,
         "text_align": "start",
         "color_scheme": "scheme-5",
-        "only_content_color_scheme": false
+        "only_content_color_scheme": false,
+        "image": "shopify://shop_images/HAND_embd.png"
       }
     },
     "holiday_banner": {
       "type": "image-banner",
       "settings": {
         "image_desktop": "shopify://shop_images/Festive_Courtyard_Fashion_Glow_ac9c9b6c-4dcf-49c1-9c06-73a073555909.png",
-        "link": "shopify://collections/gn-holiday",
+        "link": "shopify://collections/clothing",
         "height": "adapt",
         "fixed_height_desktop": 600,
         "fixed_height_mobile": 350,
@@ -767,9 +709,9 @@
     "holiday_row": {
       "type": "featured-collection",
       "settings": {
-        "title": "Holiday",
+        "title": "Hand Bags",
         "heading_align": "start",
-        "collection": "gn-holiday",
+        "collection": "hand-bags",
         "products_to_show": 8,
         "show_view_all": true,
         "layout": "carousel",
@@ -838,7 +780,8 @@
         "color_scheme": "scheme-4",
         "text_color": "#ffffff",
         "tint_color": "#000000",
-        "tint_opacity": 30
+        "tint_opacity": 30,
+        "poster": "shopify://shop_images/ibban-brand-story-poster.jpg"
       }
     },
     "trust_strip": {
@@ -878,9 +821,9 @@
           "type": "_icon-item",
           "settings": {
             "icon": "return",
-            "heading": "Simple returns",
-            "text": "<p>Full details on our returns page</p>",
-            "link": "/pages/return-and-refund-policy"
+            "heading": "Damaged or wrong item?",
+            "text": "<p>We replace it or refund you in full</p>",
+            "link": "/pages/refund-policy"
           },
           "blocks": {}
         }
