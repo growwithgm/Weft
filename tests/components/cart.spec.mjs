@@ -59,9 +59,25 @@ export const tests = {
     await p.fill('#CartQty-page-1', '3');
     await p.$eval('#CartQty-page-1', (i) => i.dispatchEvent(new Event('change', { bubbles: true })));
     await eventually(() => document.querySelector('[data-total]').textContent === '€60.00', 'page re-rendered from the section');
-    expect(JSON.stringify({ line: body.line, quantity: body.quantity, sections: body.sections }), 'request').toBe('{"line":1,"quantity":3,"sections":"main-cart"}');
+    // The line is addressed by its key, so an earlier removal can't shift it onto another product.
+    expect(JSON.stringify({ id: body.id, line: body.line, quantity: body.quantity, sections: body.sections }), 'request').toBe('{"id":"k1","quantity":3,"sections":"main-cart"}');
     expect(body.sections_url, 'sections_url').toBe('/cart');
     await eventually(() => document.activeElement && document.activeElement.id === 'CartQty-page-1', 'focus returns to the quantity field');
+  },
+
+  async 'removing a line right after a quantity edit sends only the removal'({ page: p, base, expect, eventually }) {
+    const bodies = [];
+    await p.route('**/cart/change.js', (r) => {
+      bodies.push(JSON.parse(r.request().postData()));
+      r.fulfill({ contentType: 'application/json', body: JSON.stringify({ item_count: 0, items: [], sections: { 'main-cart': page({ qty: 0, total: '€0.00' }) } }) });
+    });
+    await open(p, base, page());
+    await p.fill('#CartQty-page-1', '3');
+    await p.$eval('#CartQty-page-1', (i) => i.dispatchEvent(new Event('change', { bubbles: true })));
+    await p.click('[data-line-remove]');
+    await eventually(() => document.querySelector('[data-total]').textContent === '€0.00', 'page re-rendered after the removal');
+    await p.waitForTimeout(500); // past the 300 ms quantity debounce
+    expect(JSON.stringify(bodies.map((b) => ({ id: b.id, quantity: b.quantity }))), 'requests').toBe('[{"id":"k1","quantity":0}]');
   },
 
   async 'Shopify errors show on the line and restore the previous quantity'({ page: p, base, expect, eventually }) {
