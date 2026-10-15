@@ -101,6 +101,7 @@
     "badge_3_text": "Testo del badge 3",
     "badges": "Badge",
     "bag": "Borsa",
+    "bag_icon_on_the_image_with_size_buttons": "Icona borsa sull'immagine, con pulsanti taglia",
     "banners": "Banner",
     "barcode": "Codice a barre",
     "base_notes": "Note di fondo",
@@ -283,6 +284,7 @@
     "dropdown_choices": "Scelte del menu a discesa",
     "dropdown_options": "Opzioni del menu a discesa",
     "each_one_names_the_product_it_is_about": "Ognuna indica il prodotto a cui si riferisce.",
+    "elongated_5_7": "Allungato (5:7)",
     "email": "Email",
     "email_signup": "Iscrizione via email",
     "empty_cart_link": "Link del carrello vuoto",
@@ -344,6 +346,7 @@
     "from_1440_px_wide": "Da 1440 px di larghezza.",
     "full_list": "Elenco completo",
     "full_list_label": "Etichetta dell'elenco completo",
+    "full_product_title": "Titolo completo del prodotto",
     "full_screen": "Schermo intero",
     "full_width": "Larghezza intera",
     "gallery": "Galleria",
@@ -568,6 +571,7 @@
     "months": "Mesi",
     "multi_column": "Più colonne",
     "name": "Nome",
+    "name_after_the_dash_the_rest_as_a_second_line": "Nome dopo il trattino, il resto su una seconda riga",
     "namespace_key_for_example_custom_material": "namespace.key, ad esempio custom.material",
     "narrow": "Stretto",
     "narrow_5_of_12_columns": "Stretta (5 colonne su 12)",
@@ -957,6 +961,7 @@
     "sign_in_button_label": "Etichetta del pulsante di accesso",
     "signup_heading": "Titolo dell'iscrizione",
     "size": "Dimensione",
+    "size_buttons_on_hover": "Pulsanti taglia al passaggio del mouse",
     "size_option_names": "Nomi dell'opzione taglia",
     "sizing": "Taglie",
     "sku": "SKU",
@@ -1019,6 +1024,7 @@
     "summary_position": "Posizione del riepilogo",
     "swatch_content": "Contenuto del campione",
     "swatches": "Campioni",
+    "swatches_shown": "Campioni mostrati",
     "swipe_tiles_on_mobile": "Scorri i riquadri su dispositivi mobili",
     "switch": "Interruttore",
     "tab": "Scheda",
@@ -1158,6 +1164,7 @@
     "wide_content": "Contenuto largo",
     "wide_promotion": "Promozione larga",
     "width": "Larghezza",
+    "words_to_hide_in_titles": "Parole da nascondere nei titoli",
     "words_to_show": "Parole da mostrare",
     "worldwide": "In tutto il mondo",
     "write_a_review_label": "Etichetta \"Scrivi una recensione\"",
@@ -1692,8 +1699,20 @@
           "card_subtitle_metafield": {
             "info": "Spazio dei nomi e chiave di un metacampo di testo a riga singola."
           },
+          "card_swatch_limit": {
+            "info": "I colori in più appaiono come \"+2\". Sugli schermi grandi, un clic su un campione mostra quel colore."
+          },
+          "card_title_hide": {
+            "info": "Separale con virgole, ad esempio il nome del tuo brand. La pagina prodotto mantiene il titolo completo."
+          },
+          "card_title_style": {
+            "info": "Per titoli come \"Abito lungo in cotone – Sona\". I titoli senza trattino appaiono per intero."
+          },
           "highlighted_products": {
             "info": "Le sezioni delle collezioni possono mettere in evidenza i prodotti con un tag."
+          },
+          "quick_add_style_desktop": {
+            "info": "I pulsanti taglia aggiungono la taglia scelta direttamente al carrello."
           }
         }
       },

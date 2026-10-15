@@ -1275,5 +1275,16 @@
   "Show sizes": "Mostra le taglie",
   "Shows the values of the size option under the price. Sold-out sizes are crossed out.": "Mostra i valori dell'opzione taglia sotto il prezzo. Le taglie esaurite sono barrate.",
   "Size option names": "Nomi dell'opzione taglia",
-  "Separate names with commas. Options with these names show as size chips.": "Separa i nomi con virgole. Le opzioni con questi nomi vengono mostrate come etichette di taglia."
+  "Separate names with commas. Options with these names show as size chips.": "Separa i nomi con virgole. Le opzioni con questi nomi vengono mostrate come etichette di taglia.",
+  "Elongated (5:7)": "Allungato (5:7)",
+  "Swatches shown": "Campioni mostrati",
+  "Extra colors show as \"+2\". On large screens a swatch click shows that color.": "I colori in più appaiono come \"+2\". Sugli schermi grandi, un clic su un campione mostra quel colore.",
+  "Name after the dash, the rest as a second line": "Nome dopo il trattino, il resto su una seconda riga",
+  "Full product title": "Titolo completo del prodotto",
+  "For titles like \"Cotton tiered maxi dress – Sona\". Titles without a dash show in full.": "Per titoli come \"Abito lungo in cotone – Sona\". I titoli senza trattino appaiono per intero.",
+  "Words to hide in titles": "Parole da nascondere nei titoli",
+  "Separate with commas, for example your brand name. The product page keeps the full title.": "Separale con virgole, ad esempio il nome del tuo brand. La pagina prodotto mantiene il titolo completo.",
+  "Bag icon on the image, with size buttons": "Icona borsa sull'immagine, con pulsanti taglia",
+  "Size buttons on hover": "Pulsanti taglia al passaggio del mouse",
+  "Size buttons add the chosen size straight to the cart.": "I pulsanti taglia aggiungono la taglia scelta direttamente al carrello."
 }

@@ -444,7 +444,11 @@
     },
     "quantity_rules": "Min. {{ min }}, lots de {{ increment }}",
     "quick_add": {
+      "add_one_size": "Ajouter au panier · Taille unique",
       "choose_options": "Choisir les options",
+      "choose_size": "Choisissez une taille à ajouter",
+      "one_size": "Taille unique",
+      "quick_add": "Ajout rapide",
       "view_details": "Voir tous les détails"
     },
     "rating": {

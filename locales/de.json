@@ -444,7 +444,11 @@
     },
     "quantity_rules": "Min. {{ min }}, in {{ increment }}er-Packs",
     "quick_add": {
+      "add_one_size": "In den Warenkorb · Einheitsgröße",
       "choose_options": "Optionen wählen",
+      "choose_size": "Größe wählen und hinzufügen",
+      "one_size": "Einheitsgröße",
+      "quick_add": "Schnell hinzufügen",
       "view_details": "Alle Details ansehen"
     },
     "rating": {

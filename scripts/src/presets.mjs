@@ -50,7 +50,7 @@ export const weft = {
   radius_drawer: 16,
   radius_modal: 16,
   accordion_icon: 'plus',
-  card_ratio: 'portrait',
+  card_ratio: 'elongated',
   card_fit: 'cover',
   swatch_product_style: 'variant_image',
   swatch_product_shape: 'square',

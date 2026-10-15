@@ -101,6 +101,7 @@
     "badge_3_text": "Texto do selo 3",
     "badges": "Selos",
     "bag": "Saco",
+    "bag_icon_on_the_image_with_size_buttons": "Ícone de saco na imagem, com botões de tamanho",
     "banners": "Faixas",
     "barcode": "Código de barras",
     "base_notes": "Notas de fundo",
@@ -283,6 +284,7 @@
     "dropdown_choices": "Opções do menu pendente",
     "dropdown_options": "Opções do menu pendente",
     "each_one_names_the_product_it_is_about": "Cada uma indica o produto a que se refere.",
+    "elongated_5_7": "Alongado (5:7)",
     "email": "E-mail",
     "email_signup": "Subscrição de e-mail",
     "empty_cart_link": "Ligação do carrinho vazio",
@@ -344,6 +346,7 @@
     "from_1440_px_wide": "A partir de 1440 px de largura.",
     "full_list": "Lista completa",
     "full_list_label": "Título da lista completa",
+    "full_product_title": "Título completo do produto",
     "full_screen": "Ecrã inteiro",
     "full_width": "Largura total",
     "gallery": "Galeria",
@@ -568,6 +571,7 @@
     "months": "Meses",
     "multi_column": "Várias colunas",
     "name": "Nome",
+    "name_after_the_dash_the_rest_as_a_second_line": "Nome depois do travessão, o resto numa segunda linha",
     "namespace_key_for_example_custom_material": "namespace.key, por exemplo custom.material",
     "narrow": "Estreito",
     "narrow_5_of_12_columns": "Estreita (5 de 12 colunas)",
@@ -957,6 +961,7 @@
     "sign_in_button_label": "Texto do botão de início de sessão",
     "signup_heading": "Título da subscrição",
     "size": "Tamanho",
+    "size_buttons_on_hover": "Botões de tamanho ao passar o cursor",
     "size_option_names": "Nomes da opção de tamanho",
     "sizing": "Tamanhos",
     "sku": "SKU",
@@ -1019,6 +1024,7 @@
     "summary_position": "Posição do resumo",
     "swatch_content": "Conteúdo da amostra",
     "swatches": "Amostras",
+    "swatches_shown": "Amostras visíveis",
     "swipe_tiles_on_mobile": "Deslizar mosaicos no telemóvel",
     "switch": "Interruptor",
     "tab": "Separador",
@@ -1158,6 +1164,7 @@
     "wide_content": "Conteúdo largo",
     "wide_promotion": "Promoção larga",
     "width": "Largura",
+    "words_to_hide_in_titles": "Palavras a ocultar nos títulos",
     "words_to_show": "Palavras a mostrar",
     "worldwide": "Todo o mundo",
     "write_a_review_label": "Texto de \"Escrever uma avaliação\"",
@@ -1692,8 +1699,20 @@
           "card_subtitle_metafield": {
             "info": "Espaço de nomes e chave de um metacampo de texto de linha única."
           },
+          "card_swatch_limit": {
+            "info": "As cores adicionais aparecem como \"+2\". Em ecrãs grandes, clicar numa amostra mostra essa cor."
+          },
+          "card_title_hide": {
+            "info": "Separe com vírgulas, por exemplo o nome da sua marca. A página do produto mantém o título completo."
+          },
+          "card_title_style": {
+            "info": "Para títulos como \"Vestido comprido de algodão – Sona\". Os títulos sem travessão aparecem completos."
+          },
           "highlighted_products": {
             "info": "As secções de coleção podem destacar produtos com uma etiqueta."
+          },
+          "quick_add_style_desktop": {
+            "info": "Os botões de tamanho adicionam o tamanho escolhido diretamente ao carrinho."
           }
         }
       },

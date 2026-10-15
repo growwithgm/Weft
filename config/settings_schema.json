@@ -766,6 +766,10 @@
           {
             "value": "landscape",
             "label": "t:labels.landscape_4_3"
+          },
+          {
+            "value": "elongated",
+            "label": "t:labels.elongated_5_7"
           }
         ],
         "default": "portrait"
@@ -833,10 +837,20 @@
         "default": true
       },
       {
+        "type": "range",
+        "id": "card_swatch_limit",
+        "label": "t:labels.swatches_shown",
+        "min": 2,
+        "max": 10,
+        "step": 1,
+        "default": 4,
+        "info": "t:text.settings_schema.product_cards.settings.card_swatch_limit.info"
+      },
+      {
         "type": "checkbox",
         "id": "card_show_sizes",
         "label": "t:labels.show_sizes",
-        "default": false,
+        "default": true,
         "info": "t:text.settings_schema.product_cards.settings.card_show_sizes.info"
       },
       {
@@ -845,6 +859,29 @@
         "label": "t:labels.size_option_names",
         "default": "Size,Talla,Größe,Taille,Taglia,Maat,Tamanho,サイズ",
         "info": "t:text.settings_schema.product_cards.settings.card_size_option_names.info"
+      },
+      {
+        "type": "select",
+        "id": "card_title_style",
+        "label": "t:labels.title",
+        "options": [
+          {
+            "value": "split",
+            "label": "t:labels.name_after_the_dash_the_rest_as_a_second_line"
+          },
+          {
+            "value": "full",
+            "label": "t:labels.full_product_title"
+          }
+        ],
+        "default": "split",
+        "info": "t:text.settings_schema.product_cards.settings.card_title_style.info"
+      },
+      {
+        "type": "text",
+        "id": "card_title_hide",
+        "label": "t:labels.words_to_hide_in_titles",
+        "info": "t:text.settings_schema.product_cards.settings.card_title_hide.info"
       },
       {
         "type": "checkbox",
@@ -911,6 +948,10 @@
         "label": "t:labels.style_on_mobile",
         "options": [
           {
+            "value": "image_icon",
+            "label": "t:labels.bag_icon_on_the_image_with_size_buttons"
+          },
+          {
             "value": "icon",
             "label": "t:labels.icon_button"
           },
@@ -923,13 +964,17 @@
             "label": "t:labels.hidden"
           }
         ],
-        "default": "text"
+        "default": "image_icon"
       },
       {
         "type": "select",
         "id": "quick_add_style_desktop",
         "label": "t:labels.style_on_large_screens",
         "options": [
+          {
+            "value": "sizes",
+            "label": "t:labels.size_buttons_on_hover"
+          },
           {
             "value": "text",
             "label": "t:labels.text_link"
@@ -943,7 +988,8 @@
             "label": "t:labels.button_on_hover"
           }
         ],
-        "default": "text"
+        "default": "sizes",
+        "info": "t:text.settings_schema.product_cards.settings.quick_add_style_desktop.info"
       },
       {
         "type": "checkbox",

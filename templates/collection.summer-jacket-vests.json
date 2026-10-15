@@ -77,7 +77,7 @@
       "disabled": true,
       "settings": {
         "show_title": true,
-        "show_count": true,
+        "show_count": false,
         "show_description": true,
         "text_align": "start",
         "image_style": "beside",

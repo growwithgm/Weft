@@ -101,6 +101,7 @@
     "badge_3_text": "Text von Badge 3",
     "badges": "Badges",
     "bag": "Tasche",
+    "bag_icon_on_the_image_with_size_buttons": "Taschensymbol auf dem Bild, mit Größen-Schaltflächen",
     "banners": "Banner",
     "barcode": "Barcode",
     "base_notes": "Basisnoten",
@@ -283,6 +284,7 @@
     "dropdown_choices": "Dropdown-Auswahl",
     "dropdown_options": "Dropdown-Optionen",
     "each_one_names_the_product_it_is_about": "Jede nennt das Produkt, um das es geht.",
+    "elongated_5_7": "Gestreckt (5:7)",
     "email": "E-Mail",
     "email_signup": "E-Mail-Anmeldung",
     "empty_cart_link": "Link bei leerem Warenkorb",
@@ -344,6 +346,7 @@
     "from_1440_px_wide": "Ab 1440 px Breite.",
     "full_list": "Vollständige Liste",
     "full_list_label": "Beschriftung der vollständigen Liste",
+    "full_product_title": "Vollständiger Produkttitel",
     "full_screen": "Vollbild",
     "full_width": "Volle Breite",
     "gallery": "Galerie",
@@ -568,6 +571,7 @@
     "months": "Monate",
     "multi_column": "Mehrspaltig",
     "name": "Name",
+    "name_after_the_dash_the_rest_as_a_second_line": "Name nach dem Bindestrich, der Rest in einer zweiten Zeile",
     "namespace_key_for_example_custom_material": "namespace.key, zum Beispiel custom.material",
     "narrow": "Schmal",
     "narrow_5_of_12_columns": "Schmal (5 von 12 Spalten)",
@@ -957,6 +961,7 @@
     "sign_in_button_label": "Beschriftung des Anmelde-Buttons",
     "signup_heading": "Überschrift der Anmeldung",
     "size": "Größe",
+    "size_buttons_on_hover": "Größen-Schaltflächen beim Überfahren",
     "size_option_names": "Namen der Größenoption",
     "sizing": "Größen",
     "sku": "SKU",
@@ -1019,6 +1024,7 @@
     "summary_position": "Position der Zusammenfassung",
     "swatch_content": "Inhalt des Farbfelds",
     "swatches": "Farbfelder",
+    "swatches_shown": "Angezeigte Farbfelder",
     "swipe_tiles_on_mobile": "Kacheln auf Mobilgeräten wischen",
     "switch": "Schalter",
     "tab": "Tab",
@@ -1158,6 +1164,7 @@
     "wide_content": "Breiter Inhalt",
     "wide_promotion": "Breite Promotion",
     "width": "Breite",
+    "words_to_hide_in_titles": "In Titeln ausgeblendete Wörter",
     "words_to_show": "Anzuzeigende Wörter",
     "worldwide": "Weltweit",
     "write_a_review_label": "Beschriftung für „Rezension schreiben“",
@@ -1692,8 +1699,20 @@
           "card_subtitle_metafield": {
             "info": "Namespace und Schlüssel eines einzeiligen Text-Metafelds."
           },
+          "card_swatch_limit": {
+            "info": "Weitere Farben erscheinen als \"+2\". Auf großen Bildschirmen zeigt ein Klick auf ein Farbfeld diese Farbe."
+          },
+          "card_title_hide": {
+            "info": "Durch Kommas trennen, zum Beispiel deinen Markennamen. Die Produktseite zeigt weiterhin den vollständigen Titel."
+          },
+          "card_title_style": {
+            "info": "Für Titel wie \"Baumwoll-Maxikleid – Sona\". Titel ohne Bindestrich erscheinen vollständig."
+          },
           "highlighted_products": {
             "info": "Kollektionsabschnitte können Produkte mit einem Tag hervorheben."
+          },
+          "quick_add_style_desktop": {
+            "info": "Größen-Schaltflächen legen die gewählte Größe direkt in den Warenkorb."
           }
         }
       },

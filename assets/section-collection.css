@@ -24,16 +24,24 @@
 
   /* Toolbar */
   .collection { padding-block: 16px var(--section-gap); }
-  .collection__toolbar { display: flex; align-items: center; gap: 12px 16px; flex-wrap: wrap; margin-block-end: 20px; }
-  .collection__count { margin: 0; font-size: var(--t-14); margin-inline-end: auto; }
-  .collection__filter-toggle { min-height: 44px; padding-inline: 16px; gap: 8px; }
-  .collection__sort { display: flex; align-items: center; gap: 8px; }
-  .collection__sort-label { font-size: var(--t-14); white-space: nowrap; }
-  .collection__sort-select { min-height: 44px; width: auto; }
+  .collection__toolbar { display: flex; align-items: center; gap: 12px 16px; flex-wrap: wrap; margin-block-end: 24px; padding-block: 12px; border-block: 1px solid var(--c-line); }
+  .collection__count { margin: 0; font-size: var(--t-15); margin-inline-end: auto; }
+  .collection__count--small { display: none; }
+  .collection__toolbar { --toolbar-line: color-mix(in srgb, var(--c-fg) 18%, var(--c-bg)); }
+  .collection__filter-toggle { min-height: 44px; padding-inline: 18px; gap: 8px; border-radius: 999px; border-color: var(--toolbar-line); font-weight: var(--fw-body); }
+  .collection__sort { display: flex; align-items: center; gap: 10px; }
+  .collection__sort-label { font-size: var(--t-15); color: var(--c-muted); white-space: nowrap; }
+  .collection__sort-select { min-height: 44px; width: auto; border-radius: 999px; border-color: var(--toolbar-line); padding-inline: 18px 40px; background-position: calc(100% - 20px) 50%, calc(100% - 15px) 50%; }
   .collection__layout-toggle { display: flex; gap: 2px; }
   .collection__layout-toggle [aria-pressed='true'] { background: var(--c-surface); }
   @media (max-width: 749px) {
-    .collection__count { order: 3; width: 100%; }
+    .collection__count--small { display: block; margin-block-end: 10px; font-size: var(--t-13); }
+    .collection__count--large { display: none; }
+    .collection__toolbar { gap: 8px; padding-block: 8px; border-block-start: 0; flex-wrap: nowrap; }
+    .collection__toolbar--sticky { position: sticky; inset-block-start: 0; z-index: 4; background: var(--c-bg); }
+    body:has(.site-header[data-sticky]) .collection__toolbar--sticky { inset-block-start: var(--header-height, 0px); }
+    .collection__filter-toggle, .collection__sort { flex: 1 1 0; min-width: 0; justify-content: center; }
+    .collection__sort-select { width: 100%; }
     .collection__sort-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
   }
 

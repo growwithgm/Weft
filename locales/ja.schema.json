@@ -101,6 +101,7 @@
     "badge_3_text": "バッジ3のテキスト",
     "badges": "バッジ",
     "bag": "バッグ",
+    "bag_icon_on_the_image_with_size_buttons": "画像上のバッグアイコン（サイズボタン付き）",
     "banners": "バナー",
     "barcode": "バーコード",
     "base_notes": "ベースノート",
@@ -283,6 +284,7 @@
     "dropdown_choices": "ドロップダウンの選択肢",
     "dropdown_options": "ドロップダウンのオプション",
     "each_one_names_the_product_it_is_about": "それぞれ対象となる商品名が表示されます。",
+    "elongated_5_7": "縦長（5:7）",
     "email": "メール",
     "email_signup": "メール登録",
     "empty_cart_link": "空のカートのリンク",
@@ -344,6 +346,7 @@
     "from_1440_px_wide": "幅1440px以上で適用されます。",
     "full_list": "全リスト",
     "full_list_label": "全リストのラベル",
+    "full_product_title": "商品タイトル全体",
     "full_screen": "全画面",
     "full_width": "全幅",
     "gallery": "ギャラリー",
@@ -568,6 +571,7 @@
     "months": "か月",
     "multi_column": "マルチカラム",
     "name": "名前",
+    "name_after_the_dash_the_rest_as_a_second_line": "ダッシュの後を名前、残りを2行目に表示",
     "namespace_key_for_example_custom_material": "namespace.key (例: custom.material)",
     "narrow": "狭い",
     "narrow_5_of_12_columns": "狭い (12列中5列)",
@@ -957,6 +961,7 @@
     "sign_in_button_label": "ログインボタンのラベル",
     "signup_heading": "登録の見出し",
     "size": "サイズ",
+    "size_buttons_on_hover": "ホバー時にサイズボタン",
     "size_option_names": "サイズオプション名",
     "sizing": "サイズ",
     "sku": "SKU",
@@ -1019,6 +1024,7 @@
     "summary_position": "サマリーの位置",
     "swatch_content": "スウォッチの内容",
     "swatches": "スウォッチ",
+    "swatches_shown": "表示するスウォッチ数",
     "swipe_tiles_on_mobile": "モバイルでタイルをスワイプ表示する",
     "switch": "スイッチ",
     "tab": "タブ",
@@ -1158,6 +1164,7 @@
     "wide_content": "ワイドコンテンツ",
     "wide_promotion": "ワイドプロモーション",
     "width": "幅",
+    "words_to_hide_in_titles": "タイトルで非表示にする語句",
     "words_to_show": "表示する単語数",
     "worldwide": "全世界",
     "write_a_review_label": "「レビューを書く」のラベル",
@@ -1692,8 +1699,20 @@
           "card_subtitle_metafield": {
             "info": "単一行テキストのメタフィールドのネームスペースとキー。"
           },
+          "card_swatch_limit": {
+            "info": "残りのカラーは「+2」のように表示されます。大きな画面ではスウォッチをクリックするとそのカラーが表示されます。"
+          },
+          "card_title_hide": {
+            "info": "ブランド名などをカンマで区切って入力します。商品ページでは全体のタイトルが表示されます。"
+          },
+          "card_title_style": {
+            "info": "「コットン マキシドレス – Sona」のようなタイトル向けです。ダッシュのないタイトルはそのまま表示されます。"
+          },
           "highlighted_products": {
             "info": "コレクションセクションでは、タグを使って商品を目立たせることができます。"
+          },
+          "quick_add_style_desktop": {
+            "info": "サイズボタンを押すと、そのサイズがすぐカートに追加されます。"
           }
         }
       },

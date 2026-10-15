@@ -101,6 +101,7 @@
     "badge_3_text": "Tekst badge 3",
     "badges": "Badges",
     "bag": "Tas",
+    "bag_icon_on_the_image_with_size_buttons": "Tasicoon op de afbeelding, met maatknoppen",
     "banners": "Banners",
     "barcode": "Streepjescode",
     "base_notes": "Basisnoten",
@@ -283,6 +284,7 @@
     "dropdown_choices": "Keuzes in vervolgkeuzelijst",
     "dropdown_options": "Opties in vervolgkeuzelijst",
     "each_one_names_the_product_it_is_about": "Bij elk item staat het product waarop het betrekking heeft.",
+    "elongated_5_7": "Langwerpig (5:7)",
     "email": "E-mail",
     "email_signup": "Aanmelding voor e-mail",
     "empty_cart_link": "Link bij lege winkelwagen",
@@ -344,6 +346,7 @@
     "from_1440_px_wide": "Vanaf 1440 px breed.",
     "full_list": "Volledige lijst",
     "full_list_label": "Label voor volledige lijst",
+    "full_product_title": "Volledige producttitel",
     "full_screen": "Volledig scherm",
     "full_width": "Volledige breedte",
     "gallery": "Galerij",
@@ -568,6 +571,7 @@
     "months": "Maanden",
     "multi_column": "Meerdere kolommen",
     "name": "Naam",
+    "name_after_the_dash_the_rest_as_a_second_line": "Naam na het streepje, de rest op een tweede regel",
     "namespace_key_for_example_custom_material": "namespace.key, bijvoorbeeld custom.material",
     "narrow": "Smal",
     "narrow_5_of_12_columns": "Smal (5 van 12 kolommen)",
@@ -957,6 +961,7 @@
     "sign_in_button_label": "Label van inlogknop",
     "signup_heading": "Kop van aanmelding",
     "size": "Grootte",
+    "size_buttons_on_hover": "Maatknoppen bij aanwijzen",
     "size_option_names": "Namen van maatopties",
     "sizing": "Maten",
     "sku": "SKU",
@@ -1019,6 +1024,7 @@
     "summary_position": "Positie van samenvatting",
     "swatch_content": "Inhoud van staal",
     "swatches": "Stalen",
+    "swatches_shown": "Getoonde stalen",
     "swipe_tiles_on_mobile": "Tegels vegen op mobiel",
     "switch": "Schakelaar",
     "tab": "Tabblad",
@@ -1158,6 +1164,7 @@
     "wide_content": "Brede content",
     "wide_promotion": "Brede promotie",
     "width": "Breedte",
+    "words_to_hide_in_titles": "Woorden die in titels worden verborgen",
     "words_to_show": "Te tonen woorden",
     "worldwide": "Wereldwijd",
     "write_a_review_label": "Label voor review schrijven",
@@ -1692,8 +1699,20 @@
           "card_subtitle_metafield": {
             "info": "Naamruimte en sleutel van een metaveld met tekst van één regel."
           },
+          "card_swatch_limit": {
+            "info": "Extra kleuren verschijnen als \"+2\". Op grote schermen toont een klik op een staal die kleur."
+          },
+          "card_title_hide": {
+            "info": "Scheid met komma's, bijvoorbeeld je merknaam. De productpagina toont de volledige titel."
+          },
+          "card_title_style": {
+            "info": "Voor titels zoals \"Katoenen maxi-jurk – Sona\". Titels zonder streepje worden volledig getoond."
+          },
           "highlighted_products": {
             "info": "Collectiesecties kunnen producten met een tag uitlichten."
+          },
+          "quick_add_style_desktop": {
+            "info": "Maatknoppen voegen de gekozen maat direct toe aan de winkelwagen."
           }
         }
       },
