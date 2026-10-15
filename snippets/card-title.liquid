@@ -1,0 +1,79 @@
+{%- comment -%}
+  Product card title (snippets/product-card.liquid): the name and, on wide cards, the price on one
+  line, then a grey line. Theme settings > Product cards > Words to hide removes words such as a
+  brand name; Title "split" turns "Details – Name" into the name and a grey details line. The
+  link's accessible name keeps both parts. A subtitle metafield, when shown, replaces the details.
+  Params: product, variant, url, title_id, price_in_head (bool), wholesale (bool)
+{%- endcomment -%}
+{%- liquid
+  # Title: words to hide (a brand name, say), then "Details – Name" becomes a name and a grey line.
+  assign card_name = product.title
+  if settings.card_title_hide != blank
+    assign hide_words = settings.card_title_hide | split: ','
+    for word in hide_words
+      assign hide_word = word | lstrip
+      if hide_word != blank
+        assign card_name = card_name | remove: hide_word
+      endif
+    endfor
+    assign card_name = card_name | split: ' ' | join: ' ' | strip
+  endif
+  assign card_details = ''
+  if settings.card_title_style == 'split'
+    # A dash with a space on either side separates the parts; hyphenated words stay whole.
+    assign marked = card_name | replace: '–', ' - ' | replace: '—', ' - ' | replace: ' - ', '§§' | replace: ' -', '§§' | replace: '- ', '§§'
+    assign title_parts = marked | split: '§§'
+    if title_parts.size == 1
+      assign card_name = title_parts.first | strip
+    elsif title_parts.size > 1
+      assign last_part = title_parts.last | strip
+      assign last_index = title_parts.size | minus: 1
+      for part in title_parts limit: last_index
+        assign part_text = part | strip
+        if part_text != blank
+          if card_details == blank
+            assign card_details = part_text
+          else
+            assign card_details = card_details | append: ' – ' | append: part_text
+          endif
+        endif
+      endfor
+      if last_part != blank
+        assign card_name = last_part
+      else
+        assign card_name = card_details
+        assign card_details = ''
+      endif
+    endif
+  endif
+  if card_name == blank
+    assign card_name = product.title
+  endif
+-%}
+<div class="card__head">
+  <h3 class="card__title" id="{{ title_id }}">
+    <a class="card__link" href="{{ url }}">
+      {{- card_name | escape -}}
+      {%- if card_details != blank -%}<span class="visually-hidden"> – {{ card_details | escape }}</span>{%- endif -%}
+    </a>
+  </h3>
+  {%- if price_in_head -%}
+    <div class="card__price">
+      {%- render 'price', variant: variant, wholesale: wholesale, size: 'small', from: product.price_varies -%}
+    </div>
+  {%- endif -%}
+</div>
+{%- liquid
+  assign subtitle = nil
+  if settings.card_show_subtitle and settings.card_subtitle_metafield != blank
+    assign sub_parts = settings.card_subtitle_metafield | split: '.'
+    assign sub_ns = sub_parts | first
+    assign sub_key = sub_parts | last
+    assign subtitle = product.metafields[sub_ns][sub_key].value
+  endif
+-%}
+{%- if subtitle != blank -%}
+  <p class="card__subtitle muted">{{ subtitle | escape }}</p>
+{%- elsif card_details != blank -%}
+  <p class="card__subtitle card__subtitle--details muted" aria-hidden="true">{{ card_details | escape }}</p>
+{%- endif -%}

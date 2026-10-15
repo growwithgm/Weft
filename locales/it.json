@@ -444,7 +444,11 @@
     },
     "quantity_rules": "Min. {{ min }}, confezioni da {{ increment }}",
     "quick_add": {
+      "add_one_size": "Aggiungi al carrello · Taglia unica",
       "choose_options": "Scegli le opzioni",
+      "choose_size": "Scegli una taglia da aggiungere",
+      "one_size": "Taglia unica",
+      "quick_add": "Aggiunta rapida",
       "view_details": "Vedi tutti i dettagli"
     },
     "rating": {

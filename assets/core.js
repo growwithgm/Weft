@@ -295,12 +295,12 @@ if (W.designMode) {
   });
 }
 
-/* ---------- quick add and card forms (loaded on first use) ---------- */
+/* ---------- quick add, card forms, card swatches and size sheets (loaded on first use) ---------- */
 document.addEventListener('click', (e) => {
-  const trigger = e.target.closest('[data-quick-add]');
+  const trigger = e.target.closest('[data-quick-add], [data-card-pick], [data-card-sheet]');
   if (!trigger || !W.modules?.quickAdd) return;
   e.preventDefault();
-  load(W.modules.quickAdd).then((m) => m && m.openQuickAdd(trigger));
+  load(W.modules.quickAdd).then((m) => m && (trigger.dataset.quickAdd ? m.openQuickAdd(trigger) : m.cardControl(trigger)));
 });
 document.addEventListener('submit', (e) => {
   const form = e.target.closest('[data-card-form]');

@@ -444,7 +444,11 @@
     },
     "quantity_rules": "最小{{ min }}、{{ increment }}個単位",
     "quick_add": {
+      "add_one_size": "カートに追加・フリーサイズ",
       "choose_options": "オプションを選択",
+      "choose_size": "追加するサイズを選択",
+      "one_size": "フリーサイズ",
+      "quick_add": "クイック追加",
       "view_details": "詳細を見る"
     },
     "rating": {

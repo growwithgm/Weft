@@ -444,7 +444,11 @@
     },
     "quantity_rules": "Min. {{ min }}, per {{ increment }}",
     "quick_add": {
+      "add_one_size": "In winkelwagen · One size",
       "choose_options": "Opties kiezen",
+      "choose_size": "Kies een maat om toe te voegen",
+      "one_size": "One size",
+      "quick_add": "Snel toevoegen",
       "view_details": "Alle details bekijken"
     },
     "rating": {

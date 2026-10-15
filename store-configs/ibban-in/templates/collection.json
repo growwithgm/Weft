@@ -4,7 +4,7 @@
       "type": "collection-banner",
       "settings": {
         "show_title": true,
-        "show_count": true,
+        "show_count": false,
         "show_description": true,
         "text_align": "start",
         "image_style": "beside",
@@ -20,7 +20,7 @@
         "columns_mobile": "2",
         "columns": 4,
         "show_layout_toggle": true,
-        "enable_filtering": false,
+        "enable_filtering": true,
         "filters_open_lg": false,
         "stick_on_scroll": true,
         "show_filter_counts": true,

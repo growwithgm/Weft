@@ -444,7 +444,11 @@
     },
     "quantity_rules": "Mín. {{ min }}, packs de {{ increment }}",
     "quick_add": {
+      "add_one_size": "Añadir al carrito · Talla única",
       "choose_options": "Elegir opciones",
+      "choose_size": "Elige una talla para añadir",
+      "one_size": "Talla única",
+      "quick_add": "Añadir rápido",
       "view_details": "Ver todos los detalles"
     },
     "rating": {

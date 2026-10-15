@@ -1,6 +1,14 @@
 {%- comment -%}
   Product card (brief §7.12). One file for retail and wholesale.
-  Retail: image (second image on hover), labels, title, price, swatches, size chips, rating, quick add.
+  Retail: image (second image on hover, a slow zoom when there is only one), labels, the name and
+  price on one line with the rest of the title as a grey line (Theme settings > Product cards >
+  Title splits "Details – Name"), color swatches, size chips, rating and quick add.
+  Quick add on large screens with a mouse: size buttons slide up over the image on hover or
+  keyboard focus, and a click adds that size. On touch screens a bag icon on the image opens the
+  same buttons as a small sheet. One-size products get one "Add to cart" button; products with
+  other options open the quick add drawer. Each size button carries its own variant id, so the
+  form posts to the cart without JavaScript too. A swatch click shows that color's image and
+  points the size buttons and links at that color (quick-add.js, loaded on first click).
   Wholesale: same frame, "per piece" price with "from X" when tiers exist, rule chips, stock hint,
   "Order" action to the product page.
   Wholesale-only products (tag fallback) never render for retail visitors: the card outputs
@@ -51,33 +59,52 @@
       endif
     endfor
   endif
-  assign swatch_names = settings.swatch_option_names | downcase | remove: ' ' | split: ','
-  assign swatch_option = nil
-  if settings.card_show_swatches and settings.swatch_card_style != 'none'
-    for option in product.options_with_values
-      assign option_key = option.name | downcase | remove: ' '
-      if swatch_names contains option_key
-        assign swatch_option = option
-        break
-      endif
-    endfor
-  endif
 
-  # Size chips: the values of the size option, with sold-out values marked across every colour.
+  # Color and size options, by name (Theme settings > Swatches and > Product cards).
+  assign swatch_names = settings.swatch_option_names | downcase | remove: ' ' | split: ','
+  assign size_names = settings.card_size_option_names | downcase | remove: ' ' | split: ','
+  assign color_option = nil
   assign size_option = nil
+  for option in product.options_with_values
+    assign option_key = option.name | downcase | remove: ' '
+    if color_option == nil and swatch_names contains option_key
+      assign color_option = option
+    elsif size_option == nil and size_names contains option_key
+      assign size_option = option
+    endif
+  endfor
+  assign swatch_option = nil
+  if settings.card_show_swatches and settings.swatch_card_style != 'none' and color_option and color_option.values.size > 1
+    assign swatch_option = color_option
+  endif
+  assign color_key = ''
+  assign active_color = ''
+  assign multi_color = false
+  if color_option
+    assign color_key = 'option' | append: color_option.position
+    assign color_index = color_option.position | minus: 1
+    assign active_color = v.options[color_index]
+    if color_option.values.size > 1
+      assign multi_color = true
+    endif
+  endif
+  assign size_key = ''
   assign available_sizes = ''
-  if settings.card_show_sizes and settings.card_size_option_names != blank
-    assign size_names = settings.card_size_option_names | downcase | remove: ' ' | split: ','
-    for option in product.options_with_values
-      assign option_key = option.name | downcase | remove: ' '
-      if size_names contains option_key
-        assign size_option = option
-        break
-      endif
-    endfor
-    if size_option
-      assign size_key = 'option' | append: size_option.position
-      assign available_sizes = product.variants | where: 'available' | map: size_key
+  assign one_size = false
+  if size_option
+    assign size_key = 'option' | append: size_option.position
+    assign available_sizes = product.variants | where: 'available' | map: size_key
+    # A single size like "Free" or "TU" reads as "One size"; a measured one ("250 ml") shows as it is.
+    if size_option.values.size == 1
+      assign one_size = true
+      assign only_size = size_option.values.first.name
+      assign digits = '0,1,2,3,4,5,6,7,8,9' | split: ','
+      for digit in digits
+        if only_size contains digit
+          assign one_size = false
+          break
+        endif
+      endfor
     endif
   endif
 
@@ -90,7 +117,55 @@
   if settings.quick_add_enable and show_quick_add != false and wholesale == false and product.available
     assign quick_add = true
   endif
+
+  # Quick add on the image: 'sizes' (a button per size), 'single' (one button) or 'options' (drawer).
+  assign quick_hover = false
+  assign quick_icon = false
+  if quick_add
+    if settings.quick_add_style_desktop == 'sizes'
+      assign quick_hover = true
+    endif
+    if settings.quick_add_style_mobile == 'image_icon'
+      assign quick_icon = true
+    endif
+  endif
+  assign quick_mode = ''
+  if quick_hover or quick_icon
+    assign quick_mode = 'single'
+    if product.requires_selling_plan
+      assign quick_mode = 'options'
+    elsif multi_color and swatch_option == nil
+      assign quick_mode = 'options'
+    else
+      for option in product.options_with_values
+        if option.values.size > 1 and option.name != color_option.name and option.name != size_option.name
+          assign quick_mode = 'options'
+          break
+        endif
+      endfor
+    endif
+    if quick_mode == 'single' and size_option and size_option.values.size > 1
+      assign quick_mode = 'sizes'
+    endif
+  endif
+  # The text link or button style stays where the size buttons on the image aren't used.
+  assign card_action = false
+  if quick_add
+    unless quick_hover and quick_icon
+      assign card_action = true
+    endunless
+  endif
+  assign quick_sheet = false
+  if quick_mode == 'sizes' or quick_mode == 'single' and multi_color
+    assign quick_sheet = true
+  endif
+
+  assign price_in_head = true
+  if settings.card_price_bottom or wholesale
+    assign price_in_head = false
+  endif
   assign title_id = 'CardTitle-' | append: id_prefix | append: product.id | append: '-' | append: index
+  assign quick_id = 'CardQuick-' | append: id_prefix | append: product.id | append: '-' | append: index
 -%}
 <{{ tag }} class="card {{ ratio_class }}{% if settings.card_boxed %} card--boxed{% endif %}{% if highlight_card %} card--highlight{% endif %}{% if settings.card_dividers %} card--divided{% endif %}{% if settings.card_price_bottom %} card--price-bottom{% endif %}" data-product-card data-product-id="{{ product.id }}">
   <div class="card__media-wrap">
@@ -118,19 +193,13 @@
         <span>{{ 'products.compare' | t }}</span>
       </label>
     {%- endif -%}
+    {%- if quick_mode != blank -%}
+      {%- render 'card-quick-add', product: product, variant: v, quick_mode: quick_mode, quick_hover: quick_hover, quick_icon: quick_icon, quick_sheet: quick_sheet, form_id: quick_id, title_id: title_id, color_option: color_option, color_key: color_key, active_color: active_color, multi_color: multi_color, size_option: size_option, size_key: size_key, one_size: one_size -%}
+    {%- endif -%}
   </div>
   <div class="card__body">
     {%- if settings.card_show_vendor and product.vendor != blank -%}<p class="card__vendor muted">{{ product.vendor }}</p>{%- endif -%}
-    <h3 class="card__title" id="{{ title_id }}"><a class="card__link" href="{{ url }}">{{ product.title | escape }}</a></h3>
-    {%- if settings.card_show_subtitle and settings.card_subtitle_metafield != blank -%}
-      {%- liquid
-        assign sub_parts = settings.card_subtitle_metafield | split: '.'
-        assign sub_ns = sub_parts | first
-        assign sub_key = sub_parts | last
-        assign subtitle = product.metafields[sub_ns][sub_key].value
-      -%}
-      {%- if subtitle != blank -%}<p class="card__subtitle muted">{{ subtitle | escape }}</p>{%- endif -%}
-    {%- endif -%}
+    {%- render 'card-title', product: product, variant: v, url: url, title_id: title_id, price_in_head: price_in_head, wholesale: wholesale -%}
     {%- if settings.card_show_rating and product.metafields.reviews.rating.value != blank and wholesale == false -%}
       {%- liquid
         assign r = product.metafields.reviews.rating.value
@@ -143,60 +212,18 @@
         <span class="muted">({{ r_count }})</span>
       </p>
     {%- endif -%}
-    <div class="card__price">
-      {%- render 'price', variant: v, wholesale: wholesale, size: 'small', from: product.price_varies -%}
-      {%- if lowest_break -%}
-        {%- assign break_money = lowest_break.price | money -%}
-        <span class="card__from muted">{{ 'price.from' | t: price: break_money }}</span>
-      {%- endif -%}
-    </div>
+    {%- unless price_in_head -%}
+      <div class="card__price">
+        {%- render 'price', variant: v, wholesale: wholesale, size: 'small', from: product.price_varies -%}
+        {%- if lowest_break -%}
+          {%- assign break_money = lowest_break.price | money -%}
+          <span class="card__from muted">{{ 'price.from' | t: price: break_money }}</span>
+        {%- endif -%}
+      </div>
+    {%- endunless -%}
     {%- if settings.card_show_weight and v.weight > 0 -%}<p class="card__meta muted">{{ v.weight | weight_with_unit: v.weight_unit }}</p>{%- endif -%}
-    {%- if swatch_option and swatch_option.values.size > 1 -%}
-      <ul class="card__swatches swatch-shape--{{ settings.swatch_card_shape }}" role="list">
-        {%- for value in swatch_option.values limit: 6 -%}
-          {%- liquid
-            assign sw_image = nil
-            assign sw_color = value.swatch.color
-            if settings.swatch_card_style == 'variant_image'
-              assign sw_image = value.variant.featured_image | default: value.swatch.image
-            elsif sw_color == blank
-              assign sw_image = value.swatch.image
-            endif
-            # A value with no swatch color or image falls back to its variant image, then to its name (never a blank circle).
-            if sw_color == blank and sw_image == blank
-              assign sw_image = value.variant.featured_image
-            endif
-          -%}
-          <li>
-            {%- if sw_color == blank and sw_image == blank -%}
-              <span class="card-swatch card-swatch--text">{{ value | escape }}</span>
-            {%- else -%}
-              <span class="card-swatch" title="{{ value | escape }}"{% if sw_color %} style="--swatch-color: {{ sw_color }}"{% endif %}>
-                {%- if sw_image -%}{{ sw_image | image_url: width: 60 | image_tag: width: 30, height: 30, alt: '', loading: 'lazy' }}{%- endif -%}
-                <span class="visually-hidden">{{ value }}</span>
-              </span>
-            {%- endif -%}
-          </li>
-        {%- endfor -%}
-        {%- if swatch_option.values.size > 6 -%}<li class="card__swatches-more muted">+{{ swatch_option.values.size | minus: 6 }}</li>{%- endif -%}
-      </ul>
-    {%- endif -%}
-    {%- if size_option -%}
-      <ul class="card__sizes" role="list" aria-label="{{ size_option.name | escape }}">
-        {%- for value in size_option.values limit: 8 -%}
-          {%- liquid
-            assign size_available = false
-            if available_sizes contains value.name
-              assign size_available = true
-            endif
-          -%}
-          <li class="card-size{% unless size_available %} card-size--sold-out{% endunless %}">
-            {{- value | escape -}}
-            {%- unless size_available -%}<span class="visually-hidden">, {{ 'products.sold_out' | t }}</span>{%- endunless -%}
-          </li>
-        {%- endfor -%}
-        {%- if size_option.values.size > 8 -%}<li class="card__sizes-more muted">+{{ size_option.values.size | minus: 8 }}</li>{%- endif -%}
-      </ul>
+    {%- if swatch_option or settings.card_show_sizes and size_option -%}
+      {%- render 'card-options', product: product, url: url, swatch_option: swatch_option, color_key: color_key, active_color: active_color, size_option: size_option, size_key: size_key, available_sizes: available_sizes, one_size: one_size, quick_mode: quick_mode -%}
     {%- endif -%}
     {%- if wholesale -%}
       {%- render 'rule-chips', product: product, variant: v, size: 'small' -%}
@@ -218,9 +245,10 @@
       <button type="button" class="card__action link" data-quick-add="{{ product.url }}" aria-haspopup="dialog" aria-describedby="{{ title_id }}">{{ 'wholesale.order' | t }}</button>
     {%- elsif wholesale -%}
       <a class="card__action link" href="{{ url }}">{{ 'wholesale.order' | t }}</a>
-    {%- elsif quick_add -%}
+    {%- elsif card_action -%}
+      {%- comment -%} The link or button style, where the size buttons on the image aren't used. {%- endcomment -%}
       {%- if product.has_only_default_variant and product.requires_selling_plan == false -%}
-        {%- assign card_form_id = 'CardForm-' | append: product.id | append: '-' | append: index -%}
+        {%- assign card_form_id = 'CardForm-' | append: id_prefix | append: product.id | append: '-' | append: index -%}
         {%- form 'product', product, id: card_form_id, class: 'card__form', data-card-form: '', data-product-url: product.url -%}
           <input type="hidden" name="id" value="{{ v.id }}">
           <button type="submit" class="card__action card__action--{{ settings.quick_add_style_desktop }} card__action-m--{{ settings.quick_add_style_mobile }}" aria-describedby="{{ title_id }}">
