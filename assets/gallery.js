@@ -24,7 +24,19 @@ class ProductGallery extends HTMLElement {
       this.show(id, { scroll: !!variantId && id !== this.lastVariantMedia });
       this.lastVariantMedia = id;
     });
-    this.lastVariantMedia = this.list.querySelector('.is-active')?.dataset.mediaId;
+    const active = this.list.querySelector('.is-active');
+    this.lastVariantMedia = active?.dataset.mediaId;
+    // Media keep the product editor's order. A page opened on a variant whose image isn't first
+    // starts at that image: the carousel at its slide, stacked and grid layouts scrolled to it when
+    // the link named the variant.
+    if (active && active !== this.items[0]) {
+      if (this.isCarousel()) {
+        this.list.scrollLeft = active.offsetLeft - this.list.offsetLeft;
+        this.setActive(this.items.indexOf(active));
+      } else if (new URLSearchParams(location.search).has('variant') && this.matches('.gallery--stacked, .gallery--grid, .gallery--grid_even')) {
+        requestAnimationFrame(() => this.bringIntoView(active, true));
+      }
+    }
   }
 
   disconnectedCallback() {
@@ -51,7 +63,16 @@ class ProductGallery extends HTMLElement {
     this.items.forEach((item, i) => item.classList.toggle('is-active', i === index));
     if (this.counter) this.counter.textContent = this.counter.dataset.template.replace('__i__', index + 1);
     const activeId = this.items[index] && this.items[index].dataset.mediaId;
-    this.querySelectorAll('[data-thumb-target]').forEach((t) => t.toggleAttribute('aria-current', t.dataset.thumbTarget === activeId));
+    this.querySelectorAll('[data-thumb-target]').forEach((t) => {
+      const current = t.dataset.thumbTarget === activeId;
+      t.toggleAttribute('aria-current', current);
+      // Keep the active thumbnail in view inside its strip (never scrolls the page).
+      const strip = t.closest('[data-gallery-thumbs]');
+      if (current && strip && strip.scrollWidth > strip.clientWidth) {
+        const li = t.closest('li') || t;
+        strip.scrollTo({ left: li.offsetLeft - strip.offsetLeft - (strip.clientWidth - li.offsetWidth) / 2, behavior: reduced() ? 'auto' : 'smooth' });
+      }
+    });
     this.items.forEach((item, i) => {
       if (i !== index) item.querySelectorAll('video').forEach((v) => v.pause());
     });
@@ -74,11 +95,11 @@ class ProductGallery extends HTMLElement {
 
   // Stacked and grid galleries: scroll the page (up or down) to the variant's image unless it is
   // already in view below the sticky header.
-  bringIntoView(item) {
+  bringIntoView(item, instant = false) {
     const header = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-height')) || 0;
     const r = item.getBoundingClientRect();
     if (r.top >= header && r.top < innerHeight * 0.5) return;
-    scrollTo({ top: scrollY + r.top - header - 16, behavior: reduced() ? 'auto' : 'smooth' });
+    scrollTo({ top: scrollY + r.top - header - 16, behavior: instant || reduced() ? 'auto' : 'smooth' });
   }
 
   onClick(e) {
