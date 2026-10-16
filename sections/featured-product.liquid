@@ -29,7 +29,7 @@
 >
   <div class="page-width">
     <div class="product__grid product__grid--{{ section.settings.gallery_width }}">
-      <div class="product__media" data-swap="media-{{ section.id }}">
+      <div class="product__media"{% if section.settings.group_media_by_option %} data-swap="media-{{ section.id }}"{% endif %}>
         {%- render 'product-gallery', product: p, variant: variant, section: section -%}
       </div>
       <div class="product__info">

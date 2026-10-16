@@ -3,14 +3,14 @@ import { shell } from './fixtures/shell.mjs';
 
 const img = 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22500%22/%3E';
 
-const gallery = (layout = 'stacked') => `
+const gallery = (layout = 'stacked', active = 1) => `
 <product-section class="product" data-product-section data-section-id="main">
   <product-gallery class="gallery gallery--${layout}" data-zoom="lightbox" data-lightbox-mobile="true">
     <div class="gallery__viewport">
       <ul class="gallery__list" data-gallery-list>
-        <li class="gallery__item is-active" data-media-id="1"><div class="gallery__media media"><img class="gallery__image" src="${img}" alt="Front" width="400" height="500"><button type="button" class="gallery__zoom" data-open-lightbox="1" aria-label="Open image 1">+</button></div></li>
-        <li class="gallery__item" data-media-id="2"><div class="gallery__media media"><img class="gallery__image" src="${img}" alt="Back" width="400" height="500"></div></li>
-        <li class="gallery__item" data-media-id="3"><div class="gallery__media media"><img src="${img}" alt="" width="400" height="500"><button type="button" class="gallery__play" data-play-media aria-label="Play video" id="play">▶</button><template data-media-player><video id="player" muted playsinline></video></template></div></li>
+        <li class="gallery__item${active === 1 ? ' is-active' : ''}" data-media-id="1"><div class="gallery__media media"><img class="gallery__image" src="${img}" alt="Front" width="400" height="500"><button type="button" class="gallery__zoom" data-open-lightbox="1" aria-label="Open image 1">+</button></div></li>
+        <li class="gallery__item${active === 2 ? ' is-active' : ''}" data-media-id="2"><div class="gallery__media media"><img class="gallery__image" src="${img}" alt="Back" width="400" height="500"></div></li>
+        <li class="gallery__item${active === 3 ? ' is-active' : ''}" data-media-id="3"><div class="gallery__media media"><img src="${img}" alt="" width="400" height="500"><button type="button" class="gallery__play" data-play-media aria-label="Play video" id="play">▶</button><template data-media-player><video id="player" muted playsinline></video></template></div></li>
       </ul>
       <span class="gallery__counter" data-gallery-counter data-template="__i__ / 3">1 / 3</span>
     </div>
@@ -66,6 +66,35 @@ export const tests = {
     expect(await page.$eval('[data-media-id="2"]', (i) => i.classList.contains('is-active')), 'active slide').toBe(true);
     await emit(page, 'variant:change', { featuredMediaId: 3 });
     await eventually(() => document.querySelector('[data-gallery-counter]').textContent === '3 / 3', 'variant media shown');
+  },
+
+  async 'a page opened on a variant starts the carousel at its image; the order stays as in the editor'({ page, base, expect, eventually }) {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.route('**/fixture.html', (r) => r.fulfill({ contentType: 'text/html', body: shell(gallery('stacked', 3), { head: '<link rel="stylesheet" href="/assets/section-product.css">', modules: ['gallery.js'] }) }));
+    await page.goto(`${base}/fixture.html`);
+    await page.waitForFunction(() => customElements.get('product-gallery'));
+    await eventually(() => document.querySelector('[data-gallery-counter]').textContent === '3 / 3', 'counter at the variant image');
+    expect(await page.$eval('[data-gallery-list]', (l) => l.scrollLeft > 0), 'carousel moved to the slide').toBe(true);
+    expect(await page.$$eval('[data-media-id]', (items) => items.map((i) => i.dataset.mediaId).join(',')), 'editor order kept').toBe('1,2,3');
+  },
+
+  async 'stacked gallery scrolls the page to a picked variant’s image, and not for a size change'({ page, base, expect, eventually }) {
+    await page.setViewportSize({ width: 1280, height: 700 });
+    const tall = gallery('stacked').replace('<product-section', '<div style="height: 120px">Header</div><product-section').replace('</product-section>', '</product-section><div style="height: 2000px"></div>');
+    await page.route('**/fixture.html', (r) => r.fulfill({ contentType: 'text/html', body: shell(tall, { head: '<link rel="stylesheet" href="/assets/section-product.css"><style>.gallery__item{min-height:600px}</style>', modules: ['gallery.js'] }) }));
+    await page.goto(`${base}/fixture.html`);
+    await page.waitForFunction(() => customElements.get('product-gallery'));
+    await emit(page, 'variant:change', { featuredMediaId: 3, variantId: 33 });
+    await eventually(() => {
+      const r = document.querySelector('[data-media-id="3"]').getBoundingClientRect();
+      return r.top >= 0 && r.top < innerHeight * 0.5;
+    }, 'page scrolled to the variant image');
+    expect(await page.$eval('[data-media-id="3"]', (i) => i.classList.contains('is-active')), 'marked active').toBe(true);
+    await page.waitForFunction(() => new Promise((ok) => { const a = scrollY; setTimeout(() => ok(scrollY === a), 150); }), null, { timeout: 3000 });
+    const y = await page.evaluate(() => scrollY);
+    await emit(page, 'variant:change', { featuredMediaId: 3, variantId: 34 });
+    await page.waitForTimeout(400);
+    expect(await page.evaluate(() => scrollY), 'same image (a size change): no scroll').toBe(y);
   },
 
   async 'thumbnails, video on demand and the lightbox'({ page, base, expect, eventually }) {
