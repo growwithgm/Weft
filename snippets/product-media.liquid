@@ -1,0 +1,38 @@
+{%- comment -%}
+  One gallery item. Images load eagerly only when they're the LCP candidate. Video, external
+  video and 3D models show their poster and load the player on interaction.
+  Params: media, index, eager, sizes, zoom, loop.
+{%- endcomment -%}
+{%- liquid
+  assign poster = media.preview_image
+  assign zoomable = false
+  if zoom != 'none' and media.media_type == 'image'
+    assign zoomable = true
+  endif
+-%}
+<div class="media gallery__media" style="--media-ratio: {{ poster.aspect_ratio | default: 1 }}">
+  {%- case media.media_type -%}
+    {%- when 'image' -%}
+      {%- render 'image', image: media, sizes: sizes, eager: eager, class: 'gallery__image' -%}
+      {%- if zoomable -%}
+        <button type="button" class="gallery__zoom" data-open-lightbox="{{ media.id }}" aria-label="{{ 'products.gallery.open' | t: index: index }}">
+          <span class="gallery__zoom-icon">{%- render 'icon', name: 'zoom', size: 20 -%}</span>
+        </button>
+      {%- endif -%}
+    {%- when 'video' -%}
+      {%- render 'image', image: poster, sizes: sizes, eager: eager, class: 'gallery__image' -%}
+      <button type="button" class="gallery__play" data-play-media aria-label="{{ 'products.gallery.play_video' | t }}">{%- render 'icon', name: 'play', size: 28 -%}</button>
+      <template data-media-player>{{ media | video_tag: controls: true, playsinline: true, autoplay: true, muted: true, loop: loop, image_size: '1100x' }}</template>
+    {%- when 'external_video' -%}
+      {%- render 'image', image: poster, sizes: sizes, eager: eager, class: 'gallery__image' -%}
+      <button type="button" class="gallery__play" data-play-media aria-label="{{ 'products.gallery.play_video' | t }}">{%- render 'icon', name: 'play', size: 28 -%}</button>
+      <template data-media-player>{{ media | external_video_url: autoplay: true | external_video_tag: loading: 'lazy' }}</template>
+    {%- when 'model' -%}
+      {%- render 'image', image: poster, sizes: sizes, eager: eager, class: 'gallery__image' -%}
+      <button type="button" class="gallery__play gallery__play--model" data-play-media data-model aria-label="{{ 'products.gallery.view_3d' | t }}">{%- render 'icon', name: 'sparkle', size: 24 -%}<span>{{ 'products.gallery.view_3d' | t }}</span></button>
+      <template data-media-player>{{ media | model_viewer_tag: image_size: '1024x', reveal: 'interaction', toggleable: true, interaction-prompt-threshold: 0 }}</template>
+      <button type="button" class="button button--secondary button--small gallery__ar" data-shopify-xr data-shopify-model3d-id="{{ media.id }}" data-shopify-title="{{ product.title | escape }}" data-shopify-xr-hidden>
+        {{ 'products.gallery.view_in_space' | t }}
+      </button>
+  {%- endcase -%}
+</div>

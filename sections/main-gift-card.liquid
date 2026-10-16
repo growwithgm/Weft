@@ -1,0 +1,59 @@
+{%- comment -%} Rendered by templates/gift_card.liquid. {%- endcomment -%}
+{%- liquid
+  assign gift_value = gift_card.initial_value | money_without_trailing_zeros
+  assign gift_balance = gift_card.balance | money
+  assign gift_expiry = gift_card.expires_on | date: format: 'date'
+-%}
+<div class="gift-card page-width page-width--narrow stack text-center">
+  <h1 class="visually-hidden">{{ 'gift_card.title' | t }}</h1>
+  <div class="gift-card__art media">
+    {%- if section.settings.image != blank -%}
+      {{ section.settings.image | image_url: width: 1200 | image_tag: widths: '600,900,1200', sizes: 'min(560px, 100vw)', alt: '', loading: 'eager' }}
+    {%- else -%}
+      {{ 'gift-card' | placeholder_svg_tag: 'placeholder-svg' }}
+    {%- endif -%}
+  </div>
+  <h2>{{ 'gift_card.value' | t: value: gift_value, shop: shop.name }}</h2>
+  {%- if gift_card.enabled == false -%}
+    <p class="notice notice--error">{{ 'gift_card.disabled' | t }}</p>
+  {%- elsif gift_card.expired -%}
+    <p class="notice notice--error">{{ 'gift_card.expired' | t: date: gift_expiry }}</p>
+  {%- else -%}
+    {%- if gift_card.balance != gift_card.initial_value -%}
+      <p>{{ 'gift_card.balance' | t: balance: gift_balance }}</p>
+    {%- endif -%}
+    {%- if gift_card.expires_on -%}
+      <p class="muted">{{ 'gift_card.expires' | t: date: gift_expiry }}</p>
+    {%- endif -%}
+    <div class="gift-card__code">
+      <label class="field__label" for="GiftCardCode">{{ 'gift_card.code' | t }}</label>
+      <div class="cluster gift-card__code-row">
+        <input class="input tabular" id="GiftCardCode" value="{{ gift_card.code | format_code }}" readonly onfocus="this.select()">
+        <button type="button" class="button button--secondary js-only" data-copy="{{ gift_card.code }}" data-copied="{{ 'gift_card.copied' | t | escape }}">{{ 'gift_card.copy' | t }}</button>
+      </div>
+    </div>
+    <div class="gift-card__qr" data-qr="{{ gift_card.qr_identifier }}" aria-label="{{ 'gift_card.qr_code' | t }}" role="img"></div>
+    <p>{{ 'gift_card.use_at_checkout' | t }}</p>
+    <div class="cluster gift-card__actions">
+      <a class="button" href="{{ shop.url }}">{{ 'gift_card.shop_now' | t }}</a>
+      {%- if gift_card.pass_url -%}
+        <a class="button button--secondary" href="{{ gift_card.pass_url }}">{{ 'gift_card.apple_wallet' | t }}</a>
+      {%- endif -%}
+      <button type="button" class="button button--tertiary js-only" data-print>{{ 'gift_card.print' | t }}</button>
+    </div>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "t:labels.gift_card",
+  "class": "section-main-gift-card",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:labels.gift_card_image"
+    }
+  ]
+}
+{% endschema %}

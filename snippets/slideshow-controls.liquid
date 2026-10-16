@@ -1,0 +1,27 @@
+{%- comment -%}
+  Controls for <slide-show>: previous / next, dots and the autoplay pause button (WCAG 2.2.2).
+  Params: count (slides), nav ('dots' | 'arrows' | 'both' | 'none'), autoplay (bool), label (item name for dots)
+{%- endcomment -%}
+{%- if count > 1 -%}
+  <div class="slideshow__controls js-only">
+    {%- if nav == 'arrows' or nav == 'both' -%}
+      <button type="button" class="icon-button slideshow__arrow" data-prev aria-label="{{ 'general.previous' | t }}">{%- render 'icon', name: 'chevron-left', size: 20 -%}</button>
+    {%- endif -%}
+    {%- if nav == 'dots' or nav == 'both' -%}
+      <div class="slideshow__dots">
+        {%- for i in (1..count) -%}
+          <button type="button" class="slideshow__dot" data-dot="{{ forloop.index0 }}" aria-label="{{ 'accessibility.slide_of' | t: index: i, count: count }}"{% if forloop.first %} aria-current="true"{% endif %}></button>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+    {%- if nav == 'arrows' or nav == 'both' -%}
+      <button type="button" class="icon-button slideshow__arrow" data-next aria-label="{{ 'general.next' | t }}">{%- render 'icon', name: 'chevron-right', size: 20 -%}</button>
+    {%- endif -%}
+    {%- if autoplay -%}
+      <button type="button" class="icon-button slideshow__pause" data-autoplay-toggle aria-pressed="false" aria-label="{{ 'general.pause' | t }}" data-pause-label="{{ 'general.pause' | t | escape }}" data-play-label="{{ 'general.play' | t | escape }}">
+        <span class="slideshow__pause-icon">{%- render 'icon', name: 'pause', size: 16 -%}</span>
+        <span class="slideshow__play-icon">{%- render 'icon', name: 'play', size: 16 -%}</span>
+      </button>
+    {%- endif -%}
+  </div>
+{%- endif -%}

@@ -1,0 +1,60 @@
+{%- comment -%}
+  Product compare (brief §14.3): a bar that appears once a card's Compare box is ticked, and a
+  bottom drawer with a comparison table. Columns come from the compare-column section rendered
+  for each product through the Section Rendering API. The chosen products are remembered per
+  viewer (browser storage). Settings: Theme settings > Product compare.
+{%- endcomment -%}
+{%- if settings.compare_enable -%}
+  <compare-drawer
+    data-module="{{ 'compare.js' | asset_url }}"
+    data-load="idle"
+    data-max="{{ settings.compare_max }}"
+    data-width="{{ settings.compare_column_width }}"
+    data-show-empty="{{ settings.compare_show_empty }}"
+    data-empty="{{ settings.compare_empty_text | escape }}"
+  >
+    <script type="application/json" data-compare-strings>
+      {
+        "countOne": {{ 'compare.count.one' | t: count: '__n__' | json }},
+        "countOther": {{ 'compare.count.other' | t: count: '__n__' | json }},
+        "limit": {{ 'compare.limit' | t: count: '__n__' | json }},
+        "remove": {{ 'compare.remove' | t: title: '__title__' | json }},
+        "caption": {{ 'compare.title' | t | json }},
+        "error": {{ 'general.error' | t | json }}
+      }
+    </script>
+    <div class="compare-bar" data-compare-bar role="region" aria-label="{{ 'compare.title' | t }}" hidden>
+      <p class="compare-bar__count" data-compare-count aria-live="polite"></p>
+      <button type="button" class="link" data-compare-clear>{{ 'compare.clear' | t }}</button>
+      <button type="button" class="button button--small" data-compare-open aria-haspopup="dialog" disabled>{{ 'compare.compare' | t }}</button>
+      <p class="compare-bar__notice" role="alert" data-compare-notice></p>
+    </div>
+    <dialog id="CompareDrawer" class="drawer drawer--bottom color-{{ settings.drawer_color_scheme }}" aria-labelledby="CompareDrawerTitle" data-light-dismiss data-animate>
+      <div class="drawer__panel compare-drawer">
+        <div class="drawer__header">
+          <h2 class="drawer__title h3" id="CompareDrawerTitle">{{ 'compare.title' | t }}</h2>
+          <button type="button" class="icon-button" data-close-dialog aria-label="{{ 'general.close' | t }}">{%- render 'icon', name: 'close' -%}</button>
+        </div>
+        <div class="drawer__body compare-drawer__body" data-compare-table aria-live="polite"></div>
+      </div>
+    </dialog>
+  </compare-drawer>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "t:labels.product_compare",
+  "class": "section-compare-drawer",
+  "enabled_on": {
+    "groups": [
+      "aside"
+    ]
+  },
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "t:text.sections.compare_drawer.settings.turn_compare_on_and_choose_its_rows_in_theme_set.content"
+    }
+  ]
+}
+{% endschema %}

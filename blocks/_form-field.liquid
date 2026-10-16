@@ -1,0 +1,196 @@
+{%- comment -%}
+  Contact form field. Types: name, email, phone, message, custom input, dropdown, checkbox, text.
+  Custom fields post as contact[<Title>], so their title shows in the email Shopify sends.
+{%- endcomment -%}
+{%- liquid
+  assign b = block.settings
+  assign field_id = 'ContactField-' | append: block.id
+  assign width = 'full'
+  if b.half_width
+    assign width = 'half'
+  endif
+  case b.type
+    when 'name'
+      assign fname = 'contact[name]'
+    when 'email'
+      assign fname = 'contact[email]'
+    when 'phone'
+      assign fname = 'contact[phone]'
+    when 'message'
+      assign fname = 'contact[body]'
+    else
+      assign fname = 'contact[' | append: b.title | append: ']'
+  endcase
+  assign label = b.title
+  if label == blank
+    case b.type
+      when 'name'
+        assign label = 'contact.name' | t
+      when 'email'
+        assign label = 'contact.email' | t
+      when 'phone'
+        assign label = 'contact.phone' | t
+      when 'message'
+        assign label = 'contact.message' | t
+    endcase
+  endif
+-%}
+<div class="form-field form-field--{{ width }} form-field--{{ b.type }}" {{ block.shopify_attributes }}>
+  {%- case b.type -%}
+    {%- when 'text' -%}
+      <div class="rte">{{ b.text }}</div>
+    {%- when 'checkbox' -%}
+      <input type="hidden" name="{{ fname }}" value="{{ b.value_no | escape }}">
+      <label class="form-field__check" for="{{ field_id }}">
+        <input type="checkbox" id="{{ field_id }}" name="{{ fname }}" value="{{ b.value_yes | escape }}"{% if b.required %} required{% endif %}>
+        <span>{{ label | escape }}{% if b.required %} <span aria-hidden="true">*</span>{% endif %}</span>
+      </label>
+    {%- when 'dropdown' -%}
+      {%- assign options = b.options | newline_to_br | split: '<br />' -%}
+      <label class="field__label" for="{{ field_id }}">{{ label | escape }}{% if b.required %} <span aria-hidden="true">*</span>{% endif %}</label>
+      <select class="select" id="{{ field_id }}" name="{{ fname }}"{% if b.required %} required{% endif %}>
+        {%- for option in options -%}{%- assign o = option | strip -%}{%- if o != blank -%}<option value="{{ o | escape }}">{{ o | escape }}</option>{%- endif -%}{%- endfor -%}
+      </select>
+    {%- when 'message' -%}
+      <label class="field__label" for="{{ field_id }}">{{ label | escape }}{% if b.required %} <span aria-hidden="true">*</span>{% endif %}</label>
+      <textarea class="textarea" id="{{ field_id }}" name="{{ fname }}" rows="5"{% if b.required %} required{% endif %}></textarea>
+    {%- else -%}
+      {%- liquid
+        assign input_type = 'text'
+        assign autocomplete = 'off'
+        case b.type
+          when 'name'
+            assign autocomplete = 'name'
+          when 'email'
+            assign input_type = 'email'
+            assign autocomplete = 'email'
+          when 'phone'
+            assign input_type = 'tel'
+            assign autocomplete = 'tel'
+          when 'custom'
+            assign input_type = b.input_type
+        endcase
+      -%}
+      <label class="field__label" for="{{ field_id }}">{{ label | escape }}{% if b.required or b.type == 'email' %} <span aria-hidden="true">*</span>{% endif %}</label>
+      <input class="input" type="{{ input_type }}" id="{{ field_id }}" name="{{ fname }}" autocomplete="{{ autocomplete }}"{% if b.required or b.type == 'email' %} required{% endif %}{% if b.type == 'email' %} spellcheck="false" autocapitalize="off"{% endif %}>
+  {%- endcase -%}
+</div>
+
+{% schema %}
+{
+  "name": "t:labels.field",
+  "tag": null,
+  "settings": [
+    {
+      "type": "select",
+      "id": "type",
+      "label": "t:labels.type",
+      "options": [
+        {
+          "value": "name",
+          "label": "t:labels.name"
+        },
+        {
+          "value": "email",
+          "label": "t:labels.email"
+        },
+        {
+          "value": "phone",
+          "label": "t:labels.phone"
+        },
+        {
+          "value": "message",
+          "label": "t:labels.message"
+        },
+        {
+          "value": "custom",
+          "label": "t:labels.custom_input"
+        },
+        {
+          "value": "dropdown",
+          "label": "t:labels.dropdown"
+        },
+        {
+          "value": "checkbox",
+          "label": "t:labels.checkbox"
+        },
+        {
+          "value": "text",
+          "label": "t:labels.text"
+        }
+      ],
+      "default": "name"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "t:labels.label",
+      "info": "t:text.blocks.form_field.settings.title.info"
+    },
+    {
+      "type": "select",
+      "id": "input_type",
+      "label": "t:labels.input_type",
+      "options": [
+        {
+          "value": "text",
+          "label": "t:labels.text"
+        },
+        {
+          "value": "number",
+          "label": "t:labels.number"
+        },
+        {
+          "value": "date",
+          "label": "t:labels.date"
+        },
+        {
+          "value": "url",
+          "label": "t:labels.url"
+        }
+      ],
+      "default": "text",
+      "visible_if": "{{ block.settings.type == 'custom' }}"
+    },
+    {
+      "type": "textarea",
+      "id": "options",
+      "label": "t:labels.dropdown_options",
+      "info": "t:labels.one_option_per_line",
+      "visible_if": "{{ block.settings.type == 'dropdown' }}"
+    },
+    {
+      "type": "text",
+      "id": "value_yes",
+      "label": "t:labels.value_when_checked",
+      "default": "Yes",
+      "visible_if": "{{ block.settings.type == 'checkbox' }}"
+    },
+    {
+      "type": "text",
+      "id": "value_no",
+      "label": "t:labels.value_when_not_checked",
+      "default": "No",
+      "visible_if": "{{ block.settings.type == 'checkbox' }}"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "t:labels.text",
+      "visible_if": "{{ block.settings.type == 'text' }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "required",
+      "label": "t:labels.required",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "half_width",
+      "label": "t:labels.half_width_on_large_screens",
+      "default": false
+    }
+  ]
+}
+{% endschema %}

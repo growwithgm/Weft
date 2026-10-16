@@ -1,0 +1,42 @@
+{
+  "type": "header",
+  "name": "t:labels.header",
+  "sections": {
+    "announcement": {
+      "type": "announcement-bar",
+      "blocks": {
+        "message-1": {
+          "type": "announcement",
+          "settings": {
+            "text": "Sulfate-free formulas · Free returns"
+          }
+        }
+      },
+      "block_order": [
+        "message-1"
+      ],
+      "settings": {
+        "color_scheme": "scheme-3",
+        "text_size": "small",
+        "rotate_seconds": 5,
+        "show_country": true,
+        "show_language": true
+      }
+    },
+    "header": {
+      "type": "header",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "sticky": true,
+        "logo_position": "left",
+        "menu": "main-menu",
+        "menu_align": "center",
+        "show_search": true
+      }
+    }
+  },
+  "order": [
+    "announcement",
+    "header"
+  ]
+}

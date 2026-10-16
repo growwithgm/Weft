@@ -1,0 +1,57 @@
+{%- comment -%}
+  Classic customer address fields (add and edit). Countries and provinces come from Shopify
+  (all_country_option_tags); addresses.js fills the province list for the chosen country.
+  Params: form (customer_address form), prefix (unique id part)
+{%- endcomment -%}
+{%- assign fid = 'Address-' | append: prefix -%}
+<div class="form-fields address-form" data-address-form>
+  <div class="form-field form-field--half">
+    <label class="field__label" for="{{ fid }}-first">{{ 'customer.first_name' | t }}</label>
+    <input class="input" type="text" id="{{ fid }}-first" name="address[first_name]" value="{{ form.first_name }}" autocomplete="given-name">
+  </div>
+  <div class="form-field form-field--half">
+    <label class="field__label" for="{{ fid }}-last">{{ 'customer.last_name' | t }}</label>
+    <input class="input" type="text" id="{{ fid }}-last" name="address[last_name]" value="{{ form.last_name }}" autocomplete="family-name">
+  </div>
+  <div class="form-field">
+    <label class="field__label" for="{{ fid }}-company">{{ 'customer.addresses.company' | t }}</label>
+    <input class="input" type="text" id="{{ fid }}-company" name="address[company]" value="{{ form.company }}" autocomplete="organization">
+  </div>
+  <div class="form-field">
+    <label class="field__label" for="{{ fid }}-address1">{{ 'customer.addresses.address1' | t }}</label>
+    <input class="input" type="text" id="{{ fid }}-address1" name="address[address1]" value="{{ form.address1 }}" autocomplete="address-line1">
+  </div>
+  <div class="form-field">
+    <label class="field__label" for="{{ fid }}-address2">{{ 'customer.addresses.address2' | t }}</label>
+    <input class="input" type="text" id="{{ fid }}-address2" name="address[address2]" value="{{ form.address2 }}" autocomplete="address-line2">
+  </div>
+  <div class="form-field form-field--half">
+    <label class="field__label" for="{{ fid }}-city">{{ 'customer.addresses.city' | t }}</label>
+    <input class="input" type="text" id="{{ fid }}-city" name="address[city]" value="{{ form.city }}" autocomplete="address-level2">
+  </div>
+  <div class="form-field form-field--half">
+    <label class="field__label" for="{{ fid }}-zip">{{ 'cart.shipping.zip' | t }}</label>
+    <input class="input" type="text" id="{{ fid }}-zip" name="address[zip]" value="{{ form.zip }}" autocomplete="postal-code">
+  </div>
+  <div class="form-field form-field--half">
+    <label class="field__label" for="{{ fid }}-country">{{ 'cart.shipping.country' | t }}</label>
+    <select class="select" id="{{ fid }}-country" name="address[country]" data-address-country data-default="{{ form.country | escape }}" autocomplete="country-name">{{ all_country_option_tags }}</select>
+  </div>
+  <div class="form-field form-field--half" data-address-province-field>
+    <label class="field__label" for="{{ fid }}-province">{{ 'cart.shipping.province' | t }}</label>
+    <select class="select" id="{{ fid }}-province" name="address[province]" data-address-province data-default="{{ form.province | escape }}" autocomplete="address-level1"></select>
+  </div>
+  <div class="form-field">
+    <label class="field__label" for="{{ fid }}-phone">{{ 'contact.phone' | t }}</label>
+    <input class="input" type="tel" id="{{ fid }}-phone" name="address[phone]" value="{{ form.phone }}" autocomplete="tel">
+  </div>
+  <div class="form-field">
+    <label class="form-field__check" for="{{ fid }}-default">
+      <input type="checkbox" id="{{ fid }}-default" name="address[default]" value="1"{% if form.set_as_default_checkbox contains 'checked' %} checked{% endif %}>
+      <span>{{ 'customer.addresses.set_default' | t }}</span>
+    </label>
+  </div>
+  <div class="form-field">
+    <button type="submit" class="button">{{ 'customer.addresses.save' | t }}</button>
+  </div>
+</div>

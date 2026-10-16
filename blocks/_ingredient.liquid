@@ -1,0 +1,36 @@
+{%- comment -%} Key ingredient: name, optional image and a short explanation. {%- endcomment -%}
+{%- assign b = block.settings -%}
+{%- if b.name != blank -%}
+  <li class="ingredient" {{ block.shopify_attributes }}>
+    {%- if b.image -%}{{ b.image | image_url: width: 160 | image_tag: width: 56, height: 56, alt: '', loading: 'lazy', class: 'ingredient__image' }}{%- endif -%}
+    <div class="ingredient__body">
+      <p class="ingredient__name">{{ b.name | escape }}</p>
+      {%- if b.text != blank -%}<div class="ingredient__text">{{ b.text }}</div>{%- endif -%}
+    </div>
+  </li>
+{%- endif -%}
+{% schema %}
+{
+  "name": "t:labels.ingredient",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "name",
+      "label": "t:labels.name",
+      "default": "Argan oil"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:labels.image"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "text",
+      "label": "t:labels.explanation",
+      "default": "Softens and adds shine."
+    }
+  ]
+}
+{% endschema %}

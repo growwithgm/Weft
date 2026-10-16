@@ -1,0 +1,271 @@
+{%- comment -%} Promo grid tile: media with up to three lines of text, optional circle badge and link. {%- endcomment -%}
+{%- liquid
+  assign b = block.settings
+  assign tile_sizes = '(min-width: 990px) 50vw, 100vw'
+-%}
+<li class="mosaic__tile banner banner--{{ b.overlay_position }} banner--text-{{ b.text_align }}" style="--col: {{ b.columns }}; --row: {{ b.rows }}; --banner-text: {{ b.text_color }}; --banner-tint: {{ b.tint_color }}; --banner-tint-opacity: {{ b.tint_opacity | divided_by: 100.0 }};" {{ block.shopify_attributes }}>
+  <div class="banner__media">
+    {%- if b.video != blank -%}
+      {%- render 'deferred-video', video: b.video, poster: b.image, background: true, sizes: tile_sizes -%}
+    {%- elsif b.image -%}
+      {%- render 'image', image: b.image, sizes: tile_sizes, widths: '375,550,750,1100,1500', class: 'banner__image' -%}
+    {%- else -%}
+      {{ 'lifestyle-1' | placeholder_svg_tag: 'banner__image placeholder-svg' }}
+    {%- endif -%}
+  </div>
+  <div class="banner__content">
+    <div class="banner__box mosaic__text{% if b.promo_circle %} mosaic__circle{% endif %}"{% if b.promo_circle %} style="--circle-bg: {{ b.circle_bg }}; --circle-fg: {{ b.circle_text }};"{% endif %}>
+      {%- if b.subheading != blank -%}<p class="mosaic__subheading">{{ b.subheading | escape }}</p>{%- endif -%}
+      {%- if b.line1 != blank -%}<p class="mosaic__line mosaic__line--{{ b.line1_size }}">{{ b.line1 | escape }}</p>{%- endif -%}
+      {%- if b.line2 != blank -%}<p class="mosaic__line mosaic__line--{{ b.line2_size }}">{{ b.line2 | escape }}</p>{%- endif -%}
+      {%- if b.line3 != blank -%}<p class="mosaic__line mosaic__line--{{ b.line3_size }}">{{ b.line3 | escape }}</p>{%- endif -%}
+      {%- if b.link_text != blank -%}<span class="mosaic__link-text">{{ b.link_text | escape }}</span>{%- endif -%}
+    </div>
+  </div>
+  {%- if b.link != blank -%}<a class="banner__link mosaic__link" href="{{ b.link }}"><span class="visually-hidden">{{ b.line1 | default: b.link_text | default: b.subheading | escape }}</span></a>{%- endif -%}
+</li>
+
+{% schema %}
+{
+  "name": "t:labels.media",
+  "tag": null,
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:labels.image"
+    },
+    {
+      "type": "video",
+      "id": "video",
+      "label": "t:labels.video",
+      "info": "t:labels.plays_muted_in_a_loop_instead_of_the_image"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "t:labels.link"
+    },
+    {
+      "type": "range",
+      "id": "columns",
+      "label": "t:labels.columns_to_span",
+      "min": 1,
+      "max": 6,
+      "step": 1,
+      "default": 1
+    },
+    {
+      "type": "range",
+      "id": "rows",
+      "label": "t:labels.rows_to_span",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "default": 1
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "t:labels.subheading"
+    },
+    {
+      "type": "text",
+      "id": "line1",
+      "label": "t:labels.line_1",
+      "default": "Promotion"
+    },
+    {
+      "type": "select",
+      "id": "line1_size",
+      "label": "t:labels.line_1_size",
+      "options": [
+        {
+          "value": "small",
+          "label": "t:labels.small"
+        },
+        {
+          "value": "medium",
+          "label": "t:labels.medium"
+        },
+        {
+          "value": "large",
+          "label": "t:labels.large"
+        },
+        {
+          "value": "xlarge",
+          "label": "t:labels.extra_large"
+        }
+      ],
+      "default": "large"
+    },
+    {
+      "type": "text",
+      "id": "line2",
+      "label": "t:labels.line_2"
+    },
+    {
+      "type": "select",
+      "id": "line2_size",
+      "label": "t:labels.line_2_size",
+      "options": [
+        {
+          "value": "small",
+          "label": "t:labels.small"
+        },
+        {
+          "value": "medium",
+          "label": "t:labels.medium"
+        },
+        {
+          "value": "large",
+          "label": "t:labels.large"
+        },
+        {
+          "value": "xlarge",
+          "label": "t:labels.extra_large"
+        }
+      ],
+      "default": "medium"
+    },
+    {
+      "type": "text",
+      "id": "line3",
+      "label": "t:labels.line_3"
+    },
+    {
+      "type": "select",
+      "id": "line3_size",
+      "label": "t:labels.line_3_size",
+      "options": [
+        {
+          "value": "small",
+          "label": "t:labels.small"
+        },
+        {
+          "value": "medium",
+          "label": "t:labels.medium"
+        },
+        {
+          "value": "large",
+          "label": "t:labels.large"
+        },
+        {
+          "value": "xlarge",
+          "label": "t:labels.extra_large"
+        }
+      ],
+      "default": "small"
+    },
+    {
+      "type": "text",
+      "id": "link_text",
+      "label": "t:labels.link_text"
+    },
+    {
+      "type": "checkbox",
+      "id": "promo_circle",
+      "label": "t:labels.show_text_in_a_circle",
+      "default": false
+    },
+    {
+      "type": "color",
+      "id": "circle_bg",
+      "label": "t:labels.circle_background",
+      "default": "#FBD816"
+    },
+    {
+      "type": "color",
+      "id": "circle_text",
+      "label": "t:labels.circle_text",
+      "default": "#0F1111"
+    },
+    {
+      "type": "select",
+      "id": "overlay_position",
+      "label": "t:labels.text_position",
+      "options": [
+        {
+          "value": "top-start",
+          "label": "t:labels.top_start"
+        },
+        {
+          "value": "top-center",
+          "label": "t:labels.top_center"
+        },
+        {
+          "value": "top-end",
+          "label": "t:labels.top_end"
+        },
+        {
+          "value": "middle-start",
+          "label": "t:labels.middle_start"
+        },
+        {
+          "value": "middle-center",
+          "label": "t:labels.middle_center"
+        },
+        {
+          "value": "middle-end",
+          "label": "t:labels.middle_end"
+        },
+        {
+          "value": "bottom-start",
+          "label": "t:labels.bottom_start"
+        },
+        {
+          "value": "bottom-center",
+          "label": "t:labels.bottom_center"
+        },
+        {
+          "value": "bottom-end",
+          "label": "t:labels.bottom_end"
+        }
+      ],
+      "default": "bottom-start"
+    },
+    {
+      "type": "select",
+      "id": "text_align",
+      "label": "t:labels.text_alignment",
+      "options": [
+        {
+          "value": "start",
+          "label": "t:labels.start"
+        },
+        {
+          "value": "center",
+          "label": "t:labels.center"
+        },
+        {
+          "value": "end",
+          "label": "t:labels.end"
+        }
+      ],
+      "default": "start"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "t:labels.text",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "tint_color",
+      "label": "t:labels.image_tint",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "tint_opacity",
+      "label": "t:labels.image_tint_opacity",
+      "min": 0,
+      "max": 90,
+      "step": 5,
+      "unit": "%",
+      "default": 20
+    }
+  ]
+}
+{% endschema %}

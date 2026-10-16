@@ -1,0 +1,4 @@
+{%- comment -%} Link that opens the Product guide dialog of this section (rendered by the product-guide block). Params: section. {%- endcomment -%}
+<button type="button" class="link product-guide-link" data-open-dialog="ProductGuide-{{ section.id }}" data-guide-link hidden>
+  {%- render 'icon', name: 'ruler', size: 18 -%}<span data-guide-label>{{ 'products.guide' | t }}</span>
+</button>

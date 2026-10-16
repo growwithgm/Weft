@@ -1,0 +1,39 @@
+{%- comment -%} Highlighted note: a boxed heading and text (product details, pages). {%- endcomment -%}
+{{ 'component-blocks.css' | asset_url | stylesheet_tag }}
+<div class="highlight-text color-{{ block.settings.color_scheme }}" {{ block.shopify_attributes }}>
+  {%- if block.settings.title != blank -%}<p class="highlight-text__title">{{ block.settings.title | escape }}</p>{%- endif -%}
+  {%- if block.settings.text != blank -%}<div class="rte">{{ block.settings.text }}</div>{%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "t:labels.highlight_text",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "t:labels.heading",
+      "default": "Good to know"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "t:labels.text",
+      "default": "<p>Share a detail shoppers often ask about.</p>"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:labels.color_scheme",
+      "default": "scheme-2"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:labels.highlight_text",
+      "category": "t:labels.text"
+    }
+  ]
+}
+{% endschema %}

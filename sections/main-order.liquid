@@ -1,0 +1,62 @@
+{%- comment -%} Classic customer accounts: one order with lines, totals, addresses and fulfillment. {%- endcomment -%}
+{{ 'section-content.css' | asset_url | stylesheet_tag }}
+<div class="section account color-{{ section.settings.color_scheme }}">
+  <div class="page-width stack">
+    <a class="link" href="{{ routes.account_url }}">{{ 'customer.account.back' | t }}</a>
+    <h1 class="h2">{{ 'customer.order.title' | t: name: order.name }}</h1>
+    {%- assign placed_on = order.created_at | time_tag: format: 'date' -%}
+    <p class="muted">{{ 'customer.order.placed' | t: date: placed_on }}</p>
+    {%- if order.cancelled -%}{%- assign cancelled_on = order.cancelled_at | time_tag: format: 'date' -%}<p class="form-message form-message--error">{{ 'customer.order.cancelled' | t: date: cancelled_on }}</p>{%- endif -%}
+    <div class="account__grid">
+      <table class="account-table account-table--order">
+        <caption class="visually-hidden">{{ 'customer.order.title' | t: name: order.name }}</caption>
+        <thead><tr><th scope="col">{{ 'cart.product' | t }}</th><th scope="col">{{ 'cart.price' | t }}</th><th scope="col">{{ 'cart.quantity' | t }}</th><th scope="col">{{ 'cart.total' | t }}</th></tr></thead>
+        <tbody>
+          {%- for line in order.line_items -%}
+            <tr>
+              <th scope="row">
+                <a class="link" href="{{ line.product.url }}">{{ line.title | escape }}</a>
+                {%- if line.selling_plan_allocation -%}<br><span class="muted">{{ line.selling_plan_allocation.selling_plan.name }}</span>{%- endif -%}
+                {%- for d in line.line_level_discount_allocations -%}<br><span class="muted">{{ d.discount_application.title | escape }} (−{{ d.amount | money }})</span>{%- endfor -%}
+                {%- if line.fulfillment -%}{%- assign fulfilled_on = line.fulfillment.created_at | time_tag: format: 'date' -%}<br><span class="muted">{{ 'customer.order.fulfilled' | t: date: fulfilled_on }}{% if line.fulfillment.tracking_url %} · <a href="{{ line.fulfillment.tracking_url }}">{{ 'customer.order.track' | t }}</a>{% endif %}</span>{%- endif -%}
+              </th>
+              <td class="tabular">{{ line.final_price | money }}</td>
+              <td class="tabular">{{ line.quantity }}</td>
+              <td class="tabular">{{ line.final_line_price | money }}</td>
+            </tr>
+          {%- endfor -%}
+        </tbody>
+        <tfoot>
+          <tr><th scope="row" colspan="3">{{ 'cart.subtotal' | t }}</th><td class="tabular">{{ order.line_items_subtotal_price | money }}</td></tr>
+          {%- for discount in order.cart_level_discount_applications -%}<tr><th scope="row" colspan="3">{{ discount.title | escape }}</th><td class="tabular">−{{ discount.total_allocated_amount | money }}</td></tr>{%- endfor -%}
+          {%- for shipping in order.shipping_methods -%}<tr><th scope="row" colspan="3">{{ shipping.title | escape }}</th><td class="tabular">{{ shipping.price | money }}</td></tr>{%- endfor -%}
+          {%- for tax in order.tax_lines -%}<tr><th scope="row" colspan="3">{{ tax.title | escape }} ({{ tax.rate_percentage }}%)</th><td class="tabular">{{ tax.price | money }}</td></tr>{%- endfor -%}
+          <tr class="account-table__total"><th scope="row" colspan="3">{{ 'cart.total' | t }}</th><td class="tabular">{{ order.total_net_amount | money_with_currency }}</td></tr>
+        </tfoot>
+      </table>
+      <div class="account__details stack">
+        <h2 class="h4">{{ 'customer.order.billing' | t }}</h2>
+        <p>{{ 'customer.orders.payment' | t }}: {{ order.financial_status_label }}</p>
+        {{ order.billing_address | format_address }}
+        <h2 class="h4">{{ 'customer.order.shipping' | t }}</h2>
+        <p>{{ 'customer.orders.fulfillment' | t }}: {{ order.fulfillment_status_label }}</p>
+        {{ order.shipping_address | format_address }}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:labels.order",
+  "class": "section-main-order",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:labels.color_scheme",
+      "default": "scheme-1"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,105 @@
+{%- comment -%}
+  Color swatches and size chips under a product card's price (snippets/product-card.liquid).
+  Swatches are buttons: a click shows that color's image and re-points the card's quick add
+  buttons and links (quick-add.js). Each swatch carries its variants in quick add button order as
+  "id:available" pairs. Size chips are plain text; sizes with no available variant are crossed out.
+  Params: product, url, swatch_option, color_key, active_color, size_option, size_key,
+          available_sizes (size values with an available variant), one_size, quick_mode
+{%- endcomment -%}
+{%- if swatch_option -%}
+  {%- assign swatch_limit = settings.card_swatch_limit | default: 4 -%}
+  <div class="card__colors">
+    <ul class="card__swatches swatch-shape--{{ settings.swatch_card_shape }}" role="list" aria-label="{{ swatch_option.name | escape }}">
+      {%- for value in swatch_option.values limit: swatch_limit -%}
+        {%- liquid
+          assign sw_image = nil
+          assign sw_color = value.swatch.color
+          if settings.swatch_card_style == 'variant_image'
+            assign sw_image = value.variant.featured_image | default: value.swatch.image
+          elsif sw_color == blank
+            assign sw_image = value.swatch.image
+          endif
+          # A value with no swatch color or image falls back to its variant image, then to its name (never a blank circle).
+          if sw_color == blank and sw_image == blank
+            assign sw_image = value.variant.featured_image
+          endif
+          # This color's first available variant: its image, its link, and the variant behind each quick add button.
+          assign color_variants = product.variants | where: color_key, value.name
+          assign color_variant = color_variants | where: 'available' | first
+          if color_variant == nil
+            assign color_variant = color_variants | first
+          endif
+          assign pick_variants = ''
+          if quick_mode == 'sizes'
+            for size_value in size_option.values limit: 12
+              assign pick = color_variants | where: size_key, size_value.name | first
+              assign pick_available = 0
+              if pick.available
+                assign pick_available = 1
+              endif
+              unless forloop.first
+                assign pick_variants = pick_variants | append: ','
+              endunless
+              assign pick_variants = pick_variants | append: pick.id | append: ':' | append: pick_available
+            endfor
+          else
+            assign pick_available = 0
+            if color_variant.available
+              assign pick_available = 1
+            endif
+            assign pick_variants = color_variant.id | append: ':' | append: pick_available
+          endif
+          assign pick_image = color_variant.featured_image | default: value.variant.featured_image
+        -%}
+        <li>
+          <button
+            type="button"
+            class="card-swatch{% if sw_color == blank and sw_image == blank %} card-swatch--text{% endif %}"
+            data-card-pick
+            data-name="{{ value | escape }}"
+            data-url="{{ url }}?variant={{ color_variant.id }}"
+            data-variants="{{ pick_variants }}"
+            {% if pick_image %}data-image="{{ pick_image | image_url: width: 960 }}"{% endif %}
+            aria-pressed="{% if value.name == active_color %}true{% else %}false{% endif %}"
+            title="{{ value | escape }}"
+          >
+            {%- if sw_color == blank and sw_image == blank -%}
+              <span class="card-swatch__dot">{{ value | escape }}</span>
+            {%- else -%}
+              <span class="card-swatch__dot"{% if sw_color %} style="--swatch-color: {{ sw_color }}"{% endif %}>
+                {%- if sw_image -%}{{ sw_image | image_url: width: 60 | image_tag: width: 30, height: 30, alt: '', loading: 'lazy' }}{%- endif -%}
+              </span>
+              <span class="visually-hidden">{{ value | escape }}</span>
+            {%- endif -%}
+          </button>
+        </li>
+      {%- endfor -%}
+      {%- if swatch_option.values.size > swatch_limit -%}<li class="card__swatches-more muted">+{{ swatch_option.values.size | minus: swatch_limit }}</li>{%- endif -%}
+    </ul>
+    <span class="card__color-name muted" data-card-color-name>{{ active_color | escape }}</span>
+  </div>
+{%- endif -%}
+{%- if settings.card_show_sizes and size_option -%}
+  <div class="card__sizes">
+    <span class="card__sizes-label" aria-hidden="true">{{ size_option.name | escape }}</span>
+    <ul class="card__size-list" role="list" aria-label="{{ size_option.name | escape }}">
+      {%- if one_size -%}
+        <li class="card-size">{{ 'products.quick_add.one_size' | t }}</li>
+      {%- else -%}
+        {%- for value in size_option.values limit: 8 -%}
+          {%- liquid
+            assign size_available = false
+            if available_sizes contains value.name
+              assign size_available = true
+            endif
+          -%}
+          <li class="card-size{% unless size_available %} card-size--sold-out{% endunless %}">
+            {{- value | escape -}}
+            {%- unless size_available -%}<span class="visually-hidden">, {{ 'products.sold_out' | t }}</span>{%- endunless -%}
+          </li>
+        {%- endfor -%}
+        {%- if size_option.values.size > 8 -%}<li class="card__sizes-more muted">+{{ size_option.values.size | minus: 8 }}</li>{%- endif -%}
+      {%- endif -%}
+    </ul>
+  </div>
+{%- endif -%}

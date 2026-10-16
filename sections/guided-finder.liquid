@@ -1,0 +1,102 @@
+{%- comment -%}
+  Guided finder (VERTICALS §2): a few questions whose answers are collection filters. The form is
+  a plain GET form to the collection, so the answers become Search & Discovery filter
+  parameters in the URL; there is no scoring and no API call. finder.js shows one question at a
+  time with Back / Next; without JavaScript every question shows at once.
+{%- endcomment -%}
+{%- liquid
+  assign s = section.settings
+  assign target = s.collection.url | default: routes.all_products_collection_url
+-%}
+{{ 'section-vertical.css' | asset_url | stylesheet_tag }}
+<div class="section finder color-{{ s.color_scheme }}{% if section.index > 2 %} below-fold{% endif %}" data-reveal>
+  <div class="page-width page-width--narrow">
+    <guided-finder class="finder__box stack" data-module="{{ 'finder.js' | asset_url }}" data-load="visible">
+      {%- if s.heading != blank -%}<h2 class="h2">{{ s.heading | escape }}</h2>{%- endif -%}
+      {%- if s.text != blank -%}<div class="rte muted">{{ s.text }}</div>{%- endif -%}
+      <p class="finder__progress muted js-only" data-finder-progress aria-live="polite" data-template="{{ 'finder.progress' | t: step: '__i__', count: '__n__' | escape }}"></p>
+      <form class="finder__form stack" action="{{ target }}" method="get" data-finder-form>
+        {%- content_for 'blocks' -%}
+        <div class="finder__nav">
+          <button type="button" class="button button--secondary js-only" data-finder-back hidden>{{ 'general.previous' | t }}</button>
+          <button type="button" class="button js-only" data-finder-next hidden>{{ 'general.next' | t }}</button>
+          <button type="submit" class="button" data-finder-submit>{% if s.submit_label != blank %}{{ s.submit_label | escape }}{% else %}{{ 'finder.show_results' | t }}{% endif %}</button>
+        </div>
+      </form>
+    </guided-finder>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "t:labels.guided_finder",
+  "class": "section-guided-finder",
+  "disabled_on": {
+    "groups": [
+      "header",
+      "footer",
+      "aside"
+    ]
+  },
+  "blocks": [
+    {
+      "type": "_finder-question"
+    }
+  ],
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:labels.heading",
+      "default": "Find your match"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "t:labels.text",
+      "default": "<p>Answer a few questions to see the products made for you.</p>"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "t:labels.collection_to_filter",
+      "info": "t:labels.all_products_when_empty"
+    },
+    {
+      "type": "text",
+      "id": "submit_label",
+      "label": "t:labels.button_label",
+      "default": "Show my products"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:labels.color_scheme",
+      "default": "scheme-2"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:labels.guided_finder",
+      "category": "t:labels.products",
+      "blocks": [
+        {
+          "type": "_finder-question",
+          "settings": {
+            "question": "What's your hair type?",
+            "param": "filter.p.m.shopify.hair-type",
+            "answers": "Straight\nWavy\nCurly"
+          }
+        },
+        {
+          "type": "_finder-question",
+          "settings": {
+            "question": "What would you like to improve?",
+            "param": "filter.p.tag",
+            "answers": "Dryness\nFrizz\nVolume"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

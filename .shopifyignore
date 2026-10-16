@@ -1,0 +1,13 @@
+reference/**
+docs/**
+scripts/**
+tests/**
+demo-content/**
+store-configs/**
+listings/**
+dist/**
+node_modules/**
+.github/**
+.claude/**
+*.md
+releases/

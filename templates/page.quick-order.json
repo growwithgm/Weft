@@ -1,0 +1,17 @@
+{
+  "sections": {
+    "main": {
+      "type": "quick-order-list",
+      "settings": {
+        "heading": "Quick order",
+        "per_page": 25,
+        "show_filter": true,
+        "show_images": true,
+        "show_sku": true,
+        "show_sold_out": false,
+        "show_history": true
+      }
+    }
+  },
+  "order": ["main"]
+}

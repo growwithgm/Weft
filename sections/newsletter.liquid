@@ -1,0 +1,153 @@
+{%- comment -%}
+  Email sign-up (brief §14.6): heading, text and the email sign-up block, on a color scheme or
+  over an optional background image.
+{%- endcomment -%}
+{%- liquid
+  assign s = section.settings
+  assign has_image = false
+  if s.image != blank
+    assign has_image = true
+  endif
+-%}
+{{ 'section-banner.css' | asset_url | stylesheet_tag }}
+{{ 'section-library.css' | asset_url | stylesheet_tag }}
+<div class="section newsletter-section color-{{ s.color_scheme }}{% unless s.full_width %} page-width{% endunless %}{% if section.index > 2 %} below-fold{% endif %}" data-reveal>
+  {%- comment -%} Shopify allows one content_for 'blocks' per file, so both looks share one box. {%- endcomment -%}
+  <div
+    {% if has_image %}
+      class="banner banner--small banner--{{ s.overlay_position }} banner--text-{{ s.text_align }} banner--mobile-center" style="--banner-tint: {{ s.tint_color }}; --banner-tint-opacity: {{ s.tint_opacity | divided_by: 100.0 }}; --banner-text: {{ s.text_color }};"
+    {% else %}
+      class="page-width newsletter-section__plain newsletter-section__plain--{{ s.text_align }}"
+    {% endif %}
+  >
+    {%- if has_image -%}
+      <div class="banner__media">{%- render 'image', image: s.image, sizes: '100vw', class: 'banner__image' -%}</div>
+    {%- endif -%}
+    <div class="{% if has_image %}banner__content{% else %}newsletter-section__inner{% endif %}">
+      <div class="stack{% if has_image %} banner__box newsletter-section__box{% endif %}">{%- content_for 'blocks' -%}</div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:labels.email_signup",
+  "class": "section-newsletter",
+  "disabled_on": {
+    "groups": [
+      "header",
+      "footer",
+      "aside"
+    ]
+  },
+  "blocks": [
+    {
+      "type": "@theme"
+    },
+    {
+      "type": "@app"
+    }
+  ],
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:labels.background_image"
+    },
+    {
+      "type": "select",
+      "id": "overlay_position",
+      "label": "t:labels.content_position_on_the_image",
+      "options": [
+        {
+          "value": "middle-start",
+          "label": "t:labels.middle_start"
+        },
+        {
+          "value": "middle-center",
+          "label": "t:labels.middle_center"
+        },
+        {
+          "value": "middle-end",
+          "label": "t:labels.middle_end"
+        }
+      ],
+      "default": "middle-center"
+    },
+    {
+      "type": "select",
+      "id": "text_align",
+      "label": "t:labels.text_alignment",
+      "options": [
+        {
+          "value": "start",
+          "label": "t:labels.start"
+        },
+        {
+          "value": "center",
+          "label": "t:labels.center"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "t:labels.full_width",
+      "default": true
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:labels.color_scheme",
+      "default": "scheme-2"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "t:labels.text_on_the_image",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "tint_color",
+      "label": "t:labels.image_tint",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "tint_opacity",
+      "label": "t:labels.image_tint_opacity",
+      "min": 0,
+      "max": 90,
+      "step": 5,
+      "unit": "%",
+      "default": 30
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:labels.email_signup",
+      "category": "t:labels.forms",
+      "blocks": [
+        {
+          "type": "heading",
+          "settings": {
+            "heading": "Subscribe to our emails",
+            "size": "h2"
+          }
+        },
+        {
+          "type": "text",
+          "settings": {
+            "text": "<p>Be the first to know about new collections and exclusive offers.</p>"
+          }
+        },
+        {
+          "type": "email-signup"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

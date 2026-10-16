@@ -1,0 +1,20 @@
+{%- comment -%}
+  Integration (store builds only): settings that make <back-in-stock> send the request to a
+  back-in-stock service as JSON instead of the contact form (Theme settings > Integrations).
+  Outputs nothing when the integration is off. Params: product
+{%- endcomment -%}
+{%- if settings.integration_bis_enable and settings.integration_bis_endpoint != blank and product -%}
+  {%- assign product_url = shop.url | append: product.url -%}
+  <script type="application/json" data-bis-service>
+    {
+      "endpoint": {{ settings.integration_bis_endpoint | strip | json }},
+      "shop": {{ shop.permanent_domain | json }},
+      "locale": {{ request.locale.iso_code | json }},
+      "country": {{ localization.country.iso_code | json }},
+      "productId": {{ product.id | json }},
+      "productTitle": {{ product.title | json }},
+      "productUrl": {{ product_url | json }},
+      "phoneError": {{ 'integrations.bis.phone_invalid' | t | json }}
+    }
+  </script>
+{%- endif -%}

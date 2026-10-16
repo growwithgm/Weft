@@ -1,0 +1,530 @@
+{%- comment -%}
+  GN STICKY ATC — ibBan
+  {% render 'gn-sticky-atc' %}
+
+  Mobile-only sticky bar at the bottom of the product page:
+    row 1  colour chip · size chip · live stock status
+    row 2  Add to cart · Buy now · WhatsApp
+           (sold out: Remind me when in stock · WhatsApp)
+
+  WHEN IT SHOWS — it must be off screen whenever:
+    1. the real Add to cart button is in view (IntersectionObserver on it),
+       so the customer never sees two Add to cart buttons at once
+    2. any overlay is open — cart drawer, mobile menu, search, quick buy
+
+  OVERLAY DETECTION — read this before changing it.
+  The theme fires documented events for the cart drawer and quick buy, and
+  those are used. It fires nothing for the mobile menu or search, so two
+  further signals are used:
+
+    a) a short list of drawer selectors — but every match is checked for
+       ACTUAL VISIBILITY first. This matters: the theme's drawers sit in the
+       DOM permanently while closed and keep attributes like aria-modal on
+       them, so matching the selector alone reports every drawer as open and
+       the bar never appears at all. Only size, display, visibility and
+       opacity decide.
+
+    b) page scroll lock, compared against a snapshot taken at load rather
+       than against a fixed value. Themes commonly set overflow-x hidden on
+       body permanently; only a CHANGE from the load-time state counts as a
+       drawer opening.
+
+  The bar writes its own state to data-gn-state on the wrapper (on / atc /
+  overlay) so this can be diagnosed from the browser inspector without
+  adding logging.
+
+  FLOATING WHATSAPP BUBBLE: the theme has its own fixed WhatsApp button in
+  the bottom-right corner. While this bar is up the two overlap, so the
+  bubble is hidden and restored with the bar. It is found by looking for a
+  fixed-position element wrapping a WhatsApp link — not by class name.
+
+  WHATSAPP BUTTON: opens a chat pre-filled with the product and the selected
+  variant. The number comes from the same Theme settings > social_whatsapp_url
+  the header bubble uses, so there is only one number to maintain.
+
+  IT DRIVES THE THEME, IT DOES NOT REPLACE IT:
+    · the chips open a sheet that ticks the theme's own variant radio inputs
+    · Add to cart clicks the real button[name="add"]
+    · Buy now adds to cart, then goes to checkout
+    · Remind me clicks the existing #wbis-cta / #wbis-link trigger
+
+  The bar is moved to <body> on load. It has to escape the product info
+  column — that column is sticky, and position:fixed inside a sticky or
+  transformed ancestor anchors to the ancestor instead of the viewport.
+{%- endcomment -%}
+
+{%- liquid
+  assign gn_skip = false
+  if customer.b2b? or localization.market.handle == 'b2b-wholesale'
+    assign gn_skip = true
+  endif
+
+  assign wa = settings.social_whatsapp_url
+
+  assign iso = localization.country.iso_code
+  if iso == 'ES'
+    assign t_atc = 'Añadir'
+    assign t_buy = 'Comprar ya'
+    assign t_remind = 'Avísame cuando vuelva'
+    assign t_in = 'En stock · sale en 24h'
+    assign t_low = 'Quedan pocas'
+    assign t_out = 'Agotado'
+    assign t_colour = 'Color:'
+    assign t_size = 'Talla:'
+    assign t_pick = 'Elige '
+    assign t_wa = 'Tengo una pregunta sobre '
+  else
+    assign t_atc = 'Add to cart'
+    assign t_buy = 'Buy now'
+    assign t_remind = 'Remind me when in stock'
+    assign t_in = 'In stock · ships in 24h'
+    assign t_low = 'Low stock'
+    assign t_out = 'Out of stock'
+    assign t_colour = 'Colour:'
+    assign t_size = 'Size:'
+    assign t_pick = 'Select '
+    assign t_wa = 'I have a question about '
+  endif
+-%}
+
+{%- unless gn_skip -%}
+<div class="gn-sab" data-gn-sab hidden
+  data-t-in="{{ t_in }}" data-t-low="{{ t_low }}" data-t-out="{{ t_out }}">
+
+  <div class="gn-sab__top">
+    <div class="gn-sab__chips">
+      {%- for option in product.options_with_values -%}
+        {%- assign oname = option.name | downcase -%}
+        <button type="button" class="gn-sab__chip" data-gn-chip="{{ forloop.index0 }}">
+          {%- if oname contains 'color' or oname contains 'colour' -%}
+            <span class="gn-sab__sw" data-gn-sw></span>
+            <span class="gn-sab__k">{{ t_colour }}</span>
+          {%- else -%}
+            <span class="gn-sab__k">{{ t_size }}</span>
+          {%- endif -%}
+          <span class="gn-sab__v" data-gn-chipval="{{ forloop.index0 }}">{{ option.selected_value }}</span>
+          <span class="gn-sab__car">&#9662;</span>
+        </button>
+      {%- endfor -%}
+    </div>
+    <div class="gn-sab__stock">
+      <span class="gn-sab__dot"></span><span data-gn-stocktext></span>
+    </div>
+  </div>
+
+  <div class="gn-sab__btns">
+    <button type="button" class="gn-sab__btn gn-sab__btn--atc" data-gn-sab-atc>{{ t_atc }}</button>
+    <button type="button" class="gn-sab__btn gn-sab__btn--buy" data-gn-sab-buy>{{ t_buy }}</button>
+    <button type="button" class="gn-sab__btn gn-sab__btn--remind" data-gn-sab-remind hidden>{{ t_remind }}</button>
+    <a class="gn-sab__wa" data-gn-sab-wa href="#" target="_blank" rel="noopener" aria-label="WhatsApp" hidden>
+      <svg viewBox="0 0 24 24" width="21" height="21" fill="#fff" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.65.07-.3-.15-1.12-.41-2.14-1.32-.79-.71-1.32-1.58-1.47-1.88-.15-.3-.02-.47.13-.62.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.2-.24-.58-.48-.5-.67-.5h-.57c-.2 0-.52.07-.79.37-.27.3-1.03 1.01-1.03 2.45 0 1.45 1.05 2.85 1.2 3.05.15.2 2.06 3.28 5.02 4.47 2.96 1.19 2.96.79 3.5.74.53-.05 1.72-.7 1.96-1.38.24-.68.24-1.26.17-1.38-.07-.12-.27-.2-.57-.35zM12 21.5c-1.66 0-3.22-.44-4.57-1.22L3 21.5l1.28-4.3A9.44 9.44 0 0 1 2.5 12C2.5 6.75 6.75 2.5 12 2.5S21.5 6.75 21.5 12 17.25 21.5 12 21.5z"></path></svg>
+    </a>
+  </div>
+
+  <div class="gn-sab__sheet" data-gn-sheet hidden>
+    <div class="gn-sab__panel">
+      <div class="gn-sab__head">
+        <span data-gn-sheettitle></span>
+        <button type="button" class="gn-sab__x" data-gn-close aria-label="Close">&times;</button>
+      </div>
+      <div class="gn-sab__list" data-gn-list></div>
+    </div>
+  </div>
+
+  <script type="application/json" data-gn-sab-data>
+  {
+    "pick": {{ t_pick | json }},
+    "waUrl": {{ wa | json }},
+    "waMsg": {{ t_wa | json }},
+    "title": {{ product.title | json }},
+    "options": [
+      {%- for option in product.options_with_values -%}
+      {"name": {{ option.name | json }}, "values": [{%- for v in option.values -%}{{ v | json }}{%- unless forloop.last -%},{%- endunless -%}{%- endfor -%}]}{%- unless forloop.last -%},{%- endunless -%}
+      {%- endfor -%}
+    ],
+    "variants": {
+      {%- for v in product.variants -%}
+      "{{ v.id }}": {
+        "a": {{ v.available | json }},
+        "q": {{ v.inventory_quantity | default: 0 }},
+        "t": {{ v.title | json }},
+        "o": [{%- for ov in v.options -%}{{ ov | json }}{%- unless forloop.last -%},{%- endunless -%}{%- endfor -%}],
+        "img": {{ v.featured_media.preview_image | image_url: width: 60 | json }}
+      }{%- unless forloop.last -%},{%- endunless -%}
+      {%- endfor -%}
+    }
+  }
+  </script>
+</div>
+
+<style>
+  .gn-sab{ display:none; }
+
+  @media (max-width:749px){
+    .gn-sab{
+      position:fixed; left:0; right:0; bottom:0; z-index:60;
+      display:block;
+      background:rgba(255,255,255,.97);
+      -webkit-backdrop-filter:blur(12px); backdrop-filter:blur(12px);
+      border-top:1px solid #E5E2DD;
+      box-shadow:0 -8px 24px rgba(0,0,0,.07);
+      padding:8px 14px calc(11px + env(safe-area-inset-bottom));
+      font-family:inherit;
+      transform:translateY(110%);
+      transition:transform 260ms cubic-bezier(.2,.8,.2,1);
+    }
+    .gn-sab.is-on{ transform:translateY(0); }
+
+    /* theme's floating WhatsApp bubble, hidden while the bar is up */
+    .gn-sab-wa-off{ display:none !important; }
+
+    .gn-sab__top{ display:flex; align-items:center; justify-content:space-between; gap:8px; margin-bottom:7px; }
+    .gn-sab__chips{ display:flex; align-items:center; gap:7px; min-width:0; }
+    .gn-sab__chip{
+      display:flex; align-items:center; gap:6px;
+      background:#F6F4F1; border:1px solid #DDD9D3; border-radius:7px;
+      padding:5px 8px; font:inherit; font-size:11.5px; font-weight:500;
+      color:#111; cursor:pointer; line-height:1.2; max-width:44vw;
+    }
+    .gn-sab__k{ color:#8A8580; flex:none; }
+    .gn-sab__v{ overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+    .gn-sab__car{ font-size:8px; color:#6B6B6B; flex:none; }
+    .gn-sab__sw{
+      width:13px; height:13px; flex:none; border-radius:99px;
+      border:1px solid rgba(0,0,0,.18); background:#EEE center/cover no-repeat;
+    }
+
+    .gn-sab__stock{ display:flex; align-items:center; gap:6px; font-size:11px; flex:none; color:#2F7A44; }
+    .gn-sab__dot{ width:6px; height:6px; border-radius:99px; background:currentColor; }
+    .gn-sab.is-low .gn-sab__stock{ color:#B07D2E; }
+    .gn-sab.is-out .gn-sab__stock{ color:#B03A2E; }
+
+    .gn-sab__btns{ display:flex; gap:8px; }
+    .gn-sab__btn{
+      flex:1; min-width:0; font:inherit; font-size:12.5px; font-weight:600;
+      letter-spacing:.03em; border-radius:9px; padding:11px 8px;
+      cursor:pointer; white-space:nowrap; border:1.5px solid transparent;
+    }
+    .gn-sab__btn[hidden]{ display:none; }
+    .gn-sab__btn--atc{ background:#FBD816; border-color:#FBD816; color:#0F1111; }
+    .gn-sab__btn--buy{ background:#F5941D; border-color:#F5941D; color:#0F1111; }
+    .gn-sab__btn--remind{ background:#FBD816; border-color:#FBD816; color:#0F1111; }
+    .gn-sab__btn:disabled{ background:#E5E5E5; border-color:#E5E5E5; color:#767676; }
+    .gn-sab__wa{
+      width:44px; flex:none; display:flex; align-items:center; justify-content:center;
+      background:#25D366; border-radius:9px; text-decoration:none;
+    }
+    .gn-sab__wa[hidden]{ display:none; }
+
+    .gn-sab__sheet{
+      position:fixed; inset:0; z-index:61; background:rgba(17,17,17,.4);
+      display:flex; align-items:flex-end;
+    }
+    .gn-sab__sheet[hidden]{ display:none; }
+    .gn-sab__panel{
+      width:100%; background:#fff; border-radius:20px 20px 0 0;
+      padding:20px 18px calc(22px + env(safe-area-inset-bottom));
+      max-height:70vh; overflow:auto;
+      animation:gnSabUp .26s cubic-bezier(.2,.8,.2,1);
+    }
+    .gn-sab__head{ display:flex; align-items:center; justify-content:space-between; margin-bottom:14px; font-size:17px; color:#111; }
+    .gn-sab__x{ background:none; border:0; font:inherit; font-size:20px; color:#6B6B6B; cursor:pointer; }
+    .gn-sab__list{ display:flex; flex-direction:column; gap:8px; }
+    .gn-sab__opt{
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+      width:100%; background:#fff; border:1px solid #DDD9D3; border-radius:11px;
+      padding:14px 15px; font:inherit; font-size:15px; color:#111;
+      cursor:pointer; text-align:left;
+    }
+    .gn-sab__opt.is-sel{ border-color:#111; }
+    .gn-sab__note{ font-size:12px; color:#B03A2E; }
+
+    @keyframes gnSabUp{ from{ transform:translateY(100%); } to{ transform:translateY(0); } }
+  }
+  @media (prefers-reduced-motion:reduce){
+    .gn-sab{ transition:none; }
+    .gn-sab__panel{ animation:none; }
+  }
+</style>
+
+<script>
+(function(){
+  if (window.__gnSab) return; window.__gnSab = true;
+
+  function init(){
+    var bar = document.querySelector('[data-gn-sab]');
+    if (!bar) return;
+
+    if (bar.parentNode !== document.body) document.body.appendChild(bar);
+    bar.hidden = false;
+
+    var data;
+    try { data = JSON.parse(bar.querySelector('[data-gn-sab-data]').textContent); }
+    catch(e){ bar.remove(); return; }
+
+    var realAtc = document.querySelector('form[action*="/cart/add"] button[name="add"]');
+    var idInput = document.querySelector('form[action*="/cart/add"] [name="id"]');
+    if (!realAtc || !idInput) { bar.remove(); return; }
+
+    var sheet = bar.querySelector('[data-gn-sheet]');
+    var list  = bar.querySelector('[data-gn-list]');
+    var title = bar.querySelector('[data-gn-sheettitle]');
+    var atcBtn = bar.querySelector('[data-gn-sab-atc]');
+    var buyBtn = bar.querySelector('[data-gn-sab-buy]');
+    var remBtn = bar.querySelector('[data-gn-sab-remind]');
+    var waBtn  = bar.querySelector('[data-gn-sab-wa]');
+    var stockText = bar.querySelector('[data-gn-stocktext]');
+
+    /* ---------- the theme's floating WhatsApp bubble ---------- */
+
+    var bubbles = [];
+    (function findBubbles(){
+      var links = document.querySelectorAll('a[href*="wa.me"], a[href*="whatsapp"], a[href*="api.whatsapp"]');
+      for (var i = 0; i < links.length; i++){
+        var el = links[i];
+        if (el.closest('[data-gn-sab]')) continue;
+        var node = el, found = null, hops = 0;
+        while (node && node !== document.body && hops < 6){
+          if (window.getComputedStyle(node).position === 'fixed'){ found = node; break; }
+          node = node.parentElement; hops++;
+        }
+        if (found && bubbles.indexOf(found) === -1) bubbles.push(found);
+      }
+    })();
+
+    function bubblesOff(off){
+      for (var i = 0; i < bubbles.length; i++) bubbles[i].classList.toggle('gn-sab-wa-off', off);
+    }
+
+    /* ---------- overlay detection ---------- */
+
+    var DRAWER_SEL = [
+      'side-drawer[open]', '.side-drawer[open]', '[data-side-drawer][open]',
+      'dialog[open]', '.drawer.is-open', 'menu-drawer[open]',
+      'nav-drawer[open]', 'search-drawer[open]'
+    ].join(',');
+
+    /* A drawer only counts when it is actually on screen. These elements
+       stay in the DOM while closed, so matching the selector is not enough. */
+    function onScreen(el){
+      if (!el) return false;
+      var cs = window.getComputedStyle(el);
+      if (cs.display === 'none' || cs.visibility === 'hidden' || cs.opacity === '0') return false;
+      var r = el.getBoundingClientRect();
+      return r.width > 1 && r.height > 1 && r.bottom > 0 && r.right > 0;
+    }
+
+    function drawerOnScreen(){
+      var els;
+      try { els = document.querySelectorAll(DRAWER_SEL); } catch(e){ return false; }
+      for (var i = 0; i < els.length; i++){
+        if (els[i].closest('[data-gn-sab]')) continue;
+        if (onScreen(els[i])) return true;
+      }
+      return false;
+    }
+
+    /* Scroll lock, compared against the state at load rather than a fixed
+       value — overflow-x hidden on body is common and permanent. */
+    function lockSig(){
+      var b = window.getComputedStyle(document.body);
+      var h = window.getComputedStyle(document.documentElement);
+      return b.overflow + '|' + h.overflow + '|' + b.position;
+    }
+    var baseSig = lockSig();
+
+    function scrollLocked(){
+      var now = lockSig();
+      return now !== baseSig && /hidden|fixed/.test(now);
+    }
+
+    var eventOverlay = false;
+
+    function overlayOpen(){
+      if (eventOverlay) return true;
+      if (drawerOnScreen()) return true;
+      return scrollLocked();
+    }
+
+    /* ---------- when the bar may show ---------- */
+
+    var atcVisible = true;
+
+    function sync(){
+      var blocked = overlayOpen();
+      var on = !atcVisible && !blocked;
+      bar.classList.toggle('is-on', on);
+      bubblesOff(on);
+      if (!on) sheet.hidden = true;
+      bar.dataset.gnState = on ? 'on' : (atcVisible ? 'atc' : 'overlay');
+    }
+
+    if ('IntersectionObserver' in window){
+      new IntersectionObserver(function(entries){
+        atcVisible = entries[0].isIntersecting;
+        sync();
+      }, {rootMargin: '0px 0px -20px 0px'}).observe(realAtc);
+    } else {
+      atcVisible = false; sync();
+    }
+
+    ['on:cart-drawer:before-open', 'on:quickbuy:before-open'].forEach(function(ev){
+      document.addEventListener(ev, function(){ eventOverlay = true; sync(); });
+    });
+    ['on:cart-drawer:after-close', 'on:quickbuy:after-close'].forEach(function(ev){
+      document.addEventListener(ev, function(){ eventOverlay = false; sync(); });
+    });
+
+    if ('MutationObserver' in window){
+      var mo = new MutationObserver(function(){ sync(); });
+      mo.observe(document.body, {attributes:true, attributeFilter:['class','style'], childList:true});
+      mo.observe(document.documentElement, {attributes:true, attributeFilter:['class','style']});
+    }
+    setInterval(sync, 400);
+
+    /* ---------- selected variant ---------- */
+
+    function current(){ return data.variants[idInput.value] || null; }
+
+    function waHref(v){
+      if (!data.waUrl) return null;
+      var phone = '';
+      try {
+        var m = data.waUrl.match(/(?:phone=%2B|phone=\+|phone=|wa\.me\/)(\d+)/);
+        if (m) phone = m[1];
+      } catch(e){}
+      if (!phone) return null;
+      var label = data.title;
+      if (v && v.t && v.t.toLowerCase() !== 'default title') label += ' \u2014 ' + v.t;
+      return 'https://wa.me/' + phone + '?text=' + encodeURIComponent(data.waMsg + label);
+    }
+
+    function paint(){
+      var v = current();
+      var sel = v ? v.o : [];
+
+      bar.querySelectorAll('[data-gn-chipval]').forEach(function(el){
+        var i = parseInt(el.dataset.gnChipval, 10);
+        if (sel[i]) el.textContent = sel[i];
+      });
+
+      var sw = bar.querySelector('[data-gn-sw]');
+      if (sw && v && v.img) sw.style.backgroundImage = 'url("' + v.img + '")';
+
+      var out = !v || !v.a;
+      var low = v && v.a && v.q > 0 && v.q <= 3;
+      bar.classList.toggle('is-out', out);
+      bar.classList.toggle('is-low', !!low);
+      if (stockText){
+        stockText.textContent = out ? bar.dataset.tOut : (low ? bar.dataset.tLow : bar.dataset.tIn);
+      }
+
+      atcBtn.hidden = out; buyBtn.hidden = out; remBtn.hidden = !out;
+
+      var href = waHref(v);
+      if (href){ waBtn.href = href; waBtn.hidden = false; }
+      else { waBtn.hidden = true; }
+    }
+
+    /* ---------- chips open a sheet that ticks the theme's own radios ---------- */
+
+    function optionInputs(i){
+      var groups = document.querySelectorAll('variant-picker .option-selector');
+      if (!groups[i]) return null;
+      return groups[i].querySelectorAll('input[type="radio"]');
+    }
+
+    function valueAvailable(i, val){
+      var v = current();
+      var sel = v ? v.o.slice() : [];
+      for (var id in data.variants){
+        var d = data.variants[id];
+        var hit = true;
+        for (var k = 0; k < sel.length; k++){
+          if (k !== i && sel[k] && d.o[k] !== sel[k]) { hit = false; break; }
+        }
+        if (hit && d.o[i] === val && d.a) return true;
+      }
+      return false;
+    }
+
+    function openSheet(i){
+      var opt = data.options[i]; if (!opt) return;
+      var v = current();
+      var sel = v ? v.o : [];
+      title.textContent = data.pick + opt.name.toLowerCase();
+      list.innerHTML = '';
+
+      opt.values.forEach(function(val){
+        var ok = valueAvailable(i, val);
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'gn-sab__opt' + (sel[i] === val ? ' is-sel' : '');
+        var a = document.createElement('span'); a.textContent = val;
+        var n = document.createElement('span');
+        n.className = 'gn-sab__note';
+        n.textContent = ok ? '' : bar.dataset.tOut;
+        b.appendChild(a); b.appendChild(n);
+        b.addEventListener('click', function(){
+          var inputs = optionInputs(i);
+          if (inputs){
+            for (var x = 0; x < inputs.length; x++){
+              if (inputs[x].value === val){
+                inputs[x].checked = true;
+                inputs[x].dispatchEvent(new Event('change', {bubbles:true}));
+                break;
+              }
+            }
+          }
+          sheet.hidden = true;
+          setTimeout(paint, 150);
+        });
+        list.appendChild(b);
+      });
+
+      sheet.hidden = false;
+    }
+
+    bar.querySelectorAll('[data-gn-chip]').forEach(function(c){
+      c.addEventListener('click', function(){ openSheet(parseInt(c.dataset.gnChip, 10)); });
+    });
+    bar.querySelector('[data-gn-close]').addEventListener('click', function(){ sheet.hidden = true; });
+    sheet.addEventListener('click', function(e){ if (e.target === sheet) sheet.hidden = true; });
+
+    /* ---------- actions delegate to the theme ---------- */
+
+    atcBtn.addEventListener('click', function(){ realAtc.click(); });
+
+    var busy = false;
+    buyBtn.addEventListener('click', function(){
+      if (busy) return; busy = true; buyBtn.disabled = true;
+      var root = (window.Shopify && window.Shopify.routes && window.Shopify.routes.root) || '/';
+      var qty = document.querySelector('form[action*="/cart/add"] [name="quantity"]');
+      fetch(root + 'cart/add.js', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        credentials: 'same-origin',
+        body: JSON.stringify({ items: [{ id: Number(idInput.value), quantity: Number(qty && qty.value) || 1 }] })
+      }).then(function(){ window.location.href = root + 'checkout'; })
+        .catch(function(){ busy = false; buyBtn.disabled = false; });
+    });
+
+    remBtn.addEventListener('click', function(){
+      var t = document.getElementById('wbis-cta') || document.getElementById('wbis-link');
+      if (t) t.click();
+    });
+
+    document.addEventListener('change', function(e){
+      if (e.target && (e.target.name === 'id' || e.target.type === 'radio')) setTimeout(paint, 80);
+    });
+    document.addEventListener('on:variant:change', function(){ setTimeout(paint, 80); });
+
+    paint();
+    sync();
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
+</script>
+{%- endunless -%}

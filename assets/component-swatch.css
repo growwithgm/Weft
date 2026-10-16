@@ -1,0 +1,24 @@
+/* Variant picker swatches: a check badge on the selected one, a "Sold out" band on sold-out ones. */
+@layer components {
+  .swatch { position: relative; container-type: inline-size; width: var(--swatch-size); height: var(--swatch-size); padding: 3px; border: 1px solid var(--c-line); border-radius: 8px; cursor: pointer; background: var(--c-bg); }
+  .swatch-shape--circle .swatch, .swatch-shape--circle .swatch__fill { border-radius: 50%; }
+  .swatch-shape--portrait .swatch { height: calc(var(--swatch-size) * 1.25); }
+  .swatch__fill { position: relative; display: block; width: 100%; height: 100%; border-radius: 5px; background: var(--swatch-color, var(--c-surface)); overflow: hidden; }
+  .swatch__fill img { width: 100%; height: 100%; object-fit: cover; }
+  .swatch:hover { border-color: var(--c-muted); }
+  .variant-picker__input:checked + .swatch { border: 2px solid var(--c-fg); padding: 2px; }
+
+  /* Selected: a round check in the top corner, readable on dark photos too. */
+  .swatch__check { position: absolute; z-index: 1; inset-block-start: -7px; inset-inline-end: -7px; display: none; place-items: center; width: 22px; height: 22px; border: 2px solid var(--c-bg); border-radius: 50%; background: var(--c-fg); color: var(--c-bg); }
+  .variant-picker__input:checked + .swatch .swatch__check { display: grid; }
+
+  /* Sold out: faded photo and a band across the bottom; small swatches keep a diagonal strike. */
+  .swatch.is-unavailable .swatch__fill { filter: grayscale(1); opacity: 0.55; }
+  .swatch__band { position: absolute; inset-inline: 3px; inset-block-end: 3px; padding: 3px 2px; border-radius: 0 0 5px 5px; background: rgb(15 17 17 / 0.78); color: #fff; font-size: clamp(8px, 14cqi, 11px); font-weight: var(--fw-bold); letter-spacing: 0.04em; line-height: 1.2; text-align: center; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: clip; pointer-events: none; }
+  .swatch-shape--circle .swatch__band { inset-inline: 0; inset-block-end: 22%; border-radius: 0; }
+  .swatch.is-unavailable::after { content: none; }
+  @container (max-width: 55px) {
+    .swatch__band { display: none; }
+    .swatch.is-unavailable .swatch__fill::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top right, transparent calc(50% - 0.5px), var(--c-muted) calc(50% - 0.5px), var(--c-muted) calc(50% + 0.5px), transparent calc(50% + 0.5px)); }
+  }
+}

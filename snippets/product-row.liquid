@@ -1,0 +1,48 @@
+{%- comment -%}
+  Product grid or carousel for featured-collection and product-list, with an optional promotion
+  tile first. Placeholder cards show in the theme editor when no products are chosen.
+  Params: products, limit, section (for promo and layout settings), placeholder (bool),
+  id_prefix (optional; keeps card ids unique when a section shows several rows)
+{%- endcomment -%}
+{%- liquid
+  assign s = section.settings
+  assign cols = s.columns | default: 4
+  assign card_sizes = '(min-width: 990px) calc(100vw / ' | append: cols | append: '), (min-width: 750px) 33vw, 50vw'
+  if s.columns_mobile == '1'
+    assign card_sizes = '(min-width: 990px) calc(100vw / ' | append: cols | append: '), (min-width: 750px) 33vw, 85vw'
+  endif
+  assign max = limit | default: 8
+  assign card_prefix = id_prefix | default: section.id | append: '-'
+-%}
+<scroll-row class="scroll-row scroll-row--{{ s.layout }}" data-module="{{ 'carousel.js' | asset_url }}" data-load="visible">
+  <ul class="product-grid{% if s.layout == 'carousel' %} product-grid--carousel{% endif %}" role="list" data-scroll-list style="--cols: {{ cols }}; --cols-mobile: {{ s.columns_mobile }}">
+    {%- if s.show_promo_info -%}
+      <li class="product-row__promo color-{{ s.promo_color_scheme | default: s.color_scheme }}">
+        {%- if s.image -%}<div class="product-row__promo-media media media--{{ s.image_ratio }}">{%- render 'image', image: s.image, sizes: card_sizes, widths: '240,360,480,640,800,960' -%}</div>{%- endif -%}
+        <div class="product-row__promo-body stack">
+          {%- if s.promo_title != blank -%}<p class="h4">{{ s.promo_title | escape }}</p>{%- endif -%}
+          {%- if s.content != blank -%}<div class="rte">{{ s.content }}</div>{%- endif -%}
+          {%- if s.button_label != blank -%}<a class="button button--{{ s.button_style }}"{% if s.link_url != blank %} href="{{ s.link_url }}"{% else %} role="link" aria-disabled="true"{% endif %}>{{ s.button_label | escape }}</a>{%- endif -%}
+        </div>
+      </li>
+    {%- endif -%}
+    {%- if placeholder -%}
+      {%- for i in (1..max) limit: 4 -%}
+        <li class="card card--placeholder">
+          <div class="card__media media card--ratio-{{ settings.card_ratio }}">{{ 'product-apparel-' | append: i | placeholder_svg_tag: 'placeholder-svg' }}</div>
+          <div class="card__body"><p class="card__title">{{ 'products.placeholder_title' | t }}</p><p class="price muted">{{ 1999 | money }}</p></div>
+        </li>
+      {%- endfor -%}
+    {%- else -%}
+      {%- for product in products limit: max -%}
+        {%- render 'product-card', product: product, wrapper: 'li', index: forloop.index, sizes: card_sizes, highlight: s.show_highlight_products, id_prefix: card_prefix -%}
+      {%- endfor -%}
+    {%- endif -%}
+  </ul>
+  {%- if s.layout == 'carousel' -%}
+    <div class="scroll-row__buttons js-only">
+      <button type="button" class="icon-button" data-scroll-prev aria-label="{{ 'general.previous' | t }}">{%- render 'icon', name: 'chevron-left', size: 20 -%}</button>
+      <button type="button" class="icon-button" data-scroll-next aria-label="{{ 'general.next' | t }}">{%- render 'icon', name: 'chevron-right', size: 20 -%}</button>
+    </div>
+  {%- endif -%}
+</scroll-row>

@@ -1,0 +1,21 @@
+{% comment %}
+  Fit guide note — ibBan  (MOVED)
+
+  This snippet is now a no-op on purpose.
+
+  The fit guide row (product metafield custom.fit_guide) is rendered as the
+  first row of the unified product card in 'gn-shipping-bar', so that the fit
+  note, the shipping rate and the delivery estimate share one card with
+  hairline dividers instead of sitting in three separate boxes.
+
+  It could not stay here: this snippet and the shipping bar are rendered by
+  two different Custom Liquid blocks, and two separate block wrappers cannot
+  be joined into one bordered card reliably — especially since the metafield
+  is empty on most products, which would leave the card visibly cut off.
+
+  The Custom Liquid block that calls this snippet (custom_liquid_sizewarn) is
+  left in place and simply outputs nothing. The old red "Please check the Size
+  Guide before ordering" warning was removed on 28 Aug 2026.
+
+  To change the fit row, edit 'gn-shipping-bar'.
+{% endcomment %}

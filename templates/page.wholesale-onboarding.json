@@ -1,0 +1,39 @@
+{
+  "sections": {
+    "hero": {
+      "type": "image-banner",
+      "settings": {
+        "height": "small",
+        "overlay_position": "middle-start",
+        "tint_opacity": 40
+      },
+      "blocks": {
+        "eyebrow": { "type": "text", "settings": { "text": "<p>Wholesale</p>", "style": "subheading" } },
+        "title": { "type": "heading", "settings": { "heading": "Stock our products in your store", "size": "h1" } },
+        "lede": { "type": "text", "settings": { "text": "<p>Trade pricing, case packs and volume discounts for shops, salons and spas.</p>" } },
+        "cta": { "type": "button", "settings": { "label": "Apply for wholesale access", "style": "primary" } }
+      },
+      "block_order": ["eyebrow", "title", "lede", "cta"]
+    },
+    "how": {
+      "type": "rich-text",
+      "settings": {},
+      "blocks": {
+        "heading": { "type": "heading", "settings": { "heading": "How it works", "size": "h2" } },
+        "text": { "type": "text", "settings": { "text": "<p>Apply with your business details. Once approved, sign in to see trade prices, order by case pack and pay with your agreed terms at checkout.</p>" } }
+      },
+      "block_order": ["heading", "text"]
+    },
+    "access": {
+      "type": "wholesale-access",
+      "settings": {
+        "heading": "Already a wholesale customer?"
+      }
+    },
+    "apps": {
+      "type": "apps",
+      "settings": {}
+    }
+  },
+  "order": ["hero", "how", "access", "apps"]
+}

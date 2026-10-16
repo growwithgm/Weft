@@ -1,0 +1,22 @@
+{%- comment -%}
+  One panel of the product tabs block: a tab panel (tabs style) or a collapsible row.
+  Params: base_id, n, title, translate (bool: title is a translation key), style, open (bool), content
+{%- endcomment -%}
+{%- liquid
+  assign heading = title
+  if translate
+    assign heading = title | t
+  endif
+  assign panel_id = base_id | append: '-panel-' | append: n
+-%}
+{%- if style == 'tabs' -%}
+  <section class="tabs__panel" id="{{ panel_id }}" data-tab-panel data-tab-title="{{ heading | escape }}" aria-labelledby="{{ panel_id }}-heading">
+    <h3 class="h5 tabs__heading" id="{{ panel_id }}-heading">{{ heading | escape }}</h3>
+    <div class="rte">{{ content }}</div>
+  </section>
+{%- else -%}
+  <details class="accordion"{% if open and n == 1 %} open{% endif %}>
+    <summary class="accordion__summary"><span>{{ heading | escape }}</span>{%- render 'accordion-icon' -%}</summary>
+    <div class="accordion__content rte">{{ content }}</div>
+  </details>
+{%- endif -%}

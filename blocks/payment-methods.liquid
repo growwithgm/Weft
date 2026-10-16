@@ -1,0 +1,71 @@
+{%- comment -%} Payment information: accepted payment icons and two short text parts (e.g. installments). {%- endcomment -%}
+{%- assign b = block.settings -%}
+{{ 'component-blocks.css' | asset_url | stylesheet_tag }}
+<div class="payment-methods stack" {{ block.shopify_attributes }}>
+  {%- if b.title != blank -%}<p class="h5 payment-methods__title">{{ b.title | escape }}</p>{%- endif -%}
+  <div class="payment-methods__part">
+    {%- if b.title1 != blank -%}<p class="payment-methods__subtitle">{{ b.title1 | escape }}</p>{%- endif -%}
+    {%- if b.show_payment_icons -%}{%- render 'payment-icons' -%}{%- endif -%}
+    {%- if b.text1 != blank -%}<div class="rte">{{ b.text1 }}</div>{%- endif -%}
+  </div>
+  {%- if b.title2 != blank or b.text2 != blank or b.image -%}
+    <div class="payment-methods__part">
+      {%- if b.title2 != blank -%}<p class="payment-methods__subtitle">{{ b.title2 | escape }}</p>{%- endif -%}
+      {%- if b.image -%}{{ b.image | image_url: width: 240 | image_tag: height: 28, alt: b.image.alt, loading: 'lazy', class: 'payment-methods__image' }}{%- endif -%}
+      {%- if b.text2 != blank -%}<div class="rte">{{ b.text2 }}</div>{%- endif -%}
+    </div>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "t:labels.payment_methods",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "t:labels.heading",
+      "default": "Payment"
+    },
+    {
+      "type": "text",
+      "id": "title1",
+      "label": "t:labels.first_part_heading",
+      "default": "We accept"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_payment_icons",
+      "label": "t:labels.show_payment_icons",
+      "default": true
+    },
+    {
+      "type": "richtext",
+      "id": "text1",
+      "label": "t:labels.first_part_text"
+    },
+    {
+      "type": "text",
+      "id": "title2",
+      "label": "t:labels.second_part_heading"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:labels.second_part_logo"
+    },
+    {
+      "type": "richtext",
+      "id": "text2",
+      "label": "t:labels.second_part_text"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:labels.payment_methods",
+      "category": "t:labels.product"
+    }
+  ]
+}
+{% endschema %}

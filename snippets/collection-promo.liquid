@@ -1,0 +1,59 @@
+{%- comment -%}
+  Promotion tile inside a collection grid or the filter column (brief §14.3): wide, media,
+  card and filter styles. Rendered by main-collection (and main-list-collections) for their
+  promo blocks; the caller places it at the block's position.
+  Params: block (required), sizes
+{%- endcomment -%}
+{%- liquid
+  assign b = block.settings
+  assign kind = block.type | remove: 'promo_'
+  assign tile_sizes = sizes | default: '(min-width: 990px) 25vw, 50vw'
+  if kind == 'wide'
+    assign tile_sizes = '100vw'
+  endif
+  assign has_link = false
+  if b.link != blank
+    assign has_link = true
+  endif
+-%}
+{%- if kind == 'card' -%}
+  <div class="promo promo--card color-{{ b.color_scheme }}" {{ block.shopify_attributes }}>
+    {%- if b.image -%}
+      <div class="promo__media media media--{{ b.image_ratio }}">
+        {%- render 'image', image: b.image, sizes: tile_sizes, widths: '360,540,720,960' -%}
+      </div>
+    {%- endif -%}
+    <div class="promo__body stack">
+      {%- if b.title != blank -%}<p class="promo__title h4">{{ b.title | escape }}</p>{%- endif -%}
+      {%- if b.content != blank -%}<div class="rte promo__text">{{ b.content }}</div>{%- endif -%}
+      {%- if b.button_label != blank -%}
+        <a class="button button--{{ b.button_style }} promo__button{% if b.button_bottom %} promo__button--bottom{% endif %}"{% if has_link %} href="{{ b.link }}"{% else %} role="link" aria-disabled="true"{% endif %}>{{ b.button_label | escape }}</a>
+      {%- endif -%}
+    </div>
+  </div>
+{%- else -%}
+  <div
+    class="promo promo--overlay promo--{{ kind }} promo--align-{{ b.text_align }}"
+    style="--promo-min-height: {{ b.min_height }}px; --promo-text: {{ b.text_color }}; --promo-tint: {{ b.tint_color }}; --promo-tint-opacity: {{ b.tint_opacity | divided_by: 100.0 }};"
+    {{ block.shopify_attributes }}
+  >
+    <div class="promo__media">
+      {%- if b.video -%}
+        {{ b.video | video_tag: autoplay: true, loop: true, muted: true, controls: false, playsinline: true, image_size: '1100x', class: 'promo__video' }}
+      {%- elsif b.image -%}
+        {%- render 'image', image: b.image, sizes: tile_sizes, widths: '360,540,720,960,1440,1920' -%}
+      {%- else -%}
+        {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+      {%- endif -%}
+    </div>
+    <div class="promo__overlay stack">
+      {%- if b.content != blank -%}<div class="rte promo__text promo__text--{{ b.text_size }}">{{ b.content }}</div>{%- endif -%}
+      {%- if b.button_label != blank -%}
+        <span class="button button--{{ b.button_style }} promo__button">{{ b.button_label | escape }}</span>
+      {%- endif -%}
+    </div>
+    {%- if has_link -%}
+      <a class="promo__link" href="{{ b.link }}"><span class="visually-hidden">{{ b.button_label | default: b.content | strip_html | escape }}</span></a>
+    {%- endif -%}
+  </div>
+{%- endif -%}

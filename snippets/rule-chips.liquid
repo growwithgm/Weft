@@ -1,0 +1,52 @@
+{%- comment -%}
+  Wholesale terms chips (brief §7.8), built only from native quantity rules:
+  "Min. N per <options>", "Packs of N", "Max. N". Default rules produce no chip. When rules differ
+  between variants, one chip says so and the matrix shows each rule in its cell.
+  Params: product, variant, size ('small').
+{%- endcomment -%}
+{%- liquid
+  assign v = variant | default: product.selected_or_first_available_variant
+  assign r_min = v.quantity_rule.min | default: 1
+  assign r_inc = v.quantity_rule.increment | default: 1
+  assign r_max = v.quantity_rule.max
+  assign varies = false
+  for other in product.variants limit: 250
+    assign o_min = other.quantity_rule.min | default: 1
+    assign o_inc = other.quantity_rule.increment | default: 1
+    assign o_max = other.quantity_rule.max | default: 0
+    assign v_max = r_max | default: 0
+    if o_min != r_min or o_inc != r_inc or o_max != v_max
+      assign varies = true
+      break
+    endif
+  endfor
+  assign names = ''
+  for option in product.options_with_values
+    if option.values.size > 1
+      assign n = option.name | downcase
+      assign names = names | append: n | append: '|'
+    endif
+  endfor
+  assign name_list = names | split: '|'
+-%}
+{%- if varies or r_min > 1 or r_inc > 1 or r_max -%}
+  <ul class="rule-chips{% if size == 'small' %} rule-chips--small{% endif %}" role="list" data-rule-chips>
+    {%- if varies -%}
+      <li class="chip">
+        {%- if name_list.size >= 2 -%}{{ 'wholesale.rules_vary_two' | t: first: name_list[0], second: name_list[1] }}
+        {%- elsif name_list.size == 1 -%}{{ 'wholesale.rules_vary' | t: option: name_list[0] }}
+        {%- endif -%}
+      </li>
+    {%- else -%}
+      {%- if r_min > 1 -%}
+        <li class="chip">
+          {%- if name_list.size >= 2 -%}{{ 'wholesale.min_per_two' | t: count: r_min, first: name_list[0], second: name_list[1] }}
+          {%- elsif name_list.size == 1 -%}{{ 'wholesale.min_per' | t: count: r_min, option: name_list[0] }}
+          {%- else -%}{{ 'wholesale.min' | t: count: r_min }}{%- endif -%}
+        </li>
+      {%- endif -%}
+      {%- if r_inc > 1 -%}<li class="chip">{{ 'wholesale.packs' | t: count: r_inc }}</li>{%- endif -%}
+      {%- if r_max -%}<li class="chip">{{ 'wholesale.max' | t: count: r_max }}</li>{%- endif -%}
+    {%- endif -%}
+  </ul>
+{%- endif -%}

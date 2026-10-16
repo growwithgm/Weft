@@ -1,0 +1,70 @@
+{%- comment -%}
+  Quick add on a product card's image (snippets/product-card.liquid). quick_mode:
+  'sizes' — a submit button per size, each carrying the variant id for the card's current color;
+  'single' — one "Add to cart" button; 'options' — opens the quick add drawer.
+  quick_hover: the panel slides up on hover (large screens with a mouse). quick_icon: a bag icon on
+  the image opens the panel as a sheet on touch screens (quick_sheet) or adds straight away.
+  Swatch clicks re-point the buttons (data-card-variant indexes into the swatch's data-variants).
+  Params: product, variant, quick_mode, quick_hover, quick_icon, quick_sheet, form_id, title_id,
+          color_option, color_key, active_color, multi_color, size_option, size_key, one_size
+{%- endcomment -%}
+{%- liquid
+  assign quick_class = 'card__quick'
+  if quick_hover
+    assign quick_class = quick_class | append: ' card__quick--hover'
+  endif
+  if quick_icon
+    assign quick_class = quick_class | append: ' card__quick--icon'
+  endif
+  assign panel_id = form_id | append: '-panel'
+-%}
+{%- form 'product', product, id: form_id, class: quick_class, data-card-form: '', data-product-url: product.url -%}
+  <div class="card__quick-panel" id="{{ panel_id }}">
+    {%- if quick_mode == 'options' -%}
+      <button type="button" class="card__quick-add" data-quick-add="{{ product.url }}" aria-haspopup="dialog" aria-describedby="{{ title_id }}">{{ 'products.quick_add.choose_options' | t }}</button>
+    {%- else -%}
+      <div class="card__quick-head">
+        <p class="card__quick-label">
+          {%- if quick_mode == 'sizes' -%}
+            <span class="card__quick-hint">{{ 'products.quick_add.choose_size' | t }}</span>
+            <span class="card__quick-option">{{ size_option.name | escape }}</span>
+          {%- endif -%}
+          {%- if multi_color -%}<span class="card__quick-color" data-card-color-name>{{ active_color | escape }}</span>{%- endif -%}
+        </p>
+        {%- if quick_sheet -%}
+          <button type="button" class="card__quick-close js-only" data-card-sheet aria-controls="{{ panel_id }}" aria-label="{{ 'general.close' | t }}">{%- render 'icon', name: 'close', size: 16 -%}</button>
+        {%- endif -%}
+      </div>
+      {%- if quick_mode == 'sizes' -%}
+        <div class="card__quick-sizes">
+          {%- for value in size_option.values limit: 12 -%}
+            {%- liquid
+              if color_option
+                assign size_variant = product.variants | where: color_key, active_color | where: size_key, value.name | first
+              else
+                assign size_variant = product.variants | where: size_key, value.name | first
+              endif
+            -%}
+            <button type="submit" name="id" value="{{ size_variant.id }}" class="card__quick-size" data-card-variant="{{ forloop.index0 }}" aria-describedby="{{ title_id }}"{% unless size_variant.available %} disabled{% endunless %}>
+              {{- value | escape -}}
+              <span class="visually-hidden" data-sold-out{% if size_variant.available %} hidden{% endif %}>, {{ 'products.sold_out' | t }}</span>
+            </button>
+          {%- endfor -%}
+        </div>
+      {%- else -%}
+        <button type="submit" name="id" value="{{ variant.id }}" class="card__quick-add" data-card-variant="0" aria-describedby="{{ title_id }}">
+          {%- if one_size -%}{{ 'products.quick_add.add_one_size' | t }}{%- else -%}{{ 'products.add_to_cart' | t }}{%- endif -%}
+        </button>
+      {%- endif -%}
+    {%- endif -%}
+  </div>
+  {%- if quick_icon -%}
+    {%- if quick_mode == 'options' -%}
+      <button type="button" class="card__quick-icon" data-quick-add="{{ product.url }}" aria-haspopup="dialog" aria-label="{{ 'products.quick_add.choose_options' | t }}" aria-describedby="{{ title_id }}">{%- render 'icon', name: 'bag', size: 16 -%}</button>
+    {%- elsif quick_sheet -%}
+      <button type="button" class="card__quick-icon js-only" data-card-sheet aria-expanded="false" aria-controls="{{ panel_id }}" aria-label="{{ 'products.quick_add.quick_add' | t }}" aria-describedby="{{ title_id }}">{%- render 'icon', name: 'bag', size: 16 -%}</button>
+    {%- else -%}
+      <button type="submit" name="id" value="{{ variant.id }}" class="card__quick-icon" data-card-variant="0" aria-label="{{ 'products.add_to_cart' | t }}" aria-describedby="{{ title_id }}">{%- render 'icon', name: 'bag', size: 16 -%}</button>
+    {%- endif -%}
+  {%- endif -%}
+{%- endform -%}

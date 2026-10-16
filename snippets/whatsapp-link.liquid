@@ -1,0 +1,30 @@
+{%- comment -%}
+  Outputs a wa.me link. The number comes from `phone` or, when that's empty, from the WhatsApp
+  link in Theme settings > Social media (wa.me/<number> or api.whatsapp.com/send?phone=<number>).
+  Only digits are kept. Outputs nothing when there's no number.
+  Params: phone, message, page_link (bool: add the current page's address to the message)
+{%- endcomment -%}
+{%- liquid
+  assign wa_number = phone | default: ''
+  if wa_number == blank and settings.social_whatsapp_url != blank
+    assign wa_source = settings.social_whatsapp_url | replace: '%2B', '' | replace: '%2b', ''
+    if wa_source contains 'phone='
+      assign wa_number = wa_source | split: 'phone=' | last | split: '&' | first
+    elsif wa_source contains 'wa.me/'
+      assign wa_number = wa_source | split: 'wa.me/' | last | split: '?' | first | split: '/' | first
+    endif
+  endif
+  assign wa_number = wa_number | remove: '+' | remove: ' ' | remove: '-' | remove: '(' | remove: ')' | remove: '.' | strip
+  assign wa_text = message | default: '' | strip
+  if page_link
+    assign wa_text = wa_text | append: ' ' | append: canonical_url | strip
+  endif
+  if wa_number != blank
+    assign wa_url = 'https://wa.me/' | append: wa_number
+    if wa_text != blank
+      assign wa_query = wa_text | url_encode
+      assign wa_url = wa_url | append: '?text=' | append: wa_query
+    endif
+    echo wa_url
+  endif
+-%}

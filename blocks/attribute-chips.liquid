@@ -1,0 +1,72 @@
+{%- comment -%}
+  Attribute chips (VERTICALS §2): hair or skin type, concern, fit or occasion. Values come from
+  a comma-separated text (dynamic sources allowed) or a product metafield; list metafields and
+  standard category metafields (metaobject lists with a label) are both read.
+{%- endcomment -%}
+{%- liquid
+  assign b = block.settings
+  assign p = closest.product
+  assign values = ''
+  if b.metafield != blank and p
+    assign key_parts = b.metafield | strip | split: '.'
+    assign ns = key_parts | first
+    assign key = key_parts | last
+    assign field = p.metafields[ns][key]
+    if field.type contains 'list.'
+      for item in field.value
+        assign label = item.label | default: item.name | default: item.title | default: item
+        assign values = values | append: label | append: '||'
+      endfor
+    elsif field.value != blank
+      assign label = field.value.label | default: field.value
+      assign values = label | append: '||'
+    endif
+  endif
+  if values == '' and b.values != blank
+    assign values = b.values | replace: ',', '||'
+  endif
+  assign chips = values | split: '||'
+-%}
+{%- if chips.size > 0 -%}
+  <div class="attribute-chips" {{ block.shopify_attributes }}>
+    {%- if b.label != blank -%}<p class="attribute-chips__label">{{ b.label | escape }}</p>{%- endif -%}
+    <ul class="attribute-chips__list" role="list">
+      {%- for chip in chips -%}{%- assign c = chip | strip -%}{%- if c != blank -%}<li class="chip attribute-chips__chip">{{ c | escape }}</li>{%- endif -%}{%- endfor -%}
+    </ul>
+  </div>
+{%- elsif request.design_mode -%}
+  <p class="muted" {{ block.shopify_attributes }}>{{ b.label }}</p>
+{%- endif -%}
+{% schema %}
+{
+  "name": "t:labels.attribute_chips",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "t:labels.label",
+      "default": "Hair type"
+    },
+    {
+      "type": "text",
+      "id": "values",
+      "label": "t:labels.values",
+      "default": "Curly, Wavy",
+      "info": "t:text.blocks.attribute_chips.settings.values.info"
+    },
+    {
+      "type": "text",
+      "id": "metafield",
+      "label": "t:labels.or_read_a_product_metafield",
+      "info": "t:text.blocks.attribute_chips.settings.metafield.info"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:labels.attribute_chips",
+      "category": "t:labels.product"
+    }
+  ]
+}
+{% endschema %}

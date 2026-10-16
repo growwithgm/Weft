@@ -1,0 +1,751 @@
+{%- comment -%}
+  GN DELIVERY WIDGET — ibBan   (file name kept: gn-shipping-bar)
+  {% render 'gn-shipping-bar' %}
+
+  A borderless list — hairline above and below, hairline between rows.
+  No card, no radius, no fill, so it sits flush with the rest of the buy box.
+
+    1  Fit      — custom.fit_guide  +  custom.best_suited_for
+    2  Shipping — rate, free-shipping progress, ship note
+    3  Klarna   — Pay in 3 × (variant price / 3), pink strip
+    4  Notify   — back-in-stock trigger + sold-out count badge
+    5  Returns  — 14-day returns reassurance
+
+  ARRIVAL WINDOW REMOVED (12 Sep 2026). The "Arrives <date range>" line was
+  removed from row 2 on purpose — delivery dates are no longer shown on the
+  product page. The t_arrives strings and the ship-date maths are left in
+  place so the line can be restored by putting the <p class="gn-dw__eta">
+  element back inside row 2. Note that Shopify's own transit-time setting is
+  separate from this widget: GN_RULES below carries its own min/max days.
+
+  RULES RESYNCED 12 Sep 2026 against Settings > Shipping and delivery.
+  The previous values had drifted badly and the product page was quoting
+  HIGHER shipping than checkout actually charged in 13 countries — AT, DE, FR,
+  BE, CH, IT, NL, SE, PL, DK, GR, LU, NO were all showing €9.95-€17.95 when
+  the real rate is €4.95, and the free-shipping thresholds were €20-€100 too
+  high. EG and PL used to share one rule; they are separate zones with
+  different rates and are now split. If a rate, threshold or zone changes in
+  Shopify, this string MUST be regenerated — nothing syncs it automatically.
+
+  Rows 1, 3 and 4 drop out on their own when they have nothing to show, and
+  every row carries its own top border, so a divider never hangs over nothing.
+
+  ROW 5 SITS LAST, DIRECTLY ABOVE ADD TO CART, on purpose. It is the last
+  thing read before the button, which is where a risk-reversal line does the
+  most work. The theme also has a "14-Day Easy Returns" collapsible further
+  down the page holding the full policy — that one is the detail, this one is
+  the reassurance. If the policy ever changes, both need updating.
+
+  ROW 1 HAS TWO INDEPENDENT LINES, each from its own metafield:
+      custom.fit_guide        e.g.  Model is 165 cm, wearing One Size
+      custom.best_suited_for  e.g.  US 8-14 | UK/AU 12-18 | EU 40-46 | IT 44-50
+  The "This size is ideal for:" label is written here, not in the metafield,
+  so it stays translatable — the metafield should hold only the sizes. Either
+  line can be empty; the row appears if either one is filled.
+
+  NO REVIEWS ROW HERE. The star rating lives in 'gn-rating', rendered by the
+  custom_liquid_gnrating block directly under the price.
+
+  NO SIZE GUIDE LINK HERE. The theme already renders "Size Guide" beside the
+  Size label (variant-picker block, enable_size_chart).
+
+  ROW 4 REUSES THE EXISTING WIDGET. The old standalone "Notify me about sold
+  out items (n)" link (#wbis-link in snippets/back-in-stock.liquid) is hidden
+  by the CSS below and this row clicks it instead — same drawer, same variant
+  chips, same Wasify endpoint. The big black #wbis-cta button is left alone:
+  when the SELECTED variant is sold out the theme shows that full-width CTA,
+  which is the stronger action, and row 4 hides itself so the two never appear
+  together.
+
+  OLD KLARNA BANNER: the store has no Klarna app embed and no Klarna file in
+  the theme, so the old "Pay in 3 interest-free installments" banner comes
+  from main-product.liquid or a legacy script tag. It is removed two ways:
+  broad CSS selectors, plus a JS sweep that hides any element outside this
+  widget whose text matches the old banner (re-run for 15s to catch late
+  injection). Checkout is untouched — Klarna still appears there normally.
+
+  LANGUAGE: Spanish only when the visitor country is Spain (ES); English
+  everywhere else. Dates follow the same rule (data-dloc), so Spanish
+  sentences get Spanish weekday and month names.
+
+  RULES FORMAT:  ISO,ISO=CURRENCY:RATE:FREE_FROM:MIN_DAYS:MAX_DAYS
+    · empty FREE_FROM  = no free shipping offer in that zone
+    · no MIN/MAX days  = no delivery estimate stored for that zone
+  Anything not listed falls to GN_DEFAULT (zone 19 Rest of world).
+
+  GN_KLARNA: countries where the Pay-in-3 row shows. If checkout does not
+  actually offer Klarna somewhere, remove that country from the list.
+
+  SHIP DATE RULE (warehouse: San Sebastián de los Reyes, Europe/Madrid):
+    · Mon–Fri before GN_CUTOFF (16:00)  -> ships the same day
+    · Mon–Fri at or after 16:00         -> ships the next working day
+    · Saturday / Sunday                 -> ships the next working day
+
+  Hidden in the B2B Wholesale market and for B2B customers.
+  Cross-currency amounts are converted client-side with Shopify.currency.rate
+  and rounded UP so the widget never quotes cheaper than checkout.
+{%- endcomment -%}
+
+{%- liquid
+  assign GN_RULES = 'CY,CZ,EE,FI,HR,HU,IS,LT,LV,RO,SI,SK=EUR:24.95:179:7:12|AE,AL,BA,BH,BY,IQ,KW,MD,MK,UA,YE=EUR:140:|DK,GR,IE,LU,NO=EUR:4.95:99:5:8|BE,CH,IT,NL=EUR:4.95:99:5:7|BG,MT,RS,TR=EUR:29.95::7:14|JO,OM,PS,QA=EUR:49.95::10:20|AT,DE,FR=EUR:4.95:99:5:7|AD,ES=EUR:4.95:69:2:4|EG=EUR:14.95:129:7:14|PL=EUR:4.95:99:7:14|LB,SA=EUR:39.95::15:25|RU,VE=EUR:34.95::15:30|AR,AU,BR,CA,CL,MX,NZ,UY,ZA=EUR:12.95::10:20|GB=GBP:4.95:99:5:7|HK=EUR:9.95:129:10:20|IL=EUR:19.95::10:25|PT=EUR:7.95:99:2:4|SE=EUR:4.95:99:5:7|US=USD:4.95:99:8:12'
+  assign GN_DEFAULT = 'EUR:54.95::15:30'
+  assign GN_CUTOFF = 16
+  assign GN_KLARNA = 'ES,GB,US,DE,AT,NL,BE,FR,IT,PT,IE,FI,SE,DK,NO,PL,CZ,GR,RO,SK,CH'
+
+  assign gn_market = localization.market.handle
+  assign gn_skip = false
+  if gn_market == 'b2b-wholesale'
+    assign gn_skip = true
+  endif
+  if customer.b2b?
+    assign gn_skip = true
+  endif
+
+  assign iso = localization.country.iso_code
+  assign cname = localization.country.name
+
+  assign dloc = request.locale.iso_code | default: 'en'
+  if iso == 'ES'
+    assign dloc = 'es'
+  endif
+
+  assign fit_guide = product.metafields.custom.fit_guide.value | default: '' | strip
+  assign best_for = product.metafields.custom.best_suited_for.value | default: '' | strip
+  assign show_fit = false
+  if product.available
+    if fit_guide != blank or best_for != blank
+      assign show_fit = true
+    endif
+  endif
+
+  assign k_needle = ',' | append: iso | append: ','
+  assign k_hay = ',' | append: GN_KLARNA | append: ','
+  assign show_klarna = false
+  if k_hay contains k_needle and product.available
+    assign show_klarna = true
+  endif
+  assign k_var = product.selected_or_first_available_variant
+  assign k_amt_c = k_var.price | divided_by: 3
+
+  assign soldout_n = 0
+  for v in product.variants
+    unless v.available
+      assign soldout_n = soldout_n | plus: 1
+    endunless
+  endfor
+
+  if iso == 'ES'
+    assign t_to = 'Envío a '
+    assign t_pill = 'GRATIS'
+    assign t_from = 'Envío gratis a partir de '
+    assign t_more_pre = 'Te faltan '
+    assign t_more_mid = ' para el envío gratis (desde '
+    assign t_more_end = ')'
+    assign t_applied = 'Envío gratis aplicado'
+    assign t_calc = 'Coste de envío calculado en el checkout'
+    assign t_best = 'Esta talla es ideal para:'
+    assign t_arrives = 'Llega '
+    assign t_ship_now_a = 'Sale hoy · quedan '
+    assign t_ship_now_b = ''
+    assign t_ship_on_a = 'Sale '
+    assign t_ship_on_b = ' · Madrid'
+    assign t_pay_a = 'Paga en '
+    assign t_pay_b = ' sin intereses'
+    assign t_notify = 'Avísame cuando vuelvan a estar disponibles'
+    assign t_ret_h = 'Devoluciones fáciles en 14 días'
+    assign t_ret_s = 'Compra sin preocupaciones. Tienes 14 días para devolverlo.'
+  else
+    assign t_to = 'Shipping to '
+    assign t_pill = 'FREE'
+    assign t_from = 'Free shipping from '
+    assign t_more_pre = ''
+    assign t_more_mid = ' more for free shipping (from '
+    assign t_more_end = ')'
+    assign t_applied = 'Free shipping applied'
+    assign t_calc = 'Shipping calculated at checkout'
+    assign t_best = 'This size is ideal for:'
+    assign t_arrives = 'Arrives '
+    assign t_ship_now_a = 'Ships today · '
+    assign t_ship_now_b = ' left'
+    assign t_ship_on_a = 'Ships '
+    assign t_ship_on_b = ' · Madrid'
+    assign t_pay_a = 'Pay in '
+    assign t_pay_b = ' interest-free'
+    assign t_notify = 'Notify me when sold-out items are back in stock'
+    assign t_ret_h = '14-Day Hassle-Free Returns'
+    assign t_ret_s = 'Shop worry-free. You have 14 days to return it.'
+  endif
+
+  assign cur = cart.currency.iso_code
+  if cur == blank
+    assign cur = shop.currency
+  endif
+
+  assign hit = GN_DEFAULT
+  assign needle = ',' | append: iso | append: ','
+  assign groups = GN_RULES | split: '|'
+  for g in groups
+    assign kv = g | split: '='
+    assign haystack = ',' | append: kv[0] | append: ','
+    if haystack contains needle
+      assign hit = kv[1]
+      break
+    endif
+  endfor
+
+  assign bits = hit | split: ':'
+  assign rule_cur = bits[0]
+  assign rate_c = bits[1] | times: 100 | round
+  assign free_c = 0
+  if bits.size > 2
+    assign free_c = bits[2] | times: 100 | round
+  endif
+
+  assign min_d = 0
+  assign max_d = 0
+  if bits.size > 4
+    assign min_d = bits[3] | plus: 0
+    assign max_d = bits[4] | plus: 0
+  endif
+
+  assign exact = false
+  if rule_cur == cur
+    assign exact = true
+  endif
+
+  assign total_c = cart.total_price
+  assign left_c = free_c | minus: total_c
+
+  assign has_bar = false
+  if free_c > 0
+    assign has_bar = true
+  endif
+
+  assign unlocked = false
+  if has_bar and left_c <= 0
+    assign unlocked = true
+  endif
+
+  assign pct = 0
+  if has_bar and exact
+    assign pct = total_c | times: 1000 | divided_by: free_c
+    if pct > 1000
+      assign pct = 1000
+    endif
+  endif
+-%}
+
+<!-- gn-widget debug: market={{ gn_market }} iso={{ iso }} cart_cur={{ cur }} rule={{ hit }} exact={{ exact }} total={{ total_c }} eta={{ min_d }}-{{ max_d }} cutoff={{ GN_CUTOFF }} fit={{ show_fit }} klarna={{ show_klarna }} soldout={{ soldout_n }} dloc={{ dloc }} skip={{ gn_skip }} -->
+
+{%- unless gn_skip -%}
+<div
+  class="gn-dw{% unless has_bar %} is-flat{% endunless %}{% if unlocked %} is-unlocked{% endif %}{% unless exact %} is-pending{% endunless %}"
+  data-gn-fsb
+  data-rate="{{ rate_c }}"
+  data-free="{{ free_c }}"
+  data-total="{{ total_c }}"
+  data-rule-cur="{{ rule_cur }}"
+  data-cart-cur="{{ cur }}"
+  data-exact="{{ exact }}"
+  data-locale="{{ request.locale.iso_code | default: 'en' }}"
+  data-dloc="{{ dloc }}"
+  data-min-days="{{ min_d }}"
+  data-max-days="{{ max_d }}"
+  data-cutoff="{{ GN_CUTOFF }}"
+  data-t-pill="{{ t_pill }}"
+  data-t-from="{{ t_from }}"
+  data-t-more-pre="{{ t_more_pre }}"
+  data-t-more-mid="{{ t_more_mid }}"
+  data-t-more-end="{{ t_more_end }}"
+  data-t-applied="{{ t_applied }}"
+  data-t-calc="{{ t_calc }}"
+  data-t-ship-now-a="{{ t_ship_now_a }}"
+  data-t-ship-now-b="{{ t_ship_now_b }}"
+  data-t-ship-on-a="{{ t_ship_on_a }}"
+  data-t-ship-on-b="{{ t_ship_on_b }}"
+>
+
+  {%- if show_fit -%}
+    <div class="gn-dw__row gn-dw__row--first gn-dw__row--fit">
+      <span class="gn-dw__ico" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="8" width="20" height="8" rx="1"></rect>
+          <path d="M6 8v3M10 8v4M14 8v3M18 8v4"></path>
+        </svg>
+      </span>
+      <div class="gn-dw__fitbody">
+        {%- if fit_guide != blank -%}
+          <span class="gn-dw__fit">{{ fit_guide }}</span>
+        {%- endif -%}
+        {%- if best_for != blank -%}
+          <span class="gn-dw__best"><b>{{ t_best }}</b> {{ best_for }}</span>
+        {%- endif -%}
+      </div>
+    </div>
+  {%- endif -%}
+
+  <div class="gn-dw__row gn-dw__row--stack{% unless show_fit %} gn-dw__row--first{% endunless %}">
+    <div class="gn-dw__line">
+      <span class="gn-dw__ico" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 8.5 12 13 3 8.5 12 4z"></path>
+          <path d="M3 8.5v7l9 4.5 9-4.5v-7"></path>
+          <path d="M12 13v7"></path>
+        </svg>
+      </span>
+      <span class="gn-dw__country">{{ t_to }}{{ cname }}</span>
+      <span class="gn-dw__rate{% if unlocked %} is-struck{% endif %}" data-gn-rate>{%- if exact -%}{{ rate_c | money }}{%- endif -%}</span>
+      {%- if unlocked -%}<span class="gn-dw__pill" data-gn-free>{{ t_pill }}</span>{%- endif -%}
+    </div>
+
+    {%- if has_bar -%}
+      <div class="gn-dw__track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="{{ pct | divided_by: 10 }}">
+        <span class="gn-dw__fill" data-gn-fill style="width:{{ pct }}0%"></span>
+      </div>
+    {%- endif -%}
+
+    <div class="gn-dw__meta">
+      <span class="gn-dw__free" data-gn-msg-free aria-live="polite">
+        {%- if exact == false -%}
+          {{ t_calc }}
+        {%- elsif has_bar == false -%}
+        {%- elsif unlocked -%}
+          {{ t_applied }}
+        {%- elsif total_c == 0 -%}
+          {{ t_from }}{{ free_c | money }}
+        {%- else -%}
+          {{ t_more_pre }}{{ left_c | money }}{{ t_more_mid }}{{ free_c | money }}{{ t_more_end }}
+        {%- endif -%}
+      </span>
+      <span class="gn-dw__ship" data-gn-msg-ship></span>
+    </div>
+  </div>
+
+  {%- if show_klarna -%}
+    <div class="gn-dw__row gn-dw__row--klarna">
+      <span class="gn-dw__ico" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="5" width="20" height="14" rx="2"></rect>
+          <path d="M2 10h20"></path>
+        </svg>
+      </span>
+      <span class="gn-dw__pay">{{ t_pay_a }}<b>3 × <span data-gn-klarna>{{ k_amt_c | money }}</span></b>{{ t_pay_b }}</span>
+      <span class="gn-dw__kbadge">Klarna</span>
+    </div>
+    <script type="application/json" data-gn-vprices>{ {%- for v in product.variants -%}"{{ v.id }}":{{ v.price }}{%- unless forloop.last -%},{%- endunless -%}{%- endfor -%} }</script>
+  {%- endif -%}
+
+  {%- if soldout_n > 0 -%}
+    <div class="gn-dw__row gn-dw__row--notify" data-gn-notify-row hidden>
+      <span class="gn-dw__ico" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 9a6 6 0 1 0-12 0c0 5-2 6-2 6h16s-2-1-2-6"></path>
+          <path d="M10.5 20a2 2 0 0 0 3 0"></path>
+        </svg>
+      </span>
+      <button type="button" class="gn-dw__notify" data-gn-notify>{{ t_notify }}</button>
+      <span class="gn-dw__count">{{ soldout_n }}</span>
+    </div>
+  {%- endif -%}
+
+  <div class="gn-dw__row gn-dw__row--ret">
+    <span class="gn-dw__ico" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M9 4.5 4 9.5l5 5"></path>
+        <path d="M4 9.5h9.5a6 6 0 0 1 0 12H10"></path>
+      </svg>
+    </span>
+    <div class="gn-dw__retbody">
+      <span class="gn-dw__rethead">{{ t_ret_h }}</span>
+      <span class="gn-dw__retsub">{{ t_ret_s }}</span>
+    </div>
+  </div>
+
+</div>
+
+<style>
+  /* Old installments banner — replaced by the Klarna row above. */
+  shopify-payment-terms,
+  klarna-placement,
+  klarna-express-button,
+  #klarna-placement,
+  .klarna-placement,
+  [id^="klarna-onsite"],
+  [class*="klarna-onsite"],
+  [data-key="credit-promotion-auto-size"],
+  [data-key="credit-promotion-badge"],
+  iframe[src*="klarna"],
+  iframe[id*="klarna"],
+  iframe[name*="klarna"]{ display:none !important; }
+
+  /* Old standalone back-in-stock link — replaced by the notify row above. */
+  #wbis-link{ display:none !important; }
+  #wbis-root{ margin-top:0 !important; }
+  #wbis-cta{ margin-top:14px; }
+
+  .gn-dw{
+    --gnd-ink:#2E2A26; --gnd-mid:#8B837B; --gnd-faint:#A9A096;
+    --gnd-ico:#8B7F70; --gnd-edge:#E8E2D9; --gnd-line:#F0EBE3;
+    --gnd-track:#EFE9DF; --gnd-go:#5D7052; --gnd-indent:30px;
+    margin:18px 0; padding:0;
+    border-top:1px solid var(--gnd-edge);
+    border-bottom:1px solid var(--gnd-edge);
+    color:var(--gnd-ink); font-family:inherit;
+    font-size:15px; line-height:1.45;
+  }
+  .gn-dw__row{
+    border-top:1px solid var(--gnd-line); padding:13px 0;
+    display:flex; gap:12px; align-items:center;
+  }
+  .gn-dw__row--first{ border-top:0; }
+  .gn-dw__row--stack{ display:flex; flex-direction:column; align-items:stretch; gap:7px; }
+  .gn-dw__ico{ flex:none; width:18px; height:18px; color:var(--gnd-ico); line-height:0; }
+  .gn-dw__ico svg{ width:18px; height:18px; display:block; }
+
+  .gn-dw__row--fit{ align-items:flex-start; }
+  .gn-dw__row--fit .gn-dw__ico{ margin-top:2px; }
+  .gn-dw__fitbody{ flex:1; min-width:0; display:flex; flex-direction:column; gap:4px; }
+  .gn-dw__fit{ font-size:15px; }
+  .gn-dw__best{ font-size:13.5px; color:var(--gnd-mid); line-height:1.4; }
+  .gn-dw__best b{ font-weight:600; color:var(--gnd-ink); }
+
+  .gn-dw__line{ display:flex; gap:12px; align-items:center; }
+  .gn-dw__country{ flex:1; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .gn-dw__rate{ flex:none; font-size:15px; font-weight:600; font-variant-numeric:tabular-nums lining-nums; }
+  .gn-dw__rate:empty{ display:none; }
+  .gn-dw__rate.is-struck{ font-weight:400; color:var(--gnd-mid); text-decoration:line-through; text-decoration-thickness:1px; }
+  .gn-dw__pill{
+    flex:none; background:#E7EDE4; color:var(--gnd-go); border-radius:999px;
+    padding:3px 11px; font-size:12px; font-weight:600; letter-spacing:.06em;
+  }
+
+  .gn-dw__track{ margin-left:var(--gnd-indent); height:3px; border-radius:2px; background:var(--gnd-track); overflow:hidden; }
+  .gn-dw__fill{ display:block; height:3px; border-radius:2px; width:0; background:var(--gnd-ink); transition:width 350ms ease; }
+  .gn-dw.is-unlocked .gn-dw__fill{ background:var(--gnd-go); }
+  .gn-dw.is-flat .gn-dw__track{ display:none; }
+
+  .gn-dw__meta{ margin-left:var(--gnd-indent); display:flex; gap:14px; align-items:baseline; }
+  .gn-dw__free{ flex:1; min-width:0; font-size:13.5px; color:var(--gnd-mid); }
+  .gn-dw__free:empty{ display:none; }
+  .gn-dw__ship{ font-size:13.5px; color:var(--gnd-faint); white-space:nowrap; }
+
+  .gn-dw__row--klarna{ background:#FFF5F8; }
+  .gn-dw__pay{ flex:1; min-width:0; font-size:15px; }
+  .gn-dw__pay b{ font-weight:600; font-variant-numeric:tabular-nums lining-nums; }
+  .gn-dw__kbadge{
+    flex:none; background:#FFB3C7; color:var(--gnd-ink);
+    font-size:13px; padding:5px 12px; border-radius:999px;
+  }
+
+  .gn-dw__row--notify[hidden]{ display:none; }
+  .gn-dw__notify{
+    flex:1; min-width:0; appearance:none; background:none; border:0; padding:0; margin:0;
+    font:inherit; font-size:15px; color:var(--gnd-ink); text-align:left; cursor:pointer;
+    text-decoration:underline; text-underline-offset:4px;
+  }
+  .gn-dw__notify:hover{ opacity:.75; }
+  .gn-dw__count{
+    flex:none; width:22px; height:22px; border-radius:50%;
+    background:#F2EDE6; color:var(--gnd-mid); font-size:12.5px;
+    display:flex; align-items:center; justify-content:center;
+  }
+
+  .gn-dw__row--ret{ align-items:flex-start; }
+  .gn-dw__row--ret .gn-dw__ico{ margin-top:2px; }
+  .gn-dw__retbody{ flex:1; min-width:0; display:flex; flex-direction:column; gap:3px; }
+  .gn-dw__rethead{ font-size:15px; font-weight:600; color:var(--gnd-ink); }
+  .gn-dw__retsub{ font-size:13.5px; color:var(--gnd-mid); line-height:1.4; }
+
+  @media (max-width:749px){
+    .gn-dw{ --gnd-indent:27px; font-size:14px; }
+    .gn-dw__row{ padding:12px 0; gap:10px; }
+    .gn-dw__row--stack{ gap:6px; }
+    .gn-dw__ico, .gn-dw__ico svg{ width:17px; height:17px; }
+    .gn-dw__line{ gap:10px; }
+    .gn-dw__fit, .gn-dw__rate, .gn-dw__pay, .gn-dw__notify, .gn-dw__rethead{ font-size:14px; }
+    .gn-dw__best, .gn-dw__retsub{ font-size:12.5px; }
+    .gn-dw__meta{ gap:10px; }
+    .gn-dw__free, .gn-dw__ship{ font-size:12.5px; }
+    .gn-dw__kbadge{ font-size:12px; padding:4px 10px; }
+  }
+  @media (prefers-reduced-motion:reduce){ .gn-dw__fill{ transition:none; } }
+</style>
+
+<script>
+(function(){
+  if (window.__gnFsb) return; window.__gnFsb = true;
+  var root = (window.Shopify && window.Shopify.routes && window.Shopify.routes.root) || '/';
+  var CART_PATHS = ['/cart/add', '/cart/change', '/cart/update', '/cart/clear'];
+
+  function isCartUrl(u){
+    u = u || '';
+    for (var i = 0; i < CART_PATHS.length; i++){
+      if (u.indexOf(CART_PATHS[i]) !== -1) return true;
+    }
+    return false;
+  }
+
+  function money(cents, cur, loc){
+    try { return new Intl.NumberFormat(loc, {style:'currency', currency:cur}).format(cents/100); }
+    catch(e){ return (cents/100).toFixed(2) + ' ' + cur; }
+  }
+
+  /* ---------- remove the old Klarna installments banner ---------- */
+
+  function killOldKlarna(){
+    var attrHits = document.querySelectorAll('[class*="klarna" i], [id*="klarna" i]');
+    for (var a = 0; a < attrHits.length; a++){
+      var el = attrHits[a];
+      if (el.closest('[data-gn-fsb]')) continue;
+      el.style.setProperty('display', 'none', 'important');
+    }
+    var all = document.querySelectorAll('body *');
+    for (var i = 0; i < all.length; i++){
+      var n = all[i];
+      if (n.closest('[data-gn-fsb]')) continue;
+      var tag = n.tagName;
+      if (tag === 'SCRIPT' || tag === 'STYLE' || tag === 'HEAD') continue;
+      if (n.children.length > 6) continue;
+      var t = n.textContent || '';
+      if (t.length > 170) continue;
+      if (/klarna/i.test(t) && /(interest-free|installment|sin intereses|plazos)/i.test(t)){
+        var top = n;
+        while (
+          top.parentElement &&
+          top.parentElement !== document.body &&
+          (top.parentElement.textContent || '').trim() === t.trim() &&
+          !top.parentElement.closest('[data-gn-fsb]')
+        ){
+          top = top.parentElement;
+        }
+        top.style.setProperty('display', 'none', 'important');
+      }
+    }
+  }
+
+  /* ---------- notify row -> existing back-in-stock drawer ---------- */
+
+  function syncNotify(el){
+    var row = el.querySelector('[data-gn-notify-row]');
+    if (!row) return;
+    var trigger = document.getElementById('wbis-link');
+    if (!trigger){ row.hidden = true; return; }
+
+    var btn = row.querySelector('[data-gn-notify]');
+    if (btn && !btn.dataset.gnWired){
+      btn.dataset.gnWired = '1';
+      btn.addEventListener('click', function(e){ e.preventDefault(); trigger.click(); });
+    }
+
+    var cta = document.getElementById('wbis-cta');
+    row.hidden = !!(cta && !cta.hidden);
+  }
+
+  /* ---------- Klarna 3x amount (follows the selected variant) ---------- */
+
+  function klarnaPrices(el){
+    if (el.__gnPrices !== undefined) return el.__gnPrices;
+    el.__gnPrices = null;
+    var node = el.querySelector('[data-gn-vprices]');
+    if (node){ try { el.__gnPrices = JSON.parse(node.textContent); } catch(e){} }
+    return el.__gnPrices;
+  }
+
+  function updateKlarna(el){
+    var out = el.querySelector('[data-gn-klarna]');
+    if (!out) return;
+    var prices = klarnaPrices(el);
+    if (!prices) return;
+    var input = document.querySelector('form[action*="/cart/add"] [name="id"]');
+    var id = input && input.value;
+    var p = id && prices[id];
+    if (p) out.textContent = money(Math.round(p / 3), el.dataset.cartCur, el.dataset.locale);
+  }
+
+  /* ---------- ship date ---------- */
+
+  function warehouseNow(){
+    try { return new Date(new Date().toLocaleString('en-US', {timeZone:'Europe/Madrid'})); }
+    catch(e){ return new Date(); }
+  }
+
+  function isWeekend(d){ var w = d.getDay(); return w === 0 || w === 6; }
+
+  function nextBusinessDay(from){
+    var d = new Date(from.getTime());
+    do { d.setDate(d.getDate() + 1); } while (isWeekend(d));
+    return d;
+  }
+
+  function part(d, loc, opts, fallback){
+    try { return d.toLocaleDateString(loc, opts); }
+    catch(e){
+      try { return d.toLocaleDateString('en-US', opts); }
+      catch(e2){ return fallback; }
+    }
+  }
+
+  function fmtDay(d, loc, withWeekday, withMonth){
+    var out = [];
+    if (withWeekday) out.push(part(d, loc, {weekday:'short'}, ''));
+    out.push(String(d.getDate()));
+    if (withMonth) out.push(part(d, loc, {month:'short'}, ''));
+    return out.filter(Boolean).join(' ').replace(/,/g, '').replace(/\./g, '');
+  }
+
+  function paintEta(el){
+    var cutoff = parseInt(el.dataset.cutoff, 10);
+    if (isNaN(cutoff)) cutoff = 16;
+
+    var dloc = el.dataset.dloc || el.dataset.locale || 'en';
+    var now = warehouseNow();
+    var weekend = isWeekend(now);
+    var beforeCutoff = now.getHours() < cutoff;
+    var shipDate = (!weekend && beforeCutoff) ? new Date(now.getTime()) : nextBusinessDay(now);
+
+    var shipEl = el.querySelector('[data-gn-msg-ship]');
+    if (shipEl){
+      if (!weekend && beforeCutoff){
+        var mins = cutoff * 60 - (now.getHours() * 60 + now.getMinutes());
+        var h = Math.floor(mins / 60), m = mins % 60;
+        shipEl.textContent = el.dataset.tShipNowA + (h > 0 ? h + 'h ' : '') + m + 'm' + el.dataset.tShipNowB;
+      } else {
+        shipEl.textContent = el.dataset.tShipOnA + fmtDay(shipDate, dloc, false, true) + el.dataset.tShipOnB;
+      }
+    }
+  }
+
+  function tick(){
+    killOldKlarna();
+    document.querySelectorAll('[data-gn-fsb]').forEach(function(el){
+      paintEta(el);
+      syncNotify(el);
+      updateKlarna(el);
+    });
+  }
+
+  /* ---------- shipping rate + free shipping progress ---------- */
+
+  function resolve(el){
+    var rate = parseInt(el.dataset.rate, 10) || 0;
+    var free = parseInt(el.dataset.free, 10) || 0;
+    var cur  = el.dataset.cartCur;
+
+    if (el.dataset.exact === 'true') return {rate:rate, free:free, cur:cur, ok:true};
+
+    var sc = window.Shopify && window.Shopify.currency;
+    var fx = sc && parseFloat(sc.rate);
+    if (!fx || !isFinite(fx) || el.dataset.ruleCur !== 'EUR') return {ok:false};
+
+    var up = function(c){ return Math.ceil(c * fx / 100) * 100; };
+    return {rate: up(rate), free: free ? up(free) : 0, cur: sc.active || cur, ok:true};
+  }
+
+  function paint(el, total){
+    var r = resolve(el);
+    if (!r.ok) return;
+
+    el.classList.remove('is-pending');
+    var d = el.dataset;
+    var loc = d.locale;
+    var rateEl = el.querySelector('[data-gn-rate]');
+    var freeEl = el.querySelector('[data-gn-msg-free]');
+    var fill = el.querySelector('[data-gn-fill]');
+    var line = el.querySelector('.gn-dw__line');
+
+    if (rateEl) rateEl.textContent = money(r.rate, r.cur, loc);
+
+    if (!r.free){
+      el.classList.add('is-flat');
+      if (freeEl) freeEl.textContent = '';
+      paintEta(el);
+      return;
+    }
+    el.classList.remove('is-flat');
+
+    var left = r.free - total;
+    var pct = Math.min(1, total / r.free);
+    if (fill) fill.style.width = (pct * 100) + '%';
+
+    if (left <= 0){
+      el.classList.add('is-unlocked');
+      if (rateEl) rateEl.classList.add('is-struck');
+      if (line && !line.querySelector('[data-gn-free]')){
+        var p = document.createElement('span');
+        p.className = 'gn-dw__pill'; p.setAttribute('data-gn-free','');
+        p.textContent = d.tPill; line.appendChild(p);
+      }
+      if (freeEl) freeEl.textContent = d.tApplied;
+    } else {
+      el.classList.remove('is-unlocked');
+      if (rateEl) rateEl.classList.remove('is-struck');
+      var old = el.querySelector('[data-gn-free]'); if (old) old.remove();
+      if (freeEl){
+        freeEl.textContent = total === 0
+          ? d.tFrom + money(r.free, r.cur, loc)
+          : d.tMorePre + money(left, r.cur, loc) + d.tMoreMid + money(r.free, r.cur, loc) + d.tMoreEnd;
+      }
+    }
+    paintEta(el);
+    el.dataset.total = total;
+  }
+
+  function refresh(){
+    tick();
+    fetch(root + 'cart.js', {headers:{Accept:'application/json'}, credentials:'same-origin'})
+      .then(function(r){ return r.json(); })
+      .then(function(c){
+        document.querySelectorAll('[data-gn-fsb]').forEach(function(el){ paint(el, c.total_price); });
+      })
+      .catch(function(){});
+  }
+
+  var of = window.fetch;
+  if (of) window.fetch = function(){
+    var a = arguments;
+    return of.apply(this, a).then(function(res){
+      try {
+        var u = typeof a[0] === 'string' ? a[0] : (a[0] && a[0].url) || '';
+        if (isCartUrl(u)) setTimeout(refresh, 80);
+      } catch(e){}
+      return res;
+    });
+  };
+  var oo = XMLHttpRequest.prototype.open;
+  XMLHttpRequest.prototype.open = function(m,u){ this.__u=u; return oo.apply(this, arguments); };
+  var os = XMLHttpRequest.prototype.send;
+  XMLHttpRequest.prototype.send = function(){
+    var x=this; x.addEventListener('load', function(){ if (isCartUrl(x.__u)) setTimeout(refresh,80); });
+    return os.apply(this, arguments);
+  };
+  document.addEventListener('change', function(e){
+    var t = e.target;
+    if (!t) return;
+    if (t.name === 'id' || (t.closest && t.closest('form[action*="/cart/add"], variant-picker, [data-variant-picker]'))){
+      setTimeout(function(){
+        document.querySelectorAll('[data-gn-fsb]').forEach(function(el){
+          updateKlarna(el); syncNotify(el);
+        });
+      }, 60);
+    }
+  });
+  document.addEventListener('on:variant:change', function(){
+    setTimeout(function(){
+      document.querySelectorAll('[data-gn-fsb]').forEach(function(el){
+        updateKlarna(el); syncNotify(el);
+      });
+    }, 60);
+  });
+  ['cart:updated','cart:refresh','cart:change'].forEach(function(e){ document.addEventListener(e, refresh); });
+  document.addEventListener('shopify:section:load', refresh);
+  setInterval(tick, 60000);
+  var kk = 0;
+  var kkTimer = setInterval(function(){
+    killOldKlarna();
+    document.querySelectorAll('[data-gn-fsb]').forEach(syncNotify);
+    if (++kk >= 10) clearInterval(kkTimer);
+  }, 1500);
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', refresh); else refresh();
+})();
+</script>
+{%- endunless -%}

@@ -1,0 +1,43 @@
+{%- comment -%}
+  Integration (store builds only): tracking from Theme settings > Integrations. Verification tags
+  go in the head. Google Tag Manager and Microsoft Clarity stay inert in <template> elements until
+  custom-code.js injects them (after load or first interaction, and after marketing consent when
+  "Wait for marketing consent" is on). Params: part ('head' | 'body')
+{%- endcomment -%}
+{%- liquid
+  assign gtm = settings.integration_gtm_id | strip
+  assign clarity = settings.integration_clarity_id | strip
+  assign google = settings.integration_google_verification | strip
+  assign meta = settings.integration_meta_verification | strip
+-%}
+{%- if part == 'head' -%}
+  {%- if google != blank -%}<meta name="google-site-verification" content="{{ google | escape }}">{%- endif -%}
+  {%- if meta != blank -%}<meta name="facebook-domain-verification" content="{{ meta | escape }}">{%- endif -%}
+{%- elsif gtm != blank or clarity != blank -%}
+  <template data-custom-code="{{ settings.integration_tracking_mode }}" data-consent="{{ settings.custom_code_consent }}">
+    {%- if gtm != blank -%}
+      <script>
+        (function (id) {
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({ 'gtm.start': Date.now(), event: 'gtm.js' });
+          var s = document.createElement('script');
+          s.async = true;
+          s.src = 'https://www.googletagmanager.com/gtm.js?id=' + encodeURIComponent(id);
+          document.head.append(s);
+        })({{ gtm | json }});
+      </script>
+    {%- endif -%}
+    {%- if clarity != blank -%}
+      <script>
+        (function (id) {
+          window.clarity = window.clarity || function () { (window.clarity.q = window.clarity.q || []).push(arguments); };
+          var s = document.createElement('script');
+          s.async = true;
+          s.src = 'https://www.clarity.ms/tag/' + encodeURIComponent(id);
+          document.head.append(s);
+        })({{ clarity | json }});
+      </script>
+    {%- endif -%}
+  </template>
+  <script type="module" src="{{ 'custom-code.js' | asset_url }}"></script>
+{%- endif -%}

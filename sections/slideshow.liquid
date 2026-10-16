@@ -1,0 +1,274 @@
+{%- comment -%}
+  Slideshow (brief §14.6): up to five slides with their own images, text and buttons; swipe and
+  scroll without JavaScript (scroll-snap); carousel.js adds arrows, dots, fade and autoplay with
+  a pause button. Autoplay stays off for visitors who prefer reduced motion.
+{%- endcomment -%}
+{%- liquid
+  assign s = section.settings
+  assign count = section.blocks.size
+-%}
+{{ 'section-banner.css' | asset_url | stylesheet_tag }}
+{{ 'section-library.css' | asset_url | stylesheet_tag }}
+<div class="section slideshow-section{% unless s.full_width %} page-width{% endunless %}{% if section.index > 2 %} below-fold{% endif %}">
+  <slide-show
+    class="slideshow slideshow--{{ s.transition }} slideshow--{{ s.height }} color-{{ s.color_scheme }}{% if s.mobile_stacked %} slideshow--stack-mobile{% endif %}"
+    role="region"
+    aria-roledescription="{{ 'accessibility.carousel' | t }}"
+    aria-label="{{ s.accessibility_info | escape }}"
+    data-transition="{{ s.transition }}"
+    data-autoplay="{{ s.autoplay }}"
+    data-speed="{{ s.autoplay_speed }}"
+    data-pause-hover="{{ s.slider_pause }}"
+    data-module="{{ 'carousel.js' | asset_url }}"
+    data-load="visible"
+    style="--banner-h: {{ s.fixed_height_desktop }}px; --banner-h-m: {{ s.fixed_height_mobile }}px; --banner-tint: {{ s.tint_color }}; --banner-tint-opacity: {{ s.tint_opacity | divided_by: 100.0 }}; --banner-text: {{ s.text_color }};"
+  >
+    <div class="slideshow__track" data-track aria-live="polite">
+      {%- content_for 'blocks' -%}
+    </div>
+    {%- render 'slideshow-controls', count: count, nav: s.nav_style, autoplay: s.autoplay -%}
+  </slide-show>
+</div>
+
+{% schema %}
+{
+  "name": "t:labels.slideshow",
+  "class": "section-slideshow",
+  "max_blocks": 5,
+  "disabled_on": {
+    "groups": [
+      "header",
+      "footer",
+      "aside"
+    ]
+  },
+  "blocks": [
+    {
+      "type": "_slide"
+    }
+  ],
+  "settings": [
+    {
+      "type": "select",
+      "id": "height",
+      "label": "t:labels.height",
+      "options": [
+        {
+          "value": "adapt",
+          "label": "t:labels.adapt_to_first_image"
+        },
+        {
+          "value": "small",
+          "label": "t:labels.small"
+        },
+        {
+          "value": "medium",
+          "label": "t:labels.medium"
+        },
+        {
+          "value": "large",
+          "label": "t:labels.large"
+        },
+        {
+          "value": "full",
+          "label": "t:labels.full_screen"
+        },
+        {
+          "value": "fixed",
+          "label": "t:labels.fixed"
+        }
+      ],
+      "default": "medium"
+    },
+    {
+      "type": "range",
+      "id": "fixed_height_desktop",
+      "label": "t:labels.fixed_height_on_large_screens",
+      "min": 300,
+      "max": 900,
+      "step": 20,
+      "unit": "px",
+      "default": 560,
+      "visible_if": "{{ section.settings.height == 'fixed' }}"
+    },
+    {
+      "type": "range",
+      "id": "fixed_height_mobile",
+      "label": "t:labels.fixed_height_on_mobile",
+      "min": 200,
+      "max": 800,
+      "step": 20,
+      "unit": "px",
+      "default": 440,
+      "visible_if": "{{ section.settings.height == 'fixed' }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "mobile_stacked",
+      "label": "t:labels.show_text_below_the_image_on_mobile",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "nav_style",
+      "label": "t:labels.navigation",
+      "options": [
+        {
+          "value": "dots",
+          "label": "t:labels.dots"
+        },
+        {
+          "value": "arrows",
+          "label": "t:labels.arrows"
+        },
+        {
+          "value": "both",
+          "label": "t:labels.dots_and_arrows"
+        },
+        {
+          "value": "none",
+          "label": "t:labels.none"
+        }
+      ],
+      "default": "dots"
+    },
+    {
+      "type": "select",
+      "id": "transition",
+      "label": "t:labels.transition",
+      "options": [
+        {
+          "value": "slide",
+          "label": "t:labels.slide"
+        },
+        {
+          "value": "fade",
+          "label": "t:labels.fade"
+        }
+      ],
+      "default": "slide"
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "t:labels.change_slides_automatically",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "slider_pause",
+      "label": "t:labels.pause_on_hover",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "autoplay_speed",
+      "label": "t:labels.change_slides_every",
+      "min": 3,
+      "max": 10,
+      "step": 1,
+      "unit": "s",
+      "default": 5
+    },
+    {
+      "type": "text",
+      "id": "accessibility_info",
+      "label": "t:labels.slideshow_description",
+      "default": "Slideshow about our brand",
+      "info": "t:labels.read_by_screen_readers"
+    },
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "t:labels.full_width",
+      "default": true
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:labels.color_scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "t:labels.text_on_images",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "tint_color",
+      "label": "t:labels.image_tint",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "tint_opacity",
+      "label": "t:labels.image_tint_opacity",
+      "min": 0,
+      "max": 90,
+      "step": 5,
+      "unit": "%",
+      "default": 25
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:labels.slideshow",
+      "category": "t:labels.banners",
+      "blocks": [
+        {
+          "type": "_slide",
+          "blocks": [
+            {
+              "type": "heading",
+              "settings": {
+                "heading": "Image slide",
+                "size": "h0"
+              }
+            },
+            {
+              "type": "text",
+              "settings": {
+                "text": "<p>Tell your brand's story through images.</p>"
+              }
+            },
+            {
+              "type": "button",
+              "settings": {
+                "label": "Shop now",
+                "style": "primary"
+              }
+            }
+          ]
+        },
+        {
+          "type": "_slide",
+          "blocks": [
+            {
+              "type": "heading",
+              "settings": {
+                "heading": "Image slide",
+                "size": "h0"
+              }
+            },
+            {
+              "type": "text",
+              "settings": {
+                "text": "<p>Tell your brand's story through images.</p>"
+              }
+            },
+            {
+              "type": "button",
+              "settings": {
+                "label": "Shop now",
+                "style": "primary"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

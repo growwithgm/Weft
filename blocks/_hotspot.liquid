@@ -1,0 +1,52 @@
+{%- comment -%} Shoppable image hotspot: a dot at x/y that opens a small product card. {%- endcomment -%}
+{%- liquid
+  assign b = block.settings
+  assign p = b.product
+-%}
+{%- capture gated -%}{% render 'wholesale-only-check', product: p %}{%- endcapture -%}
+{%- if gated != '1' -%}
+<details class="hotspot" data-hotspot style="--x: {{ b.hotspot_x }}%; --y: {{ b.hotspot_y }}%;" {{ block.shopify_attributes }}>
+  <summary class="hotspot__dot" aria-label="{% if p != blank %}{{ p.title | escape }}{% else %}{{ 'products.placeholder_title' | t }}{% endif %}"><span aria-hidden="true"></span></summary>
+  <div class="hotspot__card">
+    {%- if p != blank -%}
+      {%- render 'product-card-mini', product: p -%}
+    {%- else -%}
+      <p class="hotspot__placeholder">{{ 'products.placeholder_title' | t }}</p>
+    {%- endif -%}
+  </div>
+</details>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "t:labels.hotspot",
+  "tag": null,
+  "settings": [
+    {
+      "type": "product",
+      "id": "product",
+      "label": "t:labels.product"
+    },
+    {
+      "type": "range",
+      "id": "hotspot_x",
+      "label": "t:labels.horizontal_position",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "hotspot_y",
+      "label": "t:labels.vertical_position",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "default": 50
+    }
+  ]
+}
+{% endschema %}

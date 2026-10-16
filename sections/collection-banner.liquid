@@ -1,0 +1,141 @@
+{%- comment -%}
+  Collection banner (brief §14.3, S6): breadcrumbs, title, product count and description, with
+  the collection image (or the first product's image) beside or behind the text.
+{%- endcomment -%}
+{%- liquid
+  assign s = section.settings
+  assign banner_image = nil
+  if s.image_style != 'none'
+    assign banner_image = collection.image
+    if banner_image == blank and s.use_product_image
+      assign banner_image = collection.products.first.featured_media.preview_image
+    endif
+  endif
+  assign eager = false
+  if section.index == 1
+    assign eager = true
+  endif
+  assign style = s.image_style
+  if banner_image == blank
+    assign style = 'none'
+  endif
+-%}
+{{ 'section-collection.css' | asset_url | stylesheet_tag }}
+<div class="section collection-banner collection-banner--{{ style }} collection-banner--text-{{ s.text_align }} color-{{ s.color_scheme }}">
+  <div class="page-width collection-banner__inner">
+    <div class="collection-banner__text stack collection-banner__text--{{ s.text_width }}">
+      {%- if s.show_breadcrumbs and settings.breadcrumbs_collection -%}{%- render 'breadcrumbs' -%}{%- endif -%}
+      {%- if s.show_title -%}<h1 class="h1 collection-banner__title">{{ collection.title | escape }}</h1>{%- endif -%}
+      {%- if s.show_count -%}<p class="collection-banner__count muted">{{ 'collections.product_count' | t: count: collection.products_count }}</p>{%- endif -%}
+      {%- if s.show_description and collection.description != blank -%}
+        <div class="rte collection-banner__description">{{ collection.description }}</div>
+      {%- endif -%}
+    </div>
+    {%- if style != 'none' -%}
+      <div class="collection-banner__media media">
+        {%- render 'image', image: banner_image, sizes: '(min-width: 990px) 50vw, 100vw', widths: '375,550,750,1100,1500,1920', eager: eager, class: 'collection-banner__image' -%}
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:labels.collection_banner",
+  "class": "section-collection-banner",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_breadcrumbs",
+      "label": "t:labels.show_breadcrumbs",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_title",
+      "label": "t:labels.show_collection_title",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_count",
+      "label": "t:labels.show_product_count",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_description",
+      "label": "t:labels.show_collection_description",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "text_align",
+      "label": "t:labels.text_alignment",
+      "options": [
+        {
+          "value": "start",
+          "label": "t:labels.start"
+        },
+        {
+          "value": "center",
+          "label": "t:labels.center"
+        }
+      ],
+      "default": "start"
+    },
+    {
+      "type": "select",
+      "id": "text_width",
+      "label": "t:labels.text_width",
+      "options": [
+        {
+          "value": "narrow",
+          "label": "t:labels.narrow"
+        },
+        {
+          "value": "medium",
+          "label": "t:labels.medium"
+        },
+        {
+          "value": "wide",
+          "label": "t:labels.wide"
+        }
+      ],
+      "default": "medium"
+    },
+    {
+      "type": "select",
+      "id": "image_style",
+      "label": "t:labels.collection_image",
+      "options": [
+        {
+          "value": "none",
+          "label": "t:labels.don_t_show"
+        },
+        {
+          "value": "beside",
+          "label": "t:labels.beside_the_text"
+        },
+        {
+          "value": "behind",
+          "label": "t:labels.behind_the_text"
+        }
+      ],
+      "default": "none"
+    },
+    {
+      "type": "checkbox",
+      "id": "use_product_image",
+      "label": "t:text.sections.collection_banner.settings.use_product_image.label",
+      "default": false
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:labels.color_scheme",
+      "default": "scheme-1"
+    }
+  ]
+}
+{% endschema %}

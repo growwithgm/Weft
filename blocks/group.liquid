@@ -1,0 +1,118 @@
+<div
+  class="block-group block-group--{{ block.settings.direction }} block-group--align-{{ block.settings.align }}{% if block.settings.color_scheme != '' %} color-{{ block.settings.color_scheme }}{% endif %}"
+  style="--group-gap: {{ block.settings.gap }}px; --group-pad: {{ block.settings.padding }}px;"
+  {{ block.shopify_attributes }}
+>
+  {%- content_for 'blocks' -%}
+</div>
+
+{% schema %}
+{
+  "name": "t:labels.group",
+  "tag": null,
+  "blocks": [
+    {
+      "type": "@theme"
+    },
+    {
+      "type": "@app"
+    }
+  ],
+  "settings": [
+    {
+      "type": "select",
+      "id": "direction",
+      "label": "t:labels.direction",
+      "options": [
+        {
+          "value": "column",
+          "label": "t:labels.vertical"
+        },
+        {
+          "value": "row",
+          "label": "t:labels.horizontal"
+        }
+      ],
+      "default": "column"
+    },
+    {
+      "type": "select",
+      "id": "align",
+      "label": "t:labels.alignment",
+      "options": [
+        {
+          "value": "start",
+          "label": "t:labels.start"
+        },
+        {
+          "value": "center",
+          "label": "t:labels.center"
+        },
+        {
+          "value": "end",
+          "label": "t:labels.end"
+        },
+        {
+          "value": "stretch",
+          "label": "t:labels.stretch"
+        }
+      ],
+      "default": "start"
+    },
+    {
+      "type": "range",
+      "id": "gap",
+      "label": "t:labels.gap",
+      "min": 0,
+      "max": 64,
+      "step": 4,
+      "default": 16,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding",
+      "label": "t:labels.padding",
+      "min": 0,
+      "max": 64,
+      "step": 4,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:labels.color_scheme",
+      "info": "t:text.blocks.group.settings.color_scheme.info"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:labels.group"
+    },
+    {
+      "name": "t:labels.buttons",
+      "settings": {
+        "direction": "row",
+        "gap": 12
+      },
+      "blocks": [
+        {
+          "type": "button",
+          "settings": {
+            "label": "Shop now",
+            "style": "primary"
+          }
+        },
+        {
+          "type": "button",
+          "settings": {
+            "label": "Learn more",
+            "style": "secondary"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

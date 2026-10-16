@@ -1,0 +1,79 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {}
+    },
+    "form": {
+      "type": "contact-form",
+      "settings": {
+        "heading": "Apply for a wholesale account"
+      },
+      "blocks": {
+        "company": {
+          "type": "_form-field",
+          "settings": {
+            "type": "custom",
+            "title": "Company name",
+            "input_type": "text",
+            "required": true,
+            "half_width": true
+          }
+        },
+        "name": {
+          "type": "_form-field",
+          "settings": {
+            "type": "name",
+            "half_width": true
+          }
+        },
+        "email": {
+          "type": "_form-field",
+          "settings": {
+            "type": "email",
+            "half_width": true
+          }
+        },
+        "phone": {
+          "type": "_form-field",
+          "settings": {
+            "type": "phone",
+            "half_width": true
+          }
+        },
+        "website": {
+          "type": "_form-field",
+          "settings": {
+            "type": "custom",
+            "title": "Website or shop address",
+            "input_type": "text"
+          }
+        },
+        "message": {
+          "type": "_form-field",
+          "settings": {
+            "type": "message",
+            "required": true
+          }
+        }
+      },
+      "block_order": [
+        "company",
+        "name",
+        "email",
+        "phone",
+        "website",
+        "message"
+      ]
+    },
+    "apps": {
+      "type": "apps",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "form",
+    "apps"
+  ]
+}

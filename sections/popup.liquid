@@ -1,0 +1,289 @@
+{%- comment -%}
+  Pop-up (overlay group, off by default): newsletter, promotion or age verification. Content is
+  theme blocks (heading, text, image, button, email sign-up, discount code, countdown, social
+  links) and app blocks. popup.js decides when to show it: after a delay, on scroll or on exit
+  intent; not again for the chosen number of days after it's closed. Age verification shows at
+  once, can't be dismissed without an answer and remembers "yes" for the chosen days.
+{%- endcomment -%}
+{%- liquid
+  assign s = section.settings
+  assign modal = true
+  if s.position != 'center' and s.mode != 'age_verification'
+    assign modal = false
+  endif
+-%}
+{{ 'component-popup.css' | asset_url | stylesheet_tag }}
+<site-popup
+  data-mode="{{ s.mode }}"
+  data-trigger="{{ s.trigger }}"
+  data-delay="{{ s.delay }}"
+  data-days="{{ s.dismiss_days }}"
+  data-mobile="{{ s.show_on_mobile }}"
+  data-guests-only="{{ s.guests_only }}"
+  data-customer="{% if customer %}true{% else %}false{% endif %}"
+  data-modal="{{ modal }}"
+  data-section-id="{{ section.id }}"
+  data-module="{{ 'popup.js' | asset_url }}"
+  data-load="idle"
+>
+  <dialog class="popup popup--{{ s.position }} popup--{{ s.width }} color-{{ s.color_scheme }}{% if s.image %} popup--image-{{ s.image_layout }}{% endif %}" aria-labelledby="Popup-{{ section.id }}-title" {% if s.mode != 'age_verification' %}data-light-dismiss{% endif %}>
+    <div class="popup__panel">
+      {%- if s.image -%}
+        <div class="popup__media" style="--popup-tint: {{ s.tint_opacity | divided_by: 100.0 }}">{%- render 'image', image: s.image, sizes: '(min-width: 750px) 420px, 100vw', widths: '420,640,840' -%}</div>
+      {%- endif -%}
+      <div class="popup__body stack popup__body--{{ s.text_align }}">
+        <span class="visually-hidden" id="Popup-{{ section.id }}-title">{{ s.title | escape }}</span>
+        {%- content_for 'blocks' -%}
+        {%- if s.mode == 'age_verification' -%}
+          <div class="popup__actions" data-age-actions>
+            <button type="button" class="button" data-age-yes>{{ s.proceed_label | escape }}</button>
+            <button type="button" class="button button--secondary" data-age-no>{{ s.cancel_label | escape }}</button>
+          </div>
+          <div class="popup__declined rte" data-age-declined hidden>{{ s.cancel_text }}</div>
+        {%- endif -%}
+      </div>
+      {%- if s.mode != 'age_verification' -%}
+        <button type="button" class="icon-button popup__close" data-popup-close aria-label="{{ 'general.close' | t }}">{%- render 'icon', name: 'close' -%}</button>
+      {%- endif -%}
+    </div>
+  </dialog>
+</site-popup>
+
+{% schema %}
+{
+  "name": "t:labels.pop_up",
+  "class": "section-popup",
+  "enabled_on": {
+    "groups": [
+      "aside"
+    ]
+  },
+  "blocks": [
+    {
+      "type": "@theme"
+    },
+    {
+      "type": "@app"
+    }
+  ],
+  "settings": [
+    {
+      "type": "select",
+      "id": "mode",
+      "label": "t:labels.type",
+      "options": [
+        {
+          "value": "newsletter",
+          "label": "t:labels.email_signup"
+        },
+        {
+          "value": "promo",
+          "label": "t:labels.promotion"
+        },
+        {
+          "value": "age_verification",
+          "label": "t:labels.age_verification"
+        }
+      ],
+      "default": "newsletter"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "t:labels.pop_up_name",
+      "default": "Newsletter",
+      "info": "t:labels.read_by_screen_readers"
+    },
+    {
+      "type": "select",
+      "id": "trigger",
+      "label": "t:labels.show",
+      "options": [
+        {
+          "value": "delay",
+          "label": "t:labels.after_a_delay"
+        },
+        {
+          "value": "scroll",
+          "label": "t:labels.after_scrolling_halfway"
+        },
+        {
+          "value": "exit",
+          "label": "t:labels.when_leaving_the_page"
+        }
+      ],
+      "default": "delay",
+      "visible_if": "{{ section.settings.mode != 'age_verification' }}"
+    },
+    {
+      "type": "range",
+      "id": "delay",
+      "label": "t:labels.delay",
+      "min": 0,
+      "max": 60,
+      "step": 1,
+      "unit": "s",
+      "default": 8,
+      "visible_if": "{{ section.settings.mode != 'age_verification' }}"
+    },
+    {
+      "type": "range",
+      "id": "dismiss_days",
+      "label": "t:labels.don_t_show_again_for",
+      "min": 1,
+      "max": 90,
+      "step": 1,
+      "unit": "d",
+      "default": 14
+    },
+    {
+      "type": "checkbox",
+      "id": "guests_only",
+      "label": "t:labels.only_show_to_visitors_who_aren_t_signed_in",
+      "default": true,
+      "visible_if": "{{ section.settings.mode != 'age_verification' }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_on_mobile",
+      "label": "t:labels.show_on_mobile",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "position",
+      "label": "t:labels.position",
+      "options": [
+        {
+          "value": "center",
+          "label": "t:labels.center"
+        },
+        {
+          "value": "bottom-start",
+          "label": "t:labels.bottom_start"
+        },
+        {
+          "value": "bottom-end",
+          "label": "t:labels.bottom_end"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "width",
+      "label": "t:labels.width",
+      "options": [
+        {
+          "value": "narrow",
+          "label": "t:labels.narrow"
+        },
+        {
+          "value": "wide",
+          "label": "t:labels.wide"
+        }
+      ],
+      "default": "wide"
+    },
+    {
+      "type": "select",
+      "id": "text_align",
+      "label": "t:labels.text_alignment",
+      "options": [
+        {
+          "value": "start",
+          "label": "t:labels.start"
+        },
+        {
+          "value": "center",
+          "label": "t:labels.center"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:labels.image"
+    },
+    {
+      "type": "select",
+      "id": "image_layout",
+      "label": "t:labels.image_layout",
+      "options": [
+        {
+          "value": "side",
+          "label": "t:labels.beside_the_text"
+        },
+        {
+          "value": "background",
+          "label": "t:labels.behind_the_text"
+        }
+      ],
+      "default": "side"
+    },
+    {
+      "type": "range",
+      "id": "tint_opacity",
+      "label": "t:labels.image_tint_opacity",
+      "min": 0,
+      "max": 90,
+      "step": 5,
+      "unit": "%",
+      "default": 40,
+      "visible_if": "{{ section.settings.image_layout == 'background' }}"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:labels.color_scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "t:labels.age_verification"
+    },
+    {
+      "type": "text",
+      "id": "proceed_label",
+      "label": "t:labels.confirm_button",
+      "default": "Yes, I'm over 18"
+    },
+    {
+      "type": "text",
+      "id": "cancel_label",
+      "label": "t:labels.decline_button",
+      "default": "No"
+    },
+    {
+      "type": "richtext",
+      "id": "cancel_text",
+      "label": "t:labels.message_after_declining",
+      "default": "<p>Sorry, you need to be of legal age to visit this store.</p>"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:labels.pop_up",
+      "blocks": [
+        {
+          "type": "heading",
+          "settings": {
+            "heading": "Join our list",
+            "size": "h2"
+          }
+        },
+        {
+          "type": "text",
+          "settings": {
+            "text": "<p>Get 10% off your first order and hear about new arrivals first.</p>"
+          }
+        },
+        {
+          "type": "email-signup"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

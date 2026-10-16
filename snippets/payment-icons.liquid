@@ -1,0 +1,11 @@
+{%- comment -%} Payment icons from shop.enabled_payment_types (Theme Store requirement). {%- endcomment -%}
+{%- if shop.enabled_payment_types.size > 0 -%}
+  <div class="payment-icons">
+    <span class="visually-hidden">{{ 'general.payment_methods' | t }}</span>
+    <ul class="payment-icons__list" role="list">
+      {%- for type in shop.enabled_payment_types -%}
+        <li>{{ type | payment_type_svg_tag: class: 'payment-icons__icon' }}</li>
+      {%- endfor -%}
+    </ul>
+  </div>
+{%- endif -%}

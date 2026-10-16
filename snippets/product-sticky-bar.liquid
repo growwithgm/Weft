@@ -1,0 +1,45 @@
+{%- comment -%}
+  Mobile sticky bar (brief §5, approved): off screen while the real Add to cart is visible or any
+  drawer is open; selected option chips and stock status; Add to cart / Buy now / chat, or
+  Remind me + chat when sold out. The chat bubble hides while the bar is up.
+  Params: product, variant, section, unselected.
+{%- endcomment -%}
+{%- liquid
+  assign form_id = 'ProductForm-' | append: section.id
+  assign v = variant
+  assign tracked = false
+  if v.inventory_management != blank
+    assign tracked = true
+  endif
+-%}
+<sticky-bar class="sticky-bar hide-desktop" data-sticky-bar data-swap="sticky-{{ section.id }}" hidden data-module="{{ 'sticky-bar.js' | asset_url }}" data-load="idle">
+  <div class="sticky-bar__meta">
+    {%- unless product.has_only_default_variant or unselected -%}
+      {%- for value in v.options -%}<span class="chip">{{ value }}</span>{%- endfor -%}
+    {%- endunless -%}
+    <span class="sticky-bar__stock sticky-bar__stock--{% if v.available == false %}out{% elsif tracked and v.inventory_quantity <= settings.stock_low_threshold and v.inventory_quantity > 0 %}low{% else %}ok{% endif %}">
+      {%- if v == nil -%}{{ 'products.unavailable' | t }}
+      {%- elsif v.available == false -%}{{ 'products.sold_out' | t }}
+      {%- elsif tracked and v.inventory_quantity <= 0 and settings.stock_hide_backorder_notice -%}{{ 'products.stock.in_stock' | t }}
+      {%- elsif tracked and v.inventory_quantity <= 0 -%}{{ 'products.stock.backorder' | t }}
+      {%- elsif tracked and v.inventory_quantity <= settings.stock_low_threshold -%}{{ 'products.stock.low' | t }}
+      {%- else -%}{{ 'products.stock.in_stock' | t }}{%- endif -%}
+    </span>
+  </div>
+  <div class="sticky-bar__actions">
+    {%- if v and v.available -%}
+      <button type="submit" form="{{ form_id }}" name="add" class="button sticky-bar__button" data-sticky-add>{{ 'products.add_short' | t }}</button>
+      <button type="submit" form="{{ form_id }}" formaction="{{ routes.cart_add_url }}?return_to=%2Fcheckout" class="button button--secondary sticky-bar__button" data-buy-now>{{ 'products.buy_now' | t }}</button>
+    {%- elsif v -%}
+      <button type="button" class="button button--secondary sticky-bar__button" data-open-dialog="BackInStock-{{ section.id }}">{{ 'products.remind_me' | t }}</button>
+    {%- else -%}
+      <button type="button" class="button sticky-bar__button" disabled>{{ 'products.unavailable' | t }}</button>
+    {%- endif -%}
+    {%- assign wa_message = 'general.chat.message' | t -%}
+    {%- capture wa_link -%}{%- render 'whatsapp-link', message: wa_message, page_link: true -%}{%- endcapture -%}
+    {%- assign wa_link = wa_link | strip -%}
+    {%- if wa_link != blank -%}
+      <a class="icon-button sticky-bar__chat" href="{{ wa_link }}" target="_blank" rel="noopener" aria-label="{{ 'general.chat.label' | t }} ({{ 'general.opens_new_window' | t }})">{%- render 'icon', name: 'whatsapp', size: 22 -%}</a>
+    {%- endif -%}
+  </div>
+</sticky-bar>

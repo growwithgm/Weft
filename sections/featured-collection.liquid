@@ -1,0 +1,308 @@
+{%- comment -%}
+  Featured collection: products from one collection as a grid or carousel, optional promotion
+  tile and "View all" link. With tab blocks, each tab shows its own collection (ARIA tabs via
+  tabs.js; without JavaScript every tab's products show under its heading), for example price
+  bands in a gift guide. Presets: "Featured collection" and "Gift guide".
+{%- endcomment -%}
+{%- liquid
+  assign s = section.settings
+  assign placeholder = false
+  if s.collection == blank or s.collection.products_count == 0
+    assign placeholder = true
+  endif
+  assign view_all = ''
+  if s.show_view_all and s.collection != blank and s.collection.products_count > s.products_to_show
+    assign view_all = 'collections.view_all' | t
+  endif
+-%}
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'section-library.css' | asset_url | stylesheet_tag }}
+{{ 'component-carousel.css' | asset_url | stylesheet_tag }}
+<div class="section product-row color-{{ s.color_scheme }}{% if section.index > 2 %} below-fold{% endif %}">
+  <div class="page-width">
+    {%- if section.blocks.size > 0 -%}
+      {{ 'component-blocks.css' | asset_url | stylesheet_tag }}
+      {%- render 'section-heading', title: s.title, align: s.heading_align -%}
+      <product-tabs class="tabs" data-module="{{ 'tabs.js' | asset_url }}" data-load="visible">
+        <div class="tabs__list js-only" role="tablist" data-tablist></div>
+        {%- for block in section.blocks -%}
+          {%- liquid
+            assign tab_collection = block.settings.collection
+            assign tab_placeholder = false
+            if tab_collection == blank or tab_collection.products_count == 0
+              assign tab_placeholder = true
+            endif
+          -%}
+          <section class="tabs__panel" id="{{ section.id }}-{{ block.id }}" data-tab-panel data-tab-title="{{ block.settings.label | escape }}" {{ block.shopify_attributes }}>
+            <h3 class="tabs__heading h5">{{ block.settings.label | escape }}</h3>
+            {%- render 'product-row', products: tab_collection.products, limit: s.products_to_show, section: section, placeholder: tab_placeholder, id_prefix: block.id -%}
+            {%- if s.show_view_all and tab_collection.products_count > s.products_to_show -%}
+              <p class="product-row__more"><a class="link" href="{{ tab_collection.url }}">{{ 'collections.view_all' | t }}<span class="visually-hidden">: {{ block.settings.label | escape }}</span></a></p>
+            {%- endif -%}
+          </section>
+        {%- endfor -%}
+      </product-tabs>
+    {%- else -%}
+      {%- render 'section-heading', title: s.title, align: s.heading_align, button_label: view_all, button_link: s.collection.url, button_style: 'link' -%}
+      {%- render 'product-row', products: s.collection.products, limit: s.products_to_show, section: section, placeholder: placeholder -%}
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:labels.featured_collection",
+  "class": "section-featured-collection",
+  "disabled_on": {
+    "templates": [
+      "password"
+    ],
+    "groups": [
+      "header",
+      "footer",
+      "aside"
+    ]
+  },
+  "max_blocks": 5,
+  "blocks": [
+    {
+      "type": "tab",
+      "name": "t:labels.tab",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "t:labels.label",
+          "default": "Tab"
+        },
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "t:labels.collection",
+          "info": "t:text.sections.featured_collection.blocks.tab.settings.collection.info"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "t:text.sections.featured_collection.settings.add_tabs_to_show_a_different_collection_in_each_.content"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "t:labels.heading",
+      "default": "Featured collection"
+    },
+    {
+      "type": "select",
+      "id": "heading_align",
+      "label": "t:labels.heading_alignment",
+      "options": [
+        {
+          "value": "start",
+          "label": "t:labels.start"
+        },
+        {
+          "value": "center",
+          "label": "t:labels.center"
+        }
+      ],
+      "default": "start"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "t:labels.collection"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "label": "t:labels.products_to_show",
+      "min": 2,
+      "max": 24,
+      "step": 1,
+      "default": 8
+    },
+    {
+      "type": "checkbox",
+      "id": "show_view_all",
+      "label": "t:labels.show_view_all_link",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "t:labels.layout",
+      "options": [
+        {
+          "value": "grid",
+          "label": "t:labels.grid"
+        },
+        {
+          "value": "carousel",
+          "label": "t:labels.carousel"
+        }
+      ],
+      "default": "grid"
+    },
+    {
+      "type": "range",
+      "id": "columns",
+      "label": "t:labels.columns_on_large_screens",
+      "min": 2,
+      "max": 6,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "select",
+      "id": "columns_mobile",
+      "label": "t:labels.columns_on_mobile",
+      "options": [
+        {
+          "value": "1",
+          "label": "t:labels.1"
+        },
+        {
+          "value": "2",
+          "label": "t:labels.2"
+        }
+      ],
+      "default": "2"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_highlight_products",
+      "label": "t:labels.highlight_products_with_the_highlight_tag",
+      "default": false,
+      "info": "t:labels.tag_set_in_theme_settings_product_cards"
+    },
+    {
+      "type": "header",
+      "content": "t:labels.promotion"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_promo_info",
+      "label": "t:labels.show_a_promotion_tile_first",
+      "default": false
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:labels.image"
+    },
+    {
+      "type": "select",
+      "id": "image_ratio",
+      "label": "t:labels.image_aspect_ratio",
+      "options": [
+        {
+          "value": "square",
+          "label": "t:labels.square"
+        },
+        {
+          "value": "portrait",
+          "label": "t:labels.portrait"
+        },
+        {
+          "value": "landscape",
+          "label": "t:labels.landscape"
+        }
+      ],
+      "default": "portrait"
+    },
+    {
+      "type": "text",
+      "id": "promo_title",
+      "label": "t:labels.heading"
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "t:labels.text"
+    },
+    {
+      "type": "url",
+      "id": "link_url",
+      "label": "t:labels.link"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "t:labels.button_label"
+    },
+    {
+      "type": "select",
+      "id": "button_style",
+      "label": "t:labels.button_style",
+      "options": [
+        {
+          "value": "primary",
+          "label": "t:labels.primary"
+        },
+        {
+          "value": "secondary",
+          "label": "t:labels.secondary"
+        }
+      ],
+      "default": "secondary"
+    },
+    {
+      "type": "color_scheme",
+      "id": "promo_color_scheme",
+      "label": "t:labels.promotion_color_scheme",
+      "default": "scheme-2"
+    },
+    {
+      "type": "header",
+      "content": "t:labels.section"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:labels.color_scheme",
+      "default": "scheme-1"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:labels.featured_collection",
+      "category": "t:labels.products"
+    },
+    {
+      "name": "t:labels.gift_guide",
+      "category": "t:labels.products",
+      "settings": {
+        "title": "Gift guide",
+        "show_promo_info": true,
+        "promo_title": "Gifts they'll keep",
+        "content": "<p>Ideas for every budget, wrapped and ready.</p>",
+        "button_label": "Shop gifts"
+      },
+      "blocks": [
+        {
+          "type": "tab",
+          "settings": {
+            "label": "Small gifts"
+          }
+        },
+        {
+          "type": "tab",
+          "settings": {
+            "label": "Treats"
+          }
+        },
+        {
+          "type": "tab",
+          "settings": {
+            "label": "Special gifts"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,297 @@
+{%- comment -%}
+  GN RATING - ibBan
+  {% render 'gn-rating' %}
+
+  Rating pill rendered directly under the price by the custom_liquid_gnrating
+  block. Redesigned 25 Sep 2026 from the "2a Rating pill" design: grey pill,
+  black score badge with a gold star, a five-star row, the count, a chevron.
+
+  IMPORTANT - BLOCK ORDER LIVES IN MORE THAN ONE FILE.
+  Markets with their own theme customization keep their own block_order,
+  which overrides the parent template:
+      templates/product.json                        (Store default)
+      templates/product.context.rest-of-world.json  (Rest of World, and the
+                                                     markets nested under it)
+  Any market customized later - United Kingdom, for one - will generate its
+  own context file and will need "custom_liquid_gnrating" added after
+  "price" in its block_order too.
+
+  GN_RT_MODE decides what the pill shows:
+    store  (current)  Always the shop-wide Judge.me aggregate, labelled
+                      "store reviews" so it is never mistaken for this
+                      product's own score. Roughly 40% of active products
+                      have no reviews at all.
+    auto              This product's own rating when it has reviews,
+                      falling back to the store aggregate when it has none.
+
+  Sources:
+    shop.metafields.judgeme.all_reviews_rating / all_reviews_count
+    product.metafields.reviews.rating / rating_count
+  Judge.me refreshes the shop metafields periodically, not in real time.
+
+  ---------------------------------------------------------------------------
+  WHY THERE IS NO "VERIFIED BUYERS" IN THE PILL  (25 Sep 2026)
+
+  The desktop design put "Verified buyers" next to the count. It was left
+  out on purpose. Judge.me's own medals metafield
+  (shop.metafields.judgeme.medals / verified_badge) certified 70 reviews as
+  verified purchases, at 4.49 - against roughly 1,083 in the count. Printing
+  "verified buyers" beside 1,083 claims something Judge.me itself does not.
+  The mobile design had already dropped it. Per-review "Verified" ticks in
+  the reviews section are fine - those read each review's own flag.
+  ---------------------------------------------------------------------------
+
+  ---------------------------------------------------------------------------
+  WHERE THE PILL GOES
+
+  The design links the pill to the reviews section further down the same
+  page, so that is what it does: if sections/gn-product-reviews.liquid is on
+  the page (selector section.gnpr), a click scrolls there, clearing the
+  sticky header. If it is not on the page - another template, or the section
+  rendered nothing - the click follows the href to GN_RT_LINK, the reviews
+  page. With JavaScript off, the href still works.
+
+  URL BUILDING - DO NOT "SIMPLIFY" THIS  (fixed 20 Sep 2026)
+  GN_RT_LINK is a path only. The market prefix comes from routes.root_url,
+  which is "/" on the primary market and "/es-es", "/en-es" and so on inside
+  the Spain market's subfolders. The first version used
+      routes.root_url | remove_last: '/' | append: GN_RT_LINK
+  remove_last strips the last '/' ANYWHERE in the string. On "/es-es" the
+  only slash is the leading one, so it produced "es-es/pages/reviews" - a
+  relative URL that resolved against the product path and 404'd. Append then
+  collapse '//' is correct for "/", "/es-es" and "/es-es/" alike.
+  ---------------------------------------------------------------------------
+
+  WIDTH ON PHONES
+  The Spanish label ("reseñas de la tienda") makes the pill about 360px wide,
+  which overflows a 375px phone. So under 430px the Spanish pill drops the
+  five-star row - the badge still carries the score and a star - and every
+  language drops it under 340px.
+
+  ---------------------------------------------------------------------------
+  LEGACY BLOCK OVERRIDES  (added 31 Aug 2026)
+
+  Two older blocks in sections/main-product.liquid duplicate what the buy box
+  now shows. Both are hidden by the two CSS rules at the top of the style tag
+  below. That is a patch - the markup is still generated on every product
+  page - so both should be deleted at source and these rules removed with
+  them. Each is wrapped in its own START/END comment, so they are easy to
+  find in Online Store > Themes > Edit code > sections/main-product.liquid:
+
+    .recommended-size-range
+        "START RECOMMENDED SIZE RANGE METAFIELD" ... "END"
+        Sits just after {% render 'variant-picker' %} inside the
+        {%- when 'variant-picker' -%} case, which is why the theme editor
+        highlights it as part of the Variant picker block. It reads the same
+        custom.best_suited_for metafield as the delivery widget's fit row.
+        It was dormant until the metafield was filled in.
+
+    .klarna-badge
+        Inside the {%- when 'buy-buttons' -%} case, in the
+        {%- unless bb_is_b2b -%} branch. This is the old pink "Pay in 3
+        interest-free installments" banner, replaced by the Klarna row in
+        the delivery widget. Once it is deleted, the JS sweep named
+        killOldKlarna in gn-shipping-bar can go too.
+        Note: a second .klarna-badge exists in the variant-picker case for
+        B2B customers with a "row" tagged product. That one is intentionally
+        left visible - this snippet does not render for B2B customers, so
+        these rules never load for them.
+  ---------------------------------------------------------------------------
+{%- endcomment -%}
+
+{%- capture jm_rating -%}{{ shop.metafields.judgeme.all_reviews_rating }}{%- endcapture -%}
+{%- capture jm_count -%}{{ shop.metafields.judgeme.all_reviews_count }}{%- endcapture -%}
+
+{%- liquid
+  assign GN_RT_MODE = 'store'
+  assign GN_RT_LINK = '/pages/reviews'
+
+  assign rt_href = routes.root_url | append: GN_RT_LINK | replace: '//', '/'
+
+  assign jm_rating = jm_rating | strip
+  assign jm_count = jm_count | strip
+  assign jm_ok = false
+  if jm_rating != blank and jm_count != blank and jm_count != '0'
+    assign jm_ok = true
+  endif
+
+  assign p_count = product.metafields.reviews.rating_count.value | default: 0
+  assign p_rating = product.metafields.reviews.rating.value.rating | default: 0
+  assign p_ok = false
+  if p_count > 0 and p_rating > 0
+    assign p_ok = true
+  endif
+
+  assign rt_mode = ''
+  if GN_RT_MODE == 'store' and jm_ok
+    assign rt_mode = 'store'
+  elsif p_ok
+    assign rt_mode = 'product'
+  elsif jm_ok
+    assign rt_mode = 'store'
+  endif
+
+  if rt_mode == 'store'
+    assign rt_val = jm_rating | plus: 0.0
+    assign rt_count = jm_count | plus: 0
+  elsif rt_mode == 'product'
+    assign rt_val = p_rating
+    assign rt_count = p_count
+  endif
+
+  assign rt_pct = rt_val | times: 20.0
+
+  assign rt_lang = request.locale.iso_code | default: 'en'
+  if localization.country.iso_code == 'ES'
+    assign rt_lang = 'es'
+  endif
+
+  if rt_lang == 'es'
+    assign t_store_reviews = ' reseñas de la tienda'
+    assign t_reviews = ' reseñas'
+    assign t_aria_a = 'Valoración '
+    assign t_aria_b = ' de 5 sobre '
+    assign t_aria_c = ' reseñas. Ver las reseñas'
+  else
+    assign t_store_reviews = ' store reviews'
+    assign t_reviews = ' reviews'
+    assign t_aria_a = 'Rated '
+    assign t_aria_b = ' out of 5 from '
+    assign t_aria_c = ' reviews. Read the reviews'
+  endif
+
+  if rt_mode == 'product'
+    assign t_label = t_reviews
+  else
+    assign t_label = t_store_reviews
+  endif
+-%}
+
+{%- if rt_mode != blank -%}
+  <a
+    href="{{ rt_href }}"
+    class="gn-rt{% if rt_lang == 'es' %} gn-rt--long{% endif %}"
+    data-gn-rt
+    data-mode="{{ rt_mode }}"
+    data-raw="{{ rt_count }}"
+    data-rating="{{ rt_val }}"
+    data-locale="{{ rt_lang }}"
+    aria-label="{{ t_aria_a }}{{ rt_val }}{{ t_aria_b }}{{ rt_count }}{{ t_aria_c }}"
+  >
+    <span class="gn-rt__badge"><span data-gn-rt-num>{{ rt_val }}</span><span class="gn-rt__bstar" aria-hidden="true">★</span></span>
+    <span class="gn-rt__stars" style="--gn-rt-pct:{{ rt_pct }}%" aria-hidden="true">
+      <span class="gn-rt__bg">★★★★★</span><span class="gn-rt__fg">★★★★★</span>
+    </span>
+    <span class="gn-rt__count"><span data-gn-rt-count>{{ rt_count }}</span>{{ t_label }}</span>
+    <span class="gn-rt__chev" aria-hidden="true">›</span>
+  </a>
+
+  <style>
+    /* Legacy blocks in sections/main-product.liquid - see comment at top.
+       Delete these two rules once the source blocks are removed. */
+    .recommended-size-range{ display:none !important; }
+    .klarna-badge{ display:none !important; }
+
+    .gn-rt{
+      --gn-rt-star:#F2A93B; --gn-rt-empty:#D4D4D4;
+      display:inline-flex; align-items:center; gap:12px;
+      width:fit-content; max-width:100%; box-sizing:border-box;
+      margin:12px 0 0; padding:6px 16px 6px 6px;
+      background:#F6F6F6; border:1px solid #E5E5E5; border-radius:999px;
+      color:#111111; text-decoration:none; white-space:nowrap;
+      font:inherit; font-size:14px; line-height:1; cursor:pointer;
+      font-variant-numeric:tabular-nums lining-nums;
+      transition:border-color .15s ease;
+    }
+    .gn-rt:hover{ border-color:#111111; color:#111111; }
+    .gn-rt:visited, .gn-rt:focus{ color:#111111; }
+    .gn-rt:focus-visible{ outline:2px solid #111111; outline-offset:3px; }
+
+    .gn-rt__badge{
+      display:inline-flex; align-items:center; gap:4px;
+      background:#111111; color:#FFFFFF;
+      font-size:14px; font-weight:600; line-height:1;
+      padding:6px 10px; border-radius:999px;
+    }
+    .gn-rt__bstar{ color:var(--gn-rt-star); }
+
+    .gn-rt__stars{ position:relative; display:inline-block; white-space:nowrap; font-size:15px; letter-spacing:1.5px; line-height:1; }
+    .gn-rt__bg{ color:var(--gn-rt-empty); }
+    .gn-rt__fg{
+      position:absolute; left:0; top:0; overflow:hidden; white-space:nowrap;
+      letter-spacing:inherit; width:var(--gn-rt-pct, 0%); color:var(--gn-rt-star);
+    }
+
+    .gn-rt__count{ font-size:14px; font-weight:500; }
+    .gn-rt__chev{ font-size:16px; color:#757575; line-height:1; }
+
+    @media (max-width:749px){
+      .gn-rt{ gap:10px; padding:5px 14px 5px 5px; min-height:44px; }
+      .gn-rt__stars{ font-size:14px; letter-spacing:1px; }
+    }
+    @media (max-width:430px){ .gn-rt--long .gn-rt__stars{ display:none; } }
+    @media (max-width:340px){ .gn-rt__stars{ display:none; } }
+  </style>
+
+  <script>
+  (function(){
+    if (window.__gnRt) return; window.__gnRt = true;
+
+    function fmt(n, loc, dec){
+      try {
+        return dec
+          ? n.toLocaleString(loc, { minimumFractionDigits: 1, maximumFractionDigits: 2 })
+          : n.toLocaleString(loc);
+      } catch (e) { return String(n); }
+    }
+
+    function headerOffset(){
+      var max = 0;
+      var els = document.querySelectorAll('sticky-header, header, [class*="header"]');
+      for (var i = 0; i < els.length && i < 40; i++){
+        var cs = window.getComputedStyle(els[i]);
+        if ((cs.position === 'sticky' || cs.position === 'fixed') && (parseFloat(cs.top) || 0) <= 1){
+          var h = els[i].getBoundingClientRect().height;
+          if (h > max && h < 260) max = h;
+        }
+      }
+      return max;
+    }
+
+    function onClick(e){
+      var target = document.querySelector('section.gnpr');
+      if (!target) return;
+      e.preventDefault();
+      var y = target.getBoundingClientRect().top + window.pageYOffset - headerOffset() - 8;
+      try { window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' }); }
+      catch (err) { window.scrollTo(0, Math.max(0, y)); }
+    }
+
+    function wire(){
+      var els = document.querySelectorAll('[data-gn-rt]');
+      for (var i = 0; i < els.length; i++){
+        var el = els[i];
+        if (el.dataset.gnWired) continue;
+        el.dataset.gnWired = '1';
+
+        var loc = el.dataset.locale || 'en';
+        var out = el.querySelector('[data-gn-rt-count]');
+        var raw = parseInt(el.dataset.raw, 10);
+        if (out && !isNaN(raw)) out.textContent = fmt(raw, loc, false);
+
+        var num = el.querySelector('[data-gn-rt-num]');
+        var rv = parseFloat(el.dataset.rating);
+        if (num && !isNaN(rv)) num.textContent = fmt(rv, loc, true);
+
+        el.addEventListener('click', onClick);
+      }
+    }
+
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', wire);
+    else wire();
+    document.addEventListener('shopify:section:load', wire);
+    var n = 0;
+    var t = setInterval(function(){ wire(); if (++n >= 8) clearInterval(t); }, 1200);
+  })();
+  </script>
+{%- endif -%}

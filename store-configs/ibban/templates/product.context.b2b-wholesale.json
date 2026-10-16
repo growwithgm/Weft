@@ -1,0 +1,18 @@
+{
+  "context": {
+    "market": "b2b-wholesale"
+  },
+  "parent": "product.json",
+  "sections": {
+    "main": {
+      "blocks": {
+        "collapsible_content_j98RbT": {
+          "disabled": true
+        },
+        "custom_liquid_wbis": {
+          "disabled": true
+        }
+      }
+    }
+  }
+}

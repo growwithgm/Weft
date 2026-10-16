@@ -1,0 +1,76 @@
+{%- comment -%}
+  How to use (VERTICALS §2): numbered steps (care instructions, routine or application steps)
+  with an optional video that loads on demand.
+{%- endcomment -%}
+{%- assign b = block.settings -%}
+<div class="how-to stack" {{ block.shopify_attributes }}>
+  {%- if b.heading != blank -%}<p class="h5 how-to__heading">{{ b.heading | escape }}</p>{%- endif -%}
+  <ol class="how-to__list" role="list">{%- content_for 'blocks' -%}</ol>
+  {%- if b.video != blank or b.video_url != blank -%}
+    <div class="how-to__video media">{%- render 'deferred-video', video: b.video, video_url: b.video_url, poster: b.poster, description: b.heading, sizes: '(min-width: 990px) 40vw, 100vw' -%}</div>
+  {%- endif -%}
+</div>
+{% schema %}
+{
+  "name": "t:labels.how_to_use",
+  "tag": null,
+  "blocks": [
+    {
+      "type": "_step"
+    }
+  ],
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:labels.heading",
+      "default": "How to use"
+    },
+    {
+      "type": "video",
+      "id": "video",
+      "label": "t:labels.video"
+    },
+    {
+      "type": "video_url",
+      "id": "video_url",
+      "label": "t:labels.or_a_youtube_vimeo_url",
+      "accept": [
+        "youtube",
+        "vimeo"
+      ]
+    },
+    {
+      "type": "image_picker",
+      "id": "poster",
+      "label": "t:labels.video_cover_image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:labels.how_to_use",
+      "category": "t:labels.product",
+      "blocks": [
+        {
+          "type": "_step",
+          "settings": {
+            "text": "Apply to damp hair."
+          }
+        },
+        {
+          "type": "_step",
+          "settings": {
+            "text": "Massage from roots to ends."
+          }
+        },
+        {
+          "type": "_step",
+          "settings": {
+            "text": "Rinse after two minutes."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,53 @@
+{%- comment -%}
+  One product's column for the compare table, rendered with ?section_id=compare-column on the
+  product URL (Section Rendering API) and read by compare.js. Each [data-row] is one table row;
+  empty values stay empty so the drawer can hide rows without data.
+  Rows: price, availability, vendor, type, every option, weight, SKU, metafields listed in
+  Theme settings > Product compare, short description.
+{%- endcomment -%}
+{%- if product and section.id == 'compare-column' -%}
+  {%- liquid
+    assign v = product.selected_or_first_available_variant
+    assign wholesale = false
+    if customer and customer.b2b?
+      assign wholesale = true
+    endif
+  -%}
+  <div data-compare-column data-handle="{{ product.handle }}" data-title="{{ product.title | escape }}">
+    <div data-compare-head>
+      <div class="compare-col__head">
+        <a class="compare-col__media media" href="{{ product.url }}" tabindex="-1" aria-hidden="true">
+          {%- if product.featured_media -%}{{ product.featured_media.preview_image | image_url: width: 400 | image_tag: widths: '200,300,400', sizes: '200px', alt: '', loading: 'lazy' }}{%- endif -%}
+        </a>
+        <a class="compare-col__title" href="{{ product.url }}">{{ product.title | escape }}</a>
+      </div>
+    </div>
+    <div data-row="price" data-label="{{ 'compare.price' | t | escape }}">{%- render 'price', variant: v, wholesale: wholesale, size: 'small', from: product.price_varies -%}</div>
+    <div data-row="availability" data-label="{{ 'compare.availability' | t | escape }}">{% if product.available %}{{ 'products.stock.in_stock' | t }}{% else %}{{ 'products.sold_out' | t }}{% endif %}</div>
+    <div data-row="vendor" data-label="{{ 'compare.vendor' | t | escape }}">{{ product.vendor | escape }}</div>
+    <div data-row="type" data-label="{{ 'compare.type' | t | escape }}">{{ product.type | escape }}</div>
+    {%- unless product.has_only_default_variant -%}
+      {%- for option in product.options_with_values -%}
+        <div data-row="option-{{ option.name | handleize }}" data-label="{{ option.name | escape }}">{{ option.values | join: ', ' | escape }}</div>
+      {%- endfor -%}
+    {%- endunless -%}
+    <div data-row="weight" data-label="{{ 'compare.weight' | t | escape }}">{% if v.weight > 0 %}{{ v.weight | weight_with_unit: v.weight_unit }}{% endif %}</div>
+    <div data-row="sku" data-label="{{ 'compare.sku' | t | escape }}">{{ v.sku | escape }}</div>
+    {%- assign lines = settings.compare_metafields | newline_to_br | split: '<br />' -%}
+    {%- for line in lines -%}
+      {%- assign parts = line | split: '=' -%}
+      {%- if parts.size == 2 -%}
+        {%- liquid
+          assign row_label = parts[0] | strip
+          assign row_key = parts[1] | strip
+          assign key_parts = row_key | split: '.'
+          assign ns = key_parts | first
+          assign key = key_parts | last
+          assign field = product.metafields[ns][key]
+        -%}
+        <div data-row="mf-{{ row_key | handleize }}" data-label="{{ row_label | escape }}">{% if field != blank %}{{ field | metafield_text }}{% endif %}</div>
+      {%- endif -%}
+    {%- endfor -%}
+    <div data-row="description" data-label="{{ 'compare.description' | t | escape }}">{{ product.description | strip_html | truncatewords: 30 }}</div>
+  </div>
+{%- endif -%}

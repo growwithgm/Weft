@@ -1,0 +1,882 @@
+{
+  "sections": {
+    "b2b_video": {
+      "type": "video",
+      "disabled": true,
+      "settings": {
+        "layout": "background",
+        "video_url": "",
+        "description": "",
+        "ratio": "16-9",
+        "height": "large",
+        "overlay_position": "middle-center",
+        "text_align": "center",
+        "mobile_center": true,
+        "full_width": false,
+        "color_scheme": "scheme-1",
+        "text_color": "#ffffff",
+        "tint_color": "#000000",
+        "tint_opacity": 0
+      }
+    },
+    "b2b_tiles": {
+      "type": "collection-list",
+      "blocks": {
+        "bt1": {
+          "type": "_collection-tile",
+          "settings": {
+            "collection": "summer-dresses"
+          },
+          "blocks": {}
+        },
+        "bt2": {
+          "type": "_collection-tile",
+          "settings": {
+            "collection": "summer-dresses"
+          },
+          "blocks": {}
+        },
+        "bt3": {
+          "type": "_collection-tile",
+          "settings": {
+            "collection": "summer-dresses"
+          },
+          "blocks": {}
+        },
+        "bt4": {
+          "type": "_collection-tile",
+          "settings": {
+            "collection": "summer-dresses"
+          },
+          "blocks": {}
+        },
+        "bt5": {
+          "type": "_collection-tile",
+          "settings": {
+            "collection": "pareo-collection"
+          },
+          "blocks": {}
+        },
+        "bt6": {
+          "type": "_collection-tile",
+          "settings": {
+            "collection": "pareo-collection"
+          },
+          "blocks": {}
+        },
+        "bt7": {
+          "type": "_collection-tile",
+          "settings": {
+            "collection": "swimming-wear"
+          },
+          "blocks": {}
+        },
+        "bt8": {
+          "type": "_collection-tile",
+          "settings": {
+            "collection": "summer-jackets-vests"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "bt1",
+        "bt2",
+        "bt3",
+        "bt4",
+        "bt5",
+        "bt6",
+        "bt7",
+        "bt8"
+      ],
+      "disabled": true,
+      "settings": {
+        "title": "New Arrival",
+        "heading_align": "center",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "secondary",
+        "layout": "grid",
+        "columns": 3,
+        "columns_mobile": "2",
+        "use_product_image": false,
+        "circle_image": false,
+        "show_border": false,
+        "show_count": false,
+        "full_width": true,
+        "color_scheme": "scheme-1"
+      }
+    },
+    "b2b_story": {
+      "type": "video",
+      "blocks": {
+        "b2bs_sub": {
+          "type": "text",
+          "settings": {
+            "text": "<p>An Essence Created for the Modern Woman</p>",
+            "style": "body",
+            "visibility": "all"
+          },
+          "blocks": {}
+        },
+        "b2bs_head": {
+          "type": "heading",
+          "settings": {
+            "heading": "The world of ibBan",
+            "size": "h1",
+            "tag": "auto",
+            "uppercase": false,
+            "visibility": "all"
+          },
+          "blocks": {}
+        },
+        "b2bs_text": {
+          "type": "text",
+          "settings": {
+            "text": "<p><strong>ibBan</strong> is a <strong>boho chic</strong> design brand that blends <strong>natural materials</strong> and <strong>artisan details</strong> to create a style that is <strong>elegant and versatile</strong>. Each piece is made to accompany everyday life with <strong>ease</strong> and a <strong>unique touch</strong>. <strong>ibBan</strong> dresses the woman who lives with <strong>freedom and authenticity</strong>.</p>",
+            "style": "large",
+            "visibility": "all"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "b2bs_sub",
+        "b2bs_head",
+        "b2bs_text"
+      ],
+      "disabled": true,
+      "settings": {
+        "layout": "background",
+        "video_url": "",
+        "description": "",
+        "ratio": "16-9",
+        "height": "large",
+        "overlay_position": "middle-center",
+        "text_align": "center",
+        "mobile_center": true,
+        "full_width": false,
+        "color_scheme": "scheme-4",
+        "text_color": "#ffffff",
+        "tint_color": "#000000",
+        "tint_opacity": 30
+      }
+    },
+    "b2b_jackets": {
+      "type": "featured-collection",
+      "disabled": true,
+      "settings": {
+        "title": "Jackets & Vests",
+        "heading_align": "start",
+        "collection": "summer-jackets-vests",
+        "products_to_show": 8,
+        "show_view_all": true,
+        "layout": "carousel",
+        "columns": 5,
+        "columns_mobile": "2",
+        "show_highlight_products": true,
+        "show_promo_info": false,
+        "image_ratio": "portrait",
+        "promo_title": "",
+        "content": "",
+        "link_url": "",
+        "button_label": "",
+        "button_style": "primary",
+        "promo_color_scheme": "",
+        "color_scheme": "scheme-5"
+      }
+    },
+    "b2b_slideshow": {
+      "type": "slideshow",
+      "blocks": {
+        "bs1": {
+          "type": "_slide",
+          "settings": {
+            "link": "",
+            "overlay_position": "middle-center",
+            "text_align": "center",
+            "mobile_center": false
+          },
+          "blocks": {
+            "subheading": {
+              "type": "text",
+              "settings": {
+                "text": "<p>Subheading</p>",
+                "style": "subheading",
+                "visibility": "all"
+              },
+              "blocks": {}
+            },
+            "button_2": {
+              "type": "button",
+              "settings": {
+                "label": "Optional button",
+                "link": "",
+                "new_tab": false,
+                "style": "primary",
+                "full_width": false
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "subheading",
+            "button_2"
+          ]
+        },
+        "bs2": {
+          "type": "_slide",
+          "settings": {
+            "link": "",
+            "overlay_position": "middle-center",
+            "text_align": "center",
+            "mobile_center": false
+          },
+          "blocks": {
+            "subheading": {
+              "type": "text",
+              "settings": {
+                "text": "<p>Subheading</p>",
+                "style": "subheading",
+                "visibility": "all"
+              },
+              "blocks": {}
+            },
+            "button_2": {
+              "type": "button",
+              "settings": {
+                "label": "Optional button",
+                "link": "",
+                "new_tab": false,
+                "style": "primary",
+                "full_width": false
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "subheading",
+            "button_2"
+          ]
+        },
+        "bs3": {
+          "type": "_slide",
+          "settings": {
+            "link": "",
+            "overlay_position": "middle-center",
+            "text_align": "center",
+            "mobile_center": false
+          },
+          "blocks": {
+            "subheading": {
+              "type": "text",
+              "settings": {
+                "text": "<p>Subheading</p>",
+                "style": "subheading",
+                "visibility": "all"
+              },
+              "blocks": {}
+            },
+            "button_2": {
+              "type": "button",
+              "settings": {
+                "label": "Optional button",
+                "link": "",
+                "new_tab": false,
+                "style": "primary",
+                "full_width": false
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "subheading",
+            "button_2"
+          ]
+        },
+        "bs4": {
+          "type": "_slide",
+          "settings": {
+            "link": "",
+            "overlay_position": "middle-center",
+            "text_align": "center",
+            "mobile_center": false
+          },
+          "blocks": {
+            "subheading": {
+              "type": "text",
+              "settings": {
+                "text": "<p>Subheading</p>",
+                "style": "subheading",
+                "visibility": "all"
+              },
+              "blocks": {}
+            },
+            "button_2": {
+              "type": "button",
+              "settings": {
+                "label": "Optional button",
+                "link": "",
+                "new_tab": false,
+                "style": "primary",
+                "full_width": false
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "subheading",
+            "button_2"
+          ]
+        }
+      },
+      "block_order": [
+        "bs1",
+        "bs2",
+        "bs3",
+        "bs4"
+      ],
+      "disabled": true,
+      "settings": {
+        "height": "adapt",
+        "fixed_height_desktop": 600,
+        "fixed_height_mobile": 360,
+        "mobile_stacked": false,
+        "nav_style": "dots",
+        "transition": "slide",
+        "autoplay": true,
+        "slider_pause": false,
+        "autoplay_speed": 3,
+        "accessibility_info": "",
+        "full_width": true,
+        "color_scheme": "scheme-1",
+        "text_color": "#ffffff",
+        "tint_color": "#000000",
+        "tint_opacity": 0
+      }
+    },
+    "hero_banner": {
+      "type": "image-banner",
+      "settings": {
+        "image_desktop": "shopify://shop_images/Festive_Elegance_in_Golden_Courtyard.png",
+        "link": "shopify://collections/new-arrivals",
+        "height": "adapt",
+        "fixed_height_desktop": 600,
+        "fixed_height_mobile": 350,
+        "overlay_position": "middle-center",
+        "text_align": "center",
+        "mobile_center": false,
+        "mobile_stacked": false,
+        "full_width": true,
+        "color_scheme": "scheme-1",
+        "text_color": "#ffffff",
+        "tint_color": "#000000",
+        "tint_opacity": 0
+      }
+    },
+    "brand_marquee": {
+      "type": "scrolling-banner",
+      "blocks": {
+        "m_t1": {
+          "type": "_marquee-item",
+          "settings": {
+            "type": "text",
+            "text": "Hand-embroidered",
+            "link": "",
+            "font": "heading",
+            "size": "medium",
+            "icon": "sparkle",
+            "icon_size": 20,
+            "image_height": 40,
+            "button_style": "primary"
+          },
+          "blocks": {}
+        },
+        "m_i1": {
+          "type": "_marquee-item",
+          "settings": {
+            "type": "icon",
+            "text": "Free delivery over a set amount",
+            "link": "",
+            "font": "heading",
+            "size": "medium",
+            "icon": "sparkle",
+            "icon_size": 24,
+            "image_height": 40,
+            "button_style": "primary"
+          },
+          "blocks": {}
+        },
+        "m_t2": {
+          "type": "_marquee-item",
+          "settings": {
+            "type": "text",
+            "text": "Since 1982",
+            "link": "",
+            "font": "heading",
+            "size": "medium",
+            "icon": "sparkle",
+            "icon_size": 20,
+            "image_height": 40,
+            "button_style": "primary"
+          },
+          "blocks": {}
+        },
+        "m_i2": {
+          "type": "_marquee-item",
+          "settings": {
+            "type": "icon",
+            "text": "Free delivery over a set amount",
+            "link": "",
+            "font": "heading",
+            "size": "medium",
+            "icon": "sparkle",
+            "icon_size": 24,
+            "image_height": 40,
+            "button_style": "primary"
+          },
+          "blocks": {}
+        },
+        "m_t3": {
+          "type": "_marquee-item",
+          "settings": {
+            "type": "text",
+            "text": "Made by our artisans",
+            "link": "",
+            "font": "heading",
+            "size": "medium",
+            "icon": "sparkle",
+            "icon_size": 20,
+            "image_height": 40,
+            "button_style": "primary"
+          },
+          "blocks": {}
+        },
+        "m_i3": {
+          "type": "_marquee-item",
+          "settings": {
+            "type": "icon",
+            "text": "Free delivery over a set amount",
+            "link": "",
+            "font": "heading",
+            "size": "medium",
+            "icon": "sparkle",
+            "icon_size": 24,
+            "image_height": 40,
+            "button_style": "primary"
+          },
+          "blocks": {}
+        },
+        "m_t4": {
+          "type": "_marquee-item",
+          "settings": {
+            "type": "text",
+            "text": "Shipped across India",
+            "link": "",
+            "font": "heading",
+            "size": "medium",
+            "icon": "sparkle",
+            "icon_size": 20,
+            "image_height": 40,
+            "button_style": "primary"
+          },
+          "blocks": {}
+        },
+        "m_i4": {
+          "type": "_marquee-item",
+          "settings": {
+            "type": "icon",
+            "text": "Free delivery over a set amount",
+            "link": "",
+            "font": "heading",
+            "size": "medium",
+            "icon": "sparkle",
+            "icon_size": 24,
+            "image_height": 40,
+            "button_style": "primary"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "m_t1",
+        "m_i1",
+        "m_t2",
+        "m_i2",
+        "m_t3",
+        "m_i3",
+        "m_t4",
+        "m_i4"
+      ],
+      "settings": {
+        "height": "compact",
+        "spacing": 64,
+        "speed": 10,
+        "direction": "left",
+        "pausable": true,
+        "dividers": true,
+        "color_scheme": "scheme-1"
+      }
+    },
+    "new_in_row": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "New in",
+        "heading_align": "start",
+        "collection": "new-arrivals",
+        "products_to_show": 8,
+        "show_view_all": true,
+        "layout": "carousel",
+        "columns": 4,
+        "columns_mobile": "2",
+        "show_highlight_products": false,
+        "show_promo_info": false,
+        "image_ratio": "portrait",
+        "promo_title": "",
+        "content": "",
+        "link_url": "",
+        "button_label": "",
+        "button_style": "primary",
+        "promo_color_scheme": "",
+        "color_scheme": "scheme-1"
+      }
+    },
+    "shop_by_category": {
+      "type": "collection-list",
+      "blocks": {
+        "c01": {
+          "type": "_collection-tile",
+          "settings": {
+            "collection": "dresses"
+          }
+        },
+        "c02": {
+          "type": "_collection-tile",
+          "settings": {
+            "collection": "long-tunic"
+          }
+        },
+        "c03": {
+          "type": "_collection-tile",
+          "settings": {
+            "collection": "jackets"
+          }
+        },
+        "c04": {
+          "type": "_collection-tile",
+          "settings": {
+            "collection": "hand-bags"
+          }
+        },
+        "c05": {
+          "type": "_collection-tile",
+          "settings": {
+            "collection": "bucket-bag"
+          }
+        },
+        "c06": {
+          "type": "_collection-tile",
+          "settings": {
+            "collection": "clutch"
+          }
+        }
+      },
+      "block_order": [
+        "c01",
+        "c02",
+        "c03",
+        "c04",
+        "c05",
+        "c06"
+      ],
+      "settings": {
+        "title": "Shop by category",
+        "heading_align": "center",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "secondary",
+        "layout": "grid",
+        "columns": 3,
+        "columns_mobile": "2",
+        "use_product_image": true,
+        "circle_image": false,
+        "show_border": false,
+        "show_count": false,
+        "full_width": true,
+        "color_scheme": "scheme-1"
+      }
+    },
+    "outerwear_banner": {
+      "type": "image-banner",
+      "settings": {
+        "image_desktop": "shopify://shop_images/Festive_Elegance_in_Bloom.png",
+        "link": "shopify://collections/jackets",
+        "height": "adapt",
+        "fixed_height_desktop": 600,
+        "fixed_height_mobile": 350,
+        "overlay_position": "middle-center",
+        "text_align": "center",
+        "mobile_center": false,
+        "mobile_stacked": false,
+        "full_width": true,
+        "color_scheme": "scheme-1",
+        "text_color": "#ffffff",
+        "tint_color": "#000000",
+        "tint_opacity": 0
+      }
+    },
+    "outerwear_row": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Jackets",
+        "heading_align": "start",
+        "collection": "jackets",
+        "products_to_show": 8,
+        "show_view_all": true,
+        "layout": "carousel",
+        "columns": 4,
+        "columns_mobile": "2",
+        "show_highlight_products": false,
+        "show_promo_info": false,
+        "image_ratio": "portrait",
+        "promo_title": "",
+        "content": "",
+        "link_url": "",
+        "button_label": "",
+        "button_style": "primary",
+        "promo_color_scheme": "",
+        "color_scheme": "scheme-1"
+      }
+    },
+    "craft_story": {
+      "type": "media-with-text",
+      "blocks": {
+        "cs_sub": {
+          "type": "text",
+          "settings": {
+            "text": "<p>The making</p>",
+            "style": "body",
+            "visibility": "all"
+          },
+          "blocks": {}
+        },
+        "cs_head": {
+          "type": "heading",
+          "settings": {
+            "heading": "Every stitch by hand",
+            "size": "h1",
+            "tag": "auto",
+            "uppercase": false,
+            "visibility": "all"
+          },
+          "blocks": {}
+        },
+        "cs_text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Each ibBan piece begins as plain cloth and a drawing. Our artisans work the embroidery by hand &mdash; mirror work, beadwork, thread &mdash; and a single dress can take days to finish.</p><p>Nothing is machine-stamped. No two pieces are ever quite identical. We have worked this way since 1982.</p>",
+            "style": "body",
+            "visibility": "all"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "cs_sub",
+        "cs_head",
+        "cs_text"
+      ],
+      "settings": {
+        "video_url": "",
+        "video_description": "",
+        "video_autoplay": false,
+        "layout": "media-start",
+        "image_fit": "cover",
+        "media_width": 55,
+        "text_align": "start",
+        "color_scheme": "scheme-5",
+        "only_content_color_scheme": false,
+        "image": "shopify://shop_images/HAND_embd.png"
+      }
+    },
+    "holiday_banner": {
+      "type": "image-banner",
+      "settings": {
+        "image_desktop": "shopify://shop_images/Festive_Courtyard_Fashion_Glow_ac9c9b6c-4dcf-49c1-9c06-73a073555909.png",
+        "link": "shopify://collections/dresses",
+        "height": "adapt",
+        "fixed_height_desktop": 600,
+        "fixed_height_mobile": 350,
+        "overlay_position": "middle-center",
+        "text_align": "center",
+        "mobile_center": false,
+        "mobile_stacked": false,
+        "full_width": true,
+        "color_scheme": "scheme-1",
+        "text_color": "#ffffff",
+        "tint_color": "#000000",
+        "tint_opacity": 0
+      }
+    },
+    "holiday_row": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Dresses",
+        "heading_align": "start",
+        "collection": "dresses",
+        "products_to_show": 8,
+        "show_view_all": true,
+        "layout": "carousel",
+        "columns": 4,
+        "columns_mobile": "2",
+        "show_highlight_products": false,
+        "show_promo_info": false,
+        "image_ratio": "portrait",
+        "promo_title": "",
+        "content": "",
+        "link_url": "",
+        "button_label": "",
+        "button_style": "primary",
+        "promo_color_scheme": "",
+        "color_scheme": "scheme-1"
+      }
+    },
+    "brand_story": {
+      "type": "video",
+      "blocks": {
+        "bs_sub": {
+          "type": "text",
+          "settings": {
+            "text": "<p>An essence created for the modern woman</p>",
+            "style": "body",
+            "visibility": "all"
+          },
+          "blocks": {}
+        },
+        "bs_head": {
+          "type": "heading",
+          "settings": {
+            "heading": "The world of ibBan",
+            "size": "h1",
+            "tag": "auto",
+            "uppercase": false,
+            "visibility": "all"
+          },
+          "blocks": {}
+        },
+        "bs_text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>ibBan blends natural materials and artisan detail into clothes that are elegant, versatile and made to be lived in. One size, cut generously, designed to be worn for years rather than a season.</p>",
+            "style": "large",
+            "visibility": "all"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "bs_sub",
+        "bs_head",
+        "bs_text"
+      ],
+      "settings": {
+        "layout": "background",
+        "video_url": "",
+        "description": "",
+        "ratio": "16-9",
+        "height": "large",
+        "overlay_position": "middle-center",
+        "text_align": "center",
+        "mobile_center": true,
+        "full_width": false,
+        "color_scheme": "scheme-4",
+        "text_color": "#ffffff",
+        "tint_color": "#000000",
+        "tint_opacity": 30,
+        "poster": "shopify://shop_images/ibban-brand-story-poster.jpg"
+      }
+    },
+    "trust_strip": {
+      "type": "icons-with-text",
+      "blocks": {
+        "t1": {
+          "type": "_icon-item",
+          "settings": {
+            "icon": "sparkle",
+            "heading": "Hand-embroidered",
+            "text": "<p>Every piece worked by our artisans</p>",
+            "link": ""
+          },
+          "blocks": {}
+        },
+        "t2": {
+          "type": "_icon-item",
+          "settings": {
+            "icon": "star",
+            "heading": "Since 1982",
+            "text": "<p>Four decades of the same craft</p>",
+            "link": ""
+          },
+          "blocks": {}
+        },
+        "t3": {
+          "type": "_icon-item",
+          "settings": {
+            "icon": "truck",
+            "heading": "Ships across India",
+            "text": "<p>Same-day dispatch, delivered in 3–5 days.</p>",
+            "link": ""
+          },
+          "blocks": {}
+        },
+        "t4": {
+          "type": "_icon-item",
+          "settings": {
+            "icon": "return",
+            "heading": "Damaged or wrong item?",
+            "text": "<p>We replace it or refund you in full</p>",
+            "link": "/pages/refund-policy"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "t1",
+        "t2",
+        "t3",
+        "t4"
+      ],
+      "settings": {
+        "title": "",
+        "heading_align": "center",
+        "columns": 4,
+        "columns_mobile": "2",
+        "icon_size": 28,
+        "icon_position": "top",
+        "text_align": "center",
+        "density": "compact",
+        "dividers": false,
+        "full_width": true,
+        "color_scheme": "scheme-5"
+      }
+    }
+  },
+  "order": [
+    "b2b_video",
+    "b2b_tiles",
+    "b2b_story",
+    "b2b_jackets",
+    "b2b_slideshow",
+    "hero_banner",
+    "brand_marquee",
+    "new_in_row",
+    "shop_by_category",
+    "outerwear_banner",
+    "outerwear_row",
+    "craft_story",
+    "holiday_banner",
+    "holiday_row",
+    "brand_story",
+    "trust_strip"
+  ]
+}

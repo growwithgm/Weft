@@ -1,0 +1,832 @@
+{%- comment -%}
+  B2B Row Grid - Premium wholesale ordering grid
+  Usage: {% render 'b2b-row-grid', product: product %}
+
+  Stock column shows variant.inventory_quantity.
+  Qty input is capped at available stock when the variant tracks inventory
+  and its policy is 'deny' (i.e. no overselling allowed).
+{%- endcomment -%}
+
+{%- liquid
+  assign first_variant = product.variants.first
+
+  assign grid_min_qty = first_variant.quantity_rule.min | default: 0
+  if grid_min_qty < 1
+    assign grid_min_qty = first_variant.metafields.sparklayer.min_order_quantity | default: 1
+  endif
+
+  assign grid_increment = first_variant.quantity_rule.increment | default: 0
+  if grid_increment < 1
+    assign grid_increment = 1
+  endif
+
+  assign grid_pack_size = first_variant.metafields.sparklayer.pack_size | default: grid_increment
+-%}
+
+<style>
+  /* ===== B2B ROW GRID — Premium B&W ===== */
+  .b2b-grid {
+    width: 100%;
+    margin: 20px 0;
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    overflow: hidden;
+    font-family: inherit;
+  }
+
+  /* MOQ Banner */
+  .b2b-grid__banner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    padding: 11px 16px;
+    background: #111;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .b2b-grid__banner-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .b2b-grid__banner-val {
+    color: #ffd54f;
+    font-weight: 700;
+  }
+  .b2b-grid__banner-sep {
+    width: 1px;
+    height: 14px;
+    background: rgba(255,255,255,0.25);
+  }
+
+  /* Table Header */
+  .b2b-grid__header {
+    display: grid;
+    grid-template-columns: 52px minmax(60px,1.2fr) minmax(50px,0.7fr) minmax(52px,0.6fr) minmax(90px,1fr) minmax(60px,0.7fr) minmax(50px,0.6fr);
+    gap: 4px;
+    padding: 10px 14px;
+    background: #fafafa;
+    border-bottom: 1px solid #eee;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #999;
+  }
+  .b2b-grid__header span:last-child {
+    text-align: right;
+  }
+
+  /* Row */
+  .b2b-grid__item {
+    display: grid;
+    grid-template-columns: 52px minmax(60px,1.2fr) minmax(50px,0.7fr) minmax(52px,0.6fr) minmax(90px,1fr) minmax(60px,0.7fr) minmax(50px,0.6fr);
+    gap: 4px;
+    align-items: center;
+    padding: 10px 14px;
+    border-bottom: 1px solid #f3f3f3;
+    transition: background 0.12s;
+  }
+  .b2b-grid__item:last-of-type {
+    border-bottom: none;
+  }
+  .b2b-grid__item:hover {
+    background: #fafafa;
+  }
+
+  /* Image */
+  .b2b-grid__thumb {
+    width: 44px;
+    height: 44px;
+    border-radius: 6px;
+    overflow: hidden;
+    background: #f5f5f5;
+    flex-shrink: 0;
+  }
+  .b2b-grid__thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Color name */
+  .b2b-grid__color {
+    font-size: 13px;
+    font-weight: 600;
+    color: #1a1a1a;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  /* Size pill */
+  .b2b-grid__size {
+    display: inline-block;
+    padding: 4px 10px;
+    background: #f0f0f0;
+    border-radius: 14px;
+    font-size: 11px;
+    font-weight: 600;
+    color: #444;
+    white-space: nowrap;
+  }
+
+  /* Stock column */
+  .b2b-grid__stock {
+    font-size: 12px;
+    font-weight: 700;
+    white-space: nowrap;
+    line-height: 1.2;
+  }
+  .b2b-grid__stock-num {
+    display: inline-block;
+    min-width: 34px;
+    padding: 3px 8px;
+    border-radius: 12px;
+    text-align: center;
+  }
+  .b2b-grid__stock.is-in .b2b-grid__stock-num {
+    background: #ecfdf5;
+    color: #15803d;
+  }
+  .b2b-grid__stock.is-low .b2b-grid__stock-num {
+    background: #fffbeb;
+    color: #b45309;
+  }
+  .b2b-grid__stock.is-out .b2b-grid__stock-num {
+    background: #fef2f2;
+    color: #b91c1c;
+  }
+  .b2b-grid__stock-note {
+    display: block;
+    margin-top: 2px;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #b45309;
+  }
+
+  /* Quantity */
+  .b2b-grid__qty {
+    display: flex;
+    align-items: center;
+  }
+  .b2b-grid__qty-wrap {
+    display: inline-flex;
+    align-items: center;
+    border: 1.5px solid #1a1a1a;
+    border-radius: 22px;
+    overflow: hidden;
+    background: #fff;
+  }
+  .b2b-grid__qty-btn {
+    width: 28px;
+    height: 30px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 700;
+    color: #1a1a1a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.1s;
+    user-select: none;
+    padding: 0;
+    line-height: 1;
+  }
+  .b2b-grid__qty-btn:hover {
+    background: #f0f0f0;
+  }
+  .b2b-grid__qty-btn:active {
+    background: #e0e0e0;
+  }
+  .b2b-grid__qty-btn:disabled {
+    opacity: 0.25;
+    cursor: not-allowed;
+    background: transparent;
+  }
+  .b2b-grid__qty-input {
+    width: 34px;
+    height: 30px;
+    border: none;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 700;
+    background: transparent;
+    color: #1a1a1a;
+    -moz-appearance: textfield;
+    padding: 0;
+  }
+  .b2b-grid__qty-input::-webkit-outer-spin-button,
+  .b2b-grid__qty-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  .b2b-grid__qty-input:focus {
+    outline: none;
+  }
+  .b2b-grid__qty-max {
+    display: none;
+    margin-top: 3px;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #b45309;
+  }
+  .b2b-grid__item.at-max .b2b-grid__qty-max {
+    display: block;
+  }
+
+  /* Price */
+  .b2b-grid__price {
+    font-size: 12px;
+    font-weight: 600;
+    color: #333;
+    white-space: nowrap;
+  }
+  .b2b-grid__price-was {
+    display: block;
+    font-size: 10px;
+    color: #aaa;
+    text-decoration: line-through;
+    font-weight: 400;
+  }
+
+  /* Total */
+  .b2b-grid__line-total {
+    font-size: 13px;
+    font-weight: 700;
+    color: #1a1a1a;
+    text-align: right;
+    white-space: nowrap;
+  }
+  .b2b-grid__item.has-qty .b2b-grid__line-total {
+    color: #16a34a;
+  }
+
+  /* Footer */
+  .b2b-grid__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px;
+    background: #fafafa;
+    border-top: 2px solid #111;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .b2b-grid__footer-actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+  .b2b-grid__cart-link {
+    padding: 8px 18px;
+    border: 1.5px solid #111;
+    border-radius: 22px;
+    background: #fff;
+    color: #111;
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.15s;
+    white-space: nowrap;
+  }
+  .b2b-grid__cart-link:hover {
+    background: #111;
+    color: #fff;
+  }
+  .b2b-grid__clear-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 12px;
+    color: #888;
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: all 0.12s;
+  }
+  .b2b-grid__clear-btn:hover {
+    color: #c00;
+    background: #fff0f0;
+  }
+  .b2b-grid__footer-stats {
+    display: flex;
+    gap: 20px;
+    align-items: baseline;
+  }
+  .b2b-grid__stat {
+    text-align: center;
+  }
+  .b2b-grid__stat-num {
+    font-size: 18px;
+    font-weight: 700;
+    color: #111;
+    display: block;
+    line-height: 1.2;
+  }
+  .b2b-grid__stat-label {
+    font-size: 9px;
+    font-weight: 600;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  /* Error */
+  .b2b-grid__error {
+    padding: 8px 14px;
+    background: #fef2f2;
+    color: #b91c1c;
+    font-size: 12px;
+    font-weight: 500;
+    text-align: center;
+    border-top: 1px solid #fecaca;
+    display: none;
+  }
+
+  /* Add button */
+  .b2b-grid__submit {
+    width: 100%;
+    padding: 13px;
+    background: #111;
+    color: #fff;
+    border: none;
+    border-radius: 0 0 10px 10px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .b2b-grid__submit:not(:disabled):hover {
+    background: #16a34a;
+  }
+  .b2b-grid__submit:disabled {
+    background: #ccc;
+    color: #888;
+    cursor: not-allowed;
+  }
+
+  /* Out of stock row */
+  .b2b-grid__item.is-oos {
+    opacity: 0.5;
+    background: #f9f9f9;
+  }
+  .b2b-grid__item.is-oos .b2b-grid__qty-wrap {
+    pointer-events: none;
+    opacity: 0.3;
+  }
+  .b2b-grid__oos-badge {
+    display: inline-block;
+    padding: 3px 8px;
+    background: #dc2626;
+    color: #fff;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    border-radius: 4px;
+    white-space: nowrap;
+  }
+
+  /* ===== RESPONSIVE ===== */
+
+  /* Compact table — narrower product info panels */
+  @media (max-width: 1600px) {
+    .b2b-grid__header,
+    .b2b-grid__item {
+      grid-template-columns: 44px minmax(50px,1.2fr) minmax(42px,0.6fr) minmax(46px,0.55fr) minmax(80px,1fr) minmax(50px,0.6fr) minmax(44px,0.5fr);
+      gap: 3px;
+      padding: 8px 10px;
+    }
+    .b2b-grid__thumb {
+      width: 38px;
+      height: 38px;
+    }
+    .b2b-grid__color { font-size: 12px; }
+    .b2b-grid__size { font-size: 10px; padding: 3px 8px; }
+    .b2b-grid__stock { font-size: 11px; }
+    .b2b-grid__stock-num { min-width: 28px; padding: 2px 6px; }
+    .b2b-grid__qty-btn { width: 24px; height: 26px; font-size: 13px; }
+    .b2b-grid__qty-input { width: 30px; height: 26px; font-size: 12px; }
+    .b2b-grid__price { font-size: 11px; }
+    .b2b-grid__line-total { font-size: 12px; }
+    .b2b-grid__header { font-size: 8px; padding: 8px 10px; }
+    .b2b-grid__banner { font-size: 11px; padding: 9px 12px; gap: 10px; }
+    .b2b-grid__footer { padding: 10px; }
+    .b2b-grid__stat-num { font-size: 15px; }
+    .b2b-grid__cart-link { padding: 6px 14px; font-size: 11px; }
+  }
+
+  /* ---- Card layout: table columns can no longer fit ---- */
+  @media (max-width: 680px) {
+    .b2b-grid { margin: 16px 0; }
+    .b2b-grid__header { display: none; }
+
+    .b2b-grid__item {
+      grid-template-columns: 48px auto 1fr auto;
+      grid-template-rows: auto auto auto;
+      column-gap: 10px;
+      row-gap: 6px;
+      align-items: center;
+      padding: 12px;
+    }
+
+    /* thumb spans the two info rows */
+    .b2b-grid__thumb {
+      width: 48px;
+      height: 48px;
+      grid-column: 1;
+      grid-row: 1 / 3;
+      align-self: start;
+    }
+
+    /* row 1: colour name, full info width */
+    .b2b-grid__color {
+      grid-column: 2 / 4;
+      grid-row: 1;
+      font-size: 14px;
+      white-space: normal;
+      align-self: end;
+    }
+
+    /* row 2: size pill + stock pill side by side */
+    .b2b-grid__item > div:nth-child(3) {
+      grid-column: 2;
+      grid-row: 2;
+      justify-self: start;
+      align-self: center;
+    }
+    .b2b-grid__stock {
+      grid-column: 3;
+      grid-row: 2;
+      justify-self: start;
+      align-self: center;
+      font-size: 11px;
+    }
+    .b2b-grid__stock-num {
+      min-width: 26px;
+      padding: 3px 8px;
+    }
+    .b2b-grid__stock-note {
+      display: inline;
+      margin: 0 0 0 5px;
+      font-size: 9px;
+    }
+
+    /* qty sits on the right, vertically centred across the info rows */
+    .b2b-grid__qty {
+      grid-column: 4;
+      grid-row: 1 / 3;
+      justify-self: end;
+      align-self: center;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+    .b2b-grid__qty-btn { width: 32px; height: 34px; font-size: 16px; }
+    .b2b-grid__qty-input { width: 36px; height: 34px; font-size: 14px; }
+
+    /* row 3: price left, line total right */
+    .b2b-grid__price {
+      grid-column: 1 / 4;
+      grid-row: 3;
+      font-size: 12px;
+      padding-top: 6px;
+      border-top: 1px solid #f3f3f3;
+    }
+    .b2b-grid__price-was { display: inline; margin-left: 6px; }
+    .b2b-grid__line-total {
+      grid-column: 4;
+      grid-row: 3;
+      text-align: right;
+      font-size: 14px;
+      padding-top: 6px;
+      border-top: 1px solid #f3f3f3;
+    }
+
+    .b2b-grid__footer {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 14px;
+      text-align: center;
+    }
+    .b2b-grid__footer-stats {
+      order: -1;
+      justify-content: center;
+      gap: 36px;
+    }
+    .b2b-grid__footer-actions {
+      justify-content: center;
+    }
+    .b2b-grid__cart-link { padding: 9px 20px; font-size: 12px; }
+  }
+
+  /* Small mobile */
+  @media (max-width: 400px) {
+    .b2b-grid { border-radius: 8px; margin: 12px 0; }
+    .b2b-grid__item {
+      grid-template-columns: 42px auto 1fr auto;
+      column-gap: 8px;
+      padding: 10px;
+    }
+    .b2b-grid__thumb { width: 42px; height: 42px; }
+    .b2b-grid__color { font-size: 13px; }
+    .b2b-grid__size { font-size: 10px; padding: 3px 8px; }
+    .b2b-grid__stock { font-size: 10px; }
+    .b2b-grid__qty-btn { width: 28px; height: 30px; font-size: 15px; }
+    .b2b-grid__qty-input { width: 30px; height: 30px; font-size: 13px; }
+    .b2b-grid__price { font-size: 11px; }
+    .b2b-grid__line-total { font-size: 13px; }
+    .b2b-grid__banner { font-size: 10px; padding: 8px 10px; flex-wrap: wrap; gap: 6px; }
+    .b2b-grid__banner-sep { display: none; }
+    .b2b-grid__submit { padding: 12px; font-size: 12px; border-radius: 0 0 8px 8px; }
+    .b2b-grid__footer-stats { gap: 24px; }
+  }
+</style>
+
+<form class="b2b-grid" data-product-id="{{ product.id }}" data-moq="{{ grid_min_qty }}" data-increment="{{ grid_increment }}" data-pack="{{ grid_pack_size }}">
+
+  <div class="b2b-grid__banner">
+    <span class="b2b-grid__banner-item">Min Order <span class="b2b-grid__banner-val">{{ grid_min_qty }}Pcs</span></span>
+    <span class="b2b-grid__banner-sep"></span>
+    <span class="b2b-grid__banner-item">Pack <span class="b2b-grid__banner-val">{{ grid_pack_size }}Pcs</span></span>
+  </div>
+
+  <div class="b2b-grid__header">
+    <span></span>
+    <span>Color</span>
+    <span>Size</span>
+    <span>Stock</span>
+    <span>Qty</span>
+    <span>Price</span>
+    <span>Total</span>
+  </div>
+
+  {%- for variant in product.variants -%}
+    {%- liquid
+      assign variant_image = variant.featured_media | default: product.featured_media
+      assign color_val = ''
+      assign size_val = ''
+      for option in product.options
+        if option == 'Color' or option == 'Colour'
+          assign color_val = variant.options[forloop.index0]
+        endif
+        if option == 'Size'
+          assign size_val = variant.options[forloop.index0]
+        endif
+      endfor
+
+      assign stock_tracked = true
+      if variant.inventory_management == blank
+        assign stock_tracked = false
+      endif
+
+      assign stock_qty = variant.inventory_quantity
+      if stock_qty < 0
+        assign stock_qty = 0
+      endif
+
+      assign stock_capped = false
+      if stock_tracked and variant.inventory_policy == 'deny'
+        assign stock_capped = true
+      endif
+
+      assign stock_class = 'is-out'
+      if stock_tracked == false
+        assign stock_class = 'is-in'
+      elsif stock_qty > 10
+        assign stock_class = 'is-in'
+      elsif stock_qty > 0
+        assign stock_class = 'is-low'
+      endif
+    -%}
+    <div class="b2b-grid__item{% unless variant.available %} is-oos{% endunless %}" data-variant-id="{{ variant.id }}">
+      <div class="b2b-grid__thumb">
+        {%- if variant_image -%}
+          <img src="{{ variant_image | image_url: width: 100 }}" alt="{{ variant.title | escape }}" loading="lazy">
+        {%- endif -%}
+      </div>
+      <div class="b2b-grid__color">{{ color_val | default: variant.title }}</div>
+      <div><span class="b2b-grid__size">{{ size_val | default: '—' }}</span></div>
+      <div class="b2b-grid__stock {{ stock_class }}">
+        {%- if stock_tracked -%}
+          <span class="b2b-grid__stock-num">{{ stock_qty }}</span>
+          {%- if stock_qty > 0 and stock_qty <= 10 -%}
+            <span class="b2b-grid__stock-note">Low</span>
+          {%- endif -%}
+        {%- else -%}
+          <span class="b2b-grid__stock-num">&#8734;</span>
+        {%- endif -%}
+      </div>
+      <div class="b2b-grid__qty">
+        <div class="b2b-grid__qty-wrap">
+          <button type="button" class="b2b-grid__qty-btn" data-action="minus" aria-label="Decrease quantity">−</button>
+          <input type="number"
+                 class="b2b-grid__qty-input"
+                 value="0"
+                 min="0"
+                 step="{{ grid_increment }}"
+                 {% if stock_capped %}max="{{ stock_qty }}" data-max="{{ stock_qty }}"{% endif %}
+                 data-variant-id="{{ variant.id }}"
+                 data-price="{{ variant.price }}"
+                 {% unless variant.available %}disabled{% endunless %}>
+          <button type="button" class="b2b-grid__qty-btn" data-action="plus" aria-label="Increase quantity">+</button>
+        </div>
+        <span class="b2b-grid__qty-max">Max {{ stock_qty }}</span>
+      </div>
+    <div class="b2b-grid__price">
+        {%- if variant.available -%}
+          {{ variant.price | money }}/ea
+          {%- if variant.compare_at_price > variant.price -%}
+            <span class="b2b-grid__price-was">{{ variant.compare_at_price | money }}</span>
+          {%- endif -%}
+        {%- else -%}
+          <span class="b2b-grid__oos-badge">Sold Out</span>
+        {%- endif -%}
+      </div>
+      <div class="b2b-grid__line-total" data-line-total="0">{{ 0 | money }}</div>
+    </div>
+  {%- endfor -%}
+
+  <div class="b2b-grid__footer">
+    <div class="b2b-grid__footer-actions">
+      <a href="/cart" class="b2b-grid__cart-link">View Cart</a>
+      <button type="button" class="b2b-grid__clear-btn" data-action="remove-all">Clear All</button>
+    </div>
+    <div class="b2b-grid__footer-stats">
+      <div class="b2b-grid__stat">
+        <span class="b2b-grid__stat-num b2b-grid__total-count">0</span>
+        <span class="b2b-grid__stat-label">Items</span>
+      </div>
+      <div class="b2b-grid__stat">
+        <span class="b2b-grid__stat-num b2b-grid__grand-total-value">{{ 0 | money }}</span>
+        <span class="b2b-grid__stat-label">Subtotal</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="b2b-grid__error">
+    Please select at least <strong>{{ grid_min_qty }}</strong> units total.
+  </div>
+
+  <button type="button" class="b2b-grid__submit" data-action="add-all" disabled>
+    Add to Cart
+  </button>
+</form>
+
+<script>
+(function() {
+  var grid = document.querySelector('.b2b-grid[data-product-id="{{ product.id }}"]');
+  if (!grid) return;
+
+  var moq = parseInt(grid.dataset.moq) || 1;
+  var increment = parseInt(grid.dataset.increment) || 1;
+  var moneyFormat = "{{ shop.money_format }}";
+
+  function formatMoney(cents) {
+    var v = (cents / 100).toFixed(2);
+    return moneyFormat
+      .replace(/\{\{\s*amount\s*\}\}/, v)
+      .replace(/\{\{\s*amount_no_decimals\s*\}\}/, Math.round(cents / 100))
+      .replace(/\{\{\s*amount_with_comma_separator\s*\}\}/, v.replace('.', ','));
+  }
+
+  /* Available stock ceiling for a row, or null when the variant is
+     untracked / allows overselling. */
+  function maxFor(input) {
+    if (!input.dataset.max) return null;
+    var m = parseInt(input.dataset.max);
+    return isNaN(m) ? null : m;
+  }
+
+  function clamp(input, val) {
+    if (isNaN(val) || val < 0) val = 0;
+    var max = maxFor(input);
+    if (max !== null && val > max) val = max;
+    return val;
+  }
+
+  function updateTotals() {
+    var totalQty = 0, totalPrice = 0;
+    grid.querySelectorAll('.b2b-grid__qty-input').forEach(function(input) {
+      var qty = clamp(input, parseInt(input.value));
+      if (String(qty) !== input.value) input.value = qty;
+
+      var price = parseFloat(input.dataset.price) || 0;
+      var line = qty * price;
+      totalQty += qty;
+      totalPrice += line;
+
+      var row = input.closest('.b2b-grid__item');
+      var el = row.querySelector('[data-line-total]');
+      if (el) el.textContent = formatMoney(line);
+      if (qty > 0) { row.classList.add('has-qty'); } else { row.classList.remove('has-qty'); }
+
+      var max = maxFor(input);
+      var atMax = max !== null && qty >= max;
+      row.classList.toggle('at-max', atMax && qty > 0);
+      var plusBtn = input.parentElement.querySelector('[data-action="plus"]');
+      if (plusBtn) plusBtn.disabled = atMax;
+    });
+    grid.querySelector('.b2b-grid__total-count').textContent = totalQty;
+    grid.querySelector('.b2b-grid__grand-total-value').textContent = formatMoney(totalPrice);
+    var btn = grid.querySelector('.b2b-grid__submit');
+    var err = grid.querySelector('.b2b-grid__error');
+    if (totalQty >= moq) { btn.disabled = false; err.style.display = 'none'; }
+    else { btn.disabled = true; err.style.display = totalQty > 0 ? 'block' : 'none'; }
+  }
+
+  grid.addEventListener('click', function(e) {
+    var t = e.target;
+    if (t.classList.contains('b2b-grid__qty-btn')) {
+      if (t.disabled) return;
+      var input = t.parentElement.querySelector('.b2b-grid__qty-input');
+      var cur = parseInt(input.value) || 0;
+      var next = t.dataset.action === 'plus' ? cur + increment : cur - increment;
+      input.value = clamp(input, next);
+      updateTotals();
+    }
+    if (t.dataset.action === 'remove-all' || t.closest('[data-action="remove-all"]')) {
+      grid.querySelectorAll('.b2b-grid__qty-input').forEach(function(i) { i.value = 0; });
+      updateTotals();
+    }
+    if (t.dataset.action === 'add-all' || t.closest('[data-action="add-all"]')) {
+      addAllToCart();
+    }
+  });
+
+  grid.addEventListener('input', function(e) {
+    if (e.target.classList.contains('b2b-grid__qty-input')) updateTotals();
+  });
+
+  grid.addEventListener('blur', function(e) {
+    if (e.target.classList.contains('b2b-grid__qty-input')) {
+      e.target.value = clamp(e.target, parseInt(e.target.value));
+      updateTotals();
+    }
+  }, true);
+
+  updateTotals();
+
+  function addAllToCart() {
+    var items = [];
+    grid.querySelectorAll('.b2b-grid__qty-input').forEach(function(input) {
+      var qty = clamp(input, parseInt(input.value));
+      if (qty > 0) items.push({ id: input.dataset.variantId, quantity: qty });
+    });
+    if (!items.length) return;
+
+    var btn = grid.querySelector('.b2b-grid__submit');
+    var origText = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = 'Adding...';
+
+    fetch('/cart/add.js', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ items: items })
+    })
+    .then(function(r) { return r.json().then(function(j) { return { ok: r.ok, body: j }; }); })
+    .then(function(res) {
+      if (!res.ok) throw new Error(res.body.description || res.body.message || 'Error');
+      btn.textContent = '✓ Added!';
+      btn.style.background = '#16a34a';
+      grid.querySelectorAll('.b2b-grid__qty-input').forEach(function(i) { i.value = 0; });
+
+      fetch('/cart.js').then(function(r) { return r.json(); }).then(function(cart) {
+        document.querySelectorAll('#cart-icon-bubble, .cart-count, [data-cart-count]').forEach(function(b) {
+          if (b.tagName === 'SPAN' || b.tagName === 'DIV') b.textContent = cart.item_count;
+        });
+        var drawer = document.querySelector('cart-drawer');
+        if (drawer && typeof drawer.refresh === 'function') drawer.refresh(true);
+        else if (drawer && typeof drawer.open === 'function') drawer.open();
+      });
+
+      setTimeout(function() {
+        btn.textContent = origText;
+        btn.style.background = '';
+        btn.disabled = true;
+        updateTotals();
+      }, 2500);
+    })
+    .catch(function(err) {
+      btn.disabled = false;
+      btn.textContent = origText;
+      btn.style.background = '';
+      alert(err.message || 'Error adding to cart. Please try again.');
+    });
+  }
+})();
+</script>

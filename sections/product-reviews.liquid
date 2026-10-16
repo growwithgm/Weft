@@ -1,0 +1,125 @@
+{%- comment -%}
+  Reviews section (core). Shows the product's standard rating (reviews.rating metafield) and
+  hosts review app blocks. Store builds can use the integration reviews grid instead.
+{%- endcomment -%}
+{%- comment -%} Hidden from wholesale buyers when "Hide for wholesale buyers" is on. {%- endcomment -%}
+{%- capture retail_view -%}{% render 'audience-check', audience: 'retail' %}{%- endcapture -%}
+{%- if section.settings.hide_for_wholesale == false or retail_view == '1' -%}
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{%- liquid
+  assign s = section.settings
+  assign rating = product.metafields.reviews.rating.value
+  assign count = product.metafields.reviews.rating_count.value | default: 0
+  # Nothing to show (no rating, no review app block, no links): the section stays out of the page;
+  # the theme editor shows a hint instead of an empty heading (QA round 2).
+  assign has_content = false
+  if rating and rating.rating > 0
+    assign has_content = true
+  elsif section.blocks.size > 0 or s.all_reviews_link != blank or s.write_link != blank
+    assign has_content = true
+  endif
+-%}
+{%- unless has_content -%}
+  {%- if request.design_mode -%}
+    <div class="section product-reviews color-{{ s.color_scheme }}"><div class="page-width"><p class="muted">{{ 'products.reviews_empty_editor' | t }}</p></div></div>
+  {%- endif -%}
+{%- else -%}
+<div class="section product-reviews color-{{ s.color_scheme }} below-fold" id="{{ s.anchor | default: 'reviews' }}">
+  <div class="page-width product-reviews__grid">
+    <div class="product-reviews__aside stack">
+      <h2 class="h2">{{ s.heading }}</h2>
+      {%- if rating and rating.rating > 0 -%}
+        {%- assign pct = rating.rating | divided_by: rating.scale_max | times: 100 -%}
+        <p class="product-reviews__score tabular">{{ rating.rating | round: 1 }}</p>
+        <span class="rating-pill__stars product-reviews__stars" style="--stars: {{ pct }}%" aria-hidden="true"></span>
+        <span class="visually-hidden">{{ 'accessibility.star_rating' | t: rating: rating.rating, max: rating.scale_max }}</span>
+        <p>{{ 'products.rating.reviews' | t: count: count }}</p>
+      {%- endif -%}
+      {%- if s.note != blank -%}<p class="muted product-reviews__note">{{ s.note }}</p>{%- endif -%}
+      <div class="cluster">
+        {%- if s.all_reviews_link != blank -%}<a class="button button--secondary button--small" href="{{ s.all_reviews_link }}">{{ s.all_reviews_label }}</a>{%- endif -%}
+        {%- if s.write_link != blank -%}<a class="button button--tertiary" href="{{ s.write_link }}">{{ s.write_label }}</a>{%- endif -%}
+      </div>
+    </div>
+    <div class="product-reviews__apps">
+      {%- content_for 'blocks' -%}
+    </div>
+  </div>
+</div>
+{%- endunless -%}
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "t:labels.reviews",
+  "class": "section-product-reviews",
+  "blocks": [
+    {
+      "type": "@app"
+    },
+    {
+      "type": "custom-liquid"
+    }
+  ],
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "hide_for_wholesale",
+      "label": "t:labels.hide_for_wholesale_buyers",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:labels.heading",
+      "default": "What customers say"
+    },
+    {
+      "type": "text",
+      "id": "note",
+      "label": "t:labels.note"
+    },
+    {
+      "type": "text",
+      "id": "anchor",
+      "label": "t:labels.anchor",
+      "default": "reviews",
+      "info": "t:labels.the_rating_block_links_here"
+    },
+    {
+      "type": "text",
+      "id": "all_reviews_label",
+      "label": "t:labels.all_reviews_label",
+      "default": "Read all reviews"
+    },
+    {
+      "type": "url",
+      "id": "all_reviews_link",
+      "label": "t:labels.all_reviews_link"
+    },
+    {
+      "type": "text",
+      "id": "write_label",
+      "label": "t:labels.write_a_review_label",
+      "default": "Write a review"
+    },
+    {
+      "type": "url",
+      "id": "write_link",
+      "label": "t:labels.write_a_review_link"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:labels.color_scheme",
+      "default": "scheme-1"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:labels.reviews",
+      "category": "t:labels.products"
+    }
+  ]
+}
+{% endschema %}

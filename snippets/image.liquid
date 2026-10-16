@@ -1,0 +1,31 @@
+{%- comment -%}
+  Responsive image with focal point.
+  Params:
+    image (required), sizes (default 100vw), widths (default set), eager (bool: LCP candidate),
+    class, alt (overrides image.alt), max_width (cap widths), ratio (sets aspect-ratio when cropping)
+{%- endcomment -%}
+{%- liquid
+  assign img_widths = widths | default: '360,540,720,900,1080,1296,1512,1728,2048'
+  assign img_sizes = sizes | default: '100vw'
+  assign img_alt = alt | default: image.alt | escape
+  assign largest = img_widths | split: ',' | last | plus: 0
+  if max_width and largest > max_width
+    assign largest = max_width
+  endif
+  if largest > image.width
+    assign largest = image.width
+  endif
+  assign focal = image.presentation.focal_point | default: '50% 50%'
+  assign img_style = 'object-position: ' | append: focal
+  if settings.image_quality == 'high'
+    assign largest = largest | times: 1.5 | round
+    if largest > image.width
+      assign largest = image.width
+    endif
+  endif
+-%}
+{%- if eager -%}
+  {{ image | image_url: width: largest | image_tag: widths: img_widths, sizes: img_sizes, alt: img_alt, class: class, style: img_style, loading: 'eager', fetchpriority: 'high', preload: true }}
+{%- else -%}
+  {{ image | image_url: width: largest | image_tag: widths: img_widths, sizes: img_sizes, alt: img_alt, class: class, style: img_style, loading: 'lazy' }}
+{%- endif -%}

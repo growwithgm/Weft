@@ -1,0 +1,118 @@
+{%- comment -%}
+  GN SEE MORE — clamps the product description (Descripción accordion)
+  to the first ~200 characters with an underlined See more / Ver más link.
+  Runs in every market including B2B. Spanish only when country = ES.
+  Rendered from the custom_liquid_gnship block alongside gn-shipping-bar.
+
+  This file is also where the two ATC add-ons are loaded from, because the
+  custom_liquid_gnship block is the one place that renders on every product
+  page regardless of market, stock or customer type:
+    gn-atc-button   restyles the main Add to cart button
+    gn-sticky-atc   mobile sticky Add to cart bar
+{%- endcomment -%}
+
+{%- liquid
+  assign sm_lang = 'en'
+  if localization.country.iso_code == 'ES'
+    assign sm_lang = 'es'
+  endif
+-%}
+
+{%- comment -%} Add to cart button style — approved 28 Aug 2026 {%- endcomment -%}
+{% render 'gn-atc-button' %}
+
+{%- comment -%} Mobile sticky Add to cart bar — added 31 Aug 2026 {%- endcomment -%}
+{% render 'gn-sticky-atc' %}
+
+<style>
+  .gn-sm-link{
+    color:inherit; font-weight:600; text-decoration:underline;
+    text-underline-offset:2px; cursor:pointer; white-space:nowrap;
+  }
+  .gn-sm-full > .gn-sm-less{ display:inline-block; margin-top:8px; }
+</style>
+
+<script>
+(function(){
+  if (window.__gnSeeMore) return; window.__gnSeeMore = true;
+
+  var LIMIT = 200;
+  var LANG  = {{ sm_lang | json }};
+  var TXT   = LANG === 'es'
+    ? { more:'Ver más', less:'Ver menos' }
+    : { more:'See more', less:'See less' };
+  var NAMES = ['descripción','descripcion','description'];
+
+  function textOf(el){ return (el.textContent || '').replace(/\s+/g,' ').trim(); }
+  function isDescHeading(el){ return NAMES.indexOf(textOf(el).toLowerCase()) !== -1; }
+
+  function findPanel(){
+    // 1) details/summary accordions
+    var sums = document.querySelectorAll('details summary');
+    for (var i = 0; i < sums.length; i++){
+      if (!isDescHeading(sums[i])) continue;
+      var d = sums[i].parentElement;
+      for (var j = 0; j < d.children.length; j++){
+        if (d.children[j] !== sums[i]) return d.children[j];
+      }
+    }
+    // 2) generic heading + sibling panel
+    var cands = document.querySelectorAll('h2,h3,h4,button,[role="button"],[class*="heading"],[class*="title"]');
+    for (var k = 0; k < cands.length; k++){
+      if (!isDescHeading(cands[k])) continue;
+      var n = cands[k].nextElementSibling;
+      if (!n && cands[k].parentElement) n = cands[k].parentElement.nextElementSibling;
+      if (n) return n;
+    }
+    return null;
+  }
+
+  function apply(){
+    var panel = findPanel();
+    if (!panel || panel.dataset.gnClamped) return;
+
+    var full = textOf(panel);
+    if (full.length <= LIMIT + 20) return;   // too short to bother
+    panel.dataset.gnClamped = '1';
+
+    var cut = full.slice(0, LIMIT).replace(/\s+\S*$/, '');
+
+    var shortDiv = document.createElement('div');
+    shortDiv.className = 'gn-sm-short';
+    shortDiv.textContent = cut + '\u2026 ';
+
+    var more = document.createElement('a');
+    more.className = 'gn-sm-link';
+    more.setAttribute('role','button');
+    more.setAttribute('tabindex','0');
+    more.textContent = TXT.more;
+    shortDiv.appendChild(more);
+
+    var inner = document.createElement('div');
+    inner.className = 'gn-sm-full';
+    while (panel.firstChild) inner.appendChild(panel.firstChild);
+
+    var less = document.createElement('a');
+    less.className = 'gn-sm-link gn-sm-less';
+    less.setAttribute('role','button');
+    less.setAttribute('tabindex','0');
+    less.textContent = TXT.less;
+    inner.appendChild(less);
+    inner.hidden = true;
+
+    panel.appendChild(shortDiv);
+    panel.appendChild(inner);
+
+    function show(e){ if (e) e.preventDefault(); shortDiv.hidden = true; inner.hidden = false; }
+    function hide(e){ if (e) e.preventDefault(); inner.hidden = true; shortDiv.hidden = false; }
+    more.addEventListener('click', show);
+    less.addEventListener('click', hide);
+    more.addEventListener('keydown', function(e){ if (e.key === 'Enter' || e.key === ' ') show(e); });
+    less.addEventListener('keydown', function(e){ if (e.key === 'Enter' || e.key === ' ') hide(e); });
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', apply);
+  else apply();
+  document.addEventListener('shopify:section:load', apply);
+})();
+</script>

@@ -1,0 +1,71 @@
+{%- comment -%}
+  Highlights (VERTICALS §2): short icon + text points such as fabric and fit, or key benefits.
+  Text settings accept dynamic sources (metafields).
+{%- endcomment -%}
+<div class="highlights" {{ block.shopify_attributes }}>
+  {%- if block.settings.heading != blank -%}<p class="highlights__heading">{{ block.settings.heading | escape }}</p>{%- endif -%}
+  <ul class="highlights__list highlights__list--{{ block.settings.layout }}" role="list">{%- content_for 'blocks' -%}</ul>
+</div>
+{% schema %}
+{
+  "name": "t:labels.highlights",
+  "tag": null,
+  "blocks": [
+    {
+      "type": "_highlight"
+    }
+  ],
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:labels.heading"
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "t:labels.layout",
+      "options": [
+        {
+          "value": "list",
+          "label": "t:labels.list"
+        },
+        {
+          "value": "grid",
+          "label": "t:labels.two_columns"
+        }
+      ],
+      "default": "list"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:labels.highlights",
+      "category": "t:labels.product",
+      "blocks": [
+        {
+          "type": "_highlight",
+          "settings": {
+            "icon": "leaf",
+            "text": "Natural ingredients"
+          }
+        },
+        {
+          "type": "_highlight",
+          "settings": {
+            "icon": "drop",
+            "text": "Lightweight feel"
+          }
+        },
+        {
+          "type": "_highlight",
+          "settings": {
+            "icon": "sparkle",
+            "text": "Visible shine"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,140 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "vendor-sku": {
+          "type": "product-meta",
+          "settings": {}
+        },
+        "product-labels": {
+          "type": "product-labels",
+          "settings": {}
+        },
+        "title": {
+          "type": "product-title",
+          "settings": {}
+        },
+        "price": {
+          "type": "product-price",
+          "settings": {}
+        },
+        "divider-0": {
+          "type": "divider",
+          "settings": {}
+        },
+        "variant-picker": {
+          "type": "variant-picker",
+          "settings": {}
+        },
+        "divider-1": {
+          "type": "divider",
+          "settings": {}
+        },
+        "buy-buttons": {
+          "type": "buy-buttons",
+          "settings": {
+            "show_pickup": false,
+            "audience": "retail"
+          }
+        },
+        "message-1": {
+          "type": "flash-message",
+          "settings": {
+            "icon": "none",
+            "text": "<strong>Pre-order now to make sure you don't miss out!</strong> As soon as it's in stock, we will ship it to you.",
+            "close": "button",
+            "over_media": false
+          }
+        },
+        "newsletter": {
+          "type": "email-signup",
+          "settings": {
+            "heading": "Subscribe to our newsletter",
+            "text": "<p>Get the latest updates on all our new collections, sales, offers and product arrival dates.</p>"
+          }
+        },
+        "wholesale_terms": {
+          "type": "wholesale-terms",
+          "settings": {}
+        },
+        "wholesale_matrix": {
+          "type": "order-matrix",
+          "settings": {
+            "layout": "rows",
+            "show_rules_bar": true
+          }
+        },
+        "wholesale_quantity": {
+          "type": "wholesale-quantity",
+          "settings": {}
+        },
+        "wholesale_tiers": {
+          "type": "volume-pricing",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "vendor-sku",
+        "product-labels",
+        "title",
+        "price",
+        "wholesale_terms",
+        "wholesale_matrix",
+        "wholesale_quantity",
+        "wholesale_tiers",
+        "divider-0",
+        "variant-picker",
+        "divider-1",
+        "buy-buttons",
+        "message-1",
+        "newsletter"
+      ],
+      "settings": {
+        "sticky_bar_mobile": true,
+        "section_width": "full",
+        "gallery_width": "extra_wide",
+        "gallery_layout": "grid_even",
+        "column_gap": 64,
+        "column_divider": true,
+        "media_ratio": "portrait",
+        "group_media_by_option": false
+      }
+    },
+    "details": {
+      "type": "product-details",
+      "blocks": {
+        "highlight-text": {
+          "type": "highlight-text",
+          "settings": {}
+        },
+        "tabs": {
+          "type": "product-tabs",
+          "settings": {
+            "style": "accordion",
+            "show_description": true
+          }
+        },
+        "payment-methods": {
+          "type": "payment-methods",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "highlight-text",
+        "tabs",
+        "payment-methods"
+      ],
+      "settings": {}
+    },
+    "recommendations": {
+      "type": "product-recommendations",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "details",
+    "recommendations"
+  ]
+}

@@ -1,0 +1,35 @@
+{%- comment -%} Rendered for /variants/:id/?section_id=pickup-availability (pickup.js). {%- endcomment -%}
+{%- assign pick_up_availabilities = product_variant.store_availabilities | where: 'pick_up_enabled', true -%}
+{%- if pick_up_availabilities.size > 0 -%}
+  <div class="pickup" data-pickup-content>
+    {%- assign closest_location = pick_up_availabilities.first -%}
+    <p class="pickup__line">
+      {%- render 'icon', name: 'pin', size: 18 -%}
+      <span>
+        {%- if closest_location.available -%}
+          {{ 'products.pickup.available_at' | t: location: closest_location.location.name }}
+          {%- if closest_location.pick_up_time != blank -%}<br><small class="muted">{{ 'products.pickup.ready_in' | t: time: closest_location.pick_up_time }}</small>{%- endif -%}
+        {%- else -%}
+          {{ 'products.pickup.unavailable_at' | t: location: closest_location.location.name }}
+        {%- endif -%}
+      </span>
+    </p>
+    {%- if pick_up_availabilities.size > 1 or closest_location.available -%}
+      <details class="pickup__more">
+        <summary class="link">{{ 'products.pickup.other_locations' | t }}</summary>
+        <ul class="pickup__list" role="list">
+          {%- for availability in pick_up_availabilities -%}
+            <li>
+              <strong>{{ availability.location.name }}</strong>
+              <span class="muted">
+                {%- if availability.available -%}{{ 'products.pickup.ready_in' | t: time: availability.pick_up_time }}{%- else -%}{{ 'products.unavailable' | t }}{%- endif -%}
+              </span>
+              {%- assign address = availability.location.address -%}
+              <address>{{ address | format_address }}</address>
+            </li>
+          {%- endfor -%}
+        </ul>
+      </details>
+    {%- endif -%}
+  </div>
+{%- endif -%}

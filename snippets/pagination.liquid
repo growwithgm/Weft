@@ -1,0 +1,26 @@
+{%- comment -%}
+  Numbered pagination from Shopify's paginate object (collections, search, blog, quick order).
+  Links are plain URLs, so it works without JavaScript.
+  Params: paginate (required), anchor (optional, appended to each URL, e.g. '#results')
+{%- endcomment -%}
+{%- if paginate.pages > 1 -%}
+  <nav class="pagination" aria-label="{{ 'general.pagination.label' | t }}">
+    <ul class="pagination__list" role="list">
+      {%- if paginate.previous -%}
+        <li><a class="pagination__item pagination__item--arrow" href="{{ paginate.previous.url }}{{ anchor }}" rel="prev" aria-label="{{ 'general.previous' | t }}">{%- render 'icon', name: 'chevron-left', size: 18 -%}</a></li>
+      {%- endif -%}
+      {%- for part in paginate.parts -%}
+        {%- if part.is_link -%}
+          <li><a class="pagination__item" href="{{ part.url }}{{ anchor }}" aria-label="{{ 'general.pagination.page' | t: number: part.title }}">{{ part.title }}</a></li>
+        {%- elsif part.title == '&hellip;' -%}
+          <li><span class="pagination__item pagination__item--gap" aria-hidden="true">{{ part.title }}</span></li>
+        {%- else -%}
+          <li><span class="pagination__item is-current" aria-current="page" aria-label="{{ 'general.pagination.page' | t: number: part.title }}">{{ part.title }}</span></li>
+        {%- endif -%}
+      {%- endfor -%}
+      {%- if paginate.next -%}
+        <li><a class="pagination__item pagination__item--arrow" href="{{ paginate.next.url }}{{ anchor }}" rel="next" aria-label="{{ 'general.next' | t }}">{%- render 'icon', name: 'chevron-right', size: 18 -%}</a></li>
+      {%- endif -%}
+    </ul>
+  </nav>
+{%- endif -%}

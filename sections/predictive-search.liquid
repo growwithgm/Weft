@@ -1,0 +1,120 @@
+{%- comment -%}
+  Predictive search results, rendered by Shopify's predictive search API
+  (/search/suggest?q=…&section_id=predictive-search) and inserted into the search drawer by
+  search.js. Results form an ARIA listbox that the search field controls as a combobox.
+  Wholesale-only products (tag fallback) are left out for retail visitors.
+{%- endcomment -%}
+{%- if predictive_search.performed -%}
+  {%- liquid
+    assign r = predictive_search.resources
+    assign terms = predictive_search.terms
+    assign wholesale = false
+    if customer and customer.b2b?
+      assign wholesale = true
+    endif
+    assign gate_tag = settings.wholesale_only_tag | strip | downcase
+    assign products = r.products
+    assign total = r.products.size | plus: r.collections.size | plus: r.pages.size | plus: r.articles.size | plus: r.queries.size
+    assign encoded_terms = terms | url_encode
+  -%}
+  <div data-predictive-content>
+    <p class="visually-hidden" data-predictive-status role="status">{{ 'search.suggestions_count' | t: count: total }}</p>
+    {%- if total > 0 -%}
+      <div class="predictive" id="PredictiveListbox" role="listbox" aria-label="{{ 'search.suggestions' | t }}">
+        {%- if r.queries.size > 0 -%}
+          <div class="predictive__group predictive__group--queries" role="group" aria-labelledby="PredictiveQueries">
+            <p class="predictive__heading" id="PredictiveQueries">{{ 'search.suggestions' | t }}</p>
+            <ul class="predictive__list" role="presentation">
+              {%- for query in r.queries -%}
+                <li class="predictive__item" role="option" id="PredictiveQuery-{{ forloop.index }}" aria-selected="false">
+                  <a class="predictive__link" href="{{ query.url }}" tabindex="-1">{{ query.styled_text }}</a>
+                </li>
+              {%- endfor -%}
+            </ul>
+          </div>
+        {%- endif -%}
+
+        {%- if products.size > 0 -%}
+          <div class="predictive__group predictive__group--products" role="group" aria-labelledby="PredictiveProducts">
+            <p class="predictive__heading" id="PredictiveProducts">{{ 'search.products' | t }}</p>
+            <ul class="predictive__list" role="presentation">
+              {%- for product in products -%}
+                {%- liquid
+                  assign skip = false
+                  if wholesale == false and gate_tag != blank
+                    for tag in product.tags
+                      assign t = tag | downcase
+                      if t == gate_tag
+                        assign skip = true
+                        break
+                      endif
+                    endfor
+                  endif
+                -%}
+                {%- unless skip -%}
+                  <li class="predictive__item predictive__item--product" role="option" id="PredictiveProduct-{{ forloop.index }}" aria-selected="false">
+                    <a class="predictive__link" href="{{ product.url }}" tabindex="-1">
+                      <span class="predictive__thumb media">
+                        {%- if product.featured_media -%}
+                          {{ product.featured_media.preview_image | image_url: width: 120 | image_tag: widths: '60,120', sizes: '56px', alt: '', loading: 'lazy' }}
+                        {%- endif -%}
+                      </span>
+                      <span class="predictive__text">
+                        {%- if settings.predictive_search_show_vendor and product.vendor != blank -%}<span class="predictive__vendor muted">{{ product.vendor | escape }}</span>{%- endif -%}
+                        <span class="predictive__title">{{ product.title | escape }}</span>
+                        {%- if settings.predictive_search_show_price -%}
+                          {%- render 'price', variant: product.selected_or_first_available_variant, wholesale: wholesale, size: 'small', from: product.price_varies, show_unit: false -%}
+                        {%- endif -%}
+                      </span>
+                    </a>
+                  </li>
+                {%- endunless -%}
+              {%- endfor -%}
+            </ul>
+          </div>
+        {%- endif -%}
+
+        {%- if r.collections.size > 0 -%}
+          <div class="predictive__group" role="group" aria-labelledby="PredictiveCollections">
+            <p class="predictive__heading" id="PredictiveCollections">{{ 'search.collections' | t }}</p>
+            <ul class="predictive__list" role="presentation">
+              {%- for collection in r.collections -%}
+                <li class="predictive__item" role="option" id="PredictiveCollection-{{ forloop.index }}" aria-selected="false">
+                  <a class="predictive__link" href="{{ collection.url }}" tabindex="-1">{{ collection.title | escape }}</a>
+                </li>
+              {%- endfor -%}
+            </ul>
+          </div>
+        {%- endif -%}
+
+        {%- if r.pages.size > 0 or r.articles.size > 0 -%}
+          <div class="predictive__group" role="group" aria-labelledby="PredictivePages">
+            <p class="predictive__heading" id="PredictivePages">{{ 'search.pages' | t }}</p>
+            <ul class="predictive__list" role="presentation">
+              {%- for page in r.pages -%}
+                <li class="predictive__item" role="option" id="PredictivePage-{{ forloop.index }}" aria-selected="false">
+                  <a class="predictive__link" href="{{ page.url }}" tabindex="-1">{{ page.title | escape }}</a>
+                </li>
+              {%- endfor -%}
+              {%- for article in r.articles -%}
+                <li class="predictive__item" role="option" id="PredictiveArticle-{{ forloop.index }}" aria-selected="false">
+                  <a class="predictive__link" href="{{ article.url }}" tabindex="-1">{{ article.title | escape }}</a>
+                </li>
+              {%- endfor -%}
+            </ul>
+          </div>
+        {%- endif -%}
+        <div class="predictive__footer" role="option" id="PredictiveAll" aria-selected="false">
+          <a class="button button--secondary button--full predictive__all" href="{{ routes.search_url }}?q={{ encoded_terms }}&amp;options%5Bprefix%5D=last" tabindex="-1">
+            {{- 'search.search_for' | t: terms: terms -}}
+          </a>
+        </div>
+      </div>
+    {%- else -%}
+      <p class="predictive__empty">{{ 'search.no_results' | t: terms: terms }}</p>
+      <a class="button button--secondary button--full predictive__all" href="{{ routes.search_url }}?q={{ encoded_terms }}&amp;options%5Bprefix%5D=last">
+        {{- 'search.search_for' | t: terms: terms -}}
+      </a>
+    {%- endif -%}
+  </div>
+{%- endif -%}

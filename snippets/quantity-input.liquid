@@ -1,0 +1,42 @@
+{%- comment -%}
+  Stepper with quantity rules. Works as a native number input without JavaScript; with
+  JavaScript, the buttons step by the rule (rules.js) and "−" from the minimum goes to 0 when
+  allow_zero is set.
+  Params: id, name (default 'quantity'), value, min (default 1), max, step (default 1), form,
+          label, product_title, disabled, allow_zero, size ('small')
+{%- endcomment -%}
+{%- liquid
+  assign q_min = min | default: 1
+  assign q_step = step | default: 1
+  assign q_value = value | default: q_min
+  assign lower = q_min
+  if allow_zero
+    assign lower = 0
+  endif
+  assign label_text = label | default: 'accessibility.quantity'
+  if label == blank
+    assign label_text = 'accessibility.quantity' | t
+  endif
+-%}
+<quantity-input class="quantity{% if size == 'small' %} quantity--small{% endif %}" data-quantity data-min="{{ q_min }}" data-step="{{ q_step }}" {% if max %}data-max="{{ max }}"{% endif %} {% if allow_zero %}data-allow-zero{% endif %}>
+  <label class="visually-hidden" for="{{ id }}">{{ label_text }}</label>
+  <button type="button" class="quantity__button js-only" data-quantity-step="-1" aria-label="{{ 'accessibility.decrease_quantity' | t: product: product_title | escape }}" {% if disabled %}disabled{% endif %}>
+    {%- render 'icon', name: 'minus', size: 18 -%}
+  </button>
+  <input
+    class="quantity__input tabular"
+    type="number"
+    id="{{ id }}"
+    name="{{ name | default: 'quantity' }}"
+    value="{{ q_value }}"
+    min="{{ lower }}"
+    {% if max %}max="{{ max }}"{% endif %}
+    step="{{ q_step }}"
+    inputmode="numeric"
+    {% if form %}form="{{ form }}"{% endif %}
+    {% if disabled %}disabled{% endif %}
+  >
+  <button type="button" class="quantity__button js-only" data-quantity-step="1" aria-label="{{ 'accessibility.increase_quantity' | t: product: product_title | escape }}" {% if disabled %}disabled{% endif %}>
+    {%- render 'icon', name: 'plus', size: 18 -%}
+  </button>
+</quantity-input>

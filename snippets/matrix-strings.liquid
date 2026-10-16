@@ -1,0 +1,27 @@
+{%- comment -%}
+  Messages for <order-matrix> (order matrix block, quick order list, quick order drawer).
+  Placeholders (__n__, __line__…) are filled in by matrix.js; plural forms are picked there.
+{%- endcomment -%}
+<script type="application/json" data-matrix-strings>
+{
+  "belowMin": {{ 'wholesale.below_min' | t: count: '__n__' | json }},
+  "rounded": {{ 'wholesale.rounded' | t: line: '__line__', count: '__n__', increment: '__m__' | json }},
+  "capped": {{ 'wholesale.capped' | t: line: '__line__', count: '__n__' | json }},
+  "inCart": {{ 'products.in_cart' | t: count: '__n__' | json }},
+  "each": {{ 'wholesale.each' | t: price: '__price__' | json }},
+  "maxHint": {{ 'wholesale.max_hint' | t: count: '__n__' | json }},
+  "attentionOne": {{ 'wholesale.attention.one' | t: count: '__n__' | json }},
+  "attentionOther": {{ 'wholesale.attention.other' | t: count: '__n__' | json }},
+  "piecesOne": {{ 'wholesale.pieces.one' | t: count: '__n__' | json }},
+  "piecesOther": {{ 'wholesale.pieces.other' | t: count: '__n__' | json }},
+  "linesOne": {{ 'wholesale.lines.one' | t: count: '__n__' | json }},
+  "linesOther": {{ 'wholesale.lines.other' | t: count: '__n__' | json }},
+  "addOne": {{ 'wholesale.add_pieces.one' | t: count: '__n__' | json }},
+  "addOther": {{ 'wholesale.add_pieces.other' | t: count: '__n__' | json }},
+  "addedOne": {{ 'wholesale.added_summary.one' | t: count: '__n__' | json }},
+  "addedOther": {{ 'wholesale.added_summary.other' | t: count: '__n__' | json }},
+  "rejected": {{ 'wholesale.rejected_summary' | t: line: '__line__' | json }},
+  "adding": {{ 'products.adding' | t | json }},
+  "filterEmpty": {{ 'wholesale.filter_empty' | t | json }}
+}
+</script>

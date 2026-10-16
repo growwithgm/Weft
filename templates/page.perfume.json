@@ -1,0 +1,111 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "show_title": true,
+        "heading_align": "center"
+      }
+    },
+    "image_banner_LHQij9": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_gFYcBT": {
+          "type": "heading",
+          "disabled": true,
+          "settings": {
+            "heading": "Image banner",
+            "size": "h1",
+            "tag": "auto"
+          }
+        },
+        "text_hyJnYn": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.</p>",
+            "style": "large"
+          }
+        },
+        "button_e6QrbU": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "label": "Optional button",
+            "link": "",
+            "style": "primary"
+          }
+        },
+        "button_e6QrbU-2": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "label": "Optional button",
+            "link": "",
+            "style": "primary"
+          }
+        }
+      },
+      "block_order": [
+        "heading_gFYcBT",
+        "text_hyJnYn",
+        "button_e6QrbU",
+        "button_e6QrbU-2"
+      ],
+      "settings": {
+        "image_desktop": "shopify://shop_images/PC_PRF.jpg",
+        "image_mobile": "shopify://shop_images/MBL_PRF.jpg",
+        "link": "",
+        "height": "adapt",
+        "fixed_height_desktop": 600,
+        "fixed_height_mobile": 350,
+        "overlay_position": "middle-center",
+        "text_align": "center",
+        "mobile_center": false,
+        "mobile_stacked": false,
+        "color_scheme": "scheme-1",
+        "full_width": true,
+        "text_color": "#ffffff",
+        "tint_color": "#ffffff",
+        "tint_opacity": 0
+      }
+    },
+    "featured_collection_qycrNY": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Un Jardín de Recuerdos",
+        "heading_align": "start",
+        "show_view_all": true,
+        "collection": "eau-de-parfum",
+        "layout": "grid",
+        "columns_mobile": "2",
+        "columns": 5,
+        "products_to_show": 8,
+        "show_highlight_products": true,
+        "show_promo_info": false,
+        "image_ratio": "portrait",
+        "promo_title": "A headline to grab attention",
+        "content": "<p>Use this card with an image to highlight your collections or introduce a promotion.</p>",
+        "link_url": "",
+        "button_label": "Button",
+        "color_scheme": "scheme-5",
+        "button_style": "primary"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_banner_LHQij9",
+    "featured_collection_qycrNY"
+  ]
+}

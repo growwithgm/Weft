@@ -1,0 +1,81 @@
+{%- liquid
+  assign p = closest.product
+  assign tag = block.settings.tag
+  if tag == 'auto'
+    assign tag = 'p'
+    if section.settings.sticky_bar_mobile != nil and request.page_type == 'product'
+      assign tag = 'h1'
+    endif
+  endif
+-%}
+<{{ tag }} class="product-title {{ block.settings.size }}" {{ block.shopify_attributes }}>
+  {%- if p -%}{{ p.title | escape }}{%- else -%}{{ 'cart.product' | t }}{%- endif -%}
+  {%- if block.settings.show_weight and p.selected_or_first_available_variant.weight > 0 -%}
+    <span class="product-title__weight">{{ p.selected_or_first_available_variant.weight | weight_with_unit: p.selected_or_first_available_variant.weight_unit }}</span>
+  {%- endif -%}
+</{{ tag }}>
+
+{% schema %}
+{
+  "name": "t:labels.title",
+  "tag": null,
+  "settings": [
+    {
+      "type": "select",
+      "id": "size",
+      "label": "t:labels.size",
+      "options": [
+        {
+          "value": "h1",
+          "label": "t:labels.large"
+        },
+        {
+          "value": "h2",
+          "label": "t:labels.medium"
+        },
+        {
+          "value": "h3",
+          "label": "t:labels.small"
+        }
+      ],
+      "default": "h1"
+    },
+    {
+      "type": "select",
+      "id": "tag",
+      "label": "t:labels.heading_level",
+      "options": [
+        {
+          "value": "auto",
+          "label": "t:labels.automatic"
+        },
+        {
+          "value": "h1",
+          "label": "t:labels.h1"
+        },
+        {
+          "value": "h2",
+          "label": "t:labels.h2"
+        },
+        {
+          "value": "h3",
+          "label": "t:labels.h3"
+        }
+      ],
+      "default": "auto"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_weight",
+      "label": "t:labels.show_weight",
+      "default": false
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:labels.title",
+      "category": "t:labels.product"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,75 @@
+{%- comment -%} FAQ question: a collapsible row with an optional icon. {%- endcomment -%}
+{%- assign b = block.settings -%}
+<details class="faq__item" {{ block.shopify_attributes }}>
+  <summary class="faq__question">
+    {%- if b.icon != 'none' -%}<span class="faq__icon" aria-hidden="true">{%- render 'icon', name: b.icon, size: 20 -%}</span>{%- endif -%}
+    <span class="faq__question-text">{{ b.heading | escape }}</span>
+    {%- render 'accordion-icon' -%}
+  </summary>
+  <div class="faq__answer rte">{{ b.text }}</div>
+</details>
+
+{% schema %}
+{
+  "name": "t:labels.question",
+  "tag": null,
+  "settings": [
+    {
+      "type": "select",
+      "id": "icon",
+      "label": "t:labels.icon",
+      "options": [
+        {
+          "value": "none",
+          "label": "t:labels.none"
+        },
+        {
+          "value": "truck",
+          "label": "t:labels.delivery"
+        },
+        {
+          "value": "return",
+          "label": "t:labels.returns"
+        },
+        {
+          "value": "lock",
+          "label": "t:labels.payment"
+        },
+        {
+          "value": "ruler",
+          "label": "t:labels.sizing"
+        },
+        {
+          "value": "chat",
+          "label": "t:labels.chat"
+        },
+        {
+          "value": "info",
+          "label": "t:labels.information"
+        },
+        {
+          "value": "leaf",
+          "label": "t:labels.care"
+        },
+        {
+          "value": "tag",
+          "label": "t:labels.price_tag"
+        }
+      ],
+      "default": "none"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:labels.question",
+      "default": "How long does delivery take?"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "t:labels.answer",
+      "default": "<p>Answer the question in a few clear sentences.</p>"
+    }
+  ]
+}
+{% endschema %}

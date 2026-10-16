@@ -1,0 +1,60 @@
+{%- comment -%} Social media links from the theme settings. {%- endcomment -%}
+{%- liquid
+  assign networks = 'instagram,facebook,tiktok,pinterest,youtube,twitter,threads,linkedin,snapchat,whatsapp,wechat,vimeo,tumblr,twitch,spotify,discord,mastodon' | split: ','
+  assign any = false
+  for n in networks
+    assign key = 'social_' | append: n | append: '_url'
+    if settings[key] != blank
+      assign any = true
+      break
+    endif
+  endfor
+  if settings.social_custom_url != blank
+    assign any = true
+  endif
+-%}
+{%- if any -%}
+  <ul class="social-links" role="list">
+    {%- for n in networks -%}
+      {%- assign key = 'social_' | append: n | append: '_url' -%}
+      {%- if settings[key] != blank -%}
+        {%- liquid
+          case n
+            when 'twitter'
+              assign label = 'X'
+            when 'tiktok'
+              assign label = 'TikTok'
+            when 'youtube'
+              assign label = 'YouTube'
+            when 'linkedin'
+              assign label = 'LinkedIn'
+            when 'whatsapp'
+              assign label = 'WhatsApp'
+            when 'wechat'
+              assign label = 'WeChat'
+            else
+              assign label = n | capitalize
+          endcase
+        -%}
+        <li>
+          <a class="icon-button social-links__link" href="{{ settings[key] }}" target="_blank" rel="noopener">
+            {%- render 'icon', name: n, size: 20 -%}
+            <span class="visually-hidden">{{ 'general.social.follow_on' | t: network: label }} ({{ 'general.opens_new_window' | t }})</span>
+          </a>
+        </li>
+      {%- endif -%}
+    {%- endfor -%}
+    {%- if settings.social_custom_url != blank -%}
+      <li>
+        <a class="icon-button social-links__link" href="{{ settings.social_custom_url }}" target="_blank" rel="noopener">
+          {%- if settings.social_custom_icon != blank -%}
+            {{ settings.social_custom_icon | image_url: width: 40 | image_tag: width: 20, height: 20, alt: '', class: 'social-links__custom' }}
+          {%- else -%}
+            {%- render 'icon', name: 'link', size: 20 -%}
+          {%- endif -%}
+          <span class="visually-hidden">{{ settings.social_custom_url | remove: 'https://' | remove: 'www.' | split: '/' | first }} ({{ 'general.opens_new_window' | t }})</span>
+        </a>
+      </li>
+    {%- endif -%}
+  </ul>
+{%- endif -%}

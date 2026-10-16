@@ -1,0 +1,47 @@
+{%- comment -%}
+  Shipping estimate on the cart page (brief §14.5). Uses the documented Cart API endpoints
+  prepare_shipping_rates / async_shipping_rates; rates, names and prices come from Shopify.
+  Countries and provinces come from the store's shipping zones (country_option_tags).
+  Params: default_country (country name, optional)
+{%- endcomment -%}
+{%- assign calc_id = 'ShippingCalc' -%}
+<shipping-calculator
+  class="shipping-calc js-only"
+  data-module="{{ 'shipping-calculator.js' | asset_url }}"
+  data-load="visible"
+  data-default-country="{{ default_country | default: localization.country.name | escape }}"
+>
+  <details class="shipping-calc__details">
+    <summary class="shipping-calc__summary">
+      {%- render 'icon', name: 'truck', size: 20 -%}
+      <span>{{ 'cart.shipping.title' | t }}</span>
+      {%- render 'icon', name: 'chevron-down', size: 16 -%}
+    </summary>
+    <div class="shipping-calc__body stack">
+      <div class="field">
+        <label class="field__label" for="{{ calc_id }}-country">{{ 'cart.shipping.country' | t }}</label>
+        <select class="select" id="{{ calc_id }}-country" data-shipping-country autocomplete="country-name">{{ country_option_tags }}</select>
+      </div>
+      <div class="field" data-shipping-province-field hidden>
+        <label class="field__label" for="{{ calc_id }}-province">{{ 'cart.shipping.province' | t }}</label>
+        <select class="select" id="{{ calc_id }}-province" data-shipping-province autocomplete="address-level1"></select>
+      </div>
+      <div class="field">
+        <label class="field__label" for="{{ calc_id }}-zip">{{ 'cart.shipping.zip' | t }}</label>
+        <input class="input" type="text" id="{{ calc_id }}-zip" data-shipping-zip autocomplete="postal-code">
+      </div>
+      <button type="button" class="button button--secondary" data-shipping-submit>{{ 'cart.shipping.calculate' | t }}</button>
+      <div class="shipping-calc__result" role="status" aria-live="polite" data-shipping-result></div>
+    </div>
+  </details>
+  <script type="application/json" data-shipping-strings>
+    {
+      "one": {{ 'cart.shipping.rates.one' | t: count: '__n__' | json }},
+      "other": {{ 'cart.shipping.rates.other' | t: count: '__n__' | json }},
+      "none": {{ 'cart.shipping.none' | t | json }},
+      "free": {{ 'products.delivery.free' | t | json }},
+      "error": {{ 'cart.shipping.error' | t | json }},
+      "loading": {{ 'general.loading' | t | json }}
+    }
+  </script>
+</shipping-calculator>

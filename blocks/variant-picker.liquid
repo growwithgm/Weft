@@ -1,0 +1,232 @@
+{%- comment -%}
+  Variant picker (brief §7.4): swatches (variant image, colour or text), buttons or dropdowns,
+  availability per value, unavailable values stay selectable (to reach Notify) with a strike and
+  a text label. Uses product_option_value ids with the Section Rendering API (product.js).
+  Without JavaScript, buy-buttons renders a <noscript> variant select instead.
+{%- endcomment -%}
+{%- liquid
+  assign p = closest.product
+  assign swatch_names = settings.swatch_option_names | downcase | remove: ' ' | split: ','
+  assign guide_names = block.settings.guide_option | downcase | remove: ' ' | split: ','
+  assign unselected = false
+  if section.settings.select_first_variant == false and p.selected_variant == nil
+    assign unselected = true
+  endif
+  assign fallback_colors = settings.swatch_color_list | newline_to_br | split: '<br />'
+  assign hide_for_matrix = false
+  assign view_wholesale = false
+  if customer and customer.b2b?
+    assign view_wholesale = true
+  elsif request.design_mode and settings.wholesale_editor_preview
+    assign view_wholesale = true
+  endif
+  if view_wholesale and settings.wholesale_matrix_tag != blank
+    assign matrix_tag = settings.wholesale_matrix_tag | strip | downcase
+    for tag in p.tags
+      assign t = tag | downcase
+      if t == matrix_tag
+        assign hide_for_matrix = true
+        break
+      endif
+    endfor
+  endif
+-%}
+{%- comment -%} On matrix products the grid replaces the picker for wholesale buyers (brief §4.10, gap 13). {%- endcomment -%}
+{%- if p and p.has_only_default_variant == false and hide_for_matrix == false -%}
+  {{ 'component-swatch.css' | asset_url | stylesheet_tag }}
+  <div
+    class="variant-picker js-only"
+    data-variant-picker
+    data-swap="{{ block.id }}"
+    data-section-id="{{ section.id }}"
+    data-product-url="{{ p.url }}"
+    {% if unselected %}data-unselected{% endif %}
+    {{ block.shopify_attributes }}
+  >
+    {%- for option in p.options_with_values -%}
+      {%- liquid
+        assign option_key = option.name | downcase | remove: ' '
+        assign is_swatch = false
+        if swatch_names contains option_key and settings.swatch_product_style != 'button'
+          assign is_swatch = true
+        endif
+        assign show_guide = false
+        if guide_names contains option_key
+          assign show_guide = true
+        endif
+        assign base_id = section.id | append: '-' | append: block.id | append: '-' | append: option.position
+      -%}
+      {%- if block.settings.style == 'dropdown' and is_swatch == false -%}
+        <div class="variant-picker__option">
+          <div class="variant-picker__label-row">
+            <label class="variant-picker__legend" for="{{ base_id }}">{{ option.name }}</label>
+            {%- if show_guide -%}{%- render 'product-guide-link', section: section -%}{%- endif -%}
+          </div>
+          <select class="select variant-picker__select" id="{{ base_id }}" data-option-select>
+            {%- if unselected -%}<option value="" selected disabled>{{ 'products.select_option' | t: option: option.name }}</option>{%- endif -%}
+            {%- for value in option.values -%}
+              {%- liquid
+                assign available = value.available
+                if block.settings.availability == 'adjacent'
+                  assign available = value.variant.available
+                endif
+              -%}
+              <option value="{{ value.id }}" data-option-value-id="{{ value.id }}" data-product-url="{{ value.product_url }}" {% if value.selected and unselected == false %}selected{% endif %}>
+                {{- value -}}{%- unless available %} · {{ 'products.sold_out' | t }}{%- endunless -%}
+              </option>
+            {%- endfor -%}
+          </select>
+        </div>
+      {%- else -%}
+        <fieldset class="variant-picker__option">
+          <div class="variant-picker__label-row">
+            <legend class="variant-picker__legend">
+              {{ option.name }}:
+              <strong data-selected-value>{% if unselected %}{% else %}{{ option.selected_value }}{% endif %}</strong>
+            </legend>
+            {%- if show_guide -%}{%- render 'product-guide-link', section: section -%}{%- endif -%}
+          </div>
+          <div class="variant-picker__values{% if is_swatch %} variant-picker__values--swatches swatch-shape--{{ settings.swatch_product_shape }}{% else %} variant-picker__values--buttons{% endif %}">
+            {%- assign sold_out_values = '' -%}
+            {%- for value in option.values -%}
+              {%- liquid
+                assign input_id = base_id | append: '-' | append: forloop.index0
+                assign available = value.available
+                if block.settings.availability == 'adjacent'
+                  assign available = value.variant.available
+                endif
+                assign missing = false
+                if value.variant == nil and value.product_url == blank
+                  assign missing = true
+                endif
+              -%}
+              {%- capture value_html -%}
+              <input
+                type="radio"
+                class="variant-picker__input visually-hidden"
+                id="{{ input_id }}"
+                name="{{ base_id }}"
+                value="{{ value | escape }}"
+                data-option-value-id="{{ value.id }}"
+                data-product-url="{{ value.product_url }}"
+                {% if value.selected and unselected == false %}checked{% endif %}
+              >
+              <label
+                class="{% if is_swatch %}swatch{% else %}option-button{% endif %}{% unless available %} is-unavailable{% endunless %}{% if missing %} is-missing{% endif %}"
+                for="{{ input_id }}"
+                {% if is_swatch %}title="{{ value | escape }}"{% endif %}
+              >
+                {%- if is_swatch -%}
+                  {%- liquid
+                    assign swatch_image = nil
+                    assign swatch_color = nil
+                    if settings.swatch_product_style == 'variant_image'
+                      assign swatch_image = value.variant.featured_image | default: value.swatch.image
+                    endif
+                    if swatch_image == nil
+                      assign swatch_image = value.swatch.image
+                      assign swatch_color = value.swatch.color
+                    endif
+                    if swatch_image == nil and swatch_color == nil
+                      assign value_key = value | downcase | strip
+                      for line in fallback_colors
+                        assign pair = line | strip | split: ':'
+                        assign pair_name = pair | first | downcase | strip
+                        if pair_name == value_key
+                          assign swatch_color = pair | last | strip
+                          break
+                        endif
+                      endfor
+                    endif
+                  -%}
+                  <span class="swatch__fill"{% if swatch_color %} style="--swatch-color: {{ swatch_color }}"{% endif %}>
+                    {%- if swatch_image -%}{{ swatch_image | image_url: width: 120 | image_tag: widths: '60,120', sizes: 'var(--swatch-size)', alt: '', loading: 'lazy' }}{%- endif -%}
+                  </span>
+                  <span class="visually-hidden">{{ value }}</span>
+                  <span class="swatch__check" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
+                  {%- if available == false and missing == false -%}<span class="swatch__band" aria-hidden="true">{{ 'products.sold_out' | t }}</span>{%- endif -%}
+                {%- else -%}
+                  <span>{{ value }}</span>
+                {%- endif -%}
+                {%- if missing -%}
+                  <span class="visually-hidden">, {{ 'products.option_value_missing' | t: value: '' | remove: ', ' }}</span>
+                {%- elsif available == false -%}
+                  <span class="visually-hidden">, {{ 'products.sold_out' | t }}</span>
+                {%- endif -%}
+              </label>
+              {%- endcapture -%}
+              {%- comment -%} Available colors first, sold-out ones after them (block setting). {%- endcomment -%}
+              {%- if is_swatch and block.settings.available_first and available == false -%}
+                {%- assign sold_out_values = sold_out_values | append: value_html -%}
+              {%- else -%}
+                {{- value_html -}}
+              {%- endif -%}
+            {%- endfor -%}
+            {{- sold_out_values -}}
+          </div>
+        </fieldset>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "t:labels.variant_picker",
+  "tag": null,
+  "settings": [
+    {
+      "type": "select",
+      "id": "style",
+      "label": "t:labels.style_for_options_without_swatches",
+      "options": [
+        {
+          "value": "buttons",
+          "label": "t:labels.buttons"
+        },
+        {
+          "value": "dropdown",
+          "label": "t:labels.dropdown"
+        }
+      ],
+      "default": "buttons"
+    },
+    {
+      "type": "select",
+      "id": "availability",
+      "label": "t:labels.mark_values_as_unavailable",
+      "options": [
+        {
+          "value": "top_down",
+          "label": "t:labels.when_no_variant_with_that_value_is_available"
+        },
+        {
+          "value": "adjacent",
+          "label": "t:labels.when_the_exact_combination_is_unavailable"
+        }
+      ],
+      "default": "top_down"
+    },
+    {
+      "type": "checkbox",
+      "id": "available_first",
+      "label": "t:labels.show_available_swatches_first",
+      "info": "t:labels.sold_out_colors_move_to_the_end_of_the_row",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "guide_option",
+      "label": "t:labels.show_the_product_guide_link_next_to",
+      "default": "Size,Taille,Größe,Talla,Taglia,Maat,Tamanho,サイズ,Shade,Volume",
+      "info": "t:text.blocks.variant_picker.settings.guide_option.info"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:labels.variant_picker",
+      "category": "t:labels.product"
+    }
+  ]
+}
+{% endschema %}

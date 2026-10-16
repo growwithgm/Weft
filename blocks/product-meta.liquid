@@ -1,0 +1,56 @@
+{%- liquid
+  assign p = closest.product
+  assign v = p.selected_or_first_available_variant
+-%}
+<div class="product-meta" data-swap="{{ block.id }}" {{ block.shopify_attributes }}>
+  {%- if block.settings.show_vendor and p.vendor != blank -%}<span class="product-meta__item"><span class="visually-hidden">{{ 'products.vendor' | t }}: </span>{{ p.vendor | link_to_vendor }}</span>{%- endif -%}
+  {%- if block.settings.show_type and p.type != blank -%}<span class="product-meta__item"><span class="visually-hidden">{{ 'products.type' | t }}: </span>{{ p.type | link_to_type }}</span>{%- endif -%}
+  {%- if block.settings.show_sku and v.sku != blank -%}<span class="product-meta__item tabular">{{ 'products.sku' | t: sku: v.sku }}</span>{%- endif -%}
+  {%- if block.settings.show_barcode and v.barcode != blank -%}<span class="product-meta__item tabular">{{ 'products.barcode' | t }}: {{ v.barcode }}</span>{%- endif -%}
+  {%- if block.settings.show_weight and v.weight > 0 -%}<span class="product-meta__item">{{ 'products.weight' | t }}: {{ v.weight | weight_with_unit: v.weight_unit }}</span>{%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "t:labels.product_details_line",
+  "tag": null,
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_vendor",
+      "label": "t:labels.vendor",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_type",
+      "label": "t:labels.product_type",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_sku",
+      "label": "t:labels.sku",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_barcode",
+      "label": "t:labels.barcode",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_weight",
+      "label": "t:labels.weight",
+      "default": false
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:labels.product_details_line",
+      "category": "t:labels.product"
+    }
+  ]
+}
+{% endschema %}

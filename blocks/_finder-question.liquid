@@ -1,0 +1,67 @@
+{%- comment -%}
+  One finder question. Answers are radio buttons named after the question's filter parameter,
+  so the finder form builds the filtered collection URL itself. One answer per line:
+  "Curly" or "Label = filter value".
+{%- endcomment -%}
+{%- liquid
+  assign b = block.settings
+  assign param = b.param | strip
+  assign lines = b.answers | newline_to_br | split: '<br />'
+-%}
+<fieldset class="finder__question" data-finder-step {{ block.shopify_attributes }}>
+  <legend class="h4 finder__legend">{{ b.question | escape }}</legend>
+  {%- if b.text != blank -%}<p class="muted finder__hint">{{ b.text | escape }}</p>{%- endif -%}
+  <ul class="finder__answers" role="list">
+    {%- for line in lines -%}
+      {%- liquid
+        assign parts = line | split: '='
+        assign label = parts[0] | strip
+        assign value = label
+        if parts.size > 1
+          assign value = parts[1] | strip
+        endif
+        assign answer_id = 'Finder-' | append: block.id | append: '-' | append: forloop.index
+      -%}
+      {%- if label != blank -%}
+        <li class="finder__answer">
+          <input class="finder__input visually-hidden" type="radio" id="{{ answer_id }}" name="{{ param | escape }}" value="{{ value | escape }}" data-finder-answer>
+          <label class="finder__option" for="{{ answer_id }}"><span class="finder__label">{{ label | escape }}</span></label>
+        </li>
+      {%- endif -%}
+    {%- endfor -%}
+  </ul>
+</fieldset>
+
+{% schema %}
+{
+  "name": "t:labels.question",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "question",
+      "label": "t:labels.question",
+      "default": "What's your hair type?"
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "label": "t:labels.hint"
+    },
+    {
+      "type": "text",
+      "id": "param",
+      "label": "t:labels.filter_parameter",
+      "default": "filter.p.m.shopify.hair-type",
+      "info": "t:text.blocks.finder_question.settings.param.info"
+    },
+    {
+      "type": "textarea",
+      "id": "answers",
+      "label": "t:labels.answers",
+      "default": "Straight\nWavy\nCurly",
+      "info": "t:text.blocks.finder_question.settings.answers.info"
+    }
+  ]
+}
+{% endschema %}

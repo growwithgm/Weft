@@ -1,0 +1,147 @@
+{%- comment -%}
+  Product guide (size chart, shade guide, usage chart): a modal with an image, a page or rich
+  text, plus up to two label/value rows (e.g. Fit and Best suited for). Settings accept dynamic
+  sources, so a metafield image (e.g. custom.size_chart) can feed it. Full screen on mobile.
+{%- endcomment -%}
+{%- liquid
+  assign label = block.settings.label | default: 'products.guide'
+  if block.settings.label == blank
+    assign label = 'products.guide' | t
+  endif
+  assign has_content = false
+  if block.settings.image != blank or block.settings.page != blank or block.settings.text != blank or block.settings.row1_value != blank or block.settings.row2_value != blank
+    assign has_content = true
+  endif
+-%}
+{%- if has_content or request.design_mode -%}
+  <div class="product-guide" data-product-guide data-link-position="{{ block.settings.link_position }}" data-label="{{ label | escape }}" data-icon="{{ block.settings.icon }}" {{ block.shopify_attributes }}>
+    {%- if block.settings.link_position == 'block' -%}
+      <button type="button" class="link product-guide-link" data-open-dialog="ProductGuide-{{ section.id }}">
+        {%- render 'icon', name: block.settings.icon, size: 18 -%}<span>{{ label }}</span>
+      </button>
+    {%- endif -%}
+    <dialog id="ProductGuide-{{ section.id }}" class="modal modal--fullscreen-mobile color-{{ settings.drawer_color_scheme }}" aria-labelledby="ProductGuideTitle-{{ section.id }}" data-light-dismiss data-animate>
+      <div class="modal__panel" data-dialog-body>
+        <div class="modal__header">
+          <h2 class="h2" id="ProductGuideTitle-{{ section.id }}">{{ label }}</h2>
+          <button type="button" class="icon-button" data-close-dialog aria-label="{{ 'general.close' | t }}">{%- render 'icon', name: 'close' -%}</button>
+        </div>
+        <template data-deferred>
+          {%- if block.settings.image != blank -%}
+            <div class="product-guide__image media" style="aspect-ratio: {{ block.settings.image.aspect_ratio }}">
+              {{ block.settings.image | image_url: width: 1600 | image_tag: widths: '600,900,1200,1600', sizes: 'min(720px, 100vw)', loading: 'lazy' }}
+            </div>
+          {%- endif -%}
+          {%- if block.settings.text != blank -%}<div class="rte">{{ block.settings.text }}</div>{%- endif -%}
+          {%- if block.settings.page != blank -%}<div class="rte">{{ block.settings.page.content }}</div>{%- endif -%}
+          {%- if block.settings.row1_value != blank or block.settings.row2_value != blank -%}
+            <dl class="spec-list">
+              {%- if block.settings.row1_value != blank -%}<div class="spec-list__row"><dt>{{ block.settings.row1_label }}</dt><dd>{{ block.settings.row1_value }}</dd></div>{%- endif -%}
+              {%- if block.settings.row2_value != blank -%}<div class="spec-list__row"><dt>{{ block.settings.row2_label }}</dt><dd>{{ block.settings.row2_value }}</dd></div>{%- endif -%}
+            </dl>
+          {%- endif -%}
+          {%- if has_content == false -%}<p class="muted">{{ 'products.guide' | t }}</p>{%- endif -%}
+        </template>
+      </div>
+    </dialog>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "t:labels.product_guide",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "t:labels.link_label",
+      "info": "t:text.blocks.product_guide.settings.label.info"
+    },
+    {
+      "type": "select",
+      "id": "icon",
+      "label": "t:labels.icon",
+      "options": [
+        {
+          "value": "ruler",
+          "label": "t:labels.ruler"
+        },
+        {
+          "value": "drop",
+          "label": "t:labels.drop"
+        },
+        {
+          "value": "info",
+          "label": "t:labels.information"
+        },
+        {
+          "value": "leaf",
+          "label": "t:labels.leaf"
+        }
+      ],
+      "default": "ruler"
+    },
+    {
+      "type": "select",
+      "id": "link_position",
+      "label": "t:labels.link_position",
+      "options": [
+        {
+          "value": "picker",
+          "label": "t:text.blocks.product_guide.settings.link_position.options.picker"
+        },
+        {
+          "value": "block",
+          "label": "t:labels.where_this_block_is_placed"
+        }
+      ],
+      "default": "picker"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:labels.guide_image",
+      "info": "t:text.blocks.product_guide.settings.image.info"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "t:labels.text_or_table"
+    },
+    {
+      "type": "page",
+      "id": "page",
+      "label": "t:labels.page_with_the_guide"
+    },
+    {
+      "type": "text",
+      "id": "row1_label",
+      "label": "t:labels.row_1_label",
+      "default": "Fit"
+    },
+    {
+      "type": "text",
+      "id": "row1_value",
+      "label": "t:labels.row_1_value"
+    },
+    {
+      "type": "text",
+      "id": "row2_label",
+      "label": "t:labels.row_2_label",
+      "default": "Best suited for"
+    },
+    {
+      "type": "text",
+      "id": "row2_value",
+      "label": "t:labels.row_2_value"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:labels.product_guide",
+      "category": "t:labels.product"
+    }
+  ]
+}
+{% endschema %}

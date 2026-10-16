@@ -1,0 +1,102 @@
+{%- comment -%}
+  Ingredient spotlight (VERTICALS §3–4): an image beside key ingredients with short explanations.
+{%- endcomment -%}
+{%- assign s = section.settings -%}
+{{ 'section-product.css' | asset_url | stylesheet_tag }}
+{{ 'section-vertical.css' | asset_url | stylesheet_tag }}
+<div class="section spotlight color-{{ s.color_scheme }}{% if section.index > 2 %} below-fold{% endif %}" data-reveal>
+  <div class="page-width spotlight__inner spotlight--{{ s.layout }}">
+    <div class="spotlight__media media">
+      {%- if s.image -%}{%- render 'image', image: s.image, sizes: '(min-width: 990px) 45vw, 100vw', widths: '550,750,1100,1500' -%}{%- else -%}{{ 'lifestyle-2' | placeholder_svg_tag: 'placeholder-svg' }}{%- endif -%}
+    </div>
+    <div class="spotlight__content stack">
+      {%- if s.heading != blank -%}<h2 class="h2">{{ s.heading | escape }}</h2>{%- endif -%}
+      {%- if s.text != blank -%}<div class="rte">{{ s.text }}</div>{%- endif -%}
+      <ul class="ingredients__list" role="list">{%- content_for 'blocks' -%}</ul>
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "t:labels.ingredient_spotlight",
+  "class": "section-ingredient-spotlight",
+  "max_blocks": 8,
+  "disabled_on": {
+    "groups": [
+      "header",
+      "footer",
+      "aside"
+    ]
+  },
+  "blocks": [
+    {
+      "type": "_ingredient"
+    }
+  ],
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:labels.image"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:labels.heading",
+      "default": "What's inside"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "t:labels.text"
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "t:labels.layout",
+      "options": [
+        {
+          "value": "image-start",
+          "label": "t:labels.image_first"
+        },
+        {
+          "value": "image-end",
+          "label": "t:labels.image_last"
+        }
+      ],
+      "default": "image-start"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:labels.color_scheme",
+      "default": "scheme-1"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:labels.ingredient_spotlight",
+      "category": "t:labels.products",
+      "blocks": [
+        {
+          "type": "_ingredient"
+        },
+        {
+          "type": "_ingredient",
+          "settings": {
+            "name": "Shea butter",
+            "text": "Nourishes and protects."
+          }
+        },
+        {
+          "type": "_ingredient",
+          "settings": {
+            "name": "Vitamin E",
+            "text": "Helps keep skin supple."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

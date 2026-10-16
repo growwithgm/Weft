@@ -1,0 +1,31 @@
+{%- comment -%}
+  Mobile "Ordering for" bottom sheet for wholesale buyers with several company locations
+  (brief §7.14). Opened from the menu drawer chip and the cart header "Change" link.
+{%- endcomment -%}
+{%- if customer and customer.b2b? and customer.company_available_locations.size > 1 -%}
+  <dialog id="LocationSheet" class="sheet color-{{ settings.drawer_color_scheme }}" aria-label="{{ 'wholesale.ordering_for' | t }}" data-light-dismiss data-animate>
+    <div class="sheet__panel" data-dialog-body>
+      <span class="sheet__handle" aria-hidden="true"></span>
+      <button type="button" class="icon-button sheet__close" data-close-dialog aria-label="{{ 'general.close' | t }}">{%- render 'icon', name: 'close' -%}</button>
+      {%- render 'location-list', locations: customer.company_available_locations -%}
+    </div>
+  </dialog>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "t:labels.location_switcher",
+  "class": "section-location-sheet",
+  "enabled_on": {
+    "groups": [
+      "aside"
+    ]
+  },
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "t:text.sections.location_sheet.settings.shown_to_wholesale_buyers_whose_company_has_two_.content"
+    }
+  ]
+}
+{% endschema %}

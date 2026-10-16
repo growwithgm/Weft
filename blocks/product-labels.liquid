@@ -1,0 +1,26 @@
+{%- liquid
+  assign p = closest.product
+  assign variant = p.selected_or_first_available_variant
+-%}
+<div class="product-labels" data-swap="{{ block.id }}" {{ block.shopify_attributes }}>
+  {%- render 'product-labels', product: p, variant: variant, context: 'product' -%}
+</div>
+
+{% schema %}
+{
+  "name": "t:labels.labels",
+  "tag": null,
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "t:text.blocks.product_labels.settings.sale_sold_out_new_pre_order_and_custom_labels_fo.content"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:labels.labels",
+      "category": "t:labels.product"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,97 @@
+{%- comment -%} One badge: short merchant text with an optional icon or image. {%- endcomment -%}
+{%- assign b = block.settings -%}
+{%- if b.text != blank -%}
+  <li class="badge-item" {{ block.shopify_attributes }}>
+    {%- if b.image -%}{{ b.image | image_url: width: 96 | image_tag: width: 28, height: 28, alt: '', loading: 'lazy' }}{%- elsif b.icon != 'none' -%}{%- render 'icon', name: b.icon, size: 18 -%}{%- endif -%}
+    <span>{{ b.text | escape }}</span>
+  </li>
+{%- endif -%}
+{% schema %}
+{
+  "name": "t:labels.badge",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "text",
+      "label": "t:labels.text",
+      "default": "Vegan",
+      "info": "t:labels.only_claims_you_can_support"
+    },
+    {
+      "type": "select",
+      "id": "icon",
+      "label": "t:labels.icon",
+      "options": [
+        {
+          "value": "none",
+          "label": "t:labels.none"
+        },
+        {
+          "value": "sparkle",
+          "label": "t:labels.sparkle"
+        },
+        {
+          "value": "leaf",
+          "label": "t:labels.leaf"
+        },
+        {
+          "value": "drop",
+          "label": "t:labels.drop"
+        },
+        {
+          "value": "check",
+          "label": "t:labels.check_mark"
+        },
+        {
+          "value": "star",
+          "label": "t:labels.star"
+        },
+        {
+          "value": "jar",
+          "label": "t:labels.jar"
+        },
+        {
+          "value": "ruler",
+          "label": "t:labels.ruler"
+        },
+        {
+          "value": "truck",
+          "label": "t:labels.delivery"
+        },
+        {
+          "value": "return",
+          "label": "t:labels.returns"
+        },
+        {
+          "value": "lock",
+          "label": "t:labels.secure"
+        },
+        {
+          "value": "globe",
+          "label": "t:labels.worldwide"
+        },
+        {
+          "value": "clock",
+          "label": "t:labels.clock"
+        },
+        {
+          "value": "tag",
+          "label": "t:labels.price_tag"
+        },
+        {
+          "value": "info",
+          "label": "t:labels.information"
+        }
+      ],
+      "default": "leaf"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:labels.image",
+      "info": "t:labels.for_certification_logos"
+    }
+  ]
+}
+{% endschema %}

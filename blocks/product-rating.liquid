@@ -1,0 +1,168 @@
+{%- comment -%}
+  Rating pill (brief §5): black score badge with a star, five-star row, count and chevron,
+  linking to the reviews section. The score source is a setting that accepts dynamic sources, so
+  a store can show its store-wide score ("store reviews") or the product's own rating.
+  Never renders fake numbers: with no score, nothing renders. Hidden for wholesale by default.
+{%- endcomment -%}
+{%- liquid
+  assign p = closest.product
+  assign rating = block.settings.rating_value
+  assign count = block.settings.rating_count
+  assign max = 5
+-%}
+{%- comment -%} integration:start {%- endcomment -%}
+{%- if rating == blank and block.settings.count_label == 'store' -%}
+  {%- comment -%} Store-wide score from a reviews integration (shop metafields can't be dynamic sources). {%- endcomment -%}
+  {%- capture store_rating -%}{%- render 'integration-store-rating' -%}{%- endcapture -%}
+  {%- assign store_parts = store_rating | split: '|' -%}
+  {%- if store_parts[0] != blank -%}
+    {%- assign rating = store_parts[0] -%}
+    {%- assign count = store_parts[1] -%}
+  {%- endif -%}
+{%- endif -%}
+{%- comment -%} integration:end {%- endcomment -%}
+{%- liquid
+  if rating == blank and p.metafields.reviews.rating.value != blank
+    assign rating = p.metafields.reviews.rating.value.rating
+    assign max = p.metafields.reviews.rating.value.scale_max | default: 5
+    assign count = p.metafields.reviews.rating_count.value
+  endif
+  assign rating_num = rating | plus: 0
+  assign count_num = count | plus: 0
+-%}
+{%- capture visible -%}{% render 'audience-check', audience: block.settings.audience %}{%- endcapture -%}
+{%- if visible == '1' and rating_num > 0 -%}
+  {%- liquid
+    assign rounded = rating_num | times: 10 | round | divided_by: 10.0
+    assign stars_percent = rating_num | divided_by: max | times: 100 | round
+    if block.settings.link == 'section'
+      assign href = '#' | append: block.settings.anchor
+    elsif block.settings.link == 'page' and block.settings.page != blank
+      assign href = block.settings.page.url
+    else
+      assign href = '#' | append: block.settings.anchor
+    endif
+  -%}
+  <a class="rating-pill rating-pill--{{ block.settings.style }}" href="{{ href }}" data-scroll-to {{ block.shopify_attributes }}>
+    <span class="rating-pill__score tabular">{{ rounded }} <span class="rating-pill__star" aria-hidden="true">★</span></span>
+    <span class="rating-pill__stars" style="--stars: {{ stars_percent }}%" aria-hidden="true"></span>
+    <span class="visually-hidden">{{ 'accessibility.star_rating' | t: rating: rounded, max: max }}</span>
+    {%- if count_num > 0 -%}
+      <span class="rating-pill__count">
+        {%- if block.settings.count_label == 'store' -%}
+          {{ count_num | default: 0 }} {{ 'products.rating.store_reviews' | t }}
+        {%- else -%}
+          {{ 'products.rating.reviews' | t: count: count_num }}
+        {%- endif -%}
+      </span>
+    {%- endif -%}
+    {%- render 'icon', name: 'chevron-right', size: 14 -%}
+  </a>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "t:labels.rating",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "rating_value",
+      "label": "t:labels.score",
+      "info": "t:text.blocks.product_rating.settings.rating_value.info"
+    },
+    {
+      "type": "text",
+      "id": "rating_count",
+      "label": "t:labels.review_count",
+      "info": "t:labels.connect_the_matching_count_metafield"
+    },
+    {
+      "type": "select",
+      "id": "count_label",
+      "label": "t:labels.count_label",
+      "options": [
+        {
+          "value": "product",
+          "label": "t:labels.reviews"
+        },
+        {
+          "value": "store",
+          "label": "t:labels.store_reviews"
+        }
+      ],
+      "default": "product"
+    },
+    {
+      "type": "select",
+      "id": "style",
+      "label": "t:labels.style",
+      "options": [
+        {
+          "value": "pill",
+          "label": "t:labels.pill"
+        },
+        {
+          "value": "stars",
+          "label": "t:labels.stars_only"
+        }
+      ],
+      "default": "pill"
+    },
+    {
+      "type": "select",
+      "id": "link",
+      "label": "t:labels.link_to",
+      "options": [
+        {
+          "value": "section",
+          "label": "t:labels.reviews_section_on_this_page"
+        },
+        {
+          "value": "page",
+          "label": "t:labels.a_page"
+        }
+      ],
+      "default": "section"
+    },
+    {
+      "type": "text",
+      "id": "anchor",
+      "label": "t:labels.reviews_section_anchor",
+      "default": "reviews",
+      "visible_if": "{{ block.settings.link == 'section' }}"
+    },
+    {
+      "type": "page",
+      "id": "page",
+      "label": "t:labels.page"
+    },
+    {
+      "type": "select",
+      "id": "audience",
+      "label": "t:labels.show_to",
+      "options": [
+        {
+          "value": "all",
+          "label": "t:labels.everyone"
+        },
+        {
+          "value": "retail",
+          "label": "t:labels.retail_shoppers"
+        },
+        {
+          "value": "wholesale",
+          "label": "t:labels.wholesale_buyers"
+        }
+      ],
+      "default": "retail"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:labels.rating",
+      "category": "t:labels.product"
+    }
+  ]
+}
+{% endschema %}

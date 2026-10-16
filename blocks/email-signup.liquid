@@ -1,0 +1,29 @@
+<div class="block-email-signup" {{ block.shopify_attributes }}>
+  {%- if block.settings.heading != blank -%}<p class="h3">{{ block.settings.heading }}</p>{%- endif -%}
+  {%- if block.settings.text != blank -%}<div class="rte">{{ block.settings.text }}</div>{%- endif -%}
+  {%- render 'newsletter-form', id: block.id -%}
+</div>
+
+{% schema %}
+{
+  "name": "t:labels.email_signup",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:labels.heading"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "t:labels.text"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:labels.email_signup"
+    }
+  ]
+}
+{% endschema %}

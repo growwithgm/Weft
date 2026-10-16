@@ -1,0 +1,639 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "vendor-sku": {
+          "type": "vendor-sku",
+          "settings": {
+            "show_vendor": false,
+            "show_sku": false,
+            "show_barcode": false
+          }
+        },
+        "product-labels": {
+          "type": "product-labels",
+          "settings": {
+            "show_variant_icon": true
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {
+            "show_weight": false
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+            "show_tax_and_shipping": false
+          }
+        },
+        "custom_liquid_gnrating": {
+          "type": "custom-liquid",
+          "settings": {
+            "custom_liquid": "{%- unless customer.b2b? or customer.tags contains 'B2B' -%}{% render 'gn-rating' %}{%- endunless -%}"
+          }
+        },
+        "judge_me_reviews_preview_badge_McwKbz": {
+          "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "disabled": true,
+          "settings": {}
+        },
+        "variant-picker": {
+          "type": "variant-picker",
+          "settings": {
+            "selector_style": "buttons",
+            "enable_dynamic_availability": true,
+            "dynamic_availability_downwards": false,
+            "show_backorder_text": true,
+            "enable_size_chart": true,
+            "size_chart_variant": "Size Guide",
+            "size_chart_page": ""
+          }
+        },
+        "custom_liquid_wbis": {
+          "type": "custom-liquid",
+          "settings": {
+            "custom_liquid": "{%- unless customer.b2b? or customer.tags contains 'B2B' -%}{% render 'back-in-stock', product: product %}{%- endunless -%}"
+          }
+        },
+        "custom_liquid_sizewarn": {
+          "type": "custom-liquid",
+          "settings": {
+            "custom_liquid": "{%- unless customer.b2b? or customer.tags contains 'B2B' -%}{%- if product.available -%}{% render 'size-guide-warning' %}{%- endif -%}{%- endunless -%}"
+          }
+        },
+        "custom_liquid_gnship": {
+          "type": "custom-liquid",
+          "settings": {
+            "custom_liquid": "{% render 'gn-shipping-bar' %}{% render 'gn-see-more' %}"
+          }
+        },
+        "buy-buttons": {
+          "type": "buy-buttons",
+          "settings": {
+            "show_qty_selector": true,
+            "enable_dynamic_checkout": true,
+            "show_pickup_availability": true,
+            "show_gift_card_recipient": false
+          }
+        },
+        "message-2": {
+          "type": "message",
+          "disabled": true,
+          "settings": {
+            "icon": "price_tag",
+            "title": "<p><strong>Selling fast!<br/></strong>Grab yours while you can</p>",
+            "close": "once",
+            "show_over_media": true,
+            "visibility_duration": 5,
+            "bg_color": "#e4edfa",
+            "text_color": "#1a66d2"
+          }
+        },
+        "collapsible_content_j98RbT": {
+          "type": "collapsible-content",
+          "disabled": true,
+          "settings": {
+            "heading": "14-Day Easy Returns",
+            "icon": "return",
+            "text": "<p>Shop with confidence. If you are not fully satisfied with your purchase, you can request a return within 14 days of receiving your order.</p><p>Items must be unused, unworn, unwashed, and returned in their original condition with all tags and packaging.</p><p>Once your return is received and approved, we will process your refund according to our return policy.<a href=\"/pages/return-and-refund-policy\" title=\"Return and refund policy\">Return Policy</a></p>",
+            "page": "",
+            "open": false
+          }
+        },
+        "collapsible-content-1": {
+          "type": "collapsible-content",
+          "settings": {
+            "heading": "Main Features",
+            "icon": "check_mark",
+            "text": "<p><strong>Fabric </strong>({{ product.metafields.shopify.fabric | metafield_text: field: 'label' }})</p><p><strong>Embroidery</strong>({{ product.metafields.custom.embroidery.value }})<br/><strong>Color</strong> ({{ product.metafields.shopify[\"color-pattern\"] | metafield_text: field: 'label' }})<br/><strong>Sizes</strong> ({{ product.metafields.shopify.size | metafield_text: field: 'label' }})<br/></p>",
+            "page": "",
+            "open": true
+          }
+        },
+        "collapsible_content_wTPX4g": {
+          "type": "collapsible-content",
+          "settings": {
+            "heading": "Descripción",
+            "icon": "check_mark",
+            "text": "{{ product.description }}",
+            "page": "",
+            "open": true
+          }
+        },
+        "share": {
+          "type": "share",
+          "settings": {
+            "show_twitter": true,
+            "show_facebook": true,
+            "show_pinterest": true
+          }
+        },
+        "message-3": {
+          "type": "message",
+          "disabled": true,
+          "settings": {
+            "icon": "none",
+            "title": "<p>Add a stand out message for your customers</p>",
+            "close": "once",
+            "show_over_media": false,
+            "visibility_duration": 7,
+            "bg_color": "#e4edfa",
+            "text_color": "#1a66d2"
+          }
+        }
+      },
+      "block_order": [
+        "vendor-sku",
+        "product-labels",
+        "title",
+        "price",
+        "custom_liquid_gnrating",
+        "judge_me_reviews_preview_badge_McwKbz",
+        "variant-picker",
+        "custom_liquid_wbis",
+        "custom_liquid_sizewarn",
+        "custom_liquid_gnship",
+        "buy-buttons",
+        "message-2",
+        "collapsible_content_j98RbT",
+        "collapsible-content-1",
+        "collapsible_content_wTPX4g",
+        "share",
+        "message-3"
+      ],
+      "settings": {
+        "stick_on_scroll": true,
+        "select_first_variant": true,
+        "sticky_atc_panel": false,
+        "sticky_atc_position": "end",
+        "sticky_atc_mobile": false,
+        "media_layout": "stacked",
+        "media_size": "large",
+        "media_ratio": "natural",
+        "media_crop": "none",
+        "enable_video_looping": true,
+        "enable_zoom": true,
+        "zoom_mode": "lightbox",
+        "enable_lightbox_mobile": true,
+        "hover_zoom": "large",
+        "stacked_scroll": "always",
+        "underline_active": false,
+        "media_arrows": "desktop",
+        "show_slide_count": true,
+        "media_thumbs": "always",
+        "lightbox_thumbnails": true,
+        "thumb_ratio": "natural",
+        "thumb_crop": "none",
+        "border_color": "#eeeeee",
+        "bg_color": "#f4f4f4",
+        "enable_media_grouping": true,
+        "media_grouping_option": "{{ product.metafields.shopify[\"color-pattern\"] | metafield_text: field: 'label' }}"
+      }
+    },
+    "details": {
+      "type": "product-details",
+      "blocks": {
+        "highlight-text": {
+          "type": "highlight-text",
+          "disabled": true,
+          "settings": {
+            "title": "Highlight title",
+            "text": "<p>Text to highlight a key feature of your product</p>"
+          }
+        },
+        "tabs": {
+          "type": "tabs",
+          "settings": {
+            "style": "collapsible",
+            "open_first": true,
+            "show_description": true,
+            "show_reviews": false,
+            "custom_reviews": "",
+            "show_specification": false,
+            "spec_metafields": "",
+            "spec_right_align": false,
+            "spec_show_empty_metafields": true,
+            "spec_empty_field_text": "-",
+            "tab_1_title": "",
+            "tab_1_text": "",
+            "tab_1_page": "",
+            "tab_2_title": "",
+            "tab_2_text": "",
+            "tab_2_page": "",
+            "tab_3_title": "",
+            "tab_3_text": "",
+            "tab_3_page": ""
+          }
+        },
+        "payment-methods": {
+          "type": "payment-methods",
+          "disabled": true,
+          "settings": {
+            "title": "Payment & Security",
+            "title1": "Payment methods",
+            "show_payment_icons": true,
+            "text1": "<p>Your payment information is processed securely. We do not store credit card details nor have access to your credit card information.</p>",
+            "title2": "",
+            "text2": ""
+          }
+        }
+      },
+      "block_order": [
+        "highlight-text",
+        "tabs",
+        "payment-methods"
+      ],
+      "disabled": true,
+      "settings": {}
+    },
+    "product-features": {
+      "type": "product-features",
+      "blocks": {
+        "product-features-feature-0": {
+          "type": "feature",
+          "settings": {
+            "heading": "Feature name",
+            "text": "<p>Add some text describing the product feature.</p>",
+            "content_align": "text-start",
+            "hotspot_x": 28,
+            "hotspot_y": 38
+          }
+        },
+        "product-features-feature-1": {
+          "type": "feature",
+          "settings": {
+            "heading": "Feature name",
+            "text": "<p>Add some text describing the product feature.</p>",
+            "content_align": "text-start",
+            "hotspot_x": 60,
+            "hotspot_y": 29
+          }
+        },
+        "product-features-feature-2": {
+          "type": "feature",
+          "settings": {
+            "heading": "Feature name",
+            "text": "<p>Add some text describing the product feature.</p>",
+            "content_align": "text-start",
+            "hotspot_x": 73,
+            "hotspot_y": 54
+          }
+        },
+        "product-features-feature-3": {
+          "type": "feature",
+          "settings": {
+            "heading": "Feature name",
+            "text": "<p>Add some text describing the product feature.</p>",
+            "content_align": "text-start",
+            "hotspot_x": 50,
+            "hotspot_y": 66
+          }
+        }
+      },
+      "block_order": [
+        "product-features-feature-0",
+        "product-features-feature-1",
+        "product-features-feature-2",
+        "product-features-feature-3"
+      ],
+      "disabled": true,
+      "settings": {
+        "product": "",
+        "show_content": true,
+        "layout": "text_first",
+        "text_align": "text-center",
+        "mob_center_text": false,
+        "heading_size": "h1",
+        "enlarge_text": false,
+        "title": "Product features",
+        "description": "<p>Use this section to highlight specific product features to your customers.</p>",
+        "button_label": "",
+        "button_link": "",
+        "hotspot_color": "#070707",
+        "color_scheme": "none",
+        "button_style": "btn btn--primary"
+      }
+    },
+    "product-comparison-grid": {
+      "type": "product-comparison-grid",
+      "blocks": {
+        "comparison-product-1": {
+          "type": "product",
+          "settings": {
+            "show_image": true,
+            "show_title": true,
+            "show_button": true
+          }
+        },
+        "comparison-vendor-2": {
+          "type": "vendor",
+          "settings": {}
+        },
+        "comparison-price-3": {
+          "type": "price",
+          "settings": {}
+        },
+        "comparison-description-4": {
+          "type": "description",
+          "settings": {
+            "truncate_description": false,
+            "words_to_show": 20
+          }
+        }
+      },
+      "block_order": [
+        "comparison-product-1",
+        "comparison-vendor-2",
+        "comparison-price-3",
+        "comparison-description-4"
+      ],
+      "disabled": true,
+      "settings": {
+        "heading": "Product comparison grid",
+        "text": "<p>Add content here to explain a bit about the range of products on offer and which ones may be most suitable for your customers.</p>",
+        "heading_align": "text-center",
+        "view_more_label": "View more",
+        "view_more_link": "",
+        "product_list": [],
+        "empty_field_text": "-",
+        "image_ratio": "shortest",
+        "image_crop": "center",
+        "num_rows": 0,
+        "color_scheme": "none",
+        "highlight_row": false
+      }
+    },
+    "1777402422d2cde988": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_review_widget_8agUY8": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "review_data": "real_data",
+            "max_width": 1200,
+            "show_shop_reviews": true,
+            "empty_state": "empty_widget"
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_review_widget_8agUY8"
+      ],
+      "disabled": true,
+      "settings": {
+        "full_width": false,
+        "show_space": true
+      }
+    },
+    "collection-list": {
+      "type": "collection-list",
+      "blocks": {
+        "collection-list-collection-1": {
+          "type": "collection",
+          "settings": {
+            "collection": ""
+          }
+        },
+        "collection-list-collection-2": {
+          "type": "collection",
+          "settings": {
+            "collection": ""
+          }
+        },
+        "collection-list-collection-3": {
+          "type": "collection",
+          "settings": {
+            "collection": ""
+          }
+        },
+        "collection-list-collection-4": {
+          "type": "collection",
+          "settings": {
+            "collection": ""
+          }
+        },
+        "collection-list-collection-5": {
+          "type": "collection",
+          "settings": {
+            "collection": ""
+          }
+        },
+        "collection-list-collection-6": {
+          "type": "collection",
+          "settings": {
+            "collection": ""
+          }
+        }
+      },
+      "block_order": [
+        "collection-list-collection-1",
+        "collection-list-collection-2",
+        "collection-list-collection-3",
+        "collection-list-collection-4",
+        "collection-list-collection-5",
+        "collection-list-collection-6"
+      ],
+      "disabled": true,
+      "settings": {
+        "title": "Our Collections",
+        "heading_align": "text-start",
+        "button_label": "",
+        "button_link": "",
+        "layout": "carousel",
+        "card_size": "medium",
+        "use_product_image": false,
+        "circle_image": true,
+        "show_border": true,
+        "color_scheme": "none",
+        "full_width": true
+      }
+    },
+    "image-banner": {
+      "type": "image-banner",
+      "blocks": {
+        "image-banner-heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Image banner",
+            "heading_size": "h1",
+            "heading_h1": false
+          }
+        },
+        "image-banner-text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.</p>",
+            "enlarge_text": true
+          }
+        },
+        "image-banner-button": {
+          "type": "button",
+          "settings": {
+            "button_1_label": "Optional button",
+            "button_1_link": "",
+            "button_1_style": "btn btn--primary",
+            "button_2_label": "Optional button",
+            "button_2_link": "",
+            "button_2_style": "btn btn--primary"
+          }
+        }
+      },
+      "block_order": [
+        "image-banner-heading",
+        "image-banner-text",
+        "image-banner-button"
+      ],
+      "disabled": true,
+      "settings": {
+        "url": "",
+        "height_mode": "fixed",
+        "fixed_height_desktop": 640,
+        "fixed_height_mobile": 480,
+        "overlay_position": "justify-center items-center",
+        "overlay_text_align": "text-center",
+        "mob_center_text": false,
+        "mobile_stacked": false,
+        "color_scheme": "white",
+        "full_width": false,
+        "transparent_content_color": "#ffffff",
+        "tint_color": "#000000",
+        "tint_opacity": 40,
+        "prevent_animation": false
+      }
+    },
+    "1777579321ea4b8cdc": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_cards_carousel_RBhCcV": {
+          "type": "shopify://apps/judge-me-reviews/blocks/cards_carousel/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "show_sample_reviews": true,
+            "reviews_selection": "all",
+            "products": [],
+            "filter_pinned": false,
+            "filter_featured": false,
+            "filter_custom_tags": "",
+            "star_rating": "4_to_5_star",
+            "show_review_media": true,
+            "display_order": "media_first",
+            "no_image_fallback": "review_text_only",
+            "max_reviews": 20,
+            "review_length": "medium",
+            "text_size": "medium",
+            "image_ratio": "1",
+            "reviews_shown": 5,
+            "show_reviewer_name": true,
+            "show_product_name": true,
+            "hide_arrows_mobile": true,
+            "arrows_position": "sides",
+            "max_width": 1100,
+            "corner_styling": "soft",
+            "header_text_color": "#000000",
+            "text_color": "#000000",
+            "card_color": "#f9f9f9",
+            "stars_color": "",
+            "arrows_color": "#000000",
+            "transition_speed": 5,
+            "header_text": "Customers are saying",
+            "show_average_rating": true,
+            "rating_display": "default"
+          }
+        },
+        "judge_me_reviews_featured_carousel_HyjdJ8": {
+          "type": "shopify://apps/judge-me-reviews/blocks/featured_carousel/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "disabled": true,
+          "settings": {
+            "maxwidth": 1080
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_cards_carousel_RBhCcV",
+        "judge_me_reviews_featured_carousel_HyjdJ8"
+      ],
+      "disabled": true,
+      "settings": {
+        "full_width": false,
+        "show_space": true
+      }
+    },
+    "gn_product_reviews": {
+      "type": "gn-product-reviews",
+      "settings": {
+        "heading": "What our customers say",
+        "total_label": "store reviews",
+        "note": "A selection of our highest-rated reviews from across the collection.",
+        "min_rating": "4",
+        "min_length": 10,
+        "max_reviews": 40,
+        "first_batch": 6,
+        "show_product": true,
+        "this_label": "This piece",
+        "verified_label": "✓ Verified",
+        "photo_label": "Open customer photo",
+        "chip_all": "All",
+        "chip_5": "5 ★",
+        "chip_4": "4 ★",
+        "chip_photos": "With photos",
+        "showing_label": "Showing",
+        "of_label": "of",
+        "more_label": "Show more reviews",
+        "see_all_url": "/pages/reviews",
+        "see_all_label": "Read all reviews",
+        "write_url": "/pages/reviews",
+        "write_label": "Write a review",
+        "columns": 2,
+        "padding_top": 72,
+        "padding_bottom": 72
+      }
+    },
+    "recommendations": {
+      "type": "product-recommendations",
+      "settings": {
+        "heading": "You may also like",
+        "heading_align": "text-start",
+        "layout": "carousel",
+        "card_size_mobile": "small",
+        "card_size": "small",
+        "products_to_show": 8
+      }
+    },
+    "recently_viewed_EUgWDy": {
+      "type": "recently-viewed",
+      "name": "Recently viewed products",
+      "settings": {
+        "heading": "Recently viewed",
+        "heading_align": "text-start",
+        "layout": "carousel",
+        "card_size_mobile": "small",
+        "card_size": "small",
+        "limit": 8
+      }
+    }
+  },
+  "order": [
+    "main",
+    "details",
+    "product-features",
+    "product-comparison-grid",
+    "1777402422d2cde988",
+    "collection-list",
+    "image-banner",
+    "1777579321ea4b8cdc",
+    "gn_product_reviews",
+    "recommendations",
+    "recently_viewed_EUgWDy"
+  ]
+}

@@ -1,0 +1,168 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "labels": {
+          "type": "product-labels",
+          "settings": {}
+        },
+        "title": {
+          "type": "product-title",
+          "settings": {}
+        },
+        "price": {
+          "type": "product-price",
+          "settings": {
+            "show_tax_note": true,
+            "show_installments": true
+          }
+        },
+        "rating": {
+          "type": "product-rating",
+          "settings": {
+            "count_label": "product",
+            "audience": "retail"
+          }
+        },
+        "picker": {
+          "type": "variant-picker",
+          "settings": {}
+        },
+        "guide": {
+          "type": "product-guide",
+          "settings": {
+            "link_position": "picker"
+          }
+        },
+        "stock": {
+          "type": "stock-line",
+          "settings": {
+            "audience": "retail"
+          }
+        },
+        "delivery": {
+          "type": "delivery-list",
+          "settings": {
+            "audience": "retail"
+          }
+        },
+        "options": {
+          "type": "purchase-options",
+          "settings": {}
+        },
+        "buy": {
+          "type": "buy-buttons",
+          "settings": {
+            "audience": "retail",
+            "preorder": true
+          }
+        },
+        "features": {
+          "type": "specifications",
+          "settings": {
+            "heading": "Main features",
+            "accordion": true
+          },
+          "blocks": {
+            "row1": {
+              "type": "_spec-row",
+              "settings": {
+                "label": "Material"
+              }
+            },
+            "row2": {
+              "type": "_spec-row",
+              "settings": {
+                "label": "Care"
+              }
+            }
+          },
+          "block_order": [
+            "row1",
+            "row2"
+          ]
+        },
+        "description": {
+          "type": "description",
+          "settings": {
+            "accordion": true,
+            "open": true,
+            "clamp_chars": 200
+          }
+        },
+        "returns": {
+          "type": "collapsible",
+          "settings": {
+            "heading": "Returns",
+            "icon": "return",
+            "audience": "retail",
+            "text": "<p>Explain your returns policy in a few lines.</p>"
+          }
+        },
+        "share": {
+          "type": "share",
+          "settings": {}
+        },
+        "signup": {
+          "type": "email-signup",
+          "settings": {
+            "heading": "Stay in the loop",
+            "text": "<p>News about new arrivals and restocks.</p>"
+          }
+        },
+        "terms": {
+          "type": "wholesale-terms",
+          "settings": {}
+        },
+        "installments": {
+          "type": "installments-note",
+          "settings": {}
+        },
+        "tiers": {
+          "type": "volume-pricing",
+          "settings": {}
+        },
+        "wholesale_qty": {
+          "type": "wholesale-quantity",
+          "settings": {}
+        },
+        "matrix": {
+          "type": "order-matrix",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "labels",
+        "title",
+        "price",
+        "rating",
+        "terms",
+        "installments",
+        "tiers",
+        "picker",
+        "guide",
+        "stock",
+        "delivery",
+        "options",
+        "buy",
+        "wholesale_qty",
+        "matrix",
+        "features",
+        "description",
+        "returns",
+        "share",
+        "signup"
+      ],
+      "settings": {}
+    },
+    "related": {
+      "type": "product-recommendations",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "related"
+  ]
+}

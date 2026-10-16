@@ -1,0 +1,68 @@
+{%- assign dialog_id = 'Popup-' | append: block.id -%}
+<div class="popup-link" {{ block.shopify_attributes }}>
+  <button type="button" class="{% if block.settings.style == 'button' %}button button--secondary button--small{% else %}link{% endif %}" data-open-dialog="{{ dialog_id }}">
+    {{- block.settings.link_text -}}
+  </button>
+  <dialog id="{{ dialog_id }}" class="modal modal--fullscreen-mobile color-{{ settings.drawer_color_scheme }}" aria-labelledby="{{ dialog_id }}-title" data-light-dismiss data-animate>
+    <div class="modal__panel" data-dialog-body>
+      <div class="modal__header">
+        <h2 class="h2" id="{{ dialog_id }}-title">{% if block.settings.page != blank %}{{ block.settings.page.title }}{% else %}{{ block.settings.link_text }}{% endif %}</h2>
+        <button type="button" class="icon-button" data-close-dialog aria-label="{{ 'general.close' | t }}">{%- render 'icon', name: 'close' -%}</button>
+      </div>
+      <template data-deferred>
+        <div class="rte">
+          {{- block.settings.text -}}
+          {%- if block.settings.page != blank -%}{{ block.settings.page.content }}{%- endif -%}
+        </div>
+      </template>
+    </div>
+  </dialog>
+</div>
+
+{% schema %}
+{
+  "name": "t:labels.pop_up_link",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "link_text",
+      "label": "t:labels.link_text",
+      "default": "More information"
+    },
+    {
+      "type": "select",
+      "id": "style",
+      "label": "t:labels.style",
+      "options": [
+        {
+          "value": "link",
+          "label": "t:labels.link"
+        },
+        {
+          "value": "button",
+          "label": "t:labels.button"
+        }
+      ],
+      "default": "link"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "t:labels.pop_up_text"
+    },
+    {
+      "type": "page",
+      "id": "page",
+      "label": "t:labels.page",
+      "info": "t:labels.shows_the_page_content_in_the_pop_up"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:labels.pop_up_link",
+      "category": "t:labels.product"
+    }
+  ]
+}
+{% endschema %}

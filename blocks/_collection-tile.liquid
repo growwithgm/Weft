@@ -1,0 +1,35 @@
+{%- comment -%} Collection list tile: a collection card with an optional replacement image. {%- endcomment -%}
+{%- liquid
+  assign ss = section.settings
+  assign cols = ss.columns | default: 4
+  assign tile_sizes = '(min-width: 990px) calc(100vw / ' | append: cols | append: '), 50vw'
+-%}
+<li {{ block.shopify_attributes }}>
+  {%- if block.settings.collection != blank -%}
+    {%- render 'collection-card', collection: block.settings.collection, image: block.settings.image, sizes: tile_sizes, use_product_image: ss.use_product_image, show_count: ss.show_count -%}
+  {%- else -%}
+    <div class="collection-card collection-card--ratio-{{ settings.collection_card_ratio }}">
+      <div class="collection-card__media media">{{ 'collection-apparel-2' | placeholder_svg_tag: 'placeholder-svg' }}</div>
+      <p class="collection-card__title">{{ 'collections.placeholder_title' | t }}</p>
+    </div>
+  {%- endif -%}
+</li>
+
+{% schema %}
+{
+  "name": "t:labels.collection",
+  "tag": null,
+  "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "t:labels.collection"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:labels.replacement_image"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,21 @@
+{%- comment -%}
+  Wholesale-only gate (brief §7.15): shown to non-wholesale visitors on a product that still
+  carries the wholesale-only tag. No product data, no breadcrumbs; theme.liquid adds noindex.
+{%- endcomment -%}
+{%- liquid
+  if settings.wholesale_request_page != blank
+    assign apply_url = settings.wholesale_request_page.url
+  elsif settings.wholesale_access_page != blank
+    assign apply_url = settings.wholesale_access_page.url
+  endif
+-%}
+<div class="section wholesale-gate page-width page-width--narrow text-center stack">
+  <span class="wholesale-gate__icon">{%- render 'icon', name: 'lock', size: 36 -%}</span>
+  <h1 class="h1">{{ 'wholesale.gate_title' | t }}</h1>
+  <p class="wholesale-gate__text">{{ 'wholesale.gate_text' | t }}</p>
+  <div class="wholesale-gate__actions stack">
+    <a class="button button--full" href="{{ routes.account_login_url }}?return_url={{ request.path | url_encode }}">{{ 'wholesale.sign_in' | t }}</a>
+    {%- if apply_url -%}<a class="button button--secondary button--full" href="{{ apply_url }}">{{ 'wholesale.apply' | t }}</a>{%- endif -%}
+  </div>
+  <a class="wholesale-gate__back" href="{{ routes.root_url }}">{{ 'wholesale.back_to_shop' | t }}</a>
+</div>

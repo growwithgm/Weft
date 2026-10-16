@@ -1,0 +1,26 @@
+{%- comment -%}
+  Wholesale company / location chip (brief §7.14). One location: a link to the account.
+  Several locations: a <details> dropdown with the other locations as links to
+  url_to_set_as_current (works without JavaScript), optional store credit, account, sign out.
+  Params: locations, multi_location.
+{%- endcomment -%}
+{%- liquid
+  assign label = customer.current_company.name | append: ' · ' | append: customer.current_location.name
+-%}
+{%- if multi_location -%}
+  <details class="account-menu" data-account-menu>
+    <summary class="account-chip">
+      {%- render 'icon', name: 'store', size: 16 -%}
+      <span class="account-chip__label">{{ label }}</span>
+      {%- render 'icon', name: 'chevron-down', size: 14 -%}
+    </summary>
+    <div class="account-menu__panel color-{{ settings.drawer_color_scheme }}" role="group" aria-label="{{ 'wholesale.ordering_for' | t }}">
+      {%- render 'location-list', locations: locations -%}
+    </div>
+  </details>
+{%- else -%}
+  <a class="account-chip" href="{{ routes.account_url }}">
+    {%- render 'icon', name: 'store', size: 16 -%}
+    <span class="account-chip__label">{{ label }}</span>
+  </a>
+{%- endif -%}

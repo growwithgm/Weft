@@ -1,0 +1,94 @@
+{
+  "sections": {
+    "banner": {
+      "type": "collection-banner",
+      "disabled": true,
+      "settings": {}
+    },
+    "countdown": {
+      "type": "countdown-timer",
+      "settings": {},
+      "blocks": {
+        "h": {
+          "type": "heading",
+          "settings": {
+            "heading": "Flash sale",
+            "size": "h1"
+          }
+        },
+        "c": {
+          "type": "product-countdown",
+          "settings": {}
+        },
+        "t": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Prices drop for a short time only.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "h",
+        "c",
+        "t"
+      ]
+    },
+    "main": {
+      "type": "main-collection",
+      "settings": {}
+    },
+    "strip": {
+      "type": "promo-strip",
+      "settings": {},
+      "blocks": {
+        "h": {
+          "type": "heading",
+          "settings": {
+            "heading": "Extra 10% off with code",
+            "size": "h3"
+          }
+        },
+        "d": {
+          "type": "discount-code",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "h",
+        "d"
+      ]
+    },
+    "more": {
+      "type": "collection-list",
+      "settings": {
+        "title": "Keep shopping"
+      },
+      "blocks": {
+        "a": {
+          "type": "_collection-tile",
+          "settings": {}
+        },
+        "b": {
+          "type": "_collection-tile",
+          "settings": {}
+        },
+        "c": {
+          "type": "_collection-tile",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "a",
+        "b",
+        "c"
+      ]
+    }
+  },
+  "order": [
+    "banner",
+    "countdown",
+    "main",
+    "strip",
+    "more"
+  ]
+}

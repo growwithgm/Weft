@@ -1,0 +1,29 @@
+/* Carousel rows (<scroll-row>): progress line, arrows in the heading corner, no browser scrollbar. */
+@layer components {
+  /* Carousels: no browser scrollbar; a 2 px progress line below, round arrows in the top corner on
+     large screens, and on phones the next card peeks in instead of arrows. */
+  .product-grid--carousel, .is-carousel, .mosaic--carousel { scrollbar-width: none; }
+  .product-grid--carousel::-webkit-scrollbar, .is-carousel::-webkit-scrollbar, .mosaic--carousel::-webkit-scrollbar { display: none; }
+  .scroll-row__progress { display: none; position: relative; height: 2px; margin-block-start: 16px; background: var(--c-line); overflow: hidden; }
+  scroll-row[data-scrollable] .scroll-row__progress { display: block; }
+  .scroll-row__progress > span { position: absolute; inset-block: 0; inset-inline-start: calc(var(--progress-pos, 0) * 100%); width: calc(var(--progress-size, 1) * 100%); background: var(--c-fg); transition: inset-inline-start 120ms linear; }
+  .scroll-row__buttons { display: none; justify-content: flex-end; gap: 8px; }
+  .scroll-row__buttons .icon-button { width: 40px; height: 40px; border: 1px solid var(--c-line); border-radius: 50%; background: var(--c-bg); }
+  .scroll-row__buttons .icon-button:disabled { opacity: 0.35; }
+  .section-heading--with-arrows { align-items: center; }
+  .section-heading--with-arrows .section-heading__button { margin-inline-start: auto; }
+  .section-heading--with-arrows .scroll-row__buttons { flex: 0 0 auto; }
+  .scroll-row--arrows-top .scroll-row__buttons { position: absolute; inset-block-end: calc(100% + 12px); inset-inline-end: 0; }
+  @media (min-width: 990px) {
+    .scroll-row__buttons[data-scrollable] { display: flex; }
+  }
+  /* Theme settings > Layout and design > Carousels */
+  [data-carousel-arrow-style="solid"] .scroll-row__buttons .icon-button { background: var(--c-fg); border-color: var(--c-fg); color: var(--c-bg); border-radius: 50%; }
+  @media (min-width: 990px) {
+    [data-carousel-arrows="never"] .scroll-row__buttons[data-scrollable] { display: none; }
+  }
+  @media (min-width: 990px) and (hover: hover) {
+    [data-carousel-arrows="hover"] .scroll-row__buttons[data-scrollable] { opacity: 0; transition: opacity 150ms ease; }
+    [data-carousel-arrows="hover"] .section-heading--with-arrows:hover .scroll-row__buttons, [data-carousel-arrows="hover"] scroll-row:hover .scroll-row__buttons, [data-carousel-arrows="hover"] .scroll-row__buttons:focus-within { opacity: 1; }
+  }
+}

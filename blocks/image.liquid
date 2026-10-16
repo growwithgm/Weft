@@ -1,0 +1,100 @@
+{%- liquid
+  assign img = block.settings.image
+  assign w = block.settings.width
+  assign sizes = w | append: 'px'
+-%}
+<div class="block-image block-image--{{ block.settings.align }}" style="--block-image-width: {{ w }}px" {{ block.shopify_attributes }}>
+  {%- if block.settings.link != blank -%}<a href="{{ block.settings.link }}">{%- endif -%}
+  <div class="media block-image__media{% if block.settings.ratio != 'natural' %} block-image__media--{{ block.settings.ratio }}{% endif %}" {% if img and block.settings.ratio == 'natural' %}style="aspect-ratio: {{ img.aspect_ratio }}"{% endif %}>
+    {%- if img -%}
+      {%- render 'image', image: img, sizes: sizes, widths: '240,360,480,720,960,1200' -%}
+    {%- else -%}
+      {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+    {%- endif -%}
+  </div>
+  {%- if block.settings.link != blank -%}</a>{%- endif -%}
+  {%- if block.settings.caption != blank -%}<p class="block-image__caption muted">{{ block.settings.caption }}</p>{%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "t:labels.image",
+  "tag": null,
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:labels.image"
+    },
+    {
+      "type": "range",
+      "id": "width",
+      "label": "t:labels.maximum_width",
+      "min": 60,
+      "max": 1200,
+      "step": 20,
+      "default": 600,
+      "unit": "px"
+    },
+    {
+      "type": "select",
+      "id": "ratio",
+      "label": "t:labels.aspect_ratio",
+      "options": [
+        {
+          "value": "natural",
+          "label": "t:labels.natural"
+        },
+        {
+          "value": "square",
+          "label": "t:labels.square_1_1"
+        },
+        {
+          "value": "portrait",
+          "label": "t:labels.portrait_4_5"
+        },
+        {
+          "value": "landscape",
+          "label": "t:labels.landscape_4_3"
+        }
+      ],
+      "default": "natural"
+    },
+    {
+      "type": "select",
+      "id": "align",
+      "label": "t:labels.alignment",
+      "options": [
+        {
+          "value": "start",
+          "label": "t:labels.start"
+        },
+        {
+          "value": "center",
+          "label": "t:labels.center"
+        },
+        {
+          "value": "end",
+          "label": "t:labels.end"
+        }
+      ],
+      "default": "start"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "t:labels.link"
+    },
+    {
+      "type": "text",
+      "id": "caption",
+      "label": "t:labels.caption"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:labels.image"
+    }
+  ]
+}
+{% endschema %}

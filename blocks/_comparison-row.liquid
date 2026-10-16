@@ -1,0 +1,185 @@
+{%- comment -%}
+  One row of the product comparison grid. The section passes the products through the block's
+  parent; each row renders one cell per product for its type.
+{%- endcomment -%}
+{%- liquid
+  assign b = block.settings
+  assign ss = section.settings
+  assign products = ss.product_list
+  assign empty_text = ss.empty_field_text
+  case b.type
+    when 'vendor'
+      assign row_label = 'compare.vendor' | t
+    when 'type'
+      assign row_label = 'compare.type' | t
+    when 'price'
+      assign row_label = 'compare.price' | t
+    when 'description'
+      assign row_label = 'compare.description' | t
+    when 'weight'
+      assign row_label = 'compare.weight' | t
+    when 'rating'
+      assign row_label = 'compare.rating' | t
+    when 'variants'
+      assign row_label = 'compare.options' | t
+    else
+      assign row_label = b.title
+  endcase
+  if b.title != blank
+    assign row_label = b.title
+  endif
+-%}
+<tr class="comparison__row comparison__row--{{ b.type }}" {{ block.shopify_attributes }}>
+  <th scope="row">{{ row_label | escape }}</th>
+  {%- for product in products -%}
+    {%- liquid
+      assign v = product.selected_or_first_available_variant
+      capture cell
+        case b.type
+          when 'vendor'
+            echo product.vendor | escape
+          when 'type'
+            echo product.type | escape
+          when 'price'
+            render 'price', variant: v, size: 'small', from: product.price_varies, show_unit: false
+          when 'variants'
+            unless product.has_only_default_variant
+              for option in product.options_with_values
+                assign option_values = option.values | join: ', '
+                echo option.name | append: ': ' | append: option_values | escape
+                unless forloop.last
+                  echo '<br>'
+                endunless
+              endfor
+            endunless
+          when 'variant_option'
+            for option in product.options_with_values
+              if option.name == b.title
+                echo option.values | join: ', ' | escape
+              endif
+            endfor
+          when 'description'
+            if b.truncate
+              echo product.description | strip_html | truncatewords: b.words
+            else
+              echo product.description
+            endif
+          when 'rating'
+            if product.metafields.reviews.rating.value != blank
+              assign r = product.metafields.reviews.rating.value
+              echo r.rating | round: 1 | append: ' / ' | append: r.scale_max
+            endif
+          when 'weight'
+            if v.weight > 0
+              echo v.weight | weight_with_unit: v.weight_unit
+            endif
+          when 'text'
+            echo b.value | escape
+          when 'metafield'
+            assign key_parts = b.metafield_key | split: '.'
+            assign ns = key_parts | first
+            assign key = key_parts | last
+            assign field = product.metafields[ns][key]
+            if field != blank
+              echo field | metafield_text
+            endif
+        endcase
+      endcapture
+      assign cell = cell | strip
+    -%}
+    <td{% if cell == blank %} class="comparison__empty"{% endif %}>{% if cell == blank %}{{ empty_text }}{% else %}{{ cell }}{% endif %}</td>
+  {%- endfor -%}
+</tr>
+
+{% schema %}
+{
+  "name": "t:labels.row",
+  "tag": null,
+  "settings": [
+    {
+      "type": "select",
+      "id": "type",
+      "label": "t:labels.content",
+      "options": [
+        {
+          "value": "price",
+          "label": "t:labels.price"
+        },
+        {
+          "value": "vendor",
+          "label": "t:labels.vendor"
+        },
+        {
+          "value": "type",
+          "label": "t:labels.product_type"
+        },
+        {
+          "value": "variants",
+          "label": "t:labels.all_variant_options"
+        },
+        {
+          "value": "variant_option",
+          "label": "t:labels.one_variant_option"
+        },
+        {
+          "value": "description",
+          "label": "t:labels.description"
+        },
+        {
+          "value": "rating",
+          "label": "t:labels.rating"
+        },
+        {
+          "value": "weight",
+          "label": "t:labels.weight"
+        },
+        {
+          "value": "text",
+          "label": "t:labels.text"
+        },
+        {
+          "value": "metafield",
+          "label": "t:labels.metafield"
+        }
+      ],
+      "default": "price"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "t:labels.row_label",
+      "info": "t:text.blocks.comparison_row.settings.title.info"
+    },
+    {
+      "type": "text",
+      "id": "value",
+      "label": "t:labels.text",
+      "visible_if": "{{ block.settings.type == 'text' }}"
+    },
+    {
+      "type": "text",
+      "id": "metafield_key",
+      "label": "t:labels.metafield",
+      "info": "t:labels.namespace_key_for_example_custom_material",
+      "visible_if": "{{ block.settings.type == 'metafield' }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "truncate",
+      "label": "t:labels.shorten_the_description",
+      "default": true,
+      "visible_if": "{{ block.settings.type == 'description' }}"
+    },
+    {
+      "type": "range",
+      "id": "words",
+      "label": "t:labels.words_to_show",
+      "min": 10,
+      "max": 60,
+      "step": 5,
+      "default": 20,
+      "visible_if": "{{ block.settings.type == 'description' }}"
+    }
+  ]
+}
+{% endschema %}
