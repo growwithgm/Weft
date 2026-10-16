@@ -288,7 +288,7 @@
     "card_show_swatches": true,
     "card_swatch_limit": 4,
     "card_show_sizes": true,
-    "card_title_style": "split",
+    "card_title_style": "full",
     "card_price_bottom": false
   },
   "presets": {

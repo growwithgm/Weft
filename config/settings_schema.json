@@ -866,15 +866,15 @@
         "label": "t:labels.title",
         "options": [
           {
-            "value": "split",
-            "label": "t:labels.name_after_the_dash_the_rest_as_a_second_line"
-          },
-          {
             "value": "full",
             "label": "t:labels.full_product_title"
+          },
+          {
+            "value": "split",
+            "label": "t:labels.name_after_the_dash_the_rest_as_a_second_line"
           }
         ],
-        "default": "split",
+        "default": "full",
         "info": "t:text.settings_schema.product_cards.settings.card_title_style.info"
       },
       {

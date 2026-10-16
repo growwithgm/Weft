@@ -158,7 +158,7 @@ export default [
       range('card_swatch_limit', 'Swatches shown', 2, 10, 1, 4, null, 'Extra colors show as "+2". On large screens a swatch click shows that color.'),
       check('card_show_sizes', 'Show sizes', true, 'Shows the values of the size option under the price. Sold-out sizes are crossed out.'),
       text('card_size_option_names', 'Size option names', 'Size,Talla,Größe,Taille,Taglia,Maat,Tamanho,サイズ', 'Separate names with commas. Options with these names show as size chips.'),
-      select('card_title_style', 'Title', [['split', 'Name after the dash, the rest as a second line'], ['full', 'Full product title']], 'split', 'For titles like "Cotton tiered maxi dress – Sona". Titles without a dash show in full.'),
+      select('card_title_style', 'Title', [['full', 'Full product title'], ['split', 'Name after the dash, the rest as a second line']], 'full', 'For titles like "Cotton tiered maxi dress – Sona". Titles without a dash show in full.'),
       text('card_title_hide', 'Words to hide in titles', null, 'Separate with commas, for example your brand name. The product page keeps the full title.'),
       check('card_show_rating', 'Show rating', true),
       check('card_show_vendor', 'Show vendor'),
